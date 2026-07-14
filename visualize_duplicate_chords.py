@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import json
 import math
 from dataclasses import dataclass
 from pathlib import Path
@@ -24,6 +25,7 @@ DEFAULT_INPUT = Path(r"D:\llm_analyzed_duplicates (1).csv")
 DEFAULT_OUTPUT = Path("duplicate_relationship_chord.html")
 TEXT_PREVIEW_CHARS = 900
 HOVER_LINE_LENGTH = 96
+DIFF_TEXT_CHARS = 20000
 
 RELATIONSHIP_LABELS = {
     "semantically_identical": "Duplicated",
@@ -219,12 +221,13 @@ def build_aggregates(
 
     working["node1"] = working.apply(lambda row: endpoint_label(row, 1, node_level), axis=1)
     working["node2"] = working.apply(lambda row: endpoint_label(row, 2, node_level), axis=1)
+    working["llm_analysis"] = optional_column(working, "llm_analysis")
     pairs = working.apply(lambda row: ordered_pair(row["node1"], row["node2"]), axis=1)
     working["source_node"] = [pair[0] for pair in pairs]
     working["target_node"] = [pair[1] for pair in pairs]
 
     node1_is_source = working["node1"] <= working["node2"]
-    for field in ["path", "title", "text"]:
+    for field in ["id", "path", "title", "summary", "text"]:
         item1 = optional_column(working, f"item1_{field}")
         item2 = optional_column(working, f"item2_{field}")
         working[f"source_{field}"] = np.where(node1_is_source, item1, item2)
@@ -258,10 +261,15 @@ def build_aggregates(
                 "example",
                 "source_path",
                 "target_path",
+                "source_id",
+                "target_id",
                 "source_title",
                 "target_title",
+                "source_summary",
+                "target_summary",
                 "source_text",
                 "target_text",
+                "llm_analysis",
             ]
         ],
         on=["relationship", "source_node", "target_node"],
@@ -519,6 +527,495 @@ def link_hover(row: pd.Series) -> str:
     )
 
 
+def json_text(value: object) -> str:
+    if value is None or pd.isna(value):
+        return ""
+    return str(value)
+
+
+def clipped_text(value: object, max_chars: int = DIFF_TEXT_CHARS) -> tuple[str, bool]:
+    text = json_text(value)
+    if len(text) <= max_chars:
+        return text, False
+    return text[:max_chars].rstrip(), True
+
+
+def build_pairwise_diff_records(links: pd.DataFrame) -> list[dict[str, object]]:
+    records: list[dict[str, object]] = []
+    ordered = links.sort_values(["weight", "avg_weight"], ascending=False).reset_index(drop=True)
+    for index, row in ordered.iterrows():
+        diff_id = str(row.get("diff_id", f"pair-{index + 1}"))
+        source_text, source_truncated = clipped_text(row.get("source_text", ""))
+        target_text, target_truncated = clipped_text(row.get("target_text", ""))
+        source_title = compact_text(row.get("source_title", "")) or str(row.get("source_node", "Document 1"))
+        target_title = compact_text(row.get("target_title", "")) or str(row.get("target_node", "Document 2"))
+        label = f"{source_title} \u2194 {target_title}"
+        records.append(
+            {
+                "id": diff_id,
+                "label": label,
+                "relationship": json_text(row.get("relationship", "Other")),
+                "weight": float(row.get("weight", 0.0)),
+                "avgWeight": float(row.get("avg_weight", 0.0)),
+                "pairCount": int(row.get("pair_count", 1)),
+                "sourceNode": json_text(row.get("source_node", "")),
+                "targetNode": json_text(row.get("target_node", "")),
+                "sourceId": json_text(row.get("source_id", "")),
+                "targetId": json_text(row.get("target_id", "")),
+                "sourcePath": json_text(row.get("source_path", "")),
+                "targetPath": json_text(row.get("target_path", "")),
+                "sourceTitle": source_title,
+                "targetTitle": target_title,
+                "sourceSummary": json_text(row.get("source_summary", "")),
+                "targetSummary": json_text(row.get("target_summary", "")),
+                "sourceText": source_text,
+                "targetText": target_text,
+                "sourceTruncated": source_truncated,
+                "targetTruncated": target_truncated,
+                "analysis": json_text(row.get("llm_analysis", "")),
+            }
+        )
+    return records
+
+
+def build_standalone_html(
+    fig: go.Figure,
+    pair_records: list[dict[str, object]],
+    include_plotlyjs: bool | str,
+    title: str,
+) -> str:
+    chart_html = fig.to_html(
+        include_plotlyjs=include_plotlyjs,
+        full_html=False,
+        config={"responsive": True, "displaylogo": False},
+    )
+    records_json = json.dumps(pair_records, ensure_ascii=False).replace("<", "\\u003c")
+    page_title = html.escape(title)
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{page_title}</title>
+<style>
+  :root {{
+    --bg: #f6f8fb;
+    --panel: #ffffff;
+    --ink: #172033;
+    --muted: #64748b;
+    --line: #d7dee8;
+    --soft: #eef3f8;
+    --delete-bg: #ffe4e8;
+    --delete-ink: #9f1d35;
+    --insert-bg: #dbf7e8;
+    --insert-ink: #11613a;
+    --focus: #2563eb;
+  }}
+  * {{ box-sizing: border-box; }}
+  body {{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }}
+  .page-shell {{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 18px 22px 36px;
+  }}
+  .chart-shell {{
+    min-height: 760px;
+  }}
+  .diff-panel {{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+  }}
+  .diff-toolbar {{
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(280px, 1.6fr);
+    gap: 12px;
+    align-items: end;
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+    background: #fbfdff;
+  }}
+  .control-group {{
+    display: grid;
+    gap: 6px;
+  }}
+  .control-group label {{
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }}
+  .diff-toolbar input,
+  .diff-toolbar select {{
+    width: 100%;
+    min-height: 38px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--ink);
+    padding: 8px 10px;
+    font-size: 14px;
+  }}
+  .diff-toolbar input:focus,
+  .diff-toolbar select:focus {{
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+    outline: none;
+  }}
+  .metric-strip {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px 16px 0;
+  }}
+  .metric {{
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--soft);
+    color: #334155;
+    font-size: 13px;
+    padding: 6px 9px;
+  }}
+  .doc-heads,
+  .diff-grid {{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }}
+  .doc-head {{
+    padding: 14px 16px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: #f8fafc;
+  }}
+  .doc-head:first-child,
+  .diff-cell:first-child {{
+    border-right: 1px solid var(--line);
+  }}
+  .doc-title {{
+    font-weight: 800;
+    line-height: 1.25;
+  }}
+  .doc-path {{
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }}
+  .summary-row {{
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+  }}
+  .summary-cell {{
+    padding: 12px 16px;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.45;
+    max-height: 118px;
+    overflow: auto;
+  }}
+  .summary-cell:first-child {{
+    border-right: 1px solid var(--line);
+  }}
+  .diff-cell {{
+    min-height: 460px;
+    max-height: 72vh;
+    overflow: auto;
+    padding: 16px;
+    background: #ffffff;
+  }}
+  .diff-text {{
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.58;
+  }}
+  .diff-delete,
+  .diff-insert {{
+    border-radius: 3px;
+    padding: 1px 2px;
+  }}
+  .diff-delete {{
+    background: var(--delete-bg);
+    color: var(--delete-ink);
+  }}
+  .diff-insert {{
+    background: var(--insert-bg);
+    color: var(--insert-ink);
+  }}
+  .empty-state {{
+    padding: 24px;
+    color: var(--muted);
+    text-align: center;
+  }}
+  .analysis {{
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--line);
+    color: #334155;
+    font-size: 13px;
+    line-height: 1.5;
+  }}
+  .status-note {{
+    color: var(--muted);
+    font-size: 12px;
+    padding: 0 16px 12px;
+  }}
+  @media (max-width: 860px) {{
+    .page-shell {{ padding: 12px; }}
+    .diff-toolbar {{
+      grid-template-columns: 1fr;
+    }}
+    .doc-heads,
+    .diff-grid,
+    .summary-row {{
+      grid-template-columns: 1fr;
+    }}
+    .doc-head:first-child,
+    .diff-cell:first-child,
+    .summary-cell:first-child {{
+      border-right: none;
+    }}
+    .doc-head:first-child,
+    .diff-cell:first-child,
+    .summary-cell:first-child {{
+      border-bottom: 1px solid var(--line);
+    }}
+  }}
+</style>
+</head>
+<body>
+<main class="page-shell">
+  <section class="chart-shell">
+    {chart_html}
+  </section>
+  <section class="diff-panel" aria-label="Pairwise document diff">
+    <div class="diff-toolbar">
+      <div class="control-group">
+        <label for="pair-search">Search pairs</label>
+        <input id="pair-search" type="search" placeholder="Title, path, or relationship">
+      </div>
+      <div class="control-group">
+        <label for="pair-select">Pairwise comparison</label>
+        <select id="pair-select"></select>
+      </div>
+    </div>
+    <div id="diff-root"></div>
+  </section>
+</main>
+<script id="pairwise-diff-data" type="application/json">{records_json}</script>
+<script>
+(function () {{
+  const records = JSON.parse(document.getElementById("pairwise-diff-data").textContent);
+  const select = document.getElementById("pair-select");
+  const search = document.getElementById("pair-search");
+  const root = document.getElementById("diff-root");
+  const maxTokens = 3600;
+  let filtered = records.slice();
+
+  function escapeHtml(value) {{
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }}
+
+  function tokenize(text) {{
+    return String(text || "").match(/\\s+|[\\p{{L}}\\p{{N}}_]+|[^\\s\\p{{L}}\\p{{N}}_]+/gu) || [];
+  }}
+
+  function appendToken(buffer, token, className) {{
+    const escaped = escapeHtml(token);
+    if (!escaped) return;
+    if (className) {{
+      buffer.push(`<span class="${{className}}">${{escaped}}</span>`);
+    }} else {{
+      buffer.push(escaped);
+    }}
+  }}
+
+  function diffToHtml(leftText, rightText) {{
+    let leftTokens = tokenize(leftText);
+    let rightTokens = tokenize(rightText);
+    const truncated = leftTokens.length > maxTokens || rightTokens.length > maxTokens;
+    if (leftTokens.length > maxTokens) leftTokens = leftTokens.slice(0, maxTokens);
+    if (rightTokens.length > maxTokens) rightTokens = rightTokens.slice(0, maxTokens);
+
+    const rows = leftTokens.length + 1;
+    const cols = rightTokens.length + 1;
+    const table = new Uint16Array(rows * cols);
+
+    for (let i = 1; i < rows; i += 1) {{
+      const leftToken = leftTokens[i - 1];
+      const rowOffset = i * cols;
+      const prevOffset = (i - 1) * cols;
+      for (let j = 1; j < cols; j += 1) {{
+        if (leftToken === rightTokens[j - 1]) {{
+          table[rowOffset + j] = table[prevOffset + j - 1] + 1;
+        }} else {{
+          table[rowOffset + j] = Math.max(table[prevOffset + j], table[rowOffset + j - 1]);
+        }}
+      }}
+    }}
+
+    const left = [];
+    const right = [];
+    let i = leftTokens.length;
+    let j = rightTokens.length;
+    while (i > 0 || j > 0) {{
+      if (i > 0 && j > 0 && leftTokens[i - 1] === rightTokens[j - 1]) {{
+        left.push(["same", leftTokens[i - 1]]);
+        right.push(["same", rightTokens[j - 1]]);
+        i -= 1;
+        j -= 1;
+      }} else if (j > 0 && (i === 0 || table[i * cols + j - 1] >= table[(i - 1) * cols + j])) {{
+        right.push(["insert", rightTokens[j - 1]]);
+        j -= 1;
+      }} else {{
+        left.push(["delete", leftTokens[i - 1]]);
+        i -= 1;
+      }}
+    }}
+
+    const leftHtml = [];
+    const rightHtml = [];
+    for (const [type, token] of left.reverse()) {{
+      appendToken(leftHtml, token, type === "delete" ? "diff-delete" : "");
+    }}
+    for (const [type, token] of right.reverse()) {{
+      appendToken(rightHtml, token, type === "insert" ? "diff-insert" : "");
+    }}
+    return {{ leftHtml: leftHtml.join(""), rightHtml: rightHtml.join(""), truncated }};
+  }}
+
+  function formatScore(value) {{
+    const number = Number(value || 0);
+    return Number.isFinite(number) ? number.toFixed(3) : "0.000";
+  }}
+
+  function renderSelect() {{
+    select.innerHTML = "";
+    if (!filtered.length) {{
+      const option = document.createElement("option");
+      option.textContent = "No matching pairs";
+      option.value = "";
+      select.appendChild(option);
+      renderEmpty();
+      return;
+    }}
+    for (const record of filtered) {{
+      const option = document.createElement("option");
+      option.value = record.id;
+      option.textContent = `${{record.relationship}} - ${{formatScore(record.avgWeight)}} - ${{record.label}}`;
+      select.appendChild(option);
+    }}
+    renderRecord(filtered[0].id);
+  }}
+
+  function renderEmpty() {{
+    root.innerHTML = '<div class="empty-state">No pair matches the current search.</div>';
+  }}
+
+  function renderRecord(id) {{
+    const record = records.find((candidate) => candidate.id === id);
+    if (!record) {{
+      renderEmpty();
+      return;
+    }}
+    const diff = diffToHtml(record.sourceText, record.targetText);
+    const noteParts = [];
+    if (record.sourceTruncated || record.targetTruncated) {{
+      noteParts.push("Texts are clipped for browser performance; increase DIFF_TEXT_CHARS in the generator for longer comparisons.");
+    }}
+    if (diff.truncated) {{
+      noteParts.push(`Diff is calculated on the first ${{maxTokens.toLocaleString()}} tokens per side.`);
+    }}
+    root.innerHTML = `
+      <div class="metric-strip">
+        <div class="metric">${{escapeHtml(record.relationship)}}</div>
+        <div class="metric">avg similarity ${{formatScore(record.avgWeight)}}</div>
+        <div class="metric">sum similarity ${{formatScore(record.weight)}}</div>
+        <div class="metric">${{Number(record.pairCount || 1).toLocaleString()}} pair(s) in this visible link</div>
+      </div>
+      <div class="doc-heads">
+        <div class="doc-head">
+          <div class="doc-title">${{escapeHtml(record.sourceTitle)}}</div>
+          <div class="doc-path">${{escapeHtml(record.sourcePath || record.sourceNode)}}</div>
+        </div>
+        <div class="doc-head">
+          <div class="doc-title">${{escapeHtml(record.targetTitle)}}</div>
+          <div class="doc-path">${{escapeHtml(record.targetPath || record.targetNode)}}</div>
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-cell">${{escapeHtml(record.sourceSummary || "No summary available")}}</div>
+        <div class="summary-cell">${{escapeHtml(record.targetSummary || "No summary available")}}</div>
+      </div>
+      ${{noteParts.length ? `<div class="status-note">${{escapeHtml(noteParts.join(" "))}}</div>` : ""}}
+      <div class="diff-grid">
+        <div class="diff-cell"><pre class="diff-text">${{diff.leftHtml || "No text available"}}</pre></div>
+        <div class="diff-cell"><pre class="diff-text">${{diff.rightHtml || "No text available"}}</pre></div>
+      </div>
+      ${{record.analysis ? `<div class="analysis"><strong>LLM analysis:</strong> ${{escapeHtml(record.analysis)}}</div>` : ""}}
+    `;
+  }}
+
+  function applySearch() {{
+    const query = search.value.trim().toLowerCase();
+    filtered = !query
+      ? records.slice()
+      : records.filter((record) =>
+          [
+            record.label,
+            record.relationship,
+            record.sourcePath,
+            record.targetPath,
+            record.sourceSummary,
+            record.targetSummary,
+          ].join(" ").toLowerCase().includes(query)
+        );
+    renderSelect();
+  }}
+
+  function selectRecord(id) {{
+    const option = Array.from(select.options).find((candidate) => candidate.value === id);
+    if (option) {{
+      select.value = id;
+      renderRecord(id);
+      root.scrollIntoView({{ behavior: "smooth", block: "start" }});
+    }}
+  }}
+
+  search.addEventListener("input", applySearch);
+  select.addEventListener("change", () => renderRecord(select.value));
+  renderSelect();
+
+  const plot = document.querySelector(".plotly-graph-div");
+  if (plot && window.Plotly) {{
+    plot.on("plotly_click", (event) => {{
+      const point = event.points && event.points[0];
+      const id = point && point.customdata;
+      if (id) selectRecord(id);
+    }});
+  }}
+}})();
+</script>
+</body>
+</html>
+"""
+
+
 def add_link_traces(
     fig: go.Figure,
     links: pd.DataFrame,
@@ -551,6 +1048,7 @@ def add_link_traces(
                     opacity=0.44 if relationship != "Contradiction" else 0.62,
                     hoverinfo="text",
                     text=[link_hover(row)] * len(x),
+                    customdata=[str(row.get("diff_id", ""))] * len(x),
                     name=relationship,
                     legendgroup=relationship,
                     showlegend=False,
@@ -778,6 +1276,9 @@ def main() -> None:
     if links.empty or filtered_totals.empty:
         raise ValueError("No links left after filtering. Lower --min-weight or --top-n.")
 
+    links = links.sort_values(["weight", "avg_weight"], ascending=False).reset_index(drop=True)
+    links["diff_id"] = [f"pair-{index + 1}" for index in range(len(links))]
+
     output = args.output
     if not output.is_absolute():
         output = Path.cwd() / output
@@ -792,7 +1293,17 @@ def main() -> None:
         all_link_count=all_link_count,
     )
     include_plotlyjs = True if args.plotly_js == "inline" else "cdn"
-    fig.write_html(output, include_plotlyjs=include_plotlyjs, full_html=True)
+    pair_records = build_pairwise_diff_records(links)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(
+        build_standalone_html(
+            fig=fig,
+            pair_records=pair_records,
+            include_plotlyjs=include_plotlyjs,
+            title=args.title,
+        ),
+        encoding="utf-8",
+    )
 
     relationship_summary = (
         links.groupby("relationship")

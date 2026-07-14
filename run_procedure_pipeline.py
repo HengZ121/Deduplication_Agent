@@ -51,6 +51,12 @@ DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 DEFAULT_CROSS_ENCODER_THRESHOLD = 0.95
 DEFAULT_API_KEY_FILE = Path("local_api_key.txt")
+VALID_LLM_RELATIONSHIP_TYPES = {
+    "semantically_identical",
+    "one_doc_included",
+    "conflict_in_information",
+    "none_of_above",
+}
 
 
 @dataclass(frozen=True)
@@ -532,9 +538,14 @@ def openai_json_request(api_key: str, model: str, doc1: str, doc2: str, timeout:
         parsed = json.loads(content)
     except json.JSONDecodeError:
         parsed = {"relationship_type": "parse_error", "analysis": content}
+    relationship_type = str(parsed.get("relationship_type", "")).strip()
+    analysis = str(parsed.get("analysis", ""))
+    if relationship_type not in VALID_LLM_RELATIONSHIP_TYPES:
+        analysis = f"Invalid relationship_type from model: {relationship_type!r}. Raw analysis: {analysis}"
+        relationship_type = "parse_error"
     return {
-        "relationship_type": str(parsed.get("relationship_type", "")),
-        "analysis": str(parsed.get("analysis", "")),
+        "relationship_type": relationship_type,
+        "analysis": analysis,
     }
 
 
