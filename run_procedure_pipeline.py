@@ -224,6 +224,7 @@ def openai_json_request(api_key: str, model: str, doc1: str, doc2: str, timeout:
     payload = {
         "model": model,
         "messages": [prompt],
+        "response_format": {"type": "json_object"},
         "temperature": 0,
     }
     request = urllib.request.Request(
@@ -238,6 +239,10 @@ def openai_json_request(api_key: str, model: str, doc1: str, doc2: str, timeout:
     with urllib.request.urlopen(request, timeout=timeout) as response:
         body = json.loads(response.read().decode("utf-8"))
     content = body["choices"][0]["message"].get("content", "{}")
+    content = content.strip()
+    fenced_json = re.match(r"^```(?:json)?\s*(.*?)\s*```$", content, re.DOTALL | re.IGNORECASE)
+    if fenced_json:
+        content = fenced_json.group(1).strip()
     try:
         parsed = json.loads(content)
     except json.JSONDecodeError:
