@@ -8,6 +8,7 @@ connections and writes a standalone Plotly HTML file.
 from __future__ import annotations
 
 import argparse
+import html
 import math
 from dataclasses import dataclass
 from pathlib import Path
@@ -21,6 +22,8 @@ from plotly.colors import qualitative
 
 DEFAULT_INPUT = Path(r"D:\llm_analyzed_duplicates (1).csv")
 DEFAULT_OUTPUT = Path("duplicate_relationship_chord.html")
+TEXT_PREVIEW_CHARS = 900
+HOVER_LINE_LENGTH = 96
 
 RELATIONSHIP_LABELS = {
     "semantically_identical": "Duplicated",
@@ -169,6 +172,35 @@ def ordered_pair(left: str, right: str) -> tuple[str, str]:
     return (left, right) if left <= right else (right, left)
 
 
+def optional_column(df: pd.DataFrame, column: str) -> pd.Series:
+    if column in df.columns:
+        return df[column]
+    return pd.Series([""] * len(df), index=df.index, dtype=object)
+
+
+def compact_text(value: object) -> str:
+    if value is None or pd.isna(value):
+        return ""
+    return " ".join(str(value).split())
+
+
+def truncate_text(value: object, max_chars: int = TEXT_PREVIEW_CHARS) -> str:
+    text = compact_text(value)
+    if len(text) <= max_chars:
+        return text
+    return f"{text[: max_chars - 1].rstrip()}..."
+
+
+def html_lines(value: object, line_length: int = HOVER_LINE_LENGTH) -> str:
+    text = truncate_text(value)
+    if not text:
+        return "No text available"
+    return "<br>".join(
+        html.escape(text[index : index + line_length])
+        for index in range(0, len(text), line_length)
+    )
+
+
 def build_aggregates(
     df: pd.DataFrame,
     node_level: str,
@@ -191,6 +223,13 @@ def build_aggregates(
     working["source_node"] = [pair[0] for pair in pairs]
     working["target_node"] = [pair[1] for pair in pairs]
 
+    node1_is_source = working["node1"] <= working["node2"]
+    for field in ["path", "title", "text"]:
+        item1 = optional_column(working, f"item1_{field}")
+        item2 = optional_column(working, f"item2_{field}")
+        working[f"source_{field}"] = np.where(node1_is_source, item1, item2)
+        working[f"target_{field}"] = np.where(node1_is_source, item2, item1)
+
     grouped = (
         working.groupby(["relationship", "source_node", "target_node"], as_index=False)
         .agg(
@@ -207,11 +246,24 @@ def build_aggregates(
         .first()
     )
     example_rows["example"] = example_rows.apply(
-        lambda row: f"{row['item1_path']} | {row['item2_path']}",
+        lambda row: f"{row['source_path']} | {row['target_path']}",
         axis=1,
     )
     grouped = grouped.merge(
-        example_rows[["relationship", "source_node", "target_node", "example"]],
+        example_rows[
+            [
+                "relationship",
+                "source_node",
+                "target_node",
+                "example",
+                "source_path",
+                "target_path",
+                "source_title",
+                "target_title",
+                "source_text",
+                "target_text",
+            ]
+        ],
         on=["relationship", "source_node", "target_node"],
         how="left",
     )
@@ -450,13 +502,20 @@ def add_arc_traces(fig: go.Figure, arcs: dict[str, NodeArc]) -> None:
 
 
 def link_hover(row: pd.Series) -> str:
+    source_title = html.escape(compact_text(row.get("source_title", "")) or row["source_node"])
+    target_title = html.escape(compact_text(row.get("target_title", "")) or row["target_node"])
+    example = html.escape(compact_text(row.get("example", "")))
     return (
-        f"<b>{row['relationship']}</b><br>"
-        f"{row['source_node']} &harr; {row['target_node']}<br>"
+        f"<b>{html.escape(str(row['relationship']))}</b><br>"
+        f"{html.escape(str(row['source_node']))} &harr; {html.escape(str(row['target_node']))}<br>"
         f"Pairs: {int(row['pair_count']):,}<br>"
         f"Sum similarity: {row['weight']:,.2f}<br>"
         f"Avg similarity: {row['avg_weight']:.3f}<br>"
-        f"Best example: {row['example']}"
+        f"Best example: {example}<br><br>"
+        f"<b>Text 1: {source_title}</b><br>"
+        f"{html_lines(row.get('source_text', ''))}<br><br>"
+        f"<b>Text 2: {target_title}</b><br>"
+        f"{html_lines(row.get('target_text', ''))}"
     )
 
 
