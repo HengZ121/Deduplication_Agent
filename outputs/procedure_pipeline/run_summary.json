@@ -1,0 +1,27 @@
+{
+  "document_count": 856,
+  "cluster_count": 21,
+  "candidate_pair_count": 500,
+  "cross_encoder_scored_pair_count": 500,
+  "cross_encoder_passed_pair_count": 447,
+  "final_pair_count": 447,
+  "similarity_threshold": 0.45,
+  "pair_search_backend": "sklearn",
+  "pair_search_within_clusters": true,
+  "hdbscan": {
+    "umap_components": 128,
+    "umap_jobs": 1,
+    "umap_random_state": 42,
+    "min_cluster_size": 15,
+    "min_samples": 5,
+    "cluster_selection_epsilon": 0.05
+  },
+  "cross_encoder_threshold": 0.95,
+  "outputs": [
+    "procedure_documents_with_clusters.csv",
+    "duplicate_pairs.csv",
+    "cross_encoder_scored_pairs.csv",
+    "llm_analyzed_duplicates.csv",
+    "cluster_stats.csv"
+  ]
+}

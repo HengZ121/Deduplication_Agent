@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""
-Create an interactive chord-style visualization for duplicate-detection pairs.
+"""Create an interactive chord-style visualization for duplicate-detection pairs.
 
-The script aggregates pairwise document/verse relationships into weighted
-connections and writes a standalone Plotly HTML file. It is designed for public
-demos where the relationship structure matters more than showing full content.
+The script aggregates pairwise procedure-document relationships into weighted
+connections and writes a standalone Plotly HTML file.
 """
 
 from __future__ import annotations
@@ -39,76 +37,6 @@ RELATIONSHIP_COLORS = {
     "Other": "#6b7280",
 }
 
-BIBLE_BOOK_ORDER = [
-    "Genesis",
-    "Exodus",
-    "Leviticus",
-    "Numbers",
-    "Deuteronomy",
-    "Joshua",
-    "Judges",
-    "Ruth",
-    "1 Samuel",
-    "2 Samuel",
-    "1 Kings",
-    "2 Kings",
-    "1 Chronicles",
-    "2 Chronicles",
-    "Ezra",
-    "Nehemiah",
-    "Esther",
-    "Job",
-    "Psalms",
-    "Proverbs",
-    "Ecclesiastes",
-    "Song of Solomon",
-    "Isaiah",
-    "Jeremiah",
-    "Lamentations",
-    "Ezekiel",
-    "Daniel",
-    "Hosea",
-    "Joel",
-    "Amos",
-    "Obadiah",
-    "Jonah",
-    "Micah",
-    "Nahum",
-    "Habakkuk",
-    "Zephaniah",
-    "Haggai",
-    "Zechariah",
-    "Malachi",
-    "Matthew",
-    "Mark",
-    "Luke",
-    "John",
-    "Acts",
-    "Romans",
-    "1 Corinthians",
-    "2 Corinthians",
-    "Galatians",
-    "Ephesians",
-    "Philippians",
-    "Colossians",
-    "1 Thessalonians",
-    "2 Thessalonians",
-    "1 Timothy",
-    "2 Timothy",
-    "Titus",
-    "Philemon",
-    "Hebrews",
-    "James",
-    "1 Peter",
-    "2 Peter",
-    "1 John",
-    "2 John",
-    "3 John",
-    "Jude",
-    "Revelation",
-]
-
-
 @dataclass(frozen=True)
 class NodeArc:
     label: str
@@ -139,20 +67,12 @@ def parse_args() -> argparse.Namespace:
         "--node-level",
         choices=[
             "auto",
-            "book",
-            "chapter",
-            "source",
-            "source_book",
-            "book_chapter",
-            "source_chapter",
-            "source_book_chapter",
-            "verse",
+            "document_type",
+            "title",
+            "path",
         ],
         default="auto",
-        help=(
-            "How to group endpoints into chord segments. Use book for a full "
-            "multi-book Bible run; auto falls back when the file has one book."
-        ),
+        help="How to group procedure endpoints into chord segments.",
     )
     parser.add_argument(
         "--top-n",
@@ -184,7 +104,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--title",
-        default="Bible Duplicate Detection Relationship Map",
+        default="Procedure Duplicate Detection Relationship Map",
         help="Figure title.",
     )
     parser.add_argument(
@@ -207,6 +127,10 @@ def normalized_relationship(raw_value: object) -> str:
     return RELATIONSHIP_LABELS.get(key, key or "Other")
 
 
+def is_skipped_relationship(raw_value: object) -> bool:
+    return str(raw_value).strip().upper().startswith("SKIPPED")
+
+
 def choose_weight_column(df: pd.DataFrame, requested: str) -> str:
     candidates = [requested, "cross_encoder_similarity_value", "similarity"]
     for column in candidates:
@@ -218,27 +142,16 @@ def choose_weight_column(df: pd.DataFrame, requested: str) -> str:
 
 
 def endpoint_label(row: pd.Series, side: int, node_level: str) -> str:
-    source = str(row[f"item{side}_source"]).strip()
-    book = str(row[f"item{side}_book"]).strip()
-    chapter = int(row[f"item{side}_chapter"])
-    verse = int(row[f"item{side}_verse"])
+    doc_type = str(row.get(f"item{side}_type", "")).strip() or "document"
+    title = str(row.get(f"item{side}_title", "")).strip()
+    path = str(row.get(f"item{side}_path", "")).strip()
 
-    if node_level == "book":
-        return book
-    if node_level == "chapter":
-        return f"{book} {chapter}"
-    if node_level == "source":
-        return source.upper()
-    if node_level == "source_book":
-        return f"{source.upper()} | {book}"
-    if node_level == "book_chapter":
-        return f"{book} {chapter}"
-    if node_level == "source_chapter":
-        return f"{source.upper()} | {book} {chapter}"
-    if node_level == "source_book_chapter":
-        return f"{source.upper()} | {book} {chapter}"
-    if node_level == "verse":
-        return f"{source.upper()} | {book} {chapter}:{verse}"
+    if node_level == "document_type":
+        return doc_type
+    if node_level == "title":
+        return title or Path(path).stem
+    if node_level == "path":
+        return path
     raise ValueError(f"Unsupported node level: {node_level}")
 
 
@@ -246,19 +159,10 @@ def choose_node_level(df: pd.DataFrame, requested: str) -> str:
     if requested != "auto":
         return requested
 
-    books = set(df["item1_book"].dropna()).union(df["item2_book"].dropna())
-    sources = set(df["item1_source"].dropna()).union(df["item2_source"].dropna())
-    chapters = set(df["item1_chapter"].dropna()).union(df["item2_chapter"].dropna())
-
-    if len(books) >= 2:
-        return "book"
-    if len(sources) >= 2 and len(chapters) >= 2:
-        return "source_chapter"
-    if len(chapters) >= 2:
-        return "chapter"
-    if len(sources) >= 2:
-        return "source"
-    return "book"
+    types = set(df.get("item1_type", pd.Series(dtype=object)).dropna()).union(
+        df.get("item2_type", pd.Series(dtype=object)).dropna()
+    )
+    return "document_type" if len(types) >= 2 else "title"
 
 
 def ordered_pair(left: str, right: str) -> tuple[str, str]:
@@ -272,6 +176,7 @@ def build_aggregates(
     include_unrelated: bool,
 ) -> tuple[pd.DataFrame, pd.Series]:
     working = df.copy()
+    working = working[~working["llm_relationship_type"].map(is_skipped_relationship)]
     working["relationship"] = working["llm_relationship_type"].map(normalized_relationship)
     working["weight"] = pd.to_numeric(working[weight_column], errors="coerce")
     working = working.dropna(subset=["weight"])
@@ -293,12 +198,7 @@ def build_aggregates(
             pair_count=("weight", "size"),
             avg_weight=("weight", "mean"),
             max_weight=("weight", "max"),
-            examples=(
-                "item1_chapter",
-                lambda values: "",  # placeholder replaced below for stable groupby shape
-            ),
         )
-        .drop(columns=["examples"])
     )
 
     example_rows = (
@@ -307,12 +207,7 @@ def build_aggregates(
         .first()
     )
     example_rows["example"] = example_rows.apply(
-        lambda row: (
-            f"{row['item1_source'].upper()} {row['item1_book']} "
-            f"{int(row['item1_chapter'])}:{int(row['item1_verse'])} | "
-            f"{row['item2_source'].upper()} {row['item2_book']} "
-            f"{int(row['item2_chapter'])}:{int(row['item2_verse'])}"
-        ),
+        lambda row: f"{row['item1_path']} | {row['item2_path']}",
         axis=1,
     )
     grouped = grouped.merge(
@@ -331,27 +226,7 @@ def build_aggregates(
 
 
 def sort_nodes(nodes: list[str], node_level: str) -> list[str]:
-    book_index = {book: index for index, book in enumerate(BIBLE_BOOK_ORDER)}
-
-    def parse_label(label: str) -> tuple:
-        source = ""
-        remainder = label
-        if " | " in label:
-            source, remainder = label.split(" | ", 1)
-
-        parts = remainder.rsplit(" ", 1)
-        book = parts[0]
-        number = 0
-        if len(parts) == 2:
-            chapter_part = parts[1].split(":", 1)[0]
-            if chapter_part.isdigit():
-                number = int(chapter_part)
-
-        return (source, book_index.get(book, 999), book, number, label)
-
-    if node_level == "source":
-        return sorted(nodes)
-    return sorted(nodes, key=parse_label)
+    return sorted(nodes)
 
 
 def make_node_arcs(node_totals: pd.Series, node_level: str) -> dict[str, NodeArc]:
@@ -743,7 +618,7 @@ def build_figure(
         f"Grouped by {node_level.replace('_', ' ')} | "
         f"{len(node_totals):,}/{all_node_count:,} nodes | "
         f"{len(links):,}/{all_link_count:,} links | "
-        f"{total_pairs:,} verse pairs | total similarity {total_weight:,.1f}"
+        f"{total_pairs:,} document pairs | total similarity {total_weight:,.1f}"
     )
 
     fig.update_layout(
@@ -810,17 +685,16 @@ def build_figure(
 
 def main() -> None:
     args = parse_args()
+    header_df = pd.read_csv(args.input, nrows=0)
     require_columns(
-        pd.read_csv(args.input, nrows=0),
+        header_df,
         [
-            "item1_source",
-            "item1_book",
-            "item1_chapter",
-            "item1_verse",
-            "item2_source",
-            "item2_book",
-            "item2_chapter",
-            "item2_verse",
+            "item1_path",
+            "item2_path",
+            "item1_type",
+            "item2_type",
+            "item1_title",
+            "item2_title",
             "llm_relationship_type",
         ],
     )

@@ -1,0 +1,4 @@
+# Copy this file to local_api_key.txt, then paste your real API key there.
+# local_api_key.txt is ignored by git.
+
+API_KEY=paste-your-api-key-here

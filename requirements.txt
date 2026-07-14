@@ -2,7 +2,12 @@ numpy
 pandas
 scikit-learn
 tqdm
+plotly
+faiss-cpu
+hdbscan
+umap-learn
 
 # CrossEncoder support is provided by sentence-transformers.
 sentence-transformers
+transformers
 torch
