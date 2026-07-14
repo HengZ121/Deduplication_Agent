@@ -11,6 +11,7 @@ on:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+    environment: openai
     env:
       API_KEY: ${{ secrets.API_KEY }}
 
