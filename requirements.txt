@@ -1,0 +1,8 @@
+numpy
+pandas
+scikit-learn
+tqdm
+
+# CrossEncoder support is provided by sentence-transformers.
+sentence-transformers
+torch
