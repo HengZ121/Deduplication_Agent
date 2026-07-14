@@ -1,0 +1,36 @@
+name: Run procedure pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "run_procedure_pipeline.py"
+      - "procedure.zip"
+      - ".github/workflows/run-procedure-pipeline.yml"
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.API_KEY }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install numpy pandas scikit-learn
+
+      - name: Run pipeline
+        run: python run_procedure_pipeline.py --require-api-key
+
+      - name: Upload pipeline outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: procedure-pipeline-outputs
+          path: outputs/procedure_pipeline/
