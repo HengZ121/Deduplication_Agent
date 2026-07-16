@@ -1,3 +1,4 @@
 local_api_key.txt
 .env
-
+__pycache__/
+*.py[cod]
