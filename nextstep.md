@@ -1,3 +1,4 @@
+Task 1
 As a Knowledge Architect,
 I want the selected knowledge base content to be mapped to the approved enterprise ontology,
 so that concepts, entities, document sections, and relationships are represented consistently across the unified knowledge platform.
@@ -24,4 +25,22 @@ AC5 – Mapping Results Validated
 Given the completed mapping output
 When it is reviewed by the designated knowledge or ontology stakeholder
 Then mappings can be approved, rejected, or corrected before being used in the unified knowledge base.
+
+
+
+Task 2
+
+
+As a NLP developer, I need to identify the appropriate frame to represent the imposition of typed penalties under conditions ("A 25 -Maternity benefits - Minor attached disentitlement (D25) is imposed if the client has not accumulated at least 600 insurable hours").
+ 
+Maps a condition onto a penalty drawn from an enumerated code set, and carries temporal imposition/termination rules ("terminated on the Friday of the week before the conversion week").
+
+
+Acceptance Criteria
+
+
+AC 1: Rewards_and_punishments frame (and near neighbors) tested against corpus sentences
+AC 2: Recommendation documented
+AC 3: Frame element  mapping documented (who imposes, on whom, which code, under what condition, effective when)
+AC 4: map drafted for≥6  corpus examples including imposition and suppression cases
 
