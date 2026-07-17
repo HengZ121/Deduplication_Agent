@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rule-based FrameNet mapping for administrative penalty statements."""
+"""Hybrid syntactic/domain mapping for administrative penalty statements."""
 
 from __future__ import annotations
 
@@ -13,12 +13,16 @@ from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree
 
+from dependency_parser import dependency_parser
+from framenet_registry import FRAMENET_VERSION, registry
+
 
 SENTENCE_PATTERN = re.compile(r"(?<=[.!?])\s+(?=[A-Z])|\n+")
 EVENT_PATTERN = re.compile(
     r"\b(?P<trigger>does\s+not\s+impose|cannot\s+be\s+imposed|must\s+be\s+imposed|"
     r"is\s+not\s+imposed|is\s+imposed|imposes?|imposed|terminates?|terminated|"
-    r"rescinds?|rescinded|suspends?|suspended)\b",
+    r"rescinds?|rescinded|suspends?|suspended|punishes?|punished|"
+    r"disciplines?|disciplined|rewards?|rewarded)\b",
     re.IGNORECASE,
 )
 CODE_PATTERN = re.compile(
@@ -125,7 +129,106 @@ def _event_type(trigger: str) -> tuple[str, str, str]:
         return "PenaltyRescission", polarity, modality
     if "suspend" in lowered:
         return "PenaltySuspension", polarity, modality
-    return "Rewards_and_punishments", polarity, modality
+    return "PenaltyImposition", polarity, modality
+
+
+def _frame_name(event_type: str) -> str | None:
+    return {
+        "PenaltyImposition": "Rewards_and_punishments",
+        "PenaltyTermination": "Activity_stop",
+        "PenaltySuspension": "Activity_pause",
+    }.get(event_type)
+
+
+def _fe_value(text: str | None, implicit: bool = False) -> dict[str, Any]:
+    value: dict[str, Any] = {"text": text}
+    if implicit:
+        value["implicit"] = True
+    return value
+
+
+def _choose_role(
+    role_name: str,
+    syntax_roles: dict[str, dict[str, Any]],
+    rule_text: str | None,
+) -> tuple[str | None, dict[str, Any]]:
+    """Prefer a parser-derived span and retain the rule as a safe fallback."""
+    parsed = syntax_roles.get(role_name)
+    if parsed and parsed.get("text"):
+        return parsed["text"], {
+            "method": "dependency_parse",
+            "relation": parsed["relation"],
+            "head": parsed["head"],
+            "characterSpan": {"start": parsed["start"], "end": parsed["end"]},
+        }
+    if rule_text:
+        return rule_text, {"method": "domain_rule"}
+    return None, {"method": "implicit_or_unresolved"}
+
+
+def _official_frame_mapping(
+    event_type: str,
+    sentence: str,
+    agent_text: str | None,
+    evaluee_text: str | None,
+    penalty: dict[str, Any] | None,
+    condition: dict[str, Any] | None,
+    time_text: str | None,
+) -> tuple[str | None, dict[str, Any], dict[str, Any]]:
+    frame_name = _frame_name(event_type)
+    if not frame_name:
+        return None, {}, {
+            "version": FRAMENET_VERSION,
+            "available": registry.available,
+            "frameId": None,
+            "frameName": None,
+            "validationStatus": "domain_event_only",
+            "message": "No exact FrameNet 1.7 frame/LU is assigned to this domain lifecycle event.",
+        }
+
+    summary = registry.frame_summary(frame_name)
+    if not summary:
+        return frame_name, {}, {
+            "version": FRAMENET_VERSION,
+            "available": False,
+            "frameId": None,
+            "frameName": frame_name,
+            "validationStatus": "registry_unavailable",
+            "message": registry.error,
+        }
+
+    penalty_text = penalty.get("text") if penalty else None
+    condition_text = condition.get("text") if condition else None
+    if event_type == "PenaltyImposition":
+        frame_elements = {
+            "Agent": _fe_value(agent_text, not bool(agent_text)),
+            "Evaluee": _fe_value(evaluee_text, not bool(evaluee_text)),
+            "Response_action": _fe_value(penalty_text, not bool(penalty_text)),
+            "Reason": _fe_value(condition_text) if condition_text else None,
+            "Time": _fe_value(time_text) if time_text else None,
+        }
+    else:
+        activity_match = re.search(r"\b(?:the\s+)?(?:disentitlement|disqualification|penalty|D\d+)\b", sentence, re.I)
+        activity_text = activity_match.group(0) if activity_match else None
+        frame_elements = {
+            "Agent": _fe_value(agent_text, not bool(agent_text)),
+            "Activity": _fe_value(activity_text, not bool(activity_text)),
+            "Explanation": _fe_value(condition_text) if condition_text else None,
+            "Time": _fe_value(time_text) if time_text else None,
+        }
+    frame_elements = {name: value for name, value in frame_elements.items() if value is not None}
+    validation = registry.validate_frame_elements(frame_name, list(frame_elements))
+    lu_match = registry.match_lexical_unit(sentence, frame_name)
+    status = "validated_exact_lu" if lu_match else "validated_frame_no_exact_lu"
+    return frame_name, frame_elements, {
+        "version": FRAMENET_VERSION,
+        "available": True,
+        "frameId": summary["id"],
+        "frameName": summary["name"],
+        "target": lu_match,
+        "validationStatus": status,
+        "frameElementValidation": validation,
+    }
 
 
 def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
@@ -143,50 +246,102 @@ def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
         # assert it in the main clause. The final trigger is the asserted event.
         trigger_match = trigger_matches[-1]
         trigger = trigger_match.group("trigger")
-        frame, polarity, modality = _event_type(trigger)
+        event_type, polarity, modality = _event_type(trigger)
+        syntax = dependency_parser.analyze(sentence, trigger_match.start(), trigger_match.end())
+        syntax_roles = syntax.get("roles", {})
         code_match = CODE_PATTERN.search(sentence)
         penalty = None
         if code_match:
             penalty = {
+                "text": code_match.group(0).strip(),
                 "code": code_match.group("code").upper(),
                 "number": int(code_match.group("number")) if code_match.group("number") else None,
                 "label": (code_match.group("label") or "").strip(" -") or None,
                 "sanctionType": (code_match.group("kind") or "").lower() or None,
             }
             last_code = penalty
-        elif frame != "Rewards_and_punishments":
+        elif event_type != "PenaltyImposition":
             penalty = last_code
 
         agent_match = AGENT_PATTERN.search(sentence)
         evaluee_match = EVALUEE_PATTERN.search(sentence)
         condition_match = CONDITION_PATTERN.search(sentence)
         time_match = TIME_PATTERN.search(sentence)
-        condition = _normalize_condition(condition_match.group("condition")) if condition_match else None
+        rule_condition_text = condition_match.group("condition") if condition_match else None
+        agent_text, agent_evidence = _choose_role(
+            "agent", syntax_roles, agent_match.group(0) if agent_match else None
+        )
+        evaluee_text, evaluee_evidence = _choose_role(
+            "evaluee", syntax_roles, evaluee_match.group(0) if evaluee_match else None
+        )
+        condition_text, condition_evidence = _choose_role("condition", syntax_roles, rule_condition_text)
+        time_text, time_evidence = _choose_role(
+            "time", syntax_roles, time_match.group("time") if time_match else None
+        )
+        condition = _normalize_condition(condition_text) if condition_text else None
+        frame_name, frame_elements, framenet = _official_frame_mapping(
+            event_type,
+            sentence,
+            agent_text,
+            evaluee_text,
+            penalty,
+            condition,
+            time_text,
+        )
 
         events.append(
             {
-                "frame": frame,
+                "eventType": event_type,
+                "frame": frame_name,
                 "trigger": trigger,
-                "frameElements": {
-                    "Agent": {"text": agent_match.group(0)} if agent_match else {"text": None, "implicit": True},
-                    "Evaluee": {"text": evaluee_match.group(0)} if evaluee_match else {"text": None, "implicit": True},
-                    "Response": penalty,
-                    "Reason": {"text": condition["text"]} if condition else None,
-                    "Time": {"text": time_match.group("time")} if time_match else None,
+                "triggerSpan": {"start": trigger_match.start(), "end": trigger_match.end()},
+                "frameElements": frame_elements,
+                "frameNet": framenet,
+                "dependencyAnalysis": syntax,
+                "extractionEvidence": {
+                    "Agent": agent_evidence,
+                    "Evaluee": evaluee_evidence,
+                    "Condition": condition_evidence,
+                    "Time": time_evidence,
                 },
                 "ruleCondition": condition,
                 "penaltyCode": penalty,
                 "polarity": polarity,
                 "modality": modality,
+                "domainExtensions": {
+                    "penaltyCode": penalty,
+                    "ruleCondition": condition,
+                    "polarity": polarity,
+                    "modality": modality,
+                },
                 "source": asdict(SourceSpan(index, sentence)),
             }
         )
 
+    warnings = [] if events else ["No supported penalty lifecycle trigger was found."]
+    if not registry.available:
+        warnings.append(f"FrameNet 1.7 registry unavailable: {registry.error}")
+    if not dependency_parser.available:
+        warnings.append(
+            f"Dependency parser unavailable; domain-rule fallback used: {dependency_parser.error}"
+        )
     return {
-        "schemaVersion": "0.1.0",
+        "schemaVersion": "0.3.1",
         "sourceDocument": source_name,
-        "annotationMethod": "rule-based-demo",
+        "annotationMethod": "spacy-dependency+rule-based-domain+nltk-framenet-1.7-validation",
+        "syntacticParser": {
+            "provider": "spaCy",
+            "model": dependency_parser.MODEL,
+            "available": dependency_parser.available,
+            "version": dependency_parser.version,
+            "fallback": "domain rules",
+        },
+        "frameNetRegistry": {
+            "provider": "NLTK FrameNet API",
+            "version": FRAMENET_VERSION,
+            "available": registry.available,
+        },
         "eventCount": len(events),
         "events": events,
-        "warnings": [] if events else ["No supported penalty lifecycle trigger was found."],
+        "warnings": warnings,
     }

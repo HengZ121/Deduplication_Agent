@@ -11,3 +11,6 @@ umap-learn
 sentence-transformers
 transformers
 torch
+nltk>=3.9,<4
+spacy>=3.8,<4
+# Install the English dependency model with: py -m spacy download en_core_web_sm
