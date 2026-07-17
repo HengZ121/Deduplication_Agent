@@ -241,6 +241,33 @@ def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
     for index, sentence in enumerate(sentences):
         trigger_matches = list(EVENT_PATTERN.finditer(sentence))
         if not trigger_matches:
+            candidates = registry.candidate_frames(sentence)
+            if candidates:
+                events.append(
+                    {
+                        "eventType": "FrameNetCandidate",
+                        "frame": None,
+                        "trigger": None,
+                        "triggerSpan": None,
+                        "frameElements": {},
+                        "frameNet": {
+                            "version": FRAMENET_VERSION,
+                            "available": True,
+                            "validationStatus": "candidate_only",
+                            "message": (
+                                "No supported penalty lifecycle event was found; "
+                                "candidate frames come from visible FrameNet lexical-unit matches."
+                            ),
+                        },
+                        "candidateFrames": list(candidates),
+                        "mappingStatus": "candidate_only",
+                        "ruleCondition": None,
+                        "penaltyCode": None,
+                        "polarity": None,
+                        "modality": None,
+                        "source": asdict(SourceSpan(index, sentence)),
+                    }
+                )
             continue
         # Lifecycle rules often mention the operation in a condition and then
         # assert it in the main clause. The final trigger is the asserted event.
@@ -318,7 +345,13 @@ def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
             }
         )
 
-    warnings = [] if events else ["No supported penalty lifecycle trigger was found."]
+    confirmed_events = [event for event in events if event.get("mappingStatus") != "candidate_only"]
+    candidate_events = [event for event in events if event.get("mappingStatus") == "candidate_only"]
+    warnings = [] if confirmed_events else ["No supported penalty lifecycle trigger was found."]
+    if candidate_events:
+        warnings.append(
+            "Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup."
+        )
     if not registry.available:
         warnings.append(f"FrameNet 1.7 registry unavailable: {registry.error}")
     if not dependency_parser.available:
@@ -342,6 +375,8 @@ def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
             "available": registry.available,
         },
         "eventCount": len(events),
+        "confirmedEventCount": len(confirmed_events),
+        "candidateEventCount": len(candidate_events),
         "events": events,
         "warnings": warnings,
     }

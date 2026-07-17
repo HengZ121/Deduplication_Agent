@@ -122,6 +122,66 @@ class FrameNetRegistry:
             "invalid": [name for name in names if name not in official],
         }
 
+    @lru_cache(maxsize=128)
+    def candidate_frames(self, sentence: str, limit: int = 8) -> tuple[dict[str, Any], ...]:
+        """Return possible FrameNet frames from visible lexical-unit matches.
+
+        This is candidate discovery only. The NLTK FrameNet reader provides the
+        official frame/LU registry, but it does not disambiguate arbitrary text
+        into a confirmed semantic annotation.
+        """
+        if not self.available:
+            return ()
+        matches: list[tuple[int, int, str, int, str, str, str]] = []
+        try:
+            lexical_units = self._fn.lus()
+        except Exception:
+            return ()
+        for lexical_unit in lexical_units:
+            name = lexical_unit.name
+            lemma, _, part_of_speech = name.rpartition(".")
+            surface_lemma = re.sub(r"\s*\[[^]]+\]$", "", lemma)
+            if not surface_lemma or part_of_speech not in {"v", "n", "a", "adv", "prep"}:
+                continue
+            for form in _surface_forms(surface_lemma, part_of_speech):
+                match = re.search(rf"\b{re.escape(form)}\b", sentence, re.IGNORECASE)
+                if match:
+                    if any(char.isupper() for char in surface_lemma) and match.group(0) != form:
+                        continue
+                    frame = lexical_unit.frame
+                    matches.append(
+                        (
+                            match.start(),
+                            -len(match.group(0)),
+                            frame.name,
+                            frame.ID,
+                            name,
+                            match.group(0),
+                            part_of_speech,
+                        )
+                    )
+                    break
+        candidates = []
+        seen_frames: set[str] = set()
+        for start, neg_length, frame_name, frame_id, lu_name, text, part_of_speech in sorted(matches):
+            if frame_name in seen_frames:
+                continue
+            seen_frames.add(frame_name)
+            candidates.append(
+                {
+                    "frame": frame_name,
+                    "frameId": frame_id,
+                    "matchedLexicalUnit": lu_name,
+                    "matchedText": text,
+                    "partOfSpeech": part_of_speech,
+                    "matchSpan": {"start": start, "end": start - neg_length},
+                    "confidence": "lexical_match_candidate",
+                }
+            )
+            if len(candidates) >= limit:
+                break
+        return tuple(candidates)
+
 
 def _plain_definition(value: str) -> str:
     text = re.sub(r"</?[^>]+>", "", value or "")

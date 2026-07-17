@@ -67,6 +67,16 @@ class FrameNetMapperTests(unittest.TestCase):
         self.assertIsNone(event["frame"])
         self.assertEqual(event["frameNet"]["validationStatus"], "domain_event_only")
 
+    @unittest.skipUnless(registry.available, "FrameNet 1.7 corpus is not installed")
+    def test_unmatched_sentence_gets_candidate_frames(self):
+        result = map_text("The client may receive benefits after the waiting period.")
+        self.assertEqual(result["candidateEventCount"], 1)
+        event = result["events"][0]
+        self.assertEqual(event["eventType"], "FrameNetCandidate")
+        self.assertEqual(event["mappingStatus"], "candidate_only")
+        self.assertGreater(len(event["candidateFrames"]), 0)
+        self.assertIn("matchedLexicalUnit", event["candidateFrames"][0])
+
     @unittest.skipUnless(dependency_parser.available, "spaCy dependency model is not installed")
     def test_dependency_parser_extracts_passive_agent_and_time(self):
         event = map_text(
