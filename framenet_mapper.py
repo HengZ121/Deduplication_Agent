@@ -42,6 +42,71 @@ TIME_PATTERN = re.compile(
 )
 AGENT_PATTERN = re.compile(r"\b(the\s+(?:officer|agent|system|Commission)|Service Canada)\b", re.IGNORECASE)
 EVALUEE_PATTERN = re.compile(r"\b(the\s+client|clients|the\s+claimant|claimants)\b", re.IGNORECASE)
+EXPOSITORY_RULES = (
+    {
+        "event_type": "EligibilityQualification",
+        "frame": "Meet_specifications",
+        "status": "validated_domain_frame",
+        "pattern": re.compile(r"\b(?:qualif(?:y|ies|ying|ication)|conditions?\s+is\s+met|conditions?\s+are\s+met|can\s+be\s+paid\s+if)\b", re.I),
+        "trigger": re.compile(r"\b(?:qualif(?:y|ies|ying|ication)|met|can\s+be\s+paid)\b", re.I),
+        "elements": {"Entity": EVALUEE_PATTERN, "Standard": CONDITION_PATTERN},
+    },
+    {
+        "event_type": "EntitlementCondition",
+        "frame": "Meet_specifications",
+        "status": "validated_domain_frame",
+        "pattern": re.compile(r"\b(?:entitled|entitlement|must\s+meet)\b", re.I),
+        "trigger": re.compile(r"\b(?:entitled|entitlement|must\s+meet)\b", re.I),
+        "elements": {"Entity": EVALUEE_PATTERN, "Standard": CONDITION_PATTERN},
+        "domain_note": "Task 2 flags entitlement as possibly needing an induced frame; this mapper uses Meet_specifications as the current best official FrameNet anchor.",
+    },
+    {
+        "event_type": "EvidenceRequirement",
+        "frame": "Submitting_documents",
+        "status": "validated_domain_frame",
+        "pattern": re.compile(r"\b(?:provide|submit|signed\s+statement|attest(?:ing|ation)?|e-signature|verbal\s+attestation)\b", re.I),
+        "trigger": re.compile(r"\b(?:provide|submit|attest(?:ing|ation)?|e-signature|statement)\b", re.I),
+        "elements": {"Submittor": EVALUEE_PATTERN, "Documents": re.compile(r"\b(?:a\s+)?(?:signed\s+statement|statement|e-signature|verbal\s+attestation|document)\b", re.I)},
+    },
+    {
+        "event_type": "DiagnosticInference",
+        "frame": "Coming_to_believe",
+        "status": "validated_domain_frame",
+        "pattern": re.compile(r"\b(?:determine|infer|based\s+on|reason\s+the\s+D\d+)\b", re.I),
+        "trigger": re.compile(r"\b(?:determine|infer|based\s+on)\b", re.I),
+        "elements": {"Cognizer": AGENT_PATTERN, "Evidence": re.compile(r"\b(?:letter|prefix(?:es)?|C-\d+|C\d+|indicator)\b", re.I), "Content": re.compile(r"\bthe\s+reason\b.+", re.I)},
+    },
+    {
+        "event_type": "DeonticPermission",
+        "frame": "Deny_or_grant_permission",
+        "status": "validated_domain_frame",
+        "pattern": re.compile(r"\b(?:can|may|allowed|authori[sz]ed|permission)\b", re.I),
+        "trigger": re.compile(r"\b(?:can|may|allowed|authori[sz]ed|permission)\b", re.I),
+        "elements": {"Authority": re.compile(r"\b(?:Level\s+[12]\s+officer|officer|Commission|Service Canada)\b", re.I), "Protagonist": EVALUEE_PATTERN},
+    },
+    {
+        "event_type": "SystemEffect",
+        "frame": "Cause_change",
+        "status": "validated_domain_frame",
+        "pattern": re.compile(r"\bthe\s+system\b.*\b(?:automatically|changes?|displays?|sets?|updates?)\b", re.I),
+        "trigger": re.compile(r"\b(?:changes?|displays?|sets?|updates?)\b", re.I),
+        "elements": {"Agent": re.compile(r"\bthe\s+system\b", re.I), "Entity": re.compile(r"\b(?:sex\s+code|parental\s+start\s+week|parental\s+end\s+week|field|value)\b", re.I), "Final_value": re.compile(r"\b(?:to\s+)?\d+\b", re.I)},
+    },
+    {
+        "event_type": "QuantifiedLimit",
+        "frame": None,
+        "status": "non_frame_structured_rule",
+        "pattern": re.compile(r"\b(?:up\s+to|maximum|cannot\s+be\s+exceeded|\d+\s+weeks?)\b", re.I),
+        "trigger": re.compile(r"\b(?:up\s+to|maximum|cannot\s+be\s+exceeded|\d+\s+weeks?)\b", re.I),
+    },
+    {
+        "event_type": "TemporalWindowComputation",
+        "frame": None,
+        "status": "non_frame_structured_rule",
+        "pattern": re.compile(r"\b(?:starts?\s+on\s+the\s+earlier|ends?\s+on\s+the\s+later|earlier\s+of|later\s+of|maternity\s+window)\b", re.I),
+        "trigger": re.compile(r"\b(?:starts?|ends?|earlier|later)\b", re.I),
+    },
+)
 
 
 @dataclass(frozen=True)
@@ -166,6 +231,95 @@ def _choose_role(
     return None, {"method": "implicit_or_unresolved"}
 
 
+def _first_group_or_match(match: re.Match[str]) -> str:
+    return next((value for value in match.groups() if value), match.group(0))
+
+
+def _matched_text(pattern: re.Pattern[str], sentence: str) -> str | None:
+    match = pattern.search(sentence)
+    return _first_group_or_match(match).strip(" ,") if match else None
+
+
+def _official_frame_record(frame_name: str | None, sentence: str, frame_elements: dict[str, Any], status: str) -> dict[str, Any]:
+    if not frame_name:
+        return {
+            "version": FRAMENET_VERSION,
+            "available": registry.available,
+            "frameId": None,
+            "frameName": None,
+            "validationStatus": status,
+            "message": "This item is structured domain knowledge, not a FrameNet semantic frame.",
+        }
+    summary = registry.frame_summary(frame_name)
+    if not summary:
+        return {
+            "version": FRAMENET_VERSION,
+            "available": False,
+            "frameId": None,
+            "frameName": frame_name,
+            "validationStatus": "registry_unavailable",
+            "message": registry.error,
+        }
+    lu_match = registry.match_lexical_unit(sentence, frame_name)
+    return {
+        "version": FRAMENET_VERSION,
+        "available": True,
+        "frameId": summary["id"],
+        "frameName": summary["name"],
+        "target": lu_match,
+        "validationStatus": "validated_exact_lu" if lu_match else status,
+        "frameElementValidation": registry.validate_frame_elements(frame_name, list(frame_elements)),
+    }
+
+
+def _expository_mapping(sentence: str, index: int) -> dict[str, Any] | None:
+    for rule in EXPOSITORY_RULES[-2:]:
+        if rule["pattern"].search(sentence):
+            break
+    else:
+        rule = None
+    if rule:
+        rules = (rule,)
+    else:
+        rules = EXPOSITORY_RULES[:-2]
+    for rule in rules:
+        if not rule["pattern"].search(sentence):
+            continue
+        trigger_match = rule["trigger"].search(sentence)
+        elements = {}
+        for name, pattern in rule.get("elements", {}).items():
+            text = _matched_text(pattern, sentence)
+            if text:
+                elements[name] = _fe_value(text)
+        frame_name = rule["frame"]
+        status = rule["status"]
+        event = {
+            "eventType": rule["event_type"],
+            "frame": frame_name,
+            "trigger": trigger_match.group(0) if trigger_match else None,
+            "triggerSpan": (
+                {"start": trigger_match.start(), "end": trigger_match.end()} if trigger_match else None
+            ),
+            "frameElements": elements,
+            "frameNet": _official_frame_record(frame_name, sentence, elements, status),
+            "mappingStatus": status,
+            "ruleCondition": None,
+            "penaltyCode": None,
+            "polarity": "positive",
+            "modality": "asserted",
+            "domainExtensions": {
+                "task2Concept": rule["event_type"],
+                "domainNote": rule.get("domain_note"),
+            },
+            "source": asdict(SourceSpan(index, sentence)),
+        }
+        if status == "non_frame_structured_rule":
+            event["structuredRule"] = {"text": sentence, "normalizationStatus": "unresolved"}
+            event["polarity"] = "negative" if re.search(r"\bcannot\b|\bnot\b", sentence, re.I) else "positive"
+        return event
+    return None
+
+
 def _official_frame_mapping(
     event_type: str,
     sentence: str,
@@ -239,6 +393,10 @@ def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
     last_code: dict[str, Any] | None = None
 
     for index, sentence in enumerate(sentences):
+        expository_event = _expository_mapping(sentence, index)
+        if expository_event:
+            events.append(expository_event)
+            continue
         trigger_matches = list(EVENT_PATTERN.finditer(sentence))
         if not trigger_matches:
             candidates = registry.candidate_frames(sentence)

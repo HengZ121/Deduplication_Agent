@@ -15,7 +15,14 @@ Confirmed domain events currently map to frames such as:
 - `Rewards_and_punishments` for penalty imposition.
 - `Activity_stop` for termination.
 - `Activity_pause` for suspension.
+- `Meet_specifications` for eligibility, qualification, and entitlement-condition statements.
+- `Submitting_documents` for proof/document submission requirements.
+- `Deny_or_grant_permission` for deontic permission and authority-level statements.
+- `Coming_to_believe` for diagnostic inference from evidence such as letters or code prefixes.
+- `Cause_change` for autonomous system behavior and state/display changes.
 - domain-only lifecycle events where no exact FrameNet frame is assigned.
+
+Numeric limits and derived temporal windows are processed as structured domain rules, not FrameNet frames. They are kept out of official frame assignment because Task 2 identifies them as parameter/computation knowledge rather than frame-semantic events.
 
 When no supported penalty lifecycle trigger is found, the mapper can still return `FrameNetCandidate` records by searching visible lexical-unit matches across the NLTK FrameNet registry. These are explicitly marked as `candidate_only`; they are evidence, not confirmed semantic parses.
 
@@ -138,4 +145,3 @@ py -m unittest -q test_framenet_mapper.py
 ```
 
 Tests that require optional local resources, such as the FrameNet corpus or spaCy model, are skipped automatically when those resources are not installed.
-
