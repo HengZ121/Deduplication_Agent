@@ -272,6 +272,18 @@ def _official_frame_record(frame_name: str | None, sentence: str, frame_elements
     }
 
 
+def _syntax_evidence(syntax: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    evidence = {}
+    for name, value in syntax.get("roles", {}).items():
+        evidence[name.title()] = {
+            "method": "dependency_parse",
+            "relation": value["relation"],
+            "head": value["head"],
+            "characterSpan": {"start": value["start"], "end": value["end"]},
+        }
+    return evidence
+
+
 def _expository_mapping(sentence: str, index: int) -> dict[str, Any] | None:
     for rule in EXPOSITORY_RULES[-2:]:
         if rule["pattern"].search(sentence):
@@ -286,6 +298,11 @@ def _expository_mapping(sentence: str, index: int) -> dict[str, Any] | None:
         if not rule["pattern"].search(sentence):
             continue
         trigger_match = rule["trigger"].search(sentence)
+        syntax = dependency_parser.analyze(
+            sentence,
+            trigger_match.start() if trigger_match else 0,
+            trigger_match.end() if trigger_match else 0,
+        )
         elements = {}
         for name, pattern in rule.get("elements", {}).items():
             text = _matched_text(pattern, sentence)
@@ -302,6 +319,8 @@ def _expository_mapping(sentence: str, index: int) -> dict[str, Any] | None:
             ),
             "frameElements": elements,
             "frameNet": _official_frame_record(frame_name, sentence, elements, status),
+            "dependencyAnalysis": syntax,
+            "extractionEvidence": _syntax_evidence(syntax),
             "mappingStatus": status,
             "ruleCondition": None,
             "penaltyCode": None,

@@ -108,6 +108,22 @@ class FrameNetMapperTests(unittest.TestCase):
         self.assertEqual(event["eventType"], "DiagnosticInference")
         self.assertEqual(event["frame"], "Coming_to_believe")
 
+    def test_task2_crafted_frames_include_dependency_parser_evidence(self):
+        events = map_text(
+            "Maternity benefits can be paid if one of the following qualifying conditions is met. "
+            "The client must provide a signed statement attesting to the pregnancy. "
+            "The system automatically changes the sex code to 8."
+        )["events"]
+        self.assertEqual(
+            [event["eventType"] for event in events],
+            ["EligibilityQualification", "EvidenceRequirement", "SystemEffect"],
+        )
+        for event in events:
+            self.assertIn("dependencyAnalysis", event)
+            self.assertEqual(event["dependencyAnalysis"]["model"], dependency_parser.MODEL)
+            if dependency_parser.available:
+                self.assertTrue(event["dependencyAnalysis"]["available"])
+
     def test_task2_numeric_limit_remains_non_frame_structured_rule(self):
         event = map_text("Up to 15 weeks may be paid and the maximum cannot be exceeded.")["events"][0]
         self.assertEqual(event["eventType"], "QuantifiedLimit")
