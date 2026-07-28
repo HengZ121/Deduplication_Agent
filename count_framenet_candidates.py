@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import html
 import json
 import re
 import time
@@ -21,6 +22,8 @@ from framenet_registry import registry
 TOKEN_PATTERN = re.compile(r"[A-Za-z][A-Za-z'-]*|\d+")
 DEFAULT_ZIP = Path("procedure.zip")
 DEFAULT_OUTPUT = Path("outputs") / "framenet_candidate_frame_counts.csv"
+DEFAULT_SAMPLES = Path("outputs") / "framenet_candidate_frame_samples.md"
+DEFAULT_HTML = Path("outputs") / "framenet_candidate_frame_samples.html"
 STOP_FORMS = {
     "a",
     "an",
@@ -131,12 +134,20 @@ def extract_member_text(name: str, content: bytes) -> str:
     return extract_document_text(name, content)
 
 
-def count_candidates(zip_path: Path, output_path: Path) -> dict[str, int]:
+def count_candidates(
+    zip_path: Path,
+    output_path: Path,
+    samples_path: Path | None = None,
+    html_path: Path | None = None,
+    sample_threshold: int = 800,
+    samples_per_frame: int = 10,
+) -> dict[str, int]:
     started = time.time()
     index = build_lu_index()
     frame_counts: Counter[tuple[str, int]] = Counter()
     lu_counts: Counter[tuple[str, int, str, str]] = Counter()
     docs = sentences = matched_sentences = 0
+    frame_samples: dict[tuple[str, int], list[str]] = {}
 
     with zipfile.ZipFile(zip_path) as archive:
         members = [name for name in archive.namelist() if not name.endswith("/")]
@@ -169,6 +180,10 @@ def count_candidates(zip_path: Path, output_path: Path) -> dict[str, int]:
                     matched_sentences += 1
                     frame_counts.update(matched_this_sentence)
                     lu_counts.update(matched_lus)
+                    for frame_key in matched_this_sentence:
+                        samples = frame_samples.setdefault(frame_key, [])
+                        if len(samples) < samples_per_frame and sentence not in samples:
+                            samples.append(sentence)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", newline="", encoding="utf-8") as handle:
@@ -189,23 +204,146 @@ def count_candidates(zip_path: Path, output_path: Path) -> dict[str, int]:
             )
             writer.writerow([frame, frame_id, count, lu_total])
 
+    sample_rows = [
+        {
+            "frame": frame,
+            "frameId": frame_id,
+            "sentenceOccurrences": frame_counts[(frame, frame_id)],
+            "matchedLexicalUnitOccurrences": sum(
+                value
+                for (lu_frame, lu_frame_id, _lu, _pos), value in lu_counts.items()
+                if lu_frame == frame and lu_frame_id == frame_id
+            ),
+            "samples": frame_samples.get((frame, frame_id), [])[:samples_per_frame],
+        }
+        for frame, frame_id in frame_counts
+        if frame_counts[(frame, frame_id)] > sample_threshold
+    ]
+    sample_rows.sort(key=lambda item: (-item["sentenceOccurrences"], item["frame"]))
+    if samples_path:
+        write_samples_markdown(samples_path, sample_rows, sample_threshold, samples_per_frame)
+    if html_path:
+        write_samples_html(html_path, sample_rows, sample_threshold, samples_per_frame)
+
     return {
         "documents": docs,
         "sentences": sentences,
         "matchedSentences": matched_sentences,
         "frames": len(frame_counts),
+        "framesOverSampleThreshold": len(sample_rows),
         "lexicalUnitSurfaceForms": len(index),
         "elapsedSeconds": round(time.time() - started, 2),
     }
+
+
+def write_samples_markdown(
+    path: Path,
+    rows: list[dict[str, Any]],
+    sample_threshold: int,
+    samples_per_frame: int,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write("# Frame Candidate Samples\n\n")
+        handle.write(
+            f"Frames included: sentence occurrence count greater than {sample_threshold}. "
+            f"Up to {samples_per_frame} local procedure-corpus samples are shown per frame.\n\n"
+        )
+        handle.write(
+            "These are lexical-unit candidate examples, not confirmed semantic annotations. "
+            "Use them to judge whether a frame is worth deeper mapping work.\n\n"
+        )
+        for row in rows:
+            handle.write(
+                f"## {row['frame']} (#{row['frameId']})\n\n"
+                f"- sentenceOccurrences: {row['sentenceOccurrences']}\n"
+                f"- matchedLexicalUnitOccurrences: {row['matchedLexicalUnitOccurrences']}\n\n"
+            )
+            for index, sample in enumerate(row["samples"], 1):
+                handle.write(f"{index}. {sample}\n")
+            handle.write("\n")
+
+
+def write_samples_html(
+    path: Path,
+    rows: list[dict[str, Any]],
+    sample_threshold: int,
+    samples_per_frame: int,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    cards = []
+    for row in rows:
+        samples = "".join(f"<li>{html.escape(sample)}</li>" for sample in row["samples"])
+        cards.append(
+            "<section class='frame-card' "
+            f"data-frame='{html.escape(row['frame'].lower())}'>"
+            f"<h2>{html.escape(row['frame'])} <span>#{row['frameId']}</span></h2>"
+            "<div class='stats'>"
+            f"<span>{row['sentenceOccurrences']} sentence occurrences</span>"
+            f"<span>{row['matchedLexicalUnitOccurrences']} LU matches</span>"
+            "</div>"
+            f"<ol>{samples}</ol>"
+            "</section>"
+        )
+    body = "\n".join(cards)
+    path.write_text(
+        f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frame Candidate Samples</title>
+<style>
+:root{{font-family:Inter,system-ui,sans-serif;color:#182235;background:#f5f7fb}}
+body{{margin:0}}main{{max-width:1120px;margin:auto;padding:28px 20px}}
+h1{{margin:0 0 8px;font-size:28px}}p{{color:#5a6578}}
+.toolbar{{position:sticky;top:0;background:#f5f7fb;padding:12px 0 16px;border-bottom:1px solid #dce3ee}}
+input{{width:100%;padding:11px 12px;border:1px solid #bcc8d8;border-radius:8px;font:inherit}}
+.frame-card{{background:#fff;border:1px solid #dce3ee;border-radius:10px;margin:14px 0;padding:16px;box-shadow:0 8px 24px #23324a10}}
+h2{{margin:0 0 8px;font-size:20px}}h2 span{{font-weight:500;color:#6b7588}}
+.stats{{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}}
+.stats span{{background:#eef3fb;border-radius:999px;padding:4px 9px;color:#40506a;font-size:13px}}
+li{{margin:7px 0;line-height:1.45}}
+</style>
+</head>
+<body>
+<main>
+<h1>Frame Candidate Samples</h1>
+<p>Frames with more than {sample_threshold} sentence occurrences. Up to {samples_per_frame} samples per frame. Lexical evidence only, not confirmed annotation.</p>
+<div class="toolbar"><input id="filter" placeholder="Filter frames, e.g. Evidence, Activity_stop, benefit"></div>
+{body}
+</main>
+<script>
+const filter=document.querySelector('#filter'),cards=[...document.querySelectorAll('.frame-card')];
+filter.addEventListener('input',()=>{{const q=filter.value.trim().toLowerCase();for(const card of cards)card.style.display=card.dataset.frame.includes(q)?'':'none'}});
+</script>
+</body>
+</html>
+""",
+        encoding="utf-8",
+    )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--zip", type=Path, default=DEFAULT_ZIP)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--samples-output", type=Path, default=DEFAULT_SAMPLES)
+    parser.add_argument("--html-output", type=Path, default=DEFAULT_HTML)
+    parser.add_argument("--sample-threshold", type=int, default=800)
+    parser.add_argument("--samples-per-frame", type=int, default=10)
     args = parser.parse_args()
-    summary = count_candidates(args.zip, args.output)
+    summary = count_candidates(
+        args.zip,
+        args.output,
+        args.samples_output,
+        args.html_output,
+        args.sample_threshold,
+        args.samples_per_frame,
+    )
     summary["output"] = str(args.output)
+    summary["samplesOutput"] = str(args.samples_output)
+    summary["htmlOutput"] = str(args.html_output)
     print(json.dumps(summary, indent=2))
 
 

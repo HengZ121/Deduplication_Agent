@@ -16,6 +16,15 @@ The generated CSV is:
 outputs/framenet_candidate_frame_counts.csv
 ```
 
+Optional local review artifacts can also be generated:
+
+```text
+outputs/framenet_candidate_frame_samples.md
+outputs/framenet_candidate_frame_samples.html
+```
+
+These sample artifacts include extracted procedure-corpus text and should remain local unless the source text is approved for remote sharing.
+
 Columns:
 
 - `frame`: FrameNet frame name.
@@ -76,6 +85,8 @@ candidate frames found: 919
 FrameNet LU surface forms indexed: 22,423
 runtime: 11.04 seconds
 ```
+
+The same command also writes local sample review files for frames above the default threshold of 800 sentence occurrences.
 
 ## Top Candidate Frames
 
