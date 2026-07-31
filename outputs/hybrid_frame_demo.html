@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hybrid Frame Mapper Demo</title>
+<title>Employment Benefits Frame Annotation Demo</title>
 <style>
 :root{font-family:Inter,system-ui,sans-serif;color:#152033;background:#f5f7fb}
 body{margin:0}main{max-width:1180px;margin:auto;padding:30px 20px}
@@ -11,7 +11,8 @@ h1{margin:0 0 8px;font-size:30px}p{color:#556176}.toolbar{position:sticky;top:0;
 input{width:100%;padding:11px 12px;border:1px solid #bcc8d8;border-radius:8px;font:inherit}
 .event-card{background:#fff;border:1px solid #dce3ee;border-radius:10px;margin:16px 0;padding:16px;box-shadow:0 8px 24px #23324a10}
 .event-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}h2{margin:0;font-size:21px}.event-head span{color:#5f6b7c}
-.sentence{font-size:16px;color:#172033;background:#f9fbff;border-left:4px solid #1768e5;padding:10px 12px}
+.sentence{font-size:16px;color:#172033;background:#f9fbff;border-left:4px solid #1768e5;padding:10px 12px;line-height:1.8}
+mark{border-radius:4px;padding:2px 3px;margin:0 1px;color:#172033}mark small{font-size:10px;margin-left:4px;color:#4b5563}.trigger{background:#ffe08a}.element{background:#dbeafe}
 .stats{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.stats span{background:#eef3fb;border-radius:999px;padding:4px 9px;color:#40506a;font-size:13px}
 table{width:100%;border-collapse:collapse;margin-top:10px}th,td{border-bottom:1px solid #e2e8f0;text-align:left;padding:7px;font-size:14px}th{color:#536076}
 pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padding:12px;overflow:auto}details{margin-top:10px}.frames{columns:2;margin-bottom:20px}
@@ -19,8 +20,8 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
 </head>
 <body>
 <main>
-<h1>Hybrid Rule + BERT Frame Mapper Demo</h1>
-<p>Precomputed demo from made-up employment/social-benefit examples. BERT scoring is optional and appears as unavailable when no local zero-shot model is installed.</p>
+<h1>Employment Benefits Frame Annotation Demo</h1>
+<p>Precomputed rule + local BERT examples for employment and social-benefit procedure frames, with inline trigger and frame-element highlights.</p>
 <details><summary>20 configured frames</summary><ul class="frames"><li>Deciding - decision, adjudication, denial, approval, or determination</li>
 <li>Coming_to_believe - infer or determine a reason from evidence</li>
 <li>Contingency - if/when/unless condition leading to an outcome</li>
@@ -48,16 +49,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Deciding</h2>
     <span>DecisionEvent</span>
   </div>
-  <p class="sentence">The officer decides the outcome after reviewing the facts.</p>
+  <p class="sentence"><mark class='element' title='Cognizer'>The officer<small>Cognizer</small></mark> <mark class='trigger' title='trigger'>decides<small>trigger</small></mark> the outcome after reviewing the facts.</p>
   <div class="stats">
     <span>trigger: decides</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.88</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Deciding</td><td>DecisionEvent</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+    <tbody><tr><td>Deciding</td><td>DecisionEvent</td><td>0.88</td><td>0.0021</td><td>0.7922</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;DecisionEvent&quot;,
@@ -98,21 +99,21 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.88,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.88,
+    &quot;bertScore&quot;: 0.0021,
+    &quot;combinedScore&quot;: 0.7922,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Deciding&quot;,
         &quot;eventType&quot;: &quot;DecisionEvent&quot;,
         &quot;ruleScore&quot;: 0.88,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.88
+        &quot;bertScore&quot;: 0.0021,
+        &quot;combinedScore&quot;: 0.7922
       }
     ]
   },
@@ -132,16 +133,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Coming_to_believe</h2>
     <span>DiagnosticInference</span>
   </div>
-  <p class="sentence">The officer concludes the separation reason from the facts.</p>
+  <p class="sentence"><mark class='element' title='Cognizer'>The officer<small>Cognizer</small></mark> concludes the separation <mark class='element' title='Content'>reason from the facts<small>Content</small></mark>.</p>
   <div class="stats">
     <span>trigger: None</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.82</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Coming_to_believe</td><td>DiagnosticInference</td><td>0.82</td><td>n/a</td><td>0.82</td></tr></tbody>
+    <tbody><tr><td>Coming_to_believe</td><td>DiagnosticInference</td><td>0.82</td><td>0.0002</td><td>0.738</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;DiagnosticInference&quot;,
@@ -183,21 +184,21 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.82,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.82,
+    &quot;bertScore&quot;: 0.0002,
+    &quot;combinedScore&quot;: 0.738,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Coming_to_believe&quot;,
         &quot;eventType&quot;: &quot;DiagnosticInference&quot;,
         &quot;ruleScore&quot;: 0.82,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.82
+        &quot;bertScore&quot;: 0.0002,
+        &quot;combinedScore&quot;: 0.738
       }
     ]
   },
@@ -217,16 +218,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Contingency</h2>
     <span>ConditionalRule</span>
   </div>
-  <p class="sentence">If the claimant has insufficient hours, the claim is held for review.</p>
+  <p class="sentence"><mark class='trigger' title='trigger'>If<small>trigger</small></mark> <mark class='element' title='Determinant'>the claimant has insufficient hours, the claim is held for review<small>Determinant</small></mark>.</p>
   <div class="stats">
     <span>trigger: If</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.92</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Contingency</td><td>ConditionalRule</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+    <tbody><tr><td>Contingency</td><td>ConditionalRule</td><td>1.0</td><td>0.0002</td><td>0.9</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.92</td><td>0.0013</td><td>0.8281</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ConditionalRule&quot;,
@@ -265,29 +266,29 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.92,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.92,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0002,
+    &quot;combinedScore&quot;: 0.9,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Contingency&quot;,
         &quot;eventType&quot;: &quot;ConditionalRule&quot;,
-        &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0002,
+        &quot;combinedScore&quot;: 0.9
       },
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;bertScore&quot;: 0.0013,
+        &quot;combinedScore&quot;: 0.8281
       }
     ]
   },
@@ -307,16 +308,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Control</h2>
     <span>ControlRequirement</span>
   </div>
-  <p class="sentence">The officer has authority to control the claim correction.</p>
+  <p class="sentence"><mark class='element' title='Controlling_entity'>The officer<small>Controlling_entity</small></mark> has <mark class='trigger' title='trigger'>authority<small>trigger</small></mark> to control the <mark class='element' title='Dependent_entity'>claim<small>Dependent_entity</small></mark> correction.</p>
   <div class="stats">
     <span>trigger: authority</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.96</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Control</td><td>ControlRequirement</td><td>0.96</td><td>n/a</td><td>0.96</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+    <tbody><tr><td>Control</td><td>ControlRequirement</td><td>0.96</td><td>0.0037</td><td>0.8644</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.88</td><td>0.0003</td><td>0.792</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ControlRequirement&quot;,
@@ -361,28 +362,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.96,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.96,
+    &quot;bertScore&quot;: 0.0037,
+    &quot;combinedScore&quot;: 0.8644,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Control&quot;,
         &quot;eventType&quot;: &quot;ControlRequirement&quot;,
         &quot;ruleScore&quot;: 0.96,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.96
+        &quot;bertScore&quot;: 0.0037,
+        &quot;combinedScore&quot;: 0.8644
       },
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.88,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.88
+        &quot;bertScore&quot;: 0.0003,
+        &quot;combinedScore&quot;: 0.792
       }
     ]
   },
@@ -402,16 +403,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Claim_ownership</h2>
     <span>ClaimOwnership</span>
   </div>
-  <p class="sentence">The claimant owns the claim under the account.</p>
+  <p class="sentence"><mark class='element' title='Claimant'>The claimant<small>Claimant</small></mark> owns the claim under the account.</p>
   <div class="stats">
     <span>trigger: claim</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.92</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+    <tbody><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.92</td><td>0.8856</td><td>0.9166</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
@@ -456,21 +457,21 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.92,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.92,
+    &quot;bertScore&quot;: 0.8856,
+    &quot;combinedScore&quot;: 0.9166,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;bertScore&quot;: 0.8856,
+        &quot;combinedScore&quot;: 0.9166
       }
     ]
   },
@@ -490,16 +491,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Conferring_benefit</h2>
     <span>BenefitConferral</span>
   </div>
-  <p class="sentence">The allowance benefits the client during leave.</p>
+  <p class="sentence">The <mark class='trigger' title='trigger'>allowance<small>trigger</small></mark> benefits <mark class='element' title='Beneficiary'>the client<small>Beneficiary</small></mark> during leave.</p>
   <div class="stats">
     <span>trigger: allowance</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.92</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Conferring_benefit</td><td>BenefitConferral</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+    <tbody><tr><td>Conferring_benefit</td><td>BenefitConferral</td><td>0.92</td><td>0.0</td><td>0.828</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;BenefitConferral&quot;,
@@ -544,21 +545,21 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.92,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.92,
+    &quot;bertScore&quot;: 0.0,
+    &quot;combinedScore&quot;: 0.828,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Conferring_benefit&quot;,
         &quot;eventType&quot;: &quot;BenefitConferral&quot;,
         &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.828
       }
     ]
   },
@@ -578,16 +579,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Information</h2>
     <span>InformationEvent</span>
   </div>
-  <p class="sentence">The agent records information about the case notes.</p>
+  <p class="sentence">The agent records <mark class='element' title='Information'>information about the case notes<small>Information</small></mark>.</p>
   <div class="stats">
     <span>trigger: information</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.88</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Information</td><td>InformationEvent</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+    <tbody><tr><td>Information</td><td>InformationEvent</td><td>0.88</td><td>0.0003</td><td>0.792</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;InformationEvent&quot;,
@@ -628,21 +629,21 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.88,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.88,
+    &quot;bertScore&quot;: 0.0003,
+    &quot;combinedScore&quot;: 0.792,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Information&quot;,
         &quot;eventType&quot;: &quot;InformationEvent&quot;,
         &quot;ruleScore&quot;: 0.88,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.88
+        &quot;bertScore&quot;: 0.0003,
+        &quot;combinedScore&quot;: 0.792
       }
     ]
   },
@@ -662,16 +663,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Compliance</h2>
     <span>ComplianceCheck</span>
   </div>
-  <p class="sentence">The office complies with the policy conditions.</p>
+  <p class="sentence">The office <mark class='trigger' title='trigger'>complies<small>trigger</small></mark> with the <mark class='element' title='Norm'>policy conditions<small>Norm</small></mark>.</p>
   <div class="stats">
     <span>trigger: complies</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Compliance</td><td>ComplianceCheck</td><td>0.98</td><td>n/a</td><td>0.98</td></tr></tbody>
+    <tbody><tr><td>Compliance</td><td>ComplianceCheck</td><td>1.0</td><td>0.0173</td><td>0.9017</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ComplianceCheck&quot;,
@@ -711,22 +712,22 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0173,
+    &quot;combinedScore&quot;: 0.9017,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Compliance&quot;,
         &quot;eventType&quot;: &quot;ComplianceCheck&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0173,
+        &quot;combinedScore&quot;: 0.9017
       }
     ]
   },
@@ -746,16 +747,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Have_as_requirement</h2>
     <span>RequirementRule</span>
   </div>
-  <p class="sentence">The application requires proof of identity from the claimant.</p>
+  <p class="sentence">The <mark class='element' title='Dependent'>application<small>Dependent</small></mark> <mark class='element' title='Requirement'>requires proof of identity from the claimant<small>Requirement</small></mark>.</p>
   <div class="stats">
     <span>trigger: requires</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Request</td><td>RequestEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.94</td><td>n/a</td><td>0.94</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.015</td><td>0.9015</td></tr><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.0</td><td>0.9</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>0.0001</td><td>0.882</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.94</td><td>0.0</td><td>0.846</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>0.0041</td><td>0.6664</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;RequirementRule&quot;,
@@ -799,50 +800,50 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.015,
+    &quot;combinedScore&quot;: 0.9015,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Have_as_requirement&quot;,
         &quot;eventType&quot;: &quot;RequirementRule&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.015,
+        &quot;combinedScore&quot;: 0.9015
+      },
+      {
+        &quot;frame&quot;: &quot;Request&quot;,
+        &quot;eventType&quot;: &quot;RequestEvent&quot;,
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.9
       },
       {
         &quot;frame&quot;: &quot;Evidence&quot;,
         &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
         &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
-      },
-      {
-        &quot;frame&quot;: &quot;Request&quot;,
-        &quot;eventType&quot;: &quot;RequestEvent&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;bertScore&quot;: 0.0001,
+        &quot;combinedScore&quot;: 0.882
       },
       {
         &quot;frame&quot;: &quot;Documents&quot;,
         &quot;eventType&quot;: &quot;DocumentReference&quot;,
         &quot;ruleScore&quot;: 0.94,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.94
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.846
       },
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.74,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.74
+        &quot;bertScore&quot;: 0.0041,
+        &quot;combinedScore&quot;: 0.6664
       }
     ]
   },
@@ -862,16 +863,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Evidence</h2>
     <span>EvidenceSupport</span>
   </div>
-  <p class="sentence">The medical letter confirms the pregnancy status.</p>
+  <p class="sentence">The medical <mark class='element' title='Support'>letter<small>Support</small></mark> <mark class='trigger' title='trigger'>confirms<small>trigger</small></mark> the <mark class='element' title='Proposition'>pregnancy status<small>Proposition</small></mark>.</p>
   <div class="stats">
     <span>trigger: confirms</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>n/a</td><td>0.9</td></tr></tbody>
+    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>1.0</td><td>0.0</td><td>0.9</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>0.0001</td><td>0.81</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
@@ -915,29 +916,29 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0,
+    &quot;combinedScore&quot;: 0.9,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Evidence&quot;,
         &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.9
       },
       {
         &quot;frame&quot;: &quot;Documents&quot;,
         &quot;eventType&quot;: &quot;DocumentReference&quot;,
         &quot;ruleScore&quot;: 0.9,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.9
+        &quot;bertScore&quot;: 0.0001,
+        &quot;combinedScore&quot;: 0.81
       }
     ]
   },
@@ -957,16 +958,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Documents</h2>
     <span>DocumentReference</span>
   </div>
-  <p class="sentence">The notice document lists the decision date.</p>
+  <p class="sentence">The <mark class='trigger' title='trigger'>notice<small>trigger</small></mark> document lists the decision date.</p>
   <div class="stats">
     <span>trigger: notice</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.9</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>n/a</td><td>0.9</td></tr><tr><td>Deciding</td><td>DecisionEvent</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+    <tbody><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>0.0</td><td>0.81</td></tr><tr><td>Deciding</td><td>DecisionEvent</td><td>0.88</td><td>0.0024</td><td>0.7922</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;DocumentReference&quot;,
@@ -1007,28 +1008,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.9,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.9,
+    &quot;bertScore&quot;: 0.0,
+    &quot;combinedScore&quot;: 0.81,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Documents&quot;,
         &quot;eventType&quot;: &quot;DocumentReference&quot;,
         &quot;ruleScore&quot;: 0.9,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.9
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.81
       },
       {
         &quot;frame&quot;: &quot;Deciding&quot;,
         &quot;eventType&quot;: &quot;DecisionEvent&quot;,
         &quot;ruleScore&quot;: 0.88,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.88
+        &quot;bertScore&quot;: 0.0024,
+        &quot;combinedScore&quot;: 0.7922
       }
     ]
   },
@@ -1048,16 +1049,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Employing</h2>
     <span>EmploymentRelationship</span>
   </div>
-  <p class="sentence">The company employs the worker under contract.</p>
+  <p class="sentence">The <mark class='element' title='Employer'>company<small>Employer</small></mark> employs <mark class='element' title='Employee'>the worker<small>Employee</small></mark> under contract.</p>
   <div class="stats">
     <span>trigger: worker</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.96</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Employing</td><td>EmploymentRelationship</td><td>0.96</td><td>n/a</td><td>0.96</td></tr></tbody>
+    <tbody><tr><td>Employing</td><td>EmploymentRelationship</td><td>0.96</td><td>0.024</td><td>0.8664</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EmploymentRelationship&quot;,
@@ -1102,21 +1103,21 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.96,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.96,
+    &quot;bertScore&quot;: 0.024,
+    &quot;combinedScore&quot;: 0.8664,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Employing&quot;,
         &quot;eventType&quot;: &quot;EmploymentRelationship&quot;,
         &quot;ruleScore&quot;: 0.96,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.96
+        &quot;bertScore&quot;: 0.024,
+        &quot;combinedScore&quot;: 0.8664
       }
     ]
   },
@@ -1136,16 +1137,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Being_employed</h2>
     <span>EmploymentStatus</span>
   </div>
-  <p class="sentence">The worker was employed during the calendar quarter.</p>
+  <p class="sentence"><mark class='element' title='Employee'>The worker<small>Employee</small></mark> was <mark class='trigger' title='trigger'>employed<small>trigger</small></mark> during the calendar quarter.</p>
   <div class="stats">
     <span>trigger: employed</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Employing</td><td>EmploymentRelationship</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>1.0</td><td>0.0001</td><td>0.9</td></tr><tr><td>Employing</td><td>EmploymentRelationship</td><td>0.92</td><td>0.001</td><td>0.8281</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
@@ -1185,29 +1186,29 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0001,
+    &quot;combinedScore&quot;: 0.9,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Being_employed&quot;,
         &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0001,
+        &quot;combinedScore&quot;: 0.9
       },
       {
         &quot;frame&quot;: &quot;Employing&quot;,
         &quot;eventType&quot;: &quot;EmploymentRelationship&quot;,
         &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;bertScore&quot;: 0.001,
+        &quot;combinedScore&quot;: 0.8281
       }
     ]
   },
@@ -1227,22 +1228,25 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Submitting_documents</h2>
     <span>DocumentSubmission</span>
   </div>
-  <p class="sentence">The client submits the application form to Service Canada.</p>
+  <p class="sentence"><mark class='element' title='Submittor'>The client<small>Submittor</small></mark> <mark class='trigger' title='trigger'>submits<small>trigger</small></mark> the <mark class='element' title='Documents'>application<small>Documents</small></mark> form to Service Canada.</p>
   <div class="stats">
-    <span>trigger: None</span>
+    <span>trigger: submits</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Request</td><td>RequestEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.94</td><td>n/a</td><td>0.94</td></tr></tbody>
+    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>1.0</td><td>0.0004</td><td>0.9</td></tr><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.0005</td><td>0.9001</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.94</td><td>0.0001</td><td>0.846</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
   &quot;frame&quot;: &quot;Submitting_documents&quot;,
-  &quot;trigger&quot;: null,
-  &quot;triggerSpan&quot;: null,
+  &quot;trigger&quot;: &quot;submits&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 11,
+    &quot;end&quot;: 18
+  },
   &quot;frameElements&quot;: {
     &quot;Submittor&quot;: {
       &quot;text&quot;: &quot;The client&quot;
@@ -1281,36 +1285,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0004,
+    &quot;combinedScore&quot;: 0.9,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Submitting_documents&quot;,
         &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0004,
+        &quot;combinedScore&quot;: 0.9
       },
       {
         &quot;frame&quot;: &quot;Request&quot;,
         &quot;eventType&quot;: &quot;RequestEvent&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0005,
+        &quot;combinedScore&quot;: 0.9001
       },
       {
         &quot;frame&quot;: &quot;Documents&quot;,
         &quot;eventType&quot;: &quot;DocumentReference&quot;,
         &quot;ruleScore&quot;: 0.94,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.94
+        &quot;bertScore&quot;: 0.0001,
+        &quot;combinedScore&quot;: 0.846
       }
     ]
   },
@@ -1330,16 +1334,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Earnings_and_losses</h2>
     <span>EarningsEvent</span>
   </div>
-  <p class="sentence">The claimant&#x27;s weekly earnings are calculated for the week.</p>
+  <p class="sentence"><mark class='element' title='Earner'>The claimant<small>Earner</small></mark>&#x27;s weekly <mark class='trigger' title='trigger'>earnings<small>trigger</small></mark> are calculated for the week.</p>
   <div class="stats">
     <span>trigger: earnings</span>
     <span>status: hybrid_rule_bert</span>
     <span>rule score: 0.84</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Earnings_and_losses</td><td>EarningsEvent</td><td>0.84</td><td>n/a</td><td>0.84</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+    <tbody><tr><td>Earnings_and_losses</td><td>EarningsEvent</td><td>0.84</td><td>0.0008</td><td>0.7561</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>0.0005</td><td>0.666</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EarningsEvent&quot;,
@@ -1384,28 +1388,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.84,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.84,
+    &quot;bertScore&quot;: 0.0008,
+    &quot;combinedScore&quot;: 0.7561,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Earnings_and_losses&quot;,
         &quot;eventType&quot;: &quot;EarningsEvent&quot;,
         &quot;ruleScore&quot;: 0.84,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.84
+        &quot;bertScore&quot;: 0.0008,
+        &quot;combinedScore&quot;: 0.7561
       },
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.74,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.74
+        &quot;bertScore&quot;: 0.0005,
+        &quot;combinedScore&quot;: 0.666
       }
     ]
   },
@@ -1425,16 +1429,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Imposing_obligation</h2>
     <span>ObligationImposition</span>
   </div>
-  <p class="sentence">The policy obligates the person to attend the interview.</p>
+  <p class="sentence">The policy <mark class='element' title='Duty'>obligates the person to attend the interview<small>Duty</small></mark>.</p>
   <div class="stats">
     <span>trigger: obligates</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Imposing_obligation</td><td>ObligationImposition</td><td>0.98</td><td>n/a</td><td>0.98</td></tr></tbody>
+    <tbody><tr><td>Imposing_obligation</td><td>ObligationImposition</td><td>1.0</td><td>0.0003</td><td>0.9</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ObligationImposition&quot;,
@@ -1474,22 +1478,22 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0003,
+    &quot;combinedScore&quot;: 0.9,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Imposing_obligation&quot;,
         &quot;eventType&quot;: &quot;ObligationImposition&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0003,
+        &quot;combinedScore&quot;: 0.9
       }
     ]
   },
@@ -1509,16 +1513,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Request</h2>
     <span>RequestEvent</span>
   </div>
-  <p class="sentence">The claimant asks for reconsideration of the decision.</p>
+  <p class="sentence"><mark class='element' title='Speaker'>The claimant<small>Speaker</small></mark> <mark class='trigger' title='trigger'>asks<small>trigger</small></mark> for <mark class='element' title='Message'>reconsideration of the decision<small>Message</small></mark>.</p>
   <div class="stats">
     <span>trigger: asks</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Request</td><td>RequestEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Deciding</td><td>DecisionEvent</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Resolve_problem</td><td>ProblemResolution</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+    <tbody><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.9887</td><td>0.9989</td></tr><tr><td>Resolve_problem</td><td>ProblemResolution</td><td>0.92</td><td>0.0001</td><td>0.828</td></tr><tr><td>Deciding</td><td>DecisionEvent</td><td>0.92</td><td>0.0021</td><td>0.8282</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>0.0012</td><td>0.6661</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;RequestEvent&quot;,
@@ -1562,43 +1566,43 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.9887,
+    &quot;combinedScore&quot;: 0.9989,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Request&quot;,
         &quot;eventType&quot;: &quot;RequestEvent&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
-      },
-      {
-        &quot;frame&quot;: &quot;Deciding&quot;,
-        &quot;eventType&quot;: &quot;DecisionEvent&quot;,
-        &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.9887,
+        &quot;combinedScore&quot;: 0.9989
       },
       {
         &quot;frame&quot;: &quot;Resolve_problem&quot;,
         &quot;eventType&quot;: &quot;ProblemResolution&quot;,
         &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;bertScore&quot;: 0.0001,
+        &quot;combinedScore&quot;: 0.828
+      },
+      {
+        &quot;frame&quot;: &quot;Deciding&quot;,
+        &quot;eventType&quot;: &quot;DecisionEvent&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: 0.0021,
+        &quot;combinedScore&quot;: 0.8282
       },
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.74,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.74
+        &quot;bertScore&quot;: 0.0012,
+        &quot;combinedScore&quot;: 0.6661
       }
     ]
   },
@@ -1618,16 +1622,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Reporting</h2>
     <span>ReportingEvent</span>
   </div>
-  <p class="sentence">The claimant reports availability for the week.</p>
+  <p class="sentence"><mark class='element' title='Informer'>The claimant<small>Informer</small></mark> <mark class='trigger' title='trigger'>reports<small>trigger</small></mark> <mark class='element' title='Behavior'>availability for the week<small>Behavior</small></mark>.</p>
   <div class="stats">
     <span>trigger: reports</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Reporting</td><td>ReportingEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+    <tbody><tr><td>Reporting</td><td>ReportingEvent</td><td>1.0</td><td>0.0335</td><td>0.9034</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>0.0001</td><td>0.666</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ReportingEvent&quot;,
@@ -1675,29 +1679,29 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0335,
+    &quot;combinedScore&quot;: 0.9034,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Reporting&quot;,
         &quot;eventType&quot;: &quot;ReportingEvent&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0335,
+        &quot;combinedScore&quot;: 0.9034
       },
       {
         &quot;frame&quot;: &quot;Claim_ownership&quot;,
         &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
         &quot;ruleScore&quot;: 0.74,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.74
+        &quot;bertScore&quot;: 0.0001,
+        &quot;combinedScore&quot;: 0.666
       }
     ]
   },
@@ -1717,16 +1721,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Resolve_problem</h2>
     <span>ProblemResolution</span>
   </div>
-  <p class="sentence">The agent resolves the issue by correcting the file.</p>
+  <p class="sentence"><mark class='element' title='Agent'>The agent<small>Agent</small></mark> <mark class='trigger' title='trigger'>resolves<small>trigger</small></mark> the <mark class='element' title='Cause'>issue by correcting the file<small>Cause</small></mark>.</p>
   <div class="stats">
     <span>trigger: resolves</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Resolve_problem</td><td>ProblemResolution</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Information</td><td>InformationEvent</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>n/a</td><td>0.9</td></tr></tbody>
+    <tbody><tr><td>Resolve_problem</td><td>ProblemResolution</td><td>1.0</td><td>0.8453</td><td>0.9845</td></tr><tr><td>Information</td><td>InformationEvent</td><td>0.92</td><td>0.0</td><td>0.828</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>0.0</td><td>0.81</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ProblemResolution&quot;,
@@ -1770,36 +1774,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.8453,
+    &quot;combinedScore&quot;: 0.9845,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Resolve_problem&quot;,
         &quot;eventType&quot;: &quot;ProblemResolution&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.8453,
+        &quot;combinedScore&quot;: 0.9845
       },
       {
         &quot;frame&quot;: &quot;Information&quot;,
         &quot;eventType&quot;: &quot;InformationEvent&quot;,
         &quot;ruleScore&quot;: 0.92,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.92
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.828
       },
       {
         &quot;frame&quot;: &quot;Documents&quot;,
         &quot;eventType&quot;: &quot;DocumentReference&quot;,
         &quot;ruleScore&quot;: 0.9,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.9
+        &quot;bertScore&quot;: 0.0,
+        &quot;combinedScore&quot;: 0.81
       }
     ]
   },
@@ -1819,16 +1823,16 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Activity_finish</h2>
     <span>ActivityCompletion</span>
   </div>
-  <p class="sentence">The agent finishes the review before the deadline.</p>
+  <p class="sentence"><mark class='element' title='Agent'>The agent<small>Agent</small></mark> <mark class='trigger' title='trigger'>finishes<small>trigger</small></mark> the <mark class='element' title='Activity'>review before the deadline<small>Activity</small></mark>.</p>
   <div class="stats">
     <span>trigger: finishes</span>
     <span>status: hybrid_rule_bert</span>
-    <span>rule score: 0.98</span>
-    <span>BERT: unavailable_local_model_or_dependency</span>
+    <span>rule score: 1.0</span>
+    <span>BERT: scored</span>
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Activity_finish</td><td>ActivityCompletion</td><td>0.98</td><td>n/a</td><td>0.98</td></tr></tbody>
+    <tbody><tr><td>Activity_finish</td><td>ActivityCompletion</td><td>1.0</td><td>0.0005</td><td>0.9</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ActivityCompletion&quot;,
@@ -1872,22 +1876,22 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;polarity&quot;: &quot;positive&quot;,
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
-    &quot;ruleScore&quot;: 0.98,
-    &quot;bertScore&quot;: null,
-    &quot;combinedScore&quot;: 0.98,
+    &quot;ruleScore&quot;: 1.0,
+    &quot;bertScore&quot;: 0.0005,
+    &quot;combinedScore&quot;: 0.9,
     &quot;bert&quot;: {
-      &quot;available&quot;: false,
-      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
-      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
-      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;bert_cross_encoder&quot;,
+      &quot;model&quot;: &quot;cross-encoder/ms-marco-MiniLM-L-6-v2&quot;,
+      &quot;status&quot;: &quot;scored&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Activity_finish&quot;,
         &quot;eventType&quot;: &quot;ActivityCompletion&quot;,
-        &quot;ruleScore&quot;: 0.98,
-        &quot;bertScore&quot;: null,
-        &quot;combinedScore&quot;: 0.98
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertScore&quot;: 0.0005,
+        &quot;combinedScore&quot;: 0.9
       }
     ]
   },

@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import math
 import os
 import re
 from dataclasses import dataclass
@@ -45,7 +44,7 @@ FRAME_RULES: tuple[FrameRule, ...] = (
     FrameRule("Documents", "DocumentReference", "forms, records, letters, reports, or other documents", re.compile(r"\b(?:document|form|record|letter|report|notice|statement|application|ROE|file)\b", re.I), re.compile(r"\b(?:document|form|record|letter|report|notice|statement|application|ROE|file)\b", re.I), {"Document": DOCUMENT_PATTERN, "Bearer": CLIENT_PATTERN}),
     FrameRule("Employing", "EmploymentRelationship", "employment relationship involving employer/employee/work", re.compile(r"\b(?:employ|employer|employee|employment|work|worker|job)\b", re.I), re.compile(r"\b(?:employ|employer|employee|employment|work|worker|job)\b", re.I), {"Employee": CLIENT_PATTERN, "Employer": re.compile(r"\b(?:employer|business|company)\b", re.I)}),
     FrameRule("Being_employed", "EmploymentStatus", "state of being employed, insurable employment, or work status", re.compile(r"\b(?:employed|employment|insurable employment|work status|self-employed|unemployed)\b", re.I), re.compile(r"\b(?:employed|employment|self-employed|unemployed)\b", re.I), {"Employee": CLIENT_PATTERN, "Employer": re.compile(r"\b(?:employer|business|company)\b", re.I)}),
-    FrameRule("Submitting_documents", "DocumentSubmission", "submitting/providing documents or statements to authority", re.compile(r"\b(?:submit|provide|send|file|upload|complete).{0,50}\b(?:document|form|statement|application|report|record|file)\b", re.I), re.compile(r"\b(?:submit|provide|send|file|upload|complete)\b", re.I), {"Submittor": CLIENT_PATTERN, "Documents": DOCUMENT_PATTERN, "Authority": AGENT_PATTERN}),
+    FrameRule("Submitting_documents", "DocumentSubmission", "submitting/providing documents or statements to authority", re.compile(r"\b(?:submit|submits|submitted|provide|provides|provided|send|sends|sent|file|files|filed|upload|uploads|uploaded|complete|completes|completed).{0,50}\b(?:document|form|statement|application|report|record|file)\b", re.I), re.compile(r"\b(?:submit|submits|submitted|provide|provides|provided|send|sends|sent|file|files|filed|upload|uploads|uploaded|complete|completes|completed)\b", re.I), {"Submittor": CLIENT_PATTERN, "Documents": DOCUMENT_PATTERN, "Authority": AGENT_PATTERN}),
     FrameRule("Earnings_and_losses", "EarningsEvent", "earnings, wages, income, losses, or payable amounts", re.compile(r"\b(?:earning|earnings|wage|wages|income|loss|losses|amount|rate|paid|payment)\b", re.I), re.compile(r"\b(?:earning|earnings|wage|wages|income|loss|losses|amount|paid|payment)\b", re.I), {"Earner": CLIENT_PATTERN, "Earnings": MONEY_PATTERN}),
     FrameRule("Imposing_obligation", "ObligationImposition", "must/required duty imposed on client/officer", re.compile(r"\b(?:must|shall|requires? .+ to|required to|obligate|obligates|obligated|obligation|responsible for)\b", re.I), re.compile(r"\b(?:must|shall|requires?|required to|obligate|obligates|obligated|obligation|responsible for)\b", re.I), {"Responsible_party": AGENT_PATTERN, "Duty": re.compile(r"\b(?:must|shall|requires?|required to|obligate|obligates|obligated to)\b[^.;]*", re.I)}),
     FrameRule("Request", "RequestEvent", "client/officer request for reconsideration, information, or action", re.compile(r"\b(?:request|ask|asks|asked|application|apply|appeal)\b", re.I), re.compile(r"\b(?:request|ask|asks|asked|application|apply|appeal)\b", re.I), {"Speaker": CLIENT_PATTERN, "Message": re.compile(r"\b(?:request|application|appeal|information|reconsideration)\b[^.;]*", re.I)}),
@@ -56,7 +55,7 @@ FRAME_RULES: tuple[FrameRule, ...] = (
 FRAME_PRIORITY = {
     "Deciding": 0.08,
     "Coming_to_believe": 0.12,
-    "Contingency": 0.08,
+    "Contingency": 0.22,
     "Control": 0.12,
     "Claim_ownership": 0.08,
     "Conferring_benefit": 0.08,
@@ -66,7 +65,7 @@ FRAME_PRIORITY = {
     "Evidence": 0.18,
     "Documents": 0.1,
     "Employing": 0.12,
-    "Submitting_documents": 0.24,
+    "Submitting_documents": 0.38,
     "Being_employed": 0.22,
     "Imposing_obligation": 0.32,
     "Request": 0.22,
@@ -95,45 +94,62 @@ def _rule_score(rule: FrameRule, sentence: str) -> float:
         if pattern.search(sentence):
             score += 0.04
     score += FRAME_PRIORITY.get(rule.frame, 0.0)
-    return min(score, 0.98)
+    return min(score, 1.0)
+
+
+def _cosine(left: Any, right: Any) -> float:
+    left_norm = sum(float(item) * float(item) for item in left) ** 0.5
+    right_norm = sum(float(item) * float(item) for item in right) ** 0.5
+    if not left_norm or not right_norm:
+        return 0.0
+    return sum(float(a) * float(b) for a, b in zip(left, right)) / (left_norm * right_norm)
 
 
 @lru_cache(maxsize=1)
-def _bert_ranker() -> Any | None:
-    """Load a local zero-shot classifier if available; never downloads models."""
-    if os.environ.get("HYBRID_FRAME_BERT") != "1":
-        return None
+def _local_cross_encoder() -> tuple[Any, Any, Any] | None:
+    """Load a cached local BERT cross-encoder; never downloads models."""
     os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
     try:
-        from transformers import pipeline
+        import torch
+        from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-        return pipeline("zero-shot-classification", model="facebook/bart-large-mnli", local_files_only=True)
+        model_name = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+        tokenizer = AutoTokenizer.from_pretrained(model_name, local_files_only=True)
+        model = AutoModelForSequenceClassification.from_pretrained(model_name, local_files_only=True)
+        model.eval()
+        return tokenizer, model, torch
     except Exception:
         return None
 
 
 def _bert_scores(sentence: str, rules: tuple[FrameRule, ...]) -> tuple[dict[str, float], dict[str, Any]]:
-    ranker = _bert_ranker()
-    if ranker is None:
+    cross_encoder = _local_cross_encoder()
+    if cross_encoder is None:
         return {}, {
             "available": False,
-            "method": "transformers_zero_shot",
-            "model": "facebook/bart-large-mnli",
+            "method": "bert_cross_encoder",
+            "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
             "status": "unavailable_local_model_or_dependency",
         }
-    labels = [rule.description for rule in rules]
-    result = ranker(sentence, labels, multi_label=True)
-    scores = {
-        rule.frame: float(result["scores"][result["labels"].index(rule.description)])
-        for rule in rules
-        if rule.description in result["labels"]
-    }
+    tokenizer, model, torch = cross_encoder
+    pairs = [(sentence, rule.description) for rule in rules]
+    encoded = tokenizer(pairs, padding=True, truncation=True, return_tensors="pt")
+    with torch.no_grad():
+        logits = model(**encoded).logits.reshape(-1)
+        values = torch.sigmoid(logits).tolist()
+    scores = {rule.frame: float(value) for rule, value in zip(rules, values)}
     return scores, {
         "available": True,
-        "method": "transformers_zero_shot",
-        "model": "facebook/bart-large-mnli",
+        "method": "bert_cross_encoder",
+        "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
         "status": "scored",
     }
+
+
+def _ranking_key(item: tuple[float, float, float | None, FrameRule]) -> tuple[float, float, float]:
+    """Rank candidate frames without letting tiny BERT noise override exact rule matches."""
+    combined, rule_score, _bert_score, rule = item
+    return (round(combined, 3), rule_score, FRAME_PRIORITY.get(rule.frame, 0.0))
 
 
 def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = True) -> dict[str, Any] | None:
@@ -148,9 +164,13 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
     for rule in matched_rules:
         rule_score = rule_scores[rule.frame]
         bert_score = bert_scores.get(rule.frame)
-        combined = rule_score if bert_score is None else (0.7 * rule_score) + (0.3 * bert_score)
+        combined = rule_score if bert_score is None else (0.9 * rule_score) + (0.1 * bert_score)
         ranked.append((combined, rule_score, bert_score, rule))
-    combined, rule_score, bert_score, rule = sorted(ranked, key=lambda item: item[0], reverse=True)[0]
+    combined, rule_score, bert_score, rule = sorted(
+        ranked,
+        key=_ranking_key,
+        reverse=True,
+    )[0]
     trigger = rule.trigger.search(sentence)
     elements = {
         name: {"text": text}
@@ -192,7 +212,9 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
                     "combinedScore": round(item_combined, 4),
                 }
                 for item_combined, item_rule_score, item_bert_score, item_rule in sorted(
-                    ranked, key=lambda item: item[0], reverse=True
+                    ranked,
+                    key=_ranking_key,
+                    reverse=True,
                 )[:5]
             ],
         },

@@ -14,6 +14,41 @@ from hybrid_frame_mapper import FRAME_RULES, demo_sentences
 OUTPUT = Path("outputs") / "hybrid_frame_demo.html"
 
 
+def highlight_sentence(event: dict[str, object]) -> str:
+    sentence = event["source"]["sentence"]
+    spans = []
+    trigger = event.get("trigger")
+    if trigger:
+        start = sentence.lower().find(str(trigger).lower())
+        if start >= 0:
+            spans.append((start, start + len(str(trigger)), "trigger", "trigger"))
+    for name, value in (event.get("frameElements") or {}).items():
+        text = value.get("text") if isinstance(value, dict) else None
+        if not text:
+            continue
+        start = sentence.lower().find(str(text).lower())
+        if start >= 0:
+            spans.append((start, start + len(str(text)), "element", name))
+    spans.sort(key=lambda item: (item[0], -(item[1] - item[0])))
+    accepted = []
+    occupied_until = -1
+    for span in spans:
+        if span[0] >= occupied_until:
+            accepted.append(span)
+            occupied_until = span[1]
+    parts = []
+    cursor = 0
+    for start, end, kind, label in accepted:
+        parts.append(html.escape(sentence[cursor:start]))
+        parts.append(
+            f"<mark class='{kind}' title='{html.escape(label)}'>"
+            f"{html.escape(sentence[start:end])}<small>{html.escape(label)}</small></mark>"
+        )
+        cursor = end
+    parts.append(html.escape(sentence[cursor:]))
+    return "".join(parts)
+
+
 def render_event(event: dict[str, object]) -> str:
     scoring = event.get("hybridScoring") or {}
     candidates = scoring.get("candidateFrames") or []
@@ -27,14 +62,13 @@ def render_event(event: dict[str, object]) -> str:
         "</tr>"
         for candidate in candidates
     )
-    sentence = event["source"]["sentence"]
     return f"""
 <section class="event-card" data-frame="{html.escape((event.get('frame') or '').lower())}">
   <div class="event-head">
     <h2>{html.escape(event.get('frame') or 'domain-only')}</h2>
     <span>{html.escape(event.get('eventType') or '')}</span>
   </div>
-  <p class="sentence">{html.escape(sentence)}</p>
+  <p class="sentence">{highlight_sentence(event)}</p>
   <div class="stats">
     <span>trigger: {html.escape(str(event.get('trigger')))}</span>
     <span>status: {html.escape(str(event.get('mappingStatus')))}</span>
@@ -62,7 +96,7 @@ def main() -> None:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hybrid Frame Mapper Demo</title>
+<title>Employment Benefits Frame Annotation Demo</title>
 <style>
 :root{{font-family:Inter,system-ui,sans-serif;color:#152033;background:#f5f7fb}}
 body{{margin:0}}main{{max-width:1180px;margin:auto;padding:30px 20px}}
@@ -70,7 +104,8 @@ h1{{margin:0 0 8px;font-size:30px}}p{{color:#556176}}.toolbar{{position:sticky;t
 input{{width:100%;padding:11px 12px;border:1px solid #bcc8d8;border-radius:8px;font:inherit}}
 .event-card{{background:#fff;border:1px solid #dce3ee;border-radius:10px;margin:16px 0;padding:16px;box-shadow:0 8px 24px #23324a10}}
 .event-head{{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}}h2{{margin:0;font-size:21px}}.event-head span{{color:#5f6b7c}}
-.sentence{{font-size:16px;color:#172033;background:#f9fbff;border-left:4px solid #1768e5;padding:10px 12px}}
+.sentence{{font-size:16px;color:#172033;background:#f9fbff;border-left:4px solid #1768e5;padding:10px 12px;line-height:1.8}}
+mark{{border-radius:4px;padding:2px 3px;margin:0 1px;color:#172033}}mark small{{font-size:10px;margin-left:4px;color:#4b5563}}.trigger{{background:#ffe08a}}.element{{background:#dbeafe}}
 .stats{{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}}.stats span{{background:#eef3fb;border-radius:999px;padding:4px 9px;color:#40506a;font-size:13px}}
 table{{width:100%;border-collapse:collapse;margin-top:10px}}th,td{{border-bottom:1px solid #e2e8f0;text-align:left;padding:7px;font-size:14px}}th{{color:#536076}}
 pre{{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padding:12px;overflow:auto}}details{{margin-top:10px}}.frames{{columns:2;margin-bottom:20px}}
@@ -78,8 +113,8 @@ pre{{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;pad
 </head>
 <body>
 <main>
-<h1>Hybrid Rule + BERT Frame Mapper Demo</h1>
-<p>Precomputed demo from made-up employment/social-benefit examples. BERT scoring is optional and appears as unavailable when no local zero-shot model is installed.</p>
+<h1>Employment Benefits Frame Annotation Demo</h1>
+<p>Precomputed rule + local BERT examples for employment and social-benefit procedure frames, with inline trigger and frame-element highlights.</p>
 <details><summary>20 configured frames</summary><ul class="frames">{frame_list}</ul></details>
 <div class="toolbar"><input id="filter" placeholder="Filter frames, e.g. Evidence, Request, Being_employed"></div>
 {cards}

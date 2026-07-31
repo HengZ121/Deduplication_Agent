@@ -18,7 +18,7 @@ PAGE = r"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FrameNet Penalty Mapper</title>
+<title>Employment Benefits Frame Mapper</title>
 <style>
 :root{font-family:Inter,system-ui,sans-serif;color:#162033;background:#f4f7fb}*{box-sizing:border-box}
 body{margin:0}.shell{max-width:1100px;margin:auto;padding:34px 22px}h1{margin:0 0 7px;font-size:28px}p{color:#536076}
@@ -31,7 +31,7 @@ pre{margin:0;min-height:385px;max-height:600px;overflow:auto;background:#101827;
 @media(max-width:760px){.grid{grid-template-columns:1fr}.shell{padding:22px 14px}}
 </style>
 </head>
-<body><main class="shell"><h1>FrameNet Penalty Mapper</h1><p>Upload a policy document or paste text to produce FrameNet-aligned JSON.</p>
+<body><main class="shell"><h1>Employment Benefits Frame Mapper</h1><p>Upload a policy document or paste text to produce FrameNet-aligned JSON with inline annotation highlights.</p>
 <div class="grid"><section class="card"><label for="file">Document (.txt, .md, .json, .docx)</label><input id="file" type="file" accept=".txt,.md,.json,.docx">
 <div class="or">or</div><label for="text">Paste document text</label><textarea id="text">A 25 - Maternity benefits - Minor attached disentitlement (D25) is imposed if the client has not accumulated at least 600 insurable hours.
 If the information on file allows for the disentitlement to be terminated, it is terminated on the Friday of the week before the conversion week.</textarea>
@@ -106,7 +106,7 @@ def main() -> None:
     args = parser.parse_args()
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     url = f"http://{args.host}:{args.port}"
-    print(f"FrameNet Penalty Mapper running at {url}")
+    print(f"Employment Benefits Frame Mapper running at {url}")
     if not args.no_browser:
         webbrowser.open(url)
     try:
