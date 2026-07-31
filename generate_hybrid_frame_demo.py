@@ -114,8 +114,8 @@ pre{{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;pad
 <body>
 <main>
 <h1>Employment Benefits Frame Annotation Demo</h1>
-<p>Precomputed rule + local BERT examples for employment and social-benefit procedure frames, with inline trigger and frame-element highlights.</p>
-<details><summary>20 configured frames</summary><ul class="frames">{frame_list}</ul></details>
+<p>Precomputed rule + local BERT examples sampled from procedure.zip, with inline trigger and frame-element highlights.</p>
+<details><summary>{len(FRAME_RULES)} configured frames</summary><ul class="frames">{frame_list}</ul></details>
 <div class="toolbar"><input id="filter" placeholder="Filter frames, e.g. Evidence, Request, Being_employed"></div>
 {cards}
 </main>

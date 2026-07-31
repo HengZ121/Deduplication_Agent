@@ -70,7 +70,7 @@ class FrameNetMapperTests(unittest.TestCase):
 
     @unittest.skipUnless(registry.available, "FrameNet 1.7 corpus is not installed")
     def test_unmatched_sentence_gets_candidate_frames(self):
-        result = map_text("The applicant receives correspondence after filing.")
+        result = map_text("The bird flew across the valley.")
         self.assertEqual(result["candidateEventCount"], 1)
         event = result["events"][0]
         self.assertEqual(event["eventType"], "FrameNetCandidate")
@@ -155,10 +155,20 @@ class FrameNetMapperTests(unittest.TestCase):
             "Reporting",
             "Resolve_problem",
             "Activity_finish",
+            "Rewards_and_punishments",
+            "Scrutiny",
+            "Assessing",
+            "Judgment",
+            "Cause_to_start",
+            "Receiving",
+            "Communication",
+            "Change_position_on_a_scale",
+            "Giving",
+            "Activity_stop",
         }
         self.assertTrue(expected.issubset(frames))
         hybrid_events = [event for event in result["events"] if event.get("mappingStatus") == "hybrid_rule_bert"]
-        self.assertGreaterEqual(len(hybrid_events), 20)
+        self.assertGreaterEqual(len(hybrid_events), 30)
         self.assertIn("hybridScoring", hybrid_events[0])
 
     @unittest.skipUnless(dependency_parser.available, "spaCy dependency model is not installed")
