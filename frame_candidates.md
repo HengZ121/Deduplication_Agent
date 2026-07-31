@@ -6,7 +6,7 @@ This note documents how candidate FrameNet frames were counted across `procedure
 
 The goal is to discover which FrameNet frames appear to fit the procedure dataset by counting lexical evidence across the sample corpus. `procedure.zip` is treated as the sample dataset.
 
-This is a discovery/statistics pass, not a final semantic annotation pass. A counted frame means at least one official FrameNet lexical unit for that frame appeared in a sentence. It does not mean the sentence has been fully disambiguated or that frame elements have been reliably extracted.
+This is a discovery/statistics pass, not a final semantic annotation pass. A counted frame means at least one official FrameNet lexical unit for that frame appeared in a unique, meaningful sentence. It does not mean the sentence has been fully disambiguated or that frame elements have been reliably extracted.
 
 ## Output
 
@@ -29,7 +29,7 @@ Columns:
 
 - `frame`: FrameNet frame name.
 - `frameId`: FrameNet frame ID.
-- `sentenceOccurrences`: number of sentences where this frame had at least one lexical-unit match.
+- `sentenceOccurrences`: number of unique, meaningful sentences where this frame had at least one lexical-unit match.
 - `matchedLexicalUnitOccurrences`: total lexical-unit matches for the frame.
 
 ## Method
@@ -60,10 +60,12 @@ Then the script processes the procedure corpus:
 1. Read supported files from `procedure.zip`.
 2. Extract text from `.json`, `.txt`, `.md`, and `.docx` files.
 3. Split text into sentences using the same sentence splitter as the mapper.
-4. Tokenize each sentence into words and short phrases.
-5. Look up each token/phrase in the lexical-unit index.
-6. Count each frame at most once per sentence.
-7. Save aggregate frame counts to CSV.
+4. Normalize each sentence and count repeated boilerplate only once across the whole corpus.
+5. Filter low-information fragments such as very short headings, single labels, UI fragments, and punctuation-heavy strings.
+6. Tokenize each remaining sentence into words and short phrases.
+7. Look up each token/phrase in the lexical-unit index.
+8. Count each frame at most once per unique sentence.
+9. Save aggregate frame counts to CSV.
 
 This changes the expensive operation from repeated full FrameNet scans to dictionary lookups.
 
@@ -79,7 +81,7 @@ Observed run summary:
 
 ```text
 documents processed: 856
-sentences processed: 164,942
+raw sentences processed: 164,942
 matched sentences: 118,849
 candidate frames found: 919
 FrameNet LU surface forms indexed: 22,423
@@ -116,6 +118,8 @@ Some frames are high because procedure text contains broad and frequent lexical 
 - This pass is lexical, not contextual disambiguation.
 - Common lexical units can inflate broad frames.
 - A sentence can count toward multiple frames.
+- Repeated content is counted once after sentence normalization.
+- Short, label-like, and low-information fragments are filtered out before counting.
 - Frame elements are not extracted in this statistics pass.
 - Counts are useful for candidate discovery and prioritization, but not sufficient for ontology approval.
 

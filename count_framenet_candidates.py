@@ -20,6 +20,14 @@ from framenet_registry import registry
 
 
 TOKEN_PATTERN = re.compile(r"[A-Za-z][A-Za-z'-]*|\d+")
+MEANINGFUL_WORD_PATTERN = re.compile(r"[A-Za-z][A-Za-z'-]{2,}")
+POLICY_VERB_PATTERN = re.compile(
+    r"\b(?:accept|allow|apply|assess|calculate|change|complete|conduct|confirm|determine|"
+    r"ensure|establish|exceed|extend|follow|identify|impose|issue|meet|must|obtain|"
+    r"pay|process|provide|refer|replace|require|resolve|review|send|submit|terminate|"
+    r"update|verify)\b",
+    re.IGNORECASE,
+)
 DEFAULT_ZIP = Path("procedure.zip")
 DEFAULT_OUTPUT = Path("outputs") / "framenet_candidate_frame_counts.csv"
 DEFAULT_SAMPLES = Path("outputs") / "framenet_candidate_frame_samples.md"
@@ -49,6 +57,26 @@ STOP_FORMS = {
     "to",
     "when",
     "with",
+}
+LOW_INFORMATION_PHRASES = {
+    "button",
+    "click",
+    "field",
+    "function",
+    "list",
+    "menu",
+    "next",
+    "note",
+    "page",
+    "screen",
+    "section",
+    "select",
+    "step",
+    "summary",
+    "table",
+    "task",
+    "title",
+    "yes",
 }
 
 
@@ -113,6 +141,35 @@ def sentence_forms(sentence: str, max_phrase_tokens: int = 4) -> set[str]:
     return forms
 
 
+def normalize_sentence(sentence: str) -> str:
+    """Normalize sentence text so repeated corpus boilerplate is counted once."""
+    normalized = sentence.lower()
+    normalized = re.sub(r"https?://\S+|\bprocedure/[^\s|]+", " ", normalized)
+    normalized = re.sub(r"\s+", " ", normalized)
+    return normalized.strip(" |,.;:-")
+
+
+def is_meaningful_sentence(sentence: str, min_words: int = 5, min_chars: int = 35) -> bool:
+    """Filter headings, UI labels, and short fragments before candidate counting."""
+    normalized = normalize_sentence(sentence)
+    if "|" in sentence or normalized.endswith(":"):
+        return False
+    words = MEANINGFUL_WORD_PATTERN.findall(normalized)
+    if len(normalized) < min_chars or len(words) < min_words:
+        return False
+    if normalized in LOW_INFORMATION_PHRASES:
+        return False
+    alpha_chars = sum(char.isalpha() for char in normalized)
+    if alpha_chars / max(len(normalized), 1) < 0.45:
+        return False
+    unique_nonstop = {word for word in words if word not in STOP_FORMS}
+    if len(unique_nonstop) < 3:
+        return False
+    if not POLICY_VERB_PATTERN.search(normalized):
+        return False
+    return True
+
+
 def collect_json_text(value: Any) -> str:
     if isinstance(value, str):
         return value
@@ -146,8 +203,9 @@ def count_candidates(
     index = build_lu_index()
     frame_counts: Counter[tuple[str, int]] = Counter()
     lu_counts: Counter[tuple[str, int, str, str]] = Counter()
-    docs = sentences = matched_sentences = 0
+    docs = raw_sentences = unique_sentences = filtered_sentences = matched_sentences = 0
     frame_samples: dict[tuple[str, int], list[str]] = {}
+    seen_sentences: set[str] = set()
 
     with zipfile.ZipFile(zip_path) as archive:
         members = [name for name in archive.namelist() if not name.endswith("/")]
@@ -162,7 +220,15 @@ def count_candidates(
                 continue
             docs += 1
             for sentence in (item.strip() for item in SENTENCE_PATTERN.split(text) if item.strip()):
-                sentences += 1
+                raw_sentences += 1
+                normalized_sentence = normalize_sentence(sentence)
+                if normalized_sentence in seen_sentences:
+                    continue
+                seen_sentences.add(normalized_sentence)
+                unique_sentences += 1
+                if not is_meaningful_sentence(sentence):
+                    filtered_sentences += 1
+                    continue
                 matched_this_sentence: set[tuple[str, int]] = set()
                 matched_lus: set[tuple[str, int, str, str]] = set()
                 for form in sentence_forms(sentence):
@@ -227,7 +293,10 @@ def count_candidates(
 
     return {
         "documents": docs,
-        "sentences": sentences,
+        "rawSentences": raw_sentences,
+        "uniqueSentences": unique_sentences,
+        "filteredSentences": filtered_sentences,
+        "countedSentences": unique_sentences - filtered_sentences,
         "matchedSentences": matched_sentences,
         "frames": len(frame_counts),
         "framesOverSampleThreshold": len(sample_rows),
