@@ -71,6 +71,24 @@ Paste text or upload a supported document, then click `Map to JSON`. The UI show
 
 Supported upload formats are `.txt`, `.md`, `.json`, and `.docx`.
 
+## Hybrid Frame Demo
+
+The repository also includes a prototype rule + optional BERT frame mapper for 20 employment/social-benefit frames selected from the candidate-frame statistics. The rule layer is always available; the BERT zero-shot scorer is opt-in and only runs when a local model is available and `HYBRID_FRAME_BERT=1` is set.
+
+Generate the static demo:
+
+```powershell
+py generate_hybrid_frame_demo.py
+```
+
+Open:
+
+```text
+outputs/hybrid_frame_demo.html
+```
+
+The static demo uses made-up examples, one per configured frame, so it is stable and does not require real-time model execution.
+
 ## JSON Shape
 
 Top-level output includes:

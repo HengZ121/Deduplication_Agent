@@ -1,0 +1,1910 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hybrid Frame Mapper Demo</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#152033;background:#f5f7fb}
+body{margin:0}main{max-width:1180px;margin:auto;padding:30px 20px}
+h1{margin:0 0 8px;font-size:30px}p{color:#556176}.toolbar{position:sticky;top:0;background:#f5f7fb;padding:12px 0 16px;border-bottom:1px solid #dce3ee}
+input{width:100%;padding:11px 12px;border:1px solid #bcc8d8;border-radius:8px;font:inherit}
+.event-card{background:#fff;border:1px solid #dce3ee;border-radius:10px;margin:16px 0;padding:16px;box-shadow:0 8px 24px #23324a10}
+.event-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}h2{margin:0;font-size:21px}.event-head span{color:#5f6b7c}
+.sentence{font-size:16px;color:#172033;background:#f9fbff;border-left:4px solid #1768e5;padding:10px 12px}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.stats span{background:#eef3fb;border-radius:999px;padding:4px 9px;color:#40506a;font-size:13px}
+table{width:100%;border-collapse:collapse;margin-top:10px}th,td{border-bottom:1px solid #e2e8f0;text-align:left;padding:7px;font-size:14px}th{color:#536076}
+pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padding:12px;overflow:auto}details{margin-top:10px}.frames{columns:2;margin-bottom:20px}
+</style>
+</head>
+<body>
+<main>
+<h1>Hybrid Rule + BERT Frame Mapper Demo</h1>
+<p>Precomputed demo from made-up employment/social-benefit examples. BERT scoring is optional and appears as unavailable when no local zero-shot model is installed.</p>
+<details><summary>20 configured frames</summary><ul class="frames"><li>Deciding - decision, adjudication, denial, approval, or determination</li>
+<li>Coming_to_believe - infer or determine a reason from evidence</li>
+<li>Contingency - if/when/unless condition leading to an outcome</li>
+<li>Control - control or authority over a decision, variable, account, or process</li>
+<li>Claim_ownership - claimant/client ownership or right to claim property/benefit</li>
+<li>Conferring_benefit - benefits or advantageous situation conferred on a person</li>
+<li>Information - information, data, facts, or evidence available/recorded</li>
+<li>Compliance - following policy, legislation, requirements, or conditions</li>
+<li>Have_as_requirement - required condition/entity for a claim, payment, or process</li>
+<li>Evidence - evidence supports a proposition or decision</li>
+<li>Documents - forms, records, letters, reports, or other documents</li>
+<li>Employing - employment relationship involving employer/employee/work</li>
+<li>Being_employed - state of being employed, insurable employment, or work status</li>
+<li>Submitting_documents - submitting/providing documents or statements to authority</li>
+<li>Earnings_and_losses - earnings, wages, income, losses, or payable amounts</li>
+<li>Imposing_obligation - must/required duty imposed on client/officer</li>
+<li>Request - client/officer request for reconsideration, information, or action</li>
+<li>Reporting - reporting behavior, claimant reports, or reports to authority</li>
+<li>Resolve_problem - resolve, fix, correct, replace, or clear an issue</li>
+<li>Activity_finish - finish/complete/end a procedure, report, or activity</li></ul></details>
+<div class="toolbar"><input id="filter" placeholder="Filter frames, e.g. Evidence, Request, Being_employed"></div>
+
+<section class="event-card" data-frame="deciding">
+  <div class="event-head">
+    <h2>Deciding</h2>
+    <span>DecisionEvent</span>
+  </div>
+  <p class="sentence">The officer decides the outcome after reviewing the facts.</p>
+  <div class="stats">
+    <span>trigger: decides</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.88</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Deciding</td><td>DecisionEvent</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;DecisionEvent&quot;,
+  &quot;frame&quot;: &quot;Deciding&quot;,
+  &quot;trigger&quot;: &quot;decides&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 12,
+    &quot;end&quot;: 19
+  },
+  &quot;frameElements&quot;: {
+    &quot;Cognizer&quot;: {
+      &quot;text&quot;: &quot;The officer&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 363,
+    &quot;frameName&quot;: &quot;Deciding&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;decides&quot;,
+      &quot;start&quot;: 12,
+      &quot;end&quot;: 19,
+      &quot;lexicalUnit&quot;: &quot;decide.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Cognizer&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.88,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.88,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Deciding&quot;,
+        &quot;eventType&quot;: &quot;DecisionEvent&quot;,
+        &quot;ruleScore&quot;: 0.88,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.88
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 0,
+    &quot;sentence&quot;: &quot;The officer decides the outcome after reviewing the facts.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="coming_to_believe">
+  <div class="event-head">
+    <h2>Coming_to_believe</h2>
+    <span>DiagnosticInference</span>
+  </div>
+  <p class="sentence">The officer concludes the separation reason from the facts.</p>
+  <div class="stats">
+    <span>trigger: None</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.82</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Coming_to_believe</td><td>DiagnosticInference</td><td>0.82</td><td>n/a</td><td>0.82</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;DiagnosticInference&quot;,
+  &quot;frame&quot;: &quot;Coming_to_believe&quot;,
+  &quot;trigger&quot;: null,
+  &quot;triggerSpan&quot;: null,
+  &quot;frameElements&quot;: {
+    &quot;Cognizer&quot;: {
+      &quot;text&quot;: &quot;The officer&quot;
+    },
+    &quot;Content&quot;: {
+      &quot;text&quot;: &quot;reason from the facts&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 23,
+    &quot;frameName&quot;: &quot;Coming_to_believe&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;concludes&quot;,
+      &quot;start&quot;: 12,
+      &quot;end&quot;: 21,
+      &quot;lexicalUnit&quot;: &quot;conclude.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Cognizer&quot;,
+        &quot;Content&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.82,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.82,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Coming_to_believe&quot;,
+        &quot;eventType&quot;: &quot;DiagnosticInference&quot;,
+        &quot;ruleScore&quot;: 0.82,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.82
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 1,
+    &quot;sentence&quot;: &quot;The officer concludes the separation reason from the facts.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="contingency">
+  <div class="event-head">
+    <h2>Contingency</h2>
+    <span>ConditionalRule</span>
+  </div>
+  <p class="sentence">If the claimant has insufficient hours, the claim is held for review.</p>
+  <div class="stats">
+    <span>trigger: If</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.92</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Contingency</td><td>ConditionalRule</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ConditionalRule&quot;,
+  &quot;frame&quot;: &quot;Contingency&quot;,
+  &quot;trigger&quot;: &quot;If&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 0,
+    &quot;end&quot;: 2
+  },
+  &quot;frameElements&quot;: {
+    &quot;Determinant&quot;: {
+      &quot;text&quot;: &quot;the claimant has insufficient hours, the claim is held for review&quot;
+    },
+    &quot;Outcome&quot;: {
+      &quot;text&quot;: &quot;is held for review&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 900,
+    &quot;frameName&quot;: &quot;Contingency&quot;,
+    &quot;target&quot;: null,
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Determinant&quot;,
+        &quot;Outcome&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.92,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.92,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Contingency&quot;,
+        &quot;eventType&quot;: &quot;ConditionalRule&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      },
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 2,
+    &quot;sentence&quot;: &quot;If the claimant has insufficient hours, the claim is held for review.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="control">
+  <div class="event-head">
+    <h2>Control</h2>
+    <span>ControlRequirement</span>
+  </div>
+  <p class="sentence">The officer has authority to control the claim correction.</p>
+  <div class="stats">
+    <span>trigger: authority</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.96</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Control</td><td>ControlRequirement</td><td>0.96</td><td>n/a</td><td>0.96</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ControlRequirement&quot;,
+  &quot;frame&quot;: &quot;Control&quot;,
+  &quot;trigger&quot;: &quot;authority&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 16,
+    &quot;end&quot;: 25
+  },
+  &quot;frameElements&quot;: {
+    &quot;Controlling_entity&quot;: {
+      &quot;text&quot;: &quot;The officer&quot;
+    },
+    &quot;Dependent_entity&quot;: {
+      &quot;text&quot;: &quot;claim&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1799,
+    &quot;frameName&quot;: &quot;Control&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;control&quot;,
+      &quot;start&quot;: 29,
+      &quot;end&quot;: 36,
+      &quot;lexicalUnit&quot;: &quot;control.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Controlling_entity&quot;,
+        &quot;Dependent_entity&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.96,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.96,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Control&quot;,
+        &quot;eventType&quot;: &quot;ControlRequirement&quot;,
+        &quot;ruleScore&quot;: 0.96,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.96
+      },
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.88,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.88
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 3,
+    &quot;sentence&quot;: &quot;The officer has authority to control the claim correction.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="claim_ownership">
+  <div class="event-head">
+    <h2>Claim_ownership</h2>
+    <span>ClaimOwnership</span>
+  </div>
+  <p class="sentence">The claimant owns the claim under the account.</p>
+  <div class="stats">
+    <span>trigger: claim</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.92</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+  &quot;frame&quot;: &quot;Claim_ownership&quot;,
+  &quot;trigger&quot;: &quot;claim&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 22,
+    &quot;end&quot;: 27
+  },
+  &quot;frameElements&quot;: {
+    &quot;Claimant&quot;: {
+      &quot;text&quot;: &quot;The claimant&quot;
+    },
+    &quot;Property&quot;: {
+      &quot;text&quot;: &quot;claim&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 550,
+    &quot;frameName&quot;: &quot;Claim_ownership&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;claim&quot;,
+      &quot;start&quot;: 22,
+      &quot;end&quot;: 27,
+      &quot;lexicalUnit&quot;: &quot;claim.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Claimant&quot;,
+        &quot;Property&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.92,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.92,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 4,
+    &quot;sentence&quot;: &quot;The claimant owns the claim under the account.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="conferring_benefit">
+  <div class="event-head">
+    <h2>Conferring_benefit</h2>
+    <span>BenefitConferral</span>
+  </div>
+  <p class="sentence">The allowance benefits the client during leave.</p>
+  <div class="stats">
+    <span>trigger: allowance</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.92</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Conferring_benefit</td><td>BenefitConferral</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;BenefitConferral&quot;,
+  &quot;frame&quot;: &quot;Conferring_benefit&quot;,
+  &quot;trigger&quot;: &quot;allowance&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 4,
+    &quot;end&quot;: 13
+  },
+  &quot;frameElements&quot;: {
+    &quot;Beneficiary&quot;: {
+      &quot;text&quot;: &quot;the client&quot;
+    },
+    &quot;Beneficial_situation&quot;: {
+      &quot;text&quot;: &quot;allowance&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 2721,
+    &quot;frameName&quot;: &quot;Conferring_benefit&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;benefits&quot;,
+      &quot;start&quot;: 14,
+      &quot;end&quot;: 22,
+      &quot;lexicalUnit&quot;: &quot;benefit.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Beneficiary&quot;,
+        &quot;Beneficial_situation&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.92,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.92,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Conferring_benefit&quot;,
+        &quot;eventType&quot;: &quot;BenefitConferral&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 5,
+    &quot;sentence&quot;: &quot;The allowance benefits the client during leave.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="information">
+  <div class="event-head">
+    <h2>Information</h2>
+    <span>InformationEvent</span>
+  </div>
+  <p class="sentence">The agent records information about the case notes.</p>
+  <div class="stats">
+    <span>trigger: information</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.88</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Information</td><td>InformationEvent</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;InformationEvent&quot;,
+  &quot;frame&quot;: &quot;Information&quot;,
+  &quot;trigger&quot;: &quot;information&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 18,
+    &quot;end&quot;: 29
+  },
+  &quot;frameElements&quot;: {
+    &quot;Information&quot;: {
+      &quot;text&quot;: &quot;information about the case notes&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1591,
+    &quot;frameName&quot;: &quot;Information&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;information&quot;,
+      &quot;start&quot;: 18,
+      &quot;end&quot;: 29,
+      &quot;lexicalUnit&quot;: &quot;information.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Information&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.88,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.88,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Information&quot;,
+        &quot;eventType&quot;: &quot;InformationEvent&quot;,
+        &quot;ruleScore&quot;: 0.88,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.88
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 6,
+    &quot;sentence&quot;: &quot;The agent records information about the case notes.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="compliance">
+  <div class="event-head">
+    <h2>Compliance</h2>
+    <span>ComplianceCheck</span>
+  </div>
+  <p class="sentence">The office complies with the policy conditions.</p>
+  <div class="stats">
+    <span>trigger: complies</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Compliance</td><td>ComplianceCheck</td><td>0.98</td><td>n/a</td><td>0.98</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ComplianceCheck&quot;,
+  &quot;frame&quot;: &quot;Compliance&quot;,
+  &quot;trigger&quot;: &quot;complies&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 11,
+    &quot;end&quot;: 19
+  },
+  &quot;frameElements&quot;: {
+    &quot;Norm&quot;: {
+      &quot;text&quot;: &quot;policy conditions&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 117,
+    &quot;frameName&quot;: &quot;Compliance&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;complies&quot;,
+      &quot;start&quot;: 11,
+      &quot;end&quot;: 19,
+      &quot;lexicalUnit&quot;: &quot;comply.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Norm&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Compliance&quot;,
+        &quot;eventType&quot;: &quot;ComplianceCheck&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 7,
+    &quot;sentence&quot;: &quot;The office complies with the policy conditions.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="have_as_requirement">
+  <div class="event-head">
+    <h2>Have_as_requirement</h2>
+    <span>RequirementRule</span>
+  </div>
+  <p class="sentence">The application requires proof of identity from the claimant.</p>
+  <div class="stats">
+    <span>trigger: requires</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Request</td><td>RequestEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.94</td><td>n/a</td><td>0.94</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;RequirementRule&quot;,
+  &quot;frame&quot;: &quot;Have_as_requirement&quot;,
+  &quot;trigger&quot;: &quot;requires&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 16,
+    &quot;end&quot;: 24
+  },
+  &quot;frameElements&quot;: {
+    &quot;Dependent&quot;: {
+      &quot;text&quot;: &quot;application&quot;
+    },
+    &quot;Requirement&quot;: {
+      &quot;text&quot;: &quot;requires proof of identity from the claimant&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1491,
+    &quot;frameName&quot;: &quot;Have_as_requirement&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;requires&quot;,
+      &quot;start&quot;: 16,
+      &quot;end&quot;: 24,
+      &quot;lexicalUnit&quot;: &quot;require.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Dependent&quot;,
+        &quot;Requirement&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Have_as_requirement&quot;,
+        &quot;eventType&quot;: &quot;RequirementRule&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Evidence&quot;,
+        &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Request&quot;,
+        &quot;eventType&quot;: &quot;RequestEvent&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Documents&quot;,
+        &quot;eventType&quot;: &quot;DocumentReference&quot;,
+        &quot;ruleScore&quot;: 0.94,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.94
+      },
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.74,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.74
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 8,
+    &quot;sentence&quot;: &quot;The application requires proof of identity from the claimant.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="evidence">
+  <div class="event-head">
+    <h2>Evidence</h2>
+    <span>EvidenceSupport</span>
+  </div>
+  <p class="sentence">The medical letter confirms the pregnancy status.</p>
+  <div class="stats">
+    <span>trigger: confirms</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>n/a</td><td>0.9</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
+  &quot;frame&quot;: &quot;Evidence&quot;,
+  &quot;trigger&quot;: &quot;confirms&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 19,
+    &quot;end&quot;: 27
+  },
+  &quot;frameElements&quot;: {
+    &quot;Support&quot;: {
+      &quot;text&quot;: &quot;letter&quot;
+    },
+    &quot;Proposition&quot;: {
+      &quot;text&quot;: &quot;pregnancy status&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 25,
+    &quot;frameName&quot;: &quot;Evidence&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;confirms&quot;,
+      &quot;start&quot;: 19,
+      &quot;end&quot;: 27,
+      &quot;lexicalUnit&quot;: &quot;confirm.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Support&quot;,
+        &quot;Proposition&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Evidence&quot;,
+        &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Documents&quot;,
+        &quot;eventType&quot;: &quot;DocumentReference&quot;,
+        &quot;ruleScore&quot;: 0.9,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.9
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 9,
+    &quot;sentence&quot;: &quot;The medical letter confirms the pregnancy status.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="documents">
+  <div class="event-head">
+    <h2>Documents</h2>
+    <span>DocumentReference</span>
+  </div>
+  <p class="sentence">The notice document lists the decision date.</p>
+  <div class="stats">
+    <span>trigger: notice</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.9</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>n/a</td><td>0.9</td></tr><tr><td>Deciding</td><td>DecisionEvent</td><td>0.88</td><td>n/a</td><td>0.88</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;DocumentReference&quot;,
+  &quot;frame&quot;: &quot;Documents&quot;,
+  &quot;trigger&quot;: &quot;notice&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 4,
+    &quot;end&quot;: 10
+  },
+  &quot;frameElements&quot;: {
+    &quot;Document&quot;: {
+      &quot;text&quot;: &quot;notice&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 560,
+    &quot;frameName&quot;: &quot;Documents&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;document&quot;,
+      &quot;start&quot;: 11,
+      &quot;end&quot;: 19,
+      &quot;lexicalUnit&quot;: &quot;document.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Document&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.9,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.9,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Documents&quot;,
+        &quot;eventType&quot;: &quot;DocumentReference&quot;,
+        &quot;ruleScore&quot;: 0.9,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.9
+      },
+      {
+        &quot;frame&quot;: &quot;Deciding&quot;,
+        &quot;eventType&quot;: &quot;DecisionEvent&quot;,
+        &quot;ruleScore&quot;: 0.88,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.88
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 10,
+    &quot;sentence&quot;: &quot;The notice document lists the decision date.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="employing">
+  <div class="event-head">
+    <h2>Employing</h2>
+    <span>EmploymentRelationship</span>
+  </div>
+  <p class="sentence">The company employs the worker under contract.</p>
+  <div class="stats">
+    <span>trigger: worker</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.96</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Employing</td><td>EmploymentRelationship</td><td>0.96</td><td>n/a</td><td>0.96</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;EmploymentRelationship&quot;,
+  &quot;frame&quot;: &quot;Employing&quot;,
+  &quot;trigger&quot;: &quot;worker&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 24,
+    &quot;end&quot;: 30
+  },
+  &quot;frameElements&quot;: {
+    &quot;Employee&quot;: {
+      &quot;text&quot;: &quot;the worker&quot;
+    },
+    &quot;Employer&quot;: {
+      &quot;text&quot;: &quot;company&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 323,
+    &quot;frameName&quot;: &quot;Employing&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;worker&quot;,
+      &quot;start&quot;: 24,
+      &quot;end&quot;: 30,
+      &quot;lexicalUnit&quot;: &quot;worker.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Employee&quot;,
+        &quot;Employer&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.96,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.96,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Employing&quot;,
+        &quot;eventType&quot;: &quot;EmploymentRelationship&quot;,
+        &quot;ruleScore&quot;: 0.96,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.96
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 11,
+    &quot;sentence&quot;: &quot;The company employs the worker under contract.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="being_employed">
+  <div class="event-head">
+    <h2>Being_employed</h2>
+    <span>EmploymentStatus</span>
+  </div>
+  <p class="sentence">The worker was employed during the calendar quarter.</p>
+  <div class="stats">
+    <span>trigger: employed</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Employing</td><td>EmploymentRelationship</td><td>0.92</td><td>n/a</td><td>0.92</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
+  &quot;frame&quot;: &quot;Being_employed&quot;,
+  &quot;trigger&quot;: &quot;employed&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 15,
+    &quot;end&quot;: 23
+  },
+  &quot;frameElements&quot;: {
+    &quot;Employee&quot;: {
+      &quot;text&quot;: &quot;The worker&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 282,
+    &quot;frameName&quot;: &quot;Being_employed&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;employed&quot;,
+      &quot;start&quot;: 15,
+      &quot;end&quot;: 23,
+      &quot;lexicalUnit&quot;: &quot;employed.a&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Employee&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Being_employed&quot;,
+        &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Employing&quot;,
+        &quot;eventType&quot;: &quot;EmploymentRelationship&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 12,
+    &quot;sentence&quot;: &quot;The worker was employed during the calendar quarter.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="submitting_documents">
+  <div class="event-head">
+    <h2>Submitting_documents</h2>
+    <span>DocumentSubmission</span>
+  </div>
+  <p class="sentence">The client submits the application form to Service Canada.</p>
+  <div class="stats">
+    <span>trigger: None</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Request</td><td>RequestEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.94</td><td>n/a</td><td>0.94</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
+  &quot;frame&quot;: &quot;Submitting_documents&quot;,
+  &quot;trigger&quot;: null,
+  &quot;triggerSpan&quot;: null,
+  &quot;frameElements&quot;: {
+    &quot;Submittor&quot;: {
+      &quot;text&quot;: &quot;The client&quot;
+    },
+    &quot;Documents&quot;: {
+      &quot;text&quot;: &quot;application&quot;
+    },
+    &quot;Authority&quot;: {
+      &quot;text&quot;: &quot;The client&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1521,
+    &quot;frameName&quot;: &quot;Submitting_documents&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;submits&quot;,
+      &quot;start&quot;: 11,
+      &quot;end&quot;: 18,
+      &quot;lexicalUnit&quot;: &quot;submit.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Submittor&quot;,
+        &quot;Documents&quot;,
+        &quot;Authority&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Submitting_documents&quot;,
+        &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Request&quot;,
+        &quot;eventType&quot;: &quot;RequestEvent&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Documents&quot;,
+        &quot;eventType&quot;: &quot;DocumentReference&quot;,
+        &quot;ruleScore&quot;: 0.94,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.94
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 13,
+    &quot;sentence&quot;: &quot;The client submits the application form to Service Canada.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="earnings_and_losses">
+  <div class="event-head">
+    <h2>Earnings_and_losses</h2>
+    <span>EarningsEvent</span>
+  </div>
+  <p class="sentence">The claimant&#x27;s weekly earnings are calculated for the week.</p>
+  <div class="stats">
+    <span>trigger: earnings</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.84</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Earnings_and_losses</td><td>EarningsEvent</td><td>0.84</td><td>n/a</td><td>0.84</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;EarningsEvent&quot;,
+  &quot;frame&quot;: &quot;Earnings_and_losses&quot;,
+  &quot;trigger&quot;: &quot;earnings&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 22,
+    &quot;end&quot;: 30
+  },
+  &quot;frameElements&quot;: {
+    &quot;Earner&quot;: {
+      &quot;text&quot;: &quot;The claimant&quot;
+    },
+    &quot;Earnings&quot;: {
+      &quot;text&quot;: &quot;earnings&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1873,
+    &quot;frameName&quot;: &quot;Earnings_and_losses&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;earnings&quot;,
+      &quot;start&quot;: 22,
+      &quot;end&quot;: 30,
+      &quot;lexicalUnit&quot;: &quot;earnings.n&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Earner&quot;,
+        &quot;Earnings&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.84,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.84,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Earnings_and_losses&quot;,
+        &quot;eventType&quot;: &quot;EarningsEvent&quot;,
+        &quot;ruleScore&quot;: 0.84,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.84
+      },
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.74,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.74
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 14,
+    &quot;sentence&quot;: &quot;The claimant&#x27;s weekly earnings are calculated for the week.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="imposing_obligation">
+  <div class="event-head">
+    <h2>Imposing_obligation</h2>
+    <span>ObligationImposition</span>
+  </div>
+  <p class="sentence">The policy obligates the person to attend the interview.</p>
+  <div class="stats">
+    <span>trigger: obligates</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Imposing_obligation</td><td>ObligationImposition</td><td>0.98</td><td>n/a</td><td>0.98</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ObligationImposition&quot;,
+  &quot;frame&quot;: &quot;Imposing_obligation&quot;,
+  &quot;trigger&quot;: &quot;obligates&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 11,
+    &quot;end&quot;: 20
+  },
+  &quot;frameElements&quot;: {
+    &quot;Duty&quot;: {
+      &quot;text&quot;: &quot;obligates the person to attend the interview&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1494,
+    &quot;frameName&quot;: &quot;Imposing_obligation&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;obligates&quot;,
+      &quot;start&quot;: 11,
+      &quot;end&quot;: 20,
+      &quot;lexicalUnit&quot;: &quot;obligate.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Duty&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Imposing_obligation&quot;,
+        &quot;eventType&quot;: &quot;ObligationImposition&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 15,
+    &quot;sentence&quot;: &quot;The policy obligates the person to attend the interview.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="request">
+  <div class="event-head">
+    <h2>Request</h2>
+    <span>RequestEvent</span>
+  </div>
+  <p class="sentence">The claimant asks for reconsideration of the decision.</p>
+  <div class="stats">
+    <span>trigger: asks</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Request</td><td>RequestEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Deciding</td><td>DecisionEvent</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Resolve_problem</td><td>ProblemResolution</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;RequestEvent&quot;,
+  &quot;frame&quot;: &quot;Request&quot;,
+  &quot;trigger&quot;: &quot;asks&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 13,
+    &quot;end&quot;: 17
+  },
+  &quot;frameElements&quot;: {
+    &quot;Speaker&quot;: {
+      &quot;text&quot;: &quot;The claimant&quot;
+    },
+    &quot;Message&quot;: {
+      &quot;text&quot;: &quot;reconsideration of the decision&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 41,
+    &quot;frameName&quot;: &quot;Request&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;asks&quot;,
+      &quot;start&quot;: 13,
+      &quot;end&quot;: 17,
+      &quot;lexicalUnit&quot;: &quot;ask.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Speaker&quot;,
+        &quot;Message&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Request&quot;,
+        &quot;eventType&quot;: &quot;RequestEvent&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Deciding&quot;,
+        &quot;eventType&quot;: &quot;DecisionEvent&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      },
+      {
+        &quot;frame&quot;: &quot;Resolve_problem&quot;,
+        &quot;eventType&quot;: &quot;ProblemResolution&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      },
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.74,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.74
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 16,
+    &quot;sentence&quot;: &quot;The claimant asks for reconsideration of the decision.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="reporting">
+  <div class="event-head">
+    <h2>Reporting</h2>
+    <span>ReportingEvent</span>
+  </div>
+  <p class="sentence">The claimant reports availability for the week.</p>
+  <div class="stats">
+    <span>trigger: reports</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Reporting</td><td>ReportingEvent</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Claim_ownership</td><td>ClaimOwnership</td><td>0.74</td><td>n/a</td><td>0.74</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ReportingEvent&quot;,
+  &quot;frame&quot;: &quot;Reporting&quot;,
+  &quot;trigger&quot;: &quot;reports&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 13,
+    &quot;end&quot;: 20
+  },
+  &quot;frameElements&quot;: {
+    &quot;Informer&quot;: {
+      &quot;text&quot;: &quot;The claimant&quot;
+    },
+    &quot;Authorities&quot;: {
+      &quot;text&quot;: &quot;The claimant&quot;
+    },
+    &quot;Behavior&quot;: {
+      &quot;text&quot;: &quot;availability for the week&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 483,
+    &quot;frameName&quot;: &quot;Reporting&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;reports&quot;,
+      &quot;start&quot;: 13,
+      &quot;end&quot;: 20,
+      &quot;lexicalUnit&quot;: &quot;report.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Informer&quot;,
+        &quot;Authorities&quot;,
+        &quot;Behavior&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Reporting&quot;,
+        &quot;eventType&quot;: &quot;ReportingEvent&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Claim_ownership&quot;,
+        &quot;eventType&quot;: &quot;ClaimOwnership&quot;,
+        &quot;ruleScore&quot;: 0.74,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.74
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 17,
+    &quot;sentence&quot;: &quot;The claimant reports availability for the week.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="resolve_problem">
+  <div class="event-head">
+    <h2>Resolve_problem</h2>
+    <span>ProblemResolution</span>
+  </div>
+  <p class="sentence">The agent resolves the issue by correcting the file.</p>
+  <div class="stats">
+    <span>trigger: resolves</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Resolve_problem</td><td>ProblemResolution</td><td>0.98</td><td>n/a</td><td>0.98</td></tr><tr><td>Information</td><td>InformationEvent</td><td>0.92</td><td>n/a</td><td>0.92</td></tr><tr><td>Documents</td><td>DocumentReference</td><td>0.9</td><td>n/a</td><td>0.9</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ProblemResolution&quot;,
+  &quot;frame&quot;: &quot;Resolve_problem&quot;,
+  &quot;trigger&quot;: &quot;resolves&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 10,
+    &quot;end&quot;: 18
+  },
+  &quot;frameElements&quot;: {
+    &quot;Agent&quot;: {
+      &quot;text&quot;: &quot;The agent&quot;
+    },
+    &quot;Cause&quot;: {
+      &quot;text&quot;: &quot;issue by correcting the file&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 1523,
+    &quot;frameName&quot;: &quot;Resolve_problem&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;resolves&quot;,
+      &quot;start&quot;: 10,
+      &quot;end&quot;: 18,
+      &quot;lexicalUnit&quot;: &quot;resolve.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Agent&quot;,
+        &quot;Cause&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Resolve_problem&quot;,
+        &quot;eventType&quot;: &quot;ProblemResolution&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      },
+      {
+        &quot;frame&quot;: &quot;Information&quot;,
+        &quot;eventType&quot;: &quot;InformationEvent&quot;,
+        &quot;ruleScore&quot;: 0.92,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.92
+      },
+      {
+        &quot;frame&quot;: &quot;Documents&quot;,
+        &quot;eventType&quot;: &quot;DocumentReference&quot;,
+        &quot;ruleScore&quot;: 0.9,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.9
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 18,
+    &quot;sentence&quot;: &quot;The agent resolves the issue by correcting the file.&quot;
+  }
+}</pre></details>
+</section>
+
+
+<section class="event-card" data-frame="activity_finish">
+  <div class="event-head">
+    <h2>Activity_finish</h2>
+    <span>ActivityCompletion</span>
+  </div>
+  <p class="sentence">The agent finishes the review before the deadline.</p>
+  <div class="stats">
+    <span>trigger: finishes</span>
+    <span>status: hybrid_rule_bert</span>
+    <span>rule score: 0.98</span>
+    <span>BERT: unavailable_local_model_or_dependency</span>
+  </div>
+  <table>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <tbody><tr><td>Activity_finish</td><td>ActivityCompletion</td><td>0.98</td><td>n/a</td><td>0.98</td></tr></tbody>
+  </table>
+  <details><summary>JSON</summary><pre>{
+  &quot;eventType&quot;: &quot;ActivityCompletion&quot;,
+  &quot;frame&quot;: &quot;Activity_finish&quot;,
+  &quot;trigger&quot;: &quot;finishes&quot;,
+  &quot;triggerSpan&quot;: {
+    &quot;start&quot;: 10,
+    &quot;end&quot;: 18
+  },
+  &quot;frameElements&quot;: {
+    &quot;Agent&quot;: {
+      &quot;text&quot;: &quot;The agent&quot;
+    },
+    &quot;Activity&quot;: {
+      &quot;text&quot;: &quot;review before the deadline&quot;
+    }
+  },
+  &quot;frameNet&quot;: {
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true,
+    &quot;frameId&quot;: 165,
+    &quot;frameName&quot;: &quot;Activity_finish&quot;,
+    &quot;target&quot;: {
+      &quot;text&quot;: &quot;finishes&quot;,
+      &quot;start&quot;: 10,
+      &quot;end&quot;: 18,
+      &quot;lexicalUnit&quot;: &quot;finish.v&quot;
+    },
+    &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+    &quot;frameElementValidation&quot;: {
+      &quot;valid&quot;: [
+        &quot;Agent&quot;,
+        &quot;Activity&quot;
+      ],
+      &quot;invalid&quot;: []
+    }
+  },
+  &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+  &quot;ruleCondition&quot;: null,
+  &quot;penaltyCode&quot;: null,
+  &quot;polarity&quot;: &quot;positive&quot;,
+  &quot;modality&quot;: &quot;asserted&quot;,
+  &quot;hybridScoring&quot;: {
+    &quot;ruleScore&quot;: 0.98,
+    &quot;bertScore&quot;: null,
+    &quot;combinedScore&quot;: 0.98,
+    &quot;bert&quot;: {
+      &quot;available&quot;: false,
+      &quot;method&quot;: &quot;transformers_zero_shot&quot;,
+      &quot;model&quot;: &quot;facebook/bart-large-mnli&quot;,
+      &quot;status&quot;: &quot;unavailable_local_model_or_dependency&quot;
+    },
+    &quot;candidateFrames&quot;: [
+      {
+        &quot;frame&quot;: &quot;Activity_finish&quot;,
+        &quot;eventType&quot;: &quot;ActivityCompletion&quot;,
+        &quot;ruleScore&quot;: 0.98,
+        &quot;bertScore&quot;: null,
+        &quot;combinedScore&quot;: 0.98
+      }
+    ]
+  },
+  &quot;domainExtensions&quot;: {
+    &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_20&quot;
+  },
+  &quot;source&quot;: {
+    &quot;sentence_index&quot;: 19,
+    &quot;sentence&quot;: &quot;The agent finishes the review before the deadline.&quot;
+  }
+}</pre></details>
+</section>
+
+</main>
+<script>
+const filter=document.querySelector('#filter'),cards=[...document.querySelectorAll('.event-card')];
+filter.addEventListener('input',()=>{const q=filter.value.trim().toLowerCase();for(const card of cards)card.style.display=card.dataset.frame.includes(q)?'':'none'});
+</script>
+</body>
+</html>

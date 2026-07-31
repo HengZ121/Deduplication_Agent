@@ -15,6 +15,7 @@ from xml.etree import ElementTree
 
 from dependency_parser import dependency_parser
 from framenet_registry import FRAMENET_VERSION, registry
+from hybrid_frame_mapper import hybrid_frame_mapping
 
 
 SENTENCE_PATTERN = re.compile(r"(?<=[.!?])\s+(?=[A-Z])|\n+")
@@ -418,6 +419,10 @@ def map_text(text: str, source_name: str = "pasted-text") -> dict[str, Any]:
             continue
         trigger_matches = list(EVENT_PATTERN.finditer(sentence))
         if not trigger_matches:
+            hybrid_event = hybrid_frame_mapping(sentence, index)
+            if hybrid_event:
+                events.append(hybrid_event)
+                continue
             candidates = registry.candidate_frames(sentence)
             if candidates:
                 events.append(
