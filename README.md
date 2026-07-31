@@ -73,7 +73,20 @@ Supported upload formats are `.txt`, `.md`, `.json`, and `.docx`.
 
 ## Hybrid Frame Demo
 
-The repository also includes a prototype rule + optional BERT frame mapper for 20 employment/social-benefit frames selected from the candidate-frame statistics. The rule layer is always available; the BERT zero-shot scorer is opt-in and only runs when a local model is available and `HYBRID_FRAME_BERT=1` is set.
+The repository also includes a focused hybrid mapper for 10 representative employment/social-benefit frames, including `Rewards_and_punishments`, `Scrutiny`, `Being_employed`, `Have_as_requirement`, `Evidence`, `Submitting_documents`, `Assessing`, `Request`, `Receiving`, and `Activity_stop`.
+
+The rule layer provides deterministic candidate detection. A local BERT QA model (`deepset/bert-base-cased-squad2`) is then used in two explicit ways:
+
+1. BERT frame scorer: computes sentence/frame-description similarity for selected candidate frames.
+2. BERT QA element extraction: asks frame-specific questions and extracts source-text spans for configured frame elements.
+
+Download the local BERT model once before running the BERT-enhanced demo:
+
+```powershell
+py setup_bert_model.py
+```
+
+At runtime the mapper uses `local_files_only=True`, so the web app does not call the network during a demo. If the model is missing, the JSON reports BERT as unavailable and falls back to rule-based extraction.
 
 Generate the static demo:
 
@@ -87,7 +100,7 @@ Open:
 outputs/hybrid_frame_demo.html
 ```
 
-The static demo uses made-up examples, one per configured frame, so it is stable and does not require real-time model execution.
+The static demo uses real sentences sampled from `procedure.zip`, two per configured frame, so it is stable and does not require live dataset scanning during presentation.
 
 ## JSON Shape
 

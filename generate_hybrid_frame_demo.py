@@ -57,7 +57,7 @@ def render_event(event: dict[str, object]) -> str:
         f"<td>{html.escape(candidate['frame'])}</td>"
         f"<td>{html.escape(candidate['eventType'])}</td>"
         f"<td>{candidate['ruleScore']}</td>"
-        f"<td>{candidate['bertScore'] if candidate['bertScore'] is not None else 'n/a'}</td>"
+        f"<td>{candidate['bertFrameScore'] if candidate['bertFrameScore'] is not None else 'n/a'}</td>"
         f"<td>{candidate['combinedScore']}</td>"
         "</tr>"
         for candidate in candidates
@@ -73,10 +73,11 @@ def render_event(event: dict[str, object]) -> str:
     <span>trigger: {html.escape(str(event.get('trigger')))}</span>
     <span>status: {html.escape(str(event.get('mappingStatus')))}</span>
     <span>rule score: {scoring.get('ruleScore', 'n/a')}</span>
-    <span>BERT: {html.escape((scoring.get('bert') or {}).get('status', 'n/a'))}</span>
+    <span>BERT frame scorer: {html.escape((scoring.get('bertFrameScorer') or {}).get('status', 'n/a'))}</span>
+    <span>BERT QA elements: {html.escape((event.get('bertElementExtraction') or {}).get('status', 'n/a'))}</span>
   </div>
   <table>
-    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT</th><th>Combined</th></tr></thead>
+    <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
     <tbody>{candidate_rows}</tbody>
   </table>
   <details><summary>JSON</summary><pre>{html.escape(json.dumps(event, indent=2, ensure_ascii=False))}</pre></details>
@@ -114,7 +115,7 @@ pre{{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;pad
 <body>
 <main>
 <h1>Employment Benefits Frame Annotation Demo</h1>
-<p>Precomputed rule + local BERT examples sampled from procedure.zip, with inline trigger and frame-element highlights.</p>
+<p>Precomputed examples sampled from procedure.zip. Rules provide deterministic frame candidates, BERT scores the selected frames, and BERT QA extracts frame-element spans for annotation.</p>
 <details><summary>{len(FRAME_RULES)} configured frames</summary><ul class="frames">{frame_list}</ul></details>
 <div class="toolbar"><input id="filter" placeholder="Filter frames, e.g. Evidence, Request, Being_employed"></div>
 {cards}

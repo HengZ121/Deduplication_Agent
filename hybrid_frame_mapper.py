@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rule + optional transformer ranking for benefit/employment FrameNet frames."""
+"""Rule + local BERT frame scoring + local BERT QA extraction for procedure frames."""
 
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ class FrameRule:
     element_patterns: dict[str, re.Pattern[str]]
 
 
-FRAME_RULES: tuple[FrameRule, ...] = (
+ALL_FRAME_RULES: tuple[FrameRule, ...] = (
     FrameRule("Deciding", "DecisionEvent", "decision, adjudication, denial, approval, or determination", re.compile(r"\b(?:decid(?:e|es|ed|ing)|determin(?:e|es|ed|ing)|deny|approve|adjudicat(?:e|es|ed|ion)|decision)\b", re.I), re.compile(r"\b(?:decid(?:e|es|ed|ing)|determin(?:e|es|ed|ing)|deny|approve|adjudicat(?:e|es|ed|ion)|decision)\b", re.I), {"Cognizer": AGENT_PATTERN, "Decision": re.compile(r"\b(?:decision|request|claim|issue|entitlement|eligibility)\b", re.I)}),
     FrameRule("Coming_to_believe", "DiagnosticInference", "infer or determine a reason from evidence", re.compile(r"\b(?:infer|determine|conclude|find|based on|reason|evidence)\b", re.I), re.compile(r"\b(?:infer|determine|conclude|find|based on)\b", re.I), {"Cognizer": AGENT_PATTERN, "Evidence": DOCUMENT_PATTERN, "Content": re.compile(r"\b(?:reason|status|eligibility|insurability|issue)\b[^.;]*", re.I)}),
     FrameRule("Contingency", "ConditionalRule", "if/when/unless condition leading to an outcome", re.compile(r"\b(?:if|when|unless|depends on|where)\b", re.I), re.compile(r"\b(?:if|when|unless|depends on|where)\b", re.I), {"Determinant": CONDITION_PATTERN, "Outcome": re.compile(r"\b(?:then|must|can|may|will|is|are)\b[^.;]*", re.I)}),
@@ -62,6 +62,22 @@ FRAME_RULES: tuple[FrameRule, ...] = (
     FrameRule("Giving", "IssuanceOrPayment", "issue, grant, pay, provide, or give a benefit/payment/document", re.compile(r"\b(?:issue|issues|issued|grant|grants|granted|pay|pays|paid|provide|provides|provided|give|gives|given)\b", re.I), re.compile(r"\b(?:issue|issues|issued|grant|grants|granted|pay|pays|paid|provide|provides|provided|give|gives|given)\b", re.I), {"Donor": AGENT_PATTERN, "Recipient": CLIENT_PATTERN, "Theme": re.compile(r"\b(?:benefit|payment|notice|letter|document|code|information)\b[^.;]*", re.I)}),
     FrameRule("Activity_stop", "StopProcedureOrEntitlement", "stop, terminate, suspend, cancel, cease, or end a claim/activity/benefit", re.compile(r"\b(?:stop|stops|stopped|terminate|terminates|terminated|suspend|suspends|suspended|cancel|cancels|cancelled|cease|ceases|ceased|end|ends|ended)\b", re.I), re.compile(r"\b(?:stop|stops|stopped|terminate|terminates|terminated|suspend|suspends|suspended|cancel|cancels|cancelled|cease|ceases|ceased|end|ends|ended)\b", re.I), {"Agent": AGENT_PATTERN, "Activity": re.compile(r"\b(?:claim|benefit|payment|report|activity|process|entitlement|disentitlement)\b[^.;]*", re.I), "Time": re.compile(r"\b(?:on|until|before|after|effective)\b[^.;]*", re.I)}),
 )
+
+REPRESENTATIVE_FRAME_NAMES = (
+    "Rewards_and_punishments",
+    "Scrutiny",
+    "Being_employed",
+    "Have_as_requirement",
+    "Evidence",
+    "Submitting_documents",
+    "Assessing",
+    "Request",
+    "Receiving",
+    "Activity_stop",
+)
+_FRAME_RULE_BY_NAME = {rule.frame: rule for rule in ALL_FRAME_RULES}
+FRAME_RULES: tuple[FrameRule, ...] = tuple(_FRAME_RULE_BY_NAME[name] for name in REPRESENTATIVE_FRAME_NAMES)
+
 FRAME_PRIORITY = {
     "Deciding": 0.08,
     "Coming_to_believe": 0.12,
@@ -94,13 +110,120 @@ FRAME_PRIORITY = {
     "Activity_stop": 0.34,
 }
 
+BERT_MODEL_NAME = "deepset/bert-base-cased-squad2"
 
-def _matched_text(pattern: re.Pattern[str], sentence: str) -> str | None:
+FRAME_ELEMENT_QUESTIONS = {
+    "Rewards_and_punishments": {
+        "Agent": "Who imposes or handles the penalty, warning, benefit, or response?",
+        "Evaluee": "Who is affected by the penalty, warning, benefit, or response?",
+        "Response_action": "What penalty, warning, benefit, or response action is applied?",
+        "Reason": "Why is the penalty, warning, benefit, or response applied?",
+        "Time": "When is the penalty, warning, benefit, or response applied?",
+        "Place": "Where is the penalty, warning, benefit, or response applied?",
+        "Result": "What is the result of the penalty, warning, benefit, or response?",
+    },
+    "Scrutiny": {
+        "Cognizer": "Who reviews, checks, examines, or investigates?",
+        "Phenomenon": "What is being reviewed, checked, examined, or investigated?",
+        "Ground": "What evidence, record, issue, or information is used for the review?",
+        "Purpose": "Why is the review, check, examination, or investigation performed?",
+        "Time": "When does the review, check, examination, or investigation occur?",
+        "Medium": "What medium or system is used for the review?",
+    },
+    "Being_employed": {
+        "Employee": "Who is employed or has employment status?",
+        "Employer": "Who is the employer?",
+        "Position": "What position or role does the worker hold?",
+        "Task": "What work or task is performed?",
+        "Place_of_employment": "Where is the person employed?",
+        "Time": "When is the person employed?",
+        "Duration": "How long is the person employed?",
+        "Compensation": "What compensation, wages, or earnings are involved?",
+    },
+    "Have_as_requirement": {
+        "Dependent": "What claim, benefit, application, or process has a requirement?",
+        "Requirement": "What is required?",
+        "Required_entity": "What document, information, or condition is required?",
+        "Required_individual": "Who is required to act or provide something?",
+        "Condition": "Under what condition does the requirement apply?",
+        "Explanation": "Why does the requirement apply?",
+        "Time": "When must the requirement be satisfied?",
+    },
+    "Evidence": {
+        "Support": "What evidence, proof, document, or support is provided?",
+        "Proposition": "What fact, status, eligibility, or claim does the evidence support?",
+        "Cognizer": "Who evaluates or relies on the evidence?",
+        "Means": "How is the evidence provided or shown?",
+        "Result": "What result does the evidence support?",
+        "Domain_of_relevance": "What domain or issue is the evidence relevant to?",
+    },
+    "Submitting_documents": {
+        "Submittor": "Who submits, files, uploads, completes, or provides the document?",
+        "Authority": "Who receives the submitted document?",
+        "Documents": "What document, form, statement, report, record, file, or application is submitted?",
+        "Time": "When is the document submitted?",
+        "Place": "Where is the document submitted?",
+        "Purpose": "Why is the document submitted?",
+        "Beneficiary": "Who benefits from the document submission?",
+        "Explanation": "What explanation is given for the document submission?",
+    },
+    "Assessing": {
+        "Assessor": "Who assesses, calculates, evaluates, or measures?",
+        "Phenomenon": "What claim, benefit, amount, hours, earnings, or eligibility is assessed?",
+        "Feature": "What feature or aspect is assessed?",
+        "Value": "What value, result, amount, or conclusion is calculated?",
+        "Evidence": "What evidence is used in the assessment?",
+        "Standard": "What standard, policy, or decision is used for the assessment?",
+        "Method": "How is the assessment or calculation performed?",
+        "Time": "When does the assessment or calculation occur?",
+        "Purpose": "Why is the assessment or calculation performed?",
+    },
+    "Request": {
+        "Speaker": "Who makes the request?",
+        "Addressee": "Who receives the request?",
+        "Message": "What request, appeal, application, or reconsideration is made?",
+        "Topic": "What is the request about?",
+        "Medium": "How is the request submitted or communicated?",
+        "Beneficiary": "Who benefits from the request?",
+        "Time": "When is the request made or received?",
+    },
+    "Receiving": {
+        "Recipient": "Who receives or obtains something?",
+        "Donor": "Who gives or sends the received item?",
+        "Theme": "What is received or obtained?",
+        "Time": "When is it received or obtained?",
+        "Place": "Where is it received or obtained?",
+        "Means": "How is it received or obtained?",
+        "Mode_of_transfer": "What mode of transfer is used?",
+    },
+    "Activity_stop": {
+        "Agent": "Who stops, terminates, suspends, cancels, or ends the activity?",
+        "Activity": "What claim, benefit, payment, report, process, or activity stops or ends?",
+        "Time": "When does the activity stop or end?",
+        "Explanation": "Why does the activity stop or end?",
+        "Purpose": "Why is the activity stopped or ended?",
+        "Result": "What is the result of stopping or ending the activity?",
+        "Duration": "How long did the activity last?",
+        "Means": "How is the activity stopped or ended?",
+    },
+}
+
+
+def _matched_span(pattern: re.Pattern[str], sentence: str) -> tuple[str, int, int] | None:
     match = pattern.search(sentence)
     if not match:
         return None
-    value = next((group for group in match.groups() if group), match.group(0))
-    return value.strip(" ,")
+    if match.groups():
+        for index, group in enumerate(match.groups(), start=1):
+            if group:
+                start, end = match.span(index)
+                return group.strip(" ,"), start, end
+    return match.group(0).strip(" ,"), match.start(), match.end()
+
+
+def _matched_text(pattern: re.Pattern[str], sentence: str) -> str | None:
+    span = _matched_span(pattern, sentence)
+    return span[0] if span else None
 
 
 def _rule_score(rule: FrameRule, sentence: str) -> float:
@@ -126,44 +249,192 @@ def _cosine(left: Any, right: Any) -> float:
 
 
 @lru_cache(maxsize=1)
-def _local_cross_encoder() -> tuple[Any, Any, Any] | None:
-    """Load a cached local BERT cross-encoder; never downloads models."""
+def _local_bert_qa() -> tuple[Any, Any, Any] | None:
+    """Load the local BERT QA model used for frame scoring and element extraction."""
     os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
     try:
         import torch
-        from transformers import AutoModelForSequenceClassification, AutoTokenizer
+        from transformers import AutoModelForQuestionAnswering, AutoTokenizer
 
-        model_name = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-        tokenizer = AutoTokenizer.from_pretrained(model_name, local_files_only=True)
-        model = AutoModelForSequenceClassification.from_pretrained(model_name, local_files_only=True)
+        tokenizer = AutoTokenizer.from_pretrained(BERT_MODEL_NAME, local_files_only=True)
+        model = AutoModelForQuestionAnswering.from_pretrained(BERT_MODEL_NAME, local_files_only=True)
         model.eval()
         return tokenizer, model, torch
     except Exception:
         return None
 
 
-def _bert_scores(sentence: str, rules: tuple[FrameRule, ...]) -> tuple[dict[str, float], dict[str, Any]]:
-    cross_encoder = _local_cross_encoder()
-    if cross_encoder is None:
+def _mean_pool_embeddings(model: Any, tokenizer: Any, torch: Any, texts: list[str]) -> Any:
+    encoded = tokenizer(texts, padding=True, truncation=True, max_length=192, return_tensors="pt")
+    with torch.no_grad():
+        outputs = model.bert(
+            input_ids=encoded["input_ids"],
+            attention_mask=encoded["attention_mask"],
+            token_type_ids=encoded.get("token_type_ids"),
+        )
+    hidden = outputs.last_hidden_state
+    mask = encoded["attention_mask"].unsqueeze(-1).expand(hidden.size()).float()
+    return (hidden * mask).sum(dim=1) / mask.sum(dim=1).clamp(min=1e-9)
+
+
+def _bert_frame_scores(sentence: str, rules: tuple[FrameRule, ...]) -> tuple[dict[str, float], dict[str, Any]]:
+    bert = _local_bert_qa()
+    if bert is None:
         return {}, {
             "available": False,
-            "method": "bert_cross_encoder",
-            "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+            "method": "bert_embedding_frame_scorer",
+            "model": BERT_MODEL_NAME,
             "status": "unavailable_local_model_or_dependency",
         }
-    tokenizer, model, torch = cross_encoder
-    pairs = [(sentence, rule.description) for rule in rules]
-    encoded = tokenizer(pairs, padding=True, truncation=True, return_tensors="pt")
-    with torch.no_grad():
-        logits = model(**encoded).logits.reshape(-1)
-        values = torch.sigmoid(logits).tolist()
+    tokenizer, model, torch = bert
+    texts = [sentence] + [f"{rule.frame}: {rule.description}" for rule in rules]
+    embeddings = _mean_pool_embeddings(model, tokenizer, torch, texts)
+    similarities = torch.nn.functional.cosine_similarity(embeddings[0].unsqueeze(0), embeddings[1:])
+    values = ((similarities + 1.0) / 2.0).tolist()
     scores = {rule.frame: float(value) for rule, value in zip(rules, values)}
     return scores, {
         "available": True,
-        "method": "bert_cross_encoder",
-        "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+        "method": "bert_embedding_frame_scorer",
+        "model": BERT_MODEL_NAME,
         "status": "scored",
     }
+
+
+def _bert_qa_answer(sentence: str, question: str) -> dict[str, Any] | None:
+    bert = _local_bert_qa()
+    if bert is None:
+        return None
+    tokenizer, model, torch = bert
+    encoded = tokenizer(
+        question,
+        sentence,
+        truncation="only_second",
+        max_length=384,
+        return_offsets_mapping=True,
+        return_tensors="pt",
+    )
+    offsets = encoded.pop("offset_mapping")[0]
+    sequence_ids = encoded.sequence_ids(0)
+    with torch.no_grad():
+        output = model(**encoded)
+    start_logits = output.start_logits[0].clone()
+    end_logits = output.end_logits[0].clone()
+    for index, sequence_id in enumerate(sequence_ids):
+        if sequence_id != 1:
+            start_logits[index] = -1e9
+            end_logits[index] = -1e9
+    start_probs = torch.softmax(start_logits, dim=0)
+    end_probs = torch.softmax(end_logits, dim=0)
+    best: tuple[float, int, int, str] | None = None
+    for start_index in torch.topk(start_probs, min(8, len(start_probs))).indices.tolist():
+        for end_index in torch.topk(end_probs, min(8, len(end_probs))).indices.tolist():
+            if end_index < start_index or end_index - start_index > 28:
+                continue
+            start, _ = offsets[start_index].tolist()
+            _, end = offsets[end_index].tolist()
+            if end <= start:
+                continue
+            text = sentence[start:end].strip(" ,")
+            if len(text) < 2 or len(text) > 180:
+                continue
+            score = float(start_probs[start_index] * end_probs[end_index])
+            if best is None or score > best[0]:
+                best = (score, start, end, text)
+    if best is None or best[0] < 0.015:
+        return None
+    score, start, end, text = best
+    return {"text": text, "span": {"start": start, "end": end}, "confidence": round(score, 4)}
+
+
+def _plausible_element_answer(name: str, text: str) -> bool:
+    normalized = text.strip()
+    if not normalized:
+        return False
+    lowered = normalized.lower()
+    validators = {
+        "Time": r"\b(?:when|week|weeks|day|date|period|before|after|during|until|effective|received|completed|starts?|ends?|january|february|march|april|may|june|july|august|september|october|november|december|\d{4})\b",
+        "Place": r"\b(?:in|at|on|from|to|office|centre|center|region|fts|pscd|cra|mail|portal|site)\b",
+        "Place_of_employment": r"\b(?:employer|company|business|workplace|office|site|region|province|territory)\b",
+        "Documents": r"\b(?:document|form|statement|report|record|application|roe|certificate|letter|notification|file)\b",
+        "Support": r"\b(?:evidence|proof|document|form|statement|report|record|certificate|letter|support)\b",
+        "Evidence": r"\b(?:evidence|proof|document|form|statement|report|record|certificate|letter|support|ruling|decision)\b",
+        "Medium": r"\b(?:email|mail|letter|form|application|portal|system|phone|writing|document|report)\b",
+        "Means": r"\b(?:by|through|with|using|email|mail|form|application|system|phone|writing|document|report)\b",
+    }
+    person_like = {
+        "Agent",
+        "Cognizer",
+        "Assessor",
+        "Speaker",
+        "Addressee",
+        "Recipient",
+        "Donor",
+        "Submittor",
+        "Authority",
+        "Employee",
+        "Employer",
+        "Evaluee",
+        "Judge",
+        "Required_individual",
+        "Beneficiary",
+    }
+    if name in person_like:
+        return bool(
+            re.search(
+                r"\b(?:client|claimant|agent|officer|employer|employee|worker|system|commission|representative|requester|person|service canada|cra|level\s+\d|social services worker|pscd)\b",
+                lowered,
+            )
+        )
+    if name in validators:
+        return bool(re.search(validators[name], lowered, re.I))
+    return True
+
+
+def _configured_element_names(rule: FrameRule) -> tuple[str, ...]:
+    names = list(FRAME_ELEMENT_QUESTIONS.get(rule.frame, {}))
+    for name in rule.element_patterns:
+        if name not in names:
+            names.append(name)
+    return tuple(names)
+
+
+def _extract_frame_elements(rule: FrameRule, sentence: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    elements: dict[str, Any] = {}
+    for name in _configured_element_names(rule):
+        pattern = rule.element_patterns.get(name)
+        if pattern and (span := _matched_span(pattern, sentence)):
+            text, start, end = span
+            elements[name] = {
+                "text": text,
+                "span": {"start": start, "end": end},
+                "implicit": False,
+                "method": "rule",
+            }
+
+    qa_info = {
+        "available": _local_bert_qa() is not None,
+        "method": "bert_qa_span_extraction",
+        "model": BERT_MODEL_NAME,
+        "status": "scored" if _local_bert_qa() is not None else "unavailable_local_model_or_dependency",
+    }
+    if qa_info["available"]:
+        for name, question in FRAME_ELEMENT_QUESTIONS.get(rule.frame, {}).items():
+            if elements.get(name, {}).get("text"):
+                continue
+            answer = _bert_qa_answer(sentence, question)
+            if answer and _plausible_element_answer(name, answer["text"]):
+                elements[name] = {
+                    "text": answer["text"],
+                    "span": answer["span"],
+                    "implicit": False,
+                    "method": "bert_qa",
+                    "confidence": answer["confidence"],
+                    "question": question,
+                }
+
+    for name in _configured_element_names(rule):
+        elements.setdefault(name, {"text": None, "implicit": True, "method": "not_found"})
+    return elements, qa_info
 
 
 def _ranking_key(item: tuple[float, float, float | None, FrameRule]) -> tuple[float, float, float]:
@@ -179,7 +450,7 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
     if not matched_rules:
         return None
 
-    bert_scores, bert_info = _bert_scores(sentence, matched_rules) if use_bert else ({}, {"available": False, "status": "disabled"})
+    bert_scores, bert_info = _bert_frame_scores(sentence, matched_rules) if use_bert else ({}, {"available": False, "status": "disabled"})
     ranked = []
     for rule in matched_rules:
         rule_score = rule_scores[rule.frame]
@@ -192,11 +463,7 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
         reverse=True,
     )[0]
     trigger = rule.trigger.search(sentence)
-    elements = {
-        name: {"text": text}
-        for name, pattern in rule.element_patterns.items()
-        if (text := _matched_text(pattern, sentence))
-    }
+    elements, element_extraction = _extract_frame_elements(rule, sentence)
     summary = registry.frame_summary(rule.frame)
     return {
         "eventType": rule.event_type,
@@ -220,15 +487,15 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
         "modality": "required" if re.search(r"\b(?:must|shall|required)\b", sentence, re.I) else "asserted",
         "hybridScoring": {
             "ruleScore": round(rule_score, 4),
-            "bertScore": round(bert_score, 4) if bert_score is not None else None,
+            "bertFrameScore": round(bert_score, 4) if bert_score is not None else None,
             "combinedScore": round(combined, 4),
-            "bert": bert_info,
+            "bertFrameScorer": bert_info,
             "candidateFrames": [
                 {
                     "frame": item_rule.frame,
                     "eventType": item_rule.event_type,
                     "ruleScore": round(item_rule_score, 4),
-                    "bertScore": round(item_bert_score, 4) if item_bert_score is not None else None,
+                    "bertFrameScore": round(item_bert_score, 4) if item_bert_score is not None else None,
                     "combinedScore": round(item_combined, 4),
                 }
                 for item_combined, item_rule_score, item_bert_score, item_rule in sorted(
@@ -238,73 +505,34 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
                 )[:5]
             ],
         },
+        "bertElementExtraction": element_extraction,
         "domainExtensions": {"hybridFrameSet": f"employment_social_benefits_{len(FRAME_RULES)}"},
         "source": {"sentence_index": sentence_index, "sentence": sentence},
     }
 
 
 def demo_sentences() -> str:
-    """Real procedure.zip examples used for the static annotation demo."""
+    """Real procedure.zip examples used for the 10-frame static annotation demo."""
     return "\n".join(
         [
-            "Are there any SROCs, records of decision (RODs) or other documents related to the ASMT Best weeks WI?",
-            "The arrival or placement week (APW) is determined by the parent’s relationship to the child.",
-            "To determine whether a client has proven availability and to facilitate adjudication and fact-finding, the Level 2 officer answers the following questions:",
-            "In this situation, the Level 1 officer initiates fact-finding with the client to determine which procedure to choose.",
-            "The agent does not accept requests to reissue an access code from a third party, unless it is from the designated representative.",
-            "A subsequent claim is deemed to have been filed in a timely manner when:",
-            "The Cheque Redemption Control Directorate’s Imaging site is the database used to store and view imaged documents.",
-            "Is there any referred training information from the client, the province or territory, or another designated authority?",
-            "They cannot just choose to have someone else take care of their claim.",
-            "Once a claim is finalized, the system links Parental Client Records for all clients who are sharing parental benefits for the same child.",
-            "Once determined, the dual payment amount is recouped from the client’s weekly net payable EI benefits and reimbursed to the social services agency.",
-            "For active claims, AOB information is accessible through the Assignment of Benefits link on the Summary tab in FTS.",
-            "For additional information, refer to Appointment of representative — Limited physical or mental capacity .",
-            "For more details on shareholders of a corporation, refer to Insurability Policy — Shareholders who are Employees of the Corporation .",
-            "The tax credit code represents the client’s personal tax situation according to the following list:",
-            "EI benefits arising from employment that are tax exempt according to CRA are also exempt from taxation.",
-            "In the case of a representative, ensure that there is no electronic document indicating that the client has recovered and no longer requires the services of the representative.",
-            "In these cases, the INS3280 form is not required, and a copy of the court order is sufficient.",
-            "A situation that leads officers to question clients’ availability for regular benefits should also lead officers to question clients’ ability to prove that they are otherwise available for sickness benefits.",
-            "The client is providing care or support to the patient identified on the medical certificate.",
-            "This BRAC recoupment transaction is identified as document type RW - Recoupments/Withhold with 9552 in the Entry office .",
-            "The COR WI displays the name of the rejected letter and identifies what caused the rejection.",
-            "The officer refers to the CRA all other enquiries about insurability, whether from an employee, an employer or their representative.",
-            "To decide between the two, the CRA looks at the relationship between the worker and the payer.",
-            "The Canada Revenue Agency (CRA) previously ruled that similar employment with the same employer was not insurable.",
-            "The client reports being hired as a contractor or a sub-contractor, but the client believes he or she was an employee in insurable employment.",
-            "Clients who want another person to represent them on their claim must complete the Representative: INS3280 Appointment — Form .",
-            "If a client no longer needs to be represented, the representative and client must submit notification in writing to have the representative removed and allow the client to manage the claim.",
-            "Generally, a dual payment amount that has been reimbursed to social services cannot be retroactively modified.",
-            "The system generates an MPS payment transaction (T072) using a 3-digit code as a week code.",
-            "For more information, the agent refers to Determining if an issue must be referred to Integrity for more information.",
-            "A detailed security check must be conducted with the client before providing information or issuing an access code.",
-            "Legislation allows requesters to present a request for reconsideration of one or more Commission’s decisions.",
-            "What personal information did the client indicate in the Personal Information section of the application?",
-            "If clients do not complete their claimant’s reports on time, the claimant’s reports are considered late and are screened out.",
-            "The SM30 program then produces quality control reports from the information compiled.",
-            "The reconsideration process is not for resolving complaints or misunderstandings.",
-            "For more information, the processing officer refers to Reconsideration: CCB claims — Instructions .",
-            "When clients lose or forget their access code, they are unable to access TIS or complete electronic claimant’s reports.",
-            "When a ruling is required, the Level 1 officer completes the ruling request and sends it along with supporting documentation to the general delivery email box in the officer’s region.",
             "If fraudulent activity is suspected on an EI or EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code.",
             "Any WIs related to an EI Emergency Response Benefit (EI ERB) claim are processed by a specialized team.",
             "After completing the detailed security check, the agent issues the original access code and sends it by mail.",
             "When a regular ROE is received with a reason for separation (RFS) K - Other or G - Mandatory retirement , or a fishing ROE is received with a RFS B - Other , an Adjudication Issue (ADJ) RFS Review WI is created.",
+            "The Canada Revenue Agency (CRA) previously ruled that similar employment with the same employer was not insurable.",
+            "The client reports being hired as a contractor or a sub-contractor, but the client believes he or she was an employee in insurable employment.",
+            "In the case of a representative, ensure that there is no electronic document indicating that the client has recovered and no longer requires the services of the representative.",
+            "In these cases, the INS3280 form is not required, and a copy of the court order is sufficient.",
+            "A situation that leads officers to question clients’ availability for regular benefits should also lead officers to question clients’ ability to prove that they are otherwise available for sickness benefits.",
+            "The client is providing care or support to the patient identified on the medical certificate.",
+            "Clients who want another person to represent them on their claim must complete the Representative: INS3280 Appointment — Form .",
+            "Once the claim is established and it is determined that regular benefits are payable, regular benefits are payable for each week the client submits a claimant’s report and:",
             "When an insurability ruling is received, the Level 1 officer calculates the claim in accordance with the CRA’s decision, referring to Processing a completed insurability ruling .",
             "When the insurability of an employment is in doubt or when an Assessment Issue (ASMT) Insurability WI is created, the officer determines if an insurability ruling is required.",
-            "March 24, 2021 — This procedure has been updated to include fraudulent EI claims ( more information ).",
-            "Jurisprudence has held that good cause is simply doing what a reasonable person would do to satisfy themselves as to their rights and obligations under the EIA.",
-            "The system cannot create a link between the ROE and the matching period of employment reported on the initial EI application.",
-            "Pilot project no. 24 applies to separation monies paid due to a separation from employment on claims with a BPC or an allocation start date between March 30, 2025 and October 10, 2026.",
+            "Legislation allows requesters to present a request for reconsideration of one or more Commission’s decisions.",
+            "What personal information did the client indicate in the Personal Information section of the application?",
             "The client was receiving, or waiting to receive, payment from an employer or from another insurer or payer, including incapacity payments and severance or termination payments.",
             "Once the payment is received by PSCD, the transaction is applied to the client’s overpayment account.",
-            "The Non-complex officer encrypts the email and attachments and sends them to the CRA rulings office.",
-            "Once the transaction is approved from the BR05 screen, the system generates an OP transaction and sends it to PSCD.",
-            "The dual payment amount is recouped at 100% of the weekly net payable EI benefits , unless there is a minimum living allowance in effect.",
-            "Is the client’s willingness to work subject to restrictions (expectations which greatly reduce chances of obtaining employment)?",
-            "To ensure the confidentiality of information relating to a claim for benefits, the system issues an access code.",
-            "However, it is possible for a Service Canada agent to replace the original access code or issue a temporary one.",
             "The simplification measure for relaxed requirements ends September 25, 2021.",
             "On the form, the social services worker indicates the start and end weeks of the AOB period as well as the amount the client receives from social services in each week.",
         ]
