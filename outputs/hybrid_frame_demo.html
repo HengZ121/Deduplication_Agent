@@ -49,7 +49,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Rewards_and_punishments</td><td>SanctionOrBenefitResponse</td><td>1.0</td><td>0.9567</td><td>0.9957</td></tr></tbody>
+    <tbody><tr><td>Rewards_and_punishments</td><td>SanctionOrBenefitResponse</td><td>1.0</td><td>0.9691</td><td>0.9969</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
@@ -87,27 +87,23 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;rule&quot;
     },
-    &quot;Evaluee&quot;: {
-      &quot;text&quot;: &quot;the agent does not issue the access code.&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 94,
-        &quot;end&quot;: 135
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0561,
-      &quot;question&quot;: &quot;Who is affected by the penalty, warning, benefit, or response?&quot;
-    },
     &quot;Result&quot;: {
-      &quot;text&quot;: &quot;the agent does not issue the access code&quot;,
+      &quot;text&quot;: &quot;EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 94,
+        &quot;start&quot;: 48,
         &quot;end&quot;: 134
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1504,
-      &quot;question&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;
+      &quot;confidence&quot;: 0.0158,
+      &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Result means: Result of the reward or punishment. What is the result of the penalty, warning, benefit, or response?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Result of the reward or punishment.&quot;
+    },
+    &quot;Evaluee&quot;: {
+      &quot;text&quot;: null,
+      &quot;implicit&quot;: true,
+      &quot;method&quot;: &quot;not_found&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: null,
@@ -132,8 +128,8 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
         &quot;Agent&quot;,
         &quot;Response_action&quot;,
         &quot;Reason&quot;,
-        &quot;Evaluee&quot;,
         &quot;Result&quot;,
+        &quot;Evaluee&quot;,
         &quot;Time&quot;,
         &quot;Place&quot;
       ],
@@ -147,21 +143,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9567,
-    &quot;combinedScore&quot;: 0.9957,
+    &quot;bertFrameScore&quot;: 0.9691,
+    &quot;combinedScore&quot;: 0.9969,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
         &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9567,
-        &quot;combinedScore&quot;: 0.9957
+        &quot;bertFrameScore&quot;: 0.9691,
+        &quot;combinedScore&quot;: 0.9969
       }
     ]
   },
@@ -169,7 +172,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -197,7 +204,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Rewards_and_punishments</td><td>SanctionOrBenefitResponse</td><td>1.0</td><td>0.9576</td><td>0.9958</td></tr></tbody>
+    <tbody><tr><td>Rewards_and_punishments</td><td>SanctionOrBenefitResponse</td><td>1.0</td><td>0.9715</td><td>0.9972</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
@@ -225,8 +232,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2011,
-      &quot;question&quot;: &quot;Why is the penalty, warning, benefit, or response applied?&quot;
+      &quot;confidence&quot;: 0.0264,
+      &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Reason means: Typically, there is a constituent expressing the Reason for the Agent&#x27;s judgment. It is usually a &#x27;for&#x27;-PP, e.g. &#x27;I punished him for his impudence.&#x27; Why is the penalty, warning, benefit, or response applied?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the penalty, warning, benefit, or response applied?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Typically, there is a constituent expressing the Reason for the Agent&#x27;s judgment. It is usually a &#x27;for&#x27;-PP, e.g. &#x27;I punished him for his impudence.&#x27;&quot;
     },
     &quot;Result&quot;: {
       &quot;text&quot;: &quot;EI Emergency Response&quot;,
@@ -236,8 +245,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1128,
-      &quot;question&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;
+      &quot;confidence&quot;: 0.0413,
+      &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Result means: Result of the reward or punishment. What is the result of the penalty, warning, benefit, or response?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Result of the reward or punishment.&quot;
     },
     &quot;Agent&quot;: {
       &quot;text&quot;: null,
@@ -287,21 +298,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9576,
-    &quot;combinedScore&quot;: 0.9958,
+    &quot;bertFrameScore&quot;: 0.9715,
+    &quot;combinedScore&quot;: 0.9972,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
         &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9576,
-        &quot;combinedScore&quot;: 0.9958
+        &quot;bertFrameScore&quot;: 0.9715,
+        &quot;combinedScore&quot;: 0.9972
       }
     ]
   },
@@ -309,7 +327,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -327,7 +349,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Scrutiny</h2>
     <span>ReviewOrInvestigation</span>
   </div>
-  <p class="sentence"><mark class='element' title='Time'>After completing the detailed security check<small>Time</small></mark>, <mark class='element' title='Cognizer'>the agent<small>Cognizer</small></mark> issues the <mark class='element' title='Ground'>original access code<small>Ground</small></mark> and sends it by <mark class='element' title='Medium'>mail<small>Medium</small></mark>.</p>
+  <p class="sentence"><mark class='element' title='Time'>After completing the detailed security check, the agent issues the original access code and sends it by mail<small>Time</small></mark>.</p>
   <div class="stats">
     <span>trigger: check</span>
     <span>status: hybrid_rule_bert</span>
@@ -337,7 +359,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Scrutiny</td><td>ReviewOrInvestigation</td><td>1.0</td><td>0.9728</td><td>0.9973</td></tr></tbody>
+    <tbody><tr><td>Scrutiny</td><td>ReviewOrInvestigation</td><td>1.0</td><td>0.9766</td><td>0.9977</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ReviewOrInvestigation&quot;,
@@ -358,15 +380,17 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Phenomenon&quot;: {
-      &quot;text&quot;: &quot;security&quot;,
+      &quot;text&quot;: &quot;security check, the agent issues the original access code and sends it by mail&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 30,
-        &quot;end&quot;: 38
+        &quot;end&quot;: 108
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.517,
-      &quot;question&quot;: &quot;What is being reviewed, checked, examined, or investigated?&quot;
+      &quot;confidence&quot;: 0.056,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Phenomenon means: Phenomenon identifies the property that belongs to an entity or that the entity contains. Typically, it is expressed as a for-PP. &#x27;Leslie examined the glass for cracks.&#x27; &#x27;Kim searched the woods for mushrooms.&#x27; What is being reviewed, checked, examined, or investigated?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is being reviewed, checked, examined, or investigated?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Phenomenon identifies the property that belongs to an entity or that the entity contains. Typically, it is expressed as a for-PP. &#x27;Leslie examined the glass for cracks.&#x27; &#x27;Kim searched the woods for mushrooms.&#x27;&quot;
     },
     &quot;Ground&quot;: {
       &quot;text&quot;: &quot;original access code&quot;,
@@ -376,21 +400,12 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0888,
-      &quot;question&quot;: &quot;What evidence, record, issue, or information is used for the review?&quot;
+      &quot;confidence&quot;: 0.0504,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Ground means: The Cognizer pays attention to the Ground, so named because it serves as the background or context for the Phenomenon. This FE can be expressed as an NP Object or as a PP Complement. &#x27;Leslie examined the glass for cracks.&#x27; &#x27;Kim searched… What evidence, record, issue, or information is used for the review?&quot;,
+      &quot;baseQuestion&quot;: &quot;What evidence, record, issue, or information is used for the review?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Cognizer pays attention to the Ground, so named because it serves as the background or context for the Phenomenon. This FE can be expressed as an NP Object or as a PP Complement. &#x27;Leslie examined the glass for cracks.&#x27; &#x27;Kim searched…&quot;
     },
     &quot;Purpose&quot;: {
-      &quot;text&quot;: &quot;detailed security check&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 21,
-        &quot;end&quot;: 44
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0775,
-      &quot;question&quot;: &quot;Why is the review, check, examination, or investigation performed?&quot;
-    },
-    &quot;Time&quot;: {
       &quot;text&quot;: &quot;After completing the detailed security check&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 0,
@@ -398,8 +413,23 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0988,
-      &quot;question&quot;: &quot;When does the review, check, examination, or investigation occur?&quot;
+      &quot;confidence&quot;: 0.0663,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Purpose means: Some of the words in this frame occur with a constituent that expresses the desired outcome of the Scrutiny. Normally this constituent is a PP Complement headed by for or a to-marked VP Complement. &#x27;You should inspect your mail to… Why is the review, check, examination, or investigation performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the review, check, examination, or investigation performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Some of the words in this frame occur with a constituent that expresses the desired outcome of the Scrutiny. Normally this constituent is a PP Complement headed by for or a to-marked VP Complement. &#x27;You should inspect your mail to…&quot;
+    },
+    &quot;Time&quot;: {
+      &quot;text&quot;: &quot;After completing the detailed security check, the agent issues the original access code and sends it by mail&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 0,
+        &quot;end&quot;: 108
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.1133,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Time means: The Time when the Cognizer is scrutinizing the Ground. When does the review, check, examination, or investigation occur?&quot;,
+      &quot;baseQuestion&quot;: &quot;When does the review, check, examination, or investigation occur?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Time when the Cognizer is scrutinizing the Ground.&quot;
     },
     &quot;Medium&quot;: {
       &quot;text&quot;: &quot;mail&quot;,
@@ -409,8 +439,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.7598,
-      &quot;question&quot;: &quot;What medium or system is used for the review?&quot;
+      &quot;confidence&quot;: 0.6572,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Medium means: The Medium is the piece of text or work in which the Cognizer pays attention to an entity in order to discover something about it. The FE is normally expressed as an External Argument: &#x27;Chapter four examined the case for free speech.&#x27; What medium or system is used for the review?&quot;,
+      &quot;baseQuestion&quot;: &quot;What medium or system is used for the review?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Medium is the piece of text or work in which the Cognizer pays attention to an entity in order to discover something about it. The FE is normally expressed as an External Argument: &#x27;Chapter four examined the case for free speech.&#x27;&quot;
     }
   },
   &quot;frameNet&quot;: {
@@ -444,21 +476,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9728,
-    &quot;combinedScore&quot;: 0.9973,
+    &quot;bertFrameScore&quot;: 0.9766,
+    &quot;combinedScore&quot;: 0.9977,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Scrutiny&quot;,
         &quot;eventType&quot;: &quot;ReviewOrInvestigation&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9728,
-        &quot;combinedScore&quot;: 0.9973
+        &quot;bertFrameScore&quot;: 0.9766,
+        &quot;combinedScore&quot;: 0.9977
       }
     ]
   },
@@ -466,7 +505,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -494,7 +537,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Scrutiny</td><td>ReviewOrInvestigation</td><td>1.0</td><td>0.9687</td><td>0.9969</td></tr><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9637</td><td>0.9964</td></tr></tbody>
+    <tbody><tr><td>Scrutiny</td><td>ReviewOrInvestigation</td><td>1.0</td><td>0.9869</td><td>0.9987</td></tr><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9876</td><td>0.9988</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ReviewOrInvestigation&quot;,
@@ -515,15 +558,17 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Phenomenon&quot;: {
-      &quot;text&quot;: &quot;ROE&quot;,
+      &quot;text&quot;: &quot;separation&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 15,
-        &quot;end&quot;: 18
+        &quot;start&quot;: 49,
+        &quot;end&quot;: 59
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1202,
-      &quot;question&quot;: &quot;What is being reviewed, checked, examined, or investigated?&quot;
+      &quot;confidence&quot;: 0.026,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Phenomenon means: Phenomenon identifies the property that belongs to an entity or that the entity contains. Typically, it is expressed as a for-PP. &#x27;Leslie examined the glass for cracks.&#x27; &#x27;Kim searched the woods for mushrooms.&#x27; What is being reviewed, checked, examined, or investigated?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is being reviewed, checked, examined, or investigated?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Phenomenon identifies the property that belongs to an entity or that the entity contains. Typically, it is expressed as a for-PP. &#x27;Leslie examined the glass for cracks.&#x27; &#x27;Kim searched the woods for mushrooms.&#x27;&quot;
     },
     &quot;Purpose&quot;: {
       &quot;text&quot;: &quot;separation&quot;,
@@ -533,8 +578,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3623,
-      &quot;question&quot;: &quot;Why is the review, check, examination, or investigation performed?&quot;
+      &quot;confidence&quot;: 0.2869,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Purpose means: Some of the words in this frame occur with a constituent that expresses the desired outcome of the Scrutiny. Normally this constituent is a PP Complement headed by for or a to-marked VP Complement. &#x27;You should inspect your mail to… Why is the review, check, examination, or investigation performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the review, check, examination, or investigation performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Some of the words in this frame occur with a constituent that expresses the desired outcome of the Scrutiny. Normally this constituent is a PP Complement headed by for or a to-marked VP Complement. &#x27;You should inspect your mail to…&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: &quot;When a regular ROE is received with a reason for separation&quot;,
@@ -544,8 +591,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0465,
-      &quot;question&quot;: &quot;When does the review, check, examination, or investigation occur?&quot;
+      &quot;confidence&quot;: 0.0498,
+      &quot;question&quot;: &quot;In the FrameNet frame Scrutiny, the element Time means: The Time when the Cognizer is scrutinizing the Ground. When does the review, check, examination, or investigation occur?&quot;,
+      &quot;baseQuestion&quot;: &quot;When does the review, check, examination, or investigation occur?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Time when the Cognizer is scrutinizing the Ground.&quot;
     },
     &quot;Cognizer&quot;: {
       &quot;text&quot;: null,
@@ -584,28 +633,35 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9687,
-    &quot;combinedScore&quot;: 0.9969,
+    &quot;bertFrameScore&quot;: 0.9869,
+    &quot;combinedScore&quot;: 0.9987,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Scrutiny&quot;,
         &quot;eventType&quot;: &quot;ReviewOrInvestigation&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9687,
-        &quot;combinedScore&quot;: 0.9969
+        &quot;bertFrameScore&quot;: 0.9869,
+        &quot;combinedScore&quot;: 0.9987
       },
       {
         &quot;frame&quot;: &quot;Receiving&quot;,
         &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9637,
-        &quot;combinedScore&quot;: 0.9964
+        &quot;bertFrameScore&quot;: 0.9876,
+        &quot;combinedScore&quot;: 0.9988
       }
     ]
   },
@@ -613,7 +669,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -631,7 +691,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Being_employed</h2>
     <span>EmploymentStatus</span>
   </div>
-  <p class="sentence">The Canada Revenue Agency (CRA) previously ruled that <mark class='element' title='Compensation'>similar employment<small>Compensation</small></mark> with <mark class='element' title='Position'>the same employer<small>Position</small></mark> was <mark class='element' title='Duration'>not insurable<small>Duration</small></mark>.</p>
+  <p class="sentence">The Canada Revenue Agency (CRA) previously ruled that <mark class='element' title='Task'>similar employment with the same employer was not insurable<small>Task</small></mark>.</p>
   <div class="stats">
     <span>trigger: employment</span>
     <span>status: hybrid_rule_bert</span>
@@ -641,7 +701,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>1.0</td><td>0.9544</td><td>0.9954</td></tr></tbody>
+    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>1.0</td><td>0.9663</td><td>0.9966</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
@@ -678,19 +738,23 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.7073,
-      &quot;question&quot;: &quot;What position or role does the worker hold?&quot;
+      &quot;confidence&quot;: 0.1729,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Position means: The label given to a particular type of employment. &#x27;Louise works as an engineer.&#x27; What position or role does the worker hold?&quot;,
+      &quot;baseQuestion&quot;: &quot;What position or role does the worker hold?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The label given to a particular type of employment. &#x27;Louise works as an engineer.&#x27;&quot;
     },
     &quot;Task&quot;: {
-      &quot;text&quot;: &quot;employment with the same employer&quot;,
+      &quot;text&quot;: &quot;similar employment with the same employer was not insurable&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 62,
-        &quot;end&quot;: 95
+        &quot;start&quot;: 54,
+        &quot;end&quot;: 113
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2632,
-      &quot;question&quot;: &quot;What work or task is performed?&quot;
+      &quot;confidence&quot;: 0.0672,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Task means: The Employee is obligated to perform the Task to recieve Compensation from the Employer . &#x27;My dad works building houses.&#x27; What work or task is performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;What work or task is performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Employee is obligated to perform the Task to recieve Compensation from the Employer . &#x27;My dad works building houses.&#x27;&quot;
     },
     &quot;Place_of_employment&quot;: {
       &quot;text&quot;: &quot;the same employer&quot;,
@@ -700,8 +764,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.8485,
-      &quot;question&quot;: &quot;Where is the person employed?&quot;
+      &quot;confidence&quot;: 0.1909,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Place_of_employment means: This FE identifies the Place_of_employment of the Employee. &#x27;The undocumented foreigners were working at the organic farm.&#x27; Where is the person employed?&quot;,
+      &quot;baseQuestion&quot;: &quot;Where is the person employed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Place_of_employment of the Employee. &#x27;The undocumented foreigners were working at the organic farm.&#x27;&quot;
     },
     &quot;Duration&quot;: {
       &quot;text&quot;: &quot;not insurable&quot;,
@@ -711,19 +777,23 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.09,
-      &quot;question&quot;: &quot;How long is the person employed?&quot;
+      &quot;confidence&quot;: 0.1824,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Duration means: This FE identifies the amount of Time for which the Employee continues being employed. &#x27;She worked for 10 years in private and hospital practice and 19 years in teaching and administration.&#x27; How long is the person employed?&quot;,
+      &quot;baseQuestion&quot;: &quot;How long is the person employed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the amount of Time for which the Employee continues being employed. &#x27;She worked for 10 years in private and hospital practice and 19 years in teaching and administration.&#x27;&quot;
     },
     &quot;Compensation&quot;: {
-      &quot;text&quot;: &quot;similar employment&quot;,
+      &quot;text&quot;: &quot;not insurable&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 54,
-        &quot;end&quot;: 72
+        &quot;start&quot;: 100,
+        &quot;end&quot;: 113
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1739,
-      &quot;question&quot;: &quot;What compensation, wages, or earnings are involved?&quot;
+      &quot;confidence&quot;: 0.0564,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Compensation means: The Compensation is the payment that the Employee receives for performing a Task. &#x27;Louise works as an engineer for $1,000&#x27; What compensation, wages, or earnings are involved?&quot;,
+      &quot;baseQuestion&quot;: &quot;What compensation, wages, or earnings are involved?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Compensation is the payment that the Employee receives for performing a Task. &#x27;Louise works as an engineer for $1,000&#x27;&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: null,
@@ -764,21 +834,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9544,
-    &quot;combinedScore&quot;: 0.9954,
+    &quot;bertFrameScore&quot;: 0.9663,
+    &quot;combinedScore&quot;: 0.9966,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Being_employed&quot;,
         &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9544,
-        &quot;combinedScore&quot;: 0.9954
+        &quot;bertFrameScore&quot;: 0.9663,
+        &quot;combinedScore&quot;: 0.9966
       }
     ]
   },
@@ -786,7 +863,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -804,7 +885,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Being_employed</h2>
     <span>EmploymentStatus</span>
   </div>
-  <p class="sentence"><mark class='element' title='Employee'>The client<small>Employee</small></mark> reports being hired as a <mark class='element' title='Compensation'>contractor or a sub-contractor, but the client believes he or she was an employee in insurable employment<small>Compensation</small></mark>.</p>
+  <p class="sentence"><mark class='element' title='Compensation'>The client reports being hired as a contractor or a sub-contractor, but the client believes he or she was an employee in insurable employment<small>Compensation</small></mark>.</p>
   <div class="stats">
     <span>trigger: employment</span>
     <span>status: hybrid_rule_bert</span>
@@ -814,7 +895,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>1.0</td><td>0.9701</td><td>0.997</td></tr></tbody>
+    <tbody><tr><td>Being_employed</td><td>EmploymentStatus</td><td>1.0</td><td>0.9791</td><td>0.9979</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
@@ -842,8 +923,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.6195,
-      &quot;question&quot;: &quot;What position or role does the worker hold?&quot;
+      &quot;confidence&quot;: 0.218,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Position means: The label given to a particular type of employment. &#x27;Louise works as an engineer.&#x27; What position or role does the worker hold?&quot;,
+      &quot;baseQuestion&quot;: &quot;What position or role does the worker hold?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The label given to a particular type of employment. &#x27;Louise works as an engineer.&#x27;&quot;
     },
     &quot;Task&quot;: {
       &quot;text&quot;: &quot;contractor&quot;,
@@ -853,30 +936,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4679,
-      &quot;question&quot;: &quot;What work or task is performed?&quot;
+      &quot;confidence&quot;: 0.2534,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Task means: The Employee is obligated to perform the Task to recieve Compensation from the Employer . &#x27;My dad works building houses.&#x27; What work or task is performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;What work or task is performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Employee is obligated to perform the Task to recieve Compensation from the Employer . &#x27;My dad works building houses.&#x27;&quot;
     },
     &quot;Duration&quot;: {
-      &quot;text&quot;: &quot;contractor or a sub-contractor&quot;,
+      &quot;text&quot;: &quot;The client reports being hired as a contractor or a sub-contractor&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 36,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 66
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2046,
-      &quot;question&quot;: &quot;How long is the person employed?&quot;
+      &quot;confidence&quot;: 0.1073,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Duration means: This FE identifies the amount of Time for which the Employee continues being employed. &#x27;She worked for 10 years in private and hospital practice and 19 years in teaching and administration.&#x27; How long is the person employed?&quot;,
+      &quot;baseQuestion&quot;: &quot;How long is the person employed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the amount of Time for which the Employee continues being employed. &#x27;She worked for 10 years in private and hospital practice and 19 years in teaching and administration.&#x27;&quot;
     },
     &quot;Compensation&quot;: {
-      &quot;text&quot;: &quot;contractor or a sub-contractor, but the client believes he or she was an employee in insurable employment&quot;,
+      &quot;text&quot;: &quot;The client reports being hired as a contractor or a sub-contractor, but the client believes he or she was an employee in insurable employment&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 36,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 141
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1001,
-      &quot;question&quot;: &quot;What compensation, wages, or earnings are involved?&quot;
+      &quot;confidence&quot;: 0.0622,
+      &quot;question&quot;: &quot;In the FrameNet frame Being_employed, the element Compensation means: The Compensation is the payment that the Employee receives for performing a Task. &#x27;Louise works as an engineer for $1,000&#x27; What compensation, wages, or earnings are involved?&quot;,
+      &quot;baseQuestion&quot;: &quot;What compensation, wages, or earnings are involved?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Compensation is the payment that the Employee receives for performing a Task. &#x27;Louise works as an engineer for $1,000&#x27;&quot;
     },
     &quot;Employer&quot;: {
       &quot;text&quot;: null,
@@ -927,21 +1016,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9701,
-    &quot;combinedScore&quot;: 0.997,
+    &quot;bertFrameScore&quot;: 0.9791,
+    &quot;combinedScore&quot;: 0.9979,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Being_employed&quot;,
         &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9701,
-        &quot;combinedScore&quot;: 0.997
+        &quot;bertFrameScore&quot;: 0.9791,
+        &quot;combinedScore&quot;: 0.9979
       }
     ]
   },
@@ -949,7 +1045,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -967,7 +1067,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Have_as_requirement</h2>
     <span>RequirementRule</span>
   </div>
-  <p class="sentence">In the case of <mark class='element' title='Required_individual'>a representative<small>Required_individual</small></mark>, <mark class='element' title='Condition'>ensure that there is no electronic document indicating that the client has recovered<small>Condition</small></mark> and no longer <mark class='trigger' title='trigger'>requires<small>trigger</small></mark> the services of the representative.</p>
+  <p class="sentence">In the case of a <mark class='element' title='Required_individual'>representative<small>Required_individual</small></mark>, <mark class='element' title='Condition'>ensure that there is no electronic document indicating that the client has recovered<small>Condition</small></mark> and no longer <mark class='trigger' title='trigger'>requires<small>trigger</small></mark> the services of the representative.</p>
   <div class="stats">
     <span>trigger: requires</span>
     <span>status: hybrid_rule_bert</span>
@@ -977,7 +1077,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.9525</td><td>0.9952</td></tr></tbody>
+    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.9729</td><td>0.9973</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;RequirementRule&quot;,
@@ -1007,26 +1107,30 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Required_entity&quot;: {
-      &quot;text&quot;: &quot;electronic document indicating that the client has recovered&quot;,
+      &quot;text&quot;: &quot;no electronic document indicating that the client has recovered&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 57,
+        &quot;start&quot;: 54,
         &quot;end&quot;: 117
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.227,
-      &quot;question&quot;: &quot;What document, information, or condition is required?&quot;
+      &quot;confidence&quot;: 0.186,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Required_entity means: An entity that has to be present for the Dependent state of affairs to obtain. &#x27;Believe it or not, but this cake requires a pound of mild sausage.&#x27; What document, information, or condition is required?&quot;,
+      &quot;baseQuestion&quot;: &quot;What document, information, or condition is required?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An entity that has to be present for the Dependent state of affairs to obtain. &#x27;Believe it or not, but this cake requires a pound of mild sausage.&#x27;&quot;
     },
     &quot;Required_individual&quot;: {
-      &quot;text&quot;: &quot;a representative&quot;,
+      &quot;text&quot;: &quot;representative&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 15,
+        &quot;start&quot;: 17,
         &quot;end&quot;: 31
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3542,
-      &quot;question&quot;: &quot;Who is required to act or provide something?&quot;
+      &quot;confidence&quot;: 0.2207,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Required_individual means: An individual that has to provide the Required_entity or to see to it that the Requirement state of affairs holds. &#x27;It&#x27;s a sport that demands everything of me.&#x27; Who is required to act or provide something?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who is required to act or provide something?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An individual that has to provide the Required_entity or to see to it that the Requirement state of affairs holds. &#x27;It&#x27;s a sport that demands everything of me.&#x27;&quot;
     },
     &quot;Condition&quot;: {
       &quot;text&quot;: &quot;ensure that there is no electronic document indicating that the client has recovered&quot;,
@@ -1036,8 +1140,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2128,
-      &quot;question&quot;: &quot;Under what condition does the requirement apply?&quot;
+      &quot;confidence&quot;: 0.0656,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Condition means: The conditions under which the the Requirement is necessary. &#x27;This Par 5 demands great shotmaking if the player is to equal or better par.&#x27; Under what condition does the requirement apply?&quot;,
+      &quot;baseQuestion&quot;: &quot;Under what condition does the requirement apply?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The conditions under which the the Requirement is necessary. &#x27;This Par 5 demands great shotmaking if the player is to equal or better par.&#x27;&quot;
     },
     &quot;Explanation&quot;: {
       &quot;text&quot;: &quot;ensure that there is no electronic document indicating that the client has recovered&quot;,
@@ -1047,8 +1153,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2409,
-      &quot;question&quot;: &quot;Why does the requirement apply?&quot;
+      &quot;confidence&quot;: 0.1122,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Explanation means: The state-of-affairs which militates that the Requirement is necessary for the Dependent to obtain. Why does the requirement apply?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why does the requirement apply?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The state-of-affairs which militates that the Requirement is necessary for the Dependent to obtain.&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: null,
@@ -1088,21 +1196,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9525,
-    &quot;combinedScore&quot;: 0.9952,
+    &quot;bertFrameScore&quot;: 0.9729,
+    &quot;combinedScore&quot;: 0.9973,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Have_as_requirement&quot;,
         &quot;eventType&quot;: &quot;RequirementRule&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9525,
-        &quot;combinedScore&quot;: 0.9952
+        &quot;bertFrameScore&quot;: 0.9729,
+        &quot;combinedScore&quot;: 0.9973
       }
     ]
   },
@@ -1110,7 +1225,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -1128,7 +1247,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Have_as_requirement</h2>
     <span>RequirementRule</span>
   </div>
-  <p class="sentence">In these cases, the INS3280 form is not <mark class='element' title='Requirement'>required, and a copy of the court order is sufficient<small>Requirement</small></mark>.</p>
+  <p class="sentence">In these cases, the <mark class='element' title='Dependent'>INS3280 form is not required, and a copy of the court order<small>Dependent</small></mark> is sufficient.</p>
   <div class="stats">
     <span>trigger: required</span>
     <span>status: hybrid_rule_bert</span>
@@ -1138,7 +1257,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.9576</td><td>0.9958</td></tr></tbody>
+    <tbody><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.9778</td><td>0.9978</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;RequirementRule&quot;,
@@ -1159,15 +1278,17 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Dependent&quot;: {
-      &quot;text&quot;: &quot;a copy of the court order&quot;,
+      &quot;text&quot;: &quot;INS3280 form is not required, and a copy of the court order&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 54,
+        &quot;start&quot;: 20,
         &quot;end&quot;: 79
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3001,
-      &quot;question&quot;: &quot;What claim, benefit, application, or process has a requirement?&quot;
+      &quot;confidence&quot;: 0.234,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Dependent means: The state-of-affairs which cannot hold without the state of affairs of the Requirement or the presence of the Required_entity. What claim, benefit, application, or process has a requirement?&quot;,
+      &quot;baseQuestion&quot;: &quot;What claim, benefit, application, or process has a requirement?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The state-of-affairs which cannot hold without the state of affairs of the Requirement or the presence of the Required_entity.&quot;
     },
     &quot;Required_entity&quot;: {
       &quot;text&quot;: &quot;a copy of the court order&quot;,
@@ -1177,30 +1298,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4396,
-      &quot;question&quot;: &quot;What document, information, or condition is required?&quot;
+      &quot;confidence&quot;: 0.2593,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Required_entity means: An entity that has to be present for the Dependent state of affairs to obtain. &#x27;Believe it or not, but this cake requires a pound of mild sausage.&#x27; What document, information, or condition is required?&quot;,
+      &quot;baseQuestion&quot;: &quot;What document, information, or condition is required?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An entity that has to be present for the Dependent state of affairs to obtain. &#x27;Believe it or not, but this cake requires a pound of mild sausage.&#x27;&quot;
     },
     &quot;Condition&quot;: {
-      &quot;text&quot;: &quot;a copy of the court order is sufficient&quot;,
+      &quot;text&quot;: &quot;a copy of the court order is sufficient.&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 54,
-        &quot;end&quot;: 93
+        &quot;end&quot;: 94
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1974,
-      &quot;question&quot;: &quot;Under what condition does the requirement apply?&quot;
+      &quot;confidence&quot;: 0.0351,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Condition means: The conditions under which the the Requirement is necessary. &#x27;This Par 5 demands great shotmaking if the player is to equal or better par.&#x27; Under what condition does the requirement apply?&quot;,
+      &quot;baseQuestion&quot;: &quot;Under what condition does the requirement apply?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The conditions under which the the Requirement is necessary. &#x27;This Par 5 demands great shotmaking if the player is to equal or better par.&#x27;&quot;
     },
     &quot;Explanation&quot;: {
-      &quot;text&quot;: &quot;a copy of the court order is sufficient&quot;,
+      &quot;text&quot;: &quot;a copy of the court order is sufficient.&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 54,
-        &quot;end&quot;: 93
+        &quot;end&quot;: 94
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2536,
-      &quot;question&quot;: &quot;Why does the requirement apply?&quot;
+      &quot;confidence&quot;: 0.0468,
+      &quot;question&quot;: &quot;In the FrameNet frame Have_as_requirement, the element Explanation means: The state-of-affairs which militates that the Requirement is necessary for the Dependent to obtain. Why does the requirement apply?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why does the requirement apply?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The state-of-affairs which militates that the Requirement is necessary for the Dependent to obtain.&quot;
     },
     &quot;Required_individual&quot;: {
       &quot;text&quot;: null,
@@ -1245,21 +1372,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;required&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9576,
-    &quot;combinedScore&quot;: 0.9958,
+    &quot;bertFrameScore&quot;: 0.9778,
+    &quot;combinedScore&quot;: 0.9978,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Have_as_requirement&quot;,
         &quot;eventType&quot;: &quot;RequirementRule&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9576,
-        &quot;combinedScore&quot;: 0.9958
+        &quot;bertFrameScore&quot;: 0.9778,
+        &quot;combinedScore&quot;: 0.9978
       }
     ]
   },
@@ -1267,7 +1401,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -1285,7 +1423,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Evidence</h2>
     <span>EvidenceSupport</span>
   </div>
-  <p class="sentence">A situation that leads officers to <mark class='element' title='Domain_of_relevance'>question clients’ availability for regular benefits<small>Domain_of_relevance</small></mark> should also lead officers to question clients’ ability to <mark class='trigger' title='trigger'>prove<small>trigger</small></mark> that <mark class='element' title='Proposition'>they are otherwise available for sickness benefits<small>Proposition</small></mark>.</p>
+  <p class="sentence">A situation that leads officers to question <mark class='element' title='Domain_of_relevance'>clients’ availability for regular benefits<small>Domain_of_relevance</small></mark> should also lead officers to question clients’ ability to <mark class='trigger' title='trigger'>prove<small>trigger</small></mark> that they are otherwise available for <mark class='element' title='Result'>sickness benefits<small>Result</small></mark>.</p>
   <div class="stats">
     <span>trigger: prove</span>
     <span>status: hybrid_rule_bert</span>
@@ -1295,7 +1433,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.94</td><td>0.9074</td><td>0.9367</td></tr></tbody>
+    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.94</td><td>0.9731</td><td>0.9433</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
@@ -1307,37 +1445,43 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   },
   &quot;frameElements&quot;: {
     &quot;Proposition&quot;: {
-      &quot;text&quot;: &quot;they are otherwise available for sickness benefits&quot;,
+      &quot;text&quot;: &quot;availability for regular benefits&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 156,
-        &quot;end&quot;: 206
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1388,
-      &quot;question&quot;: &quot;What fact, status, eligibility, or claim does the evidence support?&quot;
-    },
-    &quot;Result&quot;: {
-      &quot;text&quot;: &quot;they are otherwise available for sickness benefits&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 156,
-        &quot;end&quot;: 206
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2267,
-      &quot;question&quot;: &quot;What result does the evidence support?&quot;
-    },
-    &quot;Domain_of_relevance&quot;: {
-      &quot;text&quot;: &quot;question clients’ availability for regular benefits&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 35,
+        &quot;start&quot;: 53,
         &quot;end&quot;: 86
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1363,
-      &quot;question&quot;: &quot;What domain or issue is the evidence relevant to?&quot;
+      &quot;confidence&quot;: 0.1699,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Proposition means: This is a belief, claim, or proposed course of action to which the Support lends validity. Normally it is expressed as a Finite Clause Complement: &#x27;The fact that you lied to me shows that I shouldn&#x27;t trust you.&#x27; Some words in this frame… What fact, status, eligibility, or claim does the evidence support?&quot;,
+      &quot;baseQuestion&quot;: &quot;What fact, status, eligibility, or claim does the evidence support?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This is a belief, claim, or proposed course of action to which the Support lends validity. Normally it is expressed as a Finite Clause Complement: &#x27;The fact that you lied to me shows that I shouldn&#x27;t trust you.&#x27; Some words in this frame…&quot;
+    },
+    &quot;Result&quot;: {
+      &quot;text&quot;: &quot;sickness benefits&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 189,
+        &quot;end&quot;: 206
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.0662,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Result means: Result of an event What result does the evidence support?&quot;,
+      &quot;baseQuestion&quot;: &quot;What result does the evidence support?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Result of an event&quot;
+    },
+    &quot;Domain_of_relevance&quot;: {
+      &quot;text&quot;: &quot;clients’ availability for regular benefits&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 44,
+        &quot;end&quot;: 86
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.0653,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Domain_of_relevance means: This FE identifies the domain (usually, time or space) for which a given Proposition is true. What domain or issue is the evidence relevant to?&quot;,
+      &quot;baseQuestion&quot;: &quot;What domain or issue is the evidence relevant to?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the domain (usually, time or space) for which a given Proposition is true.&quot;
     },
     &quot;Support&quot;: {
       &quot;text&quot;: null,
@@ -1386,21 +1530,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.94,
-    &quot;bertFrameScore&quot;: 0.9074,
-    &quot;combinedScore&quot;: 0.9367,
+    &quot;bertFrameScore&quot;: 0.9731,
+    &quot;combinedScore&quot;: 0.9433,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Evidence&quot;,
         &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
         &quot;ruleScore&quot;: 0.94,
-        &quot;bertFrameScore&quot;: 0.9074,
-        &quot;combinedScore&quot;: 0.9367
+        &quot;bertFrameScore&quot;: 0.9731,
+        &quot;combinedScore&quot;: 0.9433
       }
     ]
   },
@@ -1408,7 +1559,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -1436,7 +1591,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.94</td><td>0.9275</td><td>0.9387</td></tr></tbody>
+    <tbody><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.94</td><td>0.9564</td><td>0.9416</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
@@ -1455,30 +1610,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3823,
-      &quot;question&quot;: &quot;What evidence, proof, document, or support is provided?&quot;
+      &quot;confidence&quot;: 0.2328,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Support means: Support is a fact that lends epistemic support to a claim, or that provides a reason for a course of action. Typically it is expressed as an External Argument. &#x27;The fact that you lied to me shows that I shouldn&#x27;t trust you.&#x27; &#x27;The look on… What evidence, proof, document, or support is provided?&quot;,
+      &quot;baseQuestion&quot;: &quot;What evidence, proof, document, or support is provided?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Support is a fact that lends epistemic support to a claim, or that provides a reason for a course of action. Typically it is expressed as an External Argument. &#x27;The fact that you lied to me shows that I shouldn&#x27;t trust you.&#x27; &#x27;The look on…&quot;
     },
     &quot;Proposition&quot;: {
-      &quot;text&quot;: &quot;care or support&quot;,
+      &quot;text&quot;: &quot;care or support to the patient identified on the medical certificate&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 24,
-        &quot;end&quot;: 39
+        &quot;end&quot;: 92
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.111,
-      &quot;question&quot;: &quot;What fact, status, eligibility, or claim does the evidence support?&quot;
+      &quot;confidence&quot;: 0.0782,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Proposition means: This is a belief, claim, or proposed course of action to which the Support lends validity. Normally it is expressed as a Finite Clause Complement: &#x27;The fact that you lied to me shows that I shouldn&#x27;t trust you.&#x27; Some words in this frame… What fact, status, eligibility, or claim does the evidence support?&quot;,
+      &quot;baseQuestion&quot;: &quot;What fact, status, eligibility, or claim does the evidence support?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This is a belief, claim, or proposed course of action to which the Support lends validity. Normally it is expressed as a Finite Clause Complement: &#x27;The fact that you lied to me shows that I shouldn&#x27;t trust you.&#x27; Some words in this frame…&quot;
     },
     &quot;Cognizer&quot;: {
-      &quot;text&quot;: &quot;client&quot;,
+      &quot;text&quot;: &quot;The client&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 4,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 10
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3536,
-      &quot;question&quot;: &quot;Who evaluates or relies on the evidence?&quot;
+      &quot;confidence&quot;: 0.3801,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Cognizer means: The person for whom the Proposition is supported by the Support. &#x27;The behavior of the children indicated to the teacher that further action was required on his part.&#x27; Who evaluates or relies on the evidence?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who evaluates or relies on the evidence?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The person for whom the Proposition is supported by the Support. &#x27;The behavior of the children indicated to the teacher that further action was required on his part.&#x27;&quot;
     },
     &quot;Result&quot;: {
       &quot;text&quot;: &quot;The client is providing care or support to the patient&quot;,
@@ -1488,8 +1649,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0715,
-      &quot;question&quot;: &quot;What result does the evidence support?&quot;
+      &quot;confidence&quot;: 0.0421,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Result means: Result of an event What result does the evidence support?&quot;,
+      &quot;baseQuestion&quot;: &quot;What result does the evidence support?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Result of an event&quot;
     },
     &quot;Domain_of_relevance&quot;: {
       &quot;text&quot;: &quot;medical certificate&quot;,
@@ -1499,8 +1662,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3086,
-      &quot;question&quot;: &quot;What domain or issue is the evidence relevant to?&quot;
+      &quot;confidence&quot;: 0.0952,
+      &quot;question&quot;: &quot;In the FrameNet frame Evidence, the element Domain_of_relevance means: This FE identifies the domain (usually, time or space) for which a given Proposition is true. What domain or issue is the evidence relevant to?&quot;,
+      &quot;baseQuestion&quot;: &quot;What domain or issue is the evidence relevant to?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the domain (usually, time or space) for which a given Proposition is true.&quot;
     },
     &quot;Means&quot;: {
       &quot;text&quot;: null,
@@ -1539,21 +1704,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 0.94,
-    &quot;bertFrameScore&quot;: 0.9275,
-    &quot;combinedScore&quot;: 0.9387,
+    &quot;bertFrameScore&quot;: 0.9564,
+    &quot;combinedScore&quot;: 0.9416,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Evidence&quot;,
         &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
         &quot;ruleScore&quot;: 0.94,
-        &quot;bertFrameScore&quot;: 0.9275,
-        &quot;combinedScore&quot;: 0.9387
+        &quot;bertFrameScore&quot;: 0.9564,
+        &quot;combinedScore&quot;: 0.9416
       }
     ]
   },
@@ -1561,7 +1733,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -1579,7 +1755,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Submitting_documents</h2>
     <span>DocumentSubmission</span>
   </div>
-  <p class="sentence">Clients who <mark class='element' title='Purpose'>want another person to represent them<small>Purpose</small></mark> on their claim <mark class='element' title='Explanation'>must complete the Representative<small>Explanation</small></mark>: INS3280 Appointment — <mark class='element' title='Documents'>Form<small>Documents</small></mark> .</p>
+  <p class="sentence">Clients who <mark class='element' title='Purpose'>want another person to represent them on their claim<small>Purpose</small></mark> must <mark class='trigger' title='trigger'>complete<small>trigger</small></mark> the Representative: <mark class='element' title='Explanation'>INS3280 Appointment — Form<small>Explanation</small></mark> .</p>
   <div class="stats">
     <span>trigger: complete</span>
     <span>status: hybrid_rule_bert</span>
@@ -1589,7 +1765,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>1.0</td><td>0.9707</td><td>0.9971</td></tr></tbody>
+    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>1.0</td><td>0.9776</td><td>0.9978</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
@@ -1609,48 +1785,70 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;rule&quot;
     },
-    &quot;Purpose&quot;: {
-      &quot;text&quot;: &quot;want another person to represent them&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 12,
-        &quot;end&quot;: 49
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2149,
-      &quot;question&quot;: &quot;Why is the document submitted?&quot;
-    },
-    &quot;Beneficiary&quot;: {
-      &quot;text&quot;: &quot;another person to represent them&quot;,
+    &quot;Submittor&quot;: {
+      &quot;text&quot;: &quot;another person&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 17,
-        &quot;end&quot;: 49
+        &quot;end&quot;: 31
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4736,
-      &quot;question&quot;: &quot;Who benefits from the document submission?&quot;
-    },
-    &quot;Explanation&quot;: {
-      &quot;text&quot;: &quot;must complete the Representative&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 65,
-        &quot;end&quot;: 97
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0607,
-      &quot;question&quot;: &quot;What explanation is given for the document submission?&quot;
-    },
-    &quot;Submittor&quot;: {
-      &quot;text&quot;: null,
-      &quot;implicit&quot;: true,
-      &quot;method&quot;: &quot;not_found&quot;
+      &quot;confidence&quot;: 0.1155,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Submittor means: The person that begins in possession of the Documents and gives them over into the possession of the Authority for processing. &#x27;The Human Services financial worker cannot decide if you will get food support benefits until you turn in the… Who submits, files, uploads, completes, or provides the document?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who submits, files, uploads, completes, or provides the document?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The person that begins in possession of the Documents and gives them over into the possession of the Authority for processing. &#x27;The Human Services financial worker cannot decide if you will get food support benefits until you turn in the…&quot;
     },
     &quot;Authority&quot;: {
-      &quot;text&quot;: null,
-      &quot;implicit&quot;: true,
-      &quot;method&quot;: &quot;not_found&quot;
+      &quot;text&quot;: &quot;another person&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 17,
+        &quot;end&quot;: 31
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.3469,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Authority means: The individual or organization that ends up in possession of the Documents and processes them. &#x27;If an application is late, whether you submitted it late to us or it was held up at your Command, NMETC will not be able to fund registration… Who receives the submitted document?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who receives the submitted document?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The individual or organization that ends up in possession of the Documents and processes them. &#x27;If an application is late, whether you submitted it late to us or it was held up at your Command, NMETC will not be able to fund registration…&quot;
+    },
+    &quot;Purpose&quot;: {
+      &quot;text&quot;: &quot;want another person to represent them on their claim&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 12,
+        &quot;end&quot;: 64
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.1765,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Purpose means: The Purpose for which the Submittor gives the Documents to the Authority. Why is the document submitted?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the document submitted?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Purpose for which the Submittor gives the Documents to the Authority.&quot;
+    },
+    &quot;Beneficiary&quot;: {
+      &quot;text&quot;: &quot;another person&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 17,
+        &quot;end&quot;: 31
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.6455,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Beneficiary means: This extra-thematic FE applies to participants that derive a benefit from the occurrence of the event specified by the target predicate. Further, the target predicate should involve some sort of agent that intends that the benefit go to… Who benefits from the document submission?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who benefits from the document submission?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This extra-thematic FE applies to participants that derive a benefit from the occurrence of the event specified by the target predicate. Further, the target predicate should involve some sort of agent that intends that the benefit go to…&quot;
+    },
+    &quot;Explanation&quot;: {
+      &quot;text&quot;: &quot;INS3280 Appointment — Form&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 99,
+        &quot;end&quot;: 125
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.0531,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Explanation means: The Explanation denotes a proposition from which event of the Submittor&#x27;s giving the Documents to the Authority logically follows. &#x27;Two of the establishments submitted the application because they were producing a new product.&#x27; What explanation is given for the document submission?&quot;,
+      &quot;baseQuestion&quot;: &quot;What explanation is given for the document submission?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Explanation denotes a proposition from which event of the Submittor&#x27;s giving the Documents to the Authority logically follows. &#x27;Two of the establishments submitted the application because they were producing a new product.&#x27;&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: null,
@@ -1673,11 +1871,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;frameElementValidation&quot;: {
       &quot;valid&quot;: [
         &quot;Documents&quot;,
+        &quot;Submittor&quot;,
+        &quot;Authority&quot;,
         &quot;Purpose&quot;,
         &quot;Beneficiary&quot;,
         &quot;Explanation&quot;,
-        &quot;Submittor&quot;,
-        &quot;Authority&quot;,
         &quot;Time&quot;,
         &quot;Place&quot;
       ],
@@ -1691,21 +1889,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;required&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9707,
-    &quot;combinedScore&quot;: 0.9971,
+    &quot;bertFrameScore&quot;: 0.9776,
+    &quot;combinedScore&quot;: 0.9978,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Submitting_documents&quot;,
         &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9707,
-        &quot;combinedScore&quot;: 0.9971
+        &quot;bertFrameScore&quot;: 0.9776,
+        &quot;combinedScore&quot;: 0.9978
       }
     ]
   },
@@ -1713,7 +1918,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -1731,7 +1940,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Submitting_documents</h2>
     <span>DocumentSubmission</span>
   </div>
-  <p class="sentence"><mark class='element' title='Time'>Once the claim is established and it is determined that regular benefits are payable, regular benefits are payable for each week<small>Time</small></mark> <mark class='element' title='Submittor'>the client<small>Submittor</small></mark> <mark class='trigger' title='trigger'>submits<small>trigger</small></mark> a claimant’s <mark class='element' title='Documents'>report<small>Documents</small></mark> and:</p>
+  <p class="sentence"><mark class='element' title='Purpose'>Once the claim is established and it is determined that regular benefits are payable<small>Purpose</small></mark>, regular benefits are payable for each <mark class='element' title='Time'>week<small>Time</small></mark> <mark class='element' title='Submittor'>the client<small>Submittor</small></mark> <mark class='trigger' title='trigger'>submits<small>trigger</small></mark> a claimant’s <mark class='element' title='Documents'>report<small>Documents</small></mark> and:</p>
   <div class="stats">
     <span>trigger: submits</span>
     <span>status: hybrid_rule_bert</span>
@@ -1741,7 +1950,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>1.0</td><td>0.9598</td><td>0.996</td></tr></tbody>
+    <tbody><tr><td>Submitting_documents</td><td>DocumentSubmission</td><td>1.0</td><td>0.9836</td><td>0.9984</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
@@ -1780,37 +1989,43 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Time&quot;: {
-      &quot;text&quot;: &quot;Once the claim is established and it is determined that regular benefits are payable, regular benefits are payable for each week&quot;,
+      &quot;text&quot;: &quot;week&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 0,
+        &quot;start&quot;: 124,
         &quot;end&quot;: 128
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4496,
-      &quot;question&quot;: &quot;When is the document submitted?&quot;
+      &quot;confidence&quot;: 0.4828,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Time means: The time period during which the Submittor gives the Documents to the Authority. When is the document submitted?&quot;,
+      &quot;baseQuestion&quot;: &quot;When is the document submitted?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The time period during which the Submittor gives the Documents to the Authority.&quot;
     },
     &quot;Purpose&quot;: {
-      &quot;text&quot;: &quot;it is determined that regular benefits are payable&quot;,
+      &quot;text&quot;: &quot;Once the claim is established and it is determined that regular benefits are payable&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 34,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 84
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1298,
-      &quot;question&quot;: &quot;Why is the document submitted?&quot;
+      &quot;confidence&quot;: 0.0589,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Purpose means: The Purpose for which the Submittor gives the Documents to the Authority. Why is the document submitted?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the document submitted?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Purpose for which the Submittor gives the Documents to the Authority.&quot;
     },
     &quot;Beneficiary&quot;: {
-      &quot;text&quot;: &quot;the client&quot;,
+      &quot;text&quot;: &quot;regular benefits are payable, regular benefits are payable for each week the client submits a claimant’s report&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 129,
-        &quot;end&quot;: 139
+        &quot;start&quot;: 56,
+        &quot;end&quot;: 167
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.5401,
-      &quot;question&quot;: &quot;Who benefits from the document submission?&quot;
+      &quot;confidence&quot;: 0.0284,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Beneficiary means: This extra-thematic FE applies to participants that derive a benefit from the occurrence of the event specified by the target predicate. Further, the target predicate should involve some sort of agent that intends that the benefit go to… Who benefits from the document submission?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who benefits from the document submission?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This extra-thematic FE applies to participants that derive a benefit from the occurrence of the event specified by the target predicate. Further, the target predicate should involve some sort of agent that intends that the benefit go to…&quot;
     },
     &quot;Explanation&quot;: {
       &quot;text&quot;: &quot;Once the claim is established and it is determined that regular benefits are payable&quot;,
@@ -1820,8 +2035,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0779,
-      &quot;question&quot;: &quot;What explanation is given for the document submission?&quot;
+      &quot;confidence&quot;: 0.1946,
+      &quot;question&quot;: &quot;In the FrameNet frame Submitting_documents, the element Explanation means: The Explanation denotes a proposition from which event of the Submittor&#x27;s giving the Documents to the Authority logically follows. &#x27;Two of the establishments submitted the application because they were producing a new product.&#x27; What explanation is given for the document submission?&quot;,
+      &quot;baseQuestion&quot;: &quot;What explanation is given for the document submission?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Explanation denotes a proposition from which event of the Submittor&#x27;s giving the Documents to the Authority logically follows. &#x27;Two of the establishments submitted the application because they were producing a new product.&#x27;&quot;
     },
     &quot;Place&quot;: {
       &quot;text&quot;: null,
@@ -1862,21 +2079,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9598,
-    &quot;combinedScore&quot;: 0.996,
+    &quot;bertFrameScore&quot;: 0.9836,
+    &quot;combinedScore&quot;: 0.9984,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Submitting_documents&quot;,
         &quot;eventType&quot;: &quot;DocumentSubmission&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9598,
-        &quot;combinedScore&quot;: 0.996
+        &quot;bertFrameScore&quot;: 0.9836,
+        &quot;combinedScore&quot;: 0.9984
       }
     ]
   },
@@ -1884,7 +2108,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -1902,7 +2130,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Assessing</h2>
     <span>AssessmentEvent</span>
   </div>
-  <p class="sentence">When an <mark class='element' title='Standard'>insurability<small>Standard</small></mark> ruling is received, the Level 1 <mark class='element' title='Assessor'>officer<small>Assessor</small></mark> <mark class='element' title='Evidence'>calculates the claim in accordance with the CRA’s decision<small>Evidence</small></mark>, referring to Processing a completed insurability ruling .</p>
+  <p class="sentence">When <mark class='element' title='Time'>an insurability ruling is received, the Level 1 officer calculates the claim in accordance with the CRA’s decision<small>Time</small></mark>, referring to Processing a completed insurability ruling .</p>
   <div class="stats">
     <span>trigger: calculates</span>
     <span>status: hybrid_rule_bert</span>
@@ -1912,7 +2140,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Assessing</td><td>AssessmentEvent</td><td>1.0</td><td>0.9684</td><td>0.9968</td></tr><tr><td>Receiving</td><td>ReceiptEvent</td><td>0.96</td><td>0.9659</td><td>0.9606</td></tr></tbody>
+    <tbody><tr><td>Assessing</td><td>AssessmentEvent</td><td>1.0</td><td>0.9834</td><td>0.9983</td></tr><tr><td>Receiving</td><td>ReceiptEvent</td><td>0.96</td><td>0.9832</td><td>0.9623</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;AssessmentEvent&quot;,
@@ -1942,61 +2170,58 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Feature&quot;: {
-      &quot;text&quot;: &quot;calculates the claim&quot;,
+      &quot;text&quot;: &quot;Level 1 officer calculates the claim&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 61,
+        &quot;start&quot;: 45,
         &quot;end&quot;: 81
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0831,
-      &quot;question&quot;: &quot;What feature or aspect is assessed?&quot;
+      &quot;confidence&quot;: 0.0279,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Feature means: The type of property or feature that the Phenomenon is being judged on. &#x27;You will also be graded on your speed of response . &#x27; What feature or aspect is assessed?&quot;,
+      &quot;baseQuestion&quot;: &quot;What feature or aspect is assessed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The type of property or feature that the Phenomenon is being judged on. &#x27;You will also be graded on your speed of response . &#x27;&quot;
     },
     &quot;Value&quot;: {
-      &quot;text&quot;: &quot;the claim&quot;,
+      &quot;text&quot;: &quot;Level 1 officer calculates the claim in accordance with the CRA’s decision, referring to Processing a completed insurability ruling&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 72,
-        &quot;end&quot;: 81
+        &quot;start&quot;: 45,
+        &quot;end&quot;: 176
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.118,
-      &quot;question&quot;: &quot;What value, result, amount, or conclusion is calculated?&quot;
+      &quot;confidence&quot;: 0.0481,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Value means: The value (according to some scale) that the Phenomenon is deemed to have. The Value is taken to indicate the Phenomenon&#x27;s acceptability. What value, result, amount, or conclusion is calculated?&quot;,
+      &quot;baseQuestion&quot;: &quot;What value, result, amount, or conclusion is calculated?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The value (according to some scale) that the Phenomenon is deemed to have. The Value is taken to indicate the Phenomenon&#x27;s acceptability.&quot;
     },
     &quot;Evidence&quot;: {
-      &quot;text&quot;: &quot;calculates the claim in accordance with the CRA’s decision&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 61,
-        &quot;end&quot;: 119
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1613,
-      &quot;question&quot;: &quot;What evidence is used in the assessment?&quot;
-    },
-    &quot;Standard&quot;: {
-      &quot;text&quot;: &quot;insurability&quot;,
+      &quot;text&quot;: &quot;insurability ruling&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 8,
-        &quot;end&quot;: 20
+        &quot;end&quot;: 27
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3088,
-      &quot;question&quot;: &quot;What standard, policy, or decision is used for the assessment?&quot;
+      &quot;confidence&quot;: 0.0584,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Evidence means: Some fact perceived by the Assessor which leads to their evaluation of the Phenomenon. What evidence is used in the assessment?&quot;,
+      &quot;baseQuestion&quot;: &quot;What evidence is used in the assessment?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;Some fact perceived by the Assessor which leads to their evaluation of the Phenomenon.&quot;
+    },
+    &quot;Standard&quot;: {
+      &quot;text&quot;: &quot;insurability ruling&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 8,
+        &quot;end&quot;: 27
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.283,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Standard means: An entity that the Phenomenon is compared to in the assessment. &#x27;Smiter weighed his chances in the snow against the danger posed by the troop of sycophants hurtling towards him. &#x27; What standard, policy, or decision is used for the assessment?&quot;,
+      &quot;baseQuestion&quot;: &quot;What standard, policy, or decision is used for the assessment?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An entity that the Phenomenon is compared to in the assessment. &#x27;Smiter weighed his chances in the snow against the danger posed by the troop of sycophants hurtling towards him. &#x27;&quot;
     },
     &quot;Method&quot;: {
-      &quot;text&quot;: &quot;calculates the claim in accordance with the CRA’s decision&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 61,
-        &quot;end&quot;: 119
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2578,
-      &quot;question&quot;: &quot;How is the assessment or calculation performed?&quot;
-    },
-    &quot;Purpose&quot;: {
       &quot;text&quot;: &quot;in accordance with the CRA’s decision&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 82,
@@ -2004,13 +2229,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4585,
-      &quot;question&quot;: &quot;Why is the assessment or calculation performed?&quot;
+      &quot;confidence&quot;: 0.0927,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Method means: An event or procedure that allows the Assessor to evaluate the Phenomenon. &#x27;The study evaluated the risk of a major quake.&#x27; How is the assessment or calculation performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;How is the assessment or calculation performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An event or procedure that allows the Assessor to evaluate the Phenomenon. &#x27;The study evaluated the risk of a major quake.&#x27;&quot;
     },
     &quot;Time&quot;: {
-      &quot;text&quot;: null,
-      &quot;implicit&quot;: true,
-      &quot;method&quot;: &quot;not_found&quot;
+      &quot;text&quot;: &quot;an insurability ruling is received, the Level 1 officer calculates the claim in accordance with the CRA’s decision&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 5,
+        &quot;end&quot;: 119
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.0347,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Time means: The time at which the Assessor makes the assessment. &#x27;The committee rated Smithers \&quot; most loyal servant \&quot; about a week ago .&#x27; When does the assessment or calculation occur?&quot;,
+      &quot;baseQuestion&quot;: &quot;When does the assessment or calculation occur?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The time at which the Assessor makes the assessment. &#x27;The committee rated Smithers \&quot; most loyal servant \&quot; about a week ago .&#x27;&quot;
+    },
+    &quot;Purpose&quot;: {
+      &quot;text&quot;: &quot;insurability ruling is received, the Level 1 officer calculates the claim in accordance with the CRA’s decision&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 8,
+        &quot;end&quot;: 119
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.0446,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Purpose means: The goal that the Assessor hopes to accomplish by assessing the Phenomenon. Why is the assessment or calculation performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the assessment or calculation performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The goal that the Assessor hopes to accomplish by assessing the Phenomenon.&quot;
     }
   },
   &quot;frameNet&quot;: {
@@ -2029,8 +2277,8 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
         &quot;Evidence&quot;,
         &quot;Standard&quot;,
         &quot;Method&quot;,
-        &quot;Purpose&quot;,
-        &quot;Time&quot;
+        &quot;Time&quot;,
+        &quot;Purpose&quot;
       ],
       &quot;invalid&quot;: []
     }
@@ -2042,28 +2290,35 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9684,
-    &quot;combinedScore&quot;: 0.9968,
+    &quot;bertFrameScore&quot;: 0.9834,
+    &quot;combinedScore&quot;: 0.9983,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Assessing&quot;,
         &quot;eventType&quot;: &quot;AssessmentEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9684,
-        &quot;combinedScore&quot;: 0.9968
+        &quot;bertFrameScore&quot;: 0.9834,
+        &quot;combinedScore&quot;: 0.9983
       },
       {
         &quot;frame&quot;: &quot;Receiving&quot;,
         &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
         &quot;ruleScore&quot;: 0.96,
-        &quot;bertFrameScore&quot;: 0.9659,
-        &quot;combinedScore&quot;: 0.9606
+        &quot;bertFrameScore&quot;: 0.9832,
+        &quot;combinedScore&quot;: 0.9623
       }
     ]
   },
@@ -2071,7 +2326,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -2089,7 +2348,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Assessing</h2>
     <span>AssessmentEvent</span>
   </div>
-  <p class="sentence">When <mark class='element' title='Purpose'>the insurability of an employment is in doubt<small>Purpose</small></mark> or <mark class='element' title='Time'>when an Assessment Issue (ASMT) Insurability WI is created<small>Time</small></mark>, <mark class='element' title='Assessor'>the officer<small>Assessor</small></mark> determines if an insurability ruling is required.</p>
+  <p class="sentence"><mark class='element' title='Time'>When the insurability of an employment is in doubt or when an Assessment Issue (ASMT) Insurability WI is created<small>Time</small></mark>, <mark class='element' title='Assessor'>the officer<small>Assessor</small></mark> determines if an insurability ruling is required.</p>
   <div class="stats">
     <span>trigger: Assessment</span>
     <span>status: hybrid_rule_bert</span>
@@ -2099,7 +2358,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Assessing</td><td>AssessmentEvent</td><td>1.0</td><td>0.9702</td><td>0.997</td></tr><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.962</td><td>0.9962</td></tr><tr><td>Being_employed</td><td>EmploymentStatus</td><td>0.98</td><td>0.963</td><td>0.9783</td></tr></tbody>
+    <tbody><tr><td>Assessing</td><td>AssessmentEvent</td><td>1.0</td><td>0.9817</td><td>0.9982</td></tr><tr><td>Have_as_requirement</td><td>RequirementRule</td><td>1.0</td><td>0.982</td><td>0.9982</td></tr><tr><td>Being_employed</td><td>EmploymentStatus</td><td>0.98</td><td>0.9795</td><td>0.9799</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;AssessmentEvent&quot;,
@@ -2120,17 +2379,6 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Phenomenon&quot;: {
-      &quot;text&quot;: &quot;Assessment Issue (ASMT) Insurability&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 62,
-        &quot;end&quot;: 98
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.085,
-      &quot;question&quot;: &quot;What claim, benefit, amount, hours, earnings, or eligibility is assessed?&quot;
-    },
-    &quot;Feature&quot;: {
       &quot;text&quot;: &quot;Assessment Issue&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 62,
@@ -2138,8 +2386,23 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0724,
-      &quot;question&quot;: &quot;What feature or aspect is assessed?&quot;
+      &quot;confidence&quot;: 0.0463,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Phenomenon means: The entity whose Value according to a Feature is being measured. What claim, benefit, amount, hours, earnings, or eligibility is assessed?&quot;,
+      &quot;baseQuestion&quot;: &quot;What claim, benefit, amount, hours, earnings, or eligibility is assessed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The entity whose Value according to a Feature is being measured.&quot;
+    },
+    &quot;Feature&quot;: {
+      &quot;text&quot;: &quot;insurability of an employment is in doubt&quot;,
+      &quot;span&quot;: {
+        &quot;start&quot;: 9,
+        &quot;end&quot;: 50
+      },
+      &quot;implicit&quot;: false,
+      &quot;method&quot;: &quot;bert_qa&quot;,
+      &quot;confidence&quot;: 0.0187,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Feature means: The type of property or feature that the Phenomenon is being judged on. &#x27;You will also be graded on your speed of response . &#x27; What feature or aspect is assessed?&quot;,
+      &quot;baseQuestion&quot;: &quot;What feature or aspect is assessed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The type of property or feature that the Phenomenon is being judged on. &#x27;You will also be graded on your speed of response . &#x27;&quot;
     },
     &quot;Value&quot;: {
       &quot;text&quot;: &quot;Assessment Issue&quot;,
@@ -2149,8 +2412,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0816,
-      &quot;question&quot;: &quot;What value, result, amount, or conclusion is calculated?&quot;
+      &quot;confidence&quot;: 0.0389,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Value means: The value (according to some scale) that the Phenomenon is deemed to have. The Value is taken to indicate the Phenomenon&#x27;s acceptability. What value, result, amount, or conclusion is calculated?&quot;,
+      &quot;baseQuestion&quot;: &quot;What value, result, amount, or conclusion is calculated?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The value (according to some scale) that the Phenomenon is deemed to have. The Value is taken to indicate the Phenomenon&#x27;s acceptability.&quot;
     },
     &quot;Standard&quot;: {
       &quot;text&quot;: &quot;Assessment Issue&quot;,
@@ -2160,41 +2425,49 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.7904,
-      &quot;question&quot;: &quot;What standard, policy, or decision is used for the assessment?&quot;
+      &quot;confidence&quot;: 0.3973,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Standard means: An entity that the Phenomenon is compared to in the assessment. &#x27;Smiter weighed his chances in the snow against the danger posed by the troop of sycophants hurtling towards him. &#x27; What standard, policy, or decision is used for the assessment?&quot;,
+      &quot;baseQuestion&quot;: &quot;What standard, policy, or decision is used for the assessment?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An entity that the Phenomenon is compared to in the assessment. &#x27;Smiter weighed his chances in the snow against the danger posed by the troop of sycophants hurtling towards him. &#x27;&quot;
     },
     &quot;Method&quot;: {
-      &quot;text&quot;: &quot;Assessment Issue&quot;,
+      &quot;text&quot;: &quot;an Assessment Issue&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 62,
+        &quot;start&quot;: 59,
         &quot;end&quot;: 78
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0813,
-      &quot;question&quot;: &quot;How is the assessment or calculation performed?&quot;
+      &quot;confidence&quot;: 0.0374,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Method means: An event or procedure that allows the Assessor to evaluate the Phenomenon. &#x27;The study evaluated the risk of a major quake.&#x27; How is the assessment or calculation performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;How is the assessment or calculation performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;An event or procedure that allows the Assessor to evaluate the Phenomenon. &#x27;The study evaluated the risk of a major quake.&#x27;&quot;
     },
     &quot;Time&quot;: {
-      &quot;text&quot;: &quot;when an Assessment Issue (ASMT) Insurability WI is created&quot;,
+      &quot;text&quot;: &quot;When the insurability of an employment is in doubt or when an Assessment Issue (ASMT) Insurability WI is created&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 54,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 112
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.159,
-      &quot;question&quot;: &quot;When does the assessment or calculation occur?&quot;
+      &quot;confidence&quot;: 0.1704,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Time means: The time at which the Assessor makes the assessment. &#x27;The committee rated Smithers \&quot; most loyal servant \&quot; about a week ago .&#x27; When does the assessment or calculation occur?&quot;,
+      &quot;baseQuestion&quot;: &quot;When does the assessment or calculation occur?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The time at which the Assessor makes the assessment. &#x27;The committee rated Smithers \&quot; most loyal servant \&quot; about a week ago .&#x27;&quot;
     },
     &quot;Purpose&quot;: {
-      &quot;text&quot;: &quot;the insurability of an employment is in doubt&quot;,
+      &quot;text&quot;: &quot;insurability of an employment is in doubt&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 5,
+        &quot;start&quot;: 9,
         &quot;end&quot;: 50
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.347,
-      &quot;question&quot;: &quot;Why is the assessment or calculation performed?&quot;
+      &quot;confidence&quot;: 0.1925,
+      &quot;question&quot;: &quot;In the FrameNet frame Assessing, the element Purpose means: The goal that the Assessor hopes to accomplish by assessing the Phenomenon. Why is the assessment or calculation performed?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the assessment or calculation performed?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The goal that the Assessor hopes to accomplish by assessing the Phenomenon.&quot;
     },
     &quot;Evidence&quot;: {
       &quot;text&quot;: null,
@@ -2236,35 +2509,42 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;required&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9702,
-    &quot;combinedScore&quot;: 0.997,
+    &quot;bertFrameScore&quot;: 0.9817,
+    &quot;combinedScore&quot;: 0.9982,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Assessing&quot;,
         &quot;eventType&quot;: &quot;AssessmentEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9702,
-        &quot;combinedScore&quot;: 0.997
+        &quot;bertFrameScore&quot;: 0.9817,
+        &quot;combinedScore&quot;: 0.9982
       },
       {
         &quot;frame&quot;: &quot;Have_as_requirement&quot;,
         &quot;eventType&quot;: &quot;RequirementRule&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.962,
-        &quot;combinedScore&quot;: 0.9962
+        &quot;bertFrameScore&quot;: 0.982,
+        &quot;combinedScore&quot;: 0.9982
       },
       {
         &quot;frame&quot;: &quot;Being_employed&quot;,
         &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
         &quot;ruleScore&quot;: 0.98,
-        &quot;bertFrameScore&quot;: 0.963,
-        &quot;combinedScore&quot;: 0.9783
+        &quot;bertFrameScore&quot;: 0.9795,
+        &quot;combinedScore&quot;: 0.9799
       }
     ]
   },
@@ -2272,7 +2552,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -2300,7 +2584,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.9681</td><td>0.9968</td></tr></tbody>
+    <tbody><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.9682</td><td>0.9968</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;RequestEvent&quot;,
@@ -2321,15 +2605,17 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Addressee&quot;: {
-      &quot;text&quot;: &quot;Commission’s decisions.&quot;,
+      &quot;text&quot;: &quot;Commission&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 86,
-        &quot;end&quot;: 109
+        &quot;end&quot;: 96
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.188,
-      &quot;question&quot;: &quot;Who receives the request?&quot;
+      &quot;confidence&quot;: 0.3104,
+      &quot;question&quot;: &quot;In the FrameNet frame Request, the element Addressee means: In this frame the Addressee can either occur as an NP Object (usually with a following complement clause) or as a PP Complement of verbs or nouns. &#x27;The child implored her parents to let her stay up late.&#x27; &#x27;I pleaded with the bus driver to… Who receives the request?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who receives the request?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;In this frame the Addressee can either occur as an NP Object (usually with a following complement clause) or as a PP Complement of verbs or nouns. &#x27;The child implored her parents to let her stay up late.&#x27; &#x27;I pleaded with the bus driver to…&quot;
     },
     &quot;Topic&quot;: {
       &quot;text&quot;: &quot;reconsideration of one or more Commission’s decisions&quot;,
@@ -2339,8 +2625,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.7307,
-      &quot;question&quot;: &quot;What is the request about?&quot;
+      &quot;confidence&quot;: 0.4373,
+      &quot;question&quot;: &quot;In the FrameNet frame Request, the element Topic means: The Topic is rarely expressed in this frame but can occur as a PP Complement headed by about. &#x27;Can I make a request about the content of the lessons?.&#x27; What is the request about?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is the request about?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Topic is rarely expressed in this frame but can occur as a PP Complement headed by about. &#x27;Can I make a request about the content of the lessons?.&#x27;&quot;
     },
     &quot;Beneficiary&quot;: {
       &quot;text&quot;: &quot;Commission’s decisions&quot;,
@@ -2350,8 +2638,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4711,
-      &quot;question&quot;: &quot;Who benefits from the request?&quot;
+      &quot;confidence&quot;: 0.3594,
+      &quot;question&quot;: &quot;In the FrameNet frame Request, the element Beneficiary means: This extra-thematic FE applies to participants that are expected to derive a benefit from the occurrence of the event specified by the target predicate. &#x27;I asked him to get that for you.&#x27; Who benefits from the request?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who benefits from the request?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This extra-thematic FE applies to participants that are expected to derive a benefit from the occurrence of the event specified by the target predicate. &#x27;I asked him to get that for you.&#x27;&quot;
     },
     &quot;Speaker&quot;: {
       &quot;text&quot;: null,
@@ -2401,20 +2691,27 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9681,
+    &quot;bertFrameScore&quot;: 0.9682,
     &quot;combinedScore&quot;: 0.9968,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Request&quot;,
         &quot;eventType&quot;: &quot;RequestEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9681,
+        &quot;bertFrameScore&quot;: 0.9682,
         &quot;combinedScore&quot;: 0.9968
       }
     ]
@@ -2423,7 +2720,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -2451,7 +2752,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.9428</td><td>0.9943</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>0.9202</td><td>0.974</td></tr></tbody>
+    <tbody><tr><td>Request</td><td>RequestEvent</td><td>1.0</td><td>0.9473</td><td>0.9947</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>0.9492</td><td>0.9769</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;RequestEvent&quot;,
@@ -2480,17 +2781,6 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;rule&quot;
     },
-    &quot;Addressee&quot;: {
-      &quot;text&quot;: &quot;the client&quot;,
-      &quot;span&quot;: {
-        &quot;start&quot;: 30,
-        &quot;end&quot;: 40
-      },
-      &quot;implicit&quot;: false,
-      &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3622,
-      &quot;question&quot;: &quot;Who receives the request?&quot;
-    },
     &quot;Topic&quot;: {
       &quot;text&quot;: &quot;personal information&quot;,
       &quot;span&quot;: {
@@ -2499,8 +2789,15 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.5095,
-      &quot;question&quot;: &quot;What is the request about?&quot;
+      &quot;confidence&quot;: 0.1525,
+      &quot;question&quot;: &quot;In the FrameNet frame Request, the element Topic means: The Topic is rarely expressed in this frame but can occur as a PP Complement headed by about. &#x27;Can I make a request about the content of the lessons?.&#x27; What is the request about?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is the request about?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The Topic is rarely expressed in this frame but can occur as a PP Complement headed by about. &#x27;Can I make a request about the content of the lessons?.&#x27;&quot;
+    },
+    &quot;Addressee&quot;: {
+      &quot;text&quot;: null,
+      &quot;implicit&quot;: true,
+      &quot;method&quot;: &quot;not_found&quot;
     },
     &quot;Medium&quot;: {
       &quot;text&quot;: null,
@@ -2529,8 +2826,8 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;valid&quot;: [
         &quot;Speaker&quot;,
         &quot;Message&quot;,
-        &quot;Addressee&quot;,
         &quot;Topic&quot;,
+        &quot;Addressee&quot;,
         &quot;Medium&quot;,
         &quot;Beneficiary&quot;,
         &quot;Time&quot;
@@ -2545,28 +2842,35 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9428,
-    &quot;combinedScore&quot;: 0.9943,
+    &quot;bertFrameScore&quot;: 0.9473,
+    &quot;combinedScore&quot;: 0.9947,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Request&quot;,
         &quot;eventType&quot;: &quot;RequestEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9428,
-        &quot;combinedScore&quot;: 0.9943
+        &quot;bertFrameScore&quot;: 0.9473,
+        &quot;combinedScore&quot;: 0.9947
       },
       {
         &quot;frame&quot;: &quot;Evidence&quot;,
         &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
         &quot;ruleScore&quot;: 0.98,
-        &quot;bertFrameScore&quot;: 0.9202,
-        &quot;combinedScore&quot;: 0.974
+        &quot;bertFrameScore&quot;: 0.9492,
+        &quot;combinedScore&quot;: 0.9769
       }
     ]
   },
@@ -2574,7 +2878,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -2592,7 +2900,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Receiving</h2>
     <span>ReceiptEvent</span>
   </div>
-  <p class="sentence"><mark class='element' title='Recipient'>The client<small>Recipient</small></mark> was <mark class='trigger' title='trigger'>receiving<small>trigger</small></mark>, or waiting to receive, <mark class='element' title='Theme'>payment from an employer or from another insurer or payer, including incapacity payments and severance or termination payments<small>Theme</small></mark>.</p>
+  <p class="sentence"><mark class='element' title='Recipient'>The client<small>Recipient</small></mark> was <mark class='trigger' title='trigger'>receiving<small>trigger</small></mark>, or <mark class='element' title='Place'>waiting to receive, payment from an employer<small>Place</small></mark> or from another insurer or payer, including incapacity payments and severance or termination payments.</p>
   <div class="stats">
     <span>trigger: receiving</span>
     <span>status: hybrid_rule_bert</span>
@@ -2602,7 +2910,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9795</td><td>0.998</td></tr></tbody>
+    <tbody><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9777</td><td>0.9978</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
@@ -2632,37 +2940,43 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Donor&quot;: {
-      &quot;text&quot;: &quot;an employer or from another insurer or payer&quot;,
+      &quot;text&quot;: &quot;an employer&quot;,
       &quot;span&quot;: {
         &quot;start&quot;: 62,
-        &quot;end&quot;: 106
+        &quot;end&quot;: 73
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.4437,
-      &quot;question&quot;: &quot;Who gives or sends the received item?&quot;
+      &quot;confidence&quot;: 0.378,
+      &quot;question&quot;: &quot;In the FrameNet frame Receiving, the element Donor means: The person who gives the Theme to the Recipient. Who gives or sends the received item?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who gives or sends the received item?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The person who gives the Theme to the Recipient.&quot;
     },
     &quot;Place&quot;: {
-      &quot;text&quot;: &quot;an employer or from another insurer or payer&quot;,
+      &quot;text&quot;: &quot;waiting to receive, payment from an employer&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 62,
-        &quot;end&quot;: 106
+        &quot;start&quot;: 29,
+        &quot;end&quot;: 73
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1526,
-      &quot;question&quot;: &quot;Where is it received or obtained?&quot;
+      &quot;confidence&quot;: 0.2169,
+      &quot;question&quot;: &quot;In the FrameNet frame Receiving, the element Place means: The location at which the Recipient comes into possession of the Theme. Where is it received or obtained?&quot;,
+      &quot;baseQuestion&quot;: &quot;Where is it received or obtained?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The location at which the Recipient comes into possession of the Theme.&quot;
     },
     &quot;Mode_of_transfer&quot;: {
-      &quot;text&quot;: &quot;payment from an employer or from another insurer or payer&quot;,
+      &quot;text&quot;: &quot;waiting to receive, payment from an employer&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 49,
-        &quot;end&quot;: 106
+        &quot;start&quot;: 29,
+        &quot;end&quot;: 73
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2948,
-      &quot;question&quot;: &quot;What mode of transfer is used?&quot;
+      &quot;confidence&quot;: 0.0847,
+      &quot;question&quot;: &quot;In the FrameNet frame Receiving, the element Mode_of_transfer means: The system whereby the Theme travels (literally or metaphorically) so that the Recipient comes into possession of the Theme. &#x27;I received it by e-mail.&#x27; What mode of transfer is used?&quot;,
+      &quot;baseQuestion&quot;: &quot;What mode of transfer is used?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The system whereby the Theme travels (literally or metaphorically) so that the Recipient comes into possession of the Theme. &#x27;I received it by e-mail.&#x27;&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: null,
@@ -2707,21 +3021,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9795,
-    &quot;combinedScore&quot;: 0.998,
+    &quot;bertFrameScore&quot;: 0.9777,
+    &quot;combinedScore&quot;: 0.9978,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Receiving&quot;,
         &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9795,
-        &quot;combinedScore&quot;: 0.998
+        &quot;bertFrameScore&quot;: 0.9777,
+        &quot;combinedScore&quot;: 0.9978
       }
     ]
   },
@@ -2729,7 +3050,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -2747,7 +3072,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Receiving</h2>
     <span>ReceiptEvent</span>
   </div>
-  <p class="sentence">Once the <mark class='element' title='Theme'>payment is received by PSCD, the transaction is applied to the client’s overpayment account<small>Theme</small></mark>.</p>
+  <p class="sentence"><mark class='element' title='Time'>Once the payment is received by PSCD, the transaction is applied to the client’s overpayment account<small>Time</small></mark>.</p>
   <div class="stats">
     <span>trigger: received</span>
     <span>status: hybrid_rule_bert</span>
@@ -2757,7 +3082,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.963</td><td>0.9963</td></tr></tbody>
+    <tbody><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9762</td><td>0.9976</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
@@ -2787,37 +3112,43 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Donor&quot;: {
-      &quot;text&quot;: &quot;client&quot;,
+      &quot;text&quot;: &quot;PSCD&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 72,
-        &quot;end&quot;: 78
+        &quot;start&quot;: 32,
+        &quot;end&quot;: 36
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3048,
-      &quot;question&quot;: &quot;Who gives or sends the received item?&quot;
+      &quot;confidence&quot;: 0.0685,
+      &quot;question&quot;: &quot;In the FrameNet frame Receiving, the element Donor means: The person who gives the Theme to the Recipient. Who gives or sends the received item?&quot;,
+      &quot;baseQuestion&quot;: &quot;Who gives or sends the received item?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The person who gives the Theme to the Recipient.&quot;
     },
     &quot;Time&quot;: {
-      &quot;text&quot;: &quot;received by PSCD, the transaction is applied to the client’s overpayment account&quot;,
+      &quot;text&quot;: &quot;Once the payment is received by PSCD, the transaction is applied to the client’s overpayment account&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 20,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 100
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2557,
-      &quot;question&quot;: &quot;When is it received or obtained?&quot;
+      &quot;confidence&quot;: 0.072,
+      &quot;question&quot;: &quot;In the FrameNet frame Receiving, the element Time means: The time at which the Recipient comes into possession of the Theme. &#x27;She received the package before the month was out.&#x27; When is it received or obtained?&quot;,
+      &quot;baseQuestion&quot;: &quot;When is it received or obtained?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The time at which the Recipient comes into possession of the Theme. &#x27;She received the package before the month was out.&#x27;&quot;
     },
     &quot;Mode_of_transfer&quot;: {
-      &quot;text&quot;: &quot;overpayment account&quot;,
+      &quot;text&quot;: &quot;PSCD&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 81,
-        &quot;end&quot;: 100
+        &quot;start&quot;: 32,
+        &quot;end&quot;: 36
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.6798,
-      &quot;question&quot;: &quot;What mode of transfer is used?&quot;
+      &quot;confidence&quot;: 0.1516,
+      &quot;question&quot;: &quot;In the FrameNet frame Receiving, the element Mode_of_transfer means: The system whereby the Theme travels (literally or metaphorically) so that the Recipient comes into possession of the Theme. &#x27;I received it by e-mail.&#x27; What mode of transfer is used?&quot;,
+      &quot;baseQuestion&quot;: &quot;What mode of transfer is used?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The system whereby the Theme travels (literally or metaphorically) so that the Recipient comes into possession of the Theme. &#x27;I received it by e-mail.&#x27;&quot;
     },
     &quot;Place&quot;: {
       &quot;text&quot;: null,
@@ -2862,21 +3193,28 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.963,
-    &quot;combinedScore&quot;: 0.9963,
+    &quot;bertFrameScore&quot;: 0.9762,
+    &quot;combinedScore&quot;: 0.9976,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Receiving&quot;,
         &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.963,
-        &quot;combinedScore&quot;: 0.9963
+        &quot;bertFrameScore&quot;: 0.9762,
+        &quot;combinedScore&quot;: 0.9976
       }
     ]
   },
@@ -2884,7 +3222,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -2902,7 +3244,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     <h2>Activity_stop</h2>
     <span>StopProcedureOrEntitlement</span>
   </div>
-  <p class="sentence">The simplification measure for <mark class='element' title='Activity'>relaxed requirements<small>Activity</small></mark> <mark class='trigger' title='trigger'>ends<small>trigger</small></mark> <mark class='element' title='Time'>September 25, 2021<small>Time</small></mark>.</p>
+  <p class="sentence"><mark class='element' title='Purpose'>The simplification measure for relaxed requirements<small>Purpose</small></mark> <mark class='trigger' title='trigger'>ends<small>trigger</small></mark> <mark class='element' title='Time'>September 25, 2021<small>Time</small></mark>.</p>
   <div class="stats">
     <span>trigger: ends</span>
     <span>status: hybrid_rule_bert</span>
@@ -2912,7 +3254,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Activity_stop</td><td>StopProcedureOrEntitlement</td><td>1.0</td><td>0.9597</td><td>0.996</td></tr><tr><td>Assessing</td><td>AssessmentEvent</td><td>1.0</td><td>0.9565</td><td>0.9956</td></tr></tbody>
+    <tbody><tr><td>Activity_stop</td><td>StopProcedureOrEntitlement</td><td>1.0</td><td>0.9678</td><td>0.9968</td></tr><tr><td>Assessing</td><td>AssessmentEvent</td><td>1.0</td><td>0.9648</td><td>0.9965</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;StopProcedureOrEntitlement&quot;,
@@ -2931,8 +3273,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3012,
-      &quot;question&quot;: &quot;What claim, benefit, payment, report, process, or activity stops or ends?&quot;
+      &quot;confidence&quot;: 0.0787,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Activity means: This FE identifies the Activity that the Agent stops. What claim, benefit, payment, report, process, or activity stops or ends?&quot;,
+      &quot;baseQuestion&quot;: &quot;What claim, benefit, payment, report, process, or activity stops or ends?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Activity that the Agent stops.&quot;
     },
     &quot;Time&quot;: {
       &quot;text&quot;: &quot;September 25, 2021&quot;,
@@ -2942,30 +3286,36 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.8919,
-      &quot;question&quot;: &quot;When does the activity stop or end?&quot;
+      &quot;confidence&quot;: 0.2413,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Time means: This FE identifies the Time when the Agent stops the Activity. When does the activity stop or end?&quot;,
+      &quot;baseQuestion&quot;: &quot;When does the activity stop or end?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Time when the Agent stops the Activity.&quot;
     },
     &quot;Explanation&quot;: {
-      &quot;text&quot;: &quot;relaxed requirements&quot;,
+      &quot;text&quot;: &quot;simplification measure for relaxed requirements ends September 25, 2021.&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 31,
-        &quot;end&quot;: 51
+        &quot;start&quot;: 4,
+        &quot;end&quot;: 76
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1746,
-      &quot;question&quot;: &quot;Why does the activity stop or end?&quot;
+      &quot;confidence&quot;: 0.0592,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Explanation means: The reason the Agent stops the Activity. Why does the activity stop or end?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why does the activity stop or end?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The reason the Agent stops the Activity.&quot;
     },
     &quot;Purpose&quot;: {
-      &quot;text&quot;: &quot;relaxed requirements&quot;,
+      &quot;text&quot;: &quot;The simplification measure for relaxed requirements&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 31,
+        &quot;start&quot;: 0,
         &quot;end&quot;: 51
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2119,
-      &quot;question&quot;: &quot;Why is the activity stopped or ended?&quot;
+      &quot;confidence&quot;: 0.0711,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Purpose means: This FE identifies the Purpose for which an Agent stopped the Activity. Why is the activity stopped or ended?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the activity stopped or ended?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Purpose for which an Agent stopped the Activity.&quot;
     },
     &quot;Result&quot;: {
       &quot;text&quot;: &quot;relaxed requirements&quot;,
@@ -2975,8 +3325,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.2496,
-      &quot;question&quot;: &quot;What is the result of stopping or ending the activity?&quot;
+      &quot;confidence&quot;: 0.0904,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Result means: This FE identifies the Result of the stopped Activity. What is the result of stopping or ending the activity?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is the result of stopping or ending the activity?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Result of the stopped Activity.&quot;
     },
     &quot;Duration&quot;: {
       &quot;text&quot;: &quot;September 25, 2021&quot;,
@@ -2986,8 +3338,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.196,
-      &quot;question&quot;: &quot;How long did the activity last?&quot;
+      &quot;confidence&quot;: 0.3015,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Duration means: This FE identifies the length of Time during which the Activity is stopped. How long did the activity last?&quot;,
+      &quot;baseQuestion&quot;: &quot;How long did the activity last?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the length of Time during which the Activity is stopped.&quot;
     },
     &quot;Agent&quot;: {
       &quot;text&quot;: null,
@@ -3028,28 +3382,35 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9597,
-    &quot;combinedScore&quot;: 0.996,
+    &quot;bertFrameScore&quot;: 0.9678,
+    &quot;combinedScore&quot;: 0.9968,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Activity_stop&quot;,
         &quot;eventType&quot;: &quot;StopProcedureOrEntitlement&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9597,
-        &quot;combinedScore&quot;: 0.996
+        &quot;bertFrameScore&quot;: 0.9678,
+        &quot;combinedScore&quot;: 0.9968
       },
       {
         &quot;frame&quot;: &quot;Assessing&quot;,
         &quot;eventType&quot;: &quot;AssessmentEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9565,
-        &quot;combinedScore&quot;: 0.9956
+        &quot;bertFrameScore&quot;: 0.9648,
+        &quot;combinedScore&quot;: 0.9965
       }
     ]
   },
@@ -3057,7 +3418,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
@@ -3085,7 +3450,7 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   </div>
   <table>
     <thead><tr><th>Candidate frame</th><th>Event type</th><th>Rule</th><th>BERT frame</th><th>Combined</th></tr></thead>
-    <tbody><tr><td>Activity_stop</td><td>StopProcedureOrEntitlement</td><td>1.0</td><td>0.9617</td><td>0.9962</td></tr><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9644</td><td>0.9964</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>0.9159</td><td>0.9736</td></tr></tbody>
+    <tbody><tr><td>Activity_stop</td><td>StopProcedureOrEntitlement</td><td>1.0</td><td>0.9718</td><td>0.9972</td></tr><tr><td>Receiving</td><td>ReceiptEvent</td><td>1.0</td><td>0.9748</td><td>0.9975</td></tr><tr><td>Evidence</td><td>EvidenceSupport</td><td>0.98</td><td>0.9722</td><td>0.9792</td></tr></tbody>
   </table>
   <details><summary>JSON</summary><pre>{
   &quot;eventType&quot;: &quot;StopProcedureOrEntitlement&quot;,
@@ -3115,37 +3480,43 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       &quot;method&quot;: &quot;rule&quot;
     },
     &quot;Activity&quot;: {
-      &quot;text&quot;: &quot;AOB period&quot;,
+      &quot;text&quot;: &quot;the start and end weeks of the AOB period&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 81,
+        &quot;start&quot;: 50,
         &quot;end&quot;: 91
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1253,
-      &quot;question&quot;: &quot;What claim, benefit, payment, report, process, or activity stops or ends?&quot;
+      &quot;confidence&quot;: 0.0447,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Activity means: This FE identifies the Activity that the Agent stops. What claim, benefit, payment, report, process, or activity stops or ends?&quot;,
+      &quot;baseQuestion&quot;: &quot;What claim, benefit, payment, report, process, or activity stops or ends?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Activity that the Agent stops.&quot;
     },
     &quot;Explanation&quot;: {
-      &quot;text&quot;: &quot;start and end weeks of the AOB period&quot;,
+      &quot;text&quot;: &quot;the start and end weeks&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 54,
-        &quot;end&quot;: 91
+        &quot;start&quot;: 50,
+        &quot;end&quot;: 73
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0968,
-      &quot;question&quot;: &quot;Why does the activity stop or end?&quot;
+      &quot;confidence&quot;: 0.0605,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Explanation means: The reason the Agent stops the Activity. Why does the activity stop or end?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why does the activity stop or end?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;The reason the Agent stops the Activity.&quot;
     },
     &quot;Purpose&quot;: {
-      &quot;text&quot;: &quot;start and end weeks of the AOB period&quot;,
+      &quot;text&quot;: &quot;the start and end weeks&quot;,
       &quot;span&quot;: {
-        &quot;start&quot;: 54,
-        &quot;end&quot;: 91
+        &quot;start&quot;: 50,
+        &quot;end&quot;: 73
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.0855,
-      &quot;question&quot;: &quot;Why is the activity stopped or ended?&quot;
+      &quot;confidence&quot;: 0.0529,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Purpose means: This FE identifies the Purpose for which an Agent stopped the Activity. Why is the activity stopped or ended?&quot;,
+      &quot;baseQuestion&quot;: &quot;Why is the activity stopped or ended?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Purpose for which an Agent stopped the Activity.&quot;
     },
     &quot;Result&quot;: {
       &quot;text&quot;: &quot;weeks&quot;,
@@ -3155,8 +3526,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.1189,
-      &quot;question&quot;: &quot;What is the result of stopping or ending the activity?&quot;
+      &quot;confidence&quot;: 0.1377,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Result means: This FE identifies the Result of the stopped Activity. What is the result of stopping or ending the activity?&quot;,
+      &quot;baseQuestion&quot;: &quot;What is the result of stopping or ending the activity?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the Result of the stopped Activity.&quot;
     },
     &quot;Duration&quot;: {
       &quot;text&quot;: &quot;weeks&quot;,
@@ -3166,8 +3539,10 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
       },
       &quot;implicit&quot;: false,
       &quot;method&quot;: &quot;bert_qa&quot;,
-      &quot;confidence&quot;: 0.3703,
-      &quot;question&quot;: &quot;How long did the activity last?&quot;
+      &quot;confidence&quot;: 0.2353,
+      &quot;question&quot;: &quot;In the FrameNet frame Activity_stop, the element Duration means: This FE identifies the length of Time during which the Activity is stopped. How long did the activity last?&quot;,
+      &quot;baseQuestion&quot;: &quot;How long did the activity last?&quot;,
+      &quot;frameElementDefinition&quot;: &quot;This FE identifies the length of Time during which the Activity is stopped.&quot;
     },
     &quot;Means&quot;: {
       &quot;text&quot;: null,
@@ -3203,35 +3578,42 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
   &quot;modality&quot;: &quot;asserted&quot;,
   &quot;hybridScoring&quot;: {
     &quot;ruleScore&quot;: 1.0,
-    &quot;bertFrameScore&quot;: 0.9617,
-    &quot;combinedScore&quot;: 0.9962,
+    &quot;bertFrameScore&quot;: 0.9718,
+    &quot;combinedScore&quot;: 0.9972,
     &quot;bertFrameScorer&quot;: {
       &quot;available&quot;: true,
       &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
       &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-      &quot;status&quot;: &quot;scored&quot;
+      &quot;status&quot;: &quot;scored&quot;,
+      &quot;comparisonBasis&quot;: [
+        &quot;domain_rule_description&quot;,
+        &quot;official_framenet_frame_definition&quot;,
+        &quot;official_framenet_lexical_units&quot;
+      ],
+      &quot;exemplarsUsed&quot;: false,
+      &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
     },
     &quot;candidateFrames&quot;: [
       {
         &quot;frame&quot;: &quot;Activity_stop&quot;,
         &quot;eventType&quot;: &quot;StopProcedureOrEntitlement&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9617,
-        &quot;combinedScore&quot;: 0.9962
+        &quot;bertFrameScore&quot;: 0.9718,
+        &quot;combinedScore&quot;: 0.9972
       },
       {
         &quot;frame&quot;: &quot;Receiving&quot;,
         &quot;eventType&quot;: &quot;ReceiptEvent&quot;,
         &quot;ruleScore&quot;: 1.0,
-        &quot;bertFrameScore&quot;: 0.9644,
-        &quot;combinedScore&quot;: 0.9964
+        &quot;bertFrameScore&quot;: 0.9748,
+        &quot;combinedScore&quot;: 0.9975
       },
       {
         &quot;frame&quot;: &quot;Evidence&quot;,
         &quot;eventType&quot;: &quot;EvidenceSupport&quot;,
         &quot;ruleScore&quot;: 0.98,
-        &quot;bertFrameScore&quot;: 0.9159,
-        &quot;combinedScore&quot;: 0.9736
+        &quot;bertFrameScore&quot;: 0.9722,
+        &quot;combinedScore&quot;: 0.9792
       }
     ]
   },
@@ -3239,7 +3621,11 @@ pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:8px;padd
     &quot;available&quot;: true,
     &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
     &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
-    &quot;status&quot;: &quot;scored&quot;
+    &quot;status&quot;: &quot;scored&quot;,
+    &quot;questionBasis&quot;: [
+      &quot;frame_specific_question&quot;,
+      &quot;official_framenet_frame_element_definition_when_available&quot;
+    ]
   },
   &quot;domainExtensions&quot;: {
     &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;

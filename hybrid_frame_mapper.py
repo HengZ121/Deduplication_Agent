@@ -277,6 +277,35 @@ def _mean_pool_embeddings(model: Any, tokenizer: Any, torch: Any, texts: list[st
     return (hidden * mask).sum(dim=1) / mask.sum(dim=1).clamp(min=1e-9)
 
 
+def _short_text(value: str | None, limit: int = 360) -> str:
+    text = re.sub(r"\s+", " ", value or "").strip()
+    if len(text) <= limit:
+        return text
+    return text[: limit - 1].rsplit(" ", 1)[0] + "…"
+
+
+@lru_cache(maxsize=32)
+def _frame_prompt(frame_name: str) -> tuple[str, dict[str, Any]]:
+    rule = _FRAME_RULE_BY_NAME[frame_name]
+    summary = registry.frame_summary(frame_name)
+    basis = ["domain_rule_description"]
+    parts = [f"Frame: {rule.frame}. Domain description: {rule.description}."]
+    if summary:
+        definition = _short_text(summary.get("definition"), 420)
+        if definition:
+            parts.append(f"Official FrameNet definition: {definition}")
+            basis.append("official_framenet_frame_definition")
+        lexical_units = summary.get("lexicalUnits") or []
+        if lexical_units:
+            parts.append(f"Official lexical units: {', '.join(lexical_units[:12])}.")
+            basis.append("official_framenet_lexical_units")
+    return " ".join(parts), {
+        "comparisonBasis": basis,
+        "exemplarsUsed": False,
+        "exemplarPolicy": "Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.",
+    }
+
+
 def _bert_frame_scores(sentence: str, rules: tuple[FrameRule, ...]) -> tuple[dict[str, float], dict[str, Any]]:
     bert = _local_bert_qa()
     if bert is None:
@@ -287,7 +316,9 @@ def _bert_frame_scores(sentence: str, rules: tuple[FrameRule, ...]) -> tuple[dic
             "status": "unavailable_local_model_or_dependency",
         }
     tokenizer, model, torch = bert
-    texts = [sentence] + [f"{rule.frame}: {rule.description}" for rule in rules]
+    prompts = [_frame_prompt(rule.frame)[0] for rule in rules]
+    basis = sorted({item for rule in rules for item in _frame_prompt(rule.frame)[1]["comparisonBasis"]})
+    texts = [sentence] + prompts
     embeddings = _mean_pool_embeddings(model, tokenizer, torch, texts)
     similarities = torch.nn.functional.cosine_similarity(embeddings[0].unsqueeze(0), embeddings[1:])
     values = ((similarities + 1.0) / 2.0).tolist()
@@ -297,7 +328,30 @@ def _bert_frame_scores(sentence: str, rules: tuple[FrameRule, ...]) -> tuple[dic
         "method": "bert_embedding_frame_scorer",
         "model": BERT_MODEL_NAME,
         "status": "scored",
+        "comparisonBasis": basis,
+        "exemplarsUsed": False,
+        "exemplarPolicy": "Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.",
     }
+
+
+def _frame_element_definition(frame_name: str, element_name: str) -> str | None:
+    summary = registry.frame_summary(frame_name)
+    if not summary:
+        return None
+    element = (summary.get("frameElements") or {}).get(element_name)
+    if not element:
+        return None
+    return _short_text(element.get("definition"), 240)
+
+
+def _qa_prompt(rule: FrameRule, element_name: str, base_question: str) -> str:
+    definition = _frame_element_definition(rule.frame, element_name)
+    if not definition:
+        return base_question
+    return (
+        f"In the FrameNet frame {rule.frame}, the element {element_name} means: "
+        f"{definition} {base_question}"
+    )
 
 
 def _bert_qa_answer(sentence: str, question: str) -> dict[str, Any] | None:
@@ -416,11 +470,16 @@ def _extract_frame_elements(rule: FrameRule, sentence: str) -> tuple[dict[str, A
         "method": "bert_qa_span_extraction",
         "model": BERT_MODEL_NAME,
         "status": "scored" if _local_bert_qa() is not None else "unavailable_local_model_or_dependency",
+        "questionBasis": [
+            "frame_specific_question",
+            "official_framenet_frame_element_definition_when_available",
+        ],
     }
     if qa_info["available"]:
-        for name, question in FRAME_ELEMENT_QUESTIONS.get(rule.frame, {}).items():
+        for name, base_question in FRAME_ELEMENT_QUESTIONS.get(rule.frame, {}).items():
             if elements.get(name, {}).get("text"):
                 continue
+            question = _qa_prompt(rule, name, base_question)
             answer = _bert_qa_answer(sentence, question)
             if answer and _plausible_element_answer(name, answer["text"]):
                 elements[name] = {
@@ -430,6 +489,8 @@ def _extract_frame_elements(rule: FrameRule, sentence: str) -> tuple[dict[str, A
                     "method": "bert_qa",
                     "confidence": answer["confidence"],
                     "question": question,
+                    "baseQuestion": base_question,
+                    "frameElementDefinition": _frame_element_definition(rule.frame, name),
                 }
 
     for name in _configured_element_names(rule):

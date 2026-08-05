@@ -77,8 +77,10 @@ The repository also includes a focused hybrid mapper for 10 representative emplo
 
 The rule layer provides deterministic candidate detection. A local BERT QA model (`deepset/bert-base-cased-squad2`) is then used in two explicit ways:
 
-1. BERT frame scorer: computes sentence/frame-description similarity for selected candidate frames.
-2. BERT QA element extraction: asks frame-specific questions and extracts source-text spans for configured frame elements.
+1. BERT frame scorer: computes similarity between the sentence and a frame prompt built from the domain rule description, official FrameNet frame definition, and official FrameNet lexical units.
+2. BERT QA element extraction: asks frame-specific questions enriched with official FrameNet frame-element definitions, then extracts source-text spans for configured frame elements.
+
+Raw FrameNet exemplar sentences are not used by default because they are general-domain and often do not resemble employment/social-benefit procedure language. Procedure-derived exemplars can be added later as curated training/evaluation data.
 
 Download the local BERT model once before running the BERT-enhanced demo:
 
