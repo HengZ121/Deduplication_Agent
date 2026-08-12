@@ -1,0 +1,1406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paragraph-Level Frame Element Demo</title>
+<style>
+:root{
+  --ink:#172033;--muted:#5f6b7c;--line:#d9e1ec;--bg:#f5f7fb;--card:#fff;
+  --trigger:#ffe08a;--agent:#b8e0d2;--evaluee:#bde0fe;--response:#c7f0bd;
+  --reason:#ddd1ff;--result:#cfe8ff;--time:#ffd6a5;--candidate:#eef2f7;--meta:#e8eef8;
+}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,system-ui,sans-serif}
+main{max-width:1220px;margin:0 auto;padding:32px 20px 56px}
+h1{margin:0 0 8px;font-size:34px;letter-spacing:-.02em}p{color:var(--muted)}h2,h3{margin:0;color:var(--ink)}
+.intro{max-width:920px;line-height:1.55}.legend{display:flex;gap:10px 16px;flex-wrap:wrap;margin:18px 0 22px;color:#39465a}
+.legend span,.chips span,.summary-pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:13px}
+.legend span::before,.dot{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend .trigger::before,.dot-trigger{background:var(--trigger)}.legend .agent::before,.dot-agent{background:var(--agent)}.legend .response::before,.dot-response{background:var(--response)}
+.legend .reason::before,.dot-reason{background:var(--reason)}.legend .result::before,.dot-result{background:var(--result)}.legend .candidate::before,.dot-candidate{background:var(--candidate);border:1px dashed #9aa6b7}
+.overview,.case-card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 26px rgba(35,50,74,.08);padding:18px;margin:18px 0}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid #e4e9f1;padding:9px 8px;vertical-align:top;font-size:14px}th{color:#536076;font-weight:700}tr:last-child td{border-bottom:0}
+.case-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px}.source{margin:4px 0 0;font-size:13px}
+.paragraph{font-size:18px;line-height:2;color:#172033;background:#f9fbff;border-left:4px solid #1768e5;border-radius:8px;padding:14px 16px;margin:12px 0 16px}
+.hl{border-radius:4px;padding:2px 3px;margin:0 1px;color:#172033}.hl small{font-size:10px;color:#364154;margin-left:4px;font-weight:700}
+.hl-trigger{background:var(--trigger)}.hl-agent{background:var(--agent)}.hl-evaluee{background:var(--evaluee)}.hl-response{background:var(--response)}.hl-reason{background:var(--reason)}.hl-result{background:var(--result)}.hl-time{background:var(--time)}.hl-meta{background:var(--meta)}.hl-candidate{background:var(--candidate);border-bottom:2px dashed #9aa6b7}
+details{margin-top:12px}summary{cursor:pointer;font-weight:700;color:#26344a}.event{border-top:1px solid #e4e9f1;padding:14px 0}.event-title{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.event-title span{font-size:12px;background:#eef3fb;border-radius:999px;padding:4px 8px;color:#40506a}.event-sentence{margin:8px 0;color:#40506a;line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.muted{color:var(--muted)}.warnings{color:#7a4d00;background:#fff8dc;border:1px solid #f2d384;border-radius:8px;padding:10px 14px 10px 30px}
+pre{white-space:pre-wrap;background:#101827;color:#dbeafe;border-radius:10px;padding:14px;overflow:auto;max-height:520px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Paragraph-Level Frame Element Demo</h1>
+  <p class="intro">Four paragraphs were run through the current FrameNet mapper: two original procedure paragraphs and two client-LLM optimized versions. Highlights show the extracted frame-element spans in context; hover over a highlight for its label, and use the table under each case for exact extracted text. Gray dashed text marks a sentence that only received candidate lexical-unit lookup, not a confirmed domain frame.</p>
+  <div class="legend">
+    <span class="trigger">Trigger</span>
+    <span class="agent">Agent</span>
+    <span class="response">Response / action</span>
+    <span class="reason">Reason</span>
+    <span class="result">Result</span>
+    <span class="candidate">Candidate-only sentence</span>
+  </div>
+  <section class="overview">
+    <h2>Run summary</h2>
+    <table>
+      <thead><tr><th>Text</th><th>Events</th><th>Confirmed</th><th>Candidate-only</th><th>Frames</th></tr></thead>
+      <tbody><tr><td>Original 1: access-code fraud paragraph</td><td>2</td><td>1</td><td>1</td><td>Rewards_and_punishments, candidate_only</td></tr>
+<tr><td>Optimized 1: access-code fraud paragraph</td><td>2</td><td>1</td><td>1</td><td>Rewards_and_punishments, candidate_only</td></tr>
+<tr><td>Original 2: EI ERB work-item routing paragraph</td><td>2</td><td>1</td><td>1</td><td>Rewards_and_punishments, candidate_only</td></tr>
+<tr><td>Optimized 2: EI ERB work-item routing paragraph</td><td>2</td><td>1</td><td>1</td><td>Rewards_and_punishments, candidate_only</td></tr></tbody>
+    </table>
+  </section>
+  
+<article class="case-card" id="original-1">
+  <div class="case-head">
+    <div>
+      <h2>Original 1: access-code fraud paragraph</h2>
+      <p class="source">procedure/activity/access_code.json · Access code</p>
+    </div>
+    <div class="summary-pill">1 confirmed · 1 candidate-only</div>
+  </div>
+  <p class="paragraph">If <mark class="hl hl-reason" title="Reason">fraudulent activity is suspected on an EI or </mark><mark class="hl hl-result" title="Reason + Result">EI Emergency Response </mark><mark class="hl hl-trigger" title="Reason + Response_action + Result + trigger">Benefit</mark><mark class="hl hl-response" title="Reason + Response_action + Result"> (EI ERB) claim, </mark><mark class="hl hl-agent" title="Agent + Reason + Response_action + Result">the agent</mark><mark class="hl hl-response" title="Reason + Response_action + Result"> does not issue the access code</mark>. <mark class="hl hl-candidate" title="candidate_only sentence">For more information, the agent refers to Determining if an issue must be referred to Integrity for more information.</mark></p>
+  <details open>
+    <summary>Extracted frame elements</summary>
+    
+<section class="event">
+  <div class="event-title">
+    <h3>Event 1: Rewards_and_punishments</h3>
+    <span>hybrid_rule_bert</span>
+  </div>
+  <p class="event-sentence">If fraudulent activity is suspected on an EI or EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code.</p>
+  <div class="chips">
+    <span>Trigger: Benefit</span>
+    <span>rule 1.0 · BERT 0.9691 · combined 0.9969</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td><span class='dot dot-agent'></span>Agent</td><td>the agent</td></tr>
+<tr><td><span class='dot dot-response'></span>Response_action</td><td>Benefit (EI ERB) claim, the agent does not issue the access code</td></tr>
+<tr><td><span class='dot dot-reason'></span>Reason</td><td>fraudulent activity is suspected on an EI or EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code</td></tr>
+<tr><td><span class='dot dot-result'></span>Result</td><td>EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code</td></tr></tbody>
+  </table>
+</section>
+
+
+<section class="event">
+  <div class="event-title">
+    <h3>Event 2: Candidate-only lexical lookup</h3>
+    <span>candidate_only</span>
+  </div>
+  <p class="event-sentence">For more information, the agent refers to Determining if an issue must be referred to Integrity for more information.</p>
+  <div class="chips">
+    <span>Trigger: n/a</span>
+    <span>no confirmed frame score</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td colspan='2' class='muted'>No frame elements extracted.</td></tr></tbody>
+  </table>
+</section>
+
+  </details>
+  <ul class="warnings"><li>Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.</li></ul>
+  <details>
+    <summary>Full JSON</summary>
+    <pre>{
+  &quot;schemaVersion&quot;: &quot;0.3.1&quot;,
+  &quot;sourceDocument&quot;: &quot;original-1&quot;,
+  &quot;annotationMethod&quot;: &quot;spacy-dependency+rule-based-domain+nltk-framenet-1.7-validation&quot;,
+  &quot;syntacticParser&quot;: {
+    &quot;provider&quot;: &quot;spaCy&quot;,
+    &quot;model&quot;: &quot;en_core_web_sm&quot;,
+    &quot;available&quot;: true,
+    &quot;version&quot;: &quot;3.8.13&quot;,
+    &quot;fallback&quot;: &quot;domain rules&quot;
+  },
+  &quot;frameNetRegistry&quot;: {
+    &quot;provider&quot;: &quot;NLTK FrameNet API&quot;,
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true
+  },
+  &quot;eventCount&quot;: 2,
+  &quot;confirmedEventCount&quot;: 1,
+  &quot;candidateEventCount&quot;: 1,
+  &quot;events&quot;: [
+    {
+      &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+      &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+      &quot;trigger&quot;: &quot;Benefit&quot;,
+      &quot;triggerSpan&quot;: {
+        &quot;start&quot;: 70,
+        &quot;end&quot;: 77
+      },
+      &quot;frameElements&quot;: {
+        &quot;Agent&quot;: {
+          &quot;text&quot;: &quot;the agent&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 94,
+            &quot;end&quot;: 103
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Response_action&quot;: {
+          &quot;text&quot;: &quot;Benefit (EI ERB) claim, the agent does not issue the access code&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 70,
+            &quot;end&quot;: 134
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Reason&quot;: {
+          &quot;text&quot;: &quot;fraudulent activity is suspected on an EI or EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 3,
+            &quot;end&quot;: 134
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Result&quot;: {
+          &quot;text&quot;: &quot;EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 48,
+            &quot;end&quot;: 134
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;bert_qa&quot;,
+          &quot;confidence&quot;: 0.0158,
+          &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Result means: Result of the reward or punishment. What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;baseQuestion&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;frameElementDefinition&quot;: &quot;Result of the reward or punishment.&quot;
+        },
+        &quot;Evaluee&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Time&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Place&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        }
+      },
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;frameId&quot;: 216,
+        &quot;frameName&quot;: &quot;Rewards_and_punishments&quot;,
+        &quot;target&quot;: null,
+        &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+        &quot;frameElementValidation&quot;: {
+          &quot;valid&quot;: [
+            &quot;Agent&quot;,
+            &quot;Response_action&quot;,
+            &quot;Reason&quot;,
+            &quot;Result&quot;,
+            &quot;Evaluee&quot;,
+            &quot;Time&quot;,
+            &quot;Place&quot;
+          ],
+          &quot;invalid&quot;: []
+        }
+      },
+      &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: &quot;negative&quot;,
+      &quot;modality&quot;: &quot;asserted&quot;,
+      &quot;hybridScoring&quot;: {
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertFrameScore&quot;: 0.9691,
+        &quot;combinedScore&quot;: 0.9969,
+        &quot;bertFrameScorer&quot;: {
+          &quot;available&quot;: true,
+          &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
+          &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+          &quot;status&quot;: &quot;scored&quot;,
+          &quot;comparisonBasis&quot;: [
+            &quot;domain_rule_description&quot;,
+            &quot;official_framenet_frame_definition&quot;,
+            &quot;official_framenet_lexical_units&quot;
+          ],
+          &quot;exemplarsUsed&quot;: false,
+          &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
+        },
+        &quot;candidateFrames&quot;: [
+          {
+            &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+            &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+            &quot;ruleScore&quot;: 1.0,
+            &quot;bertFrameScore&quot;: 0.9691,
+            &quot;combinedScore&quot;: 0.9969
+          }
+        ]
+      },
+      &quot;bertElementExtraction&quot;: {
+        &quot;available&quot;: true,
+        &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
+        &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+        &quot;status&quot;: &quot;scored&quot;,
+        &quot;questionBasis&quot;: [
+          &quot;frame_specific_question&quot;,
+          &quot;official_framenet_frame_element_definition_when_available&quot;
+        ]
+      },
+      &quot;domainExtensions&quot;: {
+        &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
+      },
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 0,
+        &quot;sentence&quot;: &quot;If fraudulent activity is suspected on an EI or EI Emergency Response Benefit (EI ERB) claim, the agent does not issue the access code.&quot;
+      }
+    },
+    {
+      &quot;eventType&quot;: &quot;FrameNetCandidate&quot;,
+      &quot;frame&quot;: null,
+      &quot;trigger&quot;: null,
+      &quot;triggerSpan&quot;: null,
+      &quot;frameElements&quot;: {},
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;validationStatus&quot;: &quot;candidate_only&quot;,
+        &quot;message&quot;: &quot;No supported penalty lifecycle event was found; candidate frames come from visible FrameNet lexical-unit matches.&quot;
+      },
+      &quot;candidateFrames&quot;: [
+        {
+          &quot;frame&quot;: &quot;Duration_relation&quot;,
+          &quot;frameId&quot;: 2121,
+          &quot;matchedLexicalUnit&quot;: &quot;for.prep&quot;,
+          &quot;matchedText&quot;: &quot;For&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 3
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Taking_sides&quot;,
+          &quot;frameId&quot;: 1306,
+          &quot;matchedLexicalUnit&quot;: &quot;for.prep&quot;,
+          &quot;matchedText&quot;: &quot;For&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 3
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Increment&quot;,
+          &quot;frameId&quot;: 1001,
+          &quot;matchedLexicalUnit&quot;: &quot;more.a&quot;,
+          &quot;matchedText&quot;: &quot;more&quot;,
+          &quot;partOfSpeech&quot;: &quot;a&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 4,
+            &quot;end&quot;: 8
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Information&quot;,
+          &quot;frameId&quot;: 1591,
+          &quot;matchedLexicalUnit&quot;: &quot;information.n&quot;,
+          &quot;matchedText&quot;: &quot;information&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 9,
+            &quot;end&quot;: 20
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Active_substance&quot;,
+          &quot;frameId&quot;: 1322,
+          &quot;matchedLexicalUnit&quot;: &quot;agent.n&quot;,
+          &quot;matchedText&quot;: &quot;agent&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 26,
+            &quot;end&quot;: 31
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Intentionally_act&quot;,
+          &quot;frameId&quot;: 198,
+          &quot;matchedLexicalUnit&quot;: &quot;agent.n&quot;,
+          &quot;matchedText&quot;: &quot;agent&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 26,
+            &quot;end&quot;: 31
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;People_by_vocation&quot;,
+          &quot;frameId&quot;: 1071,
+          &quot;matchedLexicalUnit&quot;: &quot;agent.n&quot;,
+          &quot;matchedText&quot;: &quot;agent&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 26,
+            &quot;end&quot;: 31
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Reference_text&quot;,
+          &quot;frameId&quot;: 1924,
+          &quot;matchedLexicalUnit&quot;: &quot;refer.v&quot;,
+          &quot;matchedText&quot;: &quot;refers&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 32,
+            &quot;end&quot;: 38
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        }
+      ],
+      &quot;mappingStatus&quot;: &quot;candidate_only&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: null,
+      &quot;modality&quot;: null,
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 1,
+        &quot;sentence&quot;: &quot;For more information, the agent refers to Determining if an issue must be referred to Integrity for more information.&quot;
+      }
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.&quot;
+  ]
+}</pre>
+  </details>
+</article>
+
+
+<article class="case-card" id="optimized-1">
+  <div class="case-head">
+    <div>
+      <h2>Optimized 1: access-code fraud paragraph</h2>
+      <p class="source">Client internal LLM optimized version</p>
+    </div>
+    <div class="summary-pill">1 confirmed · 1 candidate-only</div>
+  </div>
+  <p class="paragraph">If <mark class="hl hl-reason" title="Reason">fraudulent activity is suspected on an Employment Insurance (EI) claim or an EI </mark><mark class="hl hl-result" title="Reason + Result">Emergency Response </mark><mark class="hl hl-trigger" title="Reason + Response_action + Result + trigger">Benefit</mark><mark class="hl hl-response" title="Reason + Response_action + Result"> (EI ERB) claim, </mark><mark class="hl hl-agent" title="Agent + Reason + Response_action + Result">the agent</mark><mark class="hl hl-response" title="Reason + Response_action + Result"> must not issue an access code</mark>. <mark class="hl hl-candidate" title="candidate_only sentence">For additional guidance, refer to Determining if an issue must be referred to Integrity.</mark></p>
+  <details open>
+    <summary>Extracted frame elements</summary>
+    
+<section class="event">
+  <div class="event-title">
+    <h3>Event 1: Rewards_and_punishments</h3>
+    <span>hybrid_rule_bert</span>
+  </div>
+  <p class="event-sentence">If fraudulent activity is suspected on an Employment Insurance (EI) claim or an EI Emergency Response Benefit (EI ERB) claim, the agent must not issue an access code.</p>
+  <div class="chips">
+    <span>Trigger: Benefit</span>
+    <span>rule 1.0 · BERT 0.9755 · combined 0.9975</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td><span class='dot dot-agent'></span>Agent</td><td>the agent</td></tr>
+<tr><td><span class='dot dot-response'></span>Response_action</td><td>Benefit (EI ERB) claim, the agent must not issue an access code</td></tr>
+<tr><td><span class='dot dot-reason'></span>Reason</td><td>fraudulent activity is suspected on an Employment Insurance (EI) claim or an EI Emergency Response Benefit (EI ERB) claim, the agent must not issue an access code</td></tr>
+<tr><td><span class='dot dot-result'></span>Result</td><td>Emergency Response Benefit (EI ERB) claim, the agent must not issue an access code</td></tr></tbody>
+  </table>
+</section>
+
+
+<section class="event">
+  <div class="event-title">
+    <h3>Event 2: Candidate-only lexical lookup</h3>
+    <span>candidate_only</span>
+  </div>
+  <p class="event-sentence">For additional guidance, refer to Determining if an issue must be referred to Integrity.</p>
+  <div class="chips">
+    <span>Trigger: n/a</span>
+    <span>no confirmed frame score</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td colspan='2' class='muted'>No frame elements extracted.</td></tr></tbody>
+  </table>
+</section>
+
+  </details>
+  <ul class="warnings"><li>Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.</li></ul>
+  <details>
+    <summary>Full JSON</summary>
+    <pre>{
+  &quot;schemaVersion&quot;: &quot;0.3.1&quot;,
+  &quot;sourceDocument&quot;: &quot;optimized-1&quot;,
+  &quot;annotationMethod&quot;: &quot;spacy-dependency+rule-based-domain+nltk-framenet-1.7-validation&quot;,
+  &quot;syntacticParser&quot;: {
+    &quot;provider&quot;: &quot;spaCy&quot;,
+    &quot;model&quot;: &quot;en_core_web_sm&quot;,
+    &quot;available&quot;: true,
+    &quot;version&quot;: &quot;3.8.13&quot;,
+    &quot;fallback&quot;: &quot;domain rules&quot;
+  },
+  &quot;frameNetRegistry&quot;: {
+    &quot;provider&quot;: &quot;NLTK FrameNet API&quot;,
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true
+  },
+  &quot;eventCount&quot;: 2,
+  &quot;confirmedEventCount&quot;: 1,
+  &quot;candidateEventCount&quot;: 1,
+  &quot;events&quot;: [
+    {
+      &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+      &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+      &quot;trigger&quot;: &quot;Benefit&quot;,
+      &quot;triggerSpan&quot;: {
+        &quot;start&quot;: 102,
+        &quot;end&quot;: 109
+      },
+      &quot;frameElements&quot;: {
+        &quot;Agent&quot;: {
+          &quot;text&quot;: &quot;the agent&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 126,
+            &quot;end&quot;: 135
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Response_action&quot;: {
+          &quot;text&quot;: &quot;Benefit (EI ERB) claim, the agent must not issue an access code&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 102,
+            &quot;end&quot;: 165
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Reason&quot;: {
+          &quot;text&quot;: &quot;fraudulent activity is suspected on an Employment Insurance (EI) claim or an EI Emergency Response Benefit (EI ERB) claim, the agent must not issue an access code&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 3,
+            &quot;end&quot;: 165
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Result&quot;: {
+          &quot;text&quot;: &quot;Emergency Response Benefit (EI ERB) claim, the agent must not issue an access code&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 83,
+            &quot;end&quot;: 165
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;bert_qa&quot;,
+          &quot;confidence&quot;: 0.0249,
+          &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Result means: Result of the reward or punishment. What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;baseQuestion&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;frameElementDefinition&quot;: &quot;Result of the reward or punishment.&quot;
+        },
+        &quot;Evaluee&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Time&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Place&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        }
+      },
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;frameId&quot;: 216,
+        &quot;frameName&quot;: &quot;Rewards_and_punishments&quot;,
+        &quot;target&quot;: null,
+        &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+        &quot;frameElementValidation&quot;: {
+          &quot;valid&quot;: [
+            &quot;Agent&quot;,
+            &quot;Response_action&quot;,
+            &quot;Reason&quot;,
+            &quot;Result&quot;,
+            &quot;Evaluee&quot;,
+            &quot;Time&quot;,
+            &quot;Place&quot;
+          ],
+          &quot;invalid&quot;: []
+        }
+      },
+      &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: &quot;negative&quot;,
+      &quot;modality&quot;: &quot;required&quot;,
+      &quot;hybridScoring&quot;: {
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertFrameScore&quot;: 0.9755,
+        &quot;combinedScore&quot;: 0.9975,
+        &quot;bertFrameScorer&quot;: {
+          &quot;available&quot;: true,
+          &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
+          &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+          &quot;status&quot;: &quot;scored&quot;,
+          &quot;comparisonBasis&quot;: [
+            &quot;domain_rule_description&quot;,
+            &quot;official_framenet_frame_definition&quot;,
+            &quot;official_framenet_lexical_units&quot;
+          ],
+          &quot;exemplarsUsed&quot;: false,
+          &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
+        },
+        &quot;candidateFrames&quot;: [
+          {
+            &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+            &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+            &quot;ruleScore&quot;: 1.0,
+            &quot;bertFrameScore&quot;: 0.9755,
+            &quot;combinedScore&quot;: 0.9975
+          },
+          {
+            &quot;frame&quot;: &quot;Being_employed&quot;,
+            &quot;eventType&quot;: &quot;EmploymentStatus&quot;,
+            &quot;ruleScore&quot;: 0.98,
+            &quot;bertFrameScore&quot;: 0.979,
+            &quot;combinedScore&quot;: 0.9799
+          }
+        ]
+      },
+      &quot;bertElementExtraction&quot;: {
+        &quot;available&quot;: true,
+        &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
+        &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+        &quot;status&quot;: &quot;scored&quot;,
+        &quot;questionBasis&quot;: [
+          &quot;frame_specific_question&quot;,
+          &quot;official_framenet_frame_element_definition_when_available&quot;
+        ]
+      },
+      &quot;domainExtensions&quot;: {
+        &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
+      },
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 0,
+        &quot;sentence&quot;: &quot;If fraudulent activity is suspected on an Employment Insurance (EI) claim or an EI Emergency Response Benefit (EI ERB) claim, the agent must not issue an access code.&quot;
+      }
+    },
+    {
+      &quot;eventType&quot;: &quot;FrameNetCandidate&quot;,
+      &quot;frame&quot;: null,
+      &quot;trigger&quot;: null,
+      &quot;triggerSpan&quot;: null,
+      &quot;frameElements&quot;: {},
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;validationStatus&quot;: &quot;candidate_only&quot;,
+        &quot;message&quot;: &quot;No supported penalty lifecycle event was found; candidate frames come from visible FrameNet lexical-unit matches.&quot;
+      },
+      &quot;candidateFrames&quot;: [
+        {
+          &quot;frame&quot;: &quot;Duration_relation&quot;,
+          &quot;frameId&quot;: 2121,
+          &quot;matchedLexicalUnit&quot;: &quot;for.prep&quot;,
+          &quot;matchedText&quot;: &quot;For&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 3
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Taking_sides&quot;,
+          &quot;frameId&quot;: 1306,
+          &quot;matchedLexicalUnit&quot;: &quot;for.prep&quot;,
+          &quot;matchedText&quot;: &quot;For&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 3
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Increment&quot;,
+          &quot;frameId&quot;: 1001,
+          &quot;matchedLexicalUnit&quot;: &quot;additional.a&quot;,
+          &quot;matchedText&quot;: &quot;additional&quot;,
+          &quot;partOfSpeech&quot;: &quot;a&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 4,
+            &quot;end&quot;: 14
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Reference_text&quot;,
+          &quot;frameId&quot;: 1924,
+          &quot;matchedLexicalUnit&quot;: &quot;refer.v&quot;,
+          &quot;matchedText&quot;: &quot;refer&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 25,
+            &quot;end&quot;: 30
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Referring_by_name&quot;,
+          &quot;frameId&quot;: 1253,
+          &quot;matchedLexicalUnit&quot;: &quot;refer.v&quot;,
+          &quot;matchedText&quot;: &quot;refer&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 25,
+            &quot;end&quot;: 30
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Sending&quot;,
+          &quot;frameId&quot;: 243,
+          &quot;matchedLexicalUnit&quot;: &quot;refer.v&quot;,
+          &quot;matchedText&quot;: &quot;refer&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 25,
+            &quot;end&quot;: 30
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Topic&quot;,
+          &quot;frameId&quot;: 373,
+          &quot;matchedLexicalUnit&quot;: &quot;refer.v&quot;,
+          &quot;matchedText&quot;: &quot;refer&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 25,
+            &quot;end&quot;: 30
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Goal&quot;,
+          &quot;frameId&quot;: 1177,
+          &quot;matchedLexicalUnit&quot;: &quot;to.prep&quot;,
+          &quot;matchedText&quot;: &quot;to&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 31,
+            &quot;end&quot;: 33
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        }
+      ],
+      &quot;mappingStatus&quot;: &quot;candidate_only&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: null,
+      &quot;modality&quot;: null,
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 1,
+        &quot;sentence&quot;: &quot;For additional guidance, refer to Determining if an issue must be referred to Integrity.&quot;
+      }
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.&quot;
+  ]
+}</pre>
+  </details>
+</article>
+
+
+<article class="case-card" id="original-2">
+  <div class="case-head">
+    <div>
+      <h2>Original 2: EI ERB work-item routing paragraph</h2>
+      <p class="source">procedure/task/performingar.json · Performing a reconsideration under EIA 112</p>
+    </div>
+    <div class="summary-pill">1 confirmed · 1 candidate-only</div>
+  </div>
+  <p class="paragraph">Any WIs related to an <mark class="hl hl-result" title="Reason + Result">EI Emergency Response</mark> <mark class="hl hl-trigger" title="Response_action + trigger">Benefit</mark><mark class="hl hl-response" title="Response_action"> (EI ERB) claim are processed by a specialized team</mark>. <mark class="hl hl-candidate" title="candidate_only sentence">For instructions on how to reassign these WIs, the officer refers to the workload management page in the EI ORT.</mark></p>
+  <details open>
+    <summary>Extracted frame elements</summary>
+    
+<section class="event">
+  <div class="event-title">
+    <h3>Event 1: Rewards_and_punishments</h3>
+    <span>hybrid_rule_bert</span>
+  </div>
+  <p class="event-sentence">Any WIs related to an EI Emergency Response Benefit (EI ERB) claim are processed by a specialized team.</p>
+  <div class="chips">
+    <span>Trigger: Benefit</span>
+    <span>rule 1.0 · BERT 0.9715 · combined 0.9972</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td><span class='dot dot-response'></span>Response_action</td><td>Benefit (EI ERB) claim are processed by a specialized team</td></tr>
+<tr><td><span class='dot dot-reason'></span>Reason</td><td>EI Emergency Response</td></tr>
+<tr><td><span class='dot dot-result'></span>Result</td><td>EI Emergency Response</td></tr></tbody>
+  </table>
+</section>
+
+
+<section class="event">
+  <div class="event-title">
+    <h3>Event 2: Candidate-only lexical lookup</h3>
+    <span>candidate_only</span>
+  </div>
+  <p class="event-sentence">For instructions on how to reassign these WIs, the officer refers to the workload management page in the EI ORT.</p>
+  <div class="chips">
+    <span>Trigger: n/a</span>
+    <span>no confirmed frame score</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td colspan='2' class='muted'>No frame elements extracted.</td></tr></tbody>
+  </table>
+</section>
+
+  </details>
+  <ul class="warnings"><li>Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.</li></ul>
+  <details>
+    <summary>Full JSON</summary>
+    <pre>{
+  &quot;schemaVersion&quot;: &quot;0.3.1&quot;,
+  &quot;sourceDocument&quot;: &quot;original-2&quot;,
+  &quot;annotationMethod&quot;: &quot;spacy-dependency+rule-based-domain+nltk-framenet-1.7-validation&quot;,
+  &quot;syntacticParser&quot;: {
+    &quot;provider&quot;: &quot;spaCy&quot;,
+    &quot;model&quot;: &quot;en_core_web_sm&quot;,
+    &quot;available&quot;: true,
+    &quot;version&quot;: &quot;3.8.13&quot;,
+    &quot;fallback&quot;: &quot;domain rules&quot;
+  },
+  &quot;frameNetRegistry&quot;: {
+    &quot;provider&quot;: &quot;NLTK FrameNet API&quot;,
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true
+  },
+  &quot;eventCount&quot;: 2,
+  &quot;confirmedEventCount&quot;: 1,
+  &quot;candidateEventCount&quot;: 1,
+  &quot;events&quot;: [
+    {
+      &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+      &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+      &quot;trigger&quot;: &quot;Benefit&quot;,
+      &quot;triggerSpan&quot;: {
+        &quot;start&quot;: 44,
+        &quot;end&quot;: 51
+      },
+      &quot;frameElements&quot;: {
+        &quot;Response_action&quot;: {
+          &quot;text&quot;: &quot;Benefit (EI ERB) claim are processed by a specialized team&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 44,
+            &quot;end&quot;: 102
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Reason&quot;: {
+          &quot;text&quot;: &quot;EI Emergency Response&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 43
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;bert_qa&quot;,
+          &quot;confidence&quot;: 0.0264,
+          &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Reason means: Typically, there is a constituent expressing the Reason for the Agent&#x27;s judgment. It is usually a &#x27;for&#x27;-PP, e.g. &#x27;I punished him for his impudence.&#x27; Why is the penalty, warning, benefit, or response applied?&quot;,
+          &quot;baseQuestion&quot;: &quot;Why is the penalty, warning, benefit, or response applied?&quot;,
+          &quot;frameElementDefinition&quot;: &quot;Typically, there is a constituent expressing the Reason for the Agent&#x27;s judgment. It is usually a &#x27;for&#x27;-PP, e.g. &#x27;I punished him for his impudence.&#x27;&quot;
+        },
+        &quot;Result&quot;: {
+          &quot;text&quot;: &quot;EI Emergency Response&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 43
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;bert_qa&quot;,
+          &quot;confidence&quot;: 0.0413,
+          &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Result means: Result of the reward or punishment. What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;baseQuestion&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;frameElementDefinition&quot;: &quot;Result of the reward or punishment.&quot;
+        },
+        &quot;Agent&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Evaluee&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Time&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Place&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        }
+      },
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;frameId&quot;: 216,
+        &quot;frameName&quot;: &quot;Rewards_and_punishments&quot;,
+        &quot;target&quot;: null,
+        &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+        &quot;frameElementValidation&quot;: {
+          &quot;valid&quot;: [
+            &quot;Response_action&quot;,
+            &quot;Reason&quot;,
+            &quot;Result&quot;,
+            &quot;Agent&quot;,
+            &quot;Evaluee&quot;,
+            &quot;Time&quot;,
+            &quot;Place&quot;
+          ],
+          &quot;invalid&quot;: []
+        }
+      },
+      &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: &quot;positive&quot;,
+      &quot;modality&quot;: &quot;asserted&quot;,
+      &quot;hybridScoring&quot;: {
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertFrameScore&quot;: 0.9715,
+        &quot;combinedScore&quot;: 0.9972,
+        &quot;bertFrameScorer&quot;: {
+          &quot;available&quot;: true,
+          &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
+          &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+          &quot;status&quot;: &quot;scored&quot;,
+          &quot;comparisonBasis&quot;: [
+            &quot;domain_rule_description&quot;,
+            &quot;official_framenet_frame_definition&quot;,
+            &quot;official_framenet_lexical_units&quot;
+          ],
+          &quot;exemplarsUsed&quot;: false,
+          &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
+        },
+        &quot;candidateFrames&quot;: [
+          {
+            &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+            &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+            &quot;ruleScore&quot;: 1.0,
+            &quot;bertFrameScore&quot;: 0.9715,
+            &quot;combinedScore&quot;: 0.9972
+          }
+        ]
+      },
+      &quot;bertElementExtraction&quot;: {
+        &quot;available&quot;: true,
+        &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
+        &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+        &quot;status&quot;: &quot;scored&quot;,
+        &quot;questionBasis&quot;: [
+          &quot;frame_specific_question&quot;,
+          &quot;official_framenet_frame_element_definition_when_available&quot;
+        ]
+      },
+      &quot;domainExtensions&quot;: {
+        &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
+      },
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 0,
+        &quot;sentence&quot;: &quot;Any WIs related to an EI Emergency Response Benefit (EI ERB) claim are processed by a specialized team.&quot;
+      }
+    },
+    {
+      &quot;eventType&quot;: &quot;FrameNetCandidate&quot;,
+      &quot;frame&quot;: null,
+      &quot;trigger&quot;: null,
+      &quot;triggerSpan&quot;: null,
+      &quot;frameElements&quot;: {},
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;validationStatus&quot;: &quot;candidate_only&quot;,
+        &quot;message&quot;: &quot;No supported penalty lifecycle event was found; candidate frames come from visible FrameNet lexical-unit matches.&quot;
+      },
+      &quot;candidateFrames&quot;: [
+        {
+          &quot;frame&quot;: &quot;Duration_relation&quot;,
+          &quot;frameId&quot;: 2121,
+          &quot;matchedLexicalUnit&quot;: &quot;for.prep&quot;,
+          &quot;matchedText&quot;: &quot;For&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 3
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Taking_sides&quot;,
+          &quot;frameId&quot;: 1306,
+          &quot;matchedLexicalUnit&quot;: &quot;for.prep&quot;,
+          &quot;matchedText&quot;: &quot;For&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 3
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Education_teaching&quot;,
+          &quot;frameId&quot;: 111,
+          &quot;matchedLexicalUnit&quot;: &quot;instruction.n&quot;,
+          &quot;matchedText&quot;: &quot;instructions&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 4,
+            &quot;end&quot;: 16
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Accuracy&quot;,
+          &quot;frameId&quot;: 1903,
+          &quot;matchedLexicalUnit&quot;: &quot;on.prep&quot;,
+          &quot;matchedText&quot;: &quot;on&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 17,
+            &quot;end&quot;: 19
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Being_in_operation&quot;,
+          &quot;frameId&quot;: 880,
+          &quot;matchedLexicalUnit&quot;: &quot;on.prep&quot;,
+          &quot;matchedText&quot;: &quot;on&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 17,
+            &quot;end&quot;: 19
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Means&quot;,
+          &quot;frameId&quot;: 1790,
+          &quot;matchedLexicalUnit&quot;: &quot;on.prep&quot;,
+          &quot;matchedText&quot;: &quot;on&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 17,
+            &quot;end&quot;: 19
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Non-gradable_proximity&quot;,
+          &quot;frameId&quot;: 2880,
+          &quot;matchedLexicalUnit&quot;: &quot;on.prep&quot;,
+          &quot;matchedText&quot;: &quot;on&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 17,
+            &quot;end&quot;: 19
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Process_continue&quot;,
+          &quot;frameId&quot;: 145,
+          &quot;matchedLexicalUnit&quot;: &quot;on.adv&quot;,
+          &quot;matchedText&quot;: &quot;on&quot;,
+          &quot;partOfSpeech&quot;: &quot;adv&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 17,
+            &quot;end&quot;: 19
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        }
+      ],
+      &quot;mappingStatus&quot;: &quot;candidate_only&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: null,
+      &quot;modality&quot;: null,
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 1,
+        &quot;sentence&quot;: &quot;For instructions on how to reassign these WIs, the officer refers to the workload management page in the EI ORT.&quot;
+      }
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.&quot;
+  ]
+}</pre>
+  </details>
+</article>
+
+
+<article class="case-card" id="optimized-2">
+  <div class="case-head">
+    <div>
+      <h2>Optimized 2: EI ERB work-item routing paragraph</h2>
+      <p class="source">Client internal LLM optimized version</p>
+    </div>
+    <div class="summary-pill">1 confirmed · 1 candidate-only</div>
+  </div>
+  <p class="paragraph">All work items (WIs) related to an <mark class="hl hl-result" title="Reason + Result">EI Emergency Response</mark> <mark class="hl hl-trigger" title="Response_action + trigger">Benefit</mark><mark class="hl hl-response" title="Response_action"> (EI ERB) claim are processed by a specialized team</mark>. <mark class="hl hl-candidate" title="candidate_only sentence">To reassign an EI ERB work item, refer to the Workload Management page in the EI ORT.</mark></p>
+  <details open>
+    <summary>Extracted frame elements</summary>
+    
+<section class="event">
+  <div class="event-title">
+    <h3>Event 1: Rewards_and_punishments</h3>
+    <span>hybrid_rule_bert</span>
+  </div>
+  <p class="event-sentence">All work items (WIs) related to an EI Emergency Response Benefit (EI ERB) claim are processed by a specialized team.</p>
+  <div class="chips">
+    <span>Trigger: Benefit</span>
+    <span>rule 1.0 · BERT 0.9787 · combined 0.9979</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td><span class='dot dot-response'></span>Response_action</td><td>Benefit (EI ERB) claim are processed by a specialized team</td></tr>
+<tr><td><span class='dot dot-reason'></span>Reason</td><td>EI Emergency Response</td></tr>
+<tr><td><span class='dot dot-result'></span>Result</td><td>EI Emergency Response</td></tr></tbody>
+  </table>
+</section>
+
+
+<section class="event">
+  <div class="event-title">
+    <h3>Event 2: Candidate-only lexical lookup</h3>
+    <span>candidate_only</span>
+  </div>
+  <p class="event-sentence">To reassign an EI ERB work item, refer to the Workload Management page in the EI ORT.</p>
+  <div class="chips">
+    <span>Trigger: n/a</span>
+    <span>no confirmed frame score</span>
+  </div>
+  <table>
+    <thead><tr><th>Frame element</th><th>Extracted text</th></tr></thead>
+    <tbody><tr><td colspan='2' class='muted'>No frame elements extracted.</td></tr></tbody>
+  </table>
+</section>
+
+  </details>
+  <ul class="warnings"><li>Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.</li></ul>
+  <details>
+    <summary>Full JSON</summary>
+    <pre>{
+  &quot;schemaVersion&quot;: &quot;0.3.1&quot;,
+  &quot;sourceDocument&quot;: &quot;optimized-2&quot;,
+  &quot;annotationMethod&quot;: &quot;spacy-dependency+rule-based-domain+nltk-framenet-1.7-validation&quot;,
+  &quot;syntacticParser&quot;: {
+    &quot;provider&quot;: &quot;spaCy&quot;,
+    &quot;model&quot;: &quot;en_core_web_sm&quot;,
+    &quot;available&quot;: true,
+    &quot;version&quot;: &quot;3.8.13&quot;,
+    &quot;fallback&quot;: &quot;domain rules&quot;
+  },
+  &quot;frameNetRegistry&quot;: {
+    &quot;provider&quot;: &quot;NLTK FrameNet API&quot;,
+    &quot;version&quot;: &quot;1.7&quot;,
+    &quot;available&quot;: true
+  },
+  &quot;eventCount&quot;: 2,
+  &quot;confirmedEventCount&quot;: 1,
+  &quot;candidateEventCount&quot;: 1,
+  &quot;events&quot;: [
+    {
+      &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+      &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+      &quot;trigger&quot;: &quot;Benefit&quot;,
+      &quot;triggerSpan&quot;: {
+        &quot;start&quot;: 57,
+        &quot;end&quot;: 64
+      },
+      &quot;frameElements&quot;: {
+        &quot;Response_action&quot;: {
+          &quot;text&quot;: &quot;Benefit (EI ERB) claim are processed by a specialized team&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 57,
+            &quot;end&quot;: 115
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;rule&quot;
+        },
+        &quot;Reason&quot;: {
+          &quot;text&quot;: &quot;EI Emergency Response&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 35,
+            &quot;end&quot;: 56
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;bert_qa&quot;,
+          &quot;confidence&quot;: 0.0616,
+          &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Reason means: Typically, there is a constituent expressing the Reason for the Agent&#x27;s judgment. It is usually a &#x27;for&#x27;-PP, e.g. &#x27;I punished him for his impudence.&#x27; Why is the penalty, warning, benefit, or response applied?&quot;,
+          &quot;baseQuestion&quot;: &quot;Why is the penalty, warning, benefit, or response applied?&quot;,
+          &quot;frameElementDefinition&quot;: &quot;Typically, there is a constituent expressing the Reason for the Agent&#x27;s judgment. It is usually a &#x27;for&#x27;-PP, e.g. &#x27;I punished him for his impudence.&#x27;&quot;
+        },
+        &quot;Result&quot;: {
+          &quot;text&quot;: &quot;EI Emergency Response&quot;,
+          &quot;span&quot;: {
+            &quot;start&quot;: 35,
+            &quot;end&quot;: 56
+          },
+          &quot;implicit&quot;: false,
+          &quot;method&quot;: &quot;bert_qa&quot;,
+          &quot;confidence&quot;: 0.0456,
+          &quot;question&quot;: &quot;In the FrameNet frame Rewards_and_punishments, the element Result means: Result of the reward or punishment. What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;baseQuestion&quot;: &quot;What is the result of the penalty, warning, benefit, or response?&quot;,
+          &quot;frameElementDefinition&quot;: &quot;Result of the reward or punishment.&quot;
+        },
+        &quot;Agent&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Evaluee&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Time&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        },
+        &quot;Place&quot;: {
+          &quot;text&quot;: null,
+          &quot;implicit&quot;: true,
+          &quot;method&quot;: &quot;not_found&quot;
+        }
+      },
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;frameId&quot;: 216,
+        &quot;frameName&quot;: &quot;Rewards_and_punishments&quot;,
+        &quot;target&quot;: null,
+        &quot;validationStatus&quot;: &quot;hybrid_rule_bert_frame&quot;,
+        &quot;frameElementValidation&quot;: {
+          &quot;valid&quot;: [
+            &quot;Response_action&quot;,
+            &quot;Reason&quot;,
+            &quot;Result&quot;,
+            &quot;Agent&quot;,
+            &quot;Evaluee&quot;,
+            &quot;Time&quot;,
+            &quot;Place&quot;
+          ],
+          &quot;invalid&quot;: []
+        }
+      },
+      &quot;mappingStatus&quot;: &quot;hybrid_rule_bert&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: &quot;positive&quot;,
+      &quot;modality&quot;: &quot;asserted&quot;,
+      &quot;hybridScoring&quot;: {
+        &quot;ruleScore&quot;: 1.0,
+        &quot;bertFrameScore&quot;: 0.9787,
+        &quot;combinedScore&quot;: 0.9979,
+        &quot;bertFrameScorer&quot;: {
+          &quot;available&quot;: true,
+          &quot;method&quot;: &quot;bert_embedding_frame_scorer&quot;,
+          &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+          &quot;status&quot;: &quot;scored&quot;,
+          &quot;comparisonBasis&quot;: [
+            &quot;domain_rule_description&quot;,
+            &quot;official_framenet_frame_definition&quot;,
+            &quot;official_framenet_lexical_units&quot;
+          ],
+          &quot;exemplarsUsed&quot;: false,
+          &quot;exemplarPolicy&quot;: &quot;Raw FrameNet exemplars are not used by default because they are general-domain and can be misleading for employment/social-benefit procedures.&quot;
+        },
+        &quot;candidateFrames&quot;: [
+          {
+            &quot;frame&quot;: &quot;Rewards_and_punishments&quot;,
+            &quot;eventType&quot;: &quot;SanctionOrBenefitResponse&quot;,
+            &quot;ruleScore&quot;: 1.0,
+            &quot;bertFrameScore&quot;: 0.9787,
+            &quot;combinedScore&quot;: 0.9979
+          }
+        ]
+      },
+      &quot;bertElementExtraction&quot;: {
+        &quot;available&quot;: true,
+        &quot;method&quot;: &quot;bert_qa_span_extraction&quot;,
+        &quot;model&quot;: &quot;deepset/bert-base-cased-squad2&quot;,
+        &quot;status&quot;: &quot;scored&quot;,
+        &quot;questionBasis&quot;: [
+          &quot;frame_specific_question&quot;,
+          &quot;official_framenet_frame_element_definition_when_available&quot;
+        ]
+      },
+      &quot;domainExtensions&quot;: {
+        &quot;hybridFrameSet&quot;: &quot;employment_social_benefits_10&quot;
+      },
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 0,
+        &quot;sentence&quot;: &quot;All work items (WIs) related to an EI Emergency Response Benefit (EI ERB) claim are processed by a specialized team.&quot;
+      }
+    },
+    {
+      &quot;eventType&quot;: &quot;FrameNetCandidate&quot;,
+      &quot;frame&quot;: null,
+      &quot;trigger&quot;: null,
+      &quot;triggerSpan&quot;: null,
+      &quot;frameElements&quot;: {},
+      &quot;frameNet&quot;: {
+        &quot;version&quot;: &quot;1.7&quot;,
+        &quot;available&quot;: true,
+        &quot;validationStatus&quot;: &quot;candidate_only&quot;,
+        &quot;message&quot;: &quot;No supported penalty lifecycle event was found; candidate frames come from visible FrameNet lexical-unit matches.&quot;
+      },
+      &quot;candidateFrames&quot;: [
+        {
+          &quot;frame&quot;: &quot;Goal&quot;,
+          &quot;frameId&quot;: 1177,
+          &quot;matchedLexicalUnit&quot;: &quot;to.prep&quot;,
+          &quot;matchedText&quot;: &quot;To&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 2
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Locative_relation&quot;,
+          &quot;frameId&quot;: 199,
+          &quot;matchedLexicalUnit&quot;: &quot;to.prep&quot;,
+          &quot;matchedText&quot;: &quot;To&quot;,
+          &quot;partOfSpeech&quot;: &quot;prep&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 0,
+            &quot;end&quot;: 2
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Being_employed&quot;,
+          &quot;frameId&quot;: 282,
+          &quot;matchedLexicalUnit&quot;: &quot;work.n&quot;,
+          &quot;matchedText&quot;: &quot;work&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 26
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Being_operational&quot;,
+          &quot;frameId&quot;: 1200,
+          &quot;matchedLexicalUnit&quot;: &quot;work.v&quot;,
+          &quot;matchedText&quot;: &quot;work&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 26
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Dimension&quot;,
+          &quot;frameId&quot;: 108,
+          &quot;matchedLexicalUnit&quot;: &quot;work.n&quot;,
+          &quot;matchedText&quot;: &quot;work&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 26
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Labor_product&quot;,
+          &quot;frameId&quot;: 2164,
+          &quot;matchedLexicalUnit&quot;: &quot;work.n&quot;,
+          &quot;matchedText&quot;: &quot;work&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 26
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Locale_by_use&quot;,
+          &quot;frameId&quot;: 196,
+          &quot;matchedLexicalUnit&quot;: &quot;work.n&quot;,
+          &quot;matchedText&quot;: &quot;work&quot;,
+          &quot;partOfSpeech&quot;: &quot;n&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 26
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        },
+        {
+          &quot;frame&quot;: &quot;Usefulness&quot;,
+          &quot;frameId&quot;: 726,
+          &quot;matchedLexicalUnit&quot;: &quot;work.v&quot;,
+          &quot;matchedText&quot;: &quot;work&quot;,
+          &quot;partOfSpeech&quot;: &quot;v&quot;,
+          &quot;matchSpan&quot;: {
+            &quot;start&quot;: 22,
+            &quot;end&quot;: 26
+          },
+          &quot;confidence&quot;: &quot;lexical_match_candidate&quot;
+        }
+      ],
+      &quot;mappingStatus&quot;: &quot;candidate_only&quot;,
+      &quot;ruleCondition&quot;: null,
+      &quot;penaltyCode&quot;: null,
+      &quot;polarity&quot;: null,
+      &quot;modality&quot;: null,
+      &quot;source&quot;: {
+        &quot;sentence_index&quot;: 1,
+        &quot;sentence&quot;: &quot;To reassign an EI ERB work item, refer to the Workload Management page in the EI ORT.&quot;
+      }
+    }
+  ],
+  &quot;warnings&quot;: [
+    &quot;Some sentences were mapped only to candidate FrameNet frames from lexical-unit lookup.&quot;
+  ]
+}</pre>
+  </details>
+</article>
+
+</main>
+</body>
+</html>
