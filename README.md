@@ -24,6 +24,30 @@ Confirmed domain events currently map to frames such as:
 
 Numeric limits and derived temporal windows are processed as structured domain rules, not FrameNet frames. They are kept out of official frame assignment because Task 2 identifies them as parameter/computation knowledge rather than frame-semantic events.
 
+## Domain Frame Canonicalization
+
+`procedure_sentences_with_multiple_frames.csv` is intentionally a high-recall
+lexical-candidate report. A shared word such as `meet`, `file`, `set`, or `rate`
+can therefore produce several FrameNet senses that are not valid in the
+procedure context.
+
+Run the precision-oriented canonicalization stage after generating that report:
+
+```powershell
+py canonicalize_frame_candidates.py
+```
+
+The canonicalizer preserves the raw candidates for audit, but downstream output
+uses a controlled procedure-domain inventory. It applies context rules for the
+highest-frequency lexical collisions, separates structured non-frame knowledge
+(rates, totals, history labels, waiting-period states), and routes unresolved
+domain candidates to review rather than forcing a frame assignment.
+
+Outputs:
+
+- `outputs/procedure_sentences_canonicalized.csv`
+- `outputs/procedure_frame_canonicalization_summary.json`
+
 When no supported penalty lifecycle trigger is found, the mapper can still return `FrameNetCandidate` records by searching visible lexical-unit matches across the NLTK FrameNet registry. These are explicitly marked as `candidate_only`; they are evidence, not confirmed semantic parses.
 
 ## Setup
