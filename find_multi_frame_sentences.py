@@ -16,7 +16,7 @@ import time
 import zipfile
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Sequence
 
 from count_framenet_candidates import (
     Candidate,
@@ -71,27 +71,41 @@ def match_candidate_frames(
     ]
 
 
-def iter_archive_sentences(zip_path: Path) -> Iterable[tuple[str, str]]:
-    """Yield source member and extracted sentence from supported archive files."""
-    with zipfile.ZipFile(zip_path) as archive:
-        for name in archive.namelist():
-            if name.endswith("/") or Path(name).suffix.lower() not in SUPPORTED_SUFFIXES:
-                continue
-            try:
-                text = extract_member_text(name, archive.read(name))
-            except Exception:
-                # One malformed member should not prevent analysis of the rest
-                # of a large, heterogeneous procedure export.
-                continue
-            if not text:
-                continue
-            for sentence in (part.strip() for part in SENTENCE_PATTERN.split(text)):
-                if sentence:
-                    yield name, sentence
+def normalize_zip_paths(zip_paths: Path | Sequence[Path]) -> tuple[Path, ...]:
+    """Return a validated, non-empty archive sequence for pipeline processing."""
+    paths = (zip_paths,) if isinstance(zip_paths, Path) else tuple(zip_paths)
+    if not paths:
+        raise ValueError("At least one input zip file is required.")
+    return paths
+
+
+def iter_archive_sentences(zip_paths: Path | Sequence[Path]) -> Iterable[tuple[str, str]]:
+    """Yield traceable source members and sentences from one or more archives."""
+    paths = normalize_zip_paths(zip_paths)
+    qualify_source = len(paths) > 1
+    for zip_path in paths:
+        with zipfile.ZipFile(zip_path) as archive:
+            for name in archive.namelist():
+                if name.endswith("/") or Path(name).suffix.lower() not in SUPPORTED_SUFFIXES:
+                    continue
+                try:
+                    text = extract_member_text(name, archive.read(name))
+                except Exception:
+                    # One malformed member should not prevent analysis of the
+                    # remaining files in a heterogeneous source export.
+                    continue
+                if not text:
+                    continue
+                # Archive qualification prevents same-named members from two
+                # data sources being collapsed in the provenance columns.
+                source_document = f"{zip_path.name}::{name}" if qualify_source else name
+                for sentence in (part.strip() for part in SENTENCE_PATTERN.split(text)):
+                    if sentence:
+                        yield source_document, sentence
 
 
 def find_multi_frame_sentences(
-    zip_path: Path,
+    zip_path: Path | Sequence[Path],
     csv_path: Path,
     json_path: Path | None = None,
     lu_index: dict[str, list[Candidate]] | None = None,
@@ -99,11 +113,12 @@ def find_multi_frame_sentences(
 ) -> dict[str, Any]:
     """Analyze the archive, write multi-frame sentences, and return run metadata."""
     started = time.time()
+    zip_paths = normalize_zip_paths(zip_path)
     index = lu_index if lu_index is not None else build_lu_index()
     sentence_records: dict[str, dict[str, Any]] = {}
     raw_occurrences = 0
 
-    for source_document, sentence in iter_archive_sentences(zip_path):
+    for source_document, sentence in iter_archive_sentences(zip_paths):
         raw_occurrences += 1
         normalized = normalize_sentence(sentence)
         if not normalized:
@@ -175,7 +190,8 @@ def find_multi_frame_sentences(
             )
 
     summary = {
-        "input": str(zip_path),
+        "input": str(zip_paths[0]) if len(zip_paths) == 1 else [str(path) for path in zip_paths],
+        "archiveCount": len(zip_paths),
         "matchingMethod": "FrameNet 1.7 visible lexical-unit surface-form candidates",
         "rawSentenceOccurrences": raw_occurrences,
         "uniqueExtractedSentenceFragments": len(sentence_records),
@@ -199,7 +215,13 @@ def find_multi_frame_sentences(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--zip", type=Path, default=DEFAULT_ZIP)
+    parser.add_argument(
+        "--zip",
+        type=Path,
+        action="append",
+        dest="zip_paths",
+        help="Input dataset zip file. Repeat this option to combine multiple sources.",
+    )
     parser.add_argument("--csv-output", type=Path, default=DEFAULT_CSV)
     parser.add_argument(
         "--json-output",
@@ -213,7 +235,7 @@ def main() -> None:
     )
     args = parser.parse_args()
     summary = find_multi_frame_sentences(
-        args.zip,
+        args.zip_paths or [DEFAULT_ZIP],
         args.csv_output,
         args.json_output,
         meaningful_only=not args.include_all_fragments,

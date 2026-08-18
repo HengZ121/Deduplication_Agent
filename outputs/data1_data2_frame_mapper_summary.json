@@ -1,0 +1,347 @@
+{
+  "input": "outputs\\data1_data2_frame_candidates.csv",
+  "output": "outputs\\data1_data2_frame_mapper_results.csv",
+  "sentences": 15840,
+  "rawDistinctFrames": 906,
+  "approvedInventoryFrames": 26,
+  "observedCanonicalFrames": 25,
+  "meanRawFramesPerSentence": 18.99,
+  "meanCanonicalFramesPerSentence": 1.02,
+  "medianRawFramesPerSentence": 17.0,
+  "medianCanonicalFramesPerSentence": 1.0,
+  "statusCounts": {
+    "canonical_frame": 10260,
+    "needs_review": 3751,
+    "filtered_artifact": 144,
+    "structured_non_frame": 64,
+    "no_domain_frame": 1621
+  },
+  "resolvedSentenceRate": 0.6518,
+  "canonicalSentenceRate": 0.6477,
+  "structuredNonFrameRate": 0.004,
+  "reviewRate": 0.2368,
+  "topCanonicalFrames": [
+    [
+      "Imposing_obligation",
+      4195
+    ],
+    [
+      "Request",
+      3027
+    ],
+    [
+      "Evidence",
+      1723
+    ],
+    [
+      "Communication",
+      1421
+    ],
+    [
+      "Submitting_documents",
+      1290
+    ],
+    [
+      "Giving",
+      744
+    ],
+    [
+      "Deciding",
+      526
+    ],
+    [
+      "Scrutiny",
+      408
+    ],
+    [
+      "Have_as_requirement",
+      366
+    ],
+    [
+      "Receiving",
+      315
+    ],
+    [
+      "Coming_to_believe",
+      272
+    ],
+    [
+      "Assessing",
+      260
+    ],
+    [
+      "Activity_finish",
+      254
+    ],
+    [
+      "Be_in_agreement_on_action",
+      217
+    ],
+    [
+      "Cause_to_start",
+      182
+    ],
+    [
+      "Being_employed",
+      175
+    ],
+    [
+      "Meet_specifications",
+      143
+    ],
+    [
+      "Activity_stop",
+      120
+    ],
+    [
+      "Rewards_and_punishments",
+      110
+    ],
+    [
+      "Resolve_problem",
+      104
+    ]
+  ],
+  "topRules": [
+    [
+      "explicit_procedural_duty",
+      4195
+    ],
+    [
+      "fallback_Request",
+      3027
+    ],
+    [
+      "fallback_Evidence",
+      1723
+    ],
+    [
+      "fallback_Communication",
+      1421
+    ],
+    [
+      "administrative_document_submission",
+      1290
+    ],
+    [
+      "fallback_Giving",
+      744
+    ],
+    [
+      "determine_administrative_decision",
+      526
+    ],
+    [
+      "fallback_Scrutiny",
+      408
+    ],
+    [
+      "objective_prerequisite",
+      366
+    ],
+    [
+      "fallback_Receiving",
+      315
+    ],
+    [
+      "determine_from_evidence",
+      272
+    ],
+    [
+      "fallback_Activity_finish",
+      254
+    ],
+    [
+      "existing_agreement_state",
+      217
+    ],
+    [
+      "determine_numeric_or_eligibility_assessment",
+      198
+    ],
+    [
+      "fallback_Cause_to_start",
+      182
+    ],
+    [
+      "employment_status",
+      175
+    ],
+    [
+      "filter_ui_artifact",
+      144
+    ],
+    [
+      "meet_standard_not_social_meeting",
+      143
+    ],
+    [
+      "stop_procedure_or_entitlement",
+      120
+    ],
+    [
+      "fallback_Rewards_and_punishments",
+      110
+    ],
+    [
+      "administrative_file_not_grooming_or_placement",
+      110
+    ],
+    [
+      "fallback_Resolve_problem",
+      104
+    ],
+    [
+      "fallback_Deny_or_grant_permission",
+      90
+    ],
+    [
+      "agent_causes_administrative_change",
+      83
+    ],
+    [
+      "fallback_Reporting",
+      80
+    ]
+  ],
+  "topStructuredKnowledge": [
+    [
+      "administrative_file_reference",
+      110
+    ],
+    [
+      "rate_or_ratio",
+      69
+    ],
+    [
+      "aggregate_quantity",
+      26
+    ],
+    [
+      "record_history_reference",
+      22
+    ],
+    [
+      "waiting_period_state",
+      17
+    ],
+    [
+      "administrative_setting",
+      14
+    ]
+  ],
+  "topExplicitlySuppressedFrames": [
+    [
+      "Contingency",
+      979
+    ],
+    [
+      "Control",
+      978
+    ],
+    [
+      "Coming_to_believe",
+      718
+    ],
+    [
+      "Giving_in",
+      421
+    ],
+    [
+      "Placing",
+      396
+    ],
+    [
+      "Grooming",
+      347
+    ],
+    [
+      "Needing",
+      299
+    ],
+    [
+      "Deciding",
+      263
+    ],
+    [
+      "Make_agreement_on_action",
+      221
+    ],
+    [
+      "Cause_impact",
+      139
+    ],
+    [
+      "Impact",
+      139
+    ],
+    [
+      "Make_noise",
+      139
+    ],
+    [
+      "Motion_noise",
+      139
+    ],
+    [
+      "Sounds",
+      139
+    ],
+    [
+      "Assemble",
+      105
+    ],
+    [
+      "Come_together",
+      105
+    ],
+    [
+      "Make_acquaintance",
+      105
+    ],
+    [
+      "Meet_with_response",
+      105
+    ],
+    [
+      "Response",
+      105
+    ],
+    [
+      "Replacing",
+      77
+    ],
+    [
+      "Change_tool",
+      73
+    ],
+    [
+      "Exchange",
+      73
+    ],
+    [
+      "Exchange_currency",
+      72
+    ],
+    [
+      "Estimating",
+      71
+    ],
+    [
+      "Assessing",
+      68
+    ]
+  ],
+  "rawCollisionFrameOccurrences": {
+    "Assemble": 302,
+    "Come_together": 310,
+    "Grooming": 750,
+    "Cause_change_of_consistency": 75,
+    "Change_of_consistency": 75,
+    "Rate_quantification": 131,
+    "Relational_quantity": 131,
+    "Killing": 149,
+    "Unemployment_rate": 334
+  },
+  "elapsedSeconds": 3.39
+}

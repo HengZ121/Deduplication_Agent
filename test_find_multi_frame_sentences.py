@@ -64,6 +64,40 @@ class MultiFrameSentenceTests(unittest.TestCase):
             for path in (archive_path, csv_path, json_path):
                 path.unlink(missing_ok=True)
 
+    def test_report_combines_archives_and_qualifies_source_documents(self) -> None:
+        root = Path.cwd() / "outputs"
+        stem = f"_test_multi_archive_{uuid.uuid4().hex}"
+        first_archive = root / f"{stem}_one.zip"
+        second_archive = root / f"{stem}_two.zip"
+        csv_path = root / f"{stem}.csv"
+        json_path = root / f"{stem}.json"
+        try:
+            for archive_path in (first_archive, second_archive):
+                with zipfile.ZipFile(archive_path, "w") as archive:
+                    archive.writestr("shared.txt", "Officers review and determine claims.")
+
+            summary = find_multi_frame_sentences(
+                [first_archive, second_archive],
+                csv_path,
+                json_path,
+                lu_index=self.index,
+            )
+            payload = json.loads(json_path.read_text(encoding="utf-8"))
+
+            self.assertEqual(2, summary["archiveCount"])
+            self.assertEqual(1, summary["uniqueSentencesWithMultipleFrames"])
+            self.assertEqual(2, payload["sentences"][0]["occurrenceCount"])
+            self.assertEqual(
+                [
+                    f"{first_archive.name}::shared.txt",
+                    f"{second_archive.name}::shared.txt",
+                ],
+                payload["sentences"][0]["sourceDocuments"],
+            )
+        finally:
+            for path in (first_archive, second_archive, csv_path, json_path):
+                path.unlink(missing_ok=True)
+
 
 if __name__ == "__main__":
     unittest.main()
