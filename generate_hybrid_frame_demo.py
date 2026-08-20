@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a static demo for the 20-frame hybrid mapper."""
+"""Generate a static demo for the configured representative hybrid frames."""
 
 from __future__ import annotations
 

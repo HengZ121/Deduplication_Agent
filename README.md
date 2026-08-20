@@ -97,7 +97,7 @@ Supported upload formats are `.txt`, `.md`, `.json`, and `.docx`.
 
 ## Hybrid Frame Demo
 
-The repository also includes a focused hybrid mapper for 10 representative employment/social-benefit frames, including `Rewards_and_punishments`, `Scrutiny`, `Being_employed`, `Have_as_requirement`, `Evidence`, `Submitting_documents`, `Assessing`, `Request`, `Receiving`, and `Activity_stop`.
+The repository also includes a focused hybrid mapper for 11 representative employment/social-benefit frames, including `Rewards_and_punishments`, `Verification`, `Scrutiny`, `Being_employed`, `Have_as_requirement`, `Evidence`, `Submitting_documents`, `Assessing`, `Request`, `Receiving`, and `Activity_stop`.
 
 The rule layer provides deterministic candidate detection. A local BERT QA model (`deepset/bert-base-cased-squad2`) is then used in two explicit ways:
 
@@ -125,6 +125,18 @@ Open:
 ```text
 outputs/hybrid_frame_demo.html
 ```
+
+Generate a reproducible CSV of 50 real dataset texts targeted to the official
+FrameNet `Verification` frame (ID 1230), with local BERT scores, extracted frame
+elements, the highest-ranked competing frame, and source-document provenance:
+
+```powershell
+py generate_verification_frame_csv.py
+```
+
+The output is `outputs/verification_frame_bert_mappings_50.csv`. Generation
+fails rather than silently falling back when the local BERT model or FrameNet
+1.7 corpus is unavailable.
 
 The static demo uses real sentences sampled from `procedure.zip`, two per configured frame, so it is stable and does not require live dataset scanning during presentation.
 

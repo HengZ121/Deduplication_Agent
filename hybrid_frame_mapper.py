@@ -18,6 +18,21 @@ DOCUMENT_PATTERN = re.compile(r"\b(?:document|form|statement|letter|report|recor
 BENEFIT_PATTERN = re.compile(r"\b(?:benefit|benefits|payment|allowance|entitlement|claim)\b", re.I)
 MONEY_PATTERN = re.compile(r"\b(?:earnings|wages|income|payment|paid|repayment|amount|rate|\$\d+)\b", re.I)
 CONDITION_PATTERN = re.compile(r"\b(?:if|when|unless|where|provided that)\s+([^.;]+)", re.I)
+VERIFICATION_TRIGGER_PATTERN_TEXT = (
+    r"certif(?:y|ies|ied|ying|ication)|confirm(?:s|ed|ing)?|confirmation|"
+    r"identif(?:y|ies|ied|ying|ication)|(?:make|makes|made|making)\s+sure|"
+    r"substantiat(?:e|es|ed|ing|ion)|verif(?:y|ies|ied|ying|ication)"
+)
+VERIFICATION_TRIGGER_PATTERN = re.compile(
+    rf"\b(?:{VERIFICATION_TRIGGER_PATTERN_TEXT})\b",
+    re.I,
+)
+INSPECTOR_PATTERN = re.compile(
+    rf"\b((?:the\s+)?(?:agent|officer|client|claimant|applicant|user|processor|"
+    rf"inspector|employer|system|commission|service canada|staff|caller|beneficiary))\b"
+    rf"\s+(?:(?:must|should|can|will|may)\s+)?(?=(?:{VERIFICATION_TRIGGER_PATTERN_TEXT})\b)",
+    re.I,
+)
 
 
 @dataclass(frozen=True)
@@ -40,7 +55,22 @@ ALL_FRAME_RULES: tuple[FrameRule, ...] = (
     FrameRule("Information", "InformationEvent", "information, data, facts, or evidence available/recorded", re.compile(r"\b(?:information|data|fact|details|record|file|evidence)\b", re.I), re.compile(r"\b(?:information|data|fact|details|record|file|evidence)\b", re.I), {"Information": re.compile(r"\b(?:information|data|fact|details|record|file|evidence)\b[^.;]*", re.I), "Source": DOCUMENT_PATTERN}),
     FrameRule("Compliance", "ComplianceCheck", "following policy, legislation, requirements, or conditions", re.compile(r"\b(?:comply|complies|compliance|follow|meet|satisfy|according to|in accordance with|condition|requirement)\b", re.I), re.compile(r"\b(?:comply|complies|compliance|follow|meet|satisfy|according to|in accordance with)\b", re.I), {"Protagonist": CLIENT_PATTERN, "Norm": re.compile(r"\b(?:policy|legislation|condition|requirement|criteria|rule)\b[^.;]*", re.I)}),
     FrameRule("Have_as_requirement", "RequirementRule", "required condition/entity for a claim, payment, or process", re.compile(r"\b(?:require|requires|required|requirement|must have|must provide|must meet|condition)\b", re.I), re.compile(r"\b(?:require|requires|required|requirement|must have|must provide|must meet)\b", re.I), {"Dependent": re.compile(r"\b(?:claim|benefit|payment|client|claimant|application)\b", re.I), "Requirement": re.compile(r"\b(?:requires|required|requirement|condition|document|hours|weeks|statement|proof)\b[^.;]*", re.I)}),
-    FrameRule("Evidence", "EvidenceSupport", "evidence supports a proposition or decision", re.compile(r"\b(?:evidence|prove|proof|support|supports|supporting|attest|verify|confirm|confirms|indicate|indicates|show|shows)\b", re.I), re.compile(r"\b(?:evidence|prove|proof|support|supports|supporting|attest|verify|confirm|confirms|indicate|indicates|show|shows)\b", re.I), {"Support": DOCUMENT_PATTERN, "Proposition": re.compile(r"\b(?:pregnancy|eligibility|reason|status|claim|issue)\b[^.;]*", re.I)}),
+    FrameRule(
+        "Verification",
+        "VerificationEvent",
+        "an inspector establishes the truth of previously unconfirmed content",
+        VERIFICATION_TRIGGER_PATTERN,
+        VERIFICATION_TRIGGER_PATTERN,
+        {
+            "Inspector": INSPECTOR_PATTERN,
+            "Means": re.compile(
+                r"\b(?:document|form|statement|letter|report|record|application|file|notice|roe|"
+                r"system|screen|tab|fts|igcs|itrds|email|banking information)\b",
+                re.I,
+            ),
+        },
+    ),
+    FrameRule("Evidence", "EvidenceSupport", "evidence supports a proposition or decision", re.compile(r"\b(?:evidence|prove|proof|support|supports|supporting|attest|verif(?:y|ies|ied|ying|ication)|confirm(?:s|ed|ing)?|confirmation|indicate|indicates|show|shows)\b", re.I), re.compile(r"\b(?:evidence|prove|proof|support|supports|supporting|attest|verif(?:y|ies|ied|ying|ication)|confirm(?:s|ed|ing)?|confirmation|indicate|indicates|show|shows)\b", re.I), {"Support": DOCUMENT_PATTERN, "Proposition": re.compile(r"\b(?:pregnancy|eligibility|reason|status|claim|issue)\b[^.;]*", re.I)}),
     FrameRule("Documents", "DocumentReference", "forms, records, letters, reports, or other documents", re.compile(r"\b(?:document|form|record|letter|report|notice|statement|application|ROE|file)\b", re.I), re.compile(r"\b(?:document|form|record|letter|report|notice|statement|application|ROE|file)\b", re.I), {"Document": DOCUMENT_PATTERN, "Bearer": CLIENT_PATTERN}),
     FrameRule("Employing", "EmploymentRelationship", "employment relationship involving employer/employee/work", re.compile(r"\b(?:employ|employer|employee|employment|work|worker|job)\b", re.I), re.compile(r"\b(?:employ|employer|employee|employment|work|worker|job)\b", re.I), {"Employee": CLIENT_PATTERN, "Employer": re.compile(r"\b(?:employer|business|company)\b", re.I)}),
     FrameRule("Being_employed", "EmploymentStatus", "state of being employed, insurable employment, or work status", re.compile(r"\b(?:employed|employment|insurable employment|work status|self-employed|unemployed)\b", re.I), re.compile(r"\b(?:employed|employment|self-employed|unemployed)\b", re.I), {"Employee": CLIENT_PATTERN, "Employer": re.compile(r"\b(?:employer|business|company)\b", re.I)}),
@@ -65,6 +95,7 @@ ALL_FRAME_RULES: tuple[FrameRule, ...] = (
 
 REPRESENTATIVE_FRAME_NAMES = (
     "Rewards_and_punishments",
+    "Verification",
     "Scrutiny",
     "Being_employed",
     "Have_as_requirement",
@@ -88,6 +119,7 @@ FRAME_PRIORITY = {
     "Information": 0.08,
     "Compliance": 0.26,
     "Have_as_requirement": 0.2,
+    "Verification": 0.4,
     "Evidence": 0.18,
     "Documents": 0.1,
     "Employing": 0.12,
@@ -113,6 +145,12 @@ FRAME_PRIORITY = {
 BERT_MODEL_NAME = "deepset/bert-base-cased-squad2"
 
 FRAME_ELEMENT_QUESTIONS = {
+    "Verification": {
+        "Inspector": "Who verifies or confirms the information?",
+        "Unconfirmed_content": "What previously unconfirmed fact or proposition is verified?",
+        "Medium": "What text, record, screen, or work communicates the verification?",
+        "Means": "What action or evidence is used to establish the truth?",
+    },
     "Rewards_and_punishments": {
         "Agent": "Who imposes or handles the penalty, warning, benefit, or response?",
         "Evaluee": "Who is affected by the penalty, warning, benefit, or response?",
@@ -431,6 +469,7 @@ def _plausible_element_answer(name: str, text: str) -> bool:
         "Judge",
         "Required_individual",
         "Beneficiary",
+        "Inspector",
     }
     if name in person_like:
         return bool(
@@ -452,7 +491,47 @@ def _configured_element_names(rule: FrameRule) -> tuple[str, ...]:
     return tuple(names)
 
 
-def _extract_frame_elements(rule: FrameRule, sentence: str) -> tuple[dict[str, Any], dict[str, Any]]:
+def _normalize_verification_qa_answer(
+    rule: FrameRule,
+    name: str,
+    sentence: str,
+    answer: dict[str, Any],
+) -> dict[str, Any] | None:
+    """Remove trigger leakage and reject a post-trigger object as Inspector."""
+    if rule.frame != "Verification":
+        return answer
+    trigger = rule.trigger.search(sentence)
+    if not trigger:
+        return answer
+
+    start = int(answer["span"]["start"])
+    end = int(answer["span"]["end"])
+    if name == "Inspector" and start >= trigger.start():
+        between = sentence[trigger.end() : start]
+        if not re.search(r"\bby\s+$", between, re.I):
+            return None
+    if name == "Unconfirmed_content" and start <= trigger.start() < end:
+        start = trigger.end()
+        answer = dict(answer)
+    if name == "Unconfirmed_content":
+        leading = re.match(r"\s*(?:that|whether|if)\b\s*", sentence[start:end], re.I)
+        if leading:
+            start += leading.end()
+        text = sentence[start:end].strip(" ,")
+        start = sentence.find(text, start, end) if text else start
+        if not text or start < 0:
+            return None
+        answer = dict(answer)
+        answer["text"] = text
+        answer["span"] = {"start": start, "end": start + len(text)}
+    return answer
+
+
+def _extract_frame_elements(
+    rule: FrameRule,
+    sentence: str,
+    use_bert: bool = True,
+) -> tuple[dict[str, Any], dict[str, Any]]:
     elements: dict[str, Any] = {}
     for name in _configured_element_names(rule):
         pattern = rule.element_patterns.get(name)
@@ -465,22 +544,31 @@ def _extract_frame_elements(rule: FrameRule, sentence: str) -> tuple[dict[str, A
                 "method": "rule",
             }
 
+    bert_available = use_bert and _local_bert_qa() is not None
     qa_info = {
-        "available": _local_bert_qa() is not None,
+        "available": bert_available,
         "method": "bert_qa_span_extraction",
         "model": BERT_MODEL_NAME,
-        "status": "scored" if _local_bert_qa() is not None else "unavailable_local_model_or_dependency",
+        "status": (
+            "scored"
+            if bert_available
+            else "disabled"
+            if not use_bert
+            else "unavailable_local_model_or_dependency"
+        ),
         "questionBasis": [
             "frame_specific_question",
             "official_framenet_frame_element_definition_when_available",
         ],
     }
-    if qa_info["available"]:
+    if bert_available:
         for name, base_question in FRAME_ELEMENT_QUESTIONS.get(rule.frame, {}).items():
             if elements.get(name, {}).get("text"):
                 continue
             question = _qa_prompt(rule, name, base_question)
             answer = _bert_qa_answer(sentence, question)
+            if answer:
+                answer = _normalize_verification_qa_answer(rule, name, sentence, answer)
             if answer and _plausible_element_answer(name, answer["text"]):
                 elements[name] = {
                     "text": answer["text"],
@@ -504,11 +592,25 @@ def _ranking_key(item: tuple[float, float, float | None, FrameRule]) -> tuple[fl
     return (round(combined, 3), rule_score, FRAME_PRIORITY.get(rule.frame, 0.0))
 
 
-def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = True) -> dict[str, Any] | None:
-    """Return the best configured employment/benefit frame event for a sentence."""
+def hybrid_frame_mapping(
+    sentence: str,
+    sentence_index: int,
+    use_bert: bool = True,
+    target_frame: str | None = None,
+) -> dict[str, Any] | None:
+    """Return a configured frame event, optionally targeting one matched frame.
+
+    ``target_frame`` supports auditable evaluation datasets: the requested frame
+    is retained as the mapped frame while the normal hybrid ranking remains in
+    ``candidateFrames`` so competing interpretations are not discarded.
+    """
+    if target_frame is not None and target_frame not in _FRAME_RULE_BY_NAME:
+        raise ValueError(f"Unknown target frame: {target_frame}")
     rule_scores = {rule.frame: _rule_score(rule, sentence) for rule in FRAME_RULES}
     matched_rules = tuple(rule for rule in FRAME_RULES if rule_scores[rule.frame] > 0)
     if not matched_rules:
+        return None
+    if target_frame is not None and target_frame not in {rule.frame for rule in matched_rules}:
         return None
 
     bert_scores, bert_info = _bert_frame_scores(sentence, matched_rules) if use_bert else ({}, {"available": False, "status": "disabled"})
@@ -518,13 +620,19 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
         bert_score = bert_scores.get(rule.frame)
         combined = rule_score if bert_score is None else (0.9 * rule_score) + (0.1 * bert_score)
         ranked.append((combined, rule_score, bert_score, rule))
-    combined, rule_score, bert_score, rule = sorted(
+    sorted_ranked = sorted(
         ranked,
         key=_ranking_key,
         reverse=True,
-    )[0]
+    )
+    if target_frame is None:
+        combined, rule_score, bert_score, rule = sorted_ranked[0]
+    else:
+        combined, rule_score, bert_score, rule = next(
+            item for item in sorted_ranked if item[3].frame == target_frame
+        )
     trigger = rule.trigger.search(sentence)
-    elements, element_extraction = _extract_frame_elements(rule, sentence)
+    elements, element_extraction = _extract_frame_elements(rule, sentence, use_bert=use_bert)
     summary = registry.frame_summary(rule.frame)
     return {
         "eventType": rule.event_type,
@@ -547,6 +655,13 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
         "polarity": "negative" if re.search(r"\b(?:not|cannot|never|no)\b", sentence, re.I) else "positive",
         "modality": "required" if re.search(r"\b(?:must|shall|required)\b", sentence, re.I) else "asserted",
         "hybridScoring": {
+            "selectionMode": "target_frame" if target_frame else "highest_ranked",
+            "targetFrame": target_frame,
+            "selectedCandidateRank": next(
+                index
+                for index, item in enumerate(sorted_ranked, start=1)
+                if item[3].frame == rule.frame
+            ),
             "ruleScore": round(rule_score, 4),
             "bertFrameScore": round(bert_score, 4) if bert_score is not None else None,
             "combinedScore": round(combined, 4),
@@ -559,11 +674,7 @@ def hybrid_frame_mapping(sentence: str, sentence_index: int, use_bert: bool = Tr
                     "bertFrameScore": round(item_bert_score, 4) if item_bert_score is not None else None,
                     "combinedScore": round(item_combined, 4),
                 }
-                for item_combined, item_rule_score, item_bert_score, item_rule in sorted(
-                    ranked,
-                    key=_ranking_key,
-                    reverse=True,
-                )[:5]
+                for item_combined, item_rule_score, item_bert_score, item_rule in sorted_ranked[:5]
             ],
         },
         "bertElementExtraction": element_extraction,
