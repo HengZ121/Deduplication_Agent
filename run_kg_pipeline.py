@@ -289,7 +289,6 @@ def detailed_matches(results_df: pd.DataFrame, comparable_df: pd.DataFrame) -> p
     if matches.empty:
         return matches
     fields = [
-        "node_id",
         "node_type",
         "article_path",
         "article_title",
@@ -318,7 +317,13 @@ def write_summary(
     if args.dita_input_mode == "chunk":
         chunking_strategy = "DITA-native structural nodes plus atomic knowledge nodes"
     elif args.dita_input_mode == "document":
-        chunking_strategy = "No chunking; one node per DITA map/article"
+        chunking_strategy = "No chunking; one complete node per DITA file/article"
+    elif (
+        not nodes_df.empty
+        and set(nodes_df["node_type"].astype(str)) == {"dita_document"}
+        and edges_df.empty
+    ):
+        chunking_strategy = "No chunking; reused one complete node per DITA file/article"
     else:
         chunking_strategy = "Reused precomputed node and edge tables"
     summary = {
