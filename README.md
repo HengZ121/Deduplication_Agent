@@ -214,3 +214,22 @@ py -m unittest -q test_framenet_mapper.py
 ```
 
 Tests that require optional local resources, such as the FrameNet corpus or spaCy model, are skipped automatically when those resources are not installed.
+
+## Duplicate Detection for Procedure JSON or KMT DITA
+
+`run_procedure_pipeline.py` accepts both the original `procedure.zip` JSON
+dataset and an extracted KMT DITA directory. For DITA, each `.ditamap` is one
+article: its referenced topics are read in map order and local `conref` common
+notes are expanded into the article text. Shared files under `common_notes` are
+not treated as independent documents.
+
+Run the KMT dataset with:
+
+```powershell
+py run_procedure_pipeline.py --input KMT_dita --output-dir outputs/kmt_dita_pipeline --require-api-key
+```
+
+Input format is auto-detected. Because KMT is bilingual, automatic mode disables
+English-only TF-IDF stop words and restricts candidate pairs to the same language.
+Use `--language-scope all` only when cross-language translation matching is the
+intended task. The legacy `--zip procedure.zip` option remains supported.

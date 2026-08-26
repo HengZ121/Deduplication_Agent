@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concept id="note">
+  <title>Callout</title>
+  <conbody>
+    <note id="body"><p>Reusable warning text.</p></note>
+  </conbody>
+</concept>

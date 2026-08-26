@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the procedure duplicate-detection pipeline locally.
+"""Run the document duplicate-detection pipeline locally.
 
 This script is based on the drafted notebook flow:
 1. load and cluster the documents,
@@ -8,7 +8,7 @@ This script is based on the drafted notebook flow:
 4. optionally ask OpenAI to classify each candidate relationship.
 
 The notebooks were authored for Colab and an older Bible dataset. This runner
-keeps the same pipeline shape while adapting the data loader to procedure.zip.
+keeps the same pipeline shape while supporting procedure JSON and KMT DITA.
 """
 
 from __future__ import annotations
@@ -22,8 +22,11 @@ import math
 import os
 import re
 import urllib.error
+import urllib.parse
 import urllib.request
 import zipfile
+import xml.etree.ElementTree as ET
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
@@ -51,6 +54,7 @@ DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_CROSS_ENCODER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 DEFAULT_CROSS_ENCODER_THRESHOLD = 0.95
 DEFAULT_API_KEY_FILE = Path("local_api_key.txt")
+XML_LANG = "{http://www.w3.org/XML/1998/namespace}lang"
 VALID_LLM_RELATIONSHIP_TYPES = {
     "semantically_identical",
     "one_doc_included",
@@ -160,6 +164,211 @@ def read_procedure_documents(zip_path: Path) -> list[ProcedureDocument]:
     return docs
 
 
+def xml_local_name(tag: str) -> str:
+    """Return an XML tag name without an optional namespace."""
+
+    return tag.rsplit("}", 1)[-1]
+
+
+def direct_child(element: ET.Element, name: str) -> ET.Element | None:
+    return next((child for child in element if xml_local_name(child.tag) == name), None)
+
+
+def element_text(element: ET.Element | None) -> str:
+    return clean_text(" ".join(element.itertext())) if element is not None else ""
+
+
+class DitaTopicResolver:
+    """Read DITA topic text and expand local ``conref`` references.
+
+    KMT stores reusable callouts under ``common_notes``. Expanding those
+    references preserves the article text while ensuring the common-note files
+    themselves are not treated as standalone deduplication documents.
+    """
+
+    def __init__(self, dita_root: Path) -> None:
+        self.dita_root = dita_root.resolve()
+        self._xml_cache: dict[Path, ET.Element] = {}
+        self._topic_cache: dict[Path, tuple[str, str]] = {}
+
+    def parse_xml(self, path: Path) -> ET.Element:
+        resolved = path.resolve()
+        if resolved not in self._xml_cache:
+            self._xml_cache[resolved] = ET.parse(resolved).getroot()
+        return self._xml_cache[resolved]
+
+    def resolve_local_reference(self, current_path: Path, reference: str) -> tuple[Path, str]:
+        raw_path, _, fragment = reference.partition("#")
+        decoded_path = urllib.parse.unquote(raw_path)
+        target_path = (current_path.parent / decoded_path).resolve() if decoded_path else current_path.resolve()
+        try:
+            target_path.relative_to(self.dita_root)
+        except ValueError as exc:
+            raise ValueError(f"DITA reference escapes the dataset root: {reference!r}") from exc
+        return target_path, urllib.parse.unquote(fragment)
+
+    @staticmethod
+    def find_fragment(root: ET.Element, fragment: str) -> ET.Element:
+        # DITA fragments normally look like ``topic-id/element-id``. The final
+        # ID uniquely identifies the reusable element inside a topic file.
+        target_id = fragment.rstrip("/").rsplit("/", 1)[-1]
+        if not target_id:
+            return root
+        for element in root.iter():
+            if element.get("id") == target_id:
+                return element
+        raise ValueError(f"DITA fragment {fragment!r} was not found")
+
+    def expanded_element_text(
+        self,
+        element: ET.Element,
+        current_path: Path,
+        active_references: frozenset[tuple[Path, str]] = frozenset(),
+    ) -> str:
+        conref = element.get("conref")
+        if conref:
+            target_path, fragment = self.resolve_local_reference(current_path, conref)
+            reference_key = (target_path, fragment)
+            if reference_key in active_references:
+                raise ValueError(f"Circular DITA conref detected at {conref!r}")
+            target_root = self.parse_xml(target_path)
+            target_element = self.find_fragment(target_root, fragment)
+            return self.expanded_element_text(
+                target_element,
+                target_path,
+                active_references | {reference_key},
+            )
+
+        parts: list[str] = []
+        if element.text:
+            parts.append(element.text)
+        for child in element:
+            child_text = self.expanded_element_text(child, current_path, active_references)
+            if child_text:
+                parts.append(child_text)
+            if child.tail:
+                parts.append(child.tail)
+        return clean_text(" ".join(parts))
+
+    def read_topic(self, path: Path) -> tuple[str, str]:
+        resolved = path.resolve()
+        if resolved not in self._topic_cache:
+            root = self.parse_xml(resolved)
+            title_element = next(
+                (element for element in root.iter() if xml_local_name(element.tag) == "title"),
+                None,
+            )
+            title = element_text(title_element)
+            self._topic_cache[resolved] = (title, self.expanded_element_text(root, resolved))
+        return self._topic_cache[resolved]
+
+
+def find_dita_root(input_path: Path) -> Path:
+    candidate = input_path / "dita"
+    if candidate.is_dir():
+        return candidate
+    return input_path
+
+
+def read_dita_documents(input_path: Path) -> list[ProcedureDocument]:
+    """Load one deduplication document per KMT ``.ditamap`` article."""
+
+    dita_root = find_dita_root(input_path)
+    map_paths = sorted(dita_root.rglob("*.ditamap"))
+    if not map_paths:
+        raise ValueError(f"No .ditamap files were found under {dita_root}")
+
+    resolver = DitaTopicResolver(dita_root)
+    docs: list[ProcedureDocument] = []
+    for map_path in map_paths:
+        root = resolver.parse_xml(map_path)
+        title = element_text(direct_child(root, "title")) or map_path.stem
+
+        metadata: dict[str, list[str]] = defaultdict(list)
+        for item in root.iter():
+            if xml_local_name(item.tag) == "othermeta":
+                name = clean_text(item.get("name"))
+                content = clean_text(item.get("content"))
+                if name and content:
+                    metadata[name].append(content)
+
+        topic_texts: list[str] = []
+        summary = ""
+        seen_topic_paths: set[Path] = set()
+        for topicref in root.iter():
+            if xml_local_name(topicref.tag) != "topicref":
+                continue
+            href = clean_text(topicref.get("href"))
+            if not href or urllib.parse.urlparse(href).scheme:
+                continue
+            topic_path, _ = resolver.resolve_local_reference(map_path, href)
+            if topic_path in seen_topic_paths:
+                continue
+            if not topic_path.is_file():
+                raise FileNotFoundError(f"Topic referenced by {map_path} does not exist: {topic_path}")
+            seen_topic_paths.add(topic_path)
+            topic_title, topic_text = resolver.read_topic(topic_path)
+            if topic_text:
+                topic_texts.append(topic_text)
+            topic_key = f"{topic_path.stem} {topic_title}".lower()
+            if not summary and any(marker in topic_key for marker in ("summary", "resume", "résumé")):
+                summary = topic_text
+
+        language = clean_text(root.get(XML_LANG))
+        modified_element = next(
+            (item for item in root.iter() if xml_local_name(item.tag) == "revised" and item.get("modified")),
+            None,
+        )
+        modified = first_string(
+            modified_element.get("modified") if modified_element is not None else "",
+            *(metadata.get("source-last-modified-datetime", [])),
+        )
+        source = first_string(*(metadata.get("source-system", [])), "KMT")
+        document_type = first_string(*(metadata.get("article-type", [])))
+        text = clean_text(" ".join([title, *topic_texts]))
+        if not text:
+            continue
+
+        docs.append(
+            ProcedureDocument(
+                document_id=len(docs),
+                path=map_path.relative_to(dita_root).as_posix(),
+                document_type=document_type,
+                title=title,
+                summary=summary,
+                language=language,
+                modified=modified,
+                source=source,
+                text=text,
+            )
+        )
+    return docs
+
+
+def detect_input_format(input_path: Path, requested_format: str = "auto") -> str:
+    if requested_format != "auto":
+        return requested_format
+    if input_path.is_file() and input_path.suffix.lower() == ".zip":
+        return "procedure-zip"
+    if input_path.is_dir():
+        dita_root = find_dita_root(input_path)
+        if next(dita_root.rglob("*.ditamap"), None) is not None:
+            return "dita"
+    raise ValueError(
+        f"Could not detect the input format for {input_path}. "
+        "Use a procedure .zip file or an extracted DITA directory."
+    )
+
+
+def read_documents(input_path: Path, input_format: str = "auto") -> tuple[list[ProcedureDocument], str]:
+    detected_format = detect_input_format(input_path, input_format)
+    if detected_format == "procedure-zip":
+        return read_procedure_documents(input_path), detected_format
+    if detected_format == "dita":
+        return read_dita_documents(input_path), detected_format
+    raise ValueError(f"Unsupported input format: {detected_format}")
+
+
 def cluster_documents_with_hdbscan(
     matrix: Any,
     umap_components: int,
@@ -171,25 +380,41 @@ def cluster_documents_with_hdbscan(
 ) -> np.ndarray:
     try:
         import hdbscan
-        import umap
     except ImportError as exc:
         raise RuntimeError(
-            "HDBSCAN clustering requires hdbscan and umap-learn. "
+            "HDBSCAN clustering requires hdbscan. "
             "Install dependencies with: python -m pip install -r requirements.txt"
         ) from exc
 
     component_count = min(umap_components, max(2, matrix.shape[0] - 2), max(2, matrix.shape[1] - 1))
     effective_umap_jobs = 1 if umap_random_state is not None else umap_jobs
-    print(
-        f"Reducing vectors with UMAP to {component_count} dimensions "
-        f"(n_jobs={effective_umap_jobs}, random_state={umap_random_state})..."
-    )
-    reducer = umap.UMAP(
-        n_components=component_count,
-        n_jobs=effective_umap_jobs,
-        random_state=umap_random_state,
-    )
-    reduced = reducer.fit_transform(matrix)
+    try:
+        import umap
+
+        print(
+            f"Reducing vectors with UMAP to {component_count} dimensions "
+            f"(n_jobs={effective_umap_jobs}, random_state={umap_random_state})..."
+        )
+        reducer = umap.UMAP(
+            n_components=component_count,
+            n_jobs=effective_umap_jobs,
+            random_state=umap_random_state,
+        )
+        reduced = reducer.fit_transform(matrix)
+    except (ImportError, RuntimeError) as exc:
+        # Some Python/Numba combinations cannot import UMAP because Numba's
+        # on-disk cache is unavailable. TruncatedSVD provides a deterministic,
+        # sparse-friendly fallback so ingestion tests and production runs do
+        # not fail before duplicate detection begins.
+        from sklearn.decomposition import TruncatedSVD
+
+        fallback_components = min(component_count, max(2, matrix.shape[1] - 1))
+        print(
+            f"UMAP is unavailable ({exc}); reducing vectors with TruncatedSVD "
+            f"to {fallback_components} dimensions instead..."
+        )
+        reducer = TruncatedSVD(n_components=fallback_components, random_state=umap_random_state)
+        reduced = reducer.fit_transform(matrix)
 
     print(
         "Clustering documents with HDBSCAN "
@@ -214,6 +439,7 @@ def build_duplicate_pairs(
     backend: str = DEFAULT_PAIR_SEARCH_BACKEND,
     n_jobs: int = DEFAULT_PAIR_SEARCH_JOBS,
     within_clusters: bool = True,
+    same_language_only: bool = False,
 ) -> pd.DataFrame:
     if backend == "auto":
         backend = "faiss" if is_faiss_available() else "sklearn"
@@ -234,6 +460,10 @@ def build_duplicate_pairs(
     for i, j, score in pair_indices:
         row1 = df.iloc[int(i)]
         row2 = df.iloc[int(j)]
+        language1 = language_family(row1["language"])
+        language2 = language_family(row2["language"])
+        if same_language_only and language1 and language2 and language1 != language2:
+            continue
         pairs.append(
             {
                 "cluster_label": int(row1["cluster_label"]) if row1["cluster_label"] == row2["cluster_label"] else "",
@@ -245,6 +475,8 @@ def build_duplicate_pairs(
                 "item2_path": row2["path"],
                 "item1_type": row1["document_type"],
                 "item2_type": row2["document_type"],
+                "item1_language": row1["language"],
+                "item2_language": row2["language"],
                 "item1_title": row1["title"],
                 "item2_title": row2["title"],
                 "item1_summary": row1["summary"],
@@ -256,6 +488,12 @@ def build_duplicate_pairs(
 
     pairs.sort(key=lambda item: item["similarity"], reverse=True)
     return pd.DataFrame(pairs[:top_pairs])
+
+
+def language_family(value: Any) -> str:
+    """Normalize values such as ``en-CA`` and ``fr_CA`` for pair filtering."""
+
+    return clean_text(value).lower().replace("_", "-").split("-", 1)[0]
 
 
 def find_candidate_pair_indices(
@@ -341,7 +579,7 @@ def find_pairs_with_sparse_dot(matrix: Any, threshold: float) -> list[tuple[int,
 
 def normalized_for_inclusion(text: str) -> str:
     text = text.lower()
-    text = re.sub(r"[^a-z0-9]+", " ", text)
+    text = re.sub(r"[^\w]+", " ", text, flags=re.UNICODE)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -505,10 +743,23 @@ def openai_json_request(api_key: str, model: str, doc1: str, doc2: str, timeout:
     prompt = {
         "role": "user",
         "content": (
-            "Analyze the relationship between these two procedure documents. "
-            "Return only JSON with keys relationship_type and analysis. "
-            "relationship_type must be one of semantically_identical, one_doc_included, "
-            "conflict_in_information, none_of_above.\n\n"
+            "Classify the semantic relationship between these two procedure documents. "
+            "Return only JSON with keys relationship_type and analysis. Use exactly one of:\n"
+            "- semantically_identical: the documents have the same subject, scope, and substantive instructions, "
+            "so one could replace the other apart from wording or formatting.\n"
+            "- one_doc_included: nearly all substantive information in one document is actually contained in the "
+            "other. A reference, archive notice, or supersession statement alone does not count as inclusion.\n"
+            "- conflict_in_information: the documents address the same subject and scope but make mutually "
+            "incompatible factual or procedural claims.\n"
+            "- none_of_above: related or template-similar documents that apply to different benefits, products, "
+            "roles, contact types, scenarios, or other scopes, without a true contradiction.\n"
+            "Apply this decision rule before choosing conflict_in_information: first compare the exact scope tuple "
+            "(system, action, object/role/benefit, and time/scenario). If any material component differs, conflict "
+            "is prohibited; choose none_of_above unless the stricter identical or inclusion definition is met. "
+            "For example, benefit A vs benefit B, payee vs non-payee, current year vs previous year, withhold rate "
+            "vs recovery rate, and creating a status vs dissolving that status are different scopes, not conflicts. "
+            "An omitted rule or extra detail is also not a conflict by itself. Only use conflict when two documents "
+            "make incompatible claims about the same exact scoped case. Base the label on declared scope, not shared wording.\n\n"
             f"Document 1:\n{doc1}\n\nDocument 2:\n{doc2}"
         ),
     }
@@ -615,6 +866,9 @@ def write_summary(
     within_clusters: bool,
     hdbscan_params: dict[str, Any],
     cross_encoder_threshold: float,
+    input_format: str,
+    same_language_only: bool,
+    stop_words: str | None,
 ) -> None:
     cluster_stats = (
         docs_df.groupby(["cluster_label", "document_type"])
@@ -626,6 +880,7 @@ def write_summary(
     cluster_stats.to_csv(output_dir / "cluster_stats.csv", index=False, encoding="utf-8-sig")
 
     summary = {
+        "input_format": input_format,
         "document_count": int(len(docs_df)),
         "cluster_count": int(docs_df["cluster_label"].nunique()),
         "candidate_pair_count": int(len(candidate_pairs_df)),
@@ -637,6 +892,8 @@ def write_summary(
         "similarity_threshold": threshold,
         "pair_search_backend": pair_search_backend,
         "pair_search_within_clusters": within_clusters,
+        "same_language_only": same_language_only,
+        "tfidf_stop_words": stop_words,
         "hdbscan": hdbscan_params,
         "cross_encoder_threshold": cross_encoder_threshold,
         "outputs": [
@@ -651,11 +908,36 @@ def write_summary(
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run the procedure duplicate-detection pipeline.")
-    parser.add_argument("--zip", type=Path, default=DEFAULT_ZIP, help="Input dataset zip file.")
+    parser = argparse.ArgumentParser(description="Run the document duplicate-detection pipeline.")
+    parser.add_argument(
+        "--input",
+        "--zip",
+        dest="input_path",
+        type=Path,
+        default=DEFAULT_ZIP,
+        help="Input procedure ZIP or extracted DITA directory. --zip remains as a backward-compatible alias.",
+    )
+    parser.add_argument(
+        "--input-format",
+        choices=["auto", "procedure-zip", "dita"],
+        default="auto",
+        help="Input format; auto detects ZIP versus a directory containing .ditamap files.",
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help="Directory for CSV outputs.")
     parser.add_argument("--similarity-threshold", type=float, default=DEFAULT_SIMILARITY_THRESHOLD)
     parser.add_argument("--top-pairs", type=int, default=DEFAULT_TOP_PAIRS)
+    parser.add_argument(
+        "--stop-words",
+        choices=["auto", "english", "none"],
+        default="auto",
+        help="TF-IDF stop-word handling. auto disables English-only filtering for multilingual datasets.",
+    )
+    parser.add_argument(
+        "--language-scope",
+        choices=["auto", "same", "all"],
+        default="auto",
+        help="Candidate language scope. auto compares only same-language documents for DITA.",
+    )
     parser.add_argument(
         "--pair-search-backend",
         choices=["auto", "faiss", "sklearn", "sparse"],
@@ -727,14 +1009,28 @@ def main() -> None:
     args = parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"Loading procedure documents from {args.zip}...")
-    docs = read_procedure_documents(args.zip)
+    print(f"Loading documents from {args.input_path}...")
+    docs, input_format = read_documents(args.input_path, args.input_format)
+    if len(docs) < 3:
+        raise ValueError(f"At least 3 non-empty documents are required; loaded {len(docs)}")
     docs_df = pd.DataFrame([doc.__dict__ for doc in docs])
-    print(f"Loaded {len(docs_df)} documents.")
+    print(f"Loaded {len(docs_df)} {input_format} documents.")
+
+    language_families = {language_family(value) for value in docs_df["language"] if language_family(value)}
+    if args.stop_words == "english":
+        stop_words: str | None = "english"
+    elif args.stop_words == "none":
+        stop_words = None
+    else:
+        stop_words = "english" if language_families and language_families <= {"en"} else None
+
+    same_language_only = args.language_scope == "same" or (
+        args.language_scope == "auto" and input_format == "dita"
+    )
 
     print("Vectorizing document text with TF-IDF...")
     vectorizer = TfidfVectorizer(
-        stop_words="english",
+        stop_words=stop_words,
         ngram_range=(1, 2),
         min_df=2,
         max_df=0.9,
@@ -770,6 +1066,7 @@ def main() -> None:
         backend=pair_backend,
         n_jobs=args.pair_search_jobs,
         within_clusters=not args.all_pairs,
+        same_language_only=same_language_only,
     )
     candidate_pairs_df.to_csv(args.output_dir / "duplicate_pairs.csv", index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
     print(f"Found {len(candidate_pairs_df)} candidate pairs.")
@@ -835,6 +1132,9 @@ def main() -> None:
             "cluster_selection_epsilon": args.hdbscan_cluster_selection_epsilon,
         },
         args.cross_encoder_threshold,
+        input_format,
+        same_language_only,
+        stop_words,
     )
     print(f"Done. Outputs written to {args.output_dir}")
 

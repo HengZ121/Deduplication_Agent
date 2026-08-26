@@ -4,3 +4,11 @@ __pycache__/
 *.py[cod]
 .nltk_data/
 .nltk_data_clean/
+/KMT_dita/
+
+# Keep only the reviewed KMT DITA deliverables; ignore bulky intermediate files.
+outputs/kmt_dita_pipeline/*
+!outputs/kmt_dita_pipeline/kmt_deduplication_results.csv
+!outputs/kmt_dita_pipeline/validation_sample.csv
+!outputs/kmt_dita_pipeline/run_summary.json
+!outputs/kmt_dita_pipeline/kmt_deduplication_demo.pptx

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map id="KA-99999" xml:lang="en-CA">
+  <title>Example KMT Article (Action)</title>
+  <topicmeta>
+    <critdates><revised modified="2026-08-20"/></critdates>
+    <metadata>
+      <othermeta name="source-system" content="KMT"/>
+      <othermeta name="article-type" content="Action"/>
+    </metadata>
+  </topicmeta>
+  <topicref href="summary.dita"/>
+  <topicref href="steps.dita"/>
+</map>

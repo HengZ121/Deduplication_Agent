@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<task id="steps">
+  <title>Steps</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Process the request.</cmd>
+        <info><note conref="../common_notes/note.dita#note/body"/></info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

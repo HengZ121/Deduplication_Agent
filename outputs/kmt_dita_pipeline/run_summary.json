@@ -1,0 +1,47 @@
+{
+  "input_format": "dita",
+  "document_count": 2747,
+  "cluster_count": 59,
+  "candidate_pair_count": 500,
+  "cross_encoder_scored_pair_count": 500,
+  "cross_encoder_passed_pair_count": 119,
+  "final_pair_count": 119,
+  "similarity_threshold": 0.45,
+  "pair_search_backend": "sklearn",
+  "pair_search_within_clusters": true,
+  "same_language_only": true,
+  "tfidf_stop_words": null,
+  "hdbscan": {
+    "umap_components": 128,
+    "umap_jobs": 1,
+    "umap_random_state": 42,
+    "min_cluster_size": 15,
+    "min_samples": 5,
+    "cluster_selection_epsilon": 0.05
+  },
+  "cross_encoder_threshold": 0.95,
+  "outputs": [
+    "procedure_documents_with_clusters.csv",
+    "duplicate_pairs.csv",
+    "cross_encoder_scored_pairs.csv",
+    "llm_analyzed_duplicates.csv",
+    "cluster_stats.csv",
+    "kmt_deduplication_results.csv",
+    "validation_sample.csv"
+  ],
+  "llm_reviewed_pair_count": 40,
+  "llm_relationship_counts": {
+    "semantically_identical": 4,
+    "one_doc_included": 2,
+    "conflict_in_information": 1,
+    "none_of_above": 33
+  },
+  "final_relationship_counts": {
+    "semantically_identical": 3,
+    "one_doc_included": 2,
+    "conflict_in_information": 1,
+    "none_of_above": 34
+  },
+  "final_actionable_duplicate_count": 5,
+  "agent_source_review_override_count": 1
+}
