@@ -30,6 +30,19 @@ class DitaDocumentLoaderTests(unittest.TestCase):
         self.assertEqual("en", language_family("en-CA"))
         self.assertEqual("fr", language_family("fr_CA"))
 
+    def test_common_note_directory_loads_each_dita_file_as_one_node(self) -> None:
+        common_notes = (
+            Path(__file__).parent / "test_fixtures" / "kmt_dita" / "dita" / "common_notes"
+        )
+
+        documents, detected_format = read_documents(common_notes)
+
+        self.assertEqual("dita-nodes", detected_format)
+        self.assertEqual(1, len(documents))
+        self.assertEqual("note.dita", documents[0].path)
+        self.assertEqual("dita_common_node", documents[0].document_type)
+        self.assertIn("Reusable warning text.", documents[0].text)
+
 
 if __name__ == "__main__":
     unittest.main()

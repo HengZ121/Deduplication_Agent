@@ -233,3 +233,56 @@ Input format is auto-detected. Because KMT is bilingual, automatic mode disables
 English-only TF-IDF stop words and restricts candidate pairs to the same language.
 Use `--language-scope all` only when cross-language translation matching is the
 intended task. The legacy `--zip procedure.zip` option remains supported.
+
+## DITA Node-Level Deduplication
+
+`run_kg_pipeline.py` can process a DITA dataset directly in either of two modes.
+The default is DITA-native semantic chunking; use a different output directory
+for document-level and chunk-level runs so their artifacts remain independent.
+
+Install the local dependencies once:
+
+```powershell
+py -m pip install -r requirements.txt
+```
+
+Run with DITA-native structural and atomic knowledge-node chunking (the default):
+
+```powershell
+py run_kg_pipeline.py --input KMT_dita --output-dir outputs/kmt_kg_pipeline --chunk-input-dita
+```
+
+Run the same DITA input without chunking. Each `.ditamap` article becomes one
+comparable node, which provides page-level deduplication:
+
+```powershell
+py run_kg_pipeline.py --input KMT_dita --output-dir outputs/kmt_document_pipeline --no-chunk-input-dita
+```
+
+To inspect the generated nodes without starting embedding or CrossEncoder work,
+append `--stop-after-node-building` to either command.
+
+Chunking is also available as a standalone preprocessing step:
+
+```powershell
+py dita_kg_chunker.py --input KMT_dita --output-dir outputs/kmt_kg_pipeline
+```
+
+Reuse those node tables later without reading or chunking the source DITA again:
+
+```powershell
+py run_kg_pipeline.py --output-dir outputs/kmt_kg_pipeline --reuse-nodes
+```
+
+For a paused run that already has candidates, add `--reuse-candidates`. Completed
+CrossEncoder score files can be reused with `--reuse-cross-encoder-scores`; an
+incomplete checkpoint resumes automatically when scoring starts.
+
+The pipeline is local-only by default (`--llm-limit 0`). To send only borderline
+pairs for LLM review, place the key in `local_api_key.txt` and set a positive
+limit, for example `--llm-limit 100`. This transmits the selected passage text to
+the configured API.
+
+Primary outputs are `kg_nodes.csv`, `kg_edges.csv`, `kg_candidate_pairs.csv`,
+`kg_pair_classifications.csv`, `kg_deduplication_matches.csv`, and
+`run_summary.json`.

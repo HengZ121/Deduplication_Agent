@@ -345,6 +345,43 @@ def read_dita_documents(input_path: Path) -> list[ProcedureDocument]:
     return docs
 
 
+def read_dita_node_documents(input_path: Path) -> list[ProcedureDocument]:
+    """Load each ``.dita`` file as one complete deduplication document.
+
+    This mode is intended for reusable-node collections such as KMT's
+    ``dita/common_notes`` directory. Unlike article mode, files are neither
+    assembled through a ``.ditamap`` nor divided into smaller chunks.
+    """
+
+    dita_root = find_dita_root(input_path)
+    topic_paths = sorted(dita_root.rglob("*.dita"))
+    if not topic_paths:
+        raise ValueError(f"No .dita files were found under {dita_root}")
+
+    resolver = DitaTopicResolver(dita_root)
+    docs: list[ProcedureDocument] = []
+    for topic_path in topic_paths:
+        root = resolver.parse_xml(topic_path)
+        title, text = resolver.read_topic(topic_path)
+        if not text:
+            continue
+
+        docs.append(
+            ProcedureDocument(
+                document_id=len(docs),
+                path=topic_path.relative_to(dita_root).as_posix(),
+                document_type="dita_common_node",
+                title=title or topic_path.stem,
+                summary="",
+                language=clean_text(root.get(XML_LANG)),
+                modified="",
+                source="KMT",
+                text=text,
+            )
+        )
+    return docs
+
+
 def detect_input_format(input_path: Path, requested_format: str = "auto") -> str:
     if requested_format != "auto":
         return requested_format
@@ -354,6 +391,8 @@ def detect_input_format(input_path: Path, requested_format: str = "auto") -> str
         dita_root = find_dita_root(input_path)
         if next(dita_root.rglob("*.ditamap"), None) is not None:
             return "dita"
+        if next(dita_root.rglob("*.dita"), None) is not None:
+            return "dita-nodes"
     raise ValueError(
         f"Could not detect the input format for {input_path}. "
         "Use a procedure .zip file or an extracted DITA directory."
@@ -366,6 +405,8 @@ def read_documents(input_path: Path, input_format: str = "auto") -> tuple[list[P
         return read_procedure_documents(input_path), detected_format
     if detected_format == "dita":
         return read_dita_documents(input_path), detected_format
+    if detected_format == "dita-nodes":
+        return read_dita_node_documents(input_path), detected_format
     raise ValueError(f"Unsupported input format: {detected_format}")
 
 
@@ -919,9 +960,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--input-format",
-        choices=["auto", "procedure-zip", "dita"],
+        choices=["auto", "procedure-zip", "dita", "dita-nodes"],
         default="auto",
-        help="Input format; auto detects ZIP versus a directory containing .ditamap files.",
+        help=(
+            "Input format; auto detects ZIP, DITA article maps, or a directory "
+            "of standalone DITA nodes."
+        ),
     )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help="Directory for CSV outputs.")
     parser.add_argument("--similarity-threshold", type=float, default=DEFAULT_SIMILARITY_THRESHOLD)
@@ -1025,7 +1069,7 @@ def main() -> None:
         stop_words = "english" if language_families and language_families <= {"en"} else None
 
     same_language_only = args.language_scope == "same" or (
-        args.language_scope == "auto" and input_format == "dita"
+        args.language_scope == "auto" and input_format in {"dita", "dita-nodes"}
     )
 
     print("Vectorizing document text with TF-IDF...")
