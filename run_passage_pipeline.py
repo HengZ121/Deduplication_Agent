@@ -15,6 +15,7 @@ import concurrent.futures
 import csv
 import json
 import re
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -90,14 +91,59 @@ class PassageWindow:
     text: str
 
 
-def word_tokens(text: str) -> list[str]:
-    """Return Unicode word tokens suitable for English and French passages."""
+UNICODE_PUNCTUATION_TRANSLATION = str.maketrans(
+    {
+        # Apostrophe-like characters commonly introduced by Office, PDF, and
+        # full-width encodings. Treat them as the same contraction marker.
+        "\u2018": "'",
+        "\u2019": "'",
+        "\u201b": "'",
+        "\u02bc": "'",
+        "\u2032": "'",
+        "\uff07": "'",
+        "\u00b4": "'",
+        "`": "'",
+        # Hyphen/dash variants are equivalent inside compound word tokens.
+        "\u2010": "-",
+        "\u2011": "-",
+        "\u2012": "-",
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u2212": "-",
+        "\ufe63": "-",
+        "\uff0d": "-",
+    }
+)
 
-    return re.findall(r"[\wÀ-ÖØ-öø-ÿ]+(?:[’'-][\wÀ-ÖØ-öø-ÿ]+)*", text.lower(), flags=re.UNICODE)
+
+def normalize_unicode_text(text: str) -> str:
+    """Canonicalize compatibility glyphs without removing linguistic accents."""
+
+    value = unicodedata.normalize("NFKC", clean_text(text)).translate(
+        UNICODE_PUNCTUATION_TRANSLATION
+    )
+    # Zero-width and directional formatting characters are display metadata,
+    # not content. Removing them prevents visually identical text from being
+    # treated as a different node.
+    value = "".join(character for character in value if unicodedata.category(character) != "Cf")
+    # Some exports insert spaces on one or both sides of an apostrophe or
+    # hyphen inside a word (for example ``n 'est``). Collapse only when both
+    # neighbours are word characters so ordinary punctuation spacing remains
+    # unchanged.
+    value = re.sub(r"(?<=\w)\s*'\s*(?=\w)", "'", value)
+    value = re.sub(r"(?<=\w)\s*-\s*(?=\w)", "-", value)
+    return clean_text(value)
+
+
+def word_tokens(text: str) -> list[str]:
+    """Return canonical Unicode word tokens suitable for English and French."""
+
+    value = normalize_unicode_text(text).casefold()
+    return re.findall(r"[\wÀ-ÖØ-öø-ÿ]+(?:['-][\wÀ-ÖØ-öø-ÿ]+)*", value, flags=re.UNICODE)
 
 
 def normalized_passage(text: str) -> str:
-    return " ".join(word_tokens(clean_text(text)))
+    return " ".join(word_tokens(text))
 
 
 def split_sentences(text: str) -> list[str]:

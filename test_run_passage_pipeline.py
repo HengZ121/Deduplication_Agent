@@ -10,6 +10,7 @@ import pandas as pd
 
 from run_passage_pipeline import (
     initial_cross_encoder_decision,
+    normalized_passage,
     read_dita_passage_windows,
     sentence_windows,
     split_sentences,
@@ -48,6 +49,22 @@ class PassageWindowTests(unittest.TestCase):
 
 
 class PassageRelationshipTests(unittest.TestCase):
+    def test_unicode_apostrophe_variants_normalize_to_identical_text(self) -> None:
+        self.assertEqual(
+            normalized_passage("Le paiement n’est pas disponible."),
+            normalized_passage("Le paiement n＇est pas disponible."),
+        )
+        self.assertEqual(
+            normalized_passage("La demande n'est pas complète."),
+            normalized_passage("La demande n ’est pas complète."),
+        )
+
+    def test_compatibility_width_dash_and_zero_width_mark_are_ignored(self) -> None:
+        self.assertEqual(
+            normalized_passage("Ｍise-à-jour du dossier"),
+            normalized_passage("Mise‑à‑jour\u200b du dossier"),
+        )
+
     def test_identical_text_is_automatic_duplicate(self) -> None:
         row = pd.Series(
             {

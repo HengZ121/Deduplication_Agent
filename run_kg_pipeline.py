@@ -7,6 +7,7 @@ import argparse
 import concurrent.futures
 import csv
 import json
+import time
 import urllib.error
 from pathlib import Path
 
@@ -18,6 +19,12 @@ from dita_kg_chunker import (
     KNOWLEDGE_NODE_COLUMNS,
     chunk_dita_to_frames,
     load_dita_as_document_nodes,
+)
+from language_detection import (
+    DEFAULT_LANGUAGE_DETECTION_MODEL,
+    build_language_predictions,
+    exclude_model_detected_english_french_pairs,
+    validate_language_predictions,
 )
 from run_passage_pipeline import (
     DEFAULT_EMBEDDING_MODEL,
@@ -40,6 +47,45 @@ from run_procedure_pipeline import (
 
 DEFAULT_OUTPUT_DIR = Path("outputs/kmt_kg_pipeline")
 DEFAULT_ARTICLE_METADATA_CSV = Path("outputs/kmt_dita_pipeline/procedure_documents_with_clusters.csv")
+LLM_REVIEW_CHECKPOINT_NAME = "kg_llm_reviews.jsonl"
+
+
+def llm_review_key(row: pd.Series, model: str) -> tuple[str, str, str]:
+    """Return a stable cache key for a candidate pair and LLM model."""
+
+    return str(row["item1_node_id"]), str(row["item2_node_id"]), model
+
+
+def load_llm_review_checkpoint(path: Path) -> dict[tuple[str, str, str], dict[str, object]]:
+    """Load the latest JSONL checkpoint record for every pair/model key."""
+
+    records: dict[tuple[str, str, str], dict[str, object]] = {}
+    if not path.is_file():
+        return records
+    with path.open("r", encoding="utf-8-sig") as handle:
+        for line in handle:
+            try:
+                record = json.loads(line)
+                key = (
+                    str(record["item1_node_id"]),
+                    str(record["item2_node_id"]),
+                    str(record["model"]),
+                )
+            except (json.JSONDecodeError, KeyError, TypeError):
+                # A final partial line can occur if a process is interrupted
+                # during a write. Earlier complete records remain reusable.
+                continue
+            records[key] = record
+    return records
+
+
+def append_llm_review_checkpoint(path: Path, record: dict[str, object]) -> None:
+    """Durably append one completed API attempt to the JSONL checkpoint."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8", newline="\n") as handle:
+        handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+        handle.flush()
 
 
 def compact_candidate_pairs(
@@ -202,7 +248,7 @@ def classify_compact_pairs(
             relationships.append("one passage included in another")
             analyses.append("One normalized node is contained in the other.")
             borderline.append(False)
-        elif cross_score <= independent_threshold:
+        elif cross_score < independent_threshold:
             relationships.append("independent")
             analyses.append("CrossEncoder score is below the independent threshold.")
             borderline.append(False)
@@ -240,12 +286,37 @@ def review_borderline_pairs(
     llm_limit: int,
     llm_workers: int,
     api_timeout: int,
+    checkpoint_path: Path | None = None,
+    max_attempts: int = 5,
 ) -> pd.DataFrame:
     if not api_key or llm_limit <= 0:
         return results_df
     result = results_df.copy()
     borderline_indices = result.index[result["is_borderline"]].tolist()[:llm_limit]
     if not borderline_indices:
+        return result
+
+    cached_records = (
+        load_llm_review_checkpoint(checkpoint_path)
+        if checkpoint_path is not None
+        else {}
+    )
+    pending_indices: list[int] = []
+    reused_count = 0
+    for row_index in borderline_indices:
+        pair = result.loc[row_index]
+        cached = cached_records.get(llm_review_key(pair, model))
+        if cached and cached.get("review_status") == "reviewed":
+            result.at[row_index, "final_relationship_type"] = cached["relationship_type"]
+            result.at[row_index, "final_analysis"] = cached["analysis"]
+            result.at[row_index, "classification_source"] = "llm_borderline"
+            result.at[row_index, "llm_review_status"] = "reviewed"
+            reused_count += 1
+        else:
+            pending_indices.append(int(row_index))
+    if reused_count:
+        print(f"Reused {reused_count} completed LLM reviews from checkpoint.")
+    if not pending_indices:
         return result
 
     def detailed_row(row_index: int) -> pd.Series:
@@ -261,21 +332,65 @@ def review_borderline_pairs(
             }
         )
 
-    def review(row_index: int) -> tuple[int, str, str, str]:
-        try:
-            response = openai_passage_request(api_key, model, detailed_row(row_index), api_timeout)
-            return row_index, response["relationship_type"], response["analysis"], "reviewed"
-        except (urllib.error.URLError, TimeoutError, KeyError, ValueError, json.JSONDecodeError) as exc:
-            return row_index, result.at[row_index, "final_relationship_type"], str(exc), "api_error"
+    def review(row_index: int) -> dict[str, object]:
+        pair = result.loc[row_index]
+        last_error = ""
+        for attempt in range(1, max_attempts + 1):
+            try:
+                response = openai_passage_request(
+                    api_key,
+                    model,
+                    detailed_row(row_index),
+                    api_timeout,
+                )
+                return {
+                    "pair_row_index": row_index,
+                    "item1_node_id": str(pair["item1_node_id"]),
+                    "item2_node_id": str(pair["item2_node_id"]),
+                    "model": model,
+                    "relationship_type": response["relationship_type"],
+                    "analysis": response["analysis"],
+                    "review_status": "reviewed",
+                    "attempts": attempt,
+                }
+            except (
+                urllib.error.URLError,
+                TimeoutError,
+                KeyError,
+                ValueError,
+                json.JSONDecodeError,
+            ) as exc:
+                last_error = f"{type(exc).__name__}: {exc}"
+                if attempt < max_attempts:
+                    time.sleep(min(2 ** (attempt - 1), 30))
+        return {
+            "pair_row_index": row_index,
+            "item1_node_id": str(pair["item1_node_id"]),
+            "item2_node_id": str(pair["item2_node_id"]),
+            "model": model,
+            "relationship_type": str(result.at[row_index, "final_relationship_type"]),
+            "analysis": last_error,
+            "review_status": "api_error",
+            "attempts": max_attempts,
+        }
 
     from tqdm.auto import tqdm
 
-    workers = max(1, min(llm_workers, len(borderline_indices)))
-    print(f"Reviewing {len(borderline_indices)} borderline node pairs with {workers} LLM worker(s)...")
+    workers = max(1, min(llm_workers, len(pending_indices)))
+    print(
+        f"Reviewing {len(pending_indices)} pending borderline node pairs "
+        f"with {workers} LLM worker(s)..."
+    )
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(review, int(index)) for index in borderline_indices]
+        futures = [executor.submit(review, index) for index in pending_indices]
         for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures), desc="LLM review"):
-            row_index, relationship, analysis, status = future.result()
+            record = future.result()
+            row_index = int(record["pair_row_index"])
+            relationship = str(record["relationship_type"])
+            analysis = str(record["analysis"])
+            status = str(record["review_status"])
+            if checkpoint_path is not None:
+                append_llm_review_checkpoint(checkpoint_path, record)
             if status == "reviewed":
                 result.at[row_index, "final_relationship_type"] = relationship
                 result.at[row_index, "classification_source"] = "llm_borderline"
@@ -337,6 +452,9 @@ def write_summary(
         "candidate_pair_count": int(len(candidates_df)),
         "borderline_pair_count": int(results_df["is_borderline"].sum()),
         "llm_reviewed_pair_count": int((results_df["llm_review_status"] == "reviewed").sum()),
+        "llm_api_error_pair_count": int((results_df["llm_review_status"] == "api_error").sum()),
+        "llm_not_reviewed_pair_count": int((results_df["llm_review_status"] == "not_reviewed").sum()),
+        "llm_model": args.model,
         "relationship_counts": {str(key): int(value) for key, value in counts.items()},
         "embedding_model": args.embedding_model,
         "embedding_threshold": args.embedding_threshold,
@@ -353,6 +471,21 @@ def write_summary(
             "run_summary.json",
         ],
     }
+    if args.exclude_cross_language_pairs:
+        summary["language_pair_filter"] = {
+            "enabled": True,
+            "method": "Transformer sequence classification",
+            "model": args.language_detection_model,
+            "confidence_threshold": args.language_confidence_threshold,
+            "predicted_language_counts": getattr(args, "predicted_language_counts", {}),
+            "confident_language_counts": getattr(args, "confident_language_counts", {}),
+            "excluded_english_french_candidate_pair_count": int(
+                getattr(args, "excluded_english_french_candidate_pair_count", 0)
+            ),
+        }
+        summary["outputs"].insert(2, "kg_language_predictions.csv")
+    if (output_dir / LLM_REVIEW_CHECKPOINT_NAME).is_file():
+        summary["outputs"].insert(-1, LLM_REVIEW_CHECKPOINT_NAME)
     (output_dir / "run_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
 
@@ -372,7 +505,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--cross-encoder-batch-size", type=int, default=256)
     parser.add_argument("--cross-encoder-text-chars", type=int, default=1200)
     parser.add_argument("--cross-encoder-duplicate-threshold", type=float, default=0.995)
-    parser.add_argument("--cross-encoder-independent-threshold", type=float, default=0.90)
+    parser.add_argument("--cross-encoder-independent-threshold", type=float, default=0.95)
+    parser.add_argument(
+        "--exclude-cross-language-pairs",
+        action="store_true",
+        help="Exclude confident English/French pairs using a Transformer language classifier.",
+    )
+    parser.add_argument("--language-detection-model", default=DEFAULT_LANGUAGE_DETECTION_MODEL)
+    parser.add_argument("--language-detection-batch-size", type=int, default=32)
+    parser.add_argument("--language-detection-max-length", type=int, default=256)
+    parser.add_argument(
+        "--language-confidence-threshold",
+        type=float,
+        default=0.50,
+        help="Minimum Transformer probability used to exclude an English/French pair.",
+    )
+    parser.add_argument("--reuse-language-predictions", action="store_true")
     parser.add_argument("--llm-limit", type=int, default=0)
     parser.add_argument("--llm-workers", type=int, default=DEFAULT_LLM_WORKERS)
     parser.add_argument("--model", default=DEFAULT_MODEL)
@@ -457,8 +605,32 @@ def validate_candidate_table(candidates_df: pd.DataFrame, comparable_df: pd.Data
         )
 
 
+def validate_scored_table(scored_df: pd.DataFrame, candidates_df: pd.DataFrame) -> None:
+    """Ensure cached CrossEncoder scores remain aligned with candidate rows."""
+
+    required = {"item1_index", "item2_index", "cross_encoder_score"}
+    missing = sorted(required - set(scored_df.columns))
+    if missing:
+        raise ValueError(f"kg_cross_encoder_scores.csv is missing required columns: {', '.join(missing)}")
+    if len(scored_df) != len(candidates_df):
+        raise ValueError(
+            "CrossEncoder scores do not match the filtered candidate table. "
+            "Rerun without --reuse-cross-encoder-scores."
+        )
+    pair_columns = ["item1_index", "item2_index"]
+    scored_pairs = scored_df[pair_columns].apply(pd.to_numeric, errors="raise").to_numpy(dtype=np.int64)
+    candidate_pairs = candidates_df[pair_columns].apply(pd.to_numeric, errors="raise").to_numpy(dtype=np.int64)
+    if not np.array_equal(scored_pairs, candidate_pairs):
+        raise ValueError(
+            "Cached CrossEncoder score rows are not aligned with candidate rows. "
+            "Rerun without --reuse-cross-encoder-scores."
+        )
+
+
 def main() -> None:
     args = parse_args()
+    if not 0.0 <= args.language_confidence_threshold <= 1.0:
+        raise ValueError("--language-confidence-threshold must be between 0 and 1.")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     nodes_path = args.output_dir / "kg_nodes.csv"
     edges_path = args.output_dir / "kg_edges.csv"
@@ -502,6 +674,45 @@ def main() -> None:
             "No comparable content nodes were produced. Lower --min-comparable-words or inspect kg_nodes.csv."
         )
 
+    language_predictions_df: pd.DataFrame | None = None
+    if args.exclude_cross_language_pairs:
+        prediction_path = args.output_dir / "kg_language_predictions.csv"
+        if args.reuse_language_predictions and prediction_path.is_file():
+            print("Reusing Transformer language predictions...")
+            language_predictions_df = pd.read_csv(prediction_path, encoding="utf-8-sig")
+        else:
+            language_predictions_df = build_language_predictions(
+                comparable_df,
+                model_name=args.language_detection_model,
+                batch_size=args.language_detection_batch_size,
+                max_length=args.language_detection_max_length,
+            )
+        validate_language_predictions(
+            language_predictions_df,
+            comparable_df,
+            args.language_detection_model,
+        )
+        language_predictions_df.to_csv(prediction_path, index=False, encoding="utf-8-sig")
+        predicted_counts = language_predictions_df["predicted_language"].value_counts()
+        args.predicted_language_counts = {
+            str(language): int(count) for language, count in predicted_counts.items()
+        }
+        confident_mask = (
+            pd.to_numeric(language_predictions_df["language_confidence"], errors="raise")
+            >= args.language_confidence_threshold
+        )
+        confident_counts = language_predictions_df.loc[
+            confident_mask,
+            "predicted_language",
+        ].value_counts()
+        args.confident_language_counts = {
+            str(language): int(count) for language, count in confident_counts.items()
+        }
+        print(
+            "Transformer language predictions: "
+            + ", ".join(f"{language}={count}" for language, count in predicted_counts.items())
+        )
+
     candidate_path = args.output_dir / "kg_candidate_pairs.csv"
     if args.reuse_candidates and candidate_path.is_file():
         print("Reusing candidate pairs...")
@@ -516,8 +727,22 @@ def main() -> None:
             args.retrieval_batch_size,
             args.max_candidates,
         )
-        candidates_df.to_csv(candidate_path, index=False, encoding="utf-8-sig")
+    excluded_candidate_count = 0
+    if language_predictions_df is not None:
+        candidates_df, excluded_candidate_count = exclude_model_detected_english_french_pairs(
+            candidates_df,
+            language_predictions_df,
+            args.language_confidence_threshold,
+        )
+    args.excluded_english_french_candidate_pair_count = excluded_candidate_count
+    candidates_df.to_csv(candidate_path, index=False, encoding="utf-8-sig")
+    if language_predictions_df is None:
         print(f"Retained {len(candidates_df)} compact candidate pairs.")
+    else:
+        print(
+            f"Retained {len(candidates_df)} compact candidate pairs after excluding "
+            f"{excluded_candidate_count} Transformer-detected English/French pairs."
+        )
     validate_candidate_table(candidates_df, comparable_df)
     if args.stop_after_retrieval:
         print("Stopping after candidate retrieval by request.")
@@ -536,7 +761,20 @@ def main() -> None:
             args.cross_encoder_text_chars,
             checkpoint_path=args.output_dir / "kg_cross_encoder_scores.checkpoint.dat",
         )
-        scored_df.to_csv(scored_path, index=False, encoding="utf-8-sig")
+    excluded_scored_count = 0
+    if language_predictions_df is not None:
+        scored_df, excluded_scored_count = exclude_model_detected_english_french_pairs(
+            scored_df,
+            language_predictions_df,
+            args.language_confidence_threshold,
+        )
+    validate_scored_table(scored_df, candidates_df)
+    scored_df.to_csv(scored_path, index=False, encoding="utf-8-sig")
+    if excluded_scored_count:
+        print(
+            f"Excluded {excluded_scored_count} Transformer-detected English/French pairs "
+            "from cached CrossEncoder scores."
+        )
 
     results_df = classify_compact_pairs(
         scored_df,
@@ -555,6 +793,7 @@ def main() -> None:
         args.llm_limit,
         args.llm_workers,
         args.api_timeout,
+        checkpoint_path=args.output_dir / LLM_REVIEW_CHECKPOINT_NAME,
     )
     results_df.to_csv(
         args.output_dir / "kg_pair_classifications.csv",

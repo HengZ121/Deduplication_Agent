@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
-import unittest
 from dataclasses import asdict
 from pathlib import Path
+import unittest
+from unittest import mock
 
 import pandas as pd
 
@@ -16,7 +17,7 @@ from dita_kg_chunker import (
     infer_content_node_type,
     load_dita_as_document_nodes,
 )
-from run_kg_pipeline import parse_args
+from run_kg_pipeline import classify_compact_pairs, parse_args, review_borderline_pairs
 from run_procedure_pipeline import find_dita_root, read_dita_documents
 
 
@@ -107,6 +108,125 @@ class PipelineArgumentTests(unittest.TestCase):
 
     def test_reuse_mode_is_explicit(self) -> None:
         self.assertEqual("reuse", parse_args(["--reuse-nodes"]).dita_input_mode)
+
+    def test_transformer_language_filter_is_explicit(self) -> None:
+        args = parse_args(["--exclude-cross-language-pairs"])
+
+        self.assertTrue(args.exclude_cross_language_pairs)
+        self.assertIn("language-detection", args.language_detection_model)
+
+    def test_default_cross_encoder_borderline_floor_is_point_95(self) -> None:
+        self.assertEqual(0.95, parse_args([]).cross_encoder_independent_threshold)
+
+
+class CompactPairClassificationTests(unittest.TestCase):
+    def test_point_95_is_borderline_but_lower_score_is_independent(self) -> None:
+        comparable = pd.DataFrame(
+            {
+                "text": [
+                    "Contact the client about the retirement application.",
+                    "Review the survivor account before issuing payment.",
+                    "Update the disability record in the processing system.",
+                ]
+            }
+        )
+        scored = pd.DataFrame(
+            {
+                "item1_index": [0, 0],
+                "item2_index": [1, 2],
+                "embedding_similarity": [0.70, 0.70],
+                "cross_encoder_score": [0.95, 0.949999],
+            }
+        )
+
+        result = classify_compact_pairs(scored, comparable, 0.995, 0.95)
+
+        self.assertTrue(bool(result.iloc[0]["is_borderline"]))
+        self.assertFalse(bool(result.iloc[1]["is_borderline"]))
+
+    def test_encoding_only_apostrophe_difference_is_not_borderline(self) -> None:
+        comparable = pd.DataFrame(
+            {
+                "text": [
+                    "Le paiement n’est pas disponible.",
+                    "Le paiement n＇est pas disponible.",
+                ]
+            }
+        )
+        scored = pd.DataFrame(
+            {
+                "item1_index": [0],
+                "item2_index": [1],
+                "embedding_similarity": [0.99],
+                "cross_encoder_score": [0.97],
+            }
+        )
+
+        result = classify_compact_pairs(scored, comparable, 0.995, 0.90)
+
+        self.assertEqual("duplicate/semantic duplicate", result.iloc[0]["final_relationship_type"])
+        self.assertFalse(bool(result.iloc[0]["is_borderline"]))
+
+
+class LlmReviewCheckpointTests(unittest.TestCase):
+    def test_completed_review_is_reused_without_a_second_api_call(self) -> None:
+        results = pd.DataFrame(
+            {
+                "item1_index": [0],
+                "item2_index": [1],
+                "item1_node_id": ["n0"],
+                "item2_node_id": ["n1"],
+                "final_relationship_type": ["independent"],
+                "final_analysis": ["pending"],
+                "is_borderline": [True],
+                "classification_source": ["cross_encoder_borderline_fallback"],
+                "llm_review_status": ["not_reviewed"],
+            }
+        )
+        comparable = pd.DataFrame(
+            {
+                "article_title": ["First", "Second"],
+                "text": ["First passage.", "Second passage."],
+            }
+        )
+        response = {
+            "relationship_type": "duplicate/semantic duplicate",
+            "analysis": "Same instruction.",
+        }
+
+        checkpoint = Path(__file__).parent / "test_llm_reviews_checkpoint.jsonl"
+        checkpoint.unlink(missing_ok=True)
+        try:
+            with mock.patch("run_kg_pipeline.openai_passage_request", return_value=response) as request:
+                first = review_borderline_pairs(
+                    results,
+                    comparable,
+                    "test-key",
+                    "test-model",
+                    1,
+                    1,
+                    10,
+                    checkpoint_path=checkpoint,
+                )
+            with mock.patch("run_kg_pipeline.openai_passage_request") as request_again:
+                second = review_borderline_pairs(
+                    results,
+                    comparable,
+                    "test-key",
+                    "test-model",
+                    1,
+                    1,
+                    10,
+                    checkpoint_path=checkpoint,
+                )
+        finally:
+            checkpoint.unlink(missing_ok=True)
+
+        request.assert_called_once()
+        request_again.assert_not_called()
+        self.assertEqual("reviewed", first.iloc[0]["llm_review_status"])
+        self.assertEqual("reviewed", second.iloc[0]["llm_review_status"])
+        self.assertEqual("duplicate/semantic duplicate", second.iloc[0]["final_relationship_type"])
 
 
 if __name__ == "__main__":
