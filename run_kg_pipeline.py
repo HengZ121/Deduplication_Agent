@@ -417,7 +417,13 @@ def detailed_matches(results_df: pd.DataFrame, comparable_df: pd.DataFrame) -> p
     left = comparable_df[fields].add_prefix("item1_")
     right = comparable_df[fields].add_prefix("item2_")
     matches = matches.merge(left, left_on="item1_index", right_index=True, how="left")
-    return matches.merge(right, left_on="item2_index", right_index=True, how="left")
+    matches = matches.merge(right, left_on="item2_index", right_index=True, how="left")
+
+    # Keep the paired passages adjacent at the end of the CSV so reviewers can
+    # compare them without scrolling past the second item's metadata.
+    item1_text = matches.pop("item1_text")
+    matches.insert(matches.columns.get_loc("item2_text"), "item1_text", item1_text)
+    return matches
 
 
 def write_summary(

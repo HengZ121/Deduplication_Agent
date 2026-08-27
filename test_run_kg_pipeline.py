@@ -17,7 +17,12 @@ from dita_kg_chunker import (
     infer_content_node_type,
     load_dita_as_document_nodes,
 )
-from run_kg_pipeline import classify_compact_pairs, parse_args, review_borderline_pairs
+from run_kg_pipeline import (
+    classify_compact_pairs,
+    detailed_matches,
+    parse_args,
+    review_borderline_pairs,
+)
 from run_procedure_pipeline import find_dita_root, read_dita_documents
 
 
@@ -166,6 +171,36 @@ class CompactPairClassificationTests(unittest.TestCase):
 
         self.assertEqual("duplicate/semantic duplicate", result.iloc[0]["final_relationship_type"])
         self.assertFalse(bool(result.iloc[0]["is_borderline"]))
+
+
+class DetailedMatchExportTests(unittest.TestCase):
+    def test_paired_text_columns_are_adjacent_at_the_end(self) -> None:
+        results = pd.DataFrame(
+            {
+                "item1_index": [0],
+                "item2_index": [1],
+                "final_relationship_type": ["duplicate/semantic duplicate"],
+            }
+        )
+        comparable = pd.DataFrame(
+            {
+                "node_type": ["dita_document", "dita_document"],
+                "article_path": ["first.dita", "second.dita"],
+                "article_title": ["First", "Second"],
+                "language": ["en", "en"],
+                "topic_path": ["first", "second"],
+                "source_element_path": ["/topic", "/topic"],
+                "element_id": ["first", "second"],
+                "conref_targets": ["", ""],
+                "text": ["First passage.", "Second passage."],
+            }
+        )
+
+        exported = detailed_matches(results, comparable)
+
+        self.assertEqual(["item1_text", "item2_text"], list(exported.columns[-2:]))
+        self.assertEqual("First passage.", exported.iloc[0]["item1_text"])
+        self.assertEqual("Second passage.", exported.iloc[0]["item2_text"])
 
 
 class LlmReviewCheckpointTests(unittest.TestCase):
