@@ -16,6 +16,7 @@ from dita_kg_chunker import (
     chunk_dita_to_frames,
     infer_content_node_type,
     load_dita_as_document_nodes,
+    load_dita_body_nodes,
 )
 from run_kg_pipeline import (
     classify_compact_pairs,
@@ -100,6 +101,25 @@ class DitaKnowledgeGraphTests(unittest.TestCase):
         self.assertFalse(nodes_df.empty)
         self.assertIn("Example KMT Article (Action)", set(nodes_df["article_title"]))
 
+    def test_body_mode_extracts_plain_text_and_excludes_common_notes(self) -> None:
+        dataset_root = Path(__file__).parent / "test_fixtures" / "kmt_dita"
+
+        instances_df, nodes_df, edges_df = load_dita_body_nodes(
+            dataset_root,
+            "en",
+            min_comparable_words=1,
+        )
+
+        self.assertEqual(2, len(instances_df))
+        self.assertEqual({"conbody", "taskbody"}, set(instances_df["body_tag"]))
+        self.assertTrue((instances_df["language"] == "en").all())
+        self.assertTrue(instances_df["source_path"].str.startswith("KA-99999_EN/").all())
+        self.assertFalse(instances_df["text"].str.contains(r"<[^>]+>", regex=True).any())
+        self.assertNotIn("Reusable warning text.", " ".join(instances_df["text"]))
+        self.assertNotIn("Steps", nodes_df.loc[nodes_df["article_title"] == "Steps", "text"].iloc[0])
+        self.assertEqual(len(instances_df), len(nodes_df))
+        self.assertTrue(edges_df.empty)
+
 
 class PipelineArgumentTests(unittest.TestCase):
     def test_default_mode_chunks_dita(self) -> None:
@@ -113,6 +133,12 @@ class PipelineArgumentTests(unittest.TestCase):
 
     def test_reuse_mode_is_explicit(self) -> None:
         self.assertEqual("reuse", parse_args(["--reuse-nodes"]).dita_input_mode)
+
+    def test_body_mode_requires_an_explicit_language_at_runtime(self) -> None:
+        args = parse_args(["--body-input-dita", "--body-language", "fr"])
+
+        self.assertEqual("body", args.dita_input_mode)
+        self.assertEqual("fr", args.body_language)
 
     def test_transformer_language_filter_is_explicit(self) -> None:
         args = parse_args(["--exclude-cross-language-pairs"])

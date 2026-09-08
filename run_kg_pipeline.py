@@ -19,6 +19,7 @@ from dita_kg_chunker import (
     KNOWLEDGE_NODE_COLUMNS,
     chunk_dita_to_frames,
     load_dita_as_document_nodes,
+    load_dita_body_nodes,
 )
 from language_detection import (
     DEFAULT_LANGUAGE_DETECTION_MODEL,
@@ -439,6 +440,8 @@ def write_summary(
         chunking_strategy = "DITA-native structural nodes plus atomic knowledge nodes"
     elif args.dita_input_mode == "document":
         chunking_strategy = "No chunking; one complete node per DITA file/article"
+    elif args.dita_input_mode == "body":
+        chunking_strategy = "No chunking; one plain-text top-level DITA body per topic file"
     elif (
         not nodes_df.empty
         and set(nodes_df["node_type"].astype(str)) == {"dita_document"}
@@ -492,6 +495,8 @@ def write_summary(
         summary["outputs"].insert(2, "kg_language_predictions.csv")
     if (output_dir / LLM_REVIEW_CHECKPOINT_NAME).is_file():
         summary["outputs"].insert(-1, LLM_REVIEW_CHECKPOINT_NAME)
+    if args.dita_input_mode == "body":
+        summary["outputs"].insert(0, "body_text_instances.csv")
     (output_dir / "run_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
 
@@ -548,6 +553,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Process fresh DITA without chunking: each .ditamap article becomes one comparable node.",
     )
     input_mode.add_argument(
+        "--body-input-dita",
+        dest="dita_input_mode",
+        action="store_const",
+        const="body",
+        help="Process each non-common-note DITA <*body> element as one plain-text node.",
+    )
+    input_mode.add_argument(
         "--reuse-nodes",
         "--reuse-existing-nodes",
         dest="dita_input_mode",
@@ -556,6 +568,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Reuse existing kg_nodes.csv and kg_edges.csv from --output-dir.",
     )
     parser.set_defaults(dita_input_mode="chunk")
+    parser.add_argument(
+        "--body-language",
+        choices=("en", "fr"),
+        help="Language folder suffix to select when --body-input-dita is used.",
+    )
     parser.add_argument("--reuse-candidates", action="store_true")
     parser.add_argument("--reuse-cross-encoder-scores", action="store_true")
     parser.add_argument(
@@ -657,6 +674,26 @@ def main() -> None:
         nodes_df.to_csv(nodes_path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
         edges_df.to_csv(edges_path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
         print(f"Built {len(nodes_df)} document-level nodes without chunking.")
+    elif args.dita_input_mode == "body":
+        if not args.body_language:
+            raise ValueError("--body-input-dita requires --body-language en or fr.")
+        print(
+            f"Loading one plain-text DITA body node per {args.body_language.upper()} topic file..."
+        )
+        instances_df, nodes_df, edges_df = load_dita_body_nodes(
+            args.input,
+            args.body_language,
+            args.min_comparable_words,
+        )
+        instances_df.to_csv(
+            args.output_dir / "body_text_instances.csv",
+            index=False,
+            encoding="utf-8-sig",
+            quoting=csv.QUOTE_MINIMAL,
+        )
+        nodes_df.to_csv(nodes_path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
+        edges_df.to_csv(edges_path, index=False, encoding="utf-8-sig", quoting=csv.QUOTE_MINIMAL)
+        print(f"Built {len(nodes_df)} body-level nodes without XML markup.")
     else:
         if not nodes_path.is_file() or not edges_path.is_file():
             raise FileNotFoundError(

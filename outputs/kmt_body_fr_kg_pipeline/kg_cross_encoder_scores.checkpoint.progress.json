@@ -1,0 +1,5 @@
+{
+  "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "total_pairs": 137696,
+  "completed_pairs": 137696
+}

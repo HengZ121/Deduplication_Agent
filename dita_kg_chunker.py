@@ -95,8 +95,26 @@ class KnowledgeEdge:
     source_path: str
 
 
+@dataclass(frozen=True)
+class BodyTextInstance:
+    """Auditable plain-text record extracted from one top-level DITA body."""
+
+    instance_id: str
+    language: str
+    article_id: str
+    source_path: str
+    topic_type: str
+    topic_title: str
+    body_tag: str
+    body_element_id: str
+    word_count: int
+    conref_targets: str
+    text: str
+
+
 KNOWLEDGE_NODE_COLUMNS = [field.name for field in fields(KnowledgeNode)]
 KNOWLEDGE_EDGE_COLUMNS = [field.name for field in fields(KnowledgeEdge)]
+BODY_TEXT_INSTANCE_COLUMNS = [field.name for field in fields(BodyTextInstance)]
 
 
 def stable_node_id(node_type: str, *parts: Any) -> str:
@@ -797,6 +815,134 @@ def load_dita_as_document_nodes(
     nodes_df = pd.DataFrame((asdict(node) for node in nodes), columns=KNOWLEDGE_NODE_COLUMNS)
     edges_df = pd.DataFrame(columns=KNOWLEDGE_EDGE_COLUMNS)
     return nodes_df, edges_df
+
+
+def load_dita_body_nodes(
+    input_path: Path,
+    language: str,
+    min_comparable_words: int = 5,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Load one plain-text node per non-common-note DITA ``<*body>`` element.
+
+    KMT article topics store their useful content under a direct child such as
+    ``<conbody>``, ``<taskbody>``, or ``<refbody>``.  This loader deliberately
+    reads only text physically present in that body.  It records ``conref``
+    targets for auditability but does not expand them, because reusable
+    ``common_notes`` are processed as a separate dataset.
+    """
+
+    normalized_language = clean_text(language).lower()
+    if normalized_language not in {"en", "fr"}:
+        raise ValueError("DITA body extraction language must be 'en' or 'fr'.")
+
+    dita_root = find_dita_root(input_path)
+    language_suffix = f"_{normalized_language.upper()}"
+    topic_paths = [
+        path
+        for path in sorted(dita_root.rglob("*.dita"))
+        if "common_notes" not in {part.lower() for part in path.relative_to(dita_root).parts}
+        and any(
+            part.upper().endswith(language_suffix)
+            for part in path.relative_to(dita_root).parts[:-1]
+        )
+    ]
+    if not topic_paths:
+        raise ValueError(
+            f"No {normalized_language.upper()} .dita topic files were found under {dita_root}."
+        )
+
+    resolver = DitaTopicResolver(dita_root)
+    instances: list[BodyTextInstance] = []
+    nodes: list[KnowledgeNode] = []
+    for topic_path in topic_paths:
+        root = resolver.parse_xml(topic_path)
+        body = next(
+            (
+                child
+                for child in root
+                if xml_local_name(child.tag).lower().endswith("body")
+                and xml_local_name(child.tag).lower() != "tbody"
+            ),
+            None,
+        )
+        if body is None:
+            continue
+
+        # element_text strips markup and normalizes XML whitespace without
+        # following external conref links into the common-note collection.
+        text = element_text(body)
+        if not text:
+            continue
+
+        relative_path = topic_path.relative_to(dita_root).as_posix()
+        relative_parts = Path(relative_path).parts
+        article_id = next(
+            (part for part in relative_parts[:-1] if part.upper().endswith(language_suffix)),
+            relative_parts[0] if len(relative_parts) > 1 else "",
+        )
+        topic_type = xml_local_name(root.tag)
+        topic_title = element_text(direct_child(root, "title"))
+        body_tag = xml_local_name(body.tag)
+        body_element_id = clean_text(body.get("id"))
+        word_count = len(word_tokens(text))
+        conref_targets = "|".join(
+            element_conref_targets(body, topic_path, resolver, dita_root)
+        )
+        instance_id = stable_node_id(
+            "dita_body",
+            normalized_language,
+            relative_path,
+            body_tag,
+            body_element_id,
+        )
+        source_element_path = f"{relative_path}#/{body_tag}"
+
+        instances.append(
+            BodyTextInstance(
+                instance_id=instance_id,
+                language=normalized_language,
+                article_id=article_id,
+                source_path=relative_path,
+                topic_type=topic_type,
+                topic_title=topic_title,
+                body_tag=body_tag,
+                body_element_id=body_element_id,
+                word_count=word_count,
+                conref_targets=conref_targets,
+                text=text,
+            )
+        )
+        nodes.append(
+            KnowledgeNode(
+                node_id=instance_id,
+                node_type=f"dita_{body_tag}",
+                is_structural=False,
+                is_comparable=word_count >= min_comparable_words,
+                parent_node_id="",
+                source_document_id=len(nodes),
+                article_path=relative_path,
+                article_title=topic_title or topic_path.stem,
+                document_type=topic_type,
+                language=normalized_language,
+                modified="",
+                topic_path=relative_path,
+                source_element_path=source_element_path,
+                element_id=body_element_id,
+                sequence=0,
+                word_count=word_count,
+                content_hash=content_hash(text),
+                conref_targets=conref_targets,
+                text=text,
+            )
+        )
+
+    instances_df = pd.DataFrame(
+        (asdict(instance) for instance in instances),
+        columns=BODY_TEXT_INSTANCE_COLUMNS,
+    )
+    nodes_df = pd.DataFrame((asdict(node) for node in nodes), columns=KNOWLEDGE_NODE_COLUMNS)
+    edges_df = pd.DataFrame(columns=KNOWLEDGE_EDGE_COLUMNS)
+    return instances_df, nodes_df, edges_df
 
 
 def parse_args() -> argparse.Namespace:
