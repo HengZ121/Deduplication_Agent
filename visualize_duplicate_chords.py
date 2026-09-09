@@ -32,6 +32,10 @@ RELATIONSHIP_LABELS = {
     "one_doc_included": "Partial inclusion",
     "conflict_in_information": "Contradiction",
     "none_of_above": "Unrelated",
+    "duplicate/semantic duplicate": "Duplicated",
+    "one passage included in another": "Partial inclusion",
+    "conflicting information": "Contradiction",
+    "independent": "Unrelated",
 }
 
 RELATIONSHIP_COLORS = {
@@ -137,13 +141,52 @@ def is_skipped_relationship(raw_value: object) -> bool:
 
 
 def choose_weight_column(df: pd.DataFrame, requested: str) -> str:
-    candidates = [requested, "cross_encoder_similarity_value", "similarity"]
+    candidates = [requested, "cross_encoder_similarity_value", "cross_encoder_score", "similarity", "embedding_similarity"]
     for column in candidates:
         if column in df.columns:
             numeric = pd.to_numeric(df[column], errors="coerce")
             if numeric.notna().any():
                 return column
     raise ValueError("No usable numeric weight column found.")
+
+
+def copy_column_if_present(df: pd.DataFrame, target: str, sources: Iterable[str]) -> None:
+    if target in df.columns:
+        return
+    for source in sources:
+        if source in df.columns:
+            df[target] = df[source]
+            return
+
+
+def adapt_kg_schema(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize KG-pipeline outputs to the visualization schema.
+
+    The original visualizer was written for procedure-level CSVs. Current KG
+    outputs keep the same pair semantics but use node/article-oriented column
+    names. This adapter is intentionally additive so old inputs still work.
+    """
+    adapted = df.copy()
+
+    copy_column_if_present(adapted, "llm_relationship_type", ["final_relationship_type"])
+    copy_column_if_present(adapted, "llm_analysis", ["final_analysis"])
+    copy_column_if_present(adapted, "cross_encoder_similarity_value", ["cross_encoder_score"])
+
+    for side in (1, 2):
+        copy_column_if_present(adapted, f"item{side}_id", [f"item{side}_node_id", f"item{side}_index"])
+        copy_column_if_present(adapted, f"item{side}_type", [f"item{side}_node_type"])
+        copy_column_if_present(
+            adapted,
+            f"item{side}_path",
+            [
+                f"item{side}_topic_path",
+                f"item{side}_article_path",
+                f"item{side}_source_element_path",
+            ],
+        )
+        copy_column_if_present(adapted, f"item{side}_title", [f"item{side}_article_title"])
+
+    return adapted
 
 
 def endpoint_label(row: pd.Series, side: int, node_level: str) -> str:
@@ -1242,7 +1285,7 @@ def build_figure(
 
 def main() -> None:
     args = parse_args()
-    header_df = pd.read_csv(args.input, nrows=0)
+    header_df = adapt_kg_schema(pd.read_csv(args.input, nrows=0))
     require_columns(
         header_df,
         [
@@ -1256,7 +1299,7 @@ def main() -> None:
         ],
     )
 
-    df = pd.read_csv(args.input)
+    df = adapt_kg_schema(pd.read_csv(args.input))
     weight_column = choose_weight_column(df, args.weight_column)
     node_level = choose_node_level(df, args.node_level)
     links, node_totals = build_aggregates(
