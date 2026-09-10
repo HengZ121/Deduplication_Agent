@@ -6,6 +6,48 @@ __pycache__/
 .nltk_data_clean/
 /KMT_dita/
 
+# Canonical workspace for unpacked source archives.
+# Put new extracted zip/7z contents under this folder.
+/unzipped/*
+!/unzipped/.gitkeep
+
+# Legacy/ad-hoc extracted archive folders.
+/*_extracted/
+/ort_dita_extracted/
+/common_notes_2_extracted/
+/llm_checkpoint_test_*/
+
+# Python/runtime caches and checkpoint artifacts.
+*.checkpoint.dat
+*.checkpoint.progress.json
+*.inspect.ndjson
+
+# Generated pipeline intermediates. Final reviewed results, summaries, and
+# visualizations may still be tracked explicitly when needed.
+outputs/**/kg_candidate_pairs.csv
+outputs/**/kg_cross_encoder_scores.csv
+outputs/**/kg_edges.csv
+outputs/**/kg_nodes.csv
+outputs/**/kg_language_predictions.csv
+outputs/**/kg_llm_reviews.jsonl
+outputs/**/kg_pair_classifications.csv
+outputs/**/cluster_stats.csv
+outputs/**/cross_encoder_scored_pairs.csv
+outputs/**/duplicate_pairs.csv
+outputs/**/procedure_documents_with_clusters.csv
+
+# Scratch/demo outputs generated during analysis.
+outputs/data1_data2_frame_candidates.csv
+outputs/data1_data2_frame_candidates.json
+outputs/frame_candidate_counts.csv
+outputs/framenet_candidate_frame_samples.html
+outputs/framenet_candidate_frame_samples.md
+outputs/kmt_common_nodes_2_kg_pipeline/
+outputs/kmt_common_nodes_kg_pipeline/kg_deduplication_matches.csv
+outputs/kmt_passage_pipeline/
+outputs/pipeline_smoke_chunked/
+outputs/pipeline_smoke_documents/
+
 # Keep only the reviewed KMT DITA deliverables; ignore bulky intermediate files.
 outputs/kmt_dita_pipeline/*
 !outputs/kmt_dita_pipeline/kmt_deduplication_results.csv
