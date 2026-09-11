@@ -18,7 +18,9 @@ It covers:
   - Borderline for LLM review: 0.95 <= score < 0.995
 - Body results are final LLM-reviewed results.
 - Notes results are final LLM-reviewed results.
-- Percentages are pair-level percentages over candidate pairs, not unique-node percentages.
+- Pair-based percentages are calculated over all candidate pairs in `kg_pair_classifications.csv`, including pairs later classified as `independent`.
+- `kg_deduplication_matches.csv` contains only non-independent result rows: `duplicate/semantic duplicate`, `one passage included in another`, and `conflicting information`. It excludes `independent` rows, so its row count is smaller than the full candidate-pair count.
+- File/node-based percentages are calculated over unique files/nodes in `kg_nodes.csv`, not over candidate pairs.
 - Duplicate percentage is calculated as:
 
 ```text
@@ -45,7 +47,12 @@ duplicate / candidate pairs
 
 ## File/node-based duplicate results
 
-This section counts unique files/nodes that participate in at least one duplicate pair. This is different from the pair-based tables above: a single duplicated file/node can appear in many duplicate pairs but is counted once here.
+This section counts unique files/nodes that participate in at least one duplicate pair. This is different from the pair-based tables above: a single duplicated file/node can appear in many candidate pairs but is counted once here.
+
+These numbers are based on the latest `kmt_dita_1` output folders. They are not old data. The apparent difference comes from using a different denominator:
+
+- Pair-based tables: duplicate pairs / all candidate pairs.
+- File/node-based tables: unique files or nodes that appear in at least one duplicate pair / all files or nodes.
 
 For body-level processing, each row is one extracted body node from a source DITA file. For `all_notes`, each row is one note DITA file/article.
 
@@ -123,9 +130,13 @@ Mixed body-type rows such as `conbody + refbody` mean the candidate pair spans t
 
 - KMT bodies EN summary: `outputs/kmt_dita_1_body_en_kg_pipeline/run_summary.json`
 - KMT bodies FR summary: `outputs/kmt_dita_1_body_fr_kg_pipeline/run_summary.json`
-- KMT bodies EN final CSV: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_deduplication_matches.csv`
-- KMT bodies FR final CSV: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_deduplication_matches.csv`
+- KMT bodies EN full classification CSV: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_pair_classifications.csv`
+- KMT bodies FR full classification CSV: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_pair_classifications.csv`
+- KMT bodies EN non-independent matches CSV: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_deduplication_matches.csv`
+- KMT bodies FR non-independent matches CSV: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_deduplication_matches.csv`
 - KMT all_notes EN summary: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/run_summary.json`
 - KMT all_notes FR summary: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/run_summary.json`
-- KMT all_notes EN CSV: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_pair_classifications.csv`
-- KMT all_notes FR CSV: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_pair_classifications.csv`
+- KMT all_notes EN full classification CSV: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_pair_classifications.csv`
+- KMT all_notes FR full classification CSV: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_pair_classifications.csv`
+- KMT all_notes EN non-independent matches CSV: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_deduplication_matches.csv`
+- KMT all_notes FR non-independent matches CSV: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_deduplication_matches.csv`
