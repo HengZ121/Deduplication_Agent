@@ -1,5 +1,5 @@
 ﻿dataset,total_nodes,duplicate_cluster_nodes,duplicate_cluster_node_pct,duplicate_clusters,largest_cluster_size,avg_cluster_size,confirmed_duplicate_pairs
-KMT bodies EN,9935,4616,46.46%,945,279,4.88,21270
-KMT bodies FR,9941,4781,48.09%,965,282,4.95,22043
-KMT all_notes EN,5787,2932,50.67%,775,64,3.78,9996
-KMT all_notes FR,5808,2997,51.60%,780,80,3.84,9743
+KMT bodies EN,8394,3308,39.41%,904,82,3.66,7034
+KMT bodies FR,8403,3459,41.16%,908,76,3.81,7038
+KMT all_notes EN,5771,2920,50.60%,773,64,3.78,9980
+KMT all_notes FR,5787,2979,51.48%,775,80,3.84,9721

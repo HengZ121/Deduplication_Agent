@@ -1,0 +1,5 @@
+﻿dataset,original_nodes,remaining_nodes,removed_body_source_rows,removed_kg_candidate_pairs.csv,removed_kg_cross_encoder_scores.csv,removed_kg_deduplication_matches.csv,removed_kg_deduplication_matches_with_clusters.csv,removed_kg_pair_classifications.csv,removed_kg_pair_classifications_with_clusters.csv,removed_snippet_nodes
+KMT bodies EN,9935,8394,1541,26927,26927,15007,15007,26927,26927,1541
+KMT bodies FR,9941,9940,1,36,36,21,21,36,36,1
+KMT all_notes EN,5787,5771,0,65,65,27,27,65,65,16
+KMT all_notes FR,5808,5808,0,0,0,0,0,0,0,0
