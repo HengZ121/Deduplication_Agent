@@ -25,34 +25,38 @@ Rows whose node text contains the word `snippet` or the French equivalent `extra
 
 ## Duplicate cluster / note-level results
 
-This is the client-facing node-level view. It answers:
+This is the client-facing cluster-collapsed view. It treats each duplicate cluster as one retained reusable item and each non-clustered node as one unique item. It answers:
 
 ```text
-# nodes in duplicate clusters / # total nodes
+unique nodes = total nodes - nodes in duplicate clusters
+collapsed total = unique nodes + duplicate clusters
+duplicate portion = 1 - (unique nodes / collapsed total)
 ```
 
-| Dataset | Total nodes | Nodes in duplicate clusters | Duplicate-cluster node % | Duplicate clusters | Largest cluster size | Confirmed duplicate pairs |
-|---|---:|---:|---:|---:|---:|---:|
-| KMT bodies EN | 8,394 | 3,308 | 39.41% | 904 | 82 | 7,034 |
-| KMT bodies FR | 8,403 | 3,459 | 41.16% | 908 | 76 | 7,038 |
-| KMT bodies EN + FR | 16,797 | 6,767 | 40.29% | 1,812 | 82 | 14,072 |
-| KMT all_notes EN | 5,771 | 2,920 | 50.60% | 773 | 64 | 9,980 |
-| KMT all_notes FR | 5,787 | 2,979 | 51.48% | 775 | 80 | 9,721 |
-| KMT all_notes EN + FR | 11,558 | 5,899 | 51.04% | 1,548 | 80 | 19,701 |
-| KMT bodies + all_notes total | 28,355 | 12,666 | 44.67% | 3,360 | 82 | 33,773 |
+Calculation note: this `Duplicate portion` is not the same as raw duplicated nodes divided by total nodes. It first collapses each duplicate cluster into one reusable document/node, then compares the number of standalone unique nodes against the collapsed total. For example, if 90 nodes are standalone unique nodes and 10 duplicate clusters remain after grouping duplicates, the collapsed total is 100 and the duplicate portion is `1 - 90 / 100 = 10%`.
+
+| Dataset | Total nodes | Nodes in duplicate clusters | Unique nodes outside clusters | Duplicate clusters | Collapsed total | Duplicate portion | Removable duplicate nodes | Dataset reduction % | Confirmed duplicate pairs |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| KMT bodies EN | 8,394 | 3,308 | 5,086 | 904 | 5,990 | 15.09% | 2,404 | 28.64% | 7,034 |
+| KMT bodies FR | 8,403 | 3,459 | 4,944 | 908 | 5,852 | 15.52% | 2,551 | 30.36% | 7,038 |
+| KMT bodies EN + FR | 16,797 | 6,767 | 10,030 | 1,812 | 11,842 | 15.30% | 4,955 | 29.50% | 14,072 |
+| KMT all_notes EN | 5,771 | 2,920 | 2,851 | 773 | 3,624 | 21.33% | 2,147 | 37.20% | 9,980 |
+| KMT all_notes FR | 5,787 | 2,979 | 2,808 | 775 | 3,583 | 21.63% | 2,204 | 38.09% | 9,721 |
+| KMT all_notes EN + FR | 11,558 | 5,899 | 5,659 | 1,548 | 7,207 | 21.48% | 4,351 | 37.64% | 19,701 |
+| KMT bodies + all_notes total | 28,355 | 12,666 | 15,689 | 3,360 | 19,049 | 17.64% | 9,306 | 32.82% | 33,773 |
 
 ### Duplicate cluster results by body type
 
-| Dataset | Body type | Total nodes | Nodes in duplicate clusters | Duplicate-cluster node % |
-|---|---|---:|---:|---:|
-| KMT bodies EN | conbody | 6,461 | 2,413 | 37.35% |
-| KMT bodies EN | refbody | 613 | 221 | 36.05% |
-| KMT bodies EN | taskbody | 1,320 | 674 | 51.06% |
-| KMT bodies FR | conbody | 6,937 | 2,752 | 39.67% |
-| KMT bodies FR | refbody | 617 | 208 | 33.71% |
-| KMT bodies FR | taskbody | 849 | 499 | 58.78% |
-| KMT all_notes EN | conbody | 5,771 | 2,920 | 50.60% |
-| KMT all_notes FR | conbody | 5,787 | 2,979 | 51.48% |
+| Dataset | Body type | Total nodes | Nodes in duplicate clusters | Unique nodes outside clusters | Duplicate clusters | Collapsed total | Duplicate portion | Removable duplicate nodes | Dataset reduction % |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| KMT bodies EN | conbody | 6,461 | 2,413 | 4,048 | 711 | 4,759 | 14.94% | 1,702 | 26.34% |
+| KMT bodies EN | refbody | 613 | 221 | 392 | 71 | 463 | 15.33% | 150 | 24.47% |
+| KMT bodies EN | taskbody | 1,320 | 674 | 646 | 222 | 868 | 25.58% | 452 | 34.24% |
+| KMT bodies FR | conbody | 6,937 | 2,752 | 4,185 | 768 | 4,953 | 15.51% | 1,984 | 28.60% |
+| KMT bodies FR | refbody | 617 | 208 | 409 | 66 | 475 | 13.89% | 142 | 23.01% |
+| KMT bodies FR | taskbody | 849 | 499 | 350 | 134 | 484 | 27.69% | 365 | 42.99% |
+| KMT all_notes EN | conbody | 5,771 | 2,920 | 2,851 | 773 | 3,624 | 21.33% | 2,147 | 37.20% |
+| KMT all_notes FR | conbody | 5,787 | 2,979 | 2,808 | 775 | 3,583 | 21.63% | 2,204 | 38.09% |
 
 ## Results by body type
 
