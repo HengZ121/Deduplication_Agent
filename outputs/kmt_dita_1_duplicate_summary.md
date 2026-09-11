@@ -21,6 +21,7 @@ It covers:
 - Pair-based percentages are calculated over all candidate pairs in `kg_pair_classifications.csv`, including pairs later classified as `independent`.
 - `kg_deduplication_matches.csv` contains only non-independent result rows: `duplicate/semantic duplicate`, `one passage included in another`, and `conflicting information`. It excludes `independent` rows, so its row count is smaller than the full candidate-pair count.
 - File/node-based percentages are calculated over unique files/nodes in `kg_nodes.csv`, not over candidate pairs.
+- Duplicate clusters are built from confirmed `duplicate/semantic duplicate` pairs. If node A duplicates node B, and node B duplicates node C, then A/B/C share one `cluster_id`.
 - Duplicate percentage is calculated as:
 
 ```text
@@ -56,6 +57,12 @@ These numbers are based on the latest `kmt_dita_1` output folders. They are not 
 
 For body-level processing, each row is one extracted body node from a source DITA file. For `all_notes`, each row is one note DITA file/article.
 
+The new cluster CSVs make this explicit at node level:
+
+- `kg_node_duplicate_clusters.csv`: one row per node, with `cluster_id`, `is_in_duplicate_cluster`, text, and metadata.
+- `kg_pair_classifications_with_clusters.csv`: one row per candidate pair, with `cluster_id` when both nodes are in the same duplicate cluster.
+- `kg_deduplication_matches_with_clusters.csv`: same cluster columns for the non-independent result rows.
+
 | Dataset | Total files/nodes | Files/nodes in duplicate pairs | Duplicate file/node % | Files/nodes in duplicate + included pairs | Duplicate + included file/node % |
 |---|---:|---:|---:|---:|---:|
 | KMT bodies EN | 9,935 | 4,616 | 46.46% | 5,529 | 55.65% |
@@ -82,6 +89,34 @@ For body-level processing, each row is one extracted body node from a source DIT
 | KMT all_notes EN | conbody | 5,787 | 2,932 | 50.67% | 3,027 | 52.31% |
 | KMT all_notes FR | conbody | 5,808 | 2,997 | 51.60% | 3,104 | 53.44% |
 | KMT all_notes EN + FR | conbody | 11,595 | 5,929 | 51.13% | 6,131 | 52.88% |
+
+## Duplicate cluster results
+
+This is the client-facing node-level view requested in review comments. It answers:
+
+```text
+# nodes in duplicate clusters / # total nodes
+```
+
+| Dataset | Total nodes | Nodes in duplicate clusters | Duplicate-cluster node % | Duplicate clusters | Largest cluster size | Confirmed duplicate pairs |
+|---|---:|---:|---:|---:|---:|---:|
+| KMT bodies EN | 9,935 | 4,616 | 46.46% | 945 | 279 | 21,270 |
+| KMT bodies FR | 9,941 | 4,781 | 48.09% | 965 | 282 | 22,043 |
+| KMT all_notes EN | 5,787 | 2,932 | 50.67% | 775 | 64 | 9,996 |
+| KMT all_notes FR | 5,808 | 2,997 | 51.60% | 780 | 80 | 9,743 |
+
+### Duplicate cluster results by body type
+
+| Dataset | Body type | Total nodes | Nodes in duplicate clusters | Duplicate-cluster node % |
+|---|---|---:|---:|---:|
+| KMT bodies EN | conbody | 6,972 | 2,877 | 41.27% |
+| KMT bodies EN | refbody | 1,371 | 909 | 66.30% |
+| KMT bodies EN | taskbody | 1,592 | 830 | 52.14% |
+| KMT bodies FR | conbody | 7,630 | 3,338 | 43.75% |
+| KMT bodies FR | refbody | 1,375 | 893 | 64.95% |
+| KMT bodies FR | taskbody | 936 | 550 | 58.76% |
+| KMT all_notes EN | conbody | 5,787 | 2,932 | 50.67% |
+| KMT all_notes FR | conbody | 5,808 | 2,997 | 51.60% |
 
 ## Results by body type
 
@@ -132,11 +167,24 @@ Mixed body-type rows such as `conbody + refbody` mean the candidate pair spans t
 - KMT bodies FR summary: `outputs/kmt_dita_1_body_fr_kg_pipeline/run_summary.json`
 - KMT bodies EN full classification CSV: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_pair_classifications.csv`
 - KMT bodies FR full classification CSV: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_pair_classifications.csv`
+- KMT bodies EN full classification CSV with clusters: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_pair_classifications_with_clusters.csv`
+- KMT bodies FR full classification CSV with clusters: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_pair_classifications_with_clusters.csv`
+- KMT bodies EN node cluster CSV: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_node_duplicate_clusters.csv`
+- KMT bodies FR node cluster CSV: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_node_duplicate_clusters.csv`
 - KMT bodies EN non-independent matches CSV: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_deduplication_matches.csv`
 - KMT bodies FR non-independent matches CSV: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_deduplication_matches.csv`
+- KMT bodies EN non-independent matches CSV with clusters: `outputs/kmt_dita_1_body_en_kg_pipeline/kg_deduplication_matches_with_clusters.csv`
+- KMT bodies FR non-independent matches CSV with clusters: `outputs/kmt_dita_1_body_fr_kg_pipeline/kg_deduplication_matches_with_clusters.csv`
 - KMT all_notes EN summary: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/run_summary.json`
 - KMT all_notes FR summary: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/run_summary.json`
 - KMT all_notes EN full classification CSV: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_pair_classifications.csv`
 - KMT all_notes FR full classification CSV: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_pair_classifications.csv`
+- KMT all_notes EN full classification CSV with clusters: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_pair_classifications_with_clusters.csv`
+- KMT all_notes FR full classification CSV with clusters: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_pair_classifications_with_clusters.csv`
+- KMT all_notes EN node cluster CSV: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_node_duplicate_clusters.csv`
+- KMT all_notes FR node cluster CSV: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_node_duplicate_clusters.csv`
 - KMT all_notes EN non-independent matches CSV: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_deduplication_matches.csv`
 - KMT all_notes FR non-independent matches CSV: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_deduplication_matches.csv`
+- KMT all_notes EN non-independent matches CSV with clusters: `outputs/kmt_dita_1_all_notes_en_kg_pipeline/kg_deduplication_matches_with_clusters.csv`
+- KMT all_notes FR non-independent matches CSV with clusters: `outputs/kmt_dita_1_all_notes_fr_kg_pipeline/kg_deduplication_matches_with_clusters.csv`
+- Duplicate cluster summary CSV: `outputs/kmt_dita_1_duplicate_cluster_summary.csv`
