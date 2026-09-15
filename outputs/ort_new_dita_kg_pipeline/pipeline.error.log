@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "D:\Deduplication_Agent\run_kg_pipeline.py", line 858, in <module>
+    main()
+    ~~~~^^
+  File "D:\Deduplication_Agent\run_kg_pipeline.py", line 673, in main
+    nodes_df, edges_df = load_dita_as_document_nodes(args.input, args.min_comparable_words)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Deduplication_Agent\dita_kg_chunker.py", line 785, in load_dita_as_document_nodes
+    read_dita_documents(input_path)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Deduplication_Agent\run_procedure_pipeline.py", line 308, in read_dita_documents
+    raise FileNotFoundError(f"Topic referenced by {map_path} does not exist: {topic_path}")
+FileNotFoundError: Topic referenced by D:\Deduplication_Agent\unzipped\ort_new_dita\dita\en\procedure\generic\additionalresources\agent_reassignment\agent_reassignment.ditamap does not exist: D:\Deduplication_Agent\unzipped\ort_new_dita\dita\en\procedure\generic\additionalresources\common_notes\note_c_0380.dita
