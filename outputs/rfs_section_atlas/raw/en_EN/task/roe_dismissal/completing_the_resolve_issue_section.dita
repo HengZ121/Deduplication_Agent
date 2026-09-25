@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_the_resolve_issue_section">
+  <title>Completing the Resolve Issue section</title>
+  <conbody>
+    <p>If the ROE is not linked to a period of employment or if the ROE is linked to a period of employment without a corresponding electronic ROD or ADJ WI, the agent must complete the Resolve Issue section of the ROE RFS Action WI before completing the WI. When resolving the issue, the agent must review the ROE and the existing RODs.</p>
+    <section>
+      <title>Comments in block 18</title>
+    </section>
+    <p>If the ROE was issued with comments in block 18 , the agent must determine if the correct RFS is indicated on the ROE. Any required changes to the RFS details must be made in the Resolve Issue section of the ROE RFS Action WI.</p>
+    <xref href="../../common_notes/note_c_4683.dita">Note</xref>
+    <section>
+      <title>Reviewing existing records of decision (RODs) on file</title>
+    </section>
+    <p>If the Resolve Issue section is displayed and there is an existing ROD, the agent must determine if the information on the ROE contradicts the decision on file. If the ROD on file indicates Dismissal — ROE confirmation required , the agent must confirm that the comments on the ROE indicate one of the following:</p>
+    <ul>
+      <li>The client was dismissed due to unsuitability.</li>
+      <li>The client did not pass the probationary period.</li>
+      <li>The client was terminated during the probationary period.</li>
+    </ul>
+    <p>When a ROD is not found or when the information on the ROE contradicts or does not confirm the ROD, the agent indicates that no decision matches the ROE when completing the Resolve Issue section of the ROE RFS Action WI.</p>
+    <xref href="../../common_notes/note_c_2675.dita">Note</xref>
+  </conbody>
+</concept>

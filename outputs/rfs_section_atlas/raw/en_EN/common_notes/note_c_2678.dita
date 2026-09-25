@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_c_2678">
+  <title>Warning</title>
+  <conbody>
+    <p>Warning:</p>
+    <p>Do not modify the ROE in RCM. The next step explains how to modify the RFS details in the ROE RFS Action WI.</p>
+  </conbody>
+</concept>

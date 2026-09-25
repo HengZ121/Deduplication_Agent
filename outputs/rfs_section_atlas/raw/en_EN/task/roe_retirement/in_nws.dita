@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="in_nws">
+  <title>In NWS:</title>
+  <conbody>
+    <ul>
+      <li>What is the serial number and the RFS indicated in the Specific Details tab of the ROE RFS Action WI?</li>
+      <li>What periods of employment are indicated in the Matching POE list of the ROE RFS Action WI?</li>
+      <li>
+        Is there a ROD indicating that the RFS has been adjudicated?
+        <ul>
+          <li>If yes, what are the details of the decision?</li>
+        </ul>
+      </li>
+      <li>Is there an SROC clarifying the employer’s name?</li>
+    </ul>
+  </conbody>
+</concept>

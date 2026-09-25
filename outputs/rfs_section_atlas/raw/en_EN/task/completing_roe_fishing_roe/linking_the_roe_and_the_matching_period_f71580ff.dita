@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="linking_the_roe_and_the_matching_period_f71580ff">
+  <title>Linking the ROE and the matching period of employment</title>
+  <conbody>
+    <p>When an ROE RFS Action WI is received and a link has not yet been created between the ROE and a period of employment, the Non-complex agent must review the applicable ROE in RCM and the periods of employment listed in NWS. The Non-complex agent determines if one of the periods of employment listed in NWS matches the employer’s name on the ROE.</p>
+    <section>
+      <title>Variations in the employer’s name</title>
+    </section>
+    <p>Minor spelling differences between the employer’s name on the ROE and the period of employment are accepted. The agent must also consider that the employer may do business under more than one name. For example, the ROE indicates that the employer’s name is 123456 ONT Inc., but the client reported working for ABC Fisheries. If the documentation on file or the Employer search (by business number) in FTS indicates that 123456 ONT Inc. operates as ABC Company, the names are equivalent and considered to be a match.</p>
+    <section>
+      <title>Reviewing the dates on the ROE</title>
+    </section>
+    <p>Only one ROE can be matched to each period of employment listed in NWS. The agent must review the Search / Correct - Results screen in RCM to determine if the ROE in the ROE RFS Action WI is the one with the last day paid (LDP) closest to the last day worked (LDW) for one of the periods of employment. The agent creates a link between the ROE and the period of employment with the matching employer’s name and best match for LDP and LDW. If either the employer’s name does not match or the LDP and LDW are not a good match, the agent does not create a link between the ROE and the period of employment.</p>
+    <xref href="../../common_notes/note_c_2670.dita">Note</xref>
+    <section>
+      <title>More than one ROE for one period of employment</title>
+    </section>
+    <p>There may be more than one ROE but only one period of employment for the same employer.</p>
+    <section>
+      <title>Example 1</title>
+    </section>
+    <ul>
+      <li>
+        Period of employment information declared on application:
+        <xref href="../../common_notes/note_c_2671.dita">Callout</xref>
+      </li>
+      <li>
+        Search / Correct - Results in RCM:
+        <table conref="../../common_tables/table_c_0504.dita#table_c_0504/body"/>
+      </li>
+      <li>
+        ROE RFS Action WI #1 for Z/Y12345678
+        <ul>
+          <li>
+            The agent completes the period of employment information section as follows:
+            <ul>
+              <li>Matching POE : Select ABC Fisheries .</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        ROE RFS Action WI #2 for Z/Y12341234
+        <ul>
+          <li>
+            The agent completes the period of employment information section as follows:
+            <ul>
+              <li>Matching POE : Select POE not in the list .</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p>There may also be more than one period of employment for the same employer.</p>
+    <section>
+      <title>Example 2</title>
+    </section>
+    <ul>
+      <li>
+        Period of employment information declared on application:
+        <xref href="../../common_notes/note_c_2672.dita">Callout</xref>
+        <xref href="../../common_notes/note_c_2673.dita">Callout</xref>
+      </li>
+      <li>
+        Search / Correct - Results in RCM:
+        <table conref="../../common_tables/table_c_0505.dita#table_c_0505/body"/>
+      </li>
+      <li>
+        ROE RFS Action WI #1 for Z/Y12345678
+        <ul>
+          <li>
+            The agent completes the period of employment information section as follows:
+            <ul>
+              <li>Matching POE : Select ABC Fisheries (LDW 02/10/2015).</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        ROE RFS Action WI #2 for Z/Y12341234
+        <ul>
+          <li>
+            The agent completes the period of employment information section as follows:
+            <ul>
+              <li>Matching POE : Select ABC Fisheries (LDW 30/05/2015).</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <section>
+      <title>ROE already linked</title>
+    </section>
+    <p>If the ROE is linked to a period of employment with a corresponding electronic record of decision (ROD) or an outstanding Adjudication Issue (ADJ) WI, the ROE RFS Action WI is completed without further action by the Non-complex agent.</p>
+  </conbody>
+</concept>

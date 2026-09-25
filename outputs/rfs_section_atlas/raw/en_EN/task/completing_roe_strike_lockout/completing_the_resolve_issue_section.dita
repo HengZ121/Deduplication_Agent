@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_the_resolve_issue_section">
+  <title>Completing the Resolve Issue section</title>
+  <conbody>
+    <p>If the ROE is not linked to a period of employment or if the ROE is linked to a period of employment without a corresponding electronic ROD or ADJ WI, the agent must complete the Resolve Issue section of the ROE RFS Action WI before completing the WI. When resolving the issue, the agent must review the ROE and the existing RODs.</p>
+    <section>
+      <title>Comments in block 18</title>
+    </section>
+    <p>If a ROD is not found for the period of employment, the agent indicates that no decision matches the ROE when completing the Resolve Issue section of the ROE RFS Action WI. If there is a ROD on file for the period of employment, the agent completes the Resolve Issue section of the ROE RFS Action WI based on the ROD.</p>
+    <section>
+      <title>Reviewing existing records of decision (RODs) on file</title>
+    </section>
+    <p>If the ROD on file indicates that the RFS is labour dispute, the agent does not change the RFS in the Resolve Issue section of the ROE RFS Action WI. In this situation, the RFS on the ROE remains B - Strike or lockout . There is no Special Condition option when the RFS on the ROE is B - Strike or lockout .</p>
+    <xref href="../../common_notes/note_c_2675.dita">Note</xref>
+  </conbody>
+</concept>

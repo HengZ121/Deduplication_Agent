@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="linking_the_roe_and_the_matching_period_f71580ff">
+  <title>Linking the ROE and the matching period of employment</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, determine if there is a matching period of employment already selected in the Matching POE list:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>If yes, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the Matching POE list includes one or more periods of employment with the same employer’s name as the ROE:</cmd>
+        <info>
+          <ul>
+            <li>If there are one or more periods of employment with the same employer’s name as the ROE, go to step 3.</li>
+            <li>If there is no period of employment with the same employer’s name as the ROE, select POE not in the list . Click Save and go to step 6.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2685.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, review the Search / Correct – Results screen to determine if the ROE in the ROE RFS Action WI is the one with the same employer’s name and the LDP closest to the LDW for one of the periods of employment on the Matching POE list in the ROE RFS Action WI in NWS:</cmd>
+        <info>
+          <ul>
+            <li>If the ROE is for the same employer and the LDP on the ROE is the best match to the LDW for one of the periods of employment, go to step 4.</li>
+            <li>If the ROE is for the same employer but the LDP on the ROE is not the best match to the LDW for one of the periods of employment, go to step 5.</li>
+            <li>If the ROE is not for the same employer or the LDP on the ROE is clearly not a good match to the LDW for one of the periods of employment, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the POE information section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Matching POE : Select the period of employment with the same employer’s name and best match for LDP and LDW.</li>
+            <li>Click Save .</li>
+            <li>Go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the POE information section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Matching POE : Select POE not in the list .</li>
+            <li>Click Save .</li>
+            <li>Go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, determine if the Resolve Issue section is displayed:</cmd>
+        <info>
+          <ul>
+            <li>If the Resolve Issue section is displayed, go step 7.</li>
+            <li>If the Resolve Issue section is not displayed, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

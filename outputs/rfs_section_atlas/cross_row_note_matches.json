@@ -1,0 +1,18 @@
+[
+  {
+    "sources": [
+      "en_EN/common_notes/note_c_2678.dita",
+      "en_EN/common_notes/note_c_4685.dita"
+    ],
+    "occurrences": [
+      "C:note_c_4685",
+      "E:note_c_4685",
+      "G:note_c_4685",
+      "K:note_c_4685",
+      "M:note_c_4685",
+      "N:note_c_4685",
+      "F:note_c_2678"
+    ],
+    "text": "Warning: Do not modify the ROE in RCM. The next step explains how to modify the RFS details in the ROE RFS Action WI."
+  }
+]

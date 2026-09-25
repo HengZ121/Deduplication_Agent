@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0618">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="3">
+        <tbody>
+          <row>
+            <entry rowspan="2">If the comments on the ROE indicate:</entry>
+            <entry colspan="2">The RFS options in the ROE RFS Action WI must be changed as follows:</entry>
+          </row>
+          <row>
+            <entry>RFS</entry>
+            <entry>RFS sub-option</entry>
+          </row>
+          <row>
+            <entry>another job</entry>
+            <entry>no change</entry>
+            <entry>Quit - Take another job</entry>
+          </row>
+          <row>
+            <entry>to follow spouse</entry>
+            <entry>no change</entry>
+            <entry>Quit - Follow spouse</entry>
+          </row>
+          <row>
+            <entry>employer relocation</entry>
+            <entry>no change</entry>
+            <entry>Quit - Employer relocation</entry>
+          </row>
+          <row>
+            <entry>care for a dependant</entry>
+            <entry>no change</entry>
+            <entry>Quit - Care for a dependant</entry>
+          </row>
+          <row>
+            <entry>to become self-employed</entry>
+            <entry>no change</entry>
+            <entry>Quit - To become self-employed</entry>
+          </row>
+          <row>
+            <entry>voluntary retirement</entry>
+            <entry>no change</entry>
+            <entry>Quit - Voluntary retirement</entry>
+          </row>
+          <row>
+            <entry>health reasons</entry>
+            <entry>no change</entry>
+            <entry>Quit - Health reasons</entry>
+          </row>
+          <row>
+            <entry>return to school</entry>
+            <entry>no change</entry>
+            <entry>Quit - Return to school</entry>
+          </row>
+          <row>
+            <entry>attendance</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>poor performance</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>not suitable, etc.</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>with cause</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

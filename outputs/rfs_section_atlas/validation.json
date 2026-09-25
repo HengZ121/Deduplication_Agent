@@ -1,0 +1,16 @@
+{
+  "documents": 8,
+  "node_occurrences": 189,
+  "unique_source_topics": 155,
+  "aligned_rows": 44,
+  "empty_heading_occurrences": 48,
+  "pair_classifications": {
+    "template_variant_candidate": 92,
+    "heading_only": 168,
+    "partial_overlap_observed": 79,
+    "exact_resolved_section": 189,
+    "related_or_unresolved": 10
+  },
+  "unresolved_sources": [],
+  "raw_files": 180
+}

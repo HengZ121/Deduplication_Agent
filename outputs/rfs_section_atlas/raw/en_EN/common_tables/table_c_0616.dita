@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0616">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="3">
+        <tbody>
+          <row>
+            <entry rowspan="2">If the comments on the ROE indicate:</entry>
+            <entry colspan="2">The RFS options in the ROE RFS Action WI must be changed as follows:</entry>
+          </row>
+          <row>
+            <entry>RFS</entry>
+            <entry>RFS sub-option</entry>
+          </row>
+          <row>
+            <entry>Commission de la construction du Québec (CCQ) vacation leave</entry>
+            <entry>K - Other</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>shortage of work or employer-initiated business closure due to the Coronavirus or COVID-19</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>COVID-19, Coronavirus or the employee requested the ROE due to COVID-19</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>end of contract, season or term</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>job ended</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>plant closure</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>position eliminated</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>restructuring</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>seasonal work</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>work shortage</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>shutdown</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>summer break, summer job — end of contract</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>layoff</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>temporary shutdown or layoff</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>7 consecutive days without working</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>casual</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>name of show or film production</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>change of payroll frequency</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>change of ownership</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>requested by Employment Insurance</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>change of service provider</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>bankruptcy</entry>
+            <entry>A - Shortage of work</entry>
+            <entry>Employer bankruptcy or receivership</entry>
+          </row>
+          <row>
+            <entry>employee requested</entry>
+            <entry>No change</entry>
+            <entry>Other - At the employee’s request</entry>
+          </row>
+          <row>
+            <entry>return to school with no apprenticeship training details</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Return to school</entry>
+          </row>
+          <row>
+            <entry>Queen’s Regulations/Orders</entry>
+            <entry>No change</entry>
+            <entry>Other - Canadian Forces - Queen’s Regulations/Orders</entry>
+          </row>
+          <row>
+            <entry>medical leave of absence</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>unpaid medical leave</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>illness or surgery related comment</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>illness or quarantine due to the Coronavirus or COVID-19</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>client refuses to report to work due to the Coronavirus or COVID-19</entry>
+            <entry>E - Quit</entry>
+            <entry>E - Quit / Health Reasons</entry>
+          </row>
+          <row>
+            <entry>quit without notice</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>resigned</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>personal reasons</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>job abandonment</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>with cause</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>to go to another job</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Take another job</entry>
+          </row>
+          <row>
+            <entry>to follow spouse</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Follow spouse</entry>
+          </row>
+          <row>
+            <entry>employer relocation</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Employer relocation</entry>
+          </row>
+          <row>
+            <entry>care for a dependant</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Care for a dependant</entry>
+          </row>
+          <row>
+            <entry>to become self-employed</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - To become self-employed</entry>
+          </row>
+          <row>
+            <entry>voluntary retirement</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Voluntary retirement</entry>
+          </row>
+          <row>
+            <entry>health reasons</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Health reasons</entry>
+          </row>
+          <row>
+            <entry>return to school</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Return to school</entry>
+          </row>
+          <row>
+            <entry>attendance</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>poor performance</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>not suitable, etc.</entry>
+            <entry>M - Dismissal</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>did not pass the probationary period</entry>
+            <entry>M - Dismissal</entry>
+            <entry>Dismissal - Terminated within probationary period</entry>
+          </row>
+          <row>
+            <entry>terminated within probationary period</entry>
+            <entry>M - Dismissal</entry>
+            <entry>Dismissal - Terminated within probationary period</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>
