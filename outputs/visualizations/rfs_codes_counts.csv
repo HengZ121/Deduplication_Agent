@@ -1,0 +1,122 @@
+source_node,target_node,relationship,pair_count
+G,M,Already shared source,8
+C,E,Already shared source,7
+C,G,Already shared source,5
+C,M,Already shared source,5
+C,N,Already shared source,5
+E,G,Already shared source,5
+E,K,Already shared source,5
+E,M,Already shared source,5
+E,N,Already shared source,5
+G,N,Already shared source,5
+M,N,Already shared source,5
+C,K,Variant candidate,5
+E,K,Variant candidate,5
+G,K,Variant candidate,5
+K,N,Variant candidate,5
+C,K,Already shared source,4
+G,K,Already shared source,4
+K,M,Already shared source,4
+K,N,Already shared source,4
+C,E,Exact content in separate files,4
+C,G,Exact content in separate files,4
+C,M,Exact content in separate files,4
+C,N,Exact content in separate files,4
+E,G,Exact content in separate files,4
+E,M,Exact content in separate files,4
+G,M,Exact content in separate files,4
+G,N,Exact content in separate files,4
+C,G,Partial overlap,4
+C,N,Partial overlap,4
+C,S,Partial overlap,4
+E,S,Partial overlap,4
+G,M,Partial overlap,4
+G,S,Partial overlap,4
+K,M,Partial overlap,4
+M,N,Partial overlap,4
+M,S,Partial overlap,4
+N,S,Partial overlap,4
+C,E,Variant candidate,4
+E,G,Variant candidate,4
+E,M,Variant candidate,4
+E,N,Variant candidate,4
+E,S,Already shared source,3
+K,S,Already shared source,3
+C,F,Exact content in separate files,3
+C,K,Exact content in separate files,3
+C,S,Exact content in separate files,3
+E,F,Exact content in separate files,3
+E,K,Exact content in separate files,3
+E,N,Exact content in separate files,3
+E,S,Exact content in separate files,3
+F,G,Exact content in separate files,3
+F,K,Exact content in separate files,3
+F,M,Exact content in separate files,3
+F,N,Exact content in separate files,3
+F,S,Exact content in separate files,3
+G,K,Exact content in separate files,3
+G,S,Exact content in separate files,3
+K,M,Exact content in separate files,3
+K,N,Exact content in separate files,3
+K,S,Exact content in separate files,3
+M,N,Exact content in separate files,3
+M,S,Exact content in separate files,3
+N,S,Exact content in separate files,3
+C,M,Partial overlap,3
+E,N,Partial overlap,3
+G,N,Partial overlap,3
+K,S,Partial overlap,3
+C,F,Variant candidate,3
+C,M,Variant candidate,3
+C,S,Variant candidate,3
+E,F,Variant candidate,3
+E,S,Variant candidate,3
+F,G,Variant candidate,3
+F,K,Variant candidate,3
+F,M,Variant candidate,3
+F,N,Variant candidate,3
+F,S,Variant candidate,3
+G,N,Variant candidate,3
+G,S,Variant candidate,3
+K,S,Variant candidate,3
+M,N,Variant candidate,3
+M,S,Variant candidate,3
+N,S,Variant candidate,3
+C,S,Already shared source,2
+G,S,Already shared source,2
+M,S,Already shared source,2
+N,S,Already shared source,2
+C,E,Partial overlap,2
+C,F,Partial overlap,2
+C,K,Partial overlap,2
+E,F,Partial overlap,2
+E,G,Partial overlap,2
+E,K,Partial overlap,2
+E,M,Partial overlap,2
+F,G,Partial overlap,2
+F,M,Partial overlap,2
+F,N,Partial overlap,2
+F,S,Partial overlap,2
+G,K,Partial overlap,2
+K,N,Partial overlap,2
+F,K,Related / unresolved,2
+C,G,Variant candidate,2
+C,N,Variant candidate,2
+G,M,Variant candidate,2
+K,M,Variant candidate,2
+C,F,Already shared source,1
+E,F,Already shared source,1
+F,G,Already shared source,1
+F,K,Already shared source,1
+F,M,Already shared source,1
+F,N,Already shared source,1
+F,S,Already shared source,1
+F,K,Partial overlap,1
+C,F,Related / unresolved,1
+E,F,Related / unresolved,1
+F,G,Related / unresolved,1
+F,M,Related / unresolved,1
+F,N,Related / unresolved,1
+F,S,Related / unresolved,1
+K,M,Related / unresolved,1
+K,S,Related / unresolved,1
