@@ -1,0 +1,13 @@
+subset,group,n,min,q1,median,q3,max,lower_whisker,upper_whisker
+all_notes_en,Collapsed duplicate clusters,773,5.0,19.0,28.0,44.0,248.0,5.0,80.5
+all_notes_en,Standalone nodes,2851,5.0,21.0,32.0,49.0,384.0,5.0,91.0
+all_notes_fr,Collapsed duplicate clusters,775,6.0,22.0,33.0,52.0,245.5,6.0,97.0
+all_notes_fr,Standalone nodes,2808,5.0,23.0,37.0,58.0,497.0,5.0,110.0
+body_en,Collapsed duplicate clusters,904,5.0,41.0,94.0,196.125,2150.0,5.0,428.5
+body_en,Standalone nodes,5086,1.0,33.0,81.0,168.75,4193.0,1.0,372.0
+body_fr,Collapsed duplicate clusters,908,5.0,51.5,122.25,234.125,2708.5,5.0,489.0
+body_fr,Standalone nodes,4944,1.0,38.0,93.0,198.0,5029.0,1.0,437.0
+en,Collapsed duplicate clusters,1880,1.0,34.0,74.0,170.125,2642.0,1.0,373.0
+en,Standalone nodes,12458,1.0,37.0,89.0,225.0,33694.0,1.0,507.0
+fr,Collapsed duplicate clusters,1873,1.0,40.0,91.0,202.0,3376.5,1.0,445.0
+fr,Standalone nodes,13294,1.0,44.0,108.5,292.0,25292.0,1.0,664.0

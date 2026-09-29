@@ -1,0 +1,17 @@
+{
+  "nodes": 69576,
+  "collapsed_items": 48554,
+  "cluster_members": 28135,
+  "clusters": 7113,
+  "standalone": 41441,
+  "mixed_ORT_clusters": 200,
+  "aggregate_text_mismatches": 2902,
+  "checks": [
+    "No repeated node IDs within dataset/subset",
+    "All cluster members resolve",
+    "Cluster sizes agree",
+    "Aggregate text mismatches recorded; authoritative inventory counts used",
+    "Collapsed counts reconcile",
+    "All word counts positive"
+  ]
+}

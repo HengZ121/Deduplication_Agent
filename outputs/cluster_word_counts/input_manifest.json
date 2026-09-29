@@ -1,0 +1,38 @@
+[
+  {
+    "path": "outputs\\kmt_dita_1_body_en_kg_pipeline\\kg_nodes.csv",
+    "sha256": "0c49993242f1cd7acdde9984163ce21fb4d8beab554aecf3b39d49fd944fa9df"
+  },
+  {
+    "path": "outputs\\kmt_dita_1_body_fr_kg_pipeline\\kg_nodes.csv",
+    "sha256": "9fd5c38772b8cf56a27a5558eaf0402cf8e6b2b324ba5a98b325dbcda2c1219e"
+  },
+  {
+    "path": "outputs\\kmt_dita_1_all_notes_en_kg_pipeline\\kg_nodes.csv",
+    "sha256": "c6eb7698df8eb7514cf9f4e0cf351bd694c284fe7fe3bbfd26d46bf2c0dad2b5"
+  },
+  {
+    "path": "outputs\\kmt_dita_1_all_notes_fr_kg_pipeline\\kg_nodes.csv",
+    "sha256": "b3f96e2a0047c34858b18b5919e49a0a7efdd51ceb72b4e53ff763884d1e89e5"
+  },
+  {
+    "path": "outputs\\ort_kmt_cross_deduplication\\en\\cross_nodes.csv",
+    "sha256": "47a0efca0fdbb1f919a2f65f7daad2c834a239e9e0e04f489cf3aaf20efbfc84"
+  },
+  {
+    "path": "outputs\\ort_kmt_cross_deduplication\\fr\\cross_nodes.csv",
+    "sha256": "9a1b7b790b2fd539bfbb669e6f0da2e7c8a25c098d2f5957dc9e63510d2d2968"
+  },
+  {
+    "path": "outputs\\kmt_all_duplicate_cluster_files.csv",
+    "sha256": "7b6d21aa77464ce8c38a27608fd21c7c33fd041124f5c977206b1279124d5902"
+  },
+  {
+    "path": "outputs\\ort_all_duplicate_cluster_files.csv",
+    "sha256": "1eac7ab66014d34eef262ba7e654b0a0e9658a33510a1447b2feec4f831a8660"
+  },
+  {
+    "path": "D:\\Deduplication_Agent\\analyze_cluster_word_counts.py",
+    "sha256": "f307756bdcf6bc9dbd55317b4fac5d7c9cdb3c908c3dbaaa238976a8c5193028"
+  }
+]
