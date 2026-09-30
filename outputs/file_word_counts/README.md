@@ -1,7 +1,11 @@
 # DITA file word counts
 
-Each CSV has exactly two columns: `file_name` and `word_count`. File names are
+Each CSV has three columns: `file_name`, `word_count`, and `content`. File names are
 relative to the dataset root, preserving the language and folder to avoid collisions.
+
+`content` is the full extracted text used to calculate `word_count`, with whitespace
+collapsed for readability. Original wording, punctuation, case and accents are retained.
+CSV quoting preserves commas and quotation marks within content.
 
 - KMT root: `unzipped/kmt_dita_1/kmt_dita`; includes `en` and `fr`.
 - ORT root: `unzipped/ort_new_dita/dita`; includes `en_EN` and `fr_FR`, matching

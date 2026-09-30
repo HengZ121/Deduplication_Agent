@@ -1,4 +1,4 @@
-"""Export two columns: relative DITA file name and its content word count.
+"""Export relative DITA file name, word count, and extracted text content.
 
 Counts the text physically stored in each .dita file, including titles, tables,
 notes and body text. Excludes prolog/metadata and XML attributes/markup. Does not
@@ -44,10 +44,12 @@ def export_counts(root: Path, branches: list[str], output: Path) -> int:
         raise ValueError(f'No .dita files found under {root}')
     def count_file(path):
         try:
-            text = content_text(ET.parse(path).getroot())
+            # Remove XML indentation while retaining the original wording,
+            # punctuation, case and accents in the exported content column.
+            text = ' '.join(content_text(ET.parse(path).getroot()).split())
         except ET.ParseError as exc:
             raise ValueError(f'Invalid XML in {path}: {exc}') from exc
-        return path.relative_to(root).as_posix(), len(word_tokens(text))
+        return path.relative_to(root).as_posix(), len(word_tokens(text)), text
     # These exports contain tens of thousands of small files. Bounded parallel
     # reads reduce filesystem wait time; map preserves the sorted output order.
     with ThreadPoolExecutor(max_workers=8) as pool:
@@ -55,9 +57,9 @@ def export_counts(root: Path, branches: list[str], output: Path) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
-        writer.writerow(['file_name', 'word_count'])
+        writer.writerow(['file_name', 'word_count', 'content'])
         writer.writerows(rows)
-    print(f'{output}: {len(rows):,} files; {sum(count for _, count in rows):,} words')
+    print(f'{output}: {len(rows):,} files; {sum(count for _, count, _ in rows):,} words')
     return len(rows)
 
 
