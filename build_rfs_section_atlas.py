@@ -76,90 +76,53 @@ def family(title, headings, path):
     return ' / '.join(headings + [title.rstrip(':')])
 
 def explain_row(key, items, groups, pairs, occurrences):
-    """Separate observed content from proposed reuse; keep technical counts in evidence."""
-    empty=all(n['empty'] for n in items)
-    letters=', '.join(n['letter'] for n in items)
-    missing=', '.join(c for c in DOCS if c not in {n['letter'] for n in items})
+    """Describe duplication evidence only, separating copied files from shared references."""
+    if all(n['empty'] for n in items):
+        return [('Duplication','No duplicated body content — these nodes are empty headings.')], None
+    exact=[' / '.join(v) for v in groups.values() if len(v)>1]
     one_source=len({n['path'] for n in items})==1
     sample=next((n for n in items if n['letter']=='E'),items[0])
-    text=sample['resolved_text']
-    exact=[' / '.join(v) for v in groups.values() if len(v)>1]
-    if empty:
-        return [('Finding','Heading only — no content to consolidate'),
-                ('What is here','This heading has an empty body in all '+str(len(items))+' documents shown.'),
-                ('What to do','Keep it as document structure. Exclude it from duplicate-content counts; compare its child sections separately.')], None
-    if one_source and len(items)>1:
-        finding='Already reused — one source, multiple documents'
-        shared=f'{letters} all reference {Path(sample["path"]).name}.'
-        action='Retain the existing shared source. Any proposed edit must be checked against each document that uses it.'
-    elif len(items)==1:
-        finding='Only one document uses this node in the eight-map set'
-        shared=f'This source occurs in {letters}. This row alone provides no cross-document duplicate pair.'
-        action='Keep its document context. Check related notes before treating it as a new reusable component.'
+    parts=[]
+    if len(items)==1:
+        parts.append(('Exact matches','No other document references this node in this aligned row.'))
+    elif one_source:
+        parts.append(('Exact matches',', '.join(n['letter'] for n in items)+' reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies.'))
     elif len(groups)==1:
-        finding='Repeated content — separate source files'
-        shared=f'{letters} have the same expanded body and links.'
-        action='Review these copies as a shared-source candidate, retaining their parent RFS applicability.'
+        parts.append(('Exact matches',' / '.join(n['letter'] for n in items)+' have identical expanded bodies and reference targets in separate files.'))
     else:
-        finding='Shared workflow with differences to retain'
-        shared=('Exact matches: '+ '; '.join(exact)+'. Other nodes differ.' if exact else 'No two full sections match exactly after references are expanded.')
-        action='Reuse confirmed common passages; retain the differing fields, conditions and references as explicit variants.'
-    differences='No within-row content differences.' if len(groups)==1 and len(items)>1 else 'The source wording below describes this node; other note IDs are compared in their own rows.'
-    if len(groups)>1:
-        differences='The full pair comparison below identifies text edits and changes in references or structure.'
-    if key=='Summary':
-        shared='All eight describe creation of an ROE RFS Action WI when linking or adjudication determination cannot be completed.'
-        differences='The reason changes: C school, E quit, G retirement, K other, M dismissal, N leave, F fishing and S strike/lockout. F and S both carry B in their source titles.'
-        action='Candidate: a common summary template with an explicit RFS subject. Do not remove the category or Fishing qualifier.'
-    elif key.endswith('In RCM'):
-        shared='C / E / G / M match exactly. N has the same questions with a hyphen instead of an en dash in the screen name.'
-        differences='K adds four Other categories. F uses block 6B for trip/purchase dates, 11 for RFS and 12 for comments; regular ROEs use 11, 16 and 18. S has only the first three questions.'
-        action='Share the common questions. Keep form-field mappings and extra category checks attached to the relevant document. Review N’s punctuation separately.'
-    elif key.endswith('In NWS'):
-        shared='All eight repeat the same checklist: serial number/RFS, matching employment, adjudication decision and employer-name clarification.'
-        action='Strong candidate for one checklist source with eight document references, subject to applicability review.'
-    elif key.endswith('In FTS'):
-        shared='All eight ask the same employer-name question in FTS.'
-        action='Candidate for a shared question. It is a short instruction, so assess maintenance benefit rather than prioritizing it by pair count.'
-    elif key.endswith('Completing the WI'):
-        shared='All eight contain the same short completion instruction.'
-        action='Low-value standalone consolidation candidate: the text is short and depends on the preceding procedure being complete.'
+        parts.append(('Exact matches',('; '.join(exact)+'. Other full sections differ.') if exact else 'No full-section exact matches in this row.'))
+    nonexact=[p for p in pairs if not p['resolved_structure_equal']]
+    best=max(nonexact,key=lambda p:p['longest_shared_block_words'],default=None)
+    quote=None
+    if best and best['example_shared_block']:
+        parts.append(('Partial duplication',best['pair']+' share '+str(best['shared_exact_blocks'])+' exact internal block(s) of at least 12 tokens. The excerpt below is one observed match.'))
+        quote=best['example_shared_block']
+        sample=next(n for n in items if n['letter']==best['pair'][0])
+    elif len(items)>1 and len(groups)==1:
+        quote=sample['resolved_text']
+    differences={
+        'Summary':'The summary wording follows the same pattern, but the RFS category and Fishing qualifier differ. These are similar summaries, not exact full-section duplicates.',
+        'In RCM':'C / E / G / M match exactly. N differs by a hyphen versus an en dash. K adds four Other categories; F uses different ROE field numbers; S contains only the first three questions.',
+        'Completing the Resolve Issue section':'Only G / N are exact full-section matches. The other sections differ in expanded wording or reference structure.',
+        'Ensuring the reason for separation (RFS) details are correct':'All eight full sections differ. Their shared instructions surround different RFS condition-to-outcome tables.',
+        'Selecting a special condition for the decision on file':'None of the seven sections match in full. Shared passages occur within differing decision branches and local step references.'}
+    leaf=key.split(' / ')[-1]
+    if leaf in differences: parts.append(('Differences within the duplicated wording',differences[leaf]))
     elif 'Linking the ROE' in key:
-        if key.startswith('Step by step'):
-            shared+=' The procedure checks matching employment and selects the appropriate period in NWS.'
-            differences='Text and local step destinations differ. C / N match exactly; the remaining full sections do not. A matching action is not enough to share a “go to step” instruction unchanged.'
-            action='Extract reusable actions only after replacing or preserving document-specific step destinations.'
-        else:
-            shared='The explanation repeats employer-name matching and ROE/employment date comparison.'
-            differences='Expanded examples differ: the first sample ROE row has E for Quit and M for Dismissal. Body-only extraction can hide the referenced tables.'
-            action='Separate the common explanation from its example tables. Compare referenced table cells before marking the section exact.'
-    elif 'Completing the Resolve Issue section' in key:
-        shared+=' The common task is to review ROE information against existing decisions before completing Resolve Issue.'
-        differences='G / N match exactly; the other expanded sections differ. Comments fields and decision-review wording need separate comparison.'
-    elif 'Ensuring the reason' in key:
-        shared='The sections review ROE comments and decide whether RFS details need changing.'
-        differences='Every expanded section differs. Quit’s table maps “another job” to “Quit - Take another job”, but “poor performance” to “M - Dismissal”. These are decision rules, not interchangeable labels.'
-        action='Keep each condition → outcome mapping intact. Reuse surrounding instructions only where the checks and destinations also agree.'
-    elif 'Selecting a special condition' in key:
-        shared='Seven documents have this decision-selection stage; none of their full sections match exactly.'
-        differences='Fishing has no aligned node. The other sections contain their own decision conditions and step destinations.'
-        action='Compare condition → action branches individually. Do not infer that Fishing needs this stage because it appears in the other maps.'
+        parts.append(('Differences within the duplicated wording',
+            'C / N match exactly. Other sections share passages but differ in wording or local step destinations.' if key.startswith('Step by step') else
+            'The explanation contains shared passages, but expanded example tables differ. For example, Quit and Dismissal show E versus M in the first sample ROE row.'))
+    elif nonexact:
+        parts.append(('Differences within the duplicated wording','The full sections differ in text, structure or reference targets; expand the pair evidence below for the individual changes.'))
     if '/common_notes/' in sample['path']:
-        if text.startswith('Employer:'):
-            differences='This is example employment data. Its embedded RFS can differ from the parent document’s subject; that alone does not establish an error.'
-            action='Preserve employer, dates and RFS as one coherent example. Review the intended illustration before combining it with another example.'
         twins=[n for n in occurrences if n['signature']==sample['signature'] and n['path']!=sample['path'] and '/common_notes/' in n['path']]
         if twins:
-            differences='Exact content also appears in '+', '.join(sorted({Path(n['path']).name for n in twins}))+', outside this row.'
-            action='Review the two note files for consolidation. Preserve the meaning of “the next step” wherever the warning is used.'
-        elif 'block 12' in text or 'block 18' in text:
-            differences+=' Fishing notes refer to comments in block 12; regular-ROE notes use block 18. Keep that distinction.'
-    parts=[('Finding',finding),('What is shared',shared),('What differs',differences),('Reuse recommendation',action)]
-    if missing: parts.append(('Coverage','Not referenced in this aligned row: '+missing+'. This does not prove the policy is absent from those documents.'))
-    # Show a bounded, attributable quote, with full content one click away.
-    quote=text if len(text)<=320 else text[:320].rsplit(' ',1)[0]+'…'
-    parts.append(('Source example · '+sample['letter'],quote))
-    return parts, sample
+            parts.append(('Exact duplicate in another row','The same expanded body also appears in '+', '.join(sorted({Path(n['path']).name for n in twins}))+'. These are separate source files.'))
+            quote=sample['resolved_text']
+    if quote:
+        excerpt=quote if len(quote)<=320 else quote[:320].rsplit(' ',1)[0]+'…'
+        parts.append(('Duplicated text · '+sample['letter'],excerpt))
+    return parts, sample if quote else None
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
@@ -274,7 +237,7 @@ def main():
     <ul>'''+intro+'''</ul><p><b>F and S are display labels.</b> Their source titles both use B. Scope: eight English task maps from en_EN; this is not a task-versus-activity comparison.</p>
     <h2>How to read the evidence</h2><p>Rows align by heading path, with the two linking-title variants explicitly aligned. Shared notes align by source ID, not by generic “Note” titles or ordinal position. This avoids inventing correspondence between unrelated callouts; different note IDs appear on separate rows and may still repeat wording across rows.</p>
     <p>Exact groups require reference-expanded body structure and link targets to match. Nonexact pair labels reuse the earlier deterministic audit: high lexical overlap with changed fields/links is a variant candidate; an identical internal XML block of at least 12 tokens supports partial overlap; remaining pairs stay related/unresolved. No semantic equivalence is confirmed, no LLM/model inference is run, and similarity edges are never transitively merged. Pair labels apply only within aligned rows; cross-row note duplicates are listed in the companion narrative.</p>
-    <p><a href="ANALYSIS.md">Narrative and cross-row note matches</a> · <a href="section_summary.csv">Row narratives</a> · <a href="node_inventory.csv">All nodes and full text</a> · <a href="pair_evidence.csv">All pair evidence</a> · <a href="validation.json">Count validation</a></p><p>'''+H(f"{len(documents)} documents · {len(occurrences)} node occurrences · {len(families)} comparison rows · {sum(n['empty'] for n in occurrences)} empty headings · {len(copied)} packaged raw files")+'''</p><table><thead><tr><th>Section / node</th><th>Force-directed exact-content graph</th><th>What this means for reuse</th></tr></thead><tbody>'''+''.join(page_rows)+'''</tbody></table></body></html>'''
+    <p><a href="ANALYSIS.md">Narrative and cross-row note matches</a> · <a href="section_summary.csv">Row narratives</a> · <a href="node_inventory.csv">All nodes and full text</a> · <a href="pair_evidence.csv">All pair evidence</a> · <a href="validation.json">Count validation</a></p><p>'''+H(f"{len(documents)} documents · {len(occurrences)} node occurrences · {len(families)} comparison rows · {sum(n['empty'] for n in occurrences)} empty headings · {len(copied)} packaged raw files")+'''</p><table><thead><tr><th>Section / node</th><th>Force-directed exact-content graph</th><th>Duplication findings</th></tr></thead><tbody>'''+''.join(page_rows)+'''</tbody></table></body></html>'''
     (OUT/'index.html').write_text(content,encoding='utf-8')
     # Cross-row exact notes are explicitly reported instead of hiding them behind alignment.
     note_groups=defaultdict(list)
