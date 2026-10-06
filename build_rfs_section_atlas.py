@@ -18,20 +18,40 @@ LABELS = {'exact_resolved_section':'Exact content', 'template_variant_candidate'
  'partial_overlap_observed':'Partial overlap', 'related_or_unresolved':'Related / unresolved',
  'unresolved_source':'Unresolved source', 'semantic_equivalence_candidate':'Unconfirmed similarity'}
 
-def force_graph(items, empty):
+EDGE_STYLES = {'exact':'exact-edge', 'variant':'variant-edge',
+               'semantic_candidate':'semantic-edge', 'partial':'partial-edge'}
+
+def edge_type(pair):
+    """Use audited relationships first; a saved model label is only a candidate."""
+    if pair['classification']=='exact_resolved_section': return 'exact'
+    if pair['classification']=='template_variant_candidate': return 'variant'
+    if pair['classification']=='partial_overlap_observed': return 'partial'
+    if pair['classification']=='related_or_unresolved' and pair['saved_pipeline_decision']=='duplicate/semantic duplicate':
+        return 'semantic_candidate'
+    return 'unresolved'
+
+def target_length(score):
+    """Fixed affine scale: 710 - 650*cosine; higher similarity means shorter."""
+    return 710-650*max(-1,min(1,score)) if score is not None else None
+
+def force_graph(items, empty, pair_rows):
     """Deterministic spring/charge layout, embedded as offline, printable SVG.
 
-    Only exact resolved-body pairs get edges. Empty headings never create
-    duplicate edges. Distances are layout outputs, not similarity scores.
+    Relationship controls style; saved cosine controls spring rest length.
+    Empty headings and unresolved pairs do not create relationship edges.
     """
     count = len(items)
     width, height, radius = 280, 240, 17
     positions = [[width/2+75*math.cos(2*math.pi*i/count),
                   height/2+75*math.sin(2*math.pi*i/count)] for i in range(count)]
     velocities = [[0., 0.] for _ in items]
-    edges = [(i,j) for i,j in combinations(range(count),2)
-             if not empty and items[i]['signature']==items[j]['signature']]
-    connected = {i for edge in edges for i in edge}
+    by_pair={p['pair']:p for p in pair_rows}
+    edges=[]
+    for i,j in combinations(range(count),2):
+        p=by_pair[items[i]['letter']+'–'+items[j]['letter']]
+        if not empty and p['edge_type'] in EDGE_STYLES:
+            edges.append((i,j,p))
+    connected={i for a,b,p in edges if p['resolved_structure_equal'] for i in (a,b)}
     # Repulsion separates nodes; springs draw proven exact matches together.
     # Weak centering and bounded coordinates keep every label inside the cell.
     for tick in range(700):
@@ -43,10 +63,12 @@ def force_graph(items, empty):
             fx,fy=dx/distance*magnitude,dy/distance*magnitude
             forces[i][0]-=fx; forces[i][1]-=fy
             forces[j][0]+=fx; forces[j][1]+=fy
-        for i,j in edges:
+        for i,j,p in edges:
             dx,dy=positions[j][0]-positions[i][0],positions[j][1]-positions[i][1]
             distance=max(math.hypot(dx,dy),.01)
-            magnitude=(distance-66)*.028
+            # Same cosine-to-distance mapping in every row; missing scores are neutral.
+            target=p['target_link_length'] if p['target_link_length'] is not None else 100
+            magnitude=(distance-target)*.075
             fx,fy=dx/distance*magnitude,dy/distance*magnitude
             forces[i][0]+=fx; forces[i][1]+=fy
             forces[j][0]-=fx; forces[j][1]-=fy
@@ -56,16 +78,45 @@ def force_graph(items, empty):
                 positions[i][axis]=min(limit-radius-6,max(radius+6,positions[i][axis]+velocities[i][axis]))
     assert all(math.dist(positions[i],positions[j])>=2*radius+2 for i,j in combinations(range(count),2)), 'Overlapping graph nodes'
     description=('Empty heading nodes; no duplicate edges.' if empty else
-                 'Lines connect exact expanded content. Unconnected nodes have no exact match in this row. Distance is not a similarity score.')
+                 'Solid green: exact. Long orange dashes: variant candidate. Purple dash-dot: pipeline semantic-duplicate candidate, unconfirmed. Solid blue: partial overlap. Higher cosine sets shorter target length; final distances are approximate.')
     svg=['<svg class="force-graph" viewBox="0 0 280 240" role="img" aria-label="'+H(description)+'"><title>'+H(description)+'</title>']
-    for i,j in edges:
+    for i,j,p in edges:
         x1,y1=positions[i]; x2,y2=positions[j]
-        svg.append(f'<line class="exact-edge" x1="{x1:.2f}" y1="{y1:.2f}" x2="{x2:.2f}" y2="{y2:.2f}"/>')
+        kind=EDGE_STYLES[p['edge_type']]
+        label=p['pair']+' · '+p['edge_type']+' · cosine '+(f"{p['embedding_similarity']:.6f}" if p['embedding_similarity'] is not None else 'unavailable; neutral length')
+        svg.append(f'<line class="{kind}" x1="{x1:.2f}" y1="{y1:.2f}" x2="{x2:.2f}" y2="{y2:.2f}"><title>'+H(label)+'</title></line>')
     for i,item in enumerate(items):
         x,y=positions[i]; state='heading-node' if empty else ('matched-node' if i in connected else 'unmatched-node')
         svg.append(f'<g class="{state}"><title>'+H(item['letter']+' — '+item['path'])+f'</title><circle cx="{x:.2f}" cy="{y:.2f}" r="{radius}"/><text x="{x:.2f}" y="{y:.2f}" dy=".35em" text-anchor="middle">'+item['letter']+'</text></g>')
-    svg.append('</svg><small>'+('Empty headings · no content edges' if empty else f'{len(edges)} exact-content '+('edge' if len(edges)==1 else 'edges'))+'</small>')
+    scored=sum(p['embedding_similarity'] is not None for _,_,p in edges)
+    svg.append('</svg><small>'+('Empty headings · no content edges' if empty else f'{scored} scored links · {len(edges)-scored} unscored links (neutral length)')+'</small>')
     return ''.join(svg)
+
+def load_saved_similarities():
+    """Join historical model scores to source paths; never invent missing cosine values."""
+    with Path('outputs/ort_new_dita_kg_pipeline/en/kg_nodes.csv').open(encoding='utf-8-sig',newline='') as f:
+        paths={'ORT:'+r['node_id']:r['article_path'] for r in csv.DictReader(f)}
+    scores={}
+    with Path('outputs/ort_internal_deduplication/en/pair_classifications.csv').open(encoding='utf-8-sig',newline='') as f:
+        for r in csv.DictReader(f):
+            a,b=paths.get(r['item1_node_id']),paths.get(r['item2_node_id'])
+            if a and b and r['embedding_similarity']:
+                scores[tuple(sorted((a,b)))]=(float(r['embedding_similarity']),r['final_relationship_type'])
+    return scores
+
+def side_by_side(a,b,documents):
+    """Keep both complete expanded sections; mark changed words without dropping context."""
+    left,right=a['resolved_text'].split(),b['resolved_text'].split()
+    columns=[[],[]]
+    for op,ia,ja,ib,jb in difflib.SequenceMatcher(None,left,right,autojunk=False).get_opcodes():
+        for k,words in enumerate((left[ia:ja],right[ib:jb])):
+            escaped=H(' '.join(words))
+            columns[k].append(escaped if op=='equal' else '<mark>'+escaped+'</mark>')
+    result=['<div class="pair-columns">']
+    for k,n in enumerate((a,b)):
+        title=next(d['title'] for d in documents if d['letter']==n['letter'])
+        result.append('<section class="pair-document"><h4>'+H(n['letter']+' — '+title)+'</h4><p>'+H(n['title'])+'</p><a href="raw/'+H(n['path'])+'">Open original DITA</a><p class="pair-text">'+(' '.join(columns[k]) if n['resolved_text'] else '[Empty heading body]')+'</p></section>')
+    return ''.join(result)+'</div>'
 
 def family(title, headings, path):
     # Shared notes are aligned by source identity, never by generic Note/Callout titles.
@@ -127,6 +178,7 @@ def explain_row(key, items, groups, pairs, occurrences):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     audit = ReuseAudit()
+    saved_similarities=load_saved_similarities()
     families, documents, occurrences, sections = {}, [], [], {}
     copied = set()
     def copy_source(path):
@@ -186,6 +238,12 @@ def main():
             if kind=='semantic_equivalence_candidate': kind='related_or_unresolved'
             row=dict(family=key,pair=a['letter']+'–'+b['letter'],classification=kind,
                      source_a=a['path'],source_b=b['path'],**evidence)
+            score,decision=saved_similarities.get(tuple(sorted((a['path'],b['path']))),(None,''))
+            row['embedding_similarity']=score
+            row['saved_pipeline_decision']=decision
+            row['edge_type']=edge_type(row)
+            row['embedding_score_source']='saved internal pipeline / raw body' if score is not None else 'not available'
+            row['target_link_length']=target_length(score)
             pairs.append(row); pair_rows.append(row)
         missing=''.join(c for c in DOCS if not any(n['letter']==c for n in items))
         shared_source=len({n['path'] for n in items})==1 and len(items)>1
@@ -199,16 +257,13 @@ def main():
         if sample:
             explanation_html+='<a class="source-link" href="raw/'+H(sample['path'])+'">Open quoted DITA source ('+H(sample['letter'])+')</a>'
 
-        grouphtml=force_graph(items, empty)
+        grouphtml=force_graph(items, empty, pairs)
         evidencehtml=[]
         for p in pairs:
             a=next(n for n in items if n['letter']==p['pair'][0]); b=next(n for n in items if n['letter']==p['pair'][-1])
-            # Every nonexact pair has a complete word-level edit list, not a cropped model input.
-            wa=a['resolved_text'].split(); wb=b['resolved_text'].split(); edits=[]
-            for op,ia,ja,ib,jb in difflib.SequenceMatcher(None,wa,wb,autojunk=False).get_opcodes():
-                if op!='equal': edits.append('<tr><td>'+H(' '.join(wa[ia:ja]) or '∅')+'</td><td>'+H(' '.join(wb[ib:jb]) or '∅')+'</td></tr>')
-            diff='<table><tr><th>'+p['pair'][0]+'</th><th>'+p['pair'][-1]+'</th></tr>'+''.join(edits)+'</table>' if edits else '<p>No word changes. If groups differ, inspect XML structure and link targets.</p>'
-            evidencehtml.append('<details><summary>'+H(p['pair']+' · '+LABELS.get(p['classification'],p['classification']))+'</summary><p>Token Jaccard '+str(p['lexical_jaccard_resolved'])+'; exact internal blocks ≥12 tokens: '+str(p['shared_exact_blocks'])+'. Signals: '+H(p['review_signals'] or 'none detected')+'</p>'+('<blockquote>'+H(p['example_shared_block'])+'</blockquote>' if p['example_shared_block'] else '')+diff+'</details>')
+            score=p['embedding_similarity']
+            score_text=f'{score:.6f}' if score is not None else 'unavailable (not a zero score)'
+            evidencehtml.append('<details class="pair-detail"><summary>'+H(p['pair']+' · '+LABELS.get(p['classification'],p['classification']))+'</summary><p>Saved embedding cosine: '+score_text+'. Relationship shown: '+H(p['edge_type'])+'. Saved pipeline decision: '+H(p['saved_pipeline_decision'] or 'unavailable')+'. Scores use the historical pipeline body; the comparison below includes expanded references.</p><p>Highlighted words differ. Both full sections are shown; identical wording can still have different XML structure or link targets.</p>'+side_by_side(a,b,documents)+'</details>')
         rawhtml=[]
         for n in items:
             s=sections[(n['letter'],n['path'])]
@@ -231,13 +286,17 @@ def main():
     content='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Eight RFS documents — section atlas</title><style>
     body{font:16px/1.55 Arial,sans-serif;color:#193046;background:#f7f9fb;margin:28px auto;padding:0 24px;max-width:1500px}h1{font-size:30px}h2{margin-top:32px}table{border-collapse:collapse;width:100%;background:white;table-layout:fixed}th,td{text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid #d5dfe5;overflow-wrap:anywhere}th{background:#17364c;color:white}th:nth-child(1){width:24%}th:nth-child(2){width:25%}p{margin:0 0 12px}a{color:#08619b}details{margin:8px 0;padding:8px;background:#edf2f6}summary{cursor:pointer;font-weight:bold}pre{white-space:pre-wrap;font-size:13px;overflow-wrap:anywhere}.source{white-space:pre-wrap}.group{display:inline-flex;gap:3px;padding:7px;margin:3px;border-radius:24px}.same{background:#d3eee6;border:2px solid #317d68}.single{border:1px dashed #879bab}.empty{background:#e7eaee}.node{display:inline-grid;place-items:center;border-radius:50%;background:white;color:#193046;width:26px;height:26px;font-weight:bold}blockquote{border-left:4px solid #317d68;padding-left:12px}small{font-size:14px}@media(max-width:700px){body{padding:0 8px;margin:12px}th,td{padding:7px}.node{width:22px;height:22px}.group{padding:3px}}@media print{body{max-width:none;font-size:11px}details{display:none}a{color:inherit}tr{break-inside:avoid}th{color:black;background:#eee}}.force-graph{display:block;width:100%;min-width:210px;max-width:340px;height:auto;margin:auto}.exact-edge{stroke:#317d68;stroke-width:1.5;opacity:.45}.force-graph circle{stroke:#708494;stroke-width:1.5;fill:white}.force-graph .matched-node circle{fill:#d3eee6;stroke:#317d68}.force-graph .heading-node circle{fill:#e7eaee;stroke:#879bab}.force-graph text{fill:#193046;font:bold 17px Arial,sans-serif}@media(max-width:850px){body>table>thead{display:none}body>table>tbody>tr,body>table>tbody>tr>td{display:block;width:auto}body>table>tbody>tr>td:nth-child(2){max-width:340px}.force-graph{min-width:0}}@media print{.force-graph{min-width:0}}
 .row-explanation{display:grid;gap:12px}.explanation-part strong{display:block;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#51687b;margin-bottom:3px}.explanation-part:first-child p{font-weight:bold;font-size:18px;color:#17364c}.explanation-part p{margin:0}.explanation-part:last-child p{font-size:14px}.source-link{display:inline-block;margin-top:12px;font-size:14px}
+.variant-edge{stroke:#b96508;stroke-width:2.2;stroke-dasharray:12 7;opacity:.8}.semantic-edge{stroke:#8545a8;stroke-width:2.2;stroke-dasharray:8 4 1 4;stroke-linecap:round;opacity:.8}.partial-edge{stroke:#2378bd;stroke-width:2;opacity:.7}.edge-legend{display:flex;flex-wrap:wrap;gap:12px 22px;margin:18px 0}.edge-legend span{display:flex;align-items:center;gap:8px}.edge-legend svg{width:70px;height:16px;flex-shrink:0}.pair-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.pair-document{background:white;padding:16px;min-width:0}.pair-document h4{margin:0 0 12px}.pair-text{margin-top:16px;line-height:1.75;white-space:pre-wrap}.pair-text mark{background:#ffe4a3;color:#193046}.pair-detail{margin:12px 0}@media(max-width:700px){.pair-columns{grid-template-columns:1fr}}
 </style></head><body>
     <h1>Eight RFS documents: what repeats, what changes</h1>
-    <p>Each letter is one document’s existing DITA node in that row. Force-directed graphs use springs between exact-content matches and repulsion between nodes. Green lines connect exact expanded content; green nodes have an exact match, and outlined nodes do not. Gray nodes are empty headings and have no content edges. Distance is a layout choice, not a similarity score. Matches describe content, not authorization to use one instruction for every RFS subject.</p>
+    <p>Each letter is one document’s existing DITA node. Edge styles describe the relationship; target lengths use saved embedding cosine scores.</p>
+    <div class="edge-legend"><span><svg viewBox="0 0 70 16"><line class="exact-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Exact duplicate</span><span><svg viewBox="0 0 70 16"><line class="variant-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Variant candidate · long dashes</span><span><svg viewBox="0 0 70 16"><line class="semantic-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Semantic duplicate candidate · dash-dot</span><span><svg viewBox="0 0 70 16"><line class="partial-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Partial overlap</span></div>
+    <p>Semantic candidates are historical pipeline duplicate labels for remaining nonexact pairs, not verified semantic equivalence. Audited exact, variant and partial-overlap labels take precedence. Related/unresolved pairs remain in the detailed comparison but have no graph edge.</p>
+    <p><b>Target length = 710 − 650 × cosine</b> (graph units): 1.00 → 60; 0.95 → 92.5; 0.90 → 125; 0.80 → 190. Higher similarity means shorter target length. This is the same fixed scale across rows, with cosine clamped to [−1, 1] for numerical overshoot. Missing scores use a neutral length of 100 and are identified in edge tooltips and pair details; line style always describes the relationship. Final distances are approximate because forces and two-dimensional geometry compete.</p>
     <ul>'''+intro+'''</ul><p><b>F and S are display labels.</b> Their source titles both use B. Scope: eight English task maps from en_EN; this is not a task-versus-activity comparison.</p>
     <h2>How to read the evidence</h2><p>Rows align by heading path, with the two linking-title variants explicitly aligned. Shared notes align by source ID, not by generic “Note” titles or ordinal position. This avoids inventing correspondence between unrelated callouts; different note IDs appear on separate rows and may still repeat wording across rows.</p>
     <p>Exact groups require reference-expanded body structure and link targets to match. Nonexact pair labels reuse the earlier deterministic audit: high lexical overlap with changed fields/links is a variant candidate; an identical internal XML block of at least 12 tokens supports partial overlap; remaining pairs stay related/unresolved. No semantic equivalence is confirmed, no LLM/model inference is run, and similarity edges are never transitively merged. Pair labels apply only within aligned rows; cross-row note duplicates are listed in the companion narrative.</p>
-    <p><a href="ANALYSIS.md">Narrative and cross-row note matches</a> · <a href="section_summary.csv">Row narratives</a> · <a href="node_inventory.csv">All nodes and full text</a> · <a href="pair_evidence.csv">All pair evidence</a> · <a href="validation.json">Count validation</a></p><p>'''+H(f"{len(documents)} documents · {len(occurrences)} node occurrences · {len(families)} comparison rows · {sum(n['empty'] for n in occurrences)} empty headings · {len(copied)} packaged raw files")+'''</p><table><thead><tr><th>Section / node</th><th>Force-directed exact-content graph</th><th>Duplication findings</th></tr></thead><tbody>'''+''.join(page_rows)+'''</tbody></table></body></html>'''
+    <p><a href="ANALYSIS.md">Narrative and cross-row note matches</a> · <a href="section_summary.csv">Row narratives</a> · <a href="node_inventory.csv">All nodes and full text</a> · <a href="pair_evidence.csv">All pair evidence</a> · <a href="validation.json">Count validation</a></p><p>'''+H(f"{len(documents)} documents · {len(occurrences)} node occurrences · {len(families)} comparison rows · {sum(n['empty'] for n in occurrences)} empty headings · {len(copied)} packaged raw files")+'''</p><table><thead><tr><th>Section / node</th><th>Embedding similarity graph</th><th>Duplication findings</th></tr></thead><tbody>'''+''.join(page_rows)+'''</tbody></table></body></html>'''
     (OUT/'index.html').write_text(content,encoding='utf-8')
     # Cross-row exact notes are explicitly reported instead of hiding them behind alignment.
     note_groups=defaultdict(list)
