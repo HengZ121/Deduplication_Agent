@@ -84,9 +84,20 @@ def append_llm_review_checkpoint(path: Path, record: dict[str, object]) -> None:
     """Durably append one completed API attempt to the JSONL checkpoint."""
 
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a", encoding="utf-8", newline="\n") as handle:
-        handle.write(json.dumps(record, ensure_ascii=False) + "\n")
-        handle.flush()
+    serialized = json.dumps(record, ensure_ascii=False) + "\n"
+    # Windows file scanners or sync software can briefly deny an append. Retry
+    # transient sharing violations so one completed API result does not abort a
+    # long review run and force a full checkpoint reload.
+    for attempt in range(6):
+        try:
+            with path.open("a", encoding="utf-8", newline="\n") as handle:
+                handle.write(serialized)
+                handle.flush()
+            return
+        except PermissionError:
+            if attempt == 5:
+                raise
+            time.sleep(0.25 * (2 ** attempt))
 
 
 def compact_candidate_pairs(
