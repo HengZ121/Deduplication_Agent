@@ -87,6 +87,7 @@ def main() -> None:
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--workers", type=int, default=DEFAULT_LLM_WORKERS)
     parser.add_argument("--timeout", type=int, default=60)
+    parser.add_argument("--dataset", choices=("all", "kmt", "ort"), default="all")
     parser.add_argument("--skip-cross-source", action="store_true")
     args = parser.parse_args()
     api_key, source = resolve_api_key(args.api_key_file)
@@ -113,7 +114,15 @@ def main() -> None:
             raise SystemExit("LLM preflight did not produce a successful review; no bulk requests were started.")
         probe.to_csv(first_result_path, index=False, encoding="utf-8-sig")
 
-    runs = WITHIN_RUNS + ([] if args.skip_cross_source else CROSS_RUNS)
+    runs = [
+        run_dir
+        for run_dir in WITHIN_RUNS
+        if args.dataset == "all" or run_dir.name.startswith(f"{args.dataset}_")
+    ]
+    # Cross-source reviews require both KMT and ORT, so they are only included
+    # when the user requests all datasets.
+    if args.dataset == "all" and not args.skip_cross_source:
+        runs += CROSS_RUNS
     for run_dir in runs:
         cross_source = run_dir in CROSS_RUNS
         persist_review(
