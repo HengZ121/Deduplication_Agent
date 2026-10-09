@@ -1,0 +1,15 @@
+{
+  "model": "gpt-4o-mini",
+  "pair_count": 287105,
+  "borderline_pair_count": 121309,
+  "llm_review_status_counts": {
+    "not_needed": 165796,
+    "reviewed": 121309
+  },
+  "final_relationship_counts": {
+    "independent": 178556,
+    "duplicate/semantic duplicate": 83937,
+    "conflicting information": 14524,
+    "one passage included in another": 10088
+  }
+}
