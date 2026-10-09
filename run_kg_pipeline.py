@@ -304,18 +304,30 @@ def review_borderline_pairs(
     )
     pending_indices: list[int] = []
     reused_count = 0
-    for row_index in borderline_indices:
-        pair = result.loc[row_index]
-        cached = cached_records.get(llm_review_key(pair, model))
+    # Avoid constructing a pandas Series for every borderline row. Large runs
+    # can contain hundreds of thousands of pairs, and repeated ``.loc`` calls
+    # made checkpoint resume spend minutes in Python before any API work began.
+    item1_ids = result.loc[borderline_indices, "item1_node_id"].astype(str).to_numpy()
+    item2_ids = result.loc[borderline_indices, "item2_node_id"].astype(str).to_numpy()
+    cached_indices: list[int] = []
+    cached_relationships: list[str] = []
+    cached_analyses: list[str] = []
+    for row_index, item1_id, item2_id in zip(borderline_indices, item1_ids, item2_ids):
+        cached = cached_records.get((item1_id, item2_id, model))
         if cached and cached.get("review_status") == "reviewed":
-            result.at[row_index, "final_relationship_type"] = cached["relationship_type"]
-            result.at[row_index, "final_analysis"] = cached["analysis"]
-            result.at[row_index, "classification_source"] = "llm_borderline"
-            result.at[row_index, "llm_review_status"] = "reviewed"
+            cached_indices.append(row_index)
+            cached_relationships.append(str(cached["relationship_type"]))
+            cached_analyses.append(str(cached["analysis"]))
             reused_count += 1
         else:
             pending_indices.append(int(row_index))
     if reused_count:
+        # Assign cached results in columns at once; per-cell ``.at`` writes
+        # made a resume with tens of thousands of cached pairs CPU-bound.
+        result.loc[cached_indices, "final_relationship_type"] = cached_relationships
+        result.loc[cached_indices, "final_analysis"] = cached_analyses
+        result.loc[cached_indices, "classification_source"] = "llm_borderline"
+        result.loc[cached_indices, "llm_review_status"] = "reviewed"
         print(f"Reused {reused_count} completed LLM reviews from checkpoint.")
     if not pending_indices:
         return result
