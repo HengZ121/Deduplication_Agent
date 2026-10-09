@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="creating_an_operational_centre_memo_mm0_ab3d1bc5">
+  <title>Creating an Operational Centre Memo (MM06) transaction to void the claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, in the fraudulent claim’s ITC, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+            <li>Go to step 2.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 54 - Third party fraud .</li>
+            <li>Remarks line 1: Type “Void the claim. Fraudulent claim. Unknown third party.”</li>
+            <li>Remarks lines 2-4: Type “No payments issued.” If there is a violation on the Violation History (ML02) screen, type “Update ML02 for BPC in w/c [BPC with the violation that affects the voided BPC] and remove BPC in w/c [voided BPC] from the affected BPCs.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If necessary, refer to Calculation of a claim — Index and follow the appropriate task to calculate or recalculate the claim with the client’s information. Go to Creating a record of decision (ROD) .</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4604.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Go to Creating a record of decision (ROD ).</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              If there is no signed statement or INS5168 on file, fact-find using the INS5168 form.
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Maternity_Parental-INS5168_Annex_3_transcript-Form.doc">INS5168</xref>
+            </li>
+            <li>If the type of parental benefits requested is not indicated, what type of parental benefits does the client want to receive? Make sure the client is aware that the type of parental benefits first requested by one of the parents cannot be changed, even if the parental benefits can be shared.</li>
+            <li>If the client is a legally recognized parent, is the client legally recognized on the child’s birth certificate?</li>
+            <li>If an adoption or placement raises doubt, request written proof of the adoption or placement.</li>
+            <li>If the client is not a biological parent, an adoptive parent, a legally recognized parent on the child’s birth certificate, or caring for a child with the intention to adopt, what is the nature of the client’s relationship to the child?</li>
+            <li>If the client’s statement does not include all of the necessary information, obtain the necessary information.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding or if the client responded to the N-10-00-00 ACS letter:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 23.</li>
+            <li>If the client was not reached, go to step 24.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Conversion .</li>
+            <li>Comments: Type “Parental benefits requested.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy . If used during fact-finding, copy and paste the INS5168 form. If the parental benefits are requested for an adoption, type “I attest that the child was placed with me by a recognized authority. I further attest that I consider the placement to be permanent and that it is my intention to adopt the child placed with me since [YYYY-MM-DD]. I understand that the information provided is subject to verification and that making a false statement is subject to an administrative penalty or criminal proceedings for knowingly making this false or misleading statement.”
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the officer is awaiting documentation from the client:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted and the officer is awaiting documentation, go to step 25.</li>
+            <li>If the client was contacted and the officer is not awaiting documentation, go to step 27.</li>
+            <li>
+              If the client was not contacted and did not respond to the N-10-00-00 ACS letter, go to Proof of birth, adoption or placement not provided .
+              <xref href="#proof">Proof of birth, adoption or placement not provided</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding with client .</li>
+            <li>Comments: Type “Awaiting documentation for parental benefits.”</li>
+            <li>Bring forward date: Enter [10 business days from the day the client was contacted].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the information has been received:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 27.</li>
+            <li>
+              If no, determine if the INS5168 form is required:
+              <ul>
+                <li>If no, go to step 27.</li>
+                <li>
+                  If yes, go to Proof of birth, adoption or placement not provided .
+                  <xref href="#proof">Proof of birth, adoption or placement not provided</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

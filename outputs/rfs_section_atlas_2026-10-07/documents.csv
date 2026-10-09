@@ -1,0 +1,9 @@
+﻿letter,title,map,business_type
+C,Completing an ROE Issue RFS Action WI: C - Return to school,en/task/roe_rts/roe_rts.ditamap,task
+E,Completing an ROE Issue RFS Action WI: E - Quit,en/task/roe_quit/roe_quit.ditamap,task
+G,Completing an ROE Issue RFS Action WI: G - Mandatory retirement,en/task/roe_retirement/roe_retirement.ditamap,task
+K,Completing an ROE Issue RFS Action WI: K - Other,en/task/roe_other/roe_other.ditamap,task
+M,Completing an ROE Issue RFS Action WI: M - Dismissal,en/task/roe_dismissal/roe_dismissal.ditamap,task
+N,Completing an ROE Issue RFS Action WI: N - Leave of absence,en/task/roe_loa/roe_loa.ditamap,task
+F,Completing an ROE Issue RFS Action WI: B - Other — Fishing ROE,en/task/completing_roe_fishing_roe/completing_roe_fishing_roe.ditamap,task
+S,Completing an ROE Issue RFS Action WI: B - Strike or lockout,en/task/completing_roe_strike_lockout/completing_roe_strike_lockout.ditamap,task

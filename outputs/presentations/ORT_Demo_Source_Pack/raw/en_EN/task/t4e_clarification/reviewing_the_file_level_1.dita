@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if you have all the information needed to complete the request (e.g. what details need to be clarified on the T4E):</cmd>
+        <info>
+          <ul>
+            <li>
+              If additional information is needed from the client, fact-find to obtain the information and go to step 2.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If you have all the information needed, go to step 4.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4747.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no and the additional information was not obtained to complete the request, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “T4E clarification.”</li>
+            <li>
+              Details: Type “Client requested T4E clarification.” Document the fact-finding details according to Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client’s name or SIN is correct:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, go to Sending the enquiry to the regional tax coordinator (RTC) .
+              <xref href="#rtc">Sending the enquiry to the regional tax coordinator (RTC)</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the request about the T4E is related to EI ERB repayments:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, create and reassign an AI WI as follows:
+              <ul>
+                <li>Complexity: Select Level 1 .</li>
+                <li>Destination — Level: Select 1 - Natl Processing &amp; Payment Svcs (PPS) / Specialized EI Processing / Older Revised Work .</li>
+                <li>End User: Select Next available user .</li>
+                <li>Category: Select Not pay affected .</li>
+                <li>Issues(s): Select Other .</li>
+                <li>Comments: Type “T4E.”</li>
+                <li>Details: Enter all relevant information that will allow the specialized team officer determine the client’s entitlement to EI benefits during the EI ERB period.</li>
+                <li>Select OK .</li>
+              </ul>
+            </li>
+            <li>If no, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is questioning box 7 (repayment rate):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if regular benefits have been issued to the client in previous years:</cmd>
+        <info>
+          <ul>
+            <li>If yes, review the Statement of benefits paid (T4E) screen for previous tax years and go to step 8.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the payments in regular benefits equal a full week of benefits or more:</cmd>
+        <info>
+          <ul>
+            <li>If yes, the 30% repayment rate is correct. Go to step 9.</li>
+            <li>
+              If the repayment rate is incorrect, go to Sending the enquiry to the regional tax coordinator (RTC) .
+              <xref href="#rtc">Sending the enquiry to the regional tax coordinator (RTC)</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is contesting his obligation of benefit repayment:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 10.</li>
+            <li>
+              If yes, refer the client to the Canada Revenue Agency (CRA) and go to step 17.
+              <xref href="http://www.cra-arc.gc.ca/cntct/phn-eng.html">Canada Revenue Agency (CRA)</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is questioning one or more of the following:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4748.dita">Callout</xref>
+          <ul>
+            <li>If yes, compare the information on the T4E to the client’s file in FTS and go to step 11.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the enquiry was answered:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>
+              If the enquiry was not answered, complete the Itemized statement of benefits paid procedure.
+              <xref href="/en/procedure/activity/itemized_bs.shtml">Itemized statement of benefits paid</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is questioning box 17 (Employment benefits and support measures paid):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, verify the amount of benefits paid to the client:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the T4E information seems to be correct but the client still disputes it, complete the Itemized statement of benefits paid procedure.
+              <xref href="/en/procedure/activity/itemized_bs.shtml">Itemized statement of benefits paid</xref>
+            </li>
+            <li>
+              If the T4E information does not seem to be correct, complete the Itemized statement of benefits paid procedure.
+              <xref href="/en/procedure/activity/itemized_bs.shtml">Itemized statement of benefits paid</xref>
+            </li>
+            <li>
+              If Part II payments are issued by the province or territory and the client requests more information or disputes the information in this box, refer them to the provincial or territorial service provider. Consult the Provincial and territorial training authorities under Contacts for clients .
+              <xref href="/en/procedure/generic/ar_index_contacts_coordonnees.shtml">Provincial and territorial training authorities</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is questioning box 18 (Tax exempt benefits):</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 15.</li>
+            <li>
+              If yes, refer the client to CRA and go to step 17.
+              <xref href="http://www.cra-arc.gc.ca/cntct/phn-eng.html">CRA</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is questioning repayment information (boxes 26, 27 and 30):</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 16.</li>
+            <li>
+              If yes, go to Sending the enquiry to the regional tax coordinator (RTC) .
+              <xref href="#rtc">Sending the enquiry to the regional tax coordinator (RTC)</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the enquiry can be answered based on the client’s file:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the enquiry cannot be answered with the information in FTS, go to Sending the enquiry to the regional tax coordinator (RTC) .
+              <xref href="#rtc">Sending the enquiry to the regional tax coordinator (RTC)</xref>
+            </li>
+            <li>If the enquiry can be answered with the information in FTS, advise the client of the details and go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an AI WI for the T4E request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

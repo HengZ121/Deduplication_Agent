@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs">
+  <title>Inputs</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the referred training information is displayed on the Project tab:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 36.</li>
+            <li>If no, go to step 37.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex claim conditions .</li>
+            <li>Remarks Line 1: Type “EIA 25 — Special benefits.”</li>
+            <li>
+              Remarks Line 2: Type “CT [XX], REN WK [XXXX], APW [XXXX], PSW [XXXX], ENT WKS [XX], SEX [XX], SCI 99 (if applicable for extended parental benefits).”
+              <xref href="../../common_notes/note_c_2777.dita">Note</xref>
+            </li>
+            <li>Remarks Line 3: If applicable, type “[NO-CR]”, [claimant’s report information], [MA rescind information], or [D3 termination information].”</li>
+            <li>Remarks Line 4: Enter the appropriate information.</li>
+            <li>Remarks Line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 38.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex claim conditions .</li>
+            <li>Remarks Line 1: Type “EIA 25 — Special benefits.”</li>
+            <li>Remarks Line 2: Type “CT [XX], REN WK [XXXX], APW [XXXX], PSW [XXXX], ENT WKS [XX], SEX [XX], SCI 99 (if applicable for extended parental benefits).”</li>
+            <li>Remarks Line 3: If applicable, type “[NO-CR]”, [claimant’s report information], [MA rescind information], or [D3 termination information].”</li>
+            <li>Remarks Line 4: Type “T171 — — STRT-WK/DY [the course start w/c], END-WK-DY [the course end w/c], PROJ-HRRC [the Responsibility Centre code or institution code, if applicable], PROJ-NO [the 10-digit agreement number; use preceding zeros if the number is less than 10 digits], TRAIN-ID [the training ID code], BREAK START/END WK [the w/c code, of any break weeks].”</li>
+            <li>Remarks Line 5: Type “[decision maker].”</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any of the following decisions must be communicated to the client:</cmd>
+        <info>
+          <ul>
+            <li>There is an allocation of earnings.</li>
+            <li>There is a denied antedate.</li>
+            <li>
+              A disentitlement is being imposed.
+              <ul>
+                <li>If yes, go to step 40.</li>
+                <li>If no, go to step 41.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save or add details to the saved N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>If an antedate has been denied, select Antedate denied or postdate Message - Initial/renewal/continuing claim (2481) .</li>
+            <li>Special benefits approved (3046): Select Maternity and/or parental benefits (standard/extended) approved or denied with sickness options (3054) .</li>
+            <li>If there is an allocation, select Allocation of Earnings (2516) .</li>
+            <li>Waiting period messages (2445) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if Level 2 adjudication is required:</cmd>
+        <info>
+          <ul>
+            <li>If yes, in NWS, create a client Note and type “Send the N-00-00-00 letter.” Go to step 42.</li>
+            <li>If no, send the saved N-00-00-00 letter and go to step 43.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, reassign any CR WI for the contentious issue to Level 2 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Destination — SCC: Select the SCC as shown in FTS.</li>
+            <li>Complexity: Select Level 2 .</li>
+            <li>Reason: Select Unable to complete .</li>
+            <li>Details: Type “Unable to complete at Level 1.”</li>
+            <li>Go to step 43.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2721.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Conversion WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_proven__part-time_employmen_2df88268">
+  <title>Entitlement proven — Part-time employment on an initial or renewal claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Employer’s name] — entitlement proven during the labour dispute.”</li>
+            <li>
+              Details: Document the decision and rationale according to the Fact-Finding and Documentation Policy and Digest 8 — Labour dispute .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+              <xref href="https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/digest/chapter-8/table-of-contents.shtml">Digest 8 — Labour dispute</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if this is a renewal claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a D5 is imposed on the claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for the labour dispute issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: 94 - Manual Action .</li>
+            <li>Work type: 15 - Manual Action code 11, 12 or 14 .</li>
+            <li>Remarks line 1: Type “Labour dispute — entitled to benefits.”</li>
+            <li>Remarks line 2: Type “D5 to be terminated as of [date].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save the A-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Labour Dispute Disentitlement Suspended (2592) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, inform the employer of the decision by sending a Z-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Advising Employer that Claim Approved (2775): Select Approved claim of employee or former employee .</li>
+            <li>
+              Reason for Claim Approval (2783):
+              <ul>
+                <li>Select the appropriate option.</li>
+              </ul>
+            </li>
+            <li>
+              Messages to Yer - Monies paid to client and Benefit rate for SUB (2788):
+              <ul>
+                <li>Select Warning to ER: To inform us if pays any monies to employee .</li>
+              </ul>
+            </li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a client Note and type “Send the saved ACS letter.”</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding COR Manual Decision WI:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a system-generated ROD with a negative decision:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 13.</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a COR WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Claim type: Select the appropriate option.</li>
+            <li>Destination: Enter the SCC as shown in FTS.</li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Manual decision .</li>
+            <li>Details: Type “A-01-00-01 letter required — labour dispute issue.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the ADJ WI for the labour dispute issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

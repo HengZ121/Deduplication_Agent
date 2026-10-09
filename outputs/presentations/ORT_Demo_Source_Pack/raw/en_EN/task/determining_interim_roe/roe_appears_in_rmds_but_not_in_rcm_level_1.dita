@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="roe_appears_in_rmds_but_not_in_rcm">
+  <title>ROE appears in RMDS but not in RCM</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the ROE is issued under the correct SIN:</cmd>
+        <info>
+          <ul>
+            <li>If the ROE is issued under the correct SIN but does not appear in RCM, go to step 6.</li>
+            <li>
+              If the ROE is not issued under the correct SIN, determine if the original ROE is issued under a previous 900-series SIN for a now permanent resident:
+              <ul>
+                <li>If no, go to step 2.</li>
+                <li>
+                  If yes, go to SIN change .
+                  <xref href="/en/procedure/activity/change_sin.shtml">SIN change</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to Actioning an ROE issued with the wrong SIN before going to step 3.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the ROE that was issued under the wrong client’s SIN is a paper ROE:</cmd>
+        <info>
+          <ul>
+            <li>If it is not a paper ROE, go to step 4.</li>
+            <li>If it is a paper ROE, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Use the information from the incorrect ROE (issued under the wrong SIN) to create an interim ROE. In the Additional Information field, type “Interim ROE was entered to replace ROE [serial number of the missing ROE] which was incorrectly issued with a SIN other than the client’s.” For more information, refer to Entering an interim ROE .</cmd>
+      </step>
+      <step>
+        <cmd>Refer to Data entry — Paper document to enter the paper ROE using the correct SIN. In the Additional Information field , type “This ROE was originally issued under the wrong SIN.” If a validation error occurs when the ROE is entered, correct the error. For more information, refer to Correct an ROE . Go to step 15.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there are other ROEs issued under the same SIN by the same employer after the missing ROE was issued:</cmd>
+        <info>
+          <ul>
+            <li>If there are no ROEs issued by the same employer after the missing ROE was issued, go to step 7.</li>
+            <li>
+              If there are other ROEs issued under the same SIN by the same employer after the missing ROE was issued, determine if one of those ROEs displays the serial number of the missing ROE in block 2 (amended ROE):
+              <ol>
+                <li>If another ROE has the serial number of the missing ROE in block 2 , go to step 10.</li>
+                <li>If no other ROE has the serial number of the missing ROE in block 2 , go to step 7.</li>
+              </ol>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Send an enquiry to your business expertise advisor to determine why the missing ROE is not appearing in RCM.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select ROE .</li>
+            <li>Comments: Type “Missing ROE from [employer name].”</li>
+            <li>Details: Document the fact-finding details not yet detailed and type “Referral sent to Business Expertise Advisor to determine why the missing ROE which has been received is not appearing in RCM. Follow-up required to determine if recalculation is required.”</li>
+            <li>Select Save . (Do not leave it as a draft.)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Use the details of the missing ROE in RMDS to create an interim ROE. In the Additional Information field, type “Interim ROE was created to replace ROE [serial number of the missing ROE] which has been received but is not appearing in RCM.” Go to Entering an interim ROE .</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the period covered by the subsequent ROE falls entirely after the period covered by the ROE missing in RCM:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 11.</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3166.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the period covered by the subsequent ROE is the same as the period covered by the ROE missing in RCM:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3167.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is applying for benefits based on a previous I of E that occurred during the period covered by the subsequent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If the client is applying for benefits based on a previous I of E, go to step 13.</li>
+            <li>If the client is not applying for benefits based on a previous I of E, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, update the subsequent ROE to only include the period of employment after the period covered by the original ROE (if necessary, refer to How to complete the Record of Employment ). If an error message is displayed, correct the error (refer to Correct an ROE , if required). Select Accept and go to step 14.</cmd>
+      </step>
+      <step>
+        <cmd>Use the details of the missing ROE in RMDS to create an interim ROE. In the Additional Information field, enter “Interim ROE was entered to replace ROE [serial number of the missing ROE] which was incorrectly amended by [serial number of more recent ROE].” Go to Entering an interim ROE .</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3168.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if the WI is an AI WI:</cmd>
+        <info>
+          <ul>
+            <li>If it is an AI WI, complete the WI.</li>
+            <li>
+              If it is a CA, SA or CR recalculation WI, return to Reviewing information for a missing ROE .
+              <xref href="/en/procedure/task/calc_determining/missing_roe.shtml">Reviewing information for a missing ROE</xref>
+            </li>
+            <li>If it is any other WI, return to the previous task.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If another ROE has the serial number of the missing ROE in block 2 , go to step 10.</cmd>
+      </step>
+      <step>
+        <cmd>If no other ROE has the serial number of the missing ROE in block 2 , go to step 7.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

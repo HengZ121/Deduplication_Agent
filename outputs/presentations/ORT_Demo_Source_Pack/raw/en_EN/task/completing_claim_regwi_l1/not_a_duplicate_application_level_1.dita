@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="not_a_duplicate_application">
+  <title>Not a duplicate application</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the application must be moved to Pending until an outstanding registration number is completed (e.g. a conversion or renewal application after an outstanding initial or recalculation registration number is finalized):</cmd>
+        <info>
+          <ul>
+            <li>If the application must be moved to Pending, go to step 2.</li>
+            <li>If the application does not need to be moved to Pending, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the CS WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Unable to register application as outstanding registration number is not completed.”</li>
+            <li>
+              Bring forward date: Select the appropriate option:
+              <ul>
+                <li>If the outstanding registration number has an unassigned WI, enter the due date of the unassigned WI. If the due date has been reached, enter today’s date + 10 business days.</li>
+                <li>If the outstanding registration number has a WI in Pending, enter the bring-forward date of the WI in Pending.</li>
+                <li>If the outstanding registration number does not have a WI in Pending and the outstanding registration number is for an application filed within the last 28 days, enter the date of application + 28 days.</li>
+                <li>If the outstanding registration number does not have a WI in Pending and the application was filed more than 28 days ago, enter the date of application + 44 days.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the CS WI moves to the current workload, determine if the outstanding registration number is complete:</cmd>
+        <info>
+          <ul>
+            <li>If no, return to step 2.</li>
+            <li>If yes, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If an initial claim must be registered, go to step 5.</li>
+            <li>If a renewal application must be registered, go to step 25.</li>
+            <li>If no registration number is required (i.e. claim is BPNE 2 and the last ROE is still missing), go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, verify that the correct mainframe is selected and register the claim as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              On the Claim Selection screen, do the following:
+              <ul>
+                <li>Social Insurance Number: Enter the client’s SIN.</li>
+                <li>Registration type: Select Initial .</li>
+                <li>Select Search .</li>
+              </ul>
+            </li>
+            <li>
+              Review the Name and Address screen.
+              <xref href="../../common_notes/note_c_2168.dita">Note</xref>
+              <xref href="../../common_notes/note_c_2647.dita">Note</xref>
+              <ul>
+                <li>
+                  For a commuter claim, complete the following fields as follows:
+                  <ul>
+                    <li>Ordinary place of residence different: Select Yes .</li>
+                    <li>Residence postal code: Enter the workplace postal code.</li>
+                    <li>
+                      Mailing address: Do the following:
+                      <ul>
+                        <li>First line of address: Enter the delivery address. If necessary, enter the apartment number on the first line after the delivery address.</li>
+                        <li>Second line of address: Enter the city name, 2-letter state abbreviation and ZIP code. Separate the state abbreviation from the ZIP code with 2 spaces. The ZIP code may be either 5 or 9 digits. If the 9-digit format is used, use a hyphen to separate the fifth and sixth digits.</li>
+                        <li>Last line of address: Type “United States.”</li>
+                      </ul>
+                    </li>
+                    <li>Postal code: Type “XXXXXX.”</li>
+                    <li>Economic region - new and Economic region - old: Both fields are prefilled based on the client’s mailing address information. For a commuter claim, enter the economic region associated with the workplace postal code (if not prefilled when the residence postal code was entered).</li>
+                    <li>Tax province: This field is prefilled based on the client’s mailing address information. For a commuter claim, select Commuters .</li>
+                    <li>
+                      Responsible SCC: Do the following:
+                      <ul>
+                        <li>If the field is blank, enter the SCC shown on the WI History tab of the CS WI.</li>
+                        <li>For a commuter claim, enter the SCC associated with the workplace postal code.</li>
+                      </ul>
+                    </li>
+                    <li>Tax credit: This field is prefilled based on the client’s information.</li>
+                    <li>Select Next .</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>On the Application Form screen, select Next .</li>
+            <li>
+              On the Registration screen, do the following:
+              <ul>
+                <li>Pay SCC: If the field is blank, enter the SCC shown on the WI History tab of the CS WI (the same one input in the Responsible SCC field).</li>
+                <li>Service unit: Type “01.”</li>
+                <li>Tentative BPC: If the field is blank, determine the BPC based on the client’s LDW and application date. If the registration number being obtained is for a subsequent claim, select the week after the previous claim’s LRW.</li>
+                <li>Claim source: Select Appli-web (virtual) .</li>
+                <li>Initial intake transaction (M149) required: Select Yes to generate the Initial Intake (M149) transaction.</li>
+                <li>
+                  Select Generate registration .
+                  <xref href="../../common_notes/note_c_2648.dita">Note</xref>
+                </li>
+                <li>Select Next .</li>
+              </ul>
+            </li>
+            <li>On the M149 - Initial Intake Data screen, select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, determine if an error message is displayed for the Intake Data (M149) screen:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, review the M149 - Initial Intake Data screen to determine the error code and select it to display its description.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_2649.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Based on the error code description, determine if the current claim can be terminated online or if IPOC action is required:</cmd>
+        <info>
+          <ul>
+            <li>If IPOC action is required, go to step 9.</li>
+            <li>If the claim can be terminated online, go to step 11.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2650.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine what IPOC action is required:</cmd>
+        <info>
+          <ul>
+            <li>To terminate an MPS claim, go to step 12.</li>
+            <li>To clear overlapping weeks on the Pay History (MHQ1) screen, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any of the overlapping weeks have been paid:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, correct the rejected M149 - Initial Intake Data transaction and update the BPC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Tentative BPC: Enter the correct tentative BPC.</li>
+            <li>Terminate previous claim: Check Yes .</li>
+            <li>Select Update to transmit the information.</li>
+            <li>Go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC Review (IPOC REV) WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the SCC based on your regional IPOC:
+              <ul>
+                <li>Atlantic: 1826</li>
+                <li>Quebec: 2642</li>
+                <li>Ontario: 3056</li>
+                <li>Western Canada and Territories: 5903</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>
+              Issue: Select the appropriate issue:
+              <ul>
+                <li>MPS - Claim termination request.</li>
+                <li>Pay history summary adjustment.</li>
+              </ul>
+            </li>
+            <li>BPC: Enter the BPC of claim that must be terminated.</li>
+            <li>Comments: Type “Claim termination to start a new claim — [error code].”</li>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>To terminate an MPS claim, type “In order to start a new claim, please terminate the CS08 BPC [XXXX].”</li>
+                <li>To modify the Pay History (MHQ1) screen, type “In order to start a new claim, please clear PHS for weeks [XXXX] and greater.”</li>
+              </ul>
+            </li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the CS WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Request to [remove MPS claim/clear PHS] sent to IPOC.”</li>
+            <li>Bring forward date: Enter today’s date + 2 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the CS WI moves to the current workload, determine if IPOC has completed the requested action:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 13.</li>
+            <li>If yes, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Ensure that the SIN is not open in SSO.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Initial Intake (M149) transaction to update the BPC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Tentative BPC: Enter the correct tentative BPC.</li>
+            <li>Select Update .</li>
+            <li>Go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a revised registration number for the issue:</cmd>
+        <info>
+          <ul>
+            <li>If there is a registration number, go to step 18.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - No .</li>
+            <li>Complete: Select D - No .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim that needs to be terminated.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 35 - Claim Cancellation .</li>
+            <li>Remarks Line 1: Type “In order to start a new claim, please clear PHS for weeks XXXX and greater.</li>
+            <li>Remarks Line 2: Type “[your name and telephone number].”</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 97 - Internal Adjustment .</li>
+            <li>Contentious: Select 2 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the CS WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Request to clear PHS sent to IPOC.”</li>
+            <li>Bring forward date: Enter today’s date + 7 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the CS WI moves to the current workload, determine if the overlapping weeks have been cleared from the Pay History (MHQ1) screen:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 21.</li>
+            <li>If yes, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Ensure that the SIN is not open in SSO.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Initial Intake (M149) transaction to update the BPC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Tentative BPC: Enter the correct tentative BPC.</li>
+            <li>Select Update .</li>
+            <li>Go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client submitted a renewal application to reactivate an established claim for a different BT than the one previously claimed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 26.</li>
+            <li>If no, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding AI WI or a CR WI related to the conversion request:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 27.</li>
+            <li>If yes, go step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 2 - Renewal .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CS WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client using the Claimant's report: 2-week period amendment — Checklist or Claimant's report: Multiple weeks amendment — Checklist .</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 7.</li>
+            <li>
+              If the client could not be contacted and did not reply to the N-10-00-00 letter, go to Modification not required — Unable to obtain missing information .
+              <xref href="#CompleteWIL2">Modification not required — Unable to obtain missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Client’s reports .</li>
+            <li>Comments: Type “Claimant’s reports — [w/c].”</li>
+            <li>
+              Details: Copy and paste the Claimant's report: 2-week period amendment — Checklist or Claimant's report: Multiple weeks amendment — Checklist if completed during fact-finding. Document any additional fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-2-week_period_amendment-Checklist.doc">Claimant's report: 2-week period amendment — Checklist</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Multiple_weeks_amendment-Checklist.doc">Claimant's report: Multiple weeks amendment — Checklist</xref>
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

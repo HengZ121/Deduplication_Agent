@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="operational_centre_memo_mm06_required_f_ef0194c4">
+  <title>Operational Centre Memo (MM06) required for the original decision</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the detection code that was used for the original decision.</li>
+            <li>Infraction: Select the infraction code that was used for the original decision.</li>
+            <li>Message: Select the OP message code that was used for the original decision.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>1 - Misrepresentation</li>
+                <li>2 - Non misrepresentation</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Type “ Undeliverable Notice of Debt. Rescind decision input on [DD-MM-YYYY] or MM06 dated [DD-MM-YYYY].”</li>
+            <li>Remarks line 2: Type “W/cs [XXXX] to [XXXX] are now outside of the reconsideration period.”</li>
+            <li>
+              Remarks line 3: Type “Re-input the OP for remaining weeks at current date.” If there is also a penalty, provide the following information:
+              <ul>
+                <li>P: penalty percentage, including mitigating circumstances</li>
+                <li>LMR: 1st, 2nd or 3rd level of misrepresentation (for the penalty percentage)</li>
+                <li>MPA: maximum penalty amount</li>
+                <li>LVA: legal validation amount</li>
+                <li>VLN: violation information (V-1-1 warning letter issued or 0 penalty imposed)</li>
+                <li>Integrity case number</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the new decision letters to replace the decision letters whose status was changed to undeliverable.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a D48 or a MA48 is imposed:</cmd>
+        <info>
+          <ul>
+            <li>If a D48 is not imposed, complete the WI.</li>
+            <li>
+              If a D48 or a MA48 is imposed go to Determining if inputs are required for a suspension of benefits .
+              <xref href="#level2_item_10">Determining if inputs are required for a suspension of benefits</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="unable_to_obtain_proof_of_death">
+  <title>Unable to obtain proof of death</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Failure to provide entitlement information.”</li>
+            <li>Details: Type “The letter was sent on [date]. There has been no response from the client. D15 is imposed for failure to provide [requested information].”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Disqualifications/Disentitlement (M161) transaction and impose the 15 - Claim procedure disentitlement (D15) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 15 - Claim procedure .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlements (2976)
+              <ul>
+                <li>D48 and D15 – Moved – Address unknown and claim procedure (3006)</li>
+                <li>D15 - Claim procedure (3009)</li>
+                <li>D15 - Text: Insert appropriate reason for D15.</li>
+                <li>We/In addition, we (2687)</li>
+                <li>Indefinite/Definite/Multiple Disentitlement dates (2485)</li>
+                <li>
+                  Text - Insert appropriate reason(s) (1618): Type the appropriate message:
+                  <ul>
+                    <li>“You have not returned our call following message left on [date].”</li>
+                    <li>“You have not contacted us following the letter sent to you on [date].”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any returned payments. For additional information, refer to Returned payment :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>If no, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 92 - Purge and Recreate .</li>
+                <li>If the claim is in MPS, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work Type: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 24 - Cancelled payment .</li>
+                <li>If the claim is in MPS, select 43 - Cancelled payment .</li>
+              </ul>
+            </li>
+            <li>Remarks lines 1 and 2: Type “Deceased client. No representative is on file. Cancel the following payments in SPS and adjust the claim file:”</li>
+            <li>Remarks lines 3 and 4: Type “T071-2 [for the current year] or T071-8 [for the previous year]/reason F/wc [XXXX]/CT [XX]/gross amount [XXXX]/federal tax [XX]/provincial tax [XX]/net amount [XXXX]/PRN [XXXXXXXXXXXX].”</li>
+            <li>Remarks line 5: Type your first and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

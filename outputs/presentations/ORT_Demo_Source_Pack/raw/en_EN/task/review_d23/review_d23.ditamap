@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="review_d23" xml:lang="en-CA">
+  <title>Reviewing a D23 disentitlement</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="teacher_-_non-teaching_period_d23_disentitlement.dita">
+    </topicref>
+    <topicref href="non-teaching_period.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="nws.dita">
+    </topicref>
+    <topicref href="fts.dita">
+    </topicref>
+    <topicref href="imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="reviewing_the_decision_level_2.dita">
+      </topicref>
+      <topicref href="decision_rescinded_level_2.dita">
+      </topicref>
+      <topicref href="client_not_contacted_level_2.dita">
+      </topicref>
+      <topicref href="decision_maintained_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4576.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

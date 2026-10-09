@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="ctd_uncalculated" xml:lang="en-CA">
+  <title>Changing a tax deduction on an uncalculated claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="receiving_a_request_to_change_the_tax_deduction.dita">
+    </topicref>
+    <topicref href="determining_the_tax_code.dita">
+    </topicref>
+    <topicref href="requests_for_a_higher_tax_deduction_rat_ed5caebb.dita">
+    </topicref>
+    <topicref href="status_indian_clients_participating_in__8e02feb4.dita">
+    </topicref>
+    <topicref href="interstate_and_outside_canada_claims.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="determining_if_fact-finding_is_required_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_claim_is_in_automation_level_1.dita">
+      </topicref>
+      <topicref href="moving_a_wi_for_a_claim_currently_in_au_3342d17a_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_claim_must_be_conver_89f1d26e_level_1.dita">
+      </topicref>
+      <topicref href="changing_the_tax_deduction__conversion__a64f1344_level_1.dita">
+      </topicref>
+      <topicref href="changing_the_tax_deduction__conversion__3bce43a6_level_1.dita">
+      </topicref>
+      <topicref href="no_change_to_the_tax_deduction_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_0019.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="documenting_the_file_level_2.dita">
+      </topicref>
+      <topicref href="reassigning_the_change_request_to_level_1_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="level_1">
+  <title>Level 1</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In Curam, confirm that the Interruption of Earnings evidence states that no interruption has occurred as follows:</cmd>
+        <info>
+          <ul>
+            <li>From the Application Case, select the Evidence tab from the navigation bar.</li>
+            <li>From the Evidence Dashboard , select Evidence from the menu on the left-hand side.</li>
+            <li>From the Type column, locate the Application Receipt Details and select &gt; to view the details obtained from the client’s application for benefits.</li>
+            <li>Under Interruption of Earnings Details , confirm that an interruption of earnings has not occurred .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client to determine if they have reduced their self-employment activities by 40% or more.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 4.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Finalize Claim BPNE 8 .
+              <xref href="#level1_item_2">Finalize Claim BPNE 8</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “Curam claim. Interruption of earnings - SE.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client had an interruption of earnings:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Finalize Claim BPNE 8 .
+              <xref href="#level1_item_2">Finalize Claim BPNE 8</xref>
+            </li>
+            <li>
+              If yes, go to Authorize the Application Case .
+              <xref href="#level1_item_3">Authorize the Application Case</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

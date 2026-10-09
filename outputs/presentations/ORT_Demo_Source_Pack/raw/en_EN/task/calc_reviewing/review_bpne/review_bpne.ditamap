@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="review_bpne" xml:lang="en-CA">
+  <title>Reviewing the calculation result — Insurable hours in the qualifying period</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="qualifying_for_all_benefit_types_bts.dita">
+    </topicref>
+    <topicref href="obtaining_actual_hours_worked.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0019.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0887.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2362.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_sso.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_for_a_sat_roe_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_actual_hours_worked_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_for_special_communic_04cb6483_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_for_a_pending_insura_4d4aa8df_level_1.dita">
+      </topicref>
+      <topicref href="no_pending_insurability_ruling_level_1.dita">
+      </topicref>
+      <topicref href="pending_insurability_ruling__related_ro_3d9b1286_level_1.dita">
+      </topicref>
+      <topicref href="pending_insurability_ruling__client_qua_a055a36c_level_1.dita">
+      </topicref>
+      <topicref href="pending_insurability_ruling__client_doe_f78d9305_level_1.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2363.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2364.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2365.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2366.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

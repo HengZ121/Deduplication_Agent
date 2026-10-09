@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="false_statement_not_knowingly_made__rec_6849f356">
+  <title>False statement not knowingly made — Reconsideration within 36 months</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD for the insurability issue as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — non-insurable employment — [employer’s name].”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim for benefits is active, terminated, blocked or archived:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 3.</li>
+            <li>
+              If the claim is terminated, but may be reactivated:
+              <ul>
+                <li>On the Terminated tab, select the appropriate BPC.</li>
+                <li>Select Reactivate .</li>
+                <li>Go to step 3.</li>
+              </ul>
+            </li>
+            <li>If the claim is blocked or archived, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an MA is imposed to stop payments for the insurability of employment:</cmd>
+        <info>
+          <ul>
+            <li>If an MA is imposed, go to step 4.</li>
+            <li>If an MA is not imposed, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to remove the MA and input the disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Manual Action: Select the appropriate MA.</li>
+            <li>Rescind: Check the box.</li>
+            <li>Action: Select Add .</li>
+            <li>
+              Disentitlement: Select 14 - Void benefit period .
+              <ul>
+                <li>Effective: Enter the w/c of the BPC to 9999.</li>
+              </ul>
+            </li>
+            <li>Infraction: Select C - Non-fraud - Insurability - new information .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Disqualifications/Disentitlements (M161) transaction and input the disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Add.</li>
+            <li>
+              Disentitlement: Select 14 - Void benefit period .
+              <ul>
+                <li>Start date: Enter the w/c of the BPC.</li>
+                <li>End date: Select Indefinite .</li>
+              </ul>
+            </li>
+            <li>Infraction: Select C - Non-fraud - Insurability - new information .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s status by reviewing the Blocked Status column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 2 - Not blocked is displayed, return to step 2.</li>
+            <li>If 1 - Updateable is displayed, go to step 7.</li>
+            <li>If any other status is displayed, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 8.</li>
+            <li>If all rows are blank, go to step 10.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1800.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable status in BCS.”</li>
+            <li>Bring forward date: Enter the next working day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, repeat step 8.</li>
+            <li>If all rows are blank, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number.</li>
+                <li>D - No to leave the registration number open for subsequent transactions.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disentitlements tab, input the disentitlement on the Disentitlements section as follows (up to 3 disentitlements in BCS cans be imposed or rescinded):</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select 14 - Void benefit period .</li>
+            <li>Start date: Select the BPC.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Infraction: Select C - Non-fraud - Insurability - new information .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 13.</li>
+            <li>If the transaction shown is correct, select Close and go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the investigation type as displayed in NISS.</li>
+            <li>Infraction: Select C - Non-fraud - Insurability - new information .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim for the insurability of the employment.</li>
+            <li>Work Item: Select 91 - Overpayment .</li>
+            <li>Work Type: Select 2 - Non-Misrepresentation .</li>
+            <li>Earnings to be allocated: Leave blank.</li>
+            <li>Remarks line 1: Type “D14 from w/c [XXXX] to 9999.”</li>
+            <li>Remarks line 2: Type ACS letter already sent.</li>
+            <li>Remarks line 3: Leave the field blank.</li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlements (2976):
+              <ul>
+                <li>D5, D12, D13, D14, D23 (3011) .</li>
+                <li>D14 - Claim cancelled - Various reasons (3019) .</li>
+                <li>Select D14 - CRA insurability ruling .</li>
+                <li>Select BPC Date - Sunday’s date (1060) .</li>
+              </ul>
+            </li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>Blank if there is no OP.</li>
+                <li>Overpayment – No misrepresentation and active claim .</li>
+                <li>Overpayment – No misrepresentation and inactive claim .</li>
+                <li>Right to Request a Reconsideration (4169) .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, from Report of Investigation , select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select Yes .</li>
+            <li>Reason: Select Other and type “Non-insurable employment.”</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a CR Recalculation WI pending or unassigned in the related WIs for this BPC:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 19.</li>
+            <li>If no, go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create an AI WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Urgent: Check the box.</li>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Claim type: Select Revised .</li>
+            <li>Destination — Level: Select EI Processing .</li>
+            <li>End User: Select Next available user .</li>
+            <li>Category: Select Pay affected .</li>
+            <li>Issue: Select Calculation .</li>
+            <li>Comments: Type “Level 1 recalculation — Integrity case [Integrity case number].”</li>
+            <li>Details: Type “ROE [serial number] is not insurable. A recalculation of BPC [DD-MM-YYYY] is not required. Complete the Claim Review Recalculation work item and clear the recalculation registration number for this BPC, if necessary.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

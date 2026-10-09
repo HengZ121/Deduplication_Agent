@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="warrant_not_received_and_not_cashed">
+  <title>Warrant not received and not cashed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Ask the client to confirm his or her address, and check whether the address on file was correct when the warrant was issued:</cmd>
+        <info>
+          <ul>
+            <li>If the address on file is correct, go to step 6.</li>
+            <li>
+              If the address on file is incorrect, change the address for the client and go to step 9.
+              <xref href="/en/procedure/activity/change_address.shtml">change the address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SPS, check the date the warrant was issued:</cmd>
+        <info>
+          <ul>
+            <li>If 8 or fewer working days have passed since the warrant was issued, go to step 7.</li>
+            <li>If more than 8 working days have passed since the warrant was issued, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Inform the client that, if the warrant has not been received by [warrant issue date + 8 working days], the client must contact the call centre, which can then submit a replacement request.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Warrant replacement declined.”</li>
+            <li>Details: Type “On [warrant issue date + 8 working days], the client was told to submit a new replacement request if they had not received warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD].”</li>
+            <li>Go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Provide the client with the following information:</cmd>
+        <info>
+          <ul>
+            <li>The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days.</li>
+            <li>If both payments (original and replacement) are received, only one can be cashed and the other must be returned to Service Canada.</li>
+            <li>If both payments are cashed, an investigation will be conducted, reimbursement of the original payment could be required and a penalty may be imposed.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4302.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the SIN.</li>
+            <li>HRCC: Enter the Service Canada Centre (SCC) as shown in FTS.</li>
+            <li>Requester: Enter the 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payment to be replaced.</li>
+            <li>Warrant No(s): Enter the payment reference number that appears on the Payment Summary (MN19) information screen.</li>
+            <li>Amount(s): Enter the payment amount that appears on the Payment Summary (MN19) information screen.</li>
+            <li>Name: Enter the client’s surname and given name.</li>
+            <li>
+              Address: Enter the client’s address as follows:
+              <ul>
+                <li>On the first line, enter the street address.</li>
+                <li>On the second line, enter the city, province and postal code.</li>
+              </ul>
+            </li>
+            <li>Telephone number: Enter the client’s telephone number.</li>
+            <li>
+              Action: Type the appropriate information:
+              <ul>
+                <li>“The client has not received the warrant issued more than 8 working days ago.” or</li>
+                <li>“The client has not received the warrant because the warrant was sent to the wrong address. The address has been updated.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 Moncton IPOC .</li>
+                <li>Ontario: Select 3056 Belleville IPOC .</li>
+                <li>Quebec: Select 2642 Montreal IPOC (3) .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Type BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>
+              Details: Copy and paste the information from the INS5207 form .
+              <xref href="https://esdc.prv/en/service-canada/ei/reference-material/forms/documents/checklists/form_5207.doc">INS5207 form</xref>
+            </li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Payment replacement request submitted to IPOC.”</li>
+            <li>
+              Details: Type the appropriate information:
+              <ul>
+                <li>“The client has not received the warrant issued more than 8 working days ago.” or</li>
+                <li>“The warrant was sent to the wrong address.” and type “A payment replacement request was submitted to IPOC for warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD]. The client has been informed and understands that: The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days. If both payments (original and replacement) are received, only one can be cashed and the other must be returned to Service Canada. If both payments are cashed, an investigation will be conducted, reimbursement of the original payment may be required and a penalty could be imposed.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If there is a WI, complete it.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

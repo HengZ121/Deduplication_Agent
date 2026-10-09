@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="communication_attempt_in_writing">
+  <title>Communication attempt in writing</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine who you are trying to reach:</cmd>
+        <info>
+          <ul>
+            <li>If it is the employer, go to step 52.</li>
+            <li>If it is the client, go to step 57.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer is an interested party in the request for reconsideration:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 53.</li>
+            <li>If no, go to step 54.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the X-04-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Acknowledgement and Request call back from Employer (11830)</li>
+            <li>This letter replaces or Footnote Employer (2365)</li>
+            <li>Text - Footnote (11745): Type “You may call any weekday up to and including [today’s date + 10 working days] between the hours of [list hours of work, including the time zone]. The sooner you contact us, the sooner we can process this request.”</li>
+            <li>Go to step 55.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the Z-00-00-00. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Employer or Third Party Name (1334) .</li>
+            <li>Employer or Third Party Address 1 (1336) .</li>
+            <li>Employer or Third Party Address 2 (2440) .</li>
+            <li>Employer or Third Party Address 3 (2441) .</li>
+            <li>Text - Free Text (1612): Enter the issue you are enquiring about and type “You may call any weekday up to and including [today’s date + 10 business days] between the hours of [hours of work, including the time zone] at the following telephone number: [your telephone number].”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary] — [party being called].”</li>
+            <li>Details: Type “No communication by telephone with the client [and why, if no attempts were made]. [X-04-00-00 or Z-00-00-00] letter has been sent. Response due [today’s date + 10 business days].” If not already documented, enter your telephone number in case the employer contacts the call centre.</li>
+            <li>Select Draft .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding (employer).</li>
+            <li>Comments: Type “Awaiting response to letter [X-04-00-00 or Z-00-00-00] sent on [DD-MM-YYYY].”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+            <li>Go to step 60.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send X-03-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Acknowledgment and Request call back from claimant (11913)</li>
+            <li>This letter replaces or Footnote Employer (2365)</li>
+            <li>Text - Footnote (11745): Type “You may call any weekday up to and including [today’s date + 10 business days] between the hours of [list hours of work, including the time zone]. The sooner you contact us, the sooner we can process this request.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary] — [party being called].”</li>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>“Unable to validate the client’s identity by telephone. X-03-00-00 letter has been sent. Response due [today’s date + 10 business days].” If not already documented, enter your telephone number in case the client contacts the call centre.</li>
+                <li>“No communication by telephone with the client [and why, if no attempts were made]. X-03-00-00 letter has been sent. Response due [today’s date + 10 business days].” If not already documented, enter your telephone number in case the client contacts the call centre.</li>
+                <li>“Unable to reach the client by telephone — no telephone number on file.”</li>
+              </ul>
+            </li>
+            <li>Select Draft .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding client .</li>
+            <li>Comments: Type “Awaiting response to letter X-03-00-00 sent on [DD-MM-YYYY].”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves the current workload, determine if the party responded:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 61.</li>
+            <li>
+              If no, go to Unable to complete the call .
+              <xref href="#_Unable_to_complete_l2">Unable to complete the call</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if it is a client returning the call:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Validating a client’s identity when communicating by telephone and go to step 62.
+              <xref href="/en/procedure/generic/additionalresources/validating_cict.shtml">Validating a client’s identity when communicating by telephone</xref>
+            </li>
+            <li>
+              If no, go to Completing the call .
+              <xref href="#PartyContacted2">Completing the call</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client’s identity could be validated:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 63.</li>
+            <li>If no, go to step 65.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Validate the client’s address:</cmd>
+        <info>
+          <ul>
+            <li>If the client’s address is the same as the one on file, go to step 64.</li>
+            <li>
+              If the client’s address is different than the one on file, refer to Change of address , then go to step 64.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary] — [party being called].”</li>
+            <li>
+              Details: Type “The client’s identity and address have been validated.” Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Draft .</li>
+            <li>
+              Go to Completing the call .
+              <xref href="#PartyContacted2">Completing the call</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created when attempting to contact the party or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary — [party being called].”</li>
+            <li>
+              Details: Type “Unable to validate the client’s identity by telephone.” Document any additional details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Draft .</li>
+            <li>
+              Go to Unable to complete the call .
+              <xref href="#_Unable_to_complete_l2">Unable to complete the call</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="allocating_earnings__operational_centre_0a558ff0">
+  <title>Allocating earnings — Operational Centre Memo (MM06) transaction</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the vacation pay.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks Line 1: Type “Input M175 V-$XXXX (amount to allocate) from XXXX (first day of allocation) to XXXX (last day of allocation), $XXX (amount to be allocated on last week if different).” Example of transaction: V-$700-1679-1682-$400</li>
+            <li>Remarks Line 5: Type your name and telephone number.</li>
+            <li>
+              Contentious: Select 1 - No .
+              <ul>
+                <li>Complete: Select C - Yes to clear the registration number.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the appropriate registration number from the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the earnings was declared on the claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 27.</li>
+            <li>If no, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the status of the claimant’s reports:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the claimant’s reports were processed, refer to Modifying a claimant’s report to correct the information.
+              <xref href="/en/procedure/task/modifying_cr.shtml">Modifying a claimant’s report</xref>
+            </li>
+            <li>
+              If the claimant’s reports were not processed, refer to Actioning a rejected claimant’s report to re-input the reports.
+              <xref href="/en/procedure/task/rejected_cr.shtml">Actioning a rejected claimant’s report</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the originating task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

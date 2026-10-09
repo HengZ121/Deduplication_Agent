@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="actioning_a_fraudulent_renewal_on_a_cla_fb0c57cf">
+  <title>Actioning a fraudulent renewal on a claim that is blocked, archived or converted to MPS — Client is requesting benefits</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NIIS, determine if Integrity identified fraudulent ROEs:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, determine if fraudulent the ROEs have been deleted:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>If yes, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, open each ROE identified as fraudulent in NIIS by Integrity and delete them as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box.</li>
+            <li>Additional information : Type “Investigation has been completed. This fraudulent ROE must remain in deleted status. (NIIS case [XXXXXX]).”</li>
+            <li>Select Validate .</li>
+            <li>Select Submit .</li>
+            <li>Go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the following text appears in the Additional information section of the deleted ROE: “Investigation has been completed. This fraudulent ROE must remain in deleted status. (NIIS case [XXXXXX]).”</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, do the following:
+              <ul>
+                <li>Additional information : Type “Investigation has been completed. This fraudulent ROE must remain in deleted status. (NIIS case [XXXXXX]).”</li>
+                <li>Select Validate .</li>
+                <li>Select Submit .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any fraudulent ROEs in the QP of one of the client’s established claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any fraudulent ROEs were used to calculate one of the client’s established claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an AI WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Urgent: Check the box.</li>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Claim type: Select Initial .</li>
+            <li>Destination — Level: Select 1 - Natl Processing &amp; Payment Svcs (PPS) / Specialized EI Processing / ISB Post Audit Processing .</li>
+            <li>End user: Select Next available user .</li>
+            <li>Category: Select Pay affected .</li>
+            <li>Issue: Select Calculation .</li>
+            <li>BPC: Enter the BPC requiring a recalculation.</li>
+            <li>Comments: Type “Integrity confirmed that ROEs [serial numbers] are fraudulent. The ROEs have been deleted. Recalculate the client’s claim. Ensure the banking information and address are correct.”</li>
+            <li>Source Details: Enter the Integrity case number.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a contentious reason for separation (RFS) in the QP:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the BPC:</cmd>
+        <info>
+          <ul>
+            <li>If the BPC is between w/c 2310 and w/c 2361, go to step 10.</li>
+            <li>If the BPC is between w/c 2258 and w/c 2309, go to step 11.</li>
+            <li>If the BPC is between w/c 2230 and w/c 2257 and it is a claim for special benefits other than sickness benefits, adjudicate each contentious FRS issue, unless the decision can be deferred. Go to step 12.</li>
+            <li>If the BPC is w/c 2362 or after, adjudicate each contentious FRS issue, unless the decision can be deferred. Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine is there is a contentious RFS in the QP on the most recent ROE that belongs to the client:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, do the following:
+              <ul>
+                <li>Open the corresponding RFS issue (i.e. the automatically resolved ROD with Adjudication not required ).</li>
+                <li>Decision Options: Select Decision no longer valid .</li>
+                <li>Select OK .</li>
+                <li>Adjudicate the contentious RFS from the most recent ROE belonging to the client.</li>
+                <li>Go to step 12.</li>
+              </ul>
+            </li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting regular or sickness benefits:</cmd>
+        <info>
+          <ul>
+            <li>If no, adjudicate each RFS issue requiring adjudication on a contentious RFS. Go to step 12.</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a negative decision must be communicated in writing to the client due to a deleted fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter for regular benefits, or the N-00-00-00 letter for special benefits. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              If a disqualification has been imposed, the client is requesting regular benefits and does not have enough hours since the contentious RFS to qualify, select the following attributes:
+              <ul>
+                <li>Disqualifications - Definite/Indefinite - Previous/Current/Revision (2970): Select D11 / D10 / Both / Previous Disq / Revision (Initial/Renewal or Revised) .</li>
+                <li>D11 / D10 / Both / Previous Disq / Revision - Initial or Renewal or Revision (2542): Select Disqualification message for Initial Claim .</li>
+                <li>Disqualification message for Initial Claim (2543)</li>
+                <li>D11 / D10 - Date of event = BPC/Date of event prior to BPC/ Date of event after BPC (2544): Select Date of event = BPC or Date of event prior to BPC and the appropriate sub-options.</li>
+                <li>
+                  D11 / D10 - Min hrs for reg/ Insufficient hrs reg/ Insufficient hrs reg fishing (2545):
+                  <ul>
+                    <li>If the client has not worked since the event, select Min hrs required to qualify for regular benefits .</li>
+                    <li>If the client has worked since the event and it is obvious there are insufficient hours since the event to qualify, select Insufficient hrs accumulated since event for regular or Insufficient hrs accumulated since event for regular and insufficient fishing earnings for fishing benefits .</li>
+                    <li>If the client has worked since the event, but the information or knowledge to complete this block is missing, select Min hrs required to qualify for regular benefits .</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              If the client is requesting regular benefits and has enough hours since the contentious RFS to qualify, select the following attributes:
+              <ul>
+                <li>Various issues affecting claim establishment and benefit rate (2500): Select ROE excluded due to voluntary leave not just cause or misconduct .</li>
+                <li>Text: Name of employer(s) (1502): Enter the employer’s name.</li>
+                <li>D11 message/D10 message (2463)</li>
+              </ul>
+            </li>
+            <li>
+              If the client is requesting special benefits and does not have enough hours since the contentious RFS to qualify for regular benefits, select the following attributes:
+              <ul>
+                <li>Special benefits approved (3046): Select the appropriate BT and options.</li>
+                <li>Not entitled to regular after special: - (D10/D11) or claim is BPNE) - Initial or renewal claim or D42 - D43 (2540): Select (D11/D10) imposed - Only special benefits allowed .</li>
+                <li>D11/D10 imposed - Only special benefits allowed (2491)</li>
+                <li>Text: Name of Employer(s) (1502): Enter the employer’s name.</li>
+                <li>Date of event (1292): Enter the appropriate date.</li>
+                <li>
+                  D11 / D10 / Both-Min hrs for reg/ Insufficient hrs reg/ Insufficient hrs reg fishing (2545):
+                  <ul>
+                    <li>If the client has not worked since the event, select Min hrs required to qualify for regular benefits .</li>
+                    <li>If the client has worked since the event and it is obvious there are insufficient hours since the event to qualify, select Insufficient hrs accumulated since event for regular or Insufficient hrs accumulated since event for regular and insufficient fishing earnings for fishing benefits .</li>
+                    <li>If the client has worked since the event, but the information or knowledge to complete this block is missing, select Min hrs required to qualify for regular benefits .</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              If the client is requesting special benefits and has enough hours since the contentious RFS to qualify for regular benefits, select the following attributes:
+              <ul>
+                <li>Various issues affecting claim establishment and benefit rate (2500): Select ROE excluded due to voluntary leave not just cause or misconduct .</li>
+                <li>Text: Name of Employer(s) (1502): Enter the employer’s name.</li>
+                <li>D11 Message - D10 Message (1503) .</li>
+                <li>Special benefits approved (3046): Select the appropriate BT and options.</li>
+                <li>Special Benefits Approved (3046): Select the appropriate BT and options.</li>
+              </ul>
+            </li>
+            <li>If a disentitlement has been imposed, select Disentitlements (2976) .</li>
+            <li>If an allocation of earnings has been input, select Allocation of Earnings (2516) .</li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>If there is no resulting OP, select Blank .</li>
+                <li>If the client has an active claim, select Overpayment – No misrepresentation and active claim .</li>
+                <li>If the client does not have an active claim, select Overpayment – No misrepresentation and inactive claim .</li>
+              </ul>
+            </li>
+            <li>Right to Request Reconsideration (with Blank option) (4169): Select Right to request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the CR Integrity - ERB-EI Transition WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type: “Waiting for CR Recalculation WI to be processed at Level 1.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the Level 1 AI WI and the CR Recalculation WI are completed:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 14.</li>
+            <li>If yes, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, in the Enquiry tab, select Transaction History to determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If the Renewal/Revised (M106) and the Operational Centre Memo (MM06) transactions related to the recalculation registration number have been transmitted, go to step 17.</li>
+            <li>If the Renewal/Revised (M106) transaction related to the recalculation registration number with the Claim Allowed field indicating NCA - No changes to the claim has been transmitted, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine whether, as a result of the recalculation, the established claim related to the same BPC as the fraudulent renewal application became BPNE due to a deleted fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 18.</li>
+            <li>If yes, go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the Integrity registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: This field is prefilled according to the type of investigation in NIIS.</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4585.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the Integrity registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 54 - Third party fraud .</li>
+            <li>
+              Remarks: Select the appropriate option:
+              <ul>
+                <li>
+                  If the renewal week that is on file is the renewal week requested by the client and there are no cycling claimant’s reports that were completed by a third party, do the following:
+                  <ul>
+                    <li>Remarks line 1: Type “Fraudulent renewal. Unknown third party.”</li>
+                    <li>Remarks lines 2–4: Type: “Issue w/c [w/cs to which the client is entitled], CT [XX].” If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].” If a disqualification must be imposed, type “D[XX] from w/c [XXXX].” If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+                  </ul>
+                </li>
+                <li>
+                  If the renewal week that is on file is the renewal week requested by the client, there are cycling claimant’s reports that were completed by a third party and the client is entitled to those weeks, do the following:
+                  <ul>
+                    <li>Remarks line 1: Type “Fraudulent renewal. Unknown third party.”</li>
+                    <li>Remarks lines 2–4: Type “ Issue w/c [w/cs to which the client is entitled], CT [XX].” If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+                  </ul>
+                </li>
+                <li>
+                  If the renewal week that is on file is the renewal week requested by the client, there are cycling claimant’s reports that were completed by a third party and the client is entitled to some of those weeks, do the following:
+                  <ul>
+                    <li>Remarks line 1: Type “Fraudulent renewal. Unknown third party.”</li>
+                    <li>Remarks lines 2–4: Type “Remove cycling claimant’s reports w/c [XXXX] to [XXXX]. Issue w/c [w/cs to which the client is entitled], CT [XX].” If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].” If a disqualification must be imposed, type “D[XX] from w/c [XXXX].” If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+                  </ul>
+                </li>
+                <li>
+                  If the renewal week on file is different from the renewal week requested by the client and there are cycling claimant’s reports that were completed by a third party, do the following:
+                  <ul>
+                    <li>Remarks line 1: Type “Fraudulent renewal. Unknown third party.”</li>
+                    <li>Remarks lines 2–4: Type “Remove cycling claimant’s reports w/c [XXXX] to [XXXX]. Input renewal w/c [XXXX], CT [XX]. Issue w/c [w/cs to which the client is entitled].” If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].” If a disqualification must be imposed, type “D[XX] from w/c [XXXX].” If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+                  </ul>
+                </li>
+                <li>
+                  If the renewal week on file is different from the renewal week requested by the client and there are no cycling claimant’s reports that were completed by a third party, do the following:
+                  <ul>
+                    <li>Remarks line 1: Type “Fraudulent renewal. Unknown third party.”</li>
+                    <li>Remarks lines 2–4: Type “Input renewal w/c [XXXX], CT [XX].” Issue w/c [w/cs to which the client is entitled].” If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].” If a disqualification must be imposed, type “D[XX] from w/c [XXXX].” If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+                  </ul>
+                </li>
+                <li>
+                  If the renewal week has not been input, do the following:
+                  <ul>
+                    <li>Remarks line 1: Type “Fraudulent renewal. Unknown third party.”</li>
+                    <li>Remarks lines 2–4: Type “Input renewal w/c [XXXX], CT [XX]. Issue w/c [w/cs to which the client is entitled].” If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].” If a disqualification must be imposed, type “D[XX] from w/c [XXXX].” If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD in the client’s application and not in the fraudulent application as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity file number] — fraudulent renewal.”</li>
+            <li>
+              Details: Type “The investigator confirmed the client’s address and banking information on: [DD-MM-YYYY]. The client’s address is: [client’s address]. The client’s banking information is: [client’s banking information].” If Integrity identified fraudulent ROEs, also type “Integrity confirmed that ROE [serial number] is fraudulent.” Document the decision and rationale according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD on the fraudulent renewal application as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity file number] — renewal submitted by a third party.”</li>
+            <li>
+              Details: Enter the following information:
+              <ul>
+                <li>Relevant facts: Type “An EI renewal application was filed by a third party on [DD-MM-YYYY] using the client’s identity.”</li>
+                <li>Decision/Justification: Type “This renewal application was not filed by the client and must not be included in an access to information request.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To delete the fraudulent application, create a REM WI as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4559.dita">Note</xref>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Comments: Type “Delete the application.”</li>
+            <li>Due date: Enter the next business day.</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “Fraudulent renewal application dated [DD-MM-YYYY].”</li>
+            <li>Destination — SCC: Enter the SCC as shown in FTS.</li>
+            <li>
+              End user: Select Specific user:
+              <ul>
+                <li>Enter the name of the team leader or the designated person and select Find user .</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1713.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Decision tab of the IC70 Report of Investigation screen , close the case as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement: Select No .
+              <ul>
+                <li>Reason: Select Other and type “Fraudulent renewal. No OP to a third party.”</li>
+              </ul>
+            </li>
+            <li>Overpayment: Do not check either box.</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Prosecution: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the Integrity registration number has been completed:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 25.</li>
+            <li>If yes, go to step 26.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and complete the registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity - ERB-EI Transition WI and all other related WIs.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="availability_client_return" xml:lang="en-CA">
+  <title>Adjudicating availability — Absence after the client has returned home</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="disentitlement_end_date.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2147.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="terminating_the_3_-_not_available_disen_065202aa_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="not_available_disentitlement_d3__terminating_level_2.dita">
+      </topicref>
+      <topicref href="maintaining_the_3_-_not_available_disen_7db95d48_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputting_a_renewal_week_with_an_operat_e83c58b1">
+  <title>Inputting a renewal week with an Operational Centre Memo (MM06)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item:
+              <ul>
+                <li>If it is an active or not blocked claim, select 92 - Purge and Recreate.</li>
+                <li>If it is a blocked, archived or MPS claim, or a claim with a BPC older than the current week – 150, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work type:
+              <ul>
+                <li>If 92 - Purge and Recreate was selected in the Work item field, select 26 - Processing of a report blocked by a renewal week .</li>
+                <li>If 93 - Manual Pay System was selected in the Work item field, select 33 – Blocked claim requiring payment .</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Type “Antedate renewal from w/c [XXXX] to w/c [XXXX].”</li>
+            <li>Remarks line 2 to 4: Enter the claimant’s report details and any allocation information.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 23 - Recalculation - postdating or antedating .</li>
+            <li>Infraction: Select C - Non-fraud - Insurability - new information .</li>
+            <li>Message: Select 38 - An overpayment resulted due to a change in the start of your claim .</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If there is an outstanding WI for the antedate request, complete it.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

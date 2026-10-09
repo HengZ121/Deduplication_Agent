@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client as follows:</cmd>
+        <info>
+          <ul>
+            <li>For a client with a 900-series SIN expiring during the BP, determine if the client will submit a copy of the new work permit, a proof of maintained status, a copy of an interim work authorization for post-graduation permit holders email from IRCC (with supporting documentation), or authorization to remain in Canada. Go to step 4.</li>
+            <li>For a client with maintained status who is waiting for an IRCC decision, determine if a decision has been made and if the client will submit a copy of the new study, visitor, or work permit. Go to step 4.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4528.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 5.</li>
+            <li>
+              If the client was not reached, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Availability .</li>
+            <li>Comments: Type “Expired 900-series SIN.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="http://servicecanada.prv/eng/ei/reference-material/policy-legislation/national_policy_factfinding.shtml#5.4">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the reason for the REM WI:</cmd>
+        <info>
+          <ul>
+            <li>If it is to follow up on an IRCC decision for a new permit of a client with maintained status, go to step 7.</li>
+            <li>If it is to follow up on a work permit expiring during the BP, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Based on the IRCC decision, determine if the appropriate proof is on file:</cmd>
+        <info>
+          <ul>
+            <li>If IRCC rejected the client’s application because it is incomplete, go to step 8.</li>
+            <li>If the client is still waiting for the IRCC decision, go to step 10.</li>
+            <li>If IRCC allowed the client’s application and the appropriate proof is not on file, ask the client to submit it. Go to step 11.</li>
+            <li>
+              If IRCC allowed the client’s application and the appropriate proof is on file, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+            <li>
+              If IRCC denied the client’s application, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if benefits have been paid for the period after the work permit expired:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+            <li>
+              If yes, a revised decision for benefits already paid can be required. Ensure that this situation is addressed on file, but do not create an additional WI. Then, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has a proof of maintained status or a new work permit:</cmd>
+        <info>
+          <ul>
+            <li>If yes, and the client will be submitting the proof of maintained status or the new work permit, go to step 12.</li>
+            <li>
+              If no and the client has not applied for a new work permit, go to Adjudicating availability or entitlement
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Work permit or authorization.”</li>
+            <li>Bring forward date: Enter [today’s date + 45 business days].</li>
+            <li>Go to step 12.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4660.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending Reason: Select Other .</li>
+            <li>Comments: Type “Valid SIN or authorization.”</li>
+            <li>Bring forward date: Enter [today’s date + 10 business days].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the client submitted the appropriate proof:</cmd>
+        <info>
+          <ul>
+            <li>If the client is still waiting for the IRCC decision, repeat step 10.</li>
+            <li>
+              If yes, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+            <li>
+              If no, go to Adjudicating availability or entitlement .
+              <xref href="#adjudicating">Adjudicating availability or entitlement</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

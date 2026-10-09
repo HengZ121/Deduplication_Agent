@@ -1,0 +1,39 @@
+{
+  "language": "fr",
+  "section_bodies": 15228,
+  "saved_cross_document_candidates": 187912,
+  "saved_candidate_relationships": {
+    "duplicate/semantic duplicate": 12867,
+    "independent": 173831,
+    "one passage included in another": 1214
+  },
+  "audited_duplicate_pairs": 12867,
+  "buckets": {
+    "exact_resolved_section": 3187,
+    "template_variant_candidate": 4490,
+    "partial_overlap_observed": 2616,
+    "semantic_equivalence_candidate": 2046,
+    "related_or_unresolved": 528
+  },
+  "excluded_saved_pairs": {
+    "shared_parent_document": 8007,
+    "outside_task_activity": 102726
+  },
+  "signals_nonexclusive": {
+    "inherited_context_difference": 1542,
+    "reference_targets": 4717,
+    "structure_or_reference": 2207,
+    "systems": 138,
+    "levels": 43,
+    "rfs_categories": 29,
+    "numbers": 243,
+    "negation": 40,
+    "document_local_step_reference": 7
+  },
+  "shared_exact_block_in_nonexact_pairs": 4224,
+  "raw_equal_but_expanded_surface_different": 313,
+  "raw_equal_but_expanded_legacy_normalized_different": 1,
+  "raw_equal_conref_present_expanded_legacy_different": 1,
+  "raw_equal_but_structure_or_refs_different": 2520,
+  "seconds": 54.4
+}

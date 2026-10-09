@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs__operational_centre_memo_mm06_transaction">
+  <title>Inputs — Operational Centre Memo (MM06) transaction</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Refer to Extension of the benefit period before proceeding to step 24.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 35 - You received an arbitration award .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the correct BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 8 - Grievance settlement .</li>
+            <li>Remarks line 1: Type “Grievance settlement - EIA [45 or 46] - [name of employer]. M175 C, E, S or V- $[XXXX] (amount to allocate) from [XXXX] (first day of allocation) to [XXXX] (last day of allocation), $[XXXX] (amount to be allocated on last week if different).”</li>
+            <li>Remarks line 2 (to be used if top-up amount is to be input): Type “M175 C, E, S or V- $[XXXX] (amount to allocate) from [XXXX] (first day of allocation) to [XXXX] (last day of allocation), $[XXXX] (amount to be allocated on last week if different)”.</li>
+            <li>Remarks line 3: Enter the information about the BP extension if necessary. If the grievance settlement falls under EIA 46, instruct the IPOC officer to create a REM WI to inform the processing officer once the OP is created.</li>
+            <li>Remarks line 4: Send REM WI TO DEC MAKER FOR ACS LETTERS.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2007.dita">Info</xref>
+          <xref href="../../common_notes/note_c_2008.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>
+              Go to ACS letters .
+              <xref href="#acs_letter_l1">ACS letters</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has received the monies.</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes go to ACS letters .
+              <xref href="#acs_letter_l1">ACS letters</xref>
+            </li>
+            <li>
+              If no, wait for the REM-WI from IPOC before going to ACS letters .
+              <xref href="#acs_letter_l1">ACS letters</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the WI to Pending until the IPOC officer sends a REM WI indicating that the work is completed.</cmd>
+      </step>
+      <step>
+        <cmd>When the REM WI is received, in PSCD, input a 1 -Administrative lock on the account. Refer to Applying, modifying or terminating a lock in PSCD and return to this task.</cmd>
+      </step>
+      <step>
+        <cmd>Create a Note in PSCD. Go to Creating a Note in PSCD for a wrongful dismissal or grievance settlement under EIA 46 and return to this task.</cmd>
+      </step>
+      <step>
+        <cmd>Go to ACS letters .</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="false_statement_not_knowingly_made__rec_05f214bd">
+  <title>False statement not knowingly made — Reconsideration after 36 months</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine the issue:</cmd>
+        <info>
+          <ul>
+            <li>If the number of weeks paid exceeds the maximum shareable entitlement, go to step 2.</li>
+            <li>If the type of parental benefits is incorrect, go to step 3.</li>
+            <li>If the WP was served incorrectly, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD for the parental sharing issue as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — parental sharing.”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <ul>
+                <li>If the client was initially approved for more parental benefits weeks than the client was entitled to and was overpaid because the maximum entitlement was reached, type “The client is entitled to receive [number of weeks] weeks.”</li>
+                <li>If the client is entitled to 0 weeks, type “Parental benefits are exhausted. A 35 - Parental - minor attached or outside range or maximum parental/special benefits paid disentitlement is imposed effective [date]. The parent is not entitled to parental benefits because the maximum parental entitlement weeks has already been paid for the parental window.”</li>
+              </ul>
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+            <li>Go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD for the type of parental benefits as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — changing the type of parental benefits”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy . If the client was paid the wrong type of parental benefits or was initially approved for more parental benefits weeks than the client was entitled to, type [“Parental benefits are payable up to a maximum combined total of 40 standard or 69 extended weeks per birth, adoption or placement for children born or placed for adoption on or after March 17, 2019.” or “Parental benefits are payable up to a maximum combined total of 35 standard or 61 extended weeks for children born or placed for adoption before March 17, 2019.”] The maximum number of weeks that can be paid to one parent is 35 weeks of standard benefits or 61 weeks of extended benefits. When clients share the parental benefits, the parents must share the same type of benefits. The first parent to apply for benefits for this birth, adoption or placement chooses a type of parental benefits. This is the type of benefits the other parents are entitled to. [The client or another parent ] applied for parental benefits first and is entitled to [ standard or extended ] parental benefits. The other parents are entitled to receive [number of weeks] weeks.
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+            <li>Go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD for the WP as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — waiting period change.”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <ul>
+                <li>If the client has had the WP deferred in error, type “Conditions to defer the waiting period are not met as a waiting period for this birth, adoption or placement has not yet been served.”</li>
+                <li>If the WP should be deferred, type “Originally the waiting period was not deferred but should have been. Changes were made and the waiting period was deferred.”</li>
+              </ul>
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+            <li>Go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD for the reconsideration under EIA 52 as follows (if necessary, refer to Reconsideration, amendment of a decision and error correction )</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — EIA 52 reconsideration.”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Explain why no false statements were made knowingly.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks line 1: Type “312 error code. Parental entitlement paid in full and WP deferred.”</li>
+            <li>Remarks line 2: Type “Change entitlement parental weeks to [XX], DE35, start [XXXX], end 9999 OP Code 31F04.”</li>
+            <li>Remarks line 3: Type “WP deferral rescind” if it was deferred in error.</li>
+            <li>Remarks line 4: Type “Remove stop pay” if necessary.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-91-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Date claimant called or information sent (1542)</li>
+            <li>Decision reconsidered beyond 36 months (2595): Select Decision reconsidered beyond 36 months due to false representations</li>
+            <li>Various reasons for penalty and violation (2935): Select the appropriate option.</li>
+            <li>
+              According to our records / In addition, according to our records (2936)
+              <ul>
+                <li>Failed to provide information: Text Specify what we have learned (1628)</li>
+              </ul>
+            </li>
+            <li>No reply from claimant / reply received with an explanation / reply received with no explanation (2938)</li>
+            <li>False representation message / Number of omissions or false representations (2941): Select Blank .</li>
+            <li>Levels of misrepresentation (12292)</li>
+            <li>Penalty message / Warning message (2950): Select Blank .</li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>Blank if there is no resulting overpayment.</li>
+                <li>Overpayment – No misrepresentation and active claim .</li>
+                <li>Overpayment – No misrepresentation and inactive claim .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, from Report of Investigation , select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select Yes .</li>
+            <li>Reason: Select Other .</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Click OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

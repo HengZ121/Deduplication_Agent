@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="completing_claim_regwi_l1" xml:lang="en-CA">
+  <title>Completing a Claim Set-Up Registration WI: Possible duplicate application — Level 1</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="actioning_a_claim_set-up_cs_wi.dita">
+    </topicref>
+    <topicref href="duplicate_applications.dita">
+    </topicref>
+    <topicref href="obtaining_the_missing_information.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="fraud_indicators.dita">
+    </topicref>
+    <topicref href="new_application_without_fraud_indicator_82f0e5e9.dita">
+    </topicref>
+    <topicref href="fraudulent_application_received_on_a_co_7ee5f16f.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_for_fraud_indicators_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_this_is_a_duplicate_application_level_1.dita">
+      </topicref>
+      <topicref href="unable_to_reach_the_client_level_1.dita">
+      </topicref>
+      <topicref href="duplicate_application_level_1.dita">
+      </topicref>
+      <topicref href="not_a_duplicate_application_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_wi_level_1.dita">
+      </topicref>
+      <topicref href="fraud_indicators_are_present_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2643.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2644.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2645.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2646.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1570.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1571.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2168.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2647.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2648.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2649.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2650.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2651.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

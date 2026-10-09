@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="cor_disq_disent" xml:lang="en-CA">
+  <title>Actioning a Correspondence Disqualification/Disentitlement WI</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="notifying_clients_of_decisions.dita">
+    </topicref>
+    <topicref href="communicating_multiple_decisions.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2900.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_acs.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="non-complex.dita">
+      <topicref href="reviewing_the_decision_non-complex.dita">
+      </topicref>
+      <topicref href="communicating_the_decision_non-complex.dita">
+      </topicref>
+      <topicref href="communication_not_required_non-complex.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_1_non-complex.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_non-complex.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_decision_level_1.dita">
+      </topicref>
+      <topicref href="communicating_the_decision_level_1.dita">
+      </topicref>
+      <topicref href="communicating_a_decision_made_on_a_prev_1eb8a29e_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2901.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_decision_level_2.dita">
+      </topicref>
+      <topicref href="communicating_the_decision_level_2.dita">
+      </topicref>
+      <topicref href="communicating_a_decision_made_on_a_prev_1eb8a29e_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

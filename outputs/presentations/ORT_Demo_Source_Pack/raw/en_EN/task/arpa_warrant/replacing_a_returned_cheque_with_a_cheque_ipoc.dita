@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="replacing_a_returned_cheque_with_a_cheque">
+  <title>Replacing a returned cheque with a cheque</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Replacement or Returned Payment .</li>
+            <li>Comments: Type “Returned payment for payment reference number [XXXX-XXXXXXXX].”</li>
+            <li>Details: Type “The payment for payment reference number [XXXX-XXXXXXXX] was returned. It has been replaced by a cheque today.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SPS, select Returns &amp; Duplicates from Main Menu and select Advice Notice Instructions from the Screen menu to issue a replacement payment as follows:</cmd>
+        <info>
+          <ul>
+            <li>Payment Reference Number: Enter the 12-digit payment reference number.</li>
+            <li>Select Go .</li>
+            <li>Address: Enter the client’s new address in capital letters.</li>
+            <li>Postal Code: Enter the client’s new postal code in capital letters.</li>
+            <li>Country: Select the appropriate option.</li>
+            <li>Verify that the client’s name is correct. Select Submit .</li>
+            <li>Verify that the information entered is correct. Select Confirm .</li>
+            <li>
+              Go to Completing the WI .
+              <xref href="#ipocc_item_8">Completing the WI</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2094.dita">Note</xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

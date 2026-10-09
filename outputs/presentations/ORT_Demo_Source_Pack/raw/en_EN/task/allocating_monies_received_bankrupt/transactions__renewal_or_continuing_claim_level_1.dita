@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="transactions__renewal_or_continuing_claim">
+  <title>Transactions — Renewal or continuing claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the week of bankruptcy is the same as the week of the LDW:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ELWW are less than the NWE:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the amount to allocate as follows:</cmd>
+        <info>
+          <ul>
+            <li>Subtract the ELWW from the NWE. The difference is the amount of the dividend payment that must be allocated to the last week paid.</li>
+            <li>Subtract the amount of the dividend payment that was used to top up the final week from the total dividend payment.</li>
+            <li>Divide the balance of the dividend payment by the NWE. The result is the number of weeks of allocation.</li>
+            <li>Take the number of full weeks of allocation and multiply that number by the NWE.</li>
+            <li>Add the resulting amount and the amount used to top up the final work week to arrive at the total.</li>
+            <li>Subtract the total from the total amount of the dividend payment. The balance, if any, is allocated to the next week.</li>
+            <li>Go to step 4.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1991.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the amount to allocate when the ELWW are equal to or greater than the NWE or when the week of bankruptcy is not the same as the week of the LDW using the following formula:</cmd>
+        <info>
+          <ul>
+            <li>Divide the dividend payment by the NWE. The result is the number of weeks for the allocation.</li>
+            <li>Take the number of full weeks of allocation and multiply that number by the NWE.</li>
+            <li>Subtract that total from the total amount of the dividend payment.</li>
+            <li>The balance, if any, is allocated to the next week.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1992.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to Extension of the benefit period before proceeding to step 6.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 4 - Employer bankruptcy .</li>
+            <li>Remarks line 1: Type “Bankruptcy-[employer name]-[dividend amount].”</li>
+            <li>
+              Remarks lines 2-4 : Use these lines to enter the input details for the Allocations (M175) , Additional Data (M107) , and Renewal/Revised (M106) transaction. Include instructions to:
+              <ul>
+                <li>rescind the stop pay if one has been imposed;</li>
+                <li>move no more than the dividend amount to the EIB1 PSCD account;</li>
+                <li>advise the adjudicating officer of the OP amount;</li>
+                <li>send the draft ACS letter;</li>
+                <li>Create additional operational centre memos if necessary.</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1989.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035 ) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change the registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When you receive details of the OP amount from IPOC, advise the Regional Bankruptcy Coordinator of the amount of the OP according to regional procedures.</cmd>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a D-20-16-03 letter to each affected client. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Allocation of Bankruptcy payments (2573): Select the appropriate option:
+              <ul>
+                <li>Allocation of Bankruptcy payments .</li>
+                <li>Allocation of Bankruptcy payments (with balance Week 1) .</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1990.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI if not already completed.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

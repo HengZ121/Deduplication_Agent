@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="correcting_roe_error_calculation_fisher" xml:lang="en-CA">
+  <title>Correcting an error during calculation or recalculation — Fishing ROE</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="impact_of_roe_errors.dita">
+    </topicref>
+    <topicref href="data_entry_errors_on_an_roe.dita">
+    </topicref>
+    <topicref href="identifying_roe_errors.dita">
+    </topicref>
+    <topicref href="fraudulent_web_roes.dita">
+    </topicref>
+    <topicref href="fraudulent_paper_roes.dita">
+    </topicref>
+    <topicref href="fraud_indicators.dita">
+    </topicref>
+    <topicref href="correcting_roe_errors.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2917.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0019.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0077.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1569.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_the_employer_database.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_for_fraud_indicators_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_roe_level_1.dita">
+      </topicref>
+      <topicref href="correcting_the_roe_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="updating_the_roe_after_fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="actioning_the_roe_error_when_there_is_e_81c81f75_level_1.dita">
+      </topicref>
+      <topicref href="fraud_indicators_are_present_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1527.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1564.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2661.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1573.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2918.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2664.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1576.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="updating_training_information">
+  <title>Updating training information</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the referred training information is displayed on the Project tab:</cmd>
+        <info>
+          <ul>
+            <li>If the referred training information is displayed on the Project tab, go to step 30.</li>
+            <li>If the referred training information is not displayed on the Project tab, go to step 32.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex claim conditions .</li>
+            <li>Remarks Line 1: Type “EIA 25 — Special benefits.”</li>
+            <li>Remarks Line 2: Type “REN WK [XXXX], EXT-MSW [XXXX], EXT-MEW [XXXX], CNF WK [XXXX].”</li>
+            <li>Remarks Line 3: If applicable, type “[NO-CR], [claimant’s report information], [MA rescind information], [D3 termination information.]”</li>
+            <li>Remarks Line 4: Enter the appropriate information.</li>
+            <li>Remarks Line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 34.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex claim conditions .</li>
+            <li>Remarks Line 1: Type “EIA 25 — Special benefits.”</li>
+            <li>Remarks Line 2: Type “REN WK [XXXX], EXT-MSW [XXXX], EXT-MEW [XXXX], CNF WK [XXXX].”</li>
+            <li>Remarks Line 3: If applicable, type “[NO-CR], [claimant’s report information], [MA rescind information], or [D3 termination information].”</li>
+            <li>Remarks Line 4: Type “T171 — STRT-WK/DY [the course start w/c], END-WK-DY [the course end w/c], PROJ-HRRC [the Responsibility Centre code or institution code, if applicable], PROJ-NO [the 10-digit agreement number; use preceding zeros if the number is less than 10 digits], TRAIN-ID [the training ID code], BREAK START/END WK [the w/c code, of any break weeks].”</li>
+            <li>Remarks Line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

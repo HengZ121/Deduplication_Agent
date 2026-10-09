@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="labour_dispute_has_ended__part-time_emp_d6d9bc8f">
+  <title>Labour dispute has ended — Part-time employment on a continuing claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for the labour dispute issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 94 - Manual Action .</li>
+            <li>Work Type: Select 15 - Manual Action code 11, 12 or 14 .</li>
+            <li>Remarks line 1: Type “labour dispute ended.”</li>
+            <li>Remarks line 2: Type “D5 to be terminated as of [date].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the A-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement terminated and/or removed (2591): Select Disentitlement terminated-benefits payable .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the labour dispute issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

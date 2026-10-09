@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claim_in_mps">
+  <title>Claim in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Before sending the Operational Centre Memo (MM06) transaction to IPOC, determine if a Level 2 officer must adjudicate any outstanding issues:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 43.</li>
+            <li>If no, go to step 45.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting Level 2 decision.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if a decision has been rendered:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 43.</li>
+            <li>If yes, go to step 45.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “Input renewal w/c [XXXX], CT [XX].”</li>
+            <li>
+              Remarks lines 2–4: Enter the appropriate information:
+              <ul>
+                <li>If the claimant’s reports’ information is available and coding is not required, type “M151 CR from w/c [XXXX] to [XXXX].”</li>
+                <li>If the claimant’s reports’ information is available and coding is required, type “M152 CR from w/c [XXXX] to [XXXX], earnings $[XXXX], NA [not available days], sickness [sick days], FWW [XX]” and other relevant information regarding the claimant’s reports input for each period (e.g. M152 CR from w/c 2000 to 2010, earnings $400, 2011, sickness 3).</li>
+                <li>If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].”</li>
+                <li>If an extension of the BP is required, type “Extend BP Type [X], Start week [XXXX], Number of weeks [X].”</li>
+                <li>If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].”</li>
+                <li>If a disqualification must be imposed, type “D[XX] from w/c [XXXX].”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name .</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="modifying_the_normal_weekly_hours_nwh_w_06fadeb2">
+  <title>Modifying the normal weekly hours (NWH) when the effective week of the modification is equal to the Start date on the Project tab</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Project Data — Worksharing (M171) transaction and modify the NWH as follows:</cmd>
+        <info>
+          <ul>
+            <li>Weekly hours: Enter the new NWH. Include a 0 or a 5 at the end to indicate the hour or half hour. Do not include the decimal (e.g. 40 NWH are entered as 400 and 37.5 NWH are entered as 375).</li>
+            <li>Select Update .</li>
+            <li>Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 55 - Change to Worksharing/Job Creation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “WS — change in NWH from w/c [XXXX].”</li>
+            <li>Remarks line 2: Type “Change the NWH of the current WS period to [XX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 55 - Change to Worksharing/Job Creation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 55 - Change to Worksharing/Job Creation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06 ) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 16 - Work-sharing .</li>
+            <li>Remarks line 1: Type “WS — change in NWH from w/c [XXXX] to [XXXX].”</li>
+            <li>Remarks line 2: Type “Change the NWH of the previous WS period to [XX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 55 - Change to Worksharing/Job Creation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

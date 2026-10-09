@@ -1,0 +1,39 @@
+{
+  "language": "en",
+  "section_bodies": 14499,
+  "saved_cross_document_candidates": 130564,
+  "saved_candidate_relationships": {
+    "duplicate/semantic duplicate": 13998,
+    "independent": 115197,
+    "one passage included in another": 1369
+  },
+  "audited_duplicate_pairs": 13998,
+  "buckets": {
+    "exact_resolved_section": 3920,
+    "template_variant_candidate": 4619,
+    "partial_overlap_observed": 2774,
+    "semantic_equivalence_candidate": 2259,
+    "related_or_unresolved": 426
+  },
+  "excluded_saved_pairs": {
+    "outside_task_activity": 68632,
+    "shared_parent_document": 5961
+  },
+  "signals_nonexclusive": {
+    "inherited_context_difference": 1653,
+    "structure_or_reference": 2412,
+    "reference_targets": 4666,
+    "document_local_step_reference": 1279,
+    "systems": 206,
+    "numbers": 174,
+    "rfs_categories": 30,
+    "levels": 29,
+    "negation": 33
+  },
+  "shared_exact_block_in_nonexact_pairs": 4510,
+  "raw_equal_but_expanded_surface_different": 339,
+  "raw_equal_but_expanded_legacy_normalized_different": 9,
+  "raw_equal_conref_present_expanded_legacy_different": 9,
+  "raw_equal_but_structure_or_refs_different": 2751,
+  "seconds": 39.09
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="operational_centre_memo_mm06_required_f_ef0194c4">
+  <title>Operational Centre Memo (MM06) required for the original decision</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the detection code that was used for the original decision.</li>
+            <li>Infraction: Select the infraction code that was used for the original decision.</li>
+            <li>Message: Select the OP message code that was used for the original decision.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>1 - Misrepresentation</li>
+                <li>2 - Non misrepresentation</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Type “ Undeliverable Notice of Debt . Rescind decision input on [DD-MM-YYYY] or MM06 of [DDMM-YYYY].”</li>
+            <li>Remarks line 2: Type “W/cs [XXXX] to [XXXX] are now outside of the reconsideration period.”</li>
+            <li>Remarks line 3: Type “Re-input the OP for remaining weeks at current date.”</li>
+            <li>Remarks line 4: Enter instructions for the penalty, if necessary.</li>
+            <li>Remarks line 5: Enter your name and telephone number.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, send a new decision letter to replace the decision letter whose status was changed to undeliverable.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

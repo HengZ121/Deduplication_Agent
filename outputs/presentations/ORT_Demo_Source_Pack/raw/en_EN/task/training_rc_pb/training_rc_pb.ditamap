@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="training_rc_pb" xml:lang="en-CA">
+  <title>Adjudicating non-referred training: Parental benefits — Renewal claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="training_reported_between_september_27__5ecd71c7.dita">
+    </topicref>
+    <topicref href="impact_of_training_on_parental_benefits.dita">
+    </topicref>
+    <topicref href="targeted_initiatives_and_short-term_courses.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="processing_the_claim.dita">
+    </topicref>
+    <topicref href="communicating_the_decision.dita">
+    </topicref>
+    <topicref href="outstanding_disentitlements.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4814.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="training_reported_in_error_level_1.dita">
+      </topicref>
+      <topicref href="entitlement_conditions_met_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4823.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_non-referred_training_level_2.dita">
+      </topicref>
+      <topicref href="training_not_an_issue_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_conditions_not_met_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_conditions_met_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4816.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4824.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

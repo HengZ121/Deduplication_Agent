@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputting_the_reversion">
+  <title>Inputting the reversion</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 15.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1- No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 42 - Working While on Claim – Reversion .</li>
+            <li>
+              Remarks:
+              <ul>
+                <li>Remarks line 1: Type “Apply the provisions of Pilot Project 17 as of w/c XXXX.”</li>
+                <li>
+                  Remarks line 2: Type the appropriate option:
+                  <ul>
+                    <li>“no impact.”</li>
+                    <li>“net underpayment.”</li>
+                    <li>“net overpayment — including net overpayment amount.”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - Entitlement review .</li>
+            <li>Infraction: Select A - Non-Fraud - Earnings and Employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the AI WI for the issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

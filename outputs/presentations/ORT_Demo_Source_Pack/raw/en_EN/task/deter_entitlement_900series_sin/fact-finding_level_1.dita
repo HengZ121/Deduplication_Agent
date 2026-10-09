@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to determine if the client has authorization to work in Canada.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>
+              If no, go to Creating a WI for Level 2 .
+              <xref href="#level1_item_4">Creating a WI for Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Availability .</li>
+            <li>Comments: Type “Authorization to work in Canada — 900-series SIN.”</li>
+            <li>
+              Details: Type “Client was contacted to request proof of authorization to work in Canada. Client states [client’s statement].” Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client intends to provide a copy of an open work permit or proof of interim work authorization in Canada (and all supporting documents):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>
+              If no, go to Creating a WI for Level 2 .
+              <xref href="#level1_item_4">Creating a WI for Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Work Permit .</li>
+            <li>
+              Comments: Type the appropriate option:
+              <ul>
+                <li>“Verify that the client has submitted a new valid open work permit.”</li>
+                <li>“Verify that the client has submitted proof of interim work authorization in Canada and all supporting documents.”</li>
+              </ul>
+            </li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the client has submitted a new open work permit:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>
+              If no, go to Creating a WI for Level 2 .
+              <xref href="#level1_item_4">Creating a WI for Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

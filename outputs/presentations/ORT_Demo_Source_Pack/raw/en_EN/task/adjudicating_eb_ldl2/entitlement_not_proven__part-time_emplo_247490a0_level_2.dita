@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_not_proven__part-time_emplo_247490a0">
+  <title>Entitlement not proven — Part-time employment on a continuing claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Employer’s name] — entitlement not proven — D5 imposed.”</li>
+            <li>
+              Details: Document the decision and rationale according to the information noted in Major Employer Events .
+              <xref href="https://apps.powerapps.com/play/e/649eba73-ea42-e150-946a-78d374a4caf0/a/c43c87f7-c906-48c2-8251-0c98b7cb8a68?tenantId=9ed55846-8a81-4246-acd8-b1a01abfc0d1&amp;hint=c930eca9-0fba-4aa4-9f84-c2395387ccd3&amp;sourcetime=1744045362596">Major Employer Events</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there a registration number for the labour dispute issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Manual action: Select 11 - Part week disentitlement on a continuing basis .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 94 - Manual Action .</li>
+            <li>Work type: Select 15 - Manual Action code 11, 12 or 14 .</li>
+            <li>Remarks line 1: Type “Labour dispute — part-time employment.”</li>
+            <li>Remarks line 2: Type “MA11, partial D5 to be imposed for [number] days per week starting [date] to [indefinite or disentitlement end date, if known].”</li>
+            <li>Remarks line 3: If necessary, type “MA74 to be rescinded.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>
+              Detection: Select the appropriate option:
+              <ul>
+                <li>If it is a continuing claim and a MA74 must be rescinded, select 31 - Other new facts - entitlement review.</li>
+                <li>In other cases, leave the field blank.</li>
+              </ul>
+            </li>
+            <li>
+              Infraction: Select the appropriate option:
+              <ul>
+                <li>If it is a continuing claim and a MA74 must be rescinded, select B - Non-fraud - Availability, capability.</li>
+                <li>In other cases, leave the field blank.</li>
+              </ul>
+            </li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>If it is a continuing claim and a MA74 must be rescinded, select 4 - An overpayment resulted due to an indefinite disentitlement.</li>
+                <li>In other cases, leave the field blank.</li>
+              </ul>
+            </li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached by telephone during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached by telephone during fact-finding, or if there was no attempt to fact-find with the client by telephone, go to step 7.</li>
+            <li>If the client was not reached by telephone during fact-finding, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Verbally communicate the decision to the client.</cmd>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlements (2976):
+              <ul>
+                <li>D5, D12, D13, D14, D23 (3011): Select D5 - Labour dispute .</li>
+              </ul>
+            </li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the labour dispute issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

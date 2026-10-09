@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_the_period_of_incapacity_df18e391">
+  <title>Determining if the period of incapacity has changed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the new recovery week is after the recovery week in FTS:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the new recovery week is the same as the recovery week in FTS, go to No change to the period of incapacity .
+              <xref href="/en/procedure/task/reviewing_mc_crsb.shtml#nochange">No change to the period of incapacity</xref>
+            </li>
+            <li>If the new recovery week is before the recovery week in FTS, go to step 3.</li>
+            <li>
+              If the new recovery week is after the recovery week in FTS, go to Recovery is after the recovery week in FTS .
+              <xref href="#rarw">Recovery is after the recovery week in FTS</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has been paid sickness benefits after the new recovery week:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>
+              If no, go to Early recovery .
+              <xref href="/en/procedure/task/reviewing_mc_crsb.shtml#earlier">Early recovery</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client to determine if the client has recovered:</cmd>
+        <info>
+          <ul>
+            <li>If yes, explain to the client that an overpayment (OP) will result and go to step 5.</li>
+            <li>If no, ask the client to obtain a medical certificate for the period of sickness benefits paid after the new recovery week.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>
+              If no , or if the client did not reply to the N-10-00-00 letter, go to Period of incapacity not supported by a medical certificate .
+              <xref href="#pwapi">Period of incapacity not supported by a medical certificate</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Medical Proof .</li>
+            <li>
+              Comments: Select the appropriate option:
+              <ul>
+                <li>If the client has not recovered, type “Medical certificate needed.”</li>
+                <li>If the client recovered early, type “Early recovery.”</li>
+              </ul>
+            </li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the appropriate action:</cmd>
+        <info>
+          <ul>
+            <li>If the client indicated a medical certificate will be submitted, go to step 8.</li>
+            <li>If the client recovered early, go to step 10.</li>
+            <li>
+              If the client indicated a medical certificate will not be submitted, go to Period of incapacity not supported by a medical certificate .
+              <xref href="#pwapi">Period of incapacity not supported by a medical certificate</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Medical certificate .</li>
+            <li>Comments: Type “Verify client submitted an acceptable medical certificate for benefits paid after recovery.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, determine if a medical certificate for the payment of sickness benefits after the recovery week has been submitted:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to the beginning of this task.</li>
+            <li>
+              If no, go to Period of incapacity not supported by a medical certificate .
+              <xref href="#pwapi">Period of incapacity not supported by a medical certificate</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If the client is correcting previously provided information or providing previously omitted information, determine if the information may impact the client’s entitlement to benefits previously paid:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Period of incapacity not supported by a medical certificate .
+              <xref href="#pwapi">Period of incapacity not supported by a medical certificate</xref>
+            </li>
+            <li>
+              If yes, determine if the issue should be referred to Integrity by consulting Determining if an issue must be referred to Integrity .
+              <xref href="/en/procedure/task/determining_issue_referred_integrity.shtml">Determining if an issue must be referred to Integrity</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="payment_returned__client_not_entitled">
+  <title>Payment returned — Client not entitled</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Payment returned — Client not entitled.”</li>
+            <li>Details: Type “Payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to [DD-MM-YYYY] was returned by the client because [client’s reason and details]. Request submitted to IPOC”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for the returned payment issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the claim is in MPS or is blocked dormant.</cmd>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is active or can be reactivated , select 92 - Purge and Recreate .</li>
+                <li>If the claim is in MPS or blocked dormant, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>If the claim is active or can be reactivated , select 24 - Cancelled payment .</li>
+                <li>If the claim is in MPS or blocked dormant, select 43 - Cancelled payment .</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Type “Cancel returned payment.”</li>
+            <li>Remarks line 2: Type “T071-2[ for current year] or T071-8 [for previous year]-reason F-CT [XX]-gross amount [XXXX]-federal tax [XX]-provincial tax (if applicable) [XX]-net amount [XXXX]-PRN [XXXXXXXXXXXX]-Date(s) of processed payments [w/c-start date] — [w/c-end date].”</li>
+            <li>Remarks line 3 : If any information changed since the original claimant’s report was completed, type “Amend w/c [XXXX], [amount] if required” Add any RTW date if required. If any disentitlements apply, type “Impose D[XX] for w/c [XXXX].” If an allocation needs to be input or amended, type “M175 [type], [amount] [w/c - allocation start date]-[w/c - allocation end date] [amount, if different from last week]” for amended M175 type “M175 replaced by [type] [amount] [w/c - allocation start date]-[w/c - allocation end date] [amount, if different from last week]”.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4275.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the returned payment issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if additional fact-finding or clarification on any of the above points is required to make a decision:</cmd>
+        <info>
+          <ul>
+            <li>
+              While fact-finding with the client, if claimant’s report information for the antedate period is also needed, obtain the information using the Claimant’s report: Original without paycoding or Claimant’s report: Original with paycoding checklist. Go to step 12.
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_without_pay_coding-Checklist.doc">Claimant’s report: Original without paycoding</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_with_pay_coding-Checklist.doc">Claimant’s report: Original with paycoding</xref>
+            </li>
+            <li>If additional fact-finding is not required, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 13.</li>
+            <li>
+              If the client was not reached or did not reply to the N-10-00-00 letter for additional fact-finding, go to Reassigning the WI to Level 2 .
+              <xref href="#ReassigntheWI">Reassigning the WI to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Antedate .</li>
+            <li>Comments: Type “Conversation with the client.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

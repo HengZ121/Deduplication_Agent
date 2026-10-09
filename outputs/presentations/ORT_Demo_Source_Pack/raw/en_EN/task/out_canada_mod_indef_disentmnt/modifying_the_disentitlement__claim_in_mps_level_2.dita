@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="modifying_the_disentitlement__claim_in_mps">
+  <title>Modifying the disentitlement — Claim in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the out of Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim with the disentitlement that must be rescinded.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “[Disentitlement information and dates] — rescind.”</li>
+            <li>Remarks line 2: If required, type other information or changes (including claimant’s reports, if necessary).</li>
+            <li>Remarks line 4: Type your name and telephone number.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the appropriate letter (D-01-00-00, N-00-00-00 or D-60-00-00). Refer to Out of Canada and select the task related to the appropriate BT for the attributes to include. Also select the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>
+              This letter replaces or Footnote (2365): Select the appropriate option:
+              <ul>
+                <li>For any BT other than CCB or family caregiver benefits, select only This letter replaces the one sent to you on .</li>
+                <li>For CCB or family caregiver benefits, select both This letter replaces the one sent to you on and Footnote .</li>
+                <li>Footnote: Type “We are unable to pay you [compassionate care benefits or family caregiver benefits] from [date] because you have not proven that you [are or were] providing care or support to your family member while you [are or were] out of Canada.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the out of Canada issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

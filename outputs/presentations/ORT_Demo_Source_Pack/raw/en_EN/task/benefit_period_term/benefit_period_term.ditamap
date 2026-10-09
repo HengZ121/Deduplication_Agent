@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="benefit_period_term" xml:lang="en-CA">
+  <title>Terminating a benefit period</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="reviewing_a_benefit_period_bp_when_a_cl_bdbbe54d.dita">
+    </topicref>
+    <topicref href="claims_with_a_bpc_between_wc_2310_and_wc_2361.dita">
+    </topicref>
+    <topicref href="pilot_project_no_24_waiving_the_waiting_8da3a05b.dita">
+    </topicref>
+    <topicref href="advantages_and_disadvantages_of_termina_36fdc285.dita">
+    </topicref>
+    <topicref href="notifying_the_client.dita">
+    </topicref>
+    <topicref href="inputting_a_benefit_period_bp_termination.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2152.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2173.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2174.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2155.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2175.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2176.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2177.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_client_qualifies_for_1d8c088f_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_advantages_and_disadvantages_level_1.dita">
+      </topicref>
+      <topicref href="inputs_to_finalize_the_termination_level_1.dita">
+      </topicref>
+      <topicref href="terminating_a_claim_retroactively_level_1.dita">
+      </topicref>
+      <topicref href="benefit_period_bp_not_terminated_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2160.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2178.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2179.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2180.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2181.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2168.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2182.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2170.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2183.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="denying_a_retroactive_termination_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

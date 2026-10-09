@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="availability_declared_client" xml:lang="en-CA">
+  <title>Adjudicating non-availability declared by the client</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="temporary_process_is_no_longer_in_effec_dc8cd340.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="availability_while_on_referred_training.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="claim_action_status_and_processing_an_i_f11ddadd.dita">
+    </topicref>
+    <topicref href="communicating_the_decision.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="availability_not_in_order__initial_claim_level_1.dita">
+      </topicref>
+      <topicref href="availability_not_in_order__continuing_claim_level_1.dita">
+      </topicref>
+      <topicref href="availability_not_in_order__renewal_claim_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_wi_to_level_2_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_availability_level_2.dita">
+      </topicref>
+      <topicref href="record_of_decision_rod__creation_level_2.dita">
+      </topicref>
+      <topicref href="inputs_and_communication_level_2.dita">
+      </topicref>
+      <topicref href="client_not_reached_level_2.dita">
+      </topicref>
+      <topicref href="availability_in_order_level_2.dita">
+      </topicref>
+      <topicref href="availability_not_in_order__initial_claim_level_2.dita">
+      </topicref>
+      <topicref href="availability_not_in_order__renewal_claim_level_2.dita">
+      </topicref>
+      <topicref href="availability_not_in_order__continuing_claim_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2148.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2139.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

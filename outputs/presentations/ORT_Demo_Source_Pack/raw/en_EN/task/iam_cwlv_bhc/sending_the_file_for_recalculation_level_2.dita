@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="sending_the_file_for_recalculation">
+  <title>Sending the file for recalculation</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>If the decision involves a RFS, determine if the ROE is on file:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>If yes, in RCM, update the Special condition field to reflect the reconsideration decision on the RFS.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create an AI WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Urgent: Check the box.</li>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Claim type: Select Revised .</li>
+            <li>Destination — Level: Select EI Processing .</li>
+            <li>End User: Select Next available user .</li>
+            <li>Category: Select Pay affected .</li>
+            <li>Issue: Select Calculation .</li>
+            <li>Comments: Type “Level 1 recalculation required — Integrity case [Integrity case number].”</li>
+            <li>
+              Details: Do the following:
+              <ul>
+                <li>Type “A recalculation of BPC [DD-MM-YYYY] is required due to the adjudication of ROE [serial number]. A Level 2 ROD is on file and the reconsideration timeframe ends on [DD-MM-YYYY]. Recalculation inputs and notification to the client must be completed no later than this date. The infraction code for the recalculation is W - Insurability. ” If the ROE contains false information, clearly indicate what is incorrect and provide the correct information. If there is a CR Recalculation WI for the ROE under reconsideration, also type “Complete the Claim Review Recalculation work item related to this benefits period.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a client Note and do the following:</cmd>
+        <info>
+          <ul>
+            <li>Type “Please indicate in the client Note the transaction fields and data to be entered for the recalculation of the [blocked or archived] claim so that this information can be included with the unclassified violation on the Operational Centre Memo (MM06). The [D-91-00-00 or D-17-03-00] letter will be sent once the claim has been recalculated. Please save any other required letters.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the CR Integrity WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type“MM06 to be sent once recalculation transaction inputs indicated in client Note.”</li>
+            <li>Bring forward date: Select the next business day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the CR Integrity WI moves to the current workload, verify that recalculation transactions are indicated in the client Note:</cmd>
+        <info>
+          <ul>
+            <li>If the recalculation transactions are not indicated in the client Note , return to step 5.</li>
+            <li>If the transactions fields and data to be entered for the recalculation are indicated in the client Note , go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration corresponding to the investigation.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>
+              Infraction: Select the appropriate option:
+              <ul>
+                <li>For a false ROE, select W - Fraud - Insurability - new information .</li>
+                <li>For a contentious RFS, select Z - Fraud – Other .</li>
+              </ul>
+            </li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>For a contentious RFS, select 1 - An overpayment resulted due to a disqualification .</li>
+                <li>For a false ROE, select 9 - An overpayment resulted due to a change in insurable employment .</li>
+              </ul>
+            </li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number corresponding to the investigation.</li>
+            <li>BPC: Select the BPC of the claim on which the misrepresentation was made.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 1 - Misrepresentation .</li>
+            <li>
+              Remarks line 1: Indicate all of the following that are applicable:
+              <ul>
+                <li>Whether additional information is being provided on another Operational Centre Memo (MM06) transaction. (e.g. Page 1 of 3, Page 2 of 3)</li>
+                <li>URGENT: If urgent, provide reason. (e.g. URGENT approaching time limitation)</li>
+                <li>Indicate the exact transaction fields and data to be entered for the recalculation (from the client Note ). (e.g. M106 BPC___ HOURS___ EARNINGS____.)</li>
+              </ul>
+            </li>
+            <li>
+              Remarks line 2 : Indicate all of the following:
+              <ul>
+                <li>WRN: warning letter</li>
+                <li>LMR: first, second or third level of misrepresentation</li>
+                <li>VLN: unclassified violation information (V-1-1-1)</li>
+                <li>Integrity case number</li>
+              </ul>
+              <xref href="../../common_notes/note_c_3487.dita">Example</xref>
+            </li>
+            <li>
+              Remarks line 3: Type one of the following instructions for the ACS letter:
+              <ul>
+                <li>Send stored [D-17-03-00 or D-91-00-00] letter.</li>
+                <li>Add [missing fields] to [D-17-03-00 or D-91-00-00] letter and send.</li>
+                <li>Amend [D-17-03-00 or D-91-00-00] letter if applicable (re: reconsideration limitation) and send.</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the issue:</cmd>
+        <info>
+          <ul>
+            <li>If it is a contentious RFS, go to step 10.</li>
+            <li>If it is a false ROE or an ROE containing false information, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save the D-91-00-00 letter to inform the client of the reconsideration, warning letter and unclassified violation decisions. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Decision reconsidered beyond 36 months (2595): Select the appropriate option.</li>
+            <li>Indefinite disqualification - D11 or D10 - Post audit (2915)</li>
+            <li>Various reasons for penalty and violation : Found work / Self Employment / Capability / Training / Availability / Full work week / Text(2935)</li>
+            <li>No reply from client/reply received with an explanation/reply received with no explanation (2938)</li>
+            <li>False representation message/Number of omissions or false representations (2941)</li>
+            <li>Levels of misrepresentation (12292)</li>
+            <li>Penalty message / Warning message (2950): Select Warning message .</li>
+            <li>Overpayment Messages (2452)</li>
+            <li>Notice of violation (3095)</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save the D-17-03-00 letter to inform the client of the reconsideration and unclassified violation decisions. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              False ROE(s) / False Information (2618): Select the appropriate option.
+              <ul>
+                <li>Number of invalid or false ROE(s) submitted (1668)</li>
+                <li>Specify serial number of invalid or false ROE(s) (1672)</li>
+              </ul>
+            </li>
+            <li>Levels of Misrepresentation (12292): Select the level of misrepresentation and number of false representations.</li>
+            <li>Penalty message / Warning message (2950): Select Warning message .</li>
+            <li>Overpayment Messages (2452)</li>
+            <li>Notice of violation (3095)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, clear the client Note .</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a sanction also applies to a third party:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Implementing third party misrepresentation to impose the sanctions on the third party and to complete the case.
+              <xref href="/en/procedure/task/implementing_tp_misrepresentation.shtml">Implementing third party misrepresentation</xref>
+            </li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Decision tab of the Report of Investigation (IC50 or IC70) screen, clear the case as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Overpayment: Indicate whether an OP resulted from the misrepresentation.
+              <ul>
+                <li>Reason: Select the appropriate option based on the decision that resulted in the OP.</li>
+                <li>Amount: Enter the estimated total net OP that resulted from the misrepresentation.</li>
+              </ul>
+            </li>
+            <li>Penalty: Select No .</li>
+            <li>
+              Warning: Select Yes .
+              <ul>
+                <li>Reason: Select the appropriate option.</li>
+              </ul>
+            </li>
+            <li>
+              Violation: Select Yes .
+              <ul>
+                <li>Seriousness: Select Warning .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

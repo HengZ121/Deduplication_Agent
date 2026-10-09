@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="avc_modifying" xml:lang="en-CA">
+  <title>Modifying the dates on a disentitlement for vacation in Canada</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="disentitlement_start_and_end_dates.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws_and_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="adjudicating_level_1.dita">
+      </topicref>
+      <topicref href="inputs_and_communication_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_on_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_level_2.dita">
+      </topicref>
+      <topicref href="inputs_and_communication_level_2.dita">
+      </topicref>
+      <topicref href="on_vacation_in_canada_disentitlement_d38_level_2.dita">
+      </topicref>
+      <topicref href="incapacity_proven_but_not_otherwise_ava_ea535296_level_2.dita">
+      </topicref>
+      <topicref href="parental_benefits_entitlement_condition_51fa8c06_level_2.dita">
+      </topicref>
+      <topicref href="does_not_meet_compassionate_care_entitl_5f373533_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

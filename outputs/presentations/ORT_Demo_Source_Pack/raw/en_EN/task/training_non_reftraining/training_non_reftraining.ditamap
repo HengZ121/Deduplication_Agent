@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="training_non_reftraining" xml:lang="en-CA">
+  <title>Adjudicating non-referred training: Regular or fishing benefits — Initial claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="training_reported_between_september_27__5ecd71c7.dita">
+    </topicref>
+    <topicref href="adjudication_required_on_manually_regis_d5cd9e4c.dita">
+    </topicref>
+    <topicref href="impact_of_training_on_regular_or_fishin_e0a51eda.dita">
+    </topicref>
+    <topicref href="availability_during_non-referred_training.dita">
+    </topicref>
+    <topicref href="checklists.dita">
+    </topicref>
+    <topicref href="automated_decisions.dita">
+    </topicref>
+    <topicref href="processing_the_claim.dita">
+    </topicref>
+    <topicref href="communicating_the_decision.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4817.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4818.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0159.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_the_lmdaaccess_module_of_eibis.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="training_reported_in_error_level_1.dita">
+      </topicref>
+      <topicref href="entitlement_conditions_met_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2699.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4819.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_non-referred_training_level_2.dita">
+      </topicref>
+      <topicref href="training_not_an_issue_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_conditions_not_met_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_conditions_met_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4816.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4718.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

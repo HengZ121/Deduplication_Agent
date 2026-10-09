@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="missing_information">
+  <title>Missing information</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Failure to provide entitlement information.”</li>
+            <li>Details: Type “No return call from the client or the employer. 15 - Claim Procedure disentitlement imposed for failure to provide entitlement information. Information missing. Cannot input the allocation of separation monies.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the CS:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is terminated but can be reactivated, select the appropriate BPC on the Dormant tab and select Reactivate . Go to step 6.</li>
+            <li>If the claim is active, go to step 7.</li>
+            <li>If the claim is converted to MPS, note that a D15 from the Monday of the renewal week must be included in the Operational Centre Memo (MM06) transaction to IPOC. Go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the AI WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Reactivation of BPC [XXXX].”</li>
+            <li>Bring forward date: Enter today’s date + one business day.</li>
+            <li>When the WI moves to the current workload, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Disqualifications/Disentitlement (M161) transaction to input the D15 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the renewal registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 15 - Claim procedure .</li>
+            <li>Start date: Enter the Monday of the renewal week.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D – No .</li>
+            <li>Select Update .</li>
+            <li>Go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+      </step>
+      <step>
+        <cmd>Select the renewal registration number from the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+      </step>
+      <step>
+        <cmd>Return to the appropriate Renewal task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if you have all the information needed to complete the request and if the address needs to be validated:</cmd>
+        <info>
+          <ul>
+            <li>
+              If additional information is needed from the client, or if the address needs to be validated, fact-find to obtain the information and go to step 2.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If you have all the information needed, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 3.</li>
+            <li>If the client was not contacted and the additional information was not obtained to complete the request, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “T4E request.”</li>
+            <li>
+              Details: Type “Client requested T4E to be mailed.” Document any additional information. Refer to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+          <ul>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a change of address is required based on fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Change of address and go to step 5.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+            <li>If no, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a T4E is available on the Statement of benefits paid (T4E) Enquiry:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>
+              If no, go to No T4E available in FTS .
+              <xref href="#not4e">No T4E available in FTS</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is on the telephone making the request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Advise the client that the T4E is available on MSCA and can be printed any time:</cmd>
+        <info>
+          <ul>
+            <li>If the client is not willing to print the T4E from MSCA, go to step 8.</li>
+            <li>If the client is willing to print the T4E from MSCA, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the reason and date for the T4E request:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the client is requesting a T4E after March 1, go to Reissuing a current tax year T4E after March 1 .
+              <xref href="#aftermar1">Reissuing a current tax year T4E after March 1</xref>
+            </li>
+            <li>
+              If the client is requesting a duplicate T4E before March 1 and there was a change of address after the year-end processing cut-off date, go to Reissuing a current tax year T4E before March 1 due to a change of address .
+              <xref href="https://esdc.prv/en/service-canada/ei/reference-material/year_end.shtml">year-end processing</xref>
+              <xref href="#priormar1coa">Reissuing a current tax year T4E before March 1 due to a change of address</xref>
+            </li>
+            <li>If the client is requesting a duplicate T4E before March 1 and there is no change of address, the request cannot be processed. Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “T4E request.”</li>
+            <li>
+              Details: Type “The client requested T4E to be mailed before March 1 — request not processed.” Document any additional information. Refer to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an AI WI for the T4E request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_roe_strike_lockout_in_rcm">
+  <title>In RCM:</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/completing_roe_strike_lockout.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <ul id="completing_roe_strike_lockout_in_rcm_ul1">
+      <li id="completing_roe_strike_lockout_in_rcm_li1">What ROEs are displayed on the Search / Correct – Results screen?</li>
+      <li id="completing_roe_strike_lockout_in_rcm_li2">What is the employer’s name in block 4 of the ROE?</li>
+      <li id="completing_roe_strike_lockout_in_rcm_li3">What is the last day for which paid in block 11 of the ROE?</li>
+    </ul>
+  </conbody>
+</concept>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached and the missing information was obtained, go to step 6.</li>
+            <li>If the client was not reached or did not reply to the E-02-00-00 email or the N-10-00-00 letter, and a decision can be rendered based on the facts on file, go to step 7.</li>
+            <li>
+              If the client was not reached or did not reply to the E-02-00-00 email or the N-10-00-00 letter, and a decision cannot be rendered based on the facts on file, go to Missing information .
+              <xref href="#missinginfo">Missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Earnings .</li>
+            <li>Comments: Type “SE earnings”</li>
+            <li>
+              Details: Document any additional information according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

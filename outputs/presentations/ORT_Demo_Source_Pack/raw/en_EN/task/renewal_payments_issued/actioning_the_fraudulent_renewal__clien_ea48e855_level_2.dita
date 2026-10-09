@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="actioning_the_fraudulent_renewal__clien_ea48e855">
+  <title>Actioning the fraudulent renewal — Client is requesting benefits</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if, as a result of the recalculation, the established claim related to the same BPC as the fraudulent renewal application became BPNE due to a deleted fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if, as a result of the recalculation due to a deleted fraudulent ROE, a disqualification or a disentitlement must be imposed from the same BPC as the fraudulent renewal application:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the renewal week. Refer to Determining the effective date of a renewal or a conversion and Conversion and renewal , if necessary.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a payment issued to the third party can be replaced in SPS:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, go to step 7.
+              <xref href="../../common_notes/note_c_4461.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to NWS to review any completed WI and SROC to determine if any payment replacement has been requested for the same weekperiod. Complete a Payment: INS5207 Missing warrant replacement — Form for the weeks that were paid to a third party as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the client’s SIN.</li>
+            <li>HRCC: Enter the Service Canada Centre (SCC) as shown in FTS.</li>
+            <li>Requestor: Enter your 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payments to be replaced.</li>
+            <li>
+              Warrant No(s): Enter any payment reference numbers displayed on the Payment Summary (MN19) screen.
+              <xref href="../../common_notes/note_c_4462.dita">Note</xref>
+            </li>
+            <li>Amount(s): Enter any whole dollar amounts displayed on the Payment Summary (MN19) screen.</li>
+            <li>Name: Enter the client’s last and first names.</li>
+            <li>Address: Enter the client’s address.</li>
+            <li>Telephone number: Enter the client’s telephone number.</li>
+            <li>Action to take: Type “The payments were fraudulently deposited into a third party’s bank account.” If banking information was updated to the client’s information, type “Replace the payment to the client according to the direct deposit information modified in FTS on [DD-MM-YYYY].” If the client requests payment by cheque, type “Replace the payment to the client by cheque.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>
+              Destination — SCC: Select the SCC of your regional IPOC:
+              <ul>
+                <li>Atlantic: 1826</li>
+                <li>Quebec: 2642</li>
+                <li>Ontario: 3056</li>
+                <li>Western Canada and Territories: 5903</li>
+              </ul>
+            </li>
+            <li>End user: Select Next available user .</li>
+            <li>Issue(s): Select Payment replacement .</li>
+            <li>BPC: Enter the BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>Details: Copy and paste the information from the INS5207 (select the Ctrl + 1 keys to copy and Ctrl + V keys to paste).</li>
+            <li>Obtained by: Select the appropriate option.</li>
+            <li>Obtained from: Select the appropriate option.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if benefits paid to the third party must be removed from the client’s file:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 8.</li>
+            <li>
+              If yes, note all w/cs and amounts. Go to step 11.
+              <xref href="../../common_notes/note_c_4463.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting benefits for other weeks:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, determine which of the following situation applies:
+              <ul>
+                <li>If, a disqualification or a disentitlement must be imposed from the same BPC as the fraudulent renewal application as a result of the recalculation due to a deleted fraudulent ROE, go to step 9.</li>
+                <li>If the established claim became BPNE due to a deleted fraudulent ROE, go to step 15.</li>
+                <li>If the 2 previous conditions do not apply, go to step 13.</li>
+              </ul>
+            </li>
+            <li>
+              If no, determine which of the following situation applies:
+              <ul>
+                <li>If, a disqualification or a disentitlement must be imposed from the same BPC as the fraudulent renewal application as a result of the recalculation due to a deleted fraudulent ROE, go to step 9.</li>
+                <li>If the established claim became BPNE due to a deleted fraudulent ROE, go to step 15.</li>
+                <li>If the 2 previous conditions do not apply, go to step 15.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, review the Blocked Status column under the Blocked tab and determine if the blocked claim’s CS is 1 - Updateable :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>If no , note the w/cs in which a disqualification or a disentitlement must be imposed from the BPC. This information is required on the Operational Centre Memo (MM06). Go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC to be updated from the Blocked Status column and input the appropriate corrections to establish the appropriate OP for the client. Go to step 15.</cmd>
+      </step>
+      <step>
+        <cmd>In SPS, for each payment that must be removed, determine if the payment can be cancelled :</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, note the payment reference number, the amount (gross benefits and net amount), w/c, BT and claim type (CT). This information is required on the Operational Centre Memo (MM06). Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting benefits for other weeks:</cmd>
+        <info>
+          <ul>
+            <li>If yes, note all w/cs with the appropriate paycoding (earnings, not available days, full work week [FWW], etc.) that will affect entitlement for the weeks requested. Note the appropriate renewal date, if necessary. This information is required on the Operational Centre Memo (MM06) . Go to step 13.</li>
+            <li>If yes and the established claim became BPNE due to a deleted fraudulent ROE, do not note the appropriate renewal week and do not mention to renew the claim on the Operational Centre Memo (MM06) . Go to step 13.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the Integrity registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: This field is prefilled according to the investigation type in NIIS.</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>
+              Select Update .
+              <xref href="../../common_notes/note_c_4464.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the Integrity registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 54 - Third party fraud .</li>
+            <li>Remarks line 1: Type “Cancel fraudulent renewal w/c [XXXX]. Unknown third party.”</li>
+            <li>
+              Remarks lines 2–4: Type the appropriate information:
+              <ul>
+                <li>For all payments and cycling reports to be removed, type “Remove w/c [XXXX] to [XXXX]. Total amount $[XXXX]. Adjust tax file or T4E. No OP for client.” If payments have been returned or cheques were never cashed, type “Also cancel returned payments or uncashed cheques, as appropriate, for w/c [XXXX] to [XXXX].” For each payment, type “w/c [XXXX] / [T071-2 for current year or T071-8 for the previous year] / reason F / CT [XX] / gross benefits [XXXX] / federal tax [XX] / provincial tax [XX] (if necessary) / net amount [XXXX] / PRN [XXXXXXXXXXXX].”</li>
+                <li>If an OP must be established to the client because the client received payments for which they are not entitled, type “Establish OP to the client for w/c [XXXX] to [XXXX]. Client not entitled to benefits received.” Add the appropriate paycoding (disentitlement, earnings, not available days, full work week [FWW], etc).</li>
+                <li>If an MA was imposed to stop payments, type “Rescind MA [XX].”</li>
+                <li>If payments must be issued to the client , type “ Issue payments for w/c [XXXX] to [XXXX], CT [XX].” If paycoding is required, type “[appropriate paycoding, e.g. FWW, non-available days, sick days].” If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].” (add more w/cs if necessary).” If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].” If a disqualification must be imposed, type “D[XX] from w/c [XXXX].”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD on the client’s application and not on the fraudulent application as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity file number] — fraudulent renewal.”</li>
+            <li>
+              Details: Type “The investigator confirmed the client’s address and banking information on: [DD-MM-YYYY]. The client’s address is: [client’s address]. The client’s banking information is: [client’s banking information].” If Integrity identified fraudulent ROEs, type “Integrity confirmed that ROE [serial number] is fraudulent.” Document the decision and rationale according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD on the fraudulent renewal application as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity file number] — renewal submitted by a third party.”</li>
+            <li>
+              Details: Enter the following information:
+              <ul>
+                <li>Relevant facts: Type “An EI renewal application was filed by a third party on [DD-MM-YYYY] using the client’s identity.”</li>
+                <li>Decision/Justification: Type “This renewal application was not filed by the client and must not be included in an access to information request.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To delete the fraudulent application, create a Reminder (REM) WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Comments: Type “Delete the application.”</li>
+            <li>Due date: Enter the next business day.</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “Fraudulent renewal application dated [DD-MM-YYYY].”</li>
+            <li>Destination — SCC: Enter the SCC as shown in FTS.</li>
+            <li>
+              End user: Select Specific user:
+              <ul>
+                <li>Enter the name of the team leader or the designated person and select Find user .</li>
+              </ul>
+            </li>
+            <li>
+              Select Save .
+              <xref href="../../common_notes/note_c_1713.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Decision tab of the IC70 Report of Investigation screen, close the case as follows:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select No .</li>
+            <li>Reason: Select Other and type “Fraudulent renewal. Third-party OP amount is $[XX].”</li>
+            <li>Overpayment: Do not check either box.</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Prosecution: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity ERB-EI Transition WI and all other related WIs.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

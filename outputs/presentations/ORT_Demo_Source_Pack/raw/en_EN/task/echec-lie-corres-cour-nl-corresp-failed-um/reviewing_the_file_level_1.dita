@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In Curam and Legacy, determine if there is documentation on file indicating that the application is under investigation for potential fraud:</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there are known fraud indicators and if fraud is suspected by referring to Fraud indicators: Identifying potentially fraudulent claims — Knowledge and reviewing the file:</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the banking information has been changed to the banking information from the potentially fraudulent application:</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the client has provided a new address:</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a new address for the client is available from a third-party source (e.g. directory assistance or the telephone book).</cmd>
+      </step>
+      <step>
+        <cmd>In PSCD, determine if the client’s new address is available as follows:</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

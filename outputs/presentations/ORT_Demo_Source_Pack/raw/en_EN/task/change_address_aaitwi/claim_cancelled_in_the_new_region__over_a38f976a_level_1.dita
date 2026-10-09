@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claim_cancelled_in_the_new_region__over_a38f976a">
+  <title>Claim cancelled in the new region — Overpayment (OP)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Change of address and active claims in 2 regions.”</li>
+            <li>
+              Details: Detail the BPC to be retained, the BPC to be cancelled, the weeks that overlap the 2 BPCs and any other relevant information. Document the decision and rationale according to the National Fact-finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-finding, Documentation and Retention Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the new region from the Mainframe tab.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a registration number is on file for the change of address issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 16.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 16.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements (M161) transaction and input the disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 14 - Void benefit period .</li>
+            <li>Start date: Enter the start date for each disentitlement period.</li>
+            <li>End date: Enter the end date for each disentitlement period.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select D - Non-fraud - Duplicate payment .</li>
+            <li>Message: Select 21 - An overpayment resulted due to being paid twice for the same period .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration corresponding to the change of address issue.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select D - Non-fraud - Duplicate payment .</li>
+            <li>Message: Select 21 - An overpayment resulted due to being paid twice for the same period .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D — No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim that is converted to MPS.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 53 - Claim transfer .</li>
+            <li>Remarks line 1: Type “Change of address as of [insert date]. Active BPC in both regions.”</li>
+            <li>Remarks line 2: Type “D14 imposed on BPC in w/c [XXXX] in the new region to establish an OP for overlapping weeks paid.”</li>
+            <li>Remarks line 3: Type “Modify BPC in w/c [XXXX] to CS 8 for the new region and remove the weeks at issue from the pay history summary.”</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C — Yes to clear the registration number.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement (2976)
+              <ul>
+                <li>D5, D12, D13, D14, D15 (3011)</li>
+                <li>D14 - Claim cancelled - Various reasons (3019)</li>
+                <li>
+                  BPC date - Sunday’s date (1060)
+                  <ul>
+                    <li>Select the Sunday of the week the D14 was imposed.</li>
+                  </ul>
+                </li>
+                <li>D14 - Text: Type “You have received payments to which you were not entitled as a result of having a duplicate claim in another region.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the old region from the Mainframe tab.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there is a D48 or an MA48 on file:</cmd>
+        <info>
+          <ul>
+            <li>If there is an MA48 on file, go to step 23.</li>
+            <li>If there is no D48 or MA48 on file, go to step 25.</li>
+            <li>
+              If there is a D48 on file, refer to Undeliverable mail . Then go to step 25.
+              <xref href="/en/procedure/activity/undeliverable_mail.shtml">Undeliverable mail</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the AI Transfer WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “MA48 on file awaiting adjudication.”</li>
+            <li>Bring forward date: Enter today’s date + 10 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the AI Transfer WI moves to the current workload, determine if there is still an MA48 on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, repeat step 22.</li>
+            <li>If no, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the Address review field is highlighted on the Summary tab</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 26.</li>
+            <li>If no, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Name and Address Change/Transfer (M159) transaction and rescind the Address review field as follows:</cmd>
+        <info>
+          <ul>
+            <li>Address Review: Check the Rescind box.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Name and Address Change/Transfer (M159) transaction and input the change of SCC as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              New SCC: Select the appropriate SCC number:
+              <ul>
+                <li>If the file is transferred to the Atlantic region, select 1121 .</li>
+                <li>If the file is transferred to the Quebec region, select 2371 .</li>
+                <li>If the file is transferred to the Ontario region, select 3515 .</li>
+                <li>If the file is transferred to the Western Canada and territories region, select 4812 .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the AI WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

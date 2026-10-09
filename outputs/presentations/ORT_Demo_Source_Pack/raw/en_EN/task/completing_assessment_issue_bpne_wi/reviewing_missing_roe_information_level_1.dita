@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_missing_roe_information">
+  <title>Reviewing missing ROE information</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if each period of employment that is in the QP listed in the application has a corresponding ROE in RCM:</cmd>
+        <info>
+          <ul>
+            <li>If there are missing ROEs, go to step 19.</li>
+            <li>If there are no missing ROEs, go to step 32.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2632.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the missing ROE is in Easy Access :</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, and the details of the ROE appear to be accurate, refer to Entering an interim ROE to create the interim ROE. Return to step 17.
+              <xref href="/en/procedure/task/entering_interim_roe.shtml">Entering an interim ROE</xref>
+            </li>
+            <li>If no, go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>For each period of employment in the QP for which a ROE is missing, determine if the client has filled out an INS3166 form:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Determining if an interim ROE is required , and then go to step 24.
+              <xref href="/en/procedure/task/determining_interim_roe.shtml">Determining if an interim ROE is required</xref>
+            </li>
+            <li>
+              If no, fact-find with the client and attempt to obtain the missing ROEs. Fill out a Request for Record of Employment checklist with the client for each period of employment in the QP. Add to the draft SROC created during fact-finding.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/ROE-INS3166_Request_for_missing_ROE_transcript-Form.doc">Request for Record of Employment checklist</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If no, make one attempt to reach the employer to obtain the ROE or information to complete an interim ROE. Go to step 22.</li>
+            <li>If yes, but the client was not able to provide the ROE information, make one attempt to reach the employer to obtain the ROE or information to complete an interim ROE. Go to step 22.</li>
+            <li>
+              If yes, and the checklist was filled out with the client, make one attempt to reach the employer to see if a ROE will be issued, validate the information provided by the client with the employer and complete an interim ROE. Refer to step 7 of Determining if an interim ROE is required . Then go to step 22.
+              <xref href="/en/procedure/task/determining_interim_roe.shtml">Determining if an interim ROE is required</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2633.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 23.</li>
+            <li>If no, go to step 24.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Missing ROE information” and indicate who provided the information.</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 25</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a checklist was completed with the client:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes refer to estimating interim ROE information to create an interim ROE and then go to step 25.
+              <xref href="/en/procedure/task/estimating_interim_roe.shtml#level1_item_3">estimating interim ROE information</xref>
+            </li>
+            <li>If no, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a new ROE has been received or if an interim was created that overlaps the COD:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 5.</li>
+            <li>If no, go to step 26.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has enough hours in the QP to qualify for benefits:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 32.</li>
+            <li>If no, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any ROEs in the QP are missing:</cmd>
+        <info>
+          <ul>
+            <li>If ROEs are missing and no attempt has been made to obtain them, return to step 19.</li>
+            <li>If ROEs are missing due to an outstanding insurability ruling, go to step 28.</li>
+            <li>If ROEs are missing but attempts to obtain the information have been completed, go to step 29.</li>
+            <li>If no ROEs are missing or the interim ROEs have been denied, go to step 32.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the ASMT BPNE WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Insurability .</li>
+            <li>Comments: Type “Insurability ASMT WI pending — claim is BPNE without ROE.”</li>
+            <li>Bring forward date: Enter 21 days from the date the ruling was sent. Go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the ASMT BPNE WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “ROEs missing but have been requested — complete WI on due date.”</li>
+            <li>Bring forward date: Enter the date of application + 26 days.</li>
+            <li>Go to step 31.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the related ASMT WI for insurability has been completed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>If no, continue to move the WI to Pending for another 5 business days at a time until the insurability ruling is received.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if any new ROEs were submitted:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 17.</li>
+            <li>If no, go to step 32.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the ASMT BPNE WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

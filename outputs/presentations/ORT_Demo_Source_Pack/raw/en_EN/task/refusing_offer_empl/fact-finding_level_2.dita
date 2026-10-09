@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client and employer. Refer to Digest 9 — Refusal of Employment .</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Client not contacted.
+              <xref href="#ClientNotContacted">Client not contacted.</xref>
+            </li>
+            <li>If the client was contacted, go to step 8.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3451.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Refusal of employment.”</li>
+            <li>
+              Details: Document all the details related to fact-finding according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3452.dita">Note</xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

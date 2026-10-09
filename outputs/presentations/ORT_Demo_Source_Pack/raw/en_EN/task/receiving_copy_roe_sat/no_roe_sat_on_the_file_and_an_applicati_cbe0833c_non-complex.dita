@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="no_roe_sat_on_the_file_and_an_applicati_cbe0833c">
+  <title>No ROE SAT on the file and an application has been received</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Create a Reminder (REM) WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select N on-complex .</li>
+            <li>Reason: Select Fact finding employer .</li>
+            <li>Comments: Type “follow-up, ROE SAT paper copy received, not in RCM”</li>
+            <li>Due date: Enter the date of the application + 26 days .</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “[name of the employer], [serial number of the ROE SAT].”</li>
+            <li>
+              Destination: Enter the Service Canada centre as shown in FTS.
+              <ul>
+                <li>End User: Select Myself</li>
+                <li>
+                  Send to my pending workload: Check the box .
+                  <ul>
+                    <li>Reason: Select Fact finding employer.</li>
+                    <li>Comments: Type “follow up - paper copy of ROE SAT received.”</li>
+                    <li>Bring forward date: Modify to show 2 working days from today’s date.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+            <li>Click Save.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the employer:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the employer was contacted, complete the following actions:
+              <ul>
+                <li>Inform the employer that the ROE SAT was not received and ask the employer to follow up with their payroll services provider.</li>
+                <li>Confirm the information on the paper copy of the ROE SAT.</li>
+                <li>Advise the employer that they will be contacted again in 2 working days for a follow up.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>New SROC: Main Issue: Select Other .</li>
+            <li>New SROC: Comments: Type “paper copy of ROE SAT received — [determine if the employer was contacted].”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy . Include the date the ROE SAT is expected to be transmitted.
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml#s5_4">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the employer was not contacted, go to Reassigning the Reminder (REM) WI to Level 1 .
+              <xref href="#reassignWI">Reassigning the Reminder (REM) WI to Level 1</xref>
+            </li>
+            <li>If the employer was contacted, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the ROE SAT is in RCM:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 8</li>
+            <li>If yes, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the employer:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the employer was contacted, complete the following actions:
+              <ul>
+                <li>Inform them that the ROE SAT was not received and ask if they were able to follow up with their payroll department or provider.</li>
+                <li>Ask when the ROE SAT is expected to be transmitted.</li>
+                <li>
+                  If the employer advises an agent that the ROE SAT was transmitted, but it cannot be found in RCM, refer the issue to a business expertise advisor and go to Reassigning the Reminder (REM) WI to Level 1 .
+                  <xref href="#BEA">refer the issue to a business expertise advisor</xref>
+                  <xref href="#reassignWI">Reassigning the Reminder (REM) WI to Level 1</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “paper copy of ROE SAT received — [determine if the employer was contacted].”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy . Include the date the ROE SAT is expected to be transmitted.
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml#s5_4">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+          <ul>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the employer was not contacted, go to Reassigning the Reminder (REM) WI to Level 1
+              <xref href="#reassignWI">Reassigning the Reminder (REM) WI to Level 1</xref>
+            </li>
+            <li>If the employer was contacted, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer provided an expected date for the ROE SAT:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Reassigning the Reminder (REM) WI to Level 1 .
+              <xref href="#reassignWI">Reassigning the Reminder (REM) WI to Level 1</xref>
+            </li>
+            <li>If yes, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if waiting until the expected date will cause the REM WI to be overdue:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Reassigning the Reminder (REM) WI to Level 1 .
+              <xref href="#reassignWI">Reassigning the Reminder (REM) WI to Level 1</xref>
+            </li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding employer .</li>
+            <li>Comments: Type “paper copy of ROE SAT”</li>
+            <li>Bring forward date: Enter the date the ROE SAT is expected to be on file.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in RCM determine if the ROE SAT is on file.</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Reassigning the Reminder (REM) WI to Level 1 .
+              <xref href="#reassignWI">Reassigning the Reminder (REM) WI to Level 1</xref>
+            </li>
+            <li>If yes, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the REM WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

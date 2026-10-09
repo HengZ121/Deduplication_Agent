@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_not_proven__mps_inputs">
+  <title>Entitlement not proven — MPS inputs</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Vacation in Canada — family caregiver benefits — D61 w/c [XXXX-X] to [XXXX-X].”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the CT as follows:</cmd>
+        <info>
+          <ul>
+            <li>If it is a continuing claim, go to step 9.</li>
+            <li>If it is an initial or renewal claim, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the vacation in Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) to advise IPOC to impose the disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 -Yes.</li>
+            <li>Complete: Select D - No.</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Select the appropriate option:</li>
+            <li>Remarks line 2: Type “The client is not entitled to collect benefits for the vacation in Canada period.”</li>
+            <li>Remarks line 3: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Special benefits denied (3065):
+              <ul>
+                <li>Select Family caregiver benefits for children denied - D61/D62/D63/Free text (11282) or Family caregiver benefits for adults denied - D61/D62/D63/Free text (11281) .</li>
+                <li>Select D61 - Not entitled to family caregiver benefits for children - Various reasons (11283) or D61 - Not entitled to family caregiver benefits for adults - Various reasons (11276) .</li>
+                <li>Select D61 - Child does not meet the definition of critically ill or injured child or D61 - Adult does not meet the definition of critically ill or injured adult .</li>
+                <li>Select Indefinite/Definite/Multiple Disentitlement dates (2485) .</li>
+                <li>Select the appropriate dates from the drop down calendar.</li>
+              </ul>
+            </li>
+            <li>Overpayment messages (2452) .</li>
+            <li>Right to Request a Reconsideration (no Blank Option) (4169): Select Right to Request a Reconsideration .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Special benefits denied (3065): Select Family caregiver benefits for children denied - D61/D62/D63/Free text (11282) or Family caregiver benefits for adults denied - D61/D62/D63/Free text (11281) .
+              <ul>
+                <li>Select D61 - Not entitled to family caregiver benefits for children - Various reasons (11283) or D61 - Not entitled to family caregiver benefits for adults - Various reasons (11276) .</li>
+                <li>Select D61 - Child does not meet the definition of critically ill or injured child or D61 - Adult does not meet the definition of critically ill or injured adult .</li>
+                <li>Select Indefinite/Definite/Multiple Disentitlement dates (2485) .</li>
+                <li>Select the appropriate dates from the drop-down calendar.</li>
+              </ul>
+            </li>
+            <li>Overpayment messages (2452)</li>
+            <li>Right to Request a Reconsideration (no Blank Option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a client Note and type “Submit MM06 to enter the M161 inputs. D61 from [XXXX-X] to w/c [XXXX-X]. Send the saved N-00-00-00 letter.”</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the vacation in Canada issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

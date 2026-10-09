@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if you have all the information needed to complete the request and if the address needs to be validated:</cmd>
+        <info>
+          <ul>
+            <li>
+              If additional information is needed from the client, or if the address needs to be validated, fact-find to obtain the information and go to step 2.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If no additional information is needed, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 3.</li>
+            <li>If the client was not reached, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “T4E request.”</li>
+            <li>
+              Details: Type “The client requests that the T4E be mailed.” Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1840.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a change of mailing address is necessary:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>
+              If yes, refer to Adding, modifying or ending a client’s address in Cúram and go to step 5.
+              <xref href="/en/procedure/task/ajou_mod_sup_adresse_client-add_mod_end_client_address_curam.shtml">Adding, modifying or ending a client’s address in Cúram</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is on the telephone requesting the duplicate T4E:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 7.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4858.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the client’s situation:</cmd>
+        <info>
+          <ul>
+            <li>If the client will access the T4E from MSCA, go to step 8.</li>
+            <li>
+              If the client will not access the T4E from MSCA, go to Issuing a duplicate T4E for the current tax year .
+              <xref href="#_issuing_a_current">Issuing a duplicate T4E for the current tax year</xref>
+            </li>
+            <li>
+              If no benefits were paid and there is no T4E in Cúram, go to No T4E is available in Cúram.
+              <xref href="#_No_T4E_available">No T4E is available in Cúram.</xref>
+            </li>
+            <li>If benefits were paid in Cúram in the current tax year and there is no T4E, contact a Business Expertise Advisor for directions.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the date of the client’s request for a duplicate T4E is before March 1:</cmd>
+        <info>
+          <ul>
+            <li>If yes and the mailing address was not changed, inform the client that the T4E is not available and go to step 8.</li>
+            <li>
+              If yes and the client’s address was changed, go to Issuing a duplicate T4E for the current tax year .
+              <xref href="#_issuing_a_current">Issuing a duplicate T4E for the current tax year</xref>
+            </li>
+            <li>
+              If no, go to Issuing a duplicate T4E for the current tax year .
+              <xref href="#_issuing_a_current">Issuing a duplicate T4E for the current tax year</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>the request for a T4E for the current tax year:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the task or WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

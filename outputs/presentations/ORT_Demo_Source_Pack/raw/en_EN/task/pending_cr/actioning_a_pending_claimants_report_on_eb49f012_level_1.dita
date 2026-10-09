@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="actioning_a_pending_claimants_report_on_eb49f012">
+  <title>Actioning a pending claimant’s report on the E-Report tab</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>On the E-Report tab, select the pending claimant’s report and review the information provided by the client.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a completed claimant’s report checklist:</cmd>
+        <info>
+          <ul>
+            <li>
+              If there is no completed checklist (or if the checklist is incomplete), fact-find with the client using the Claimant Report with no Paycoding or Claimant Report with Paycoding checklist and go to step 4.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_without_pay_coding-Checklist.doc">Claimant Report with no Paycoding</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_with_pay_coding-Checklist.doc">Claimant Report with Paycoding</xref>
+            </li>
+            <li>If there is a completed checklist and additional details are not needed, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 5.</li>
+            <li>If the client was not contacted or did not reply to the N-10-00-00 letter, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Client’s reports .</li>
+            <li>Comments: Type “Pending claimant’s reports — w/c [XXXX].”</li>
+            <li>
+              Details: Copy and paste the Claimant Report with no Paycoding or Claimant Report with Paycoding checklist. Document any additional fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_without_pay_coding-Checklist.doc">Claimant Report with no Paycoding</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_with_pay_coding-Checklist.doc">Claimant Report with Paycoding</xref>
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the claimant’s report chart to determine if additional actions are required (e.g. if earnings are declared, an allocation may be required instead of coding the earnings).</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, on the E-Report tab, select the pending claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>Select Pay coding .</li>
+            <li>Correct the claimant’s report information.</li>
+            <li>Send message to SCC: Leave this field blank.</li>
+            <li>Action: Select C - Report completed .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3579.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if a WI exists for the pending claimant’s report issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="disentitlement_applies__continuing_claim">
+  <title>Disentitlement applies — Continuing claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Benefit type requested] — not entitled — D12 from w/c XXXX-X to XXXX-X.”</li>
+            <li>
+              Details: Type: “Not allowed — the client was incarcerated from (YYYY-MM-DD) to (YYYY-MM-DD). References: EIA 37 , Digest 11.6.5 — Being an inmate in any prison or similar institution and the National Policy on the Levels of Decision .”
+              <xref href="http://laws-lois.justice.gc.ca/eng/acts/E-5.6/section-37.html">EIA 37</xref>
+              <xref href="https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/digest/chapter-11/sickness-benefits-other-provisions.html#a11_6_5">Digest 11.6.5 — Being an inmate in any prison or similar institution</xref>
+              <xref href="/en/policy/nationalpolicy/levels_decision-annex1.shtml">National Policy on the Levels of Decision</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the incarceration issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>
+              If no , select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the claim is in MPS:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to remove the MA01 (if necessary) and impose a D12 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Manual action: Select 1 - General suspension of benefits (stop payment) , if necessary.</li>
+            <li>Rescind: Check the box, if necessary.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 12 - Inmate in penal institution .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>
+              End date: Enter the appropriate end date as follows:
+              <ul>
+                <li>If the end date is known, enter the disentitlement end date.</li>
+                <li>If the end date is not known, click Indefinite .</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>3 - An overpayment resulted due to a definite disentitlement .</li>
+                <li>4 - An overpayment resulted due to an indefinite disentitlement .</li>
+              </ul>
+            </li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes to complete the registration number.</li>
+            <li>Click Update .</li>
+            <li>Go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS Select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Click Memo (MPS) .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim requiring the D13/61 to be modified or terminated.</li>
+            <li>Work item: Select 93 - Manual Payment System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks Line 1: Type “DE12 from [XXXX-X to XXXX-X]”</li>
+            <li>Remarks Line 2: If necessary, type other information or changes needed.</li>
+            <li>Remarks Line 3: If necessary, type “Send stored ACS [name of letter]”</li>
+            <li>Remarks Line 4: Type your name and telephone number.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send (or save in case of a MPS claim) the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlements (2976): Select D5, D12, D13, D14, D23 .
+              <ul>
+                <li>D12 - In prison or similar institution .</li>
+              </ul>
+            </li>
+            <li>Indefinite/Definite/Multiple Disentitlement dates (2485) .</li>
+            <li>Overpayment messages (2452) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the incarceration issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

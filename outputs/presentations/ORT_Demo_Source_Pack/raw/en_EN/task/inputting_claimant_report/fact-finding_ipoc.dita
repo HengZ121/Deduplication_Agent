@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to verify the information.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If you are able to reach the client, go to step 4.</li>
+            <li>
+              If you are unable to reach the client, go to Inputs not required — Unable to obtain missing information .
+              <xref href="#Input_not_required_1">Inputs not required — Unable to obtain missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Client’s reports .</li>
+            <li>Comments: Type “Claimant’s reports — w/c [XXXX].”</li>
+            <li>
+              Details: Copy and paste the Claimant Report with no Paycoding or Claimant Report with Paycoding checklist if completed during fact-finding. Document any additional fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_without_pay_coding-Checklist.doc">Claimant Report with no Paycoding</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Claimants_report-Original_with_pay_coding-Checklist.doc">Claimant Report with Paycoding</xref>
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

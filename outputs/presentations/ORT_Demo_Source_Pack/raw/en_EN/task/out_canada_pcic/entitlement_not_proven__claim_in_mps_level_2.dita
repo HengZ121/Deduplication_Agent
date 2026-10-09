@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_not_proven__claim_in_mps">
+  <title>Entitlement not proven — Claim in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD for the D61 decision as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “The client is not providing care or support — D61 from w/c [XXXX-X] to [XXXX-X].”</li>
+            <li>Details: Type “The client [is or was] out of Canada for the period of [date of absence]. Client is receiving family caregiver benefits. There is no proof that the client [continues or continued] to provide care or support to the patient while outside of Canada, as [provide all details supporting this statement].”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD for the D13 decision as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Out of Canada — D13 from w/c [XXXX-X] to [XXXX-X].”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the CT as follows:</cmd>
+        <info>
+          <ul>
+            <li>If it is a continuing claim, go to step 4.</li>
+            <li>If it is an initial or renewal claim, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the out of Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no , select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction to advise IPOC to stop payment as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>BPC: Select the BPC of the appropriate claim.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>
+              Remarks line 1: Select the appropriate option:
+              <ul>
+                <li>If the end date is known, type “D61 and D13 from w/c [XXXX-X] to w/c [XXXX-X].”</li>
+                <li>If the end date is not known, type “D61 and D13 from w/c [XXXX-X] to 9999-9.”</li>
+              </ul>
+            </li>
+            <li>Remarks line 2: Type “The client is not entitled to collect benefits for the out of Canada period.”</li>
+            <li>Remarks line 3: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Special benefits denied (3065): Select Family caregiver benefits denied: D61, D62, D63 (4315) .
+              <ul>
+                <li>Select D61 - Not entitled to family caregiver - Various reasons (4316) .</li>
+                <li>Select D61 - Claimant does not provide care or support to the critically ill or injured family member .</li>
+                <li>Select Indefinite/Definite/Multiple Disentitlement dates (2485) .</li>
+              </ul>
+            </li>
+            <li>Overpayment messages (2452) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+            <li>This letter replaces or Footnote (2365): Select Footnote and type “We are unable to pay you family caregiver benefits from [date] because you have not proven that you [are or were] providing care or support to your family member while you [are or were] out of Canada.”</li>
+            <li>Go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Special benefits denied (3065): Select Family caregiver benefits denied: D61, D62, D63 (4315) .
+              <ul>
+                <li>Select D61 - Not entitled to family caregiver - Various reasons (4316) .</li>
+                <li>Select D61 - Claimant does not provide care or support to the critically ill or injured family member .</li>
+                <li>Select Indefinite/Definite/Multiple Disentitlement dates (2485) .</li>
+              </ul>
+            </li>
+            <li>Overpayment messages (2452) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+            <li>This letter replaces or Footnote (2365): Select Footnote and type “We are unable to pay you family caregiver benefits from [date] because you have not proven that you [are or were] providing care or support to your family member while you [are or were] out of Canada.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a client Note and type “Submit MM06 to enter the M161 inputs. D61 and D13 from [XXXX-X] to w/c [XXXX-X]. Send the saved N-00-00-00 letter.”</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the out of Canada issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

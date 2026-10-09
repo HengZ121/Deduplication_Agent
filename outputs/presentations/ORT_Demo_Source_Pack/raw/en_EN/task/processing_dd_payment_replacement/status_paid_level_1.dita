@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="status_paid">
+  <title>Status Paid</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the client reports that the payment was deposited into the wrong account:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>
+              If no, advise the client that no replacement action will be taken and that any concerns need to be addressed with the financial institution. Go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if Service Canada mistakenly deposited the payment into an account that has never belonged to the client:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>
+              If yes, go to Replacing a payment .
+              <xref href="#replacing_a_payment">Replacing a payment</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if Service Canada mistakenly deposited the payment into a valid joint account:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, inform the client that the payment was deposited on [payment confirmation date according to SPS] into an account of which the client is the sole owner and explain that since the financial institution confirmed the deposit, any concerns regarding the money needs to be addressed with the financial institution. The payment cannot be replaced. Go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was previously informed that, in order to submit a formal direct deposit payment replacement request, the client must provide proof that the financial institution denied the return of the payment to Service Canada and proof that the client does not have access to the funds:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 11.</li>
+            <li>
+              If no, inform the client that when the documentation is received, Legal services will determine the actions to take. Go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has provided the required documentation:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>
+              If no, inform the client that when the documentation is received, Legal services will determine the actions to take. Go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Inform the client that National Headquarters will consult with Legal services on the case to determine the actions to take and to establish the required procedures for the particular situation.</cmd>
+      </step>
+      <step>
+        <cmd>In Outlook, create and send an email as follows:</cmd>
+        <info>
+          <ul>
+            <li>To: Type “NC-INS-ASSUR_IPOC_COPA_QUESTIONS-GD.”</li>
+            <li>In the body of the email, enter the details of the case.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>
+              Details: Select the appropriate option:
+              <ul>
+                <li>If the client does not report that the payment was deposited into the wrong account, type “The client is not reporting that the payment was deposited into the wrong account. As long as the payment was correctly deposited into an account in the client’s name as directed by the client, no payment replacement will be issued. Payment replacement will not be issued for payment under reference number [reference number] in the amount of [amount], covering the period of [YYYY-MM-DD] to [YYYY-MM-DD].”</li>
+                <li>If the client reports that the payment was deposited into the wrong account, but the client is the sole owner, type “The client reports that the payment was deposited into the wrong account. The client was informed that, because the payment was deposited on [payment confirmation date according to SPS] into an account of which the client is the sole owner and since the financial institution confirmed the deposit, any concerns regarding the money needs to be addressed with the financial institution. Payment replacement will not be issued for payment under reference number [reference number] in the amount of [amount], covering the period of [YYYY-MM-DD] to [YYYY-MM-DD].”</li>
+                <li>If the client claims that the payment was mistakenly deposited into a joint account and the client was informed to provide proof of the request to the financial institution, type “According to the client, payment under reference number [reference number] for the amount of [amount], covering the period of [YYYY-MM-DD] to [YYYY-MM-DD] was mistakenly deposited into a joint account. The client was informed to provide proof that the financial institution denied the request to return the payment to Service Canada and that they do not have access to withdraw the funds. The client was also informed that once the proof is received, the Legal services will determine the actions to take.”</li>
+                <li>If the client claims that the payment was mistakenly deposited into a joint account and there is proof that the financial institution denied the request to return the payment in the file, type “According to the client, payment under reference number [reference number] for the amount of [amount], covering the period of [YYYY-MM-DD] to [YYYY-MM-DD] was mistakenly deposited into a joint account. The client has provided proof that the financial institution denied the request to return the payment to Service Canada and that they do not have access to withdraw the funds. An email with the details of the case was sent to Insurance Payment Operational Centre. National Headquarters will review and determine the actions to take for the payment replacement.”</li>
+              </ul>
+            </li>
+            <li>
+              Select Save and go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

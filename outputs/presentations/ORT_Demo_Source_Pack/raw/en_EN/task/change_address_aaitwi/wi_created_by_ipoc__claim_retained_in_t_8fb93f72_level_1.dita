@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="wi_created_by_ipoc__claim_retained_in_t_8fb93f72">
+  <title>WI created by IPOC — Claim retained in the new region with an overpayment (OP)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if a registration number is on file for the change of address issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>
+              If no , select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 4.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select D - Non-fraud - Duplicate payment .</li>
+            <li>Message: Select 21 - An overpayment resulted due to being paid twice for the same period .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim that is converted to MPS.</li>
+            <li>Work item: Select 93 - Manual pay system .</li>
+            <li>Work type: Select 53 - Claim transfer.</li>
+            <li>Remarks line 1: Type “Change of address in a new region and active claim in the new region caused transferring claim to reject.”</li>
+            <li>Remarks line 2: Type “BPC in w/c [XXXX] to be retained in the new region. BPC in w/c [XXXX] to be cancelled in the old region.”</li>
+            <li>Remarks line 3: Type “Modify BPC in w/c [XXXX] to CS 8 for the old region and remove the weeks paid from the pay history summary.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes to clear the registration number.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, determine if the D-01-00-00 letter was sent for the change of address issue:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 8.</li>
+            <li>If yes, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement (2976)
+              <ul>
+                <li>D5, D12, D13, D14, D23 (3011)</li>
+                <li>D14 - Claim cancelled - Various reasons (3019)</li>
+                <li>BPC date - Sunday’s date (1060): Select the Sunday of the week the D14 was imposed.</li>
+                <li>D14 - Text: Type “You have received payments to which you were not entitled as a result of having a duplicate claim in another region.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the AI Transfer WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

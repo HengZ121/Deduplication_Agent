@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="rejected_cr" xml:lang="en-CA">
+  <title>Actioning a rejected claimant’s report</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="transactions_and_communication_level_1.dita">
+      </topicref>
+      <topicref href="update_not_required_level_1.dita">
+      </topicref>
+      <topicref href="update_required_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4403.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4404.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

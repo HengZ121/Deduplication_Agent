@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="claim_procedure_ftr_telehone_review_d15" xml:lang="en-CA">
+  <title>Reviewing a D15 disentitlement — Failure to report for a telephone interview</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="failure_to_report_for_a_telephone_interview.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="sin_change__initial_claim.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2615.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2616.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_acs.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_to_allow__2ac9dc0f_level_1.dita">
+      </topicref>
+      <topicref href="conditions_to_allow_at_level_1_met_level_1.dita">
+      </topicref>
+      <topicref href="assigning_the_wi_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="unable_to_contact_the_client_for_missin_7c18738d_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2617.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2618.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudication_level_2.dita">
+      </topicref>
+      <topicref href="disentitlement_rescinded_level_2.dita">
+      </topicref>
+      <topicref href="decision_maintained_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

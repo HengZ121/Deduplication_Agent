@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claim_in_mps">
+  <title>Claim in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>For each AI WI, determine if a 1 - General suspension of benefits (stop payments) manual action (MA1) is required:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>If no, go to step 21.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1754.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To stop payment, select the Renewal/Revised (M106) transaction and create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>
+              Remarks :
+              <ul>
+                <li>Remarks line 1: Type “Urgent. Stop payment as of w/c [XXXX].”</li>
+                <li>Remarks line 2: Type “Adjudication is required to determine how the remaining weeks of benefits will be shared.”</li>
+                <li>Remarks line 3: Enter your first name and last name.</li>
+              </ul>
+            </li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Cannot complete the work.”</li>
+            <li>Bring forward date: Enter the next business day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the file can be completed:</cmd>
+        <info>
+          <ul>
+            <li>If no, return to step 19.</li>
+            <li>If yes, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an outstanding registration number related to the benefit-sharing agreement is on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 22.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and create, for each client, an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>
+              Remarks:
+              <ul>
+                <li>Remarks line 1: Type “The client is entitled to [XX] weeks — change the number of weeks from [XX] to [XX].”</li>
+                <li>Remarks line 2: Enter your first name and last name.</li>
+              </ul>
+            </li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Special benefits approved (3046) .
+              <ul>
+                <li>Start Date Caregiver benefits - Sunday’s date (4320) .</li>
+                <li>Number of Caregiver week(s) to be paid (4287) .</li>
+              </ul>
+            </li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>From the Search for Caregiver/Compassionate Care patient (MCB2) search results, determine if another client's entitlement must be updated:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 12.</li>
+            <li>If no, go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

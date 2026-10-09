@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="end_of_training_allowed__mps_claim">
+  <title>End of training allowed — MPS claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if the referred training end date shown on the Project tab is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine which authority referred the client to the training:</cmd>
+        <info>
+          <ul>
+            <li>If a provincial or territorial designated authority referred the client, go to step 3.</li>
+            <li>If Service Canada referred the client, go to step 7.</li>
+            <li>If a designated authority referred the client to apprenticeship training , go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the referred training ended earlier than initially declared:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, accept the client’s statement and go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is documentation on file from the referring authority confirming the referred training end date:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, fact-find with the client and inform the client that the referring authority must provide the documentation. Go to step 5.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the referred training WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “EIA 25 — end date documentation is required.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the required documentation from the referring authority is on file:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 5.</li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a revised registration number for the referred training issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “EIA 25 — Change to the training end date is required.”</li>
+            <li>Remarks line 2: Type “T171 — END-WK-DY [XXXX].”</li>
+            <li>Remarks line 3: If necessary, enter the claimant’s report information.</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “End of referred training.”</li>
+            <li>Details: Type “Meets levels of decision criteria to allow at Level 1.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

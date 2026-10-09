@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="sin_change_can_be_input">
+  <title>SIN change can be input</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, on the claim with the old SIN, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “SIN change — new SIN obtained.”</li>
+            <li>Details: Type “New SIN — [new SIN].”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an external SROC using the new SIN as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “SIN change.”</li>
+            <li>Details: Type “New SIN obtained — old SIN is [old SIN].”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, create an interim ROE using the new SIN for each ROE that affects the current claim and that was input with the old SIN as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              On the Input screen, complete the fields as follows:
+              <ul>
+                <li>Social Insurance No.: Enter the new SIN.</li>
+                <li>Serial Number: Leave this field blank.</li>
+                <li>Serial Number of amended ROE or replaced: Leave this field blank.</li>
+                <li>Interim ROE Type: Select Regular Interim or Fishing Interim .</li>
+                <li>Printing Language: Select the language used on the original ROE.</li>
+              </ul>
+            </li>
+            <li>Select Submit .</li>
+            <li>On the Input Regular ROE or Input Fishing ROE screen, enter the same information as shown on the original ROE with the old SIN.</li>
+            <li>Additional information: Type “SIN change — old SIN [old SIN and serial number of original ROE].”</li>
+            <li>Select Submit .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2498.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>For all the ROEs issued with the old SIN, determine the ROE issue date:</cmd>
+        <info>
+          <ul>
+            <li>If the issue date is after the effective date of the new SIN, go to step 10.</li>
+            <li>
+              If the issue date is before the effective date of the new SIN, go to Determining if the electronic file requires updating .
+              <xref href="#electronicfile">Determining if the electronic file requires updating</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, delete each ROE that was incorrectly issued with the old SIN as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select Search/Correct .</li>
+            <li>Social Insurance No.: Enter the old SIN.</li>
+            <li>Serial Number: Leave this field blank.</li>
+            <li>Select Submit .</li>
+            <li>Select a serial number to open an ROE.</li>
+            <li>Status: Check the Delete box.</li>
+            <li>Additional information: Type “SIN change — [new SIN].”</li>
+            <li>Select Submit .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the employer and do the following:</cmd>
+        <info>
+          <ul>
+            <li>Advise the employer to reissue a new ROE with the new SIN.</li>
+            <li>Inform the employer that the ROE issued with the old SIN has been deleted.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2499.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the employer was reached, go to step 13.</li>
+            <li>If the employer was not reached or did not reply to the Z-02-00-00 letter, go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC using the new SIN as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select ROE .</li>
+            <li>Comments: Type “SIN change.”</li>
+            <li>
+              Details: Type “[Employer’s name] incorrectly issued the record of employment with the old SIN.” If necessary, type “Unable to contact the employer by telephone — a second letter was sent.” Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml#5.4">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer states the ROE will be provided:</cmd>
+        <info>
+          <ul>
+            <li>If yes and the employer is faxing the ROE to Service Canada, go to step 15.</li>
+            <li>If yes and the employer will issue the electronic ROE in a timely manner, go to step 15.</li>
+            <li>If yes and the employer will provide the client with a paper ROE or true copy of the original paper ROE, go to 15.</li>
+            <li>If no, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select ROE .</li>
+            <li>Comments: Type “ROE request.”</li>
+            <li>
+              Bring forward date: Do one of the following:
+              <ul>
+                <li>If the employer is faxing the ROE, enter today’s date + 2 business days.</li>
+                <li>If the employer indicated that the electronic ROE will be issued in a timely manner, enter today’s date + 5 business days.</li>
+                <li>If the employer is sending a paper ROE, enter today’s date + 10 business days.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the ROE is displayed in RMDS or RCM:</cmd>
+        <info>
+          <ul>
+            <li>If the ROE is not displayed in RMDS or RCM, go to step 17.</li>
+            <li>If the ROE is displayed in RCM, go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the paper copy, or an uploaded or faxed copy of the ROE has been received:</cmd>
+        <info>
+          <ul>
+            <li>If the ROE was not received and the bring-forward date is not reached, return to step 15.</li>
+            <li>If an uploaded or faxed copy of a paper ROE was received, go to step 18.</li>
+            <li>If a copy of the ROE has not been received and the bring-forward date is reached, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, enter the ROE by referring to Data entry — Paper document . If the ROE that was entered has validation errors, correct the errors by referring to Correct an ROE and go to step 22.</cmd>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the Z-02-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Opening Sentence to ER to Request or Clarify ROE/RFS (2794): Select Request ROE Opening Sentence - claimant .</li>
+            <li>
+              Request for a Record of Employment (2797) .
+              <ul>
+                <li>Select Initial Request for ROE .</li>
+                <li>Select Start-end date of employment / End date of employment (2798) .</li>
+              </ul>
+            </li>
+            <li>Go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, send a registered copy of the Z-02-00-00 letter with the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Opening Sentence to ER re: Request or Clarify ROE/RFS (2794): Select Request ROE Opening Sentence — claimant .</li>
+            <li>Request for a Record of Employment (2797): Select Follow up request for ROE .</li>
+            <li>
+              Previously requested by mail (2799):
+              <ul>
+                <li>Date ROE requested: Type the date the original letter was sent.</li>
+                <li>End date of period of employment: Type the employment end date.</li>
+                <li>Date of BF: Enter 10 business days from the date the letter is sent.</li>
+              </ul>
+            </li>
+            <li>Attachment List for Z-02-00-00 (3133): Select Attached: Copy of original letter .</li>
+            <li>Indicate on letter how letter mailed (2804): Select Sent by registered mail .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1564.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a REM WI using the new SIN as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1.</li>
+            <li>Reason: Select Missing ROE .</li>
+            <li>Comments: Type “The employer must issue a new ROE.”</li>
+            <li>Due date: Enter 10 working days from the date on which a valid ROE was requested.</li>
+            <li>Details: Type “SIN change. The employer issued an ROE with the old SIN although the new SIN is now valid. An interim ROE was already active. The employer must issue a new ROE. If the employer does not comply, refer the file to Integrity.”</li>
+            <li>Destination — SCC: Select the Service Canada Centre (SCC) as shown in FTS.</li>
+            <li>End User: Select Next Available User .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is an outstanding AI WI with the comment “SIN change request received from CRA”:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Electronic file update required .
+              <xref href="#file_update">Electronic file update required</xref>
+            </li>
+            <li>
+              If yes, go to Electronic file already updated by IPOC .
+              <xref href="#file_already">Electronic file already updated by IPOC</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, with the old SIN, determine if there is a registration number for the SIN issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, with the old SIN select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim with the request for a SIN change.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 34 - Social insurance number change .</li>
+            <li>Remarks line 1: Type “SIN change to new SIN (enter the new SIN).”</li>
+            <li>Remarks line 2: Enter the list of all BPCs (dormant and current) with the old SIN.</li>
+            <li>Remarks line 3: Leave this field blank unless required for BPCs.</li>
+            <li>Remarks line 4: Leave this field blank unless required for BPCs.</li>
+            <li>Remarks line 5: Enter your first and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a REM WI using the new SIN as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Comments: Type “SIN change — Access code and disentitlement .”</li>
+            <li>Due date: Enter 7 working days from the date on which the Operational Centre Memo (MM06) transaction was sent to IPOC.</li>
+            <li>Details: Type “SIN change. Once the electronic file has been updated with the new SIN, determine if an access code appears in FTS. If no, contact the client, conduct a detailed security check and issue a temporary access code. If a disentitlement related to the SIN change is on file, determine if it can be removed. Once all necessary actions have been taken, complete the REM WI.”</li>
+            <li>Destination — SCC: Select the SCC as shown in FTS.</li>
+            <li>End User: Select Myself .</li>
+            <li>Send to my pending workload: Check the box.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI related to the SIN change.</cmd>
+      </step>
+      <step>
+        <cmd>Complete the WI for the SIN change request received from the CRA.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

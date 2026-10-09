@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to determine the expected or actual DOB using the INS5168 form. Mail a copy of the INS5168 form for the client to sign and return. The client can also download the form and return it by mail or upload it in MSCA. Refer to the National Fact-Finding and Documentation Policy if needed.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding or if the client responded to the N-10-00-00 ACS letter:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 24.</li>
+            <li>If the client was not reached or did or did not reply to the letter, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Conversion .</li>
+            <li>Comments: Type “Conversation with the client — INS5168 form information.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was asked to provide the INS5168 form:</cmd>
+        <info>
+          <ul>
+            <li>If the INS5168 form was requested but is not on file, go to step 26.</li>
+            <li>If the INS5168 form was requested and is on file, go to step 28.</li>
+            <li>
+              If the client was not reached and the INS5168 form is not on file, go to INS5168 form not provided .
+              <xref href="#annex3">INS5168 form not provided</xref>
+            </li>
+            <li>If the client was not reached and the INS5168 form is on file, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding with client .</li>
+            <li>Comments: Type “Awaiting the INS5168 form.”</li>
+            <li>Bring forward date: Enter the date the client was reached + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the INS5168 form is on file:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to INS5168 form not provided .
+              <xref href="#annex3">INS5168 form not provided</xref>
+            </li>
+            <li>If yes, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the conversion week. If necessary, refer to Determining the effective date of a renewal or a conversion .</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the conversion date is during the maternity window:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 30.</li>
+            <li>
+              If no, go to Outside the maternity window .
+              <xref href="#omw">Outside the maternity window</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the conversion is on a renewal claim:</cmd>
+        <info>
+          <ul>
+            <li>If the conversion is on a renewal claim, go to step 31.</li>
+            <li>
+              If the conversion is on a continuing claim, go to Conversion on a continuing claim .
+              <xref href="#conversion">Conversion on a continuing claim</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is an outstanding ADJ WI:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Converting a renewal claim — No outstanding adjudication .
+              <xref href="#no">Converting a renewal claim — No outstanding adjudication</xref>
+            </li>
+            <li>
+              If yes, go to Converting a renewal claim — Outstanding adjudication .
+              <xref href="#oa">Converting a renewal claim — Outstanding adjudication</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

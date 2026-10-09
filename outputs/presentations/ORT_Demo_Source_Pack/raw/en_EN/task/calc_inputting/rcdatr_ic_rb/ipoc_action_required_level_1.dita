@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="ipoc_action_required">
+  <title>IPOC action required</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim to be worked on by IPOC.</li>
+            <li>Work item: Select 92 - Purge and Recreate or 93 - Manual Pay System to identify the main IPOC function being requested.</li>
+            <li>
+              Work type: Select [the appropriate work type code based on the WI selected].
+              <table conref="../../../common_tables/table_c_0492.dita#table_c_0492/body"/>
+            </li>
+            <li>
+              Remarks lines 1–4: Record the details of all the required claim information to establish the BP. Include any calculation information, information for additional transactions and claimant’s reports information. The officer must not indicate “See stored transactions.”
+              <xref href="../../../common_notes/note_c_2357.dita">Note</xref>
+            </li>
+            <li>Remarks line 5: Type your name and telephone number.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>
+              Go to Communicating decisions after calculation .
+              <xref href="/en/procedure/subactivity/communicating_calc_decisions.shtml">Communicating decisions after calculation</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

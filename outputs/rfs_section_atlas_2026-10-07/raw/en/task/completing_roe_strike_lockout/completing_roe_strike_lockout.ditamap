@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="completing_roe_strike_lockout" xml:lang="en-CA">
+  <title>Completing an ROE Issue RFS Action WI: B - Strike or lockout</title>
+  <topicmeta>
+    <source
+      href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/completing_roe_strike_lockout.shtml"
+      scope="external"
+      format="html"/>
+    <critdates>
+      <revised modified="2024-09-06"/>
+    </critdates>
+    <metadata>
+      <othermeta name="source-system" content="ORT"/>
+      <othermeta name="article-public-number" content="completing_roe_strike_lockout"/>
+      <othermeta name="wcms-template" content="procedure-task"/>
+      <othermeta name="archived" content="false"/>
+      <othermeta name="dcterms-title" content="Completing an ROE Issue RFS Action WI: B - Strike or lockout"/>
+    </metadata>
+    <resourceid appname="ORT" appid="completing_roe_strike_lockout"/>
+  </topicmeta>
+  <topicref href="completing_roe_strike_lockout_summary.dita">
+  </topicref>
+  <topicref href="completing_roe_strike_lockout_what_you_need_to_know.dita">
+    <topicref href="completing_roe_strike_lockout_linking_the_roe_and_the_matching_period_f71580ff.dita">
+    </topicref>
+    <topicref href="completing_roe_strike_lockout_completing_the_resolve_issue_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="completing_roe_strike_lockout_regional_considerations.dita">
+  </topicref>
+  <topicref href="completing_roe_strike_lockout_what_you_need_to_look_for.dita">
+    <topicref href="completing_roe_strike_lockout_in_nws.dita">
+    </topicref>
+    <topicref href="completing_roe_strike_lockout_in_rcm.dita">
+    </topicref>
+    <topicref href="completing_roe_strike_lockout_in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="completing_roe_strike_lockout_step_by_step.dita">
+    <topicref href="completing_roe_strike_lockout_non-complex.dita">
+      <topicref href="completing_roe_strike_lockout_linking_the_roe_and_the_matching_period_49d03a31.dita">
+      </topicref>
+      <topicref href="completing_roe_strike_lockout_ensuring_the_reason_for_separation_rfs__eb340be4.dita">
+      </topicref>
+      <topicref href="completing_roe_strike_lockout_selecting_a_special_condition_for_the_d_abfa0b7e.dita">
+      </topicref>
+      <topicref href="completing_roe_strike_lockout_completing_the_wi_non-complex.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="completing_roe_strike_lockout_policy_reference.dita">
+  </topicref>
+</map>

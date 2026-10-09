@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="new_address_confirmed">
+  <title>New address confirmed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In Curam, review the letter in question as follows:</cmd>
+        <info>
+          <ul>
+            <li>From the Application Case, select Contacts from the navigation bar.</li>
+            <li>Select Communications from the menu on the left-hand side of the screen.</li>
+            <li>Select &gt; beside the letter in question.</li>
+            <li>Select the 3 dots ( … ) on the right side of the screen, beside Edit . From the drop-down menu, select Preview .</li>
+            <li>Letters not sent from Curam are reviewed from ACS.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the type of undeliverable mail that was returned:</cmd>
+        <info>
+          <ul>
+            <li>If the undeliverable mail is a D-80 -00-00 letter, go to step 3.</li>
+            <li>If the undeliverable mail is a D-91-00-00 warning letter that includes an unclassified violation, (in Curam on the Violation evidence, the Type field shows Violation - warning letter issued ), go to step 5.</li>
+            <li>If the undeliverable mail is a notice of decision that set up an OP or a penalty, go to step 8.</li>
+            <li>If the undeliverable mail is a D-91-00-00 letter that does not include an unclassified violation (In Curam, on the Violation evidence, the Type field shows Warning Letter ), go to step 8.</li>
+            <li>If the undeliverable mail is a notice of decision unrelated to a Notice of Debt, go to step 9.</li>
+            <li>If the undeliverable mail is any other ACS letter, go to step 10.</li>
+            <li>If the undeliverable mail is a I-10-00-00 letter containing the client’s access code, go to step 11.</li>
+            <li>If the undeliverable mail is a benefit statement with an access code, go to step 11.</li>
+            <li>If the undeliverable mail is none of the above, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review and recreate the undeliverable D-80-00-00 letter as follows:</cmd>
+        <info>
+          <ul>
+            <li>From the Person Case, select the Contacts tab from the navigation bar.</li>
+            <li>Select Communications from the left side menu.</li>
+            <li>Locate the undelivered D-80-00-00 letter from the list of correspondence and select the 3 dots ( … ) on the right side to preview the letter.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-70-00-00 letter with the same information as communicated in the original D-80-00-00 letter. Go to step 13.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3310.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an OP related to the D-91-00-00 warning letter that includes an unclassified violation:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 6.</li>
+            <li>If yes, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In Curam, update the Violation evidence with a new Notification Week as follows:</cmd>
+        <info>
+          <ul>
+            <li>From the Application Case, select Evidence from the navigation bar.</li>
+            <li>Locate the Violation evidence from the Qualification/Calculation Related row on the Evidence Dashboard .</li>
+            <li>Select the Violation to open the evidence and select Edit from the right hand-side.</li>
+            <li>On the Notification Week field, enter today’s date.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a new D-91-00-00 decision letter with the same information as the original decision. Go to step 13.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the Notice of Debt that is related to the undeliverable notice of decision was returned as undeliverable:</cmd>
+        <info>
+          <ul>
+            <li>If the Notice of Debt was not returned as undeliverable, go to step 9.</li>
+            <li>If the Notice of Debt was returned as undeliverable, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>From the appropriate electronic system (i.e. ACS, FTS, Imaging) print a copy of the undeliverable mail.</cmd>
+      </step>
+      <step>
+        <cmd>Address an envelope with the client’s new address, enclose the undeliverable mail and send it to the client. Go to step 13.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1520.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the access code has been reissued:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In Curam re-issue the access code as follows:</cmd>
+        <info>
+          <ul>
+            <li>From the Person Case, select Home from the navigation bar.</li>
+            <li>From the Home screen, under Access Code , the first 2 digits of the client’s access code are displayed, along with the date the original code was issued.</li>
+            <li>Select the 3 dots ( … ) on the right side and select Re-Issue from the drop-down menu.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Undeliverable Mail .</li>
+            <li>Comments: Type “Curam claim. Undeliverable mail – new address confirmed.”</li>
+            <li>
+              Details: Type one of the following options:
+              <ul>
+                <li>“[Type of undeliverable mail] originally sent [date] received as undeliverable on [date] — resent to the client’s new address.” Also document if the original letter was a D-80-00-00 letter sent from Curam and if a N-70-00-00 or F-00-00-00 letter has been sent instead.</li>
+                <li>“Notice of decision not resent to the client’s new address as the Notice of Debt was also undeliverable.”</li>
+                <li>“Access code reissued.” Also document if the original letter was a I-10-00-00 letter sent from Curam and if a F-00-00-00 letter has been sent instead.</li>
+              </ul>
+            </li>
+            <li>
+              Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In Curam, document the actions taken as follows:</cmd>
+        <info>
+          <ul>
+            <li>Return to the Correspondence Failed – Undeliverable Mail task.</li>
+            <li>
+              Select Add Comments and type the appropriate option:
+              <ul>
+                <li>“[Type of undeliverable mail] originally sent [date] received as undeliverable on [date] — resent to the client’s new address.” Also document if the original letter was a D-80-00-00 letter sent from Curam and if the N-70-00-00 or F-00-00-00 letter has been sent instead.</li>
+                <li>“Notice of decision not resent to the client’s new address as the Notice of Debt was also undeliverable.”</li>
+                <li>“Access code reissued.” Also document if the original letter was a I-10-00-00 letter sent from Curam and if a F-00-00-00 letter has been sent instead.</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In Cúram, complete the task as follows:</cmd>
+        <info>
+          <ul>
+            <li>From the Correspondence Failed – Undeliverable Mail task, select the 3 dots ( … ) at the top right-hand corner of the screen.</li>
+            <li>From the drop-down menu, select Complete .</li>
+            <li>Select Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if an AI WI exists for the Curam correspondence issue?</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the AI WI and go to step 17.</li>
+            <li>If no, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there are any other WIs on file for additional letters received as Undeliverable?</cmd>
+        <info>
+          <ul>
+            <li>If yes, action each impacted letter.</li>
+            <li>If no, no further action required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

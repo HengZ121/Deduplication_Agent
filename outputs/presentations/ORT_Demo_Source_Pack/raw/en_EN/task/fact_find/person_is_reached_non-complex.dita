@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="person_is_reached">
+  <title>Person is reached</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>When you reach the person, identify yourself.</cmd>
+        <info>
+          <ul>
+            <li>If the fact-finding is with the client, go to step 2.</li>
+            <li>If the fact-finding is with an employer or a third party, go to step 6.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3429.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Validate the client’s identity :</cmd>
+        <info>
+          <ul>
+            <li>If the client’s identity cannot be validated, go to step 3.</li>
+            <li>If the client’s identity can be validated, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select the appropriate issue, or Other (if the issue is not in the menu).</li>
+            <li>Comments: Type “Fact-finding not completed.”</li>
+            <li>Details: Type “Unable to validate client’s identity.”</li>
+            <li>Select Draft .</li>
+            <li>Go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Validate the client’s address:</cmd>
+        <info>
+          <ul>
+            <li>If the client’s address is the same as the one on file, go to step 5.</li>
+            <li>
+              If the client’s address is different than the one on file, refer to Change of address , then go to step 5.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select the appropriate issue or Other (if the issue is not in the menu).</li>
+            <li>
+              Comments: Enter the details as follows:
+              <ul>
+                <li>If Other is selected in the Main Issue field, document the reason for the call.</li>
+                <li>Enter the details about the issue and, if necessary, indicate that the person reached is the client.</li>
+                <li>
+                  Details: Enter the details as follows:
+                  <ul>
+                    <li>Type “The client’s identity and address have been validated.”</li>
+                    <li>
+                      Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+                      <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+                    </li>
+                    <li>Select Draft .</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Explain the reason for the call and conduct fact-finding.</cmd>
+      </step>
+      <step>
+        <cmd>Return to the previous task for next steps, including documenting the file.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

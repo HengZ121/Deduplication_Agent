@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client using the Claimant’s report: Original with pay coding — Checklist or Claimant’s report: Original without pay coding — Checklist . If the client reports monies, obtain all relevant information about the nature, origin and purpose of the payment.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3530.dita">Note</xref>
+          <xref href="../../common_notes/note_c_3531.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>
+              If no, go to Missing information .
+              <xref href="#level1_item_6">Missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Client’s reports .</li>
+            <li>Comments: Type “Claimant’s reports — w/c [XXXX].”</li>
+            <li>
+              Details: Copy and paste the Claimant’s report: Original with pay coding — Checklist or Claimant’s report: Original without pay coding — Checklist . If the client declared monies, document the following fact-finding details according to the Fact-Finding and Documentation Policy :
+              <ul>
+                <li>the reason for the payment;</li>
+                <li>who made the payment;</li>
+                <li>if the payment arises out of employment or SE;</li>
+                <li>when the monies were earned.</li>
+              </ul>
+              <xref href="http://edsc.prv/en/service-canada/ei/reference-material/forms/documents/checklists/claimant_report_paycoding2.doc">Claimant’s report: Original with pay coding — Checklist</xref>
+              <xref href="http://edsc.prv/en/service-canada/ei/reference-material/forms/documents/checklists/claimant_report_no_paycoding.doc">Claimant’s report: Original without pay coding — Checklist</xref>
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client declared monies on the claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the monies are considered earnings and, if so, the period for which the monies were earned. Refer to EI ERB — BE 2020-04 (BE Memo) for more information:</cmd>
+        <info>
+          <ul>
+            <li>If the monies are not earnings, go to step 7.</li>
+            <li>If the monies are earnings, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Monies reviewed [XXXX-X] to [XXXX-X].”</li>
+            <li>
+              Details: Type “Monies are not considered earnings for EI Emergency Response Benefit purposes.” Document the decision and rationale according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml#7.1">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+            <li>Go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

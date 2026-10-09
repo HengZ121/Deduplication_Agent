@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reassigning_the_issue_to_level_2">
+  <title>Reassigning the issue to Level 2</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine the CT :</cmd>
+        <info>
+          <ul>
+            <li>If it is a renewal or continuing claim, go to step 2.</li>
+            <li>If it is an initial claim, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the claim status (CS) is 8 - converted to manual pay :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to 3.</li>
+            <li>If no, go to 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a registration number for the issue:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) to stop payment as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1- No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>BPC: Select the BPC of the appropriate claim.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “Urgent, stop payment as of w/c [XXXX].”</li>
+            <li>Remarks line 2: Type “Adjudication is required to determine if the client is entitled to benefits while on vacation in Canada.”</li>
+            <li>Remarks line 3: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+            <li>Go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the CT :</cmd>
+        <info>
+          <ul>
+            <li>If it is a continuing claim, go to step 9.</li>
+            <li>If it is a renewal claim, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Summary tab, determine if an MA01 is imposed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, select the Renewal/Revised (M106) transaction and impose the MA01 as follows:
+              <ul>
+                <li>Registration Number: Leave blank. If a number is showing, remove it.</li>
+                <li>Manual action: Select 01 – General suspension of benefits (stop payment) .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, reassign the WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Destination: Select Next available user .</li>
+            <li>Complexity: Select Level 2 .</li>
+            <li>Reason: Select Unable to complete .</li>
+            <li>
+              Details: Type one of the following:
+              <ul>
+                <li>“Unable to contact client for fact-finding.”</li>
+                <li>“The patient is not with the client while on vacation in Canada.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

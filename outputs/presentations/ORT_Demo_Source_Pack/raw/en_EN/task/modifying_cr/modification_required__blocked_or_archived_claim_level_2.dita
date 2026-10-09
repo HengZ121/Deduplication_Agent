@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="modification_required__blocked_or_archived_claim">
+  <title>Modification required — Blocked or archived claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for modifying the claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>If there is a registration number, go to step 2.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the information that must be modified:</cmd>
+        <info>
+          <ul>
+            <li>If only earnings must be modified, go to step 3.</li>
+            <li>If earnings and an FWW code must be modified for a week of regular benefits, go to step 3.</li>
+            <li>For any other change, go to step 11.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3818.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s status by reviewing the Blocked Status column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 1 - Updateable is displayed , go to step 4.</li>
+            <li>
+              If 2 - Not blocked is displayed, return to Active or terminated claim .
+              <xref href="#ActiveTermL2">Active or terminated claim</xref>
+            </li>
+            <li>If any other status is displayed, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 5.</li>
+            <li>If all rows are blank, go to step 7.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “waiting for an updateable status in BCS.”</li>
+            <li>Bring forward date: Enter [the next business day].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, return to step 5.</li>
+            <li>If all rows are blank, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number</li>
+                <li>D - No to leave the registration number open for subsequent transactions</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Allocation “A” tab, in the Amended Earnings column, enter the amended earnings as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Select the week that requires a change. Repeat for every week that requires a change.
+              <ul>
+                <li>Amended earnings: Enter the new amount of earnings (if a change is needed).</li>
+                <li>FWW: If a change is needed, select the new FWW code.</li>
+                <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+                <li>
+                  Infraction: Select the appropriate option:
+                  <ul>
+                    <li>A - Non-fraud - Earnings and employment .</li>
+                    <li>B - Non-fraud - Availability, capability .</li>
+                  </ul>
+                </li>
+                <li>
+                  Message: Select the appropriate option:
+                  <ul>
+                    <li>6 - Earnings other than declared .</li>
+                    <li>22 - An overpayment resulted because you were not available .</li>
+                  </ul>
+                </li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 10.</li>
+            <li>If the transaction shown is correct, select Close and go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to automatically generate an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim requiring the claimant’s report modification.</li>
+            <li>
+              If the amended report will create an OP, do the following:
+              <ul>
+                <li>Work item: Select 91 - Overpayment .</li>
+                <li>Work type: Select 2 - Non-misrepresentation .</li>
+              </ul>
+            </li>
+            <li>
+              If the amended report will create UP, do the following:
+              <ul>
+                <li>Work item: Select 93 - Manual Pay System .</li>
+                <li>Work type: Select 33 - Blocked claim requiring payment .</li>
+              </ul>
+            </li>
+            <li>Earnings to be allocated: If required, enter the new weeks and amounts information.</li>
+            <li>Remarks Line 1: If required, type “ALLOC: [allocation information]; FWW: [full work week information, if changes are required].”</li>
+            <li>Remarks Line 2: If required, enter the new availability and training information.</li>
+            <li>Remarks Line 4: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>
+              Infraction: Select the appropriate option:
+              <ul>
+                <li>A - Non-fraud - Earnings and employment .</li>
+                <li>B - Non-fraud - Availability, capability .</li>
+              </ul>
+            </li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>6 - Earnings other than declared .</li>
+                <li>22 - An overpayment resulted because you were not available .</li>
+              </ul>
+            </li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to the IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for modifying the claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, return to the initial task.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

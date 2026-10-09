@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="ipoc_intervention_required__weeks_of_cc_26dc95ac">
+  <title>IPOC intervention required — Weeks of CCB were processed and paid</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding recalculation registration number:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 15.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSA, starting from the main screen, assign a recalculation registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select Claims Preparation .</li>
+            <li>Select Registration — Recalculation - Initial .</li>
+            <li>Social Insurance Number: Type the SIN (do not press the Enter key).</li>
+            <li>Press the ESC key when the Annexes menu appears.</li>
+            <li>Close the RCM screen that appears.</li>
+            <li>Press the Enter key when the Renewability/Registration screen appears.</li>
+            <li>
+              Pay HRCC: Type the Service Canada Centre (SCC) number as shown in the claim file in FTS. If the field is blank, enter the HRCC using one of the following codes:
+              <ul>
+                <li>Atlantic: 1121</li>
+                <li>Quebec: 2371</li>
+                <li>Ontario: 3515</li>
+                <li>Western: 4812</li>
+              </ul>
+            </li>
+            <li>Service Unit: Type “01.”</li>
+            <li>Decision Type: Select Recalculation — Initial (should default to this choice).</li>
+            <li>Flag: Select Recalculation (should default to this choice).</li>
+            <li>Tentative Benefit Period Commence: The BPC is prefilled by SSA.</li>
+            <li>Do you want an Intake data screen?: Select No .</li>
+            <li>Press the Enter key.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, reassign the newly created CR WI to yourself.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_2970.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the COD to enter manually in SSA for the calculation as the most recent of the following dates:</cmd>
+        <info>
+          <ul>
+            <li>the date of a prior non-EI ERB claim;</li>
+            <li>if the BPC is March 15, 2020 and June 28, 2020: the BPC of the new claim  – 68 weeks – any other QP extensions;</li>
+            <li>if the BPC is between July 5, 2020 and August 23, 2020: the BPC of the new claim  – 76 weeks – any other QP extensions;</li>
+          </ul>
+          <ul>
+            <li>if the BPC is on or after August 30, 2020: the BPC of the new claim – 80 weeks – any other QP extensions.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2965.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSA, calculate the claim as usual, except for the following input requirements:</cmd>
+        <info>
+          <ul>
+            <li>
+              On the Coding Requirements screen, complete these fields as follows:
+              <ul>
+                <li>Subsequent or Manual BPC: Enter the date of the BPC for the CCB claim.</li>
+                <li>Previously paid BPC: Enter the COD.</li>
+              </ul>
+            </li>
+            <li>
+              On the Extension of the qualifying/benefit period screen input the extension under reason Employment measures .
+              <ul>
+                <li>For the From date use the BPC – [# weeks of the QP extension].</li>
+                <li>For the To date use the date BPC – 1.</li>
+              </ul>
+            </li>
+            <li>
+              On the Determination of Earnings screen, input the WP waiver as follows:
+              <ul>
+                <li>Waiting Period Waiver: Select Yes .</li>
+                <li>Use the information obtained on the Subsequent decision screens to help complete the MM06 below.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2971.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 20 - Benefit period commencement change .</li>
+            <li>Remarks line 1: Type “Convert to CCB at BPC [XXXX].”</li>
+            <li>Remarks line 2 to 4: Type “M106 BPC [XXXX], CT 12, INS HRS [XXXX], INS EARN [XXXXX], DIV WK [XX], COD [XXXX], ERN WK 1 [XXXX], LFA [XX], WP waived, WLI 3 NO-CR-CODE (if necessary). M112 Certificate number [XXXX], ADD, Start date [XXXX], ENT WEEK [XXXX].”</li>
+            <li>Remarks line 5: Enter your name and telephone number.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select E - Non-fraud - Paid beyond termination .</li>
+            <li>Message: Select 67 - O/P established / write-off - Change in insurable employment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2972.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and change the registration flag as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,5 @@
+subset,group,n,min,q1,median,q3,max,lower_whisker,upper_whisker
+en,Collapsed duplicate clusters,15204,5.0,36.0,83.0,185.0,8678.0,5.0,408.0
+en,Standalone nodes,22288,1.0,17.0,43.0,117.0,33694.0,1.0,267.0
+fr,Collapsed duplicate clusters,7286,5.0,34.0,73.0,181.0,10594.0,5.0,401.0
+fr,Standalone nodes,30349,1.0,24.0,58.0,153.0,25272.0,1.0,346.0

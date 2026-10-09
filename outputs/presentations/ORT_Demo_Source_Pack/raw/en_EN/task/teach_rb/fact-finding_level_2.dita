@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the file contains all the information required to adjudicate. For more information, refer to Major Employer Events , if necessary:</cmd>
+        <info>
+          <ul>
+            <li>
+              If additional information is required, fact-find with the client and, if necessary, the employer (refer to the Casual or supply and/or Contract not renewed checklist to determine the questions to ask the client, and the Teaching contract details checklist to determine the questions to ask the employer), and go to step 3.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Teacher-Casual_supply_or_contract_not_renewed-Checklist.doc">Casual or supply and/or Contract not renewed</xref>
+              <xref href="https://014gc.sharepoint.com/sites/94714/_layouts/download.aspx?SourceUrl=https://014gc.sharepoint.com/sites/94714/checklists/Teacher-Teaching_contracts_details-Checklist.docx">Teaching contract details checklist</xref>
+            </li>
+            <li>If no additional information is required, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 4.</li>
+            <li>If the client was not contacted or did not reply to the N-10-00-00 letter and a decision can be rendered based on the facts on file, go to step 5.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter and a decision cannot be rendered based on the facts on file, go to Claim procedure — Failure to provide information .
+              <xref href="#ClaimProFailure">Claim procedure — Failure to provide information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Teacher .</li>
+            <li>Comments: Type “Teacher.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

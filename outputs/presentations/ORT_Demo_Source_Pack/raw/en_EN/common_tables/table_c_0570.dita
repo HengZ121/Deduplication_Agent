@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0570">
+  <title>Example of the transaction when allocation starts on a Monday</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="5">
+        <tbody>
+          <row>
+            <entry>Type</entry>
+            <entry>Amount</entry>
+            <entry>Start date</entry>
+            <entry>End date</entry>
+            <entry>Last week amount</entry>
+          </row>
+          <row>
+            <entry>P</entry>
+            <entry>$643</entry>
+            <entry>2463</entry>
+            <entry>9999</entry>
+            <entry/>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

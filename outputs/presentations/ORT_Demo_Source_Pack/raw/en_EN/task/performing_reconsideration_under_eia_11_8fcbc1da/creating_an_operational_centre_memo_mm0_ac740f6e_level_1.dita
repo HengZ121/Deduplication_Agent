@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="creating_an_operational_centre_memo_mm0_ac740f6e">
+  <title>Creating an Operational Centre Memo (MM06) transaction for IPOC</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if there is a revised registration number for the advance payment reconciliation issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 42.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BPC is being changed to an earlier period:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 43.</li>
+            <li>If no, go to step 45.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 50 - Legislative interim measures .</li>
+            <li>Remarks line 1: Type “$2 000 advance payment OP reconciliation. BPC antedate required.”</li>
+            <li>
+              Remarks lines 2–4: Type the following information:
+              <ul>
+                <li>If a W allocation is on file, type “Rescind W allocation $[XXXX], w/c [XXXX].”</li>
+                <li>Type “Antedate to BPC [XXXX]. No change to earnings, divisor, hours.”</li>
+                <li>For each claimant’s report used to recoup the OP, type “Process w/c [XXXX] to w/c [XXXX to offset the ERB2 OP.” If necessary, type “Remove FWW or found work coding in w/c [XXXX].”</li>
+                <li>Type “No coding” or add any required coding, such as other disentitlements, etc.</li>
+                <li>Type “Terminate appeal lock on [DD-MM-YYYY]. Apply UP to OP.”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first and last name.</li>
+            <li>Detection: Select 21 - Request for Reconsideration / ≤ w/c 1867 appeal .</li>
+            <li>Infraction: Select C - Non Fraud - Insurability - new information .</li>
+            <li>Message: Select 39 - Overpayment established change in commencement date .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 46.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 50 - Legislative interim measures .</li>
+            <li>Remarks line 1: Type “$2 000 advance payment OP reconciliation.”</li>
+            <li>
+              Remarks lines 2–4: Type the following information:
+              <ul>
+                <li>If a W allocation is on file, type “Rescind W allocation $[XXXX], w/c [XXXX].”</li>
+                <li>For each claimant’s report used to recoup the OP, type “Process w/c [XXXX] to w/c [XXXX] to offset the ERB2 OP.” If necessary, type “Remove FWW or found work coding in w/c [XXXX].”</li>
+                <li>Type “No coding” or add any required coding, such as other disentitlements, etc.</li>
+                <li>Type “Terminate appeal lock on [DD-MM-YYYY]. Apply UP to OP. 21-F-46.”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the X-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Insert ADMS Record ID (4059)</li>
+            <li>Notice of Administrative Review Decision(s) addressed to client - Client Requested Reconsideration (11980)</li>
+            <li>Date Request for Reconsideration received (4063)</li>
+            <li>Date of Commission’s decision (4065): Select the date on the initial decision letter.</li>
+            <li>List of issues (11981)</li>
+            <li>
+              Decision completely rescinded or removed / maintained / modified or replaced by a new decision (11982): Select the appropriate option:
+              <ul>
+                <li>Decision completely rescinded or removed</li>
+                <li>Decision modified or replaced by a new decision</li>
+              </ul>
+            </li>
+            <li>Blank / When employer is an interested party (11984)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the initial decision was rescinded or modified:</cmd>
+        <info>
+          <ul>
+            <li>If the decision was rescinded, go to step 49.</li>
+            <li>If the decision was modified, go to step 50.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ADMS, complete the Review Decision screen as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Date RFR Decision issued: Enter the date the reconsideration under EIA 112 was finalized.
+              <xref href="http://laws-lois.justice.gc.ca/eng/acts/E-5.6/section-112.html">EIA 112</xref>
+            </li>
+            <li>RFR Decision result: Select Decision rescinded .</li>
+            <li>Reason: Select the appropriate reason why the decision was rescinded.</li>
+            <li>Date RFR Decision Implemented: Enter the date the decision was implemented.</li>
+            <li>Date RFR Decision sent to Requestor: Enter the date the letter was sent.</li>
+            <li>Select Save .</li>
+            <li>Go to step 51.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ADMS, complete the Review Decision screen as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Date RFR Decision issued: Enter the date the reconsideration under EIA 112 was finalized.
+              <xref href="http://laws-lois.justice.gc.ca/eng/acts/E-5.6/section-112.html">EIA 112</xref>
+            </li>
+            <li>RFR Decision Result: Select Decision Maintained with Modifications .</li>
+            <li>Date RFR Decision implemented: Enter the date the decision was implemented.</li>
+            <li>Date RFR Decision sent to Requestor: Enter the date the letter was sent.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if ADMS inputs are complete for all decisions:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 52.</li>
+            <li>If no, complete the missing fields, then go to step 52.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

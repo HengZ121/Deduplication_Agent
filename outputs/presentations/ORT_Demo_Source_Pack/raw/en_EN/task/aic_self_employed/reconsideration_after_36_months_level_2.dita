@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reconsideration_after_36_months">
+  <title>Reconsideration after 36 months</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD for the SE issue as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — not unemployed, self-employed or farming activities.”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>
+              For each of the following 6 criteria, document the relevant facts to support the decision:
+              <ul>
+                <li>nature of the employment or business</li>
+                <li>continuity of the employment or business</li>
+                <li>financial success or failure of the employment or business</li>
+                <li>nature and amount of the capital</li>
+                <li>time spent</li>
+                <li>client’s intention and willingness</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the blocked claim’s CS by reviewing the Blocked Status column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 1 - Updateable is displayed , go to step 3.</li>
+            <li>If any other CS is displayed, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 4.</li>
+            <li>If all rows are blank, go to step 6.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+            <li>Bring forward date: Enter the next working day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, return to step 4.</li>
+            <li>If all rows are blank, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number.</li>
+                <li>D - No to leave the registration number open for subsequent transactions.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Disentitlements tab, input the disentitlement on the Disentitlements section as follows (up to 4 disentitlements in BCS can be imposed, rescinded or terminated):</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>
+              Type: Select the appropriate disentitlement:
+              <ul>
+                <li>3 - Not available (if the first week of disentitlement is partial)</li>
+                <li>1 - Not unemployed (for a full week of disentitlement)</li>
+              </ul>
+            </li>
+            <li>Start date: Enter the start date of the disentitlement.</li>
+            <li>End date: Enter the end date of the disentitlement or 9999 if the end date is indefinite.</li>
+            <li>
+              Infraction: Select the appropriate option:
+              <ul>
+                <li>For a D3, select B - Non-fraud - Availability, capability .</li>
+                <li>For a D1, select A - Non-fraud - Earnings and Employment .</li>
+              </ul>
+            </li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>3 - An overpayment resulted due to a definite disentitlement .</li>
+                <li>4 - An overpayment resulted due to an indefinite disentitlement .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 10.</li>
+            <li>If the transaction shown is correct, select Close and go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the investigation type as displayed in NISS.</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and Employment .</li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>3 - An overpayment resulted due to a definite disentitlement</li>
+                <li>4 - An overpayment resulted in an indefinite disentitlement</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim with the undeclared SE.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Earnings to be allocated: Leave the field blank.</li>
+            <li>Remarks line 1: Type “D1 from w/c [XXXX-X] to [XXXX-X].”</li>
+            <li>Remarks line 2: Type “D3 from w/c [XXXX-X] to [XXXX-X].”</li>
+            <li>Remarks line 3: Type “ACS letter already sent.”</li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-91-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Date claimant called or information sent (1542)</li>
+            <li>Decision reconsidered beyond 36 months (2595): Select Decision reconsidered beyond 36 months due to false representations</li>
+            <li>
+              Various reasons for penalty and violation (2935): Select the appropriate option.
+              <ul>
+                <li>You have been self-employed</li>
+                <li>According to our records / In addition, according to our records (2936)</li>
+              </ul>
+            </li>
+            <li>Some or All Earnings, Self-Employment Earnings or Fishing Earnings not declared / omitted (2953): Select the appropriate option.</li>
+            <li>No reply from claimant / reply received with an explanation / reply received with no explanation (2938)</li>
+            <li>False representation message / Number of omissions or false representations (2941): Select Blank .</li>
+            <li>Levels of misrepresentation (12292) : Select Blank .</li>
+            <li>Penalty message / Warning message (2950): Select Blank .</li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>Blank if there is no resulting overpayment</li>
+                <li>Overpayment – No misrepresentation and active claim</li>
+                <li>Overpayment – No misrepresentation and inactive claim</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, from Report of Investigation , select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select Yes .</li>
+            <li>Reason: Select Other and type “D1 — not unemployed.”</li>
+            <li>Penalty: Select No .</li>
+            <li>Warming: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

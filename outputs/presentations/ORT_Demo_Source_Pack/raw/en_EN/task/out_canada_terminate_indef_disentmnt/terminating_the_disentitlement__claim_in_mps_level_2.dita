@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="terminating_the_disentitlement__claim_in_mps">
+  <title>Terminating the disentitlement — Claim in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the out of Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If there is a registration number, go to step 2.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to automatically generate an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim requiring the disentitlement to be terminated.</li>
+            <li>Work item: Select 93 - Manual Payment System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “[Disentitlement information and dates] — terminate.”</li>
+            <li>Remarks line 2: If required, type other information or changes needed (including reports if applicable).</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the A-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3918.dita">Note</xref>
+          <ul>
+            <li>Disentitlement terminated and/or removed (2591) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the out of Canada issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="modifying_the_allocation_of_separation__0e22013d">
+  <title>Modifying the allocation of separation monies — Operational Centre Memo (MM06) transaction</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if an original BP extension must be modified. For more information, refer to Modifying a benefit period extension due to an earnings allocation — Renewal or continuing claim and go to step 3.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the allocation.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks line 1 : Type “Input modification of M175: [insert modifications (e.g. S-$400-2388-2388 and S-$700-2389-2391 to S-$250-2388-2388 and S-$700-2389-2391-$350)].”</li>
+            <li>Remarks line 4: Enter the information about the BP extension if necessary.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a D-20-16-03 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Amending allocation (2442): Select the appropriate option:
+              <ul>
+                <li>Amending allocation - new information received from client</li>
+                <li>Amending allocation - new information received from another source</li>
+                <li>Date previous letter sent (1064)</li>
+              </ul>
+            </li>
+            <li>
+              Allocations of Earnings (2516)
+              <ul>
+                <li>Allocation of earnings - Only from ROE #1 - Monies allocated beyond BPC</li>
+                <li>Allocation of earnings - Monies allocated beyond BPC are from both ROE #1 + ROE #2</li>
+              </ul>
+            </li>
+            <li>Do not report monies already declared (2456)</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1916.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

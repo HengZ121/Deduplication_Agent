@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="change_address_aaitwi" xml:lang="en-CA">
+  <title>Actioning an Action Item Transfer WI — Unresolved issues impacting transfer</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="creating_the_action_item_ai_transfer_wi.dita">
+    </topicref>
+    <topicref href="reviewing_a_55_-_address_review_require_1c86e5c1.dita">
+    </topicref>
+    <topicref href="claims_converted_to_mps.dita">
+    </topicref>
+    <topicref href="outstanding_registration_number.dita">
+    </topicref>
+    <topicref href="reviewing_an_undeliverable_mail_indicator.dita">
+    </topicref>
+    <topicref href="client_moving_to_quebec__maternity_or_p_ca77ee72.dita">
+    </topicref>
+    <topicref href="economic_region.dita">
+    </topicref>
+    <topicref href="change_of_region.dita">
+    </topicref>
+    <topicref href="action_item_ai_transfer_wi_received_from_ipoc.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2470.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2471.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0063.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="wi_created_by_ipoc__claim_cancelled_in__8c3dd3a4_level_1.dita">
+      </topicref>
+      <topicref href="wi_created_by_ipoc__claim_retained_in_t_8fb93f72_level_1.dita">
+      </topicref>
+      <topicref href="wi_created_by_ipoc__claim_retained_in_t_788500c2_level_1.dita">
+      </topicref>
+      <topicref href="revised_outstanding_registration_number_87169ca2_level_1.dita">
+      </topicref>
+      <topicref href="revised_outstanding_registration_number_453bfd9a_level_1.dita">
+      </topicref>
+      <topicref href="revised_outstanding_registration_number_67e5046f_level_1.dita">
+      </topicref>
+      <topicref href="claim_converted_to_mps_level_1.dita">
+      </topicref>
+      <topicref href="claim_cancelled_in_the_new_region__no_o_bf1a658c_level_1.dita">
+      </topicref>
+      <topicref href="claim_cancelled_in_the_new_region__over_a38f976a_level_1.dita">
+      </topicref>
+      <topicref href="claim_cancelled_in_the_current_region___6c73a8ab_level_1.dita">
+      </topicref>
+      <topicref href="claim_cancelled_in_the_current_region___1eaaef0d_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2472.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="clearing_overlapping_weeks__overlapping_fcad41b6">
+  <title>Clearing overlapping weeks — Overlapping weeks paid</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if a revised registration number exists for the issue.</cmd>
+        <info>
+          <ul>
+            <li>If a registration number exists, go to step 2.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - No .</li>
+            <li>Complete: Select D - No .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim that needs to be terminated.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 35 - Claim Cancellation .</li>
+            <li>Remarks Line 1–2: Type “In order to start a new claim, please clear PHS for w/cs [XXXX] to [XXXX].”</li>
+            <li>Remarks line 3: Leave the field blank.</li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks Line 5: Type “[your first name and last name].”</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 97 - Internal Adjustment .</li>
+            <li>Contentious: Select 2 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number for the Operational Centre Memo (MM06) transaction.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the CS WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Request to clear PHS sent to IPOC.”</li>
+            <li>Bring forward date: Enter today’s date + 7 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the CS WI moves to the current workload, determine if the overlapping weeks have been cleared from the Pay History (MHQ1) screen:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 5.</li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Ensure that the SIN is not open in SSO.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Initial Intake (M149) transaction to update the BPC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Tentative BPC: Type the correct tentative BPC.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CS WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

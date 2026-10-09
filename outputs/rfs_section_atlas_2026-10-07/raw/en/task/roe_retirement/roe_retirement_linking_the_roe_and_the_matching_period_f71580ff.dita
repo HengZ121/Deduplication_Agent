@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff">
+  <title>Linking the ROE and the matching period of employment</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_retirement.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p1">When an ROE RFS Action WI is received and a link has not yet been created between the ROE and a period of employment, the Non-complex agent must review the applicable ROE in RCM and the periods of employment listed in NWS. The Non-complex agent determines if one of the periods of employment listed in NWS matches the employer’s name on the ROE.</p>
+    <section id="variation">
+      <title>Variations in the employer’s name</title>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p2">
+        Minor spelling differences between the employer’s name on the ROE and the period of employment are accepted. The agent must also consider that the employer may do business under more than one name. For example, the ROE indicates that the employer’s name is 123456 ONT Inc., but the client reported working for ABC Company. If the documentation on file or the
+        <strong>Employer</strong>
+        search (by business number) in FTS indicates that 123456 ONT Inc. operates as ABC Company, the names are equivalent and considered to be a match.
+      </p>
+    </section>
+    <section id="reviewing_dates">
+      <title>Reviewing the dates on the ROE</title>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p3">
+        Only one ROE can be matched to each period of employment listed in NWS. The agent must review the
+        <strong>Search / Correct - Results</strong>
+        screen in RCM to determine if the ROE in the ROE RFS Action WI is the one with the last day for which paid (LDP) closest to the last day worked (LDW) for one of the periods of employment. The agent creates a link between the ROE and the period of employment with the matching employer’s name and best match for LDP and LDW. If either the employer’s name does
+        <strong>not</strong>
+        match or the LDP and LDW are
+        <strong>not</strong>
+        a good match, the agent does
+        <strong>not</strong>
+        create a link between the ROE and the period of employment.
+      </p>
+    </section>
+    <section id="more_than_one">
+      <title>More than one ROE for one period of employment</title>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p4">There may be more than one ROE but only one period of employment for the same employer.</p>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p5">
+        <b>Example 1</b>
+      </p>
+      <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul1">
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li1">
+          Period of employment information declared on application:
+          <note conref="../../common_notes/note_4686.dita#note_4686/reuse_note_4686"/>
+        </li>
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li2">
+          Search / Correct - Results in RCM:
+          <table conref="../../common_tables/table_0617.dita#table_0617/reuse_table_0617"/>
+        </li>
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li3">
+          ROE RFS Action WI #1 for W12345678
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul2">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li4">
+              The agent completes the period of employment information section as follows:
+              <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul3">
+                <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li5">Matching POE : Select ABC Company .</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li6">
+          ROE RFS Action WI #2 for W12341234
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul4">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li7">
+              The agent completes the period of employment information section as follows:
+              <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul5">
+                <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li8">Matching POE : Select POE not in the list .</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p6">There may also be more than one period of employment for the same employer.</p>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p7">
+        <b>Example 2</b>
+      </p>
+      <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul6">
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li9">
+          Period of employment information declared on application:
+          <note conref="../../common_notes/note_4687.dita#note_4687/reuse_note_4687"/>
+          <note conref="../../common_notes/note_4688.dita#note_4688/reuse_note_4688"/>
+        </li>
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li10">
+          Search / Correct - Results in RCM:
+          <table conref="../../common_tables/table_0617.dita#table_0617/reuse_table_0617"/>
+        </li>
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li11">
+          ROE RFS Action WI #1 for W12345678
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul7">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li12">
+              The agent completes the period of employment information section as follows:
+              <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul8">
+                <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li13">Matching POE : Select ABC Company (LDW 30/11/2015).</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li14">
+          ROE RFS Action WI #2 for W12341234
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul9">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li15">
+              The agent completes the period of employment information section as follows:
+              <ul id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_ul10">
+                <li id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_li16">Matching POE : Select ABC Company (LDW 30/07/2015).</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="roe_already_linked">
+      <title>ROE already linked</title>
+      <p id="roe_retirement_linking_the_roe_and_the_matching_period_f71580ff_p8">If the ROE is linked to a period of employment with a corresponding electronic record of decision (ROD) or an outstanding Adjudication Issue (ADJ) WI, the ROE RFS Action WI is completed without further action by the Non-complex agent.</p>
+    </section>
+  </conbody>
+</concept>

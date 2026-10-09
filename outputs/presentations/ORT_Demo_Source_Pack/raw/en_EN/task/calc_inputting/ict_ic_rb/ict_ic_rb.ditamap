@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="ict_ic_rb" xml:lang="en-CA">
+  <title>Inputting calculation transactions</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="inputting_calculation_transactions.dita">
+    </topicref>
+    <topicref href="validating_parental_benefits.dita">
+    </topicref>
+    <topicref href="communicating_the_decision.dita">
+    </topicref>
+    <topicref href="46_-_variable_entrance_requirement_not__f97a35f3.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0019.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2342.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="inputting_the_sso_transactions_level_1.dita">
+      </topicref>
+      <topicref href="inputting_the_first_day_of_fts_transactions_level_1.dita">
+      </topicref>
+      <topicref href="inputting_the_second_day_of_fts_transactions_level_1.dita">
+      </topicref>
+      <topicref href="inputting_the_third_day_of_fts_transactions_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_parental_benefits_valida_c94b05da_level_1.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2343.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2344.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2345.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2346.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2347.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2348.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

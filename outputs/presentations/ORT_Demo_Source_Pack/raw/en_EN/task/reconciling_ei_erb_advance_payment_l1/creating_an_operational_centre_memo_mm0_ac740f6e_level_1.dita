@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="creating_an_operational_centre_memo_mm0_ac740f6e">
+  <title>Creating an Operational Centre Memo (MM06) transaction for IPOC</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if there is a revised registration number for the advance payment reconciliation issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 38.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 50 - Legislative interim measures .</li>
+            <li>Remarks line 1: Type “$2 000 advance payment OP reconciliation.”</li>
+            <li>
+              Remarks lines 2–4: Type the following information:
+              <ul>
+                <li>If a W allocation is on file, type “Rescind W allocation $[XXXX], w/c [XXXX].”</li>
+                <li>For each claimant’s report used to recoup the OP, type “Process w/c [XXXX] to w/c [XXXX] to offset the ERB2 OP.” If necessary, type “Remove FWW or found work coding in w/c [XXXX].”</li>
+                <li>Type “No coding”</li>
+                <li>Type “Apply UP to OP”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="status_outstanding">
+  <title>Status Outstanding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if the client’s account information was valid when the payment was issued:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>
+              If no, go to Replacing a payment .
+              <xref href="#replacing_a_payment">Replacing a payment</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SPS, verify the date the payment was issued:</cmd>
+        <info>
+          <ul>
+            <li>If 5 business days or less have passed since the payment was issued, go to step 9.</li>
+            <li>If more than 5 business days have passed since the payment was issued, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Inform the client that if the payment has not been received by [payment issue date + 5 business days], the client must contact the call centre and submit a replacement request. Go to step 11.</cmd>
+      </step>
+      <step>
+        <cmd>Ask if the client has contacted the financial institution about the missing payment:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Replacing a payment .
+              <xref href="#replacing_a_payment">Replacing a payment</xref>
+            </li>
+            <li>If no, advise the client to contact the financial institution regarding the missing payment and if a replacement is still required, to contact the call centre to submit a payment replacement request. Go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Payment replacement request denied.”</li>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>“On [payment issue date + 5 business days], the client was asked to submit a new replacement request if the payment [payment number] issued on [payment issue date] for the weeks of [YYYY-MM-DD] to [YYYY-MM-DD] was not received.”</li>
+                <li>“The client was instructed to contact the financial institution about the missing direct deposit payment [payment number] issued on [payment issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD]. Then, if the replacement is still necessary, the client must contact the Service Canada Centre to submit a payment replacement request.”</li>
+              </ul>
+            </li>
+            <li>
+              Select Save and go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

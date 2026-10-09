@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="changing_the_case_to_non-misrepresentation">
+  <title>Changing the case to non-misrepresentation</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_3699.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a violation is imposed for the case:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>
+              If yes, refer to Modifying or rescinding a violation to rescind the violation, then go to step 5.
+              <xref href="/en/procedure/task/modify_rescind_violation.shtml">Modifying or rescinding a violation</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the BPC of the claim being amended.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is blocked or archived, select 91 - Overpayment .</li>
+                <li>If the claim is active or non-blocked, select 92 - Purge and Recreate .</li>
+                <li>If it is an MPS claim or a claim with a BPC within the current week minus 150 or more, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>If the Work item is 91 , select 6 - Change from misrepresentation to non-misrepresentation on blocked or history claim .</li>
+                <li>If the Work item is 92 , select 21 - Change from misrepresentation to non-misrepresentation on an active claim .</li>
+                <li>If the Work item is 93 , select 30 - New information on a manual pay claim .</li>
+              </ul>
+            </li>
+            <li>
+              Earnings to be allocated: Complete this section if applicable.
+              <xref href="../../common_notes/note_c_3700.dita">Note</xref>
+            </li>
+            <li>Remarks line 1: Type “Change case to non-misrepresentation — [type of the original transaction, i.e. MM06] — [date].”</li>
+            <li>
+              Remarks line 2: Select the appropriate option:
+              <ul>
+                <li>If the decision is rescinding a misrepresentation only, type “Change OP coding to non-misrepresentation [non-misrepresentation OP codes].”</li>
+                <li>If a penalty and a violation are imposed or if only a penalty is imposed, type “Rescind P [penalty amount in dollars] and change OP coding to [non-misrepresentation OP codes].”</li>
+                <li>If only a violation (warning, unclassified or classified) is imposed, type “Change OP coding to [non-misrepresentation OP codes]. VLN rescinded by DM.”</li>
+              </ul>
+            </li>
+            <li>
+              Remarks line 3 : If the decision also includes a change to the OP (e.g. amending an allocation, rescinding a disqualification or terminating a disentitlement) include the following:
+              <ul>
+                <li>For the rescinding of a disqualification, type “Rescind disqualification-[code] from w/c [XXXX] to [XXXX].”</li>
+                <li>For the rescinding of a disentitlement, type “Rescind disentitlement-[code] from w/c [XXXX-X] to [XXXX-X].”</li>
+                <li>For the termination of a disentitlement, type “Terminate disentitlement [code] from w/c [XXXX-X] to [XXXX-X].”</li>
+                <li>For the amendment of an allocation, type “Amend allocation [code] [amount] from w/c [XXXX] to [XXXX].”</li>
+                <li>For other cases, leave the field blank.</li>
+              </ul>
+            </li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>
+              Detection: Select the appropriate option:
+              <ul>
+                <li>If it is an administrative review decision, select 21 - Request for Reconsideration / ≤ w/c 1867 appeal .</li>
+                <li>If it is not an administrative review decision, select the detection code used on the initial input.</li>
+              </ul>
+            </li>
+            <li>
+              Infraction: Select the appropriate option:
+              <ul>
+                <li>If it is an administrative review decision, select A - Non-fraud - Earnings and employment .</li>
+                <li>
+                  If it is not an administrative review decision, select the non-fraud equivalent of the code used on the initial input.
+                  <xref href="/en/procedure/generic/additionalresources/infraction_codes.shtml">code</xref>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>Select 6 - Earnings other than declared .</li>
+                <li>Select 8 - Your earnings were not deducted .</li>
+              </ul>
+            </li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the Outstanding Registrations link to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Click Modify .</li>
+            <li>
+              Complete the appropriate registration section as follows:
+              <ul>
+                <li>Action: Select Change registration flag .</li>
+                <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+              </ul>
+            </li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Return to the originating task to send the letter and to complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

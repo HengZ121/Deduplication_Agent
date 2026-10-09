@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="all_inc_monies" xml:lang="en-CA">
+  <title>Allocating incapacity monies</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="incapacity_monies.dita">
+    </topicref>
+    <topicref href="determining_the_premium_reduction_code_to_input.dita">
+    </topicref>
+    <topicref href="calculating_the_allocation.dita">
+    </topicref>
+    <topicref href="extending_the_benefit_period_bp.dita">
+    </topicref>
+    <topicref href="claim_status_cs_definition.dita">
+    </topicref>
+    <topicref href="inputting_the_allocation.dita">
+    </topicref>
+    <topicref href="recalculation.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="obtaining_the_missing_information.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1850.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1851.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1852.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1853.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1534.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1535.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1536.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1537.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1854.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1855.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1856.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1857.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_a_recalculation_is_required_level_1.dita">
+      </topicref>
+      <topicref href="determining_how_to_allocate_the_monies_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__active_claim_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__bcs_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__operational_cent_2650a187_level_1.dita">
+      </topicref>
+      <topicref href="missing_information_level_1.dita">
+      </topicref>
+      <topicref href="incapacity_monies_are_not_earnings_level_1.dita">
+      </topicref>
+      <topicref href="claim_must_be_processed_in_mps_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1858.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1859.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1860.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1861.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1862.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1863.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1864.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1865.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="determining_if_a_recalculation_is_required_level_2.dita">
+      </topicref>
+      <topicref href="determining_how_to_allocate_the_monies_level_2.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__active_claim_level_2.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__bcs_level_2.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__operational_cent_2650a187_level_2.dita">
+      </topicref>
+      <topicref href="missing_information_level_2.dita">
+      </topicref>
+      <topicref href="incapacity_monies_are_not_considered_earnings_level_2.dita">
+      </topicref>
+      <topicref href="claim_must_be_processed_in_mps_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1866.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1867.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

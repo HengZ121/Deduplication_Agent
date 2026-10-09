@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="processing_returned_eierb_payment_submi_55f484c3" xml:lang="en-CA">
+  <title>Archived: Processing a returned EI ERB payment submitted by a client</title>
+  <topicref href="summary.dita">
+    <topicref href="../../common_notes/note_c_4269.dita">
+    </topicref>
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="processing_a_returned_payment.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4270.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4271.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4272.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_sps.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="payment_returned__client_not_entitled_level_1.dita">
+      </topicref>
+      <topicref href="returned_payment_applied_to_an_unrelate_ffe5c6b2_level_1.dita">
+      </topicref>
+      <topicref href="payment_returned__amount_unreadable_level_1.dita">
+      </topicref>
+      <topicref href="payment_returned__name_incorrect_level_1.dita">
+      </topicref>
+      <topicref href="payment_returned_in_error_level_1.dita">
+      </topicref>
+      <topicref href="potentially_fraudulent_payment_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4273.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4274.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4275.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4276.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

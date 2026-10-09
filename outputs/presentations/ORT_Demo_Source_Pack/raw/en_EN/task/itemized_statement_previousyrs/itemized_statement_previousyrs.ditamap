@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="itemized_statement_previousyrs" xml:lang="en-CA">
+  <title>Issuing an itemized statement of benefits paid for previous tax years</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="requesting_an_itemized_statement_of_ben_7615ddde.dita">
+    </topicref>
+    <topicref href="itemized_statement_of_benefits_paid_not_a8e75b5e.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_request_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_statement_of_benefits_pai_6f3e5367_level_1.dita">
+      </topicref>
+      <topicref href="communicating_the_information_to_the_client_level_1.dita">
+      </topicref>
+      <topicref href="creating_an_ipoc_review_ipoc_rev_wi_level_1.dita">
+      </topicref>
+      <topicref href="completing_the_wi_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="ipoc.dita">
+      <topicref href="reviewing_the_file_ipoc.dita">
+      </topicref>
+      <topicref href="completing_the_itemized_statement_of_be_e734cf77_ipoc.dita">
+      </topicref>
+      <topicref href="completing_the_wi_ipoc.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

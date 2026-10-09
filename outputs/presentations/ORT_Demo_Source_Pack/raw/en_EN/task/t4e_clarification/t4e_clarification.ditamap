@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="t4e_clarification" xml:lang="en-CA">
+  <title>Actioning a request for T4E clarification</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="receiving_a_request_for_t4e_clarification.dita">
+    </topicref>
+    <topicref href="reviewing_the_t4e.dita">
+    </topicref>
+    <topicref href="t4e_and_repayment_of_ei_emergency_respo_da28bbd4.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1123.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="sending_the_enquiry_to_the_regional_tax_f0f33545_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4747.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4748.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

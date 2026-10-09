@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="communicating_the_decision">
+  <title>Communicating the decision</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In ACS, open the draft letter, make the necessary changes and send the letter.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, if necessary, clear the client Note and complete the COR WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

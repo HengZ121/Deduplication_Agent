@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if an acceptable medical certificate is on file:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, fact-find with the client or the employer
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>
+              If no, fact-find with the client to request the additional details and the medical certificate.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client or employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client or employer was contacted, go to step 7.</li>
+            <li>
+              If the client or employer was not contacted and did not reply to the N-10-00-00 or Z-00-00-00 letter, go to Reassigning the issue to Level 2 .
+              <xref href="#reassign2">Reassigning the issue to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Reason for separation .</li>
+            <li>
+              Comments: Type one of the following:
+              <ul>
+                <li>
+                  If an acceptable medical certificate is on file: “Voluntary leaving — employer’s name — last day worked — [client or employer].”
+                  <xref href="/en/procedure/generic/additionalresources/conditions_medical_certificate_ca.shtml">acceptable medical certificate</xref>
+                </li>
+                <li>
+                  If an acceptable medical certificate is not on file: “Conversation with the client — medical proof needed.”
+                  <xref href="/en/procedure/generic/additionalresources/conditions_medical_certificate_ca.shtml">acceptable medical certificate</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, review the Returned payment AI WI:</cmd>
+        <info>
+          <ul>
+            <li>If additional information is required, go to step 2.</li>
+            <li>If additional information is not required, go to step 5.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4273.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4274.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 4.</li>
+            <li>If the client was not contacted or did not reply to the N-10-00-00 letter, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Returned payment.”</li>
+            <li>Details: Document the details of the conversation with the client according to the National Fact-Finding, Documentation and Retention policy.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine why the client returned the payment:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the client is returning the payment because the client is not entitled to the payment, go to Payment returned — Client not entitled .
+              <xref href="#Warrant_returned_not_entitled">Payment returned — Client not entitled</xref>
+            </li>
+            <li>
+              If the client is requesting that the returned payment be applied to an existing OP not related to the payment being returned, go to Returned payment applied to an unconnected overpayment (OP ).
+              <xref href="#ExistOP">Returned payment applied to an unconnected overpayment (OP</xref>
+            </li>
+            <li>
+              If the client is returning the payment because the payment amount is unreadable, go to Payment returned — Amount unreadable.
+              <xref href="#Warrant_returned_because">Payment returned — Amount unreadable.</xref>
+            </li>
+            <li>
+              If the client is returning the payment because the name is incorrect, go to Payment returned — Name incorrect.
+              <xref href="#NameIncorrect">Payment returned — Name incorrect.</xref>
+            </li>
+            <li>
+              If the client returned the payment in error, go to Payment returned in error.
+              <xref href="#level1_item_2">Payment returned in error.</xref>
+            </li>
+            <li>
+              If the information on file indicates that a payment is potentially fraudulent, go to Potentially fraudulent payment .
+              <xref href="#level1_item_3">Potentially fraudulent payment</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="voluntary_disclosure_approved">
+  <title>Voluntary disclosure approved</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD for the earnings issue as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — earnings.”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Indicate the earnings type. There could be more than one earnings type.</li>
+            <li>
+              Explain why the earnings were allocated in relation to EIR 35 , EIR 36 and Digest 5 — Earnings .
+              <xref href="http://laws-lois.justice.gc.ca/eng/regulations/SOR-96-332/section-35.html">EIR 35</xref>
+              <xref href="http://laws-lois.justice.gc.ca/eng/regulations/SOR-96-332/section-36.html">EIR 36</xref>
+              <xref href="https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/digest/chapter-5/table-of-contents.html">Digest 5 — Earnings</xref>
+            </li>
+            <li>Explain that the full work week code needs to be removed for some weeks, if necessary.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD for the voluntary disclosure issue as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — voluntary disclosure approved.”</li>
+            <li>
+              Details: Document the details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>
+              Explain that the client meets the 2 conditions for the National Policy on Voluntary Disclosure .
+              <xref href="/en/policy/nationalpolicy/divulgation-volontaire-voluntary-disclosure.shtml">National Policy on Voluntary Disclosure</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim for benefits is active, terminated, blocked or archived:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 4.</li>
+            <li>
+              If the claim is terminated, but may be reactivated:
+              <ul>
+                <li>On the Terminated tab, select the appropriate BPC.</li>
+                <li>Select Reactivate .</li>
+                <li>Go to step 4.</li>
+              </ul>
+            </li>
+            <li>If the claim is blocked or archived, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the full work week code needs to be changed in any of the reports under investigation.</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 7.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1821.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Payment tab, select the appropriate Report week and modify the claimant’s report as follows:</cmd>
+        <info>
+          <ul>
+            <li>Change only the information that requires modification .</li>
+            <li>Select Modify .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1822.dita">Note</xref>
+          <ul>
+            <li>Earnings: For each week, enter the client’s earnings if necessary.</li>
+            <li>
+              Full work week: Select the appropriate option:
+              <ul>
+                <li>1 - Full work week - week 1</li>
+                <li>2 - Full work week - week 2</li>
+                <li>3 - Full work week both weeks</li>
+              </ul>
+            </li>
+            <li>Infraction: Select T - Disclosure .</li>
+            <li>Message: Select 71 - Information you disclosed caused an overpayment .</li>
+            <li>Select Save .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if earnings need to be modified on weeks where the full work week code does not need to be changed.</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Allocations (M175) transaction and input the earnings as follows (if necessary, refer to the ROD and the Earnings procedure or to Digest 5 — Earnings to help you determine how to allocate the earnings):</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1823.dita">Note</xref>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Type: Select A - Amended earnings .</li>
+            <li>Amount: Enter the amount indicated on the Report of Interview.</li>
+            <li>Start date: Enter the Sunday of the first week of the earnings to correct.</li>
+            <li>
+              End date: Enter the appropriate option:
+              <ul>
+                <li>If many consecutive weeks have the same amount to allocate, select the Saturday of the last week of that series.</li>
+                <li>If there are no consecutive weeks, select the Saturday of that week.</li>
+              </ul>
+            </li>
+            <li>
+              Last week amount: Select the appropriate option:
+              <ul>
+                <li>If there are many consecutive weeks and the amount of the last week is different from the start amount, enter that amount.</li>
+                <li>If the amount from the last week is the same, leave the field blank.</li>
+              </ul>
+            </li>
+            <li>Infraction: Select T - Disclosure .</li>
+            <li>Message: Select 71 - Information you disclosed caused an overpayment .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number.</li>
+                <li>D - No to leave the registration number open for subsequent transactions.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an MA is imposed to stop payments for the unreported earnings:</cmd>
+        <info>
+          <ul>
+            <li>If an MA is imposed, go to step 9.</li>
+            <li>If an MA is not imposed, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) to remove the MA as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Manual Action: Select the appropriate MA.</li>
+            <li>Rescind: Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to complete the registration number.</li>
+                <li>D - No to leave the registration number open for subsequent transactions.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>Go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the FWW code must be changed in any of the reports under investigation:</cmd>
+        <info>
+          <ul>
+            <li>If no FWW code must be changed, go to step 11.</li>
+            <li>If a FWW code must be changed for a week of regular benefits, go to step 11.</li>
+            <li>If a FWW code must be changed for a week of special benefits, go to step 21.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1824.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s CS by reviewing the Blocked Status column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 2 - Not blocked is displayed, return to step 3.</li>
+            <li>If 1 - Updateable is displayed, go to step 12.</li>
+            <li>If any other CS is displayed, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 13.</li>
+            <li>If all rows are blank, go to step 15.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+            <li>Bring forward date: Enter the next working day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, return to step 13.</li>
+            <li>If all rows are blank, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number</li>
+                <li>D - No to leave the registration number open for subsequent transactions</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the earnings to be input varies and requires an input on a weekly basis:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>If no, and the amount to input requires a weekly allocation amount, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Allocation "A" tab, in the Amended Earnings column, input the amended earnings as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1823.dita">Note</xref>
+          <ul>
+            <li>
+              Select the week that requires a change. Repeat for every week that requires a change.
+              <ul>
+                <li>Amended earnings: Type the new amount of earnings.</li>
+                <li>FWW: Select the new FWW code (if a change is needed).</li>
+                <li>Infraction: Select T - Disclosure .</li>
+                <li>Message: Select 71 - Information you disclosed caused an overpayment .</li>
+                <li>Select Update .</li>
+                <li>Go to step 19.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Allocations tab, input the allocation in the Allocations section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select the appropriate allocation type.</li>
+            <li>Amount: Enter the amount allocated per week.</li>
+            <li>Start date: Enter the start date of the allocation.</li>
+            <li>End date: Enter the end date of the allocation or 9999 if the end date is indefinite.</li>
+            <li>
+              Last week amount: Select the appropriate option:
+              <ul>
+                <li>If the allocation amount in the last week is less than the normal weekly earnings, enter that amount.</li>
+                <li>If the allocation amount in the last week is equal to the normal weekly earnings, leave the box empty.</li>
+              </ul>
+            </li>
+            <li>Infraction: Select T - Disclosure .</li>
+            <li>Message: Select 71 - Information you disclosed caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 20.</li>
+            <li>If the transaction shown is correct, click Close and go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (SMP): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Detection: Select the investigation type as displayed in NISS.</li>
+          </ul>
+          <ul>
+            <li>Infraction: Select T - Disclosure .</li>
+            <li>Message: Select 71 - Information you disclosed caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              BPC: Select the BPC of the claim related to the correction of earnings.
+              <xref href="../../common_notes/note_c_1825.dita">Note</xref>
+            </li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 1 - Misrepresentation .</li>
+            <li>
+              Earnings to be allocated:
+              <xref href="../../common_notes/note_c_1823.dita">Note</xref>
+              <ul>
+                <li>Week: Select the week(s) indicated on the Report of Investigation for which the salary must be corrected.</li>
+                <li>Amount: Enter the amount indicated on the Report of Investigation for each concerned week.</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Enter the information regarding the modification of the FWW code, if necessary.</li>
+          </ul>
+          <ul>
+            <li>Remarks line 2: Type “ACS letter already sent.”</li>
+            <li>Remarks line 3: Leave the field blank.</li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the case involves more than 52 weeks of unreported earnings:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 24.</li>
+            <li>
+              If no, go to step 25.
+              <xref href="../../common_notes/note_c_1826.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-91-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Date claimant called or information sent (1542)</li>
+            <li>Various reasons for penalty and violation (2935): Select Blank .</li>
+            <li>
+              Some or all earnings, Self-Employment Earnings or Fishing Earnings not declared / omitted (2953)
+              <ul>
+                <li>Did not declare any or some earnings / earnings from self-employment</li>
+                <li>According to our records / In addition, according to our records (2936)</li>
+                <li>did not declare any earnings / declared only some earnings (2955): Select the appropriate option.</li>
+              </ul>
+            </li>
+            <li>Text - Type of earnings (1072)</li>
+            <li>Text field: Employer name or Source of Earnings / Self Employment (2956)</li>
+            <li>Blank / based on new information you provided / based on new information your employer provided (2958)</li>
+            <li>List of one or more false declarations (3483)</li>
+            <li>Dates of Weeks comparing Actual vs Declared Earnings (1494)</li>
+            <li>
+              $0.00 - Actual earnings amounts (1492)
+              <ul>
+                <li>Ex: 500 for $500.00</li>
+                <li>Ex: 492 for $492.00</li>
+              </ul>
+            </li>
+            <li>$0.00 - Earnings declared by claimant (1490)</li>
+            <li>Claim possibly affected / claim not affected (2957)</li>
+            <li>No reply from claimant / reply received with an explanation / reply received with no explanation (2938)</li>
+            <li>False representation message / Number of omissions or false representations (2941): Select Blank .</li>
+            <li>Levels of misrepresentation (12292): Select Blank .</li>
+            <li>Penalty message / Warning message (2950): Select Blank .</li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>Blank if there is no resulting overpayment .</li>
+                <li>Overpayment – No misrepresentation and active claim .</li>
+                <li>Overpayment – No misrepresentation and inactive claim .</li>
+              </ul>
+            </li>
+            <li>This Letter Replaces or Footnote (2365): Select Footnote .</li>
+            <li>Text – Footnote (11745): Type “This letter includes only the information related to the benefit period starting on [BPC date]. The information related to the benefit period starting on [BPC date] is included on a separate letter.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-91-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Date claimant called or information sent (1542)</li>
+            <li>Various reasons for penalty and violation (2935): Select Blank .</li>
+            <li>
+              Some or all earnings, Self-Employment Earnings or Fishing Earnings not declared / omitted (2953)
+              <ul>
+                <li>Did not declare any or some earnings / earnings from self-employment</li>
+                <li>According to our records / In addition, according to our records (2936)</li>
+                <li>did not declare any earnings / declared only some earnings (2955): Select the appropriate option.</li>
+              </ul>
+            </li>
+            <li>Text - Type of earnings (1072)</li>
+            <li>Text field: Employer name or Source of Earnings / Self Employment (2956)</li>
+            <li>Blank / based on new information you provided / based on new information your employer provided (2958)</li>
+            <li>List of one or more false declarations (3483)</li>
+            <li>Dates of Weeks comparing Actual vs Declared Earnings (1494)</li>
+            <li>
+              $0.00 - Actual earnings amounts (1492)
+              <ul>
+                <li>Ex: 500 for $500.00</li>
+                <li>Ex: 492 for $492.00</li>
+              </ul>
+            </li>
+            <li>$0.00 - Earnings declared by claimant (1490)</li>
+            <li>Claim possibly affected / claim not affected (2957)</li>
+            <li>No reply from claimant / reply received with an explanation / reply received with no explanation (2938)</li>
+            <li>False representation message / Number of omissions or false representations (2941): Select Blank .</li>
+            <li>Levels of misrepresentation (12292): Select Blank .</li>
+            <li>Penalty message / Warning message (2950): Select Blank .</li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>Blank if there is no resulting overpayment .</li>
+                <li>Overpayment – No misrepresentation and active claim .</li>
+                <li>Overpayment – No misrepresentation and inactive claim .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-70-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Voluntary disclosure / Administrative Rule - Undeclared Earnings (2664):</li>
+            <li>Voluntary disclosure of information</li>
+            <li>
+              Subjects of voluntary disclosure (2665)
+              <ul>
+                <li>your earnings or</li>
+                <li>your fishing earnings or</li>
+                <li>your self-employment</li>
+              </ul>
+            </li>
+            <li>
+              Reminder: Provide information on report (2667)
+              <ul>
+                <li>Option #2: Provide full and accurate information on each report and correct any incorrect reports as soon as possible</li>
+              </ul>
+            </li>
+            <li>
+              Administrative Rule-Undeclared Earnings
+              <ul>
+                <li>Text-Name of Employer(s) (1502)</li>
+                <li>Period/periods (2668)</li>
+              </ul>
+            </li>
+            <li>Overpayment messages (2452)</li>
+            <li>Right to request a reconsideration (4169)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, from the Report of Investigation , select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>
+              Overpayment: Select the appropriate option:
+              <ul>
+                <li>OP for an overpayment.</li>
+                <li>UP for an underpayment.</li>
+              </ul>
+            </li>
+            <li>Reason: Select Allocation of Earnings .</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

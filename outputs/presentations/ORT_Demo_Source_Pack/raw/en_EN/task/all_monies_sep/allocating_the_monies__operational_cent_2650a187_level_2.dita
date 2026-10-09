@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="allocating_the_monies__operational_cent_2650a187">
+  <title>Allocating the monies — Operational Centre Memo (MM06) transaction</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Refer to Extension of the benefit period before proceeding to step 3.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the correct BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks line 1: Type “Input M175 S - XXXX$ (amount to allocate) from XXXX (first day of allocation) to XXXX (last day of allocation), XXXX$(amount to be allocated on last week if different)”.</li>
+            <li>
+              Remarks line 2 (to be used if top-up amount is to be input): Type “Input M175 S - XXXX$ (amount to allocate) from XXXX (first day of allocation) to XXXX (last day of allocation), XXXX$ (amount to be allocated on last week if different)”.
+              <xref href="../../common_notes/note_c_1917.dita">Example of transaction</xref>
+            </li>
+            <li>Remarks line 4: Type he information about the BP extension, if necessary.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a D-20-16-03 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Allocations of Earnings (2516): Select the appropriate option:
+              <ul>
+                <li>Allocation of earnings - Only from ROE #1 - Monies allocated beyond BPC</li>
+                <li>Allocation of earnings - Monies allocated beyond BPC are from both ROE #1 + ROE #2</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1916.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the initial task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

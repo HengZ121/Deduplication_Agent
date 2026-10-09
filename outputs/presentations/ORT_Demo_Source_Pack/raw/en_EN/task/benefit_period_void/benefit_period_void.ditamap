@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="benefit_period_void" xml:lang="en-CA">
+  <title>Voiding a benefit period</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="voiding_a_benefit_period_bp_when_the_cl_d45bd2c4.dita">
+    </topicref>
+    <topicref href="voiding_a_claim_to_reactivate_a_blocked_claim.dita">
+    </topicref>
+    <topicref href="violations.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2184.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2185.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2186.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2187.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="double_conversion_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

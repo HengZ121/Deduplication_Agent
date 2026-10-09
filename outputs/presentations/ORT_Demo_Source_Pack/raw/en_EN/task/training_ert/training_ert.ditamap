@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="training_ert" xml:lang="en-CA">
+  <title>Adjudicating the end of referred training</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="referred_training.dita">
+    </topicref>
+    <topicref href="training_end_date.dita">
+    </topicref>
+    <topicref href="training_breaks.dita">
+    </topicref>
+    <topicref href="reason_for_the_end_of_training.dita">
+    </topicref>
+    <topicref href="levels_of_decisions.dita">
+    </topicref>
+    <topicref href="imposing_a_disqualification.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4800.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4801.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="end_of_training_allowed__cps_claim_level_1.dita">
+      </topicref>
+      <topicref href="end_of_training_allowed__mps_claim_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4802.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_training_end_date_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_the_end_of_referred_training_level_2.dita">
+      </topicref>
+      <topicref href="end_of_training__good_cause_shown_level_2.dita">
+      </topicref>
+      <topicref href="end_of_training__good_cause_not_shown_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4803.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

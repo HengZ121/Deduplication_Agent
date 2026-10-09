@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claim_cancelled_in_the_current_region___1eaaef0d">
+  <title>Claim cancelled in the current region — Overpayment (OP)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Change of address and active claims in 2 regions.”</li>
+            <li>
+              Details: Detail the BPC to be retained, the BPC to be cancelled, the weeks that overlap the 2 BPCs and any other relevant information. Document the decision and rationale according to the National Fact-finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-finding, Documentation and Retention Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the current region from the Mainframe tab.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a registration number is on file for the change of address issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 17.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements (M161) transaction and input the disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 14 - Void benefit period .</li>
+            <li>Start date: Enter the start date for each disentitlement period.</li>
+            <li>End date: Enter the end date for each disentitlement period.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select D - Non-fraud - Duplicate payment .</li>
+            <li>Message: Select 21 - An overpayment resulted due to being paid twice for the same period .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration corresponding to the change of address issue.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select D - Non-fraud - Duplicate payment .</li>
+            <li>Message: Select 21 - An overpayment resulted due to being paid twice for the same period .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim that is converted to MPS.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 53 - Claim transfer .</li>
+            <li>Remarks line 1: Type “Change of address as of [insert date]. Active BPC in both regions.”</li>
+            <li>Remarks line 2: Type “D14 imposed on BPC in w/c [XXXX] in the current region to establish an OP for the week paid.”</li>
+            <li>Remarks line 3: Type “Modify BPC in w/c [XXXX] to CS 8 for the current region and remove the weeks at issue from the pay history summary.”</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes to clear the registration number.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement (2976)
+              <ul>
+                <li>D5, D12, D13, D14, D15 (3011)</li>
+                <li>D14 - Claim cancelled - Various reasons (3019)</li>
+                <li>
+                  BPC date - Sunday’s date (1060)
+                  <ul>
+                    <li>Select the Sunday of the week the D14 was imposed.</li>
+                  </ul>
+                </li>
+                <li>D14 - Text: Type “You have received payments to which you were not entitled as a result of having a duplicate claim in another region.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the AI WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

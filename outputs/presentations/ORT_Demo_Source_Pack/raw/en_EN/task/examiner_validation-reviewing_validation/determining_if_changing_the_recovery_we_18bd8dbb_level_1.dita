@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_changing_the_recovery_we_18bd8dbb">
+  <title>Determining if changing the recovery week is required</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Compare the recovery week determined in the prior step to the recovery week in FTS:</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client has been paid sickness benefits after the recovery week supported by the medical certificate:</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, create a new SROC as follows:</cmd>
+      </step>
+      <step>
+        <cmd>Fact-find with the client to determine if the client has recovered:</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+      </step>
+      <step>
+        <cmd>Determine the appropriate action:</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if an acceptable medical certificate has been submitted for the period of sickness benefits paid without a medical certificate:</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

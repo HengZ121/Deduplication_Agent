@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact_-finding_with_the_client_for_the_o_0b3335f1">
+  <title>Fact -finding with the client for the other parent’s SIN</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to obtain the following information:</cmd>
+        <info>
+          <ul>
+            <li>The other parent’s SIN.</li>
+            <li>If the WP has not been deferred and the client meets the conditions to defer the WP, determine whether the client wants it deferred.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 6.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Unable to obtain the other parent’s SIN .
+              <xref href="#unable_obtain_op_sin">Unable to obtain the other parent’s SIN</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Entitlement to parental benefits.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding, Documentation and Retention Policy</xref>
+            </li>
+            <li>
+              Click Save .
+              <ul>
+                <li>If the SIN of the other parent was obtained during fact-finding, go to step 8.</li>
+                <li>If the SIN of the other parent was not obtained during fact-finding, go to step 7.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

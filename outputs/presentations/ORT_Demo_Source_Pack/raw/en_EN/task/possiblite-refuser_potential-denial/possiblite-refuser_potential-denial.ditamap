@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="possiblite-refuser_potential-denial" xml:lang="en-CA">
+  <title>Review for potential BPNE denial (BPNE 8) – Cúram</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="interruption_of_earnings_i_of_e.dita">
+    </topicref>
+    <topicref href="manually_deny_or_authorize_the_application_case.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_curam.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="level_1_level_1.dita">
+      </topicref>
+      <topicref href="finalize_claim_bpne_8_level_1.dita">
+      </topicref>
+      <topicref href="authorize_the_application_case_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

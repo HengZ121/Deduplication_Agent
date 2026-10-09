@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client. Use the appropriate allocation of earnings checklist , is necessary.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1911.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client or the employer was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached and the missing information was obtained, or if the employer provided the missing information, go to step 5.</li>
+            <li>
+              If the client or the employer was not reached or did not reply to the E-02-00-00 email, the N-10-00-00 letter or the Z-00-00-00 letter, go to Missing information .
+              <xref href="#informationmissing2">Missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Earnings .</li>
+            <li>Comments: Type “Allocation of vacation pay.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy . If completed during fact-finding, copy and paste the checklist.
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

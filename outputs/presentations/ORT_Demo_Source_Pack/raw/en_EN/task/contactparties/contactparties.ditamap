@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="contactparties" xml:lang="en-CA">
+  <title>Contacting party for a reconsideration under EIA 112</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="making_developmental_calls.dita">
+    </topicref>
+    <topicref href="message_templates.dita">
+    </topicref>
+    <topicref href="documenting_the_communication_attempts.dita">
+    </topicref>
+    <topicref href="written_communication_after_unsuccessfu_a91c1b44.dita">
+    </topicref>
+    <topicref href="contacting_requesters_by_email.dita">
+    </topicref>
+    <topicref href="receiving_electronic_information_or_doc_f6cb9ae8.dita">
+    </topicref>
+    <topicref href="no_additional_facts_required.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2702.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2703.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2704.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="first_communication_attempt_by_telephone_level_1.dita">
+      </topicref>
+      <topicref href="communication_attempt_by_email_level_1.dita">
+      </topicref>
+      <topicref href="second_communication_attempt_by_telephone_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_written_communication_is_required_level_1.dita">
+      </topicref>
+      <topicref href="communication_attempt_in_writing_level_1.dita">
+      </topicref>
+      <topicref href="unable_to_complete_the_call_level_1.dita">
+      </topicref>
+      <topicref href="completing_the_call_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2705.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2706.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="first_communication_attempt_by_telephone_level_2.dita">
+      </topicref>
+      <topicref href="communication_attempt_by_email_level_2.dita">
+      </topicref>
+      <topicref href="second_communication_attempt_by_telephone_level_2.dita">
+      </topicref>
+      <topicref href="determining_if_written_communication_is_required_level_2.dita">
+      </topicref>
+      <topicref href="communication_attempt_in_writing_level_2.dita">
+      </topicref>
+      <topicref href="unable_to_complete_the_call_level_2.dita">
+      </topicref>
+      <topicref href="completing_the_call_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

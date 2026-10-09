@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="detailed_security_check">
+  <title>Detailed security check</title>
+  <conbody>
+    <p>
+      A detailed security check must be conducted with the client before providing information or issuing an access code. The officer does not accept requests to reissue an access code from a third party, unless it is from the designated representative. In the case of a representative, ensure that there is no electronic document indicating that the client has recovered and no longer requires the services of the representative. Representatives are identified in Cúram with the indicator “REP”. For additional information, refer to Appointment of representative — Limited physical or mental capacity .
+      <xref href="/en/procedure/activity/app_rep.shtml">Appointment of representative — Limited physical or mental capacity</xref>
+    </p>
+  </conbody>
+</concept>

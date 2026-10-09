@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs">
+  <title>Inputs</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and input a renewal as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Renewal: Select the appropriate Sunday.</li>
+            <li>Earnings week 1: Enter the amount (if necessary).</li>
+            <li>
+              Claim type: Select the appropriate option:
+              <ul>
+                <li>20 - Family caregiver for children</li>
+                <li>21 - Family caregiver for adults</li>
+              </ul>
+            </li>
+            <li>No claimant’s report: If requested by the client, check the box.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Search tab, select Caregiver/Compassionate care - Patient and on the Search for Caregiver/Compassionate care patient (MCB2) screen, find the patient record as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claimant’s SIN: Enter the client’s SIN .</li>
+            <li>Select Search .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the patient record to access the Caregiver/Compassionate care data entry (MCB1) screen.</cmd>
+      </step>
+      <step>
+        <cmd>Select Entitlement (M112) to access the Caregiver/Compassionate care entitlement (M112) screen.</cmd>
+        <info>
+          <ul>
+            <li>
+              Type: Select the appropriate option:
+              <ul>
+                <li>20 - Family caregiver for children</li>
+                <li>21 - Family caregiver for adults</li>
+              </ul>
+            </li>
+            <li>Action: Select Modify .</li>
+            <li>Start date: Leave this field blank.</li>
+            <li>End date: Leave this field blank.</li>
+            <li>Entitlement weeks: Enter the number of entitlement weeks.</li>
+            <li>Status: Leave this field blank.</li>
+            <li>Select Update .</li>
+            <li>Go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if, before submitting the Operational Centre Memo (MM06) transaction to IPOC, a Level 2 officer must adjudicate any outstanding issues:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 21.</li>
+            <li>If no, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type awaiting Level 2 decision.</li>
+            <li>Bring forward date: Enter today’s date + 10 working days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if a decision has been rendered:</cmd>
+        <info>
+          <ul>
+            <li>If no, return to step 21.</li>
+            <li>If yes, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, on the Caregiver/Compassionate care data entry (MCB1) screen, update the claimant record as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Modify .</li>
+            <li>Entitlement weeks: Enter the number of entitlement weeks.</li>
+            <li>BPC: Leave this field blank.</li>
+            <li>Waiting period served: Leave this field blank.</li>
+            <li>Status: Select 12 - Caregiver/Compassionate benefits approved .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on manual pay claim .</li>
+            <li>Remarks line 1: Type “ Renewal CT [20 or 21] as of [XXXX]. [number of weeks] weeks to be paid. Window [XXXX] to [XXXX]."</li>
+            <li>Remarks line 2: If necessary, provide any disentitlement information.</li>
+            <li>Remarks line 3: If necessary, provide any extension information. Provide the NO-CR-CODE and the WP deferral.</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select: Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

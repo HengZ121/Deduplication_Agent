@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="allocating_a_periodic_pension">
+  <title>Allocating a periodic pension</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine the weekly pension amount to be allocated as follows:</cmd>
+        <info>
+          <ul>
+            <li>If the client provided a weekly amount, use that amount.</li>
+            <li>If the client provided a monthly amount, multiply the monthly amount by 12 and then divide the result by 52. The result is the weekly amount to allocate.</li>
+            <li>If the client provided a yearly amount, divide the amount by 52. The result is the weekly amount to allocate.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1893.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the pension starts later than Monday of the first week:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 13.</li>
+            <li>
+              If yes, calculate the amount to allocate to the first week as follows:
+              <ul>
+                <li>If the allocation starts on a Tuesday, divide the weekly amount by 5 and multiply the result by 4.</li>
+                <li>If the allocation starts on a Wednesday, divide the weekly amount by 5 and multiply the result by 3.</li>
+                <li>If the allocation starts on a Thursday, divide the weekly amount by 5 and multiply the result by 2.</li>
+                <li>If the allocation starts on a Friday, divide the weekly amount by 5.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1883.dita">Example of allocation when pension starts midweek</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the following re-qualifier conditions are met to exempt the pension from allocation:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1894.dita">Callout</xref>
+          <ul>
+            <li>If all conditions are met, the pension is exempt. Use “ Q ” when allocating.</li>
+            <li>If any condition is not met, the pension is not exempt. Use “ P ” when allocating.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim for benefits is active, terminated, blocked or archived:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 15.</li>
+            <li>
+              If the claim is terminated but can be reactivated, select the appropriate BPC on the Dormant tab and select Reactivate .
+              <ul>
+                <li>Go to step 15.</li>
+              </ul>
+            </li>
+            <li>If the claim is blocked or archived, go to step 20.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1885.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine when the allocation must start:</cmd>
+        <info>
+          <ul>
+            <li>If the allocation must start on a Saturday, Sunday or Monday, go to step 16.</li>
+            <li>If the allocation must start on a Tuesday, Wednesday, Thursday or Friday, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Allocations (M175) transaction and input the allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              Type: Select the appropriate option:
+              <ul>
+                <li>P - Pension-not exempt</li>
+                <li>Q - Pension-exempt</li>
+              </ul>
+            </li>
+            <li>Amount: Enter the amount determined in step 10.</li>
+            <li>Start date: Enter the first week the pension was paid.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Last week amount: Leave this field blank.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>Go to step 18.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1886.dita">Example of the transaction</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Allocations (M175) transaction and input the allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              On the first line, select the appropriate attribute:
+              <ul>
+                <li>Type: Select P - Pension-not exempt or Q - Pension-exempt .</li>
+                <li>Amount: Enter the amount of the partial week determined in step 11.</li>
+                <li>Start date: Enter the first week the pension was paid.</li>
+                <li>End date: Enter the same week as the start date.</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>
+              On the second line, select the appropriate attribute:
+              <ul>
+                <li>Type: Select P - Pension-not exempt or Q - Pension-exempt .</li>
+                <li>Amount: Enter the weekly amount determined in step 10.</li>
+                <li>Start date: Select the first week the pension was paid + 1.</li>
+                <li>End date: Select Indefinite .</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1886.dita">Example of the transaction</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Summary tab, determine if there is a stop payment related to these earnings:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 19.</li>
+            <li>
+              If yes, select the Renewal/Revised (M106) transaction and remove the stop payment as follows:
+              <ul>
+                <li>Registration number: Select the appropriate registration number.</li>
+                <li>Manual Action: Select the appropriate MA.</li>
+                <li>Rescind: Check the box.</li>
+                <li>Contentious: Select 2 - Yes .</li>
+                <li>
+                  Complete: Select the appropriate option:
+                  <ul>
+                    <li>To complete the registration number, select C - Yes .</li>
+                    <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+                  </ul>
+                </li>
+                <li>Select Update .</li>
+                <li>Go to step 19.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the allocation must also be input on a blocked claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 20.</li>
+            <li>If no, go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Blocked tab, determine the code displayed in the Blocked Status column:</cmd>
+        <info>
+          <ul>
+            <li>If 2 - Not blocked is displayed, return to step 14.</li>
+            <li>If 1 - Updateable is displayed, go to step 21.</li>
+            <li>If any other code status is displayed, go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 22.</li>
+            <li>If all rows are blank, go to step 24.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable BCS status.”</li>
+            <li>Bring forward date: Enter [the next business day].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, repeat step 22.</li>
+            <li>If all rows are blank, go to step 24.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised (or 2 - Renewal , if appropriate).</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine when the allocation must start:</cmd>
+        <info>
+          <ul>
+            <li>If the allocation must start on a Saturday, Sunday or Monday, go to step 26.</li>
+            <li>If the allocation must start on a Tuesday, Wednesday, Thursday or Friday, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Allocations tab, input the allocation in the Allocations section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>
+              Type: Select the appropriate option:
+              <ul>
+                <li>P - Pension-not exempt</li>
+                <li>Q - Pension-exempt</li>
+              </ul>
+            </li>
+            <li>Amount: Enter the amount determined in step 10.</li>
+            <li>Start date: Enter the first week the pension was paid.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Last week amount: Leave this field blank.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Select Update .</li>
+            <li>Go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Allocations tab, input the allocation in the Allocations section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>
+              On the first line, select the appropriate attribute:
+              <ul>
+                <li>Type: Select P - Pension-not exempt or Q - Pension-exempt .</li>
+                <li>Amount: Enter the amount of the partial week determined in step 11.</li>
+                <li>Start date: Enter the first week the pension was paid.</li>
+                <li>End date: Enter the same week as the start date.</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>
+              On the second line, select the appropriate attribute:
+              <ul>
+                <li>Type: Select P - Pension-not exempt or Q - Pension-exempt .</li>
+                <li>Amount: Enter the weekly amount determined in step 10.</li>
+                <li>Start date: Select the first week the pension was paid + 1.</li>
+                <li>End date: Select Indefinite .</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Select Update .</li>
+            <li>Go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 29.</li>
+            <li>If the transaction shown is correct, select Close and go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the correct BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks line 1: Type “Input M175 [Q or P] $[amount to allocate] from [first day of allocation] to [last day of allocation].”</li>
+            <li>Remarks line 2: Add allocation information if necessary.</li>
+            <li>Remarks line 5: Enter your name and telephone number.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the pension was declared on the claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 34.</li>
+            <li>If no, go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there are any rejected electronic claimant’s reports on the Pending/Reject tab:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 35.</li>
+            <li>
+              If yes, refer to Actioning a rejected claimant’s report to re-input the reports.
+              <xref href="/en/procedure/task/rejected_cr.shtml">Actioning a rejected claimant’s report</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the pension code used for the allocation. Refer to step 13, if necessary.</cmd>
+        <info>
+          <ul>
+            <li>If P - Pension-not exempt was used, go to step 36.</li>
+            <li>If Q - Pension-exempt was used, go to step 37.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-20-16-03 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Allocations of earnings (2516)
+              <ul>
+                <li>Pension allocation (2525): Select the appropriate option.</li>
+              </ul>
+            </li>
+            <li>Do not report monies already declared (2456)</li>
+            <li>Waiting Period Message (2444)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

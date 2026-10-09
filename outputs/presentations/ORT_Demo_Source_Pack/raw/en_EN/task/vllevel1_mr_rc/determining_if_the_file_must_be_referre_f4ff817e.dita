@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="determining_if_the_file_must_be_referre_f4ff817e">
+  <title>Determining if the file must be referred to Integrity</title>
+  <conbody>
+    <p>When a client comes forward to correct previously provided information or provide previously omitted information, the officer determines if the information can be considered an error correction, or if it must be referred to Integrity to be considered under the voluntary disclosure policy.</p>
+    <p>The voluntary disclosure policy may apply if the client is aware that misinformation resulted in an inappropriate payment of benefits and is attempting to correct this situation. Unless specified otherwise, it is presumed that in providing the information, the client is in agreement that benefits were not payable.</p>
+    <p>
+      To determine if the new information can be considered an error correction or must be referred to Integrity, the officer refers to Determining if an issue must be referred to Integrity .
+      <xref href="/en/procedure/task/determining_issue_referred_integrity.shtml">Determining if an issue must be referred to Integrity</xref>
+    </p>
+    <p>
+      When the RFS was undisclosed on a previous claim and a potential overpayment (OP) situation exists, the officer refers to Determining if an issue must be referred to Integrity to determine if the RFS must be referred to Integrity for investigation.
+      <xref href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/determining_issue_referred_integrity.shtml">Determining if an issue must be referred to Integrity</xref>
+    </p>
+  </conbody>
+</concept>

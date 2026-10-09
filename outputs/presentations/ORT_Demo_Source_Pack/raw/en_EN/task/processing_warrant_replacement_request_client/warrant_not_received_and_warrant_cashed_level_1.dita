@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="warrant_not_received_and_warrant_cashed">
+  <title>Warrant not received and warrant cashed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Ask the client to confirm his or her address and check whether the address on file was correct when the warrant was issued:</cmd>
+        <info>
+          <ul>
+            <li>If the address on file is correct, go to step 6.</li>
+            <li>
+              If the address on file is incorrect, Change address for the client and go to step 6.
+              <xref href="/en/procedure/activity/change_address.shtml">Change address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Provide the client with the following information:</cmd>
+        <info>
+          <ul>
+            <li>Give the client the information related to the warrant that was cashed (date of issue, redemption date and any other available information that could help the client track down the warrant).</li>
+            <li>Ask the client to make sure that they did not cash the warrant.</li>
+            <li>Explain to the client that a payment replacement can be issued but an investigation will be conducted. Depending on the results of that investigation, the client could be required to repay the amount overpaid and be subject to a penalty.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Ask the client whether a payment replacement is still desired:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 8.</li>
+            <li>If yes, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant.</li>
+            <li>Comments: Enter “Warrant replacement not required.”</li>
+            <li>Details: Type “The client was advised that warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD] has been cashed. The client no longer wishes to receive a payment replacement.”</li>
+            <li>Go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Provide the client with the following information:</cmd>
+        <info>
+          <ul>
+            <li>The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days for a warrant.</li>
+            <li>If the client realizes that a personal mistake was made and that they had indeed cashed the original warrant, the client must return the replacement warrant or decline the direct deposit through his or her financial institution.</li>
+            <li>An investigation will be conducted. Depending on the results of that investigation, the client could be required to repay the amount overpaid and be subject to a penalty.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4302.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the SIN.</li>
+            <li>HRCC: Enter the SCC as shown in FTS.</li>
+            <li>Requester : Enter the 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payment to be replaced.</li>
+            <li>Warrant No(s).: Enter the payment reference number that appears in the Payment Summary (MN19) information screen.</li>
+            <li>Amount(s): Enter the payment amount that appears in the Payment Summary (MN19) information screen.</li>
+            <li>Name: Enter the client’s surname and given name.</li>
+            <li>
+              Address: Enter the client’s address as follows:
+              <ul>
+                <li>On the first line, enter the street address.</li>
+                <li>On the second line, enter the city, province and postal code.</li>
+              </ul>
+            </li>
+            <li>Telephone number: Enter the client’s telephone number.</li>
+            <li>
+              Action:
+              <ul>
+                <li>Type “The client was informed that the warrant has been cashed. The client confirmed that they did not receive the warrant and did not profit from its redemption. The client was informed that an investigation will be conducted.”</li>
+                <li>Indicate whether the warrant was sent to the correct address and, when applicable, if the address was updated.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 Moncton IPOC .</li>
+                <li>Ontario: Select 3056 Belleville IPOC .</li>
+                <li>Quebec: Select 2642 Montreal IPOC (3) .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Type BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>
+              Details: Copy and paste the information from the INS5207 form .
+              <xref href="https://esdc.prv/en/service-canada/ei/reference-material/forms/documents/checklists/form_5207.doc">INS5207 form</xref>
+            </li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Payment replacement request submitted to IPOC.”</li>
+            <li>Details: Type “The client was informed that the warrant has been cashed. The client confirmed that they did not receive the warrant and did not profit from its redemption. A payment replacement request was submitted to IPOC for warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD]. The client has been informed and understands that: The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days for a warrant. If the client realizes that a personal mistake was made and that they had indeed cashed the original warrant, the client must return the replacement warrant or decline the direct deposit through his or her financial institution. An investigation will be conducted. Depending on the results of that investigation, the client could be required to repay the amount overpaid and be subject to a penalty.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If there is a WI, complete it.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="renewal_payments_issued" xml:lang="en-CA">
+  <title>Reviewing a fraudulent renewal when payments have been issued — Blocked claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="fraudulent_renewals.dita">
+    </topicref>
+    <topicref href="fraudulent_roes.dita">
+    </topicref>
+    <topicref href="cycling_claimants_reports.dita">
+    </topicref>
+    <topicref href="defining_claim_status_cs.dita">
+    </topicref>
+    <topicref href="inputs_on_a_blocked_claim__bcs.dita">
+    </topicref>
+    <topicref href="responsibilities_of_the_ipoc_officer.dita">
+    </topicref>
+    <topicref href="requesting_a_payment_replacement_from_ipoc.dita">
+    </topicref>
+    <topicref href="archived_payments_in_sps.dita">
+    </topicref>
+    <topicref href="responsibilities_of_the_third_party.dita">
+    </topicref>
+    <topicref href="responsibilities_of_the_client.dita">
+    </topicref>
+    <topicref href="returning_the_file_to_integrity.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4458.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4459.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1707.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_niis.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_sps.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_acs.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="actioning_the_fraudulent_renewal__clien_ea48e855_level_2.dita">
+      </topicref>
+      <topicref href="actioning_the_fraudulent_renewal__clien_e67b41de_level_2.dita">
+      </topicref>
+      <topicref href="returning_the_file_to_integrity_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4460.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4461.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4462.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4463.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4464.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1713.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4465.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4466.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4467.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="referred_training_not_confirmed__no_tra_c45756e5">
+  <title>Referred training not confirmed — No training information on file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a REM WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Availability .</li>
+            <li>Comments: Type “Confirm referred training.”</li>
+            <li>Due date: Enter the current day + 10 business days.</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “Claim to be calculated without training information. Pending for confirmation of referral. If not received, adjudicate as non-referred training.”</li>
+            <li>Destination: Enter the SCC as shown in FTS.</li>
+            <li>End User: Select Myself .</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the benefit type is CCB:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “CCB — Awaiting referred training confirmation.”</li>
+            <li>
+              Details: Type “The claim must be finalized without training input. Confirmation of referred training is required. If the referred training is not confirmed, the training must be adjudicated as non-referred training. To document other details, refer to Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Resolve Issue tab of the ADJ WI for the training issue, complete the Level 1 Training screen as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select Adjudication of training is not required .</li>
+            <li>Select Continue .</li>
+            <li>Explain why adjudication is not required: Type “The claim has been finalized without training input. Confirmation of referred training is required. If the referred training is not confirmed, the training must be adjudicated as non-referred training.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Verify the information on the Record of Decision screen:</cmd>
+        <info>
+          <ul>
+            <li>Check I agree .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the ADJ WI for the training issue.</cmd>
+      </step>
+      <step>
+        <cmd>When the REM WI moves to the current workload, determine if the Claim action status is finalized :</cmd>
+        <info>
+          <ul>
+            <li>If the BP is established, go to step 8.</li>
+            <li>If the BP is not established, go to step 18.</li>
+            <li>
+              If the Claim action status is not finalized , move the WI to Pending as follows, then repeat step 7:
+              <ul>
+                <li>Pending reason: Select Other .</li>
+                <li>Comments: Type “Waiting for confirmation of training.”</li>
+                <li>Bring forward date: Enter the current date + 5 business days.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS and Imaging, determine if the referred training information is on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>If the referred training information is not on file but the 10-day pending period from establishing the claim has not been reached, move the WI to Pending for the remainder of the 10-day period. When the WI moves to the current workload, repeat step 9.</li>
+            <li>If the referred training information is not on file and the 10-day pending period is reached, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client declared the training between September 27, 2020 and September 25, 2021:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to the appropriate non-referred training procedure for the type of special benefits being claimed.
+              <xref href="/en/procedure/activity/training.shtml">non-referred training</xref>
+            </li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the benefit type:</cmd>
+        <info>
+          <ul>
+            <li>
+              If it is a claim for CCB, refer to Adjudicating non-referred training: CCB — Continuing claim .
+              <xref href="/en/procedure/task/training_ccb.shtml">Adjudicating non-referred training: CCB — Continuing claim</xref>
+            </li>
+            <li>For all other special benefit types, except claims for maternity benefits only, go to step 12.</li>
+            <li>If it is a claim for maternity benefits only, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and impose a manual action to stop payments (MA72) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Manual Action: Select 72 - Additional Training information required .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, double-select the resolved training issue. Under Decision Options , select Decision no longer valid .</cmd>
+      </step>
+      <step>
+        <cmd>Refer to the appropriate non-referred training procedure for the type of special benefits being claimed.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex claim conditions .</li>
+            <li>Remarks Line 1: Type “EIA 25 — Special benefits.”</li>
+            <li>Remarks Line 2: Type “T171 — STRT-WK/DY [the course start w/c], END-WK-DY [the course end w/c].”</li>
+            <li>Remarks Line 3: Type “PROJ-HRRC [the Responsibility Centre code or institution code, if applicable], PROJ-NO [the 10-digit agreement number; use preceding zeros if the number is less than 10 digits], TRAIN-ID [the training ID code], BREAK START/END WK [the w/c code of any break weeks].”</li>
+            <li>Remarks Line 4: Type “[Type of benefits to be paid, if not already on the claim. (Mat — w/c xxxx-xxxx, Par — w/c xxxx-xxxx, family caregiver weeks or CCB weeks to be paid)].” If applicable, type “[NO-CR] or [claimant’s report information], etc.”</li>
+            <li>Remarks Line 5: Type “[decision maker].”</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the REM WI for the training issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="actioning_a_fraudulent_claim__continuin_1d05600b">
+  <title>Actioning a fraudulent claim — Continuing claim that is blocked, archived or converted to MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Review the file (RCM, NIIS, SROC in NWS and Employer profile screen in RMDS) and determine if it contains fraudulent ROEs:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, determine if the fraudulent ROEs have been deleted:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>If yes, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Open each ROE identified as fraudulent by Integrity and delete them as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box.</li>
+            <li>
+              Additional information: Enter the appropriate option:
+              <ul>
+                <li>If you are processing a Level 1 CR Integrity - ERB-EI Transition WI, type “Investigation completed. This fraudulent ROE must remain in deleted status (NIIS case [XXXXXX]).”</li>
+                <li>If you are processing a Level 1 AI WI, type “Suspicious ROE. ROE has been deleted until an investigation is completed. It can be restored if its legitimacy is confirmed.”</li>
+              </ul>
+            </li>
+            <li>Select Validate .</li>
+            <li>Select Submit .</li>
+            <li>Go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the following text appears in the Additional information section of the deleted ROE: “Investigation has been completed. This fraudulent ROE must remain in deleted status (NIIS case [XXXXXX]).”</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no and you are processing a Level 1 CR Integrity - ERB-EI Transition WI, do the following:
+              <ul>
+                <li>Additional information: Type “Investigation has been completed. This fraudulent ROE must remain in deleted status (NIIS case [XXXXXX]).”</li>
+                <li>Select Validate .</li>
+                <li>Select Submit .</li>
+                <li>Go to step 5.</li>
+              </ul>
+            </li>
+            <li>If no and you are processing a Level 1 AI WI, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any fraudulent ROEs in the qualifying period (QP) of the client’s established claims:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any fraudulent ROEs were used to calculate one of the client’s established claims:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>If yes, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding CR Recalculation WI for the fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding CR Recalculation WI for the same BPC as the claim calculated with a fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If no and you are processing a Level 1 CR Integrity - ERB-EI Transition WI, go to step 9.</li>
+            <li>If yes and you are processing a Level 1 CR Integrity - ERB-EI Transition WI, go to step 13.</li>
+            <li>If you are processing a Level 1 AI WI, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, verify that the correct mainframe is selected and assign a recalculation registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              On the Claim Selection screen, do the following:
+              <ul>
+                <li>Social Insurance Number: Enter the client’s SIN.</li>
+                <li>Registration type: Select Recalculation .</li>
+                <li>Select Search .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim to be recalculated is a commuter claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 11.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, modify the following fields on the Name and address screen as follows, if necessary:</cmd>
+        <info>
+          <ul>
+            <li>Ordinary place of residence different: Select Yes .</li>
+            <li>Residence postal code: Enter the workplace postal code.</li>
+            <li>
+              Mailing address: Refer to Changing an address — Outside of Canada for more information on the required United States of America address format.
+              <xref href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/change_address_ooc.shtml">Changing an address — Outside of Canada</xref>
+            </li>
+            <li>Postal code: Type “XXXXXX.”</li>
+            <li>
+              Economic region - new and Economic region - old: In both fields, remove economic region code 99 . Enter the economic region code as follows:
+              <ul>
+                <li>If the economic region code used to calculate the initial claim is correct, enter this economic region code.</li>
+                <li>If the economic region code used to calculate the initial claim is incorrect, enter the economic region associated with the workplace postal code.</li>
+              </ul>
+            </li>
+            <li>Tax province: Select Commuters .</li>
+            <li>Responsible SCC: Enter the SCC associated with the workplace postal code.</li>
+            <li>Select Next .</li>
+            <li>On the Application Form screen, select Next .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Registration screen, do the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Pay SCC: Enter the SCC as shown in FTS. If the field is blank, enter the appropriate SCC:
+              <ul>
+                <li>Atlantic: Type “1121.”</li>
+                <li>Quebec: Type “2371.”</li>
+                <li>Ontario: Type “3515.”</li>
+                <li>Western Canada and Territories: Type “4812.”</li>
+              </ul>
+            </li>
+            <li>Service unit: Type “01.”</li>
+            <li>Tentative BPC: This field is prefilled.</li>
+            <li>Select Generate registration .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1571.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine the status of the outstanding CR Recalculation WI:</cmd>
+        <info>
+          <ul>
+            <li>If it is assigned to another officer, go to step 14.</li>
+            <li>If it is unassigned, go to step 15.</li>
+            <li>If it is assigned to you, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine in which workload the outstanding CR Recalculation WI is:</cmd>
+        <info>
+          <ul>
+            <li>If it is in the pending workload, go to step 15.</li>
+            <li>If it is in the current workload, contact and ask the officer to reassign it to you. Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, open the CR Recalculation WI and reassign it to yourself as follows:</cmd>
+        <info>
+          <ul>
+            <li>Destination: Select Myself .</li>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Details: Type “Related WI.”</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the BPC:</cmd>
+        <info>
+          <ul>
+            <li>If the BPC is w/c 2258 or after, go to step 17.</li>
+            <li>If the BPC is between w/c 2230 and w/c 2257 and it is a claim for special benefits other than sickness benefits, go to step 17.</li>
+            <li>
+              If the BPC is between w/c 2230 and w/c 2257 and it is an EI ERB claim, the EI ERB claim must not be recalculated to change the rate or number of weeks of entitlement. Select the Renewal/Revised (M106) transaction and complete the registration number as follows:
+              <ul>
+                <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+                <li>Contentious: Select 1 - No .</li>
+                <li>Complete: Select C - Yes .</li>
+                <li>Select Update .</li>
+                <li>Go to step 25.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to Recalculation and follow the appropriate task to recalculate the claim.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+          <xref href="../../common_notes/note_c_4554.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the recalculation registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 54 - Third party fraud .</li>
+            <li>Remarks line 1: Type “Fraudulent ROE — fraudulent third party.”</li>
+            <li>Remarks lines 2–4: Type “INS HRS [insurable hours], INS EARNINGS [insurable earnings], DIV WK [divisor], COD [cut-off date]. OP belongs to the client.” If necessary, enter the information regarding the claimant’s report and any other relevant information.</li>
+            <li>Remarks line 5: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the recalculation registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the recalculation has changed the BPC, hours or insurable earnings, resulting in an OP to the client due to a deleted fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 22.</li>
+            <li>If yes, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if, as a result of the recalculation, an established claim became BPNE due to a deleted fraudulent ROE:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 24.</li>
+            <li>If no, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-03-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Various Reasons - Claim was Recalculated (2683): Select Reviewed Calculation of claim .</li>
+            <li>Various Results due to Recalculation (2684)</li>
+            <li>Allocation of Earnings (2516)</li>
+            <li>Allocation of Bankruptcy payments (2573)</li>
+            <li>Change to Family Supplement Rate - No longer entitled (2685)</li>
+            <li>Change in BPC or LRW – Reports need to be completed (2686)</li>
+            <li>Teachers: Benefit rate changed during non-teaching period (2689)</li>
+            <li>Insurability Ruling - Benefits are being suspended (2690): Select Blank .</li>
+            <li>Underpayment / Overpayment Message (2691): Select Overpayment Message .</li>
+            <li>Do not report monies already declared (2456)</li>
+            <li>Waiting Period Message(Amount of weeks of waiting period to serve) (2444)</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169)</li>
+            <li>
+              This Letter Replaces or Footnote (2365): Do the following:
+              <ul>
+                <li>Select Footnote .</li>
+                <li>Text - Footnote (1066): Type: “Your claim was calculated using a record of employment that does not belong to you.”</li>
+              </ul>
+            </li>
+            <li>Go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the B-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Opening Sentence - Refusal of benefits - Initial/Revised Claim - (one decision / multiple decisions) (2464)</li>
+            <li>Type of Benefits 2 (2465)</li>
+            <li>Types of BPNE Decisions (3197)</li>
+            <li>BPNE - Regular / Special Benefits (2615)</li>
+            <li>Number of insurable employment hours accumulated (1366)</li>
+            <li>Start date of Regular qualifying period - Sunday’s date (1418)</li>
+            <li>End date of Regular qualifying period - Saturday’s date (1420)</li>
+            <li>Number of insurable employment hours required (1362)</li>
+            <li>Start date of Regular qualifying period - Sunday’s date (1418)</li>
+            <li>End date of Regular qualifying period - Saturday’s date (1420)</li>
+            <li>End date of Regular qualifying period - Saturday’s date (1420)</li>
+            <li>
+              Overpayment Messages (2452): Select the appropriate option:
+              <ul>
+                <li>O/P on a Non-fraud active claim if the client has an active claim .</li>
+                <li>O/P on a Non-fraud inactive claim if the client does not have an active claim .</li>
+              </ul>
+            </li>
+            <li>
+              This letter Replaces or Footnote (2365): Do the following:
+              <ul>
+                <li>Select Footnote .</li>
+                <li>Text - Footnote (1066): Type: “We have reviewed the calculation of your claim. Your claim was initially calculated using a record of employment that does not belong to you.”</li>
+              </ul>
+            </li>
+            <li>Go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there are cycling claimant’s reports completed by a third party:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 26.</li>
+            <li>If yes, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are cycling claimant’s reports completed by the client:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 27.</li>
+            <li>If no, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if benefits are payable to the client for at least one of the cycling claimant’s reports:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 29.</li>
+            <li>If no, go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting benefits from the next expected claimant’s reports or after:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 29.</li>
+            <li>If no, go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding registration number related to the same issue:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 30.</li>
+            <li>If yes, go to step 31.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>
+              Detection: Select the appropriate option:
+              <ul>
+                <li>If there is an Integrity registration number, this field is prefilled according to the type of investigation in NIIS.</li>
+                <li>If there is a revised registration number, select 31 - Other new facts - entitlement review .</li>
+              </ul>
+            </li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4555.dita">Note</xref>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 54 - Third party fraud .</li>
+            <li>Remarks line 1: Type “Fraudulent claim — continuing claim — unknown third party.”</li>
+            <li>
+              Remarks lines 2–4: Enter the appropriate option:
+              <ul>
+                <li>If the client is not entitled tosome or all of the weeks in the cycling claimant’s reports, type “Remove cycling claimant’s reports w/c [XXXX] to [XXXX].”</li>
+                <li>If payments must be issued to the client, type “Issue payments from w/c [XXXX] to [XXXX], CT [XX].”</li>
+                <li>If paycoding is required, type “[Appropriate paycoding, e.g. FWW, non-available days, sick days].”</li>
+                <li>If there is an allocation, type “M175 [type] [amount] from w/c [XXXX] to [XXXX], [amount, if different from last week].”</li>
+                <li>If a disentitlement must be imposed, type “D[XX] from w/c [XXXX-X] to [XXXX-X].”</li>
+                <li>If a disqualification must be imposed, type “D[XX] from w/c [XXXX].”</li>
+                <li>If an MA was imposed to stop payments, type “Rescind MA[XX].”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine the type of WI:</cmd>
+        <info>
+          <ul>
+            <li>If it is a Level 1 AI WI, go to step 34.</li>
+            <li>If it is a Level 1 CR Integrity - ERB-EI Transition WI, go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4556.dita">Note</xref>
+          <ul>
+            <li>
+              Comments: Type the appropriate option:
+              <ul>
+                <li>“Client’s identity validated — fraudulent claim.”</li>
+                <li>“[Integrity file number] — fraudulent claim .”</li>
+              </ul>
+            </li>
+            <li>
+              Details: Type “The client’s identity, address and banking information were validated on [DD-MM-YYYY]. The client’s address is: [client’s address]. The client’s banking information is: [client’s banking information].” If you a processing a CR Integrity - ERB-EI Transition WI and Integrity identified fraudulent ROEs in NIIS, also type “Integrity has confirmed that ROE [serial number] is fraudulent.” Document the decision and rationale according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a ROD on the fraudulent application as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4557.dita">Note</xref>
+          <ul>
+            <li>Comments: Type “Fraudulent application — EI application submitted by a third party.”</li>
+            <li>
+              Details: Enter the following information:
+              <ul>
+                <li>Relevant facts: Type “An EI application was submitted by a third party on [DD-MM-YYYY] using the client’s identity.”</li>
+                <li>Decision/Justification: Type “This EI application was not filed by the client and must not be included in an access to information request.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a Reminder (REM) WI to delete the fraudulent application as follows :</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4558.dita">Note</xref>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Comments: Type “Delete the application.”</li>
+            <li>Due date: Enter the next business day.</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “Fraudulent application dated [DD-MM-YYYY].”</li>
+            <li>Destination — SCC: Enter the SCC as shown in FTS.</li>
+            <li>
+              End user: Do the following:
+              <ul>
+                <li>Select Specific user .</li>
+                <li>Enter the name of the team leader or the designated person.</li>
+                <li>Select Find user .</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1713.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine the type of WI:</cmd>
+        <info>
+          <ul>
+            <li>If it is a Level 1 CR Integrity - ERB-EI Transition WI, go to step 39.</li>
+            <li>If it is a Level 1 AI WI, go to step 43.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Decision tab of the IC70 Report of Investigation screen , close the case as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement: Select No .
+              <ul>
+                <li>Reason: Select Other and type “The client’s information has been corrected.”</li>
+              </ul>
+            </li>
+            <li>Overpayment: Do not check the box.</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Prosecution: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the Integrity registration number was completed:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 41.</li>
+            <li>If yes, go to step 42.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and complete the registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 1- No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity - ERB-EI Transition WI and all other related WIs.</cmd>
+      </step>
+      <step>
+        <cmd>Complete the AI WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

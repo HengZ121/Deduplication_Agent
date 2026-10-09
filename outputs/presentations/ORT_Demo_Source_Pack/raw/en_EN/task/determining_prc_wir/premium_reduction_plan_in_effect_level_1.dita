@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="premium_reduction_plan_in_effect">
+  <title>Premium reduction plan in effect</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the allocation overlaps the 2 calendar years:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 3.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the premium reduction plan status remains the same for both calendar years:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the premium reduction status has changed during this calendar year:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the officer inputs the code change retroactively:</cmd>
+        <info>
+          <ul>
+            <li>If no and the officer inputs 2 codes, go to step 5.</li>
+            <li>If yes, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if more than one premium reduction code must be entered:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 6.</li>
+            <li>If yes, the claim must be processed in MPS. Go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, on the Determination of Earnings screen, input the premium reduction code as follows:</cmd>
+        <info>
+          <ul>
+            <li>If information is displayed in the Wage loss insurance section only, select 2 – WLI in the Premium reduction field.</li>
+            <li>If information is displayed in the Paid sick leave section only, select 3 – PSL in the Premium reduction field.</li>
+            <li>If there is information in both the Wage loss insurance and Paid sick leave sections, select 4 - WLI and PSL in the Premium reduction field.</li>
+            <li>Go to step 10.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3217.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Allocate the monies using the following formula:</cmd>
+        <info>
+          <ul>
+            <li>If the allocation is for one week, allocate the monies for the entire period.</li>
+            <li>
+              If the allocation is for more than one week, allocate the monies as follows:
+              <ul>
+                <li>Determine the number of paid leave days.</li>
+                <li>Divide the gross amount received by the number of paid leave days.</li>
+                <li>Multiply the result by 5 (for each full week).</li>
+                <li>Multiply the result by the number of days for the last week (if not a full week).</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_3218.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim being sent to IPOC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on fishing claims or other complex claim conditions or if the claim is already in MPS, select 30 - New information on manual pay claim .</li>
+            <li>Remarks line 1: Type “2 PRP statuses present on claim.”</li>
+            <li>Remark line 2: Type “Process cycling CRs and send next paper CR.”</li>
+            <li>Remarks lines 3–4: Type “PR code [X] from w/c [XXXX] to w/c [XXXX] and PR code [X] from w/c [XXXX] to w/c [XXXX], allocation type [X], amount [$XXX] from w/c [XXXX] to w/c [XXXX] last week amount [$XXX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Store .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3219.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Return to step 7 of Calculating a claim in SSO .</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

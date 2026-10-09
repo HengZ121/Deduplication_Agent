@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="rescinding_the_disentitlement__claim_in_mps">
+  <title>Rescinding the disentitlement — Claim in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Out of Canada — 13 - Outside Canada disentitlement rescinded.”</li>
+            <li>Details: Type “The client cancelled the absence from Canada. The 13 - Outside Canada disentitlement has been rescinded.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a D3 was also imposed for the out of Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>
+              If yes, create another ROD as follows:
+              <ul>
+                <li>Comments: Type “Availability — 3 - Not available disentitlement rescinded.”</li>
+                <li>Details: Type “The client cancelled the absence from Canada. The 3 - Not available disentitlement has been rescinded.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “[Disentitlement information and dates] — rescind.”</li>
+            <li>Remarks line 2: If required, type other information or changes needed (including claimant’s reports, if necessary)</li>
+            <li>Remarks line 4: Type your name and telephone number.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the out of Canada issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

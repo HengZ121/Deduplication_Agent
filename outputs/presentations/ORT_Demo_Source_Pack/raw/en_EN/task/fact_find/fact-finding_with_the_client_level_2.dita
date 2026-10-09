@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding_with_the_client">
+  <title>Fact-finding with the client</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if one of the following conditions is met:</cmd>
+        <info>
+          <ul>
+            <li>There are 2 telephone messages that were left at different times of day and at least 24 hours apart for the client to call back.</li>
+            <li>
+              An email was sent asking the client to call back.
+              <ul>
+                <li>If no condition is met, go to step 2.</li>
+                <li>If any condition is met, go to step 7.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-10-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Notice to Report for an Interview - in person / by telephone (2707): Select Contact us as soon as possible .
+              <ul>
+                <li>Text - Agent’s Name (1614 ).</li>
+                <li>Text - Date of interview (3984): Type “As soon as possible before [today’s date +10 business days].”</li>
+                <li>Text - Time of Interview (1608): Type “Anytime between [hours and days you can be reached, in the client’s time zone].”</li>
+                <li>Text - Agent phone number (1656) .</li>
+              </ul>
+            </li>
+            <li>Important Message / Must leave phone number (2708): Select Must leave phone number .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Details: Type “Cannot reach the client by telephone. N-10-00-00 letter sent. Moved to Pending until [today’s date + 10 business days].”</li>
+            <li>Select Draft .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “N-10-00-00 letter sent.”</li>
+            <li>Bring forward date: Enter the date the letter is sent + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If the client calls you within 10 business days of the letter being sent, go to step 8.</cmd>
+      </step>
+      <step>
+        <cmd>If the client does not call you within 10 business days of the letter being sent, go to step 7.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Details: Type “No return call from the client.”</li>
+            <li>Select Save .</li>
+            <li>Return to the previous task for next steps, including documenting the file.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Validate the client’s identity .</cmd>
+        <info>
+          <ul>
+            <li>If the client’s identity cannot be validated, go to step 9.</li>
+            <li>If the client’s identity can be validated, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select the appropriate issue or Other (if the issue is not in the menu).</li>
+            <li>Comments: Type “Fact-finding not completed.”</li>
+            <li>Details: Type “Unable to validate client’s identity.”</li>
+            <li>Select Save .</li>
+            <li>Go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Explain the reason for the call and conduct fact-finding.</cmd>
+      </step>
+      <step>
+        <cmd>Return to the previous task for next steps, including documenting the file.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

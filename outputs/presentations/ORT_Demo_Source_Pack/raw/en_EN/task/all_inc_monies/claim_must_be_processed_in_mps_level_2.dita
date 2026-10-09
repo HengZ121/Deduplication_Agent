@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claim_must_be_processed_in_mps">
+  <title>Claim must be processed in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Allocate the monies using the following formula:</cmd>
+        <info>
+          <ul>
+            <li>If the allocation is for one week, allocate the monies for the entire period.</li>
+            <li>
+              If the allocation is for more than one week, allocate the monies as follows:
+              <ul>
+                <li>Determine the number of paid leave days.</li>
+                <li>Divide the gross amount received by the number of paid leave days.</li>
+                <li>Multiply the result by 5 (for each full week).</li>
+                <li>Multiply the result by the number of days for the last week (if not a full week).</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1866.dita">Note</xref>
+          <xref href="../../common_notes/note_c_1867.dita">Example of allocation</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim being sent to IPOC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on fishing claims or other complex claim conditions or if the claim is already in MPS, select 30 - New information on manual pay claim .</li>
+            <li>Remarks line 1: Type “Premium reduction code required on a blocked claim” or “2 premium reduction codes on claim.”</li>
+            <li>Remark line 2: Type “Process cycling claimant’s reports and send next paper claimant’s report.”</li>
+            <li>
+              Remarks lines 3–4:
+              <ul>
+                <li>If there is one premium reduction code, type “Premium reduction code [X] from w/c [XXXX].”</li>
+              </ul>
+              <ul>
+                <li>If there are 2 premium reduction codes, type “Premium reduction code [X] from w/c [XXXX] to w/c [XXXX] and premium reduction code [X] from w/c [XXXX] to w/c [XXXX], allocation type [X], amount [$XXX] from w/c [XXXX] to w/c [XXXX] last week amount [$XXX].”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

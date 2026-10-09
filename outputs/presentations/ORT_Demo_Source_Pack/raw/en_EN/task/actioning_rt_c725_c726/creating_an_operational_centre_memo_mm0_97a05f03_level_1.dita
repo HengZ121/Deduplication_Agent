@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="creating_an_operational_centre_memo_mm0_97a05f03">
+  <title>Creating an Operational Centre Memo (MM06) for IPOC</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the client is currently receiving extended parental benefits:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Based on the number of standard weeks remaining (amount in step 1), determine how many weeks of extended parental benefits remain payable using the second table in the Extended and standard parental benefits equivalencies job aid .</cmd>
+      </step>
+      <step>
+        <cmd>Calculate the new LRW as follows:</cmd>
+        <info>
+          <ul>
+            <li>If the client is receiving extended parental benefits: amount of extended parental weeks payable + w/c of current LRW.</li>
+            <li>If the client is receiving any other BT: amount of standard weeks payable + w/c of current LRW.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for the rejected transaction:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>
+              If no , select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual pay system .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex conditions .</li>
+            <li>Earnings to be allocated: Complete the weeks and amounts, if necessary.</li>
+            <li>Remarks line 1: Type “C[725 or 726] reject.” If necessary, provide the information about the claimant’s report that was rejected (including w/c, BT earnings and not available days).</li>
+            <li>Remarks line 2: Type “new LRW [w/c as identified in step 6].”</li>
+            <li>
+              Remarks line 3: Select the appropriate option:
+              <ul>
+                <li>If the BT is regular , type “CT 2 – WKS PAYABLE [amount in step 1] ENT [number of entitlement weeks] issue CR [XXXX-XXXX].”</li>
+                <li>If the BT is sickness , type “CT [6 or 9] – WKS PAYABLE [amount in step 1] RCV WK [w/c of recovery week] issue CR [XXXX-XXXX].”</li>
+                <li>If the BT is maternity , type “CT 4 – WKS PAYABLE [amount in step 1] MSW [w/c of maternity start week] MEW [w/c of maternity end week] NO-CR (if requested or issue CR [XXXX-XXXX]).”</li>
+                <li>If the BT is extended parental , type “CT 16 – WKS PAYABLE [amount in step 5] PSW [w/c of the extended parental start week] PEW [w/c of the extended parental end week] NO-CR (if requested or issue CR [XXXX-XXXX]).”</li>
+                <li>If the BT is CCB , type “CT 12 – WKS PAYABLE [amount in step 1] CCW end week [w/c of established CCW end] NOCR (if requested).”</li>
+                <li>If the BT is family caregiver , type “CT[20 or 21] WKS PAYABLE [amount in step 1] [family caregiver benefits for adults or family caregiver benefits for children] start week [start of window w/c] End Week [end of window w/c] NOCR (if requested or Issue CR [XXXX-XXXX]).”</li>
+              </ul>
+              <xref href="../../common_notes/note_c_1580.dita">Note</xref>
+            </li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Remove the SIN from the Rejected Transactions Retrieval (MR05) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the appropriate SIN.</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if a WI exists for the error:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no , no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Return to Actioning rejected transactions — Retrieval by SCC number</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="covid19_arpanc" xml:lang="en-CA">
+  <title>Archived: COVID-19 and actioning a Returned payment advice notice for a cheque</title>
+  <topicref href="summary.dita">
+    <topicref href="../../common_notes/note_c_2928.dita">
+    </topicref>
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="returned_cheques.dita">
+    </topicref>
+    <topicref href="undeliverable_by_canada_post.dita">
+    </topicref>
+    <topicref href="mail_disruption.dita">
+    </topicref>
+    <topicref href="returned_by_the_client_or_a_third_party.dita">
+    </topicref>
+    <topicref href="autopull.dita">
+    </topicref>
+    <topicref href="ei_emergency_response_benefit_ei_erb__i_6dc25993.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2948.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_sps.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="ipoc.dita">
+      <topicref href="reviewing_the_file_ipoc.dita">
+      </topicref>
+      <topicref href="determining_if_the_clients_address_is_correct_ipoc.dita">
+      </topicref>
+      <topicref href="determining_how_to_replace_the_payment_ipoc.dita">
+      </topicref>
+      <topicref href="replacing_a_returned_cheque_with_a_dire_517f6582_ipoc.dita">
+      </topicref>
+      <topicref href="replacing_a_returned_cheque_with_a_cheque_ipoc.dita">
+      </topicref>
+      <topicref href="cancelling_a_payment_in_sps_ipoc.dita">
+      </topicref>
+      <topicref href="referring_the_issue_to_processing_ipoc.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2949.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2950.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2951.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2952.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

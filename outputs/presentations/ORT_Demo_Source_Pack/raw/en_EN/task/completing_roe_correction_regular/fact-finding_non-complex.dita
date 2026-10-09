@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the person who issued the ROE to obtain the missing information.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the person who issued the ROE was contacted.</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select ROE .</li>
+            <li>Comments: Type “ROE correction.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the information has been obtained:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, send a registered copy of the Z-02-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Employer or Third Party Name (1334)</li>
+            <li>Employer or Third Party Address 1 (1336)</li>
+            <li>
+              Opening Sentence to ER re: Request or Clarify ROE/RFS (2794)
+              <ul>
+                <li>Request ROE Opening Sentence - claimant</li>
+              </ul>
+            </li>
+            <li>
+              Request for a Record of Employment (2797)
+              <ul>
+                <li>Follow-up Request for ROE Additional Information</li>
+                <li>Date contacted employer (1556)</li>
+                <li>Enclosing a copy of letter (2800)</li>
+                <li>Date of BF (1540): Select 10 business days from the date the letter is sent.</li>
+              </ul>
+            </li>
+            <li>Blank / Contact agent / Contact by phone or mail (11326)</li>
+            <li>
+              Attachment List for Z-02-00-00 letter (3133) :
+              <ul>
+                <li>Copy of original letter</li>
+              </ul>
+            </li>
+            <li>
+              Indicate on letter how letter mailed (2804)
+              <ul>
+                <li>Sent by Registered mail.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1564.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason : Select Other .</li>
+            <li>Comments : Type “Z-02-00-00 letter sent.”</li>
+            <li>Bring forward date : Enter 10 business days from the day the letter is sent.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When WI moves to the current workload, determine if the information was obtained:</cmd>
+        <info>
+          <ul>
+            <li>If no , go to step 15.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a CA WI has been created.</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 16.</li>
+            <li>
+              If no, go to Reassigning the WI to Level 1 .
+              <xref href="#Reassign">Reassigning the WI to Level 1</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create an SROC and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Issue : Select ROE .</li>
+            <li>Comments: Type “Employer non-compliance — ROE [insert serial number].”</li>
+            <li>Details : Type “Employer did not respond to the Z-02-00-00 letter by response date of [DD-MM-YYYY]. Work item closed without corrections being made.”</li>
+            <li>Select Save .</li>
+            <li>Go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

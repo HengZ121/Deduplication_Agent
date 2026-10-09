@@ -382,21 +382,29 @@ def review_borderline_pairs(
         f"Reviewing {len(pending_indices)} pending borderline node pairs "
         f"with {workers} LLM worker(s)..."
     )
+    # Keep only a bounded number of futures in memory. The LLM limit can cover
+    # hundreds of thousands of pairs, so submitting the full list at once can
+    # consume substantial memory before any result is checkpointed.
+    batch_size = max(workers * 16, workers)
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(review, index) for index in pending_indices]
-        for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures), desc="LLM review"):
-            record = future.result()
-            row_index = int(record["pair_row_index"])
-            relationship = str(record["relationship_type"])
-            analysis = str(record["analysis"])
-            status = str(record["review_status"])
-            if checkpoint_path is not None:
-                append_llm_review_checkpoint(checkpoint_path, record)
-            if status == "reviewed":
-                result.at[row_index, "final_relationship_type"] = relationship
-                result.at[row_index, "classification_source"] = "llm_borderline"
-            result.at[row_index, "final_analysis"] = analysis
-            result.at[row_index, "llm_review_status"] = status
+        with tqdm(total=len(pending_indices), desc="LLM review") as progress:
+            for start in range(0, len(pending_indices), batch_size):
+                batch = pending_indices[start:start + batch_size]
+                futures = [executor.submit(review, index) for index in batch]
+                for future in concurrent.futures.as_completed(futures):
+                    record = future.result()
+                    row_index = int(record["pair_row_index"])
+                    relationship = str(record["relationship_type"])
+                    analysis = str(record["analysis"])
+                    status = str(record["review_status"])
+                    if checkpoint_path is not None:
+                        append_llm_review_checkpoint(checkpoint_path, record)
+                    if status == "reviewed":
+                        result.at[row_index, "final_relationship_type"] = relationship
+                        result.at[row_index, "classification_source"] = "llm_borderline"
+                    result.at[row_index, "final_analysis"] = analysis
+                    result.at[row_index, "llm_review_status"] = status
+                    progress.update(1)
     return result
 
 

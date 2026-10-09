@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="ver_ent_subc" xml:lang="en-CA">
+  <title>Verifying and entering the supplemental unemployment benefits code</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="supplemental_unemployment_benefits_sub_payments.dita">
+    </topicref>
+    <topicref href="calculation_warnings.dita">
+    </topicref>
+    <topicref href="information_for_employers.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4898.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2229.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4899.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="determining_the_type_of_supplemental_un_272a799e_level_1.dita">
+      </topicref>
+      <topicref href="supplemental_unemployment_benefits_sub__ba217d56_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="supplemental_unemployment_benefits_sub__6a451c06_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4900.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4901.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4902.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4903.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2232.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4904.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="determining_the_type_of_supplemental_un_c324cc1f_level_2.dita">
+      </topicref>
+      <topicref href="supplemental_unemployment_benefits_sub__ba217d56_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="supplemental_unemployment_benefits_sub__6a451c06_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4905.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

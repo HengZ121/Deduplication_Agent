@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_manual_actuals_are_required">
+  <title>Determining if manual actuals are required</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if there is an ROE that falls in the QP with a first day worked that falls before the COD:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 17.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2629.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ROE is a ROE SAT:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if block 15C of the ROE SAT is completed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Enter the hours as displayed in block 15C of the ROE SAT into the correct pay periods of the Employment History File (EHF) and go to step 16.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client will have at least 120 hours if all of the hours on the ROE are included in the QP:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>If no, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the employer to obtain the actual hours required and go to step 10.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the employer was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 11.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Actual hours required for the calculation” and indicate who provided the information.</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer provided the actual hours:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 13.</li>
+            <li>If yes, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client to obtain the actual hours and go to step 14.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>If no, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Actual hours required for the calculation” and indicate who provided the information.</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Enter the hours obtained into the EHF and go to step 17.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="referred_training_confirmed">
+  <title>Referred training confirmed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the documentation includes all the coding information needed to input the training:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, contact your Business Expertise Advisor for guidance on how to enter the referred training.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a pending electronic claimant’s report on the E-Report tab for the period before the training period:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>
+              If yes, refer to Actioning a pending claimant’s report and go to step 3.
+              <xref href="/en/procedure/task/pending_cr.shtml">Actioning a pending claimant’s report</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any rejected electronic claimant’s reports on the Pending/Reject tab for the period before the training period:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>
+              If yes, re-input the claimant’s reports. Refer to Actioning a rejected claimant’s report and go to step 4.
+              <xref href="/en/procedure/task/rejected_cr.shtml">Actioning a rejected claimant’s report</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for the issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</li>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on Fishing claims or other complex claim conditions .</li>
+            <li>Remarks Line 1: Type “EIA 25 — Special benefits.”</li>
+            <li>Remarks Line 2: Type “T171 — STRT-WK/DY [the course start w/c], END-WK-DY [the course end w/c].”</li>
+            <li>Remarks Line 3: Type “PROJ-HRRC [the Responsibility Centre code or institution code, if applicable], PROJ-NO [the 10-digit agreement number; use preceding zeros if the number is less than 10 digits] TRAIN-ID [the training ID code], BREAK START/END WK [the w/c code of any break weeks].”</li>
+            <li>Remarks Line 4: Type “Type of benefits to be paid, if not already on the claim. (Mat — w/c xxxx-xxxx, Par — w/c xxxx-xxxx, family caregiver weeks or CCB weeks to be paid.” If applicable, type “[NO-CR]”, [claimant’s report information], or [MA rescind information].”</li>
+            <li>Remarks Line 5: Type “[decision maker].”</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Entitlement in order — EIA 25 referral.”</li>
+            <li>Details: Type “The client can continue receiving payment of special benefits while attending an approved course of instruction under EIA 25 (National Policy on Levels of Decision).”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the CR WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

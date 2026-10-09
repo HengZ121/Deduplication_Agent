@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="payment_must_be_reissued">
+  <title>Payment must be reissued</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine which type of benefits was paid to the client the week of the date of death:</cmd>
+        <info>
+          <ul>
+            <li>If the client was paid regular benefits, go to step 31.</li>
+            <li>If the client was paid special benefits, go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 92 - Purge and Recreate .</li>
+                <li>If the claim is in MPS, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work Type: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 24 - Cancelled payment .</li>
+                <li>If the claim is in MPS, select 43 - Cancelled payment .</li>
+              </ul>
+            </li>
+            <li>Remarks lines 1 and 2: Type “Deceased client. Cancel the following payment(s) in SPS and adjust the claim file:”</li>
+            <li>Remarks lines 2 and 3: Type “T071 type [2 for the current year or 8 for the previous year]/rsn F/ WC XXXX. CT XX/GB XXXX/FT XX/net XXXX/PRN XXXXXXXXXXXX.”</li>
+            <li>Remarks line 4: If necessary, type “ Amend the original claimant’s report to include the number of days the client was unavailable. Reissue the payment for WC XXXX and change the CS to 7 - Deceased .”</li>
+            <li>Remarks line 5: Type your first and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Go to step 35.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3946.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 92 - Purge and Recreate .</li>
+                <li>If the claim is in MPS, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work Type: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 24 - Cancelled payment .</li>
+                <li>If the claim is in MPS, select 43 - Cancelled payment .</li>
+              </ul>
+            </li>
+            <li>Remarks lines 1 and 2: Type “deceased client. Cancel the following payment(s) in SPS and adjust the claim file.”</li>
+            <li>Remarks lines 2 and 3: Type “T071 type [2 for the current year or 8 for the previous year]/rsn F/ WC XXXX.”</li>
+            <li>Remarks line 3: Type “CT XX/GB XXXX/FT XX/net XXXX/PRN XXXXXXXXXXXX.”</li>
+            <li>Remarks line 4: If necessary, type “Impose a DE39 as of [day after the date of death] to 9999. Reissue the payment for WC XXXX and change the CS to 7 - Deceased .”</li>
+            <li>Remarks line 5: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3946.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding OP on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 37.</li>
+            <li>If no, go to step 41.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if proof of death was received from the CRA:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 38.</li>
+            <li>If yes, go to step 41.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and print locally the Z-00-00-00 letter to notify the CRA of the client’s death. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Employer or Third Party Name (1334): Type “NVCC Shawinigan Estates and Assessment Unit.”</li>
+            <li>Employer or Third Party Address 1 (1336): Type “Accounts Receivable, Government Programs Division, CRA.”</li>
+            <li>Employer or Third Party Address 2 (2440): Select Employer or Third Party Address Line 2 .</li>
+            <li>Employer or Third Party Address 2 (1338): Type “4695 Shawinigan-Sud Boulevard.”</li>
+            <li>Employer or Third Party Address 3 (2441): Select Address in Canada.</li>
+            <li>Employer or Third Party City (1340): Type “Shawinigan.”</li>
+            <li>Employer or Third Party Province or State (1342): Type “QC.”</li>
+            <li>Employer or Third Party Postal Code or Zip Code (1344): Type “G9P 5H9.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In Imaging, print a copy of the proof of death.</cmd>
+      </step>
+      <step>
+        <cmd>Attach the paper documents to the printed Z-00-00-00 letter and send them to the CRA.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

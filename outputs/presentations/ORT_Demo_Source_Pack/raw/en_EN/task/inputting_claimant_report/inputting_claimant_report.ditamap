@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="inputting_claimant_report" xml:lang="en-CA">
+  <title>Inputting a claimant’s report in CPS — IPOC</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="paper_claimants_reports.dita">
+    </topicref>
+    <topicref href="coding_a_claimants_report.dita">
+    </topicref>
+    <topicref href="unacceptable_claimants_reports.dita">
+    </topicref>
+    <topicref href="change_of_address.dita">
+    </topicref>
+    <topicref href="deceased_client.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_3567.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="ipoc.dita">
+      <topicref href="reviewing_the_file_ipoc.dita">
+      </topicref>
+      <topicref href="fact-finding_ipoc.dita">
+      </topicref>
+      <topicref href="inputs_and_communication_ipoc.dita">
+      </topicref>
+      <topicref href="inputs_not_required__claimants_report_r_0a5c64dc_ipoc.dita">
+      </topicref>
+      <topicref href="inputs_not_required__unable_to_obtain_m_ce7865d0_ipoc.dita">
+      </topicref>
+      <topicref href="inputs_required__no_pay_coding_ipoc.dita">
+      </topicref>
+      <topicref href="inputs_required__pay_coding_ipoc.dita">
+      </topicref>
+      <topicref href="creating_an_action_item_ai_wi_ipoc.dita">
+      </topicref>
+      <topicref href="completing_the_wi_ipoc.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3568.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3569.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3570.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3571.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3572.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

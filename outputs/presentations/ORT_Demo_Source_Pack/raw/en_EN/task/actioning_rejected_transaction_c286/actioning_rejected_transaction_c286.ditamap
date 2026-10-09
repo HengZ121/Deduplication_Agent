@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="actioning_rejected_transaction_c286" xml:lang="en-CA">
+  <title>Archived: Actioning a rejected transaction — Error code C286</title>
+  <topicref href="summary.dita">
+    <topicref href="../../common_notes/note_c_0394.dita">
+    </topicref>
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="extending_a_claim_under_bill_c-15.dita">
+    </topicref>
+    <topicref href="new_combined_maximum_benefits_payable.dita">
+    </topicref>
+    <topicref href="error_code_c286.dita">
+    </topicref>
+    <topicref href="sending_an_operational_centre_memo_mm06_to_ipoc.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1540.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1541.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1542.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1543.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="regular_benefits_level_1.dita">
+      </topicref>
+      <topicref href="sickness_benefits_level_1.dita">
+      </topicref>
+      <topicref href="special_benefits_other_than_sickness_benefits_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1544.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1545.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1546.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1547.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1548.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1549.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1550.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

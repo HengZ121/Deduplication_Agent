@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="adj_rfs_review_k_other" xml:lang="en-CA">
+  <title>Actioning an Adjudication Issue RFS Review WI: K - Other</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="conditions_for_creating_the_wi.dita">
+    </topicref>
+    <topicref href="reviewing_the_reason_for_separation_rfs.dita">
+    </topicref>
+    <topicref href="determining_if_the_file_must_be_referre_f4ff817e.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1681.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_adjudication_is_required_level_1.dita">
+      </topicref>
+      <topicref href="adjudication_required__contentious_reas_3e96d163_level_1.dita">
+      </topicref>
+      <topicref href="unable_to_determine_if_adjudication_is_required_level_1.dita">
+      </topicref>
+      <topicref href="adjudication_not_required__no_interrupt_4cdc091c_level_1.dita">
+      </topicref>
+      <topicref href="adjudication_not_required__non-contenti_e8b0f7ad_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1682.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1683.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1684.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

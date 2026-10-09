@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claim_must_be_processed_in_mps">
+  <title>Claim must be processed in MPS</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Allocate the monies using the following formula:</cmd>
+        <info>
+          <ul>
+            <li>If the allocation is for one week, allocate the monies for the entire period.</li>
+            <li>
+              If the allocation is for more than one week, allocate the monies as follows:
+              <ul>
+                <li>Determine the number of paid leave days.</li>
+                <li>Divide the gross amount received by the number of paid leave days.</li>
+                <li>Multiply the result by 5 (for each full week).</li>
+                <li>Multiply the result by the number of days for the last week (if not a full week).</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1864.dita">Note</xref>
+          <xref href="../../common_notes/note_c_1871.dita">Example of allocation</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim being sent to IPOC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on fishing claims or other complex claim conditions or if the claim is already in MPS, select 30 - New information on manual pay claim .</li>
+            <li>Remarks line 1: Type “2 PRP statuses present on claim.”</li>
+            <li>Remark line 2: Type “Process cycling claimant’s reports and send next paper claimant’s report.”</li>
+            <li>Remarks lines 3–4: Type “PR code [X] from w/c [XXXX] to w/c [XXXX] and PR code [X] from w/c [XXXX] to w/c [XXXX], allocation type [X], amount [$XXX] from w/c [XXXX] to w/c [XXXX] last week amount [$XXX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Rejected Transactions Retrieval (MR05) search and do the following:</cmd>
+        <info>
+          <ul>
+            <li>SCC: Type the SCC number.</li>
+            <li>Select Search .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>For the first record that is not yet reviewed, determine if the error code is one of the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the error code is 243 or 244, refer to Actioning a rejected transaction — Error codes C243 and C244 .
+              <xref href="/en/procedure/task/actioning_rejected_transaction_c243_c244.shtml">Actioning a rejected transaction — Error codes C243 and C244</xref>
+            </li>
+            <li>
+              If the error code is 725 or 726, refer to Actioning a rejected transaction — Error codes C725 and C726 .
+              <xref href="/en/procedure/task/actioning_rt_c725_c726.shtml">Actioning a rejected transaction — Error codes C725 and C726</xref>
+            </li>
+            <li>If the error code is 715, a specialized team corrects it. No further action is required.</li>
+            <li>For any other error code, go to step 3.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4697.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the record is one of the following:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4698.dita">Callout</xref>
+          <ul>
+            <li>If the record is not one of those listed, go to step 4.</li>
+            <li>If the record is one of those listed, it is corrected by IPOC. No further action is required for this error. Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the 3-digit code to open WECS and view a detailed description of the error. Go to step 5.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the record is a result of a BCS reject:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 6.</li>
+            <li>If yes, the officer who inputs the transaction corrects the error. No further action is required for this error. Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review and follow the instructions provided in WECS under additional information. Based on the WECS information, determine if the rejected transaction can be corrected by a Level 1 officer:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>If yes, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a registration number exists for the rejected transaction:</cmd>
+        <info>
+          <ul>
+            <li>If a registration number exists, go to step 8.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+            <li>Go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate or 93- Manual pay system .</li>
+            <li>Work type: Select 60 - Rejected transaction / or situation not otherwise listed that must be processed via purge and recreate or the Work type appropriate to your situation.</li>
+            <li>Earnings to be allocated: Complete the weeks and amounts, if required.</li>
+            <li>Remarks line 1: Enter the EC [CXXX] Enter the exact transaction fields and data to be entered (e.g. BPC __, LRW __, COD __).</li>
+            <li>Remarks line 4: Type your name and phone number.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the rejected information. Re-input the transaction with the correct information. If necessary, refer to the appropriate procedure to resolve the issue.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a letter is required for the rejected transaction.</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the appropriate letter for the rejected transaction.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, remove the SIN from the Rejected Transactions Retrieval (MR05) screen as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the appropriate SIN.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if a WI exists for the rejected transaction:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI and go to step 16.</li>
+            <li>If no, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is another record for the SCC number that is not yet reviewed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 2.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding_with_the_other_parent">
+  <title>Fact-finding with the other parent</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the child’s other parent to determine the number of entitlement weeks the child’s other parent wants to receive for the correct BT.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the child’s other parent was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the child’s other parent was contacted, go to step 19.</li>
+            <li>
+              If the child’s other parent was not contacted or did not reply to the N-10-00-00 letter, go to Reassigning the issue to Level 2 .
+              <xref href="#L2required">Reassigning the issue to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Entitlement to parental benefits.”</li>
+            <li>
+              Details : Document the fact-finding details according to the National Fact-Finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding, Documentation and Retention Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS and ACS, determine if any attempts have been made to contact the employer:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2921.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the person who issued the ROE to obtain the missing information:</cmd>
+        <info>
+          <ul>
+            <li>If the employer was reached, go to step 13.</li>
+            <li>If the employer was not reached, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select ROE .</li>
+            <li>Comments: Type “ROE correction.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 22</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, determine if letters were already sent to this employer for this ROE:</cmd>
+        <info>
+          <ul>
+            <li>If no letters were sent to this employer, go to step 15.</li>
+            <li>
+              If a first Z-02-00-00 letter has been sent, determine if 10 business days have passed since the letter was sent:
+              <ul>
+                <li>If no, go to step 16.</li>
+                <li>If yes, go to step 17.</li>
+              </ul>
+            </li>
+            <li>
+              If a second Z-02-00-00 letter has been sent, determine if 10 business days have passed since it was sent:
+              <ul>
+                <li>If no, go to step 19.</li>
+                <li>If yes, go to step 21.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the Z-02-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Employer or Third Party Name (1334)</li>
+            <li>Employer or Third Party Address 1 (1336)</li>
+            <li>
+              Opening Sentence to ER re: Request or Clarify ROE/RFS (2794)
+              <ul>
+                <li>Request ROE Opening Sentence - claimant</li>
+              </ul>
+            </li>
+            <li>
+              Request for a Record of Employment (2797)
+              <ul>
+                <li>
+                  Request for Additional ROE Information
+                  <ul>
+                    <li>Text - Free Text (1612): Enter the following information: issue you are inquiring about, your telephone number and work hours (in the employer’s time zone, if necessary) and the date which the information is required.</li>
+                    <li>Blank / Contact officer / Contact by phone or mail (11326)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Indicate on letter how letter mailed (2804)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the ROE Correction WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Z-02-00-00 letter sent.”</li>
+            <li>Bring forward date: Enter the date the letter is sent + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the information has been obtained from the employer:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 18.</li>
+            <li>If yes, go to 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, send a registered copy of the Z-02-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Employer or Third Party Name (1334)</li>
+            <li>Employer or Third Party Address 1 (1336)</li>
+            <li>
+              Opening Sentence to ER re: Request or Clarify ROE/RFS (2794)
+              <ul>
+                <li>Request ROE Opening Sentence - claimant</li>
+              </ul>
+            </li>
+            <li>
+              Request for a Record of Employment (2797)
+              <ul>
+                <li>Follow-up Request for ROE Additional Information</li>
+                <li>Date contacted employer (1556)</li>
+                <li>Enclosing a copy of letter (2800)</li>
+                <li>Date of BF (1540): Enter the date the letter is sent + 10 business days.</li>
+              </ul>
+            </li>
+            <li>Blank / Contact officer / Contact by phone or mail (11326)</li>
+            <li>
+              Attachment List for Z-02-00-00 (3133):
+              <ul>
+                <li>Copy of original letter</li>
+              </ul>
+            </li>
+            <li>
+              Indicate on letter how letter mailed (2804)
+              <ul>
+                <li>Sent by Registered mail .</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1564.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the ROE Correction WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Z-02-00-00 letter sent.”</li>
+            <li>Bring forward date: Enter the date the letter is sent + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the information has been obtained:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 21.</li>
+            <li>If yes, go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In RCM, determine which blocks of the ROE are in error and consult ROE: RCM validation error correction for a regular ROE — Instructions and ROE: RCM validation error correction for a regular ROE (employer not reached) — Instructions to determine how to correct the ROE.</cmd>
+        <info>
+          <ul>
+            <li>If the corrections can be made with the information on file, go to step 22.</li>
+            <li>
+              If the corrections cannot be made with the information on file, go to Actioning the ROE error when there is employer non-compliance.
+              <xref href="#_Actioning_the_ROE">Actioning the ROE error when there is employer non-compliance.</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

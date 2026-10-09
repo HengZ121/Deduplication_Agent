@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="fraud_indicators">
+  <title>Fraud indicators</title>
+  <conbody>
+    <p>Before taking any actions, officers determine if the application is already under investigation for potential fraud. Officers can determine that there is an ongoing Integrity investigation for this application if:</p>
+    <ul>
+      <li>a 71 - Integrity Services case manual action (MA71) or 71 - Integrity Services case disentitlement (D71) is imposed;</li>
+      <li>an SROC created by Integrity is on file;</li>
+      <li>an Action Item (AI) WI is assigned to Integrity;</li>
+      <li>a Call Back (CB) WI is assigned to Integrity.</li>
+    </ul>
+    <p>If none of these are on the file, officers review the file to determine if fraud indicators are present. If yes, officers:</p>
+    <ul>
+      <li>determine if the banking information has been changed in FTS and, if so, terminate the direct deposit;</li>
+      <li>impose a D71 on skeleton and BPNE 1, 2 or 7 claims or an MA71 on established claims, if necessary;</li>
+      <li>complete the registration number to suspend the initial application process to prevent the claim from establishing until an investigation is completed;</li>
+      <li>refer the issue to Integrity for investigation;</li>
+      <li>complete the Claim Set-Up (CS) WI.</li>
+    </ul>
+    <p>If the only fraud indicator is the fraud warning highlighted in red in FTS, the officers do not refer the issue to Integrity.</p>
+    <p>
+      For more information, officers refer to Referral to Integrity: Temporary measures and fraudulent EI and EI ERB claims — Instructions .
+      <xref href="/en/procedure/generic/referral_to_integrity_temp_measures_fraudulent_ei_and_eierb_claim.shtml">Referral to Integrity: Temporary measures and fraudulent EI and EI ERB claims — Instructions</xref>
+    </p>
+  </conbody>
+</concept>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="aic_voluntary_leaving" xml:lang="en-CA">
+  <title>Adjudicating an Integrity case — Voluntary leaving</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="processing_an_integrity_claim_review.dita">
+    </topicref>
+    <topicref href="reviewing_an_undeclared_reason_for_sepa_2f26b5ef.dita">
+    </topicref>
+    <topicref href="returning_a_file_to_integrity.dita">
+    </topicref>
+    <topicref href="sending_a_file_for_recalculation.dita">
+    </topicref>
+    <topicref href="communicating_with_the_employer.dita">
+    </topicref>
+    <topicref href="defining_claim_status_cs.dita">
+    </topicref>
+    <topicref href="imposing_a_disqualification_or_a_disentitlement.dita">
+    </topicref>
+    <topicref href="bcs.dita">
+    </topicref>
+    <topicref href="creating_an_operational_centre_memo_mm0_12498087.dita">
+    </topicref>
+    <topicref href="record_of_decision_rod.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1829.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1816.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1830.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_niis.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_integrity_investigations_document_up_6a8da64b.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="not_within_reconsideration_timeframe_level_2.dita">
+      </topicref>
+      <topicref href="returning_the_file_to_integrity_level_2.dita">
+      </topicref>
+      <topicref href="voluntary_leaving__just_cause_level_2.dita">
+      </topicref>
+      <topicref href="voluntary_disclosure_approved_level_2.dita">
+      </topicref>
+      <topicref href="reconsideration_within_36_months_level_2.dita">
+      </topicref>
+      <topicref href="reconsideration_after_36_months_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1802.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1796.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1791.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs__operational_centre_memo_mm06">
+  <title>Inputs — Operational Centre Memo (MM06)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select the investigation type shown in NIIS .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 6 - Earnings other than declared .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the correct BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>
+              Remarks Line 1: Type the appropriate option:
+              <ul>
+                <li>
+                  For PSL : E (Earnings) :
+                  <ul>
+                    <li>Input M175 E — [amount to be allocated] from [w/c (first day of allocation)] to [s/c (last day of allocation)], [type the amount to be allocated on the last week if different].”</li>
+                  </ul>
+                </li>
+                <li>
+                  For WLI: F (Wage Loss Insurance) :
+                  <ul>
+                    <li>Input [M175 F — [amount to be allocated] from [w/c (first day of allocation)] to [w/c (last day of allocation)], [type the amount to be allocated on the last week if different].”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Remarks Line 2: Use if more than one week or more than one type of earnings must be allocated.</li>
+            <li>Remarks Line 3: Leave the field blank.</li>
+            <li>Remarks Line 4: Leave the field blank.</li>
+            <li>Remarks Line 5: Type your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

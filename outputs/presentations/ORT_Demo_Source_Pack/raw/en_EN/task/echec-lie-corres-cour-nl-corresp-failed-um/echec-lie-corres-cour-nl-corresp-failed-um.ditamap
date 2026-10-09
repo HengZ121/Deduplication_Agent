@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="echec-lie-corres-cour-nl-corresp-failed-um" xml:lang="en-CA">
+  <title>Correspondence Failed – Undeliverable mail — Cúram</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="undeliverable_mail.dita">
+    </topicref>
+    <topicref href="actioning_the_receipt_of_undeliverable_mail.dita">
+    </topicref>
+    <topicref href="fraud_indicators.dita">
+    </topicref>
+    <topicref href="obtaining_the_address_from_the_client.dita">
+    </topicref>
+    <topicref href="imposing_a_disentitlement_or_suspension_8cd7c12e.dita">
+    </topicref>
+    <topicref href="resending_undeliverable_mail.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_3308.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_curam.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_pscd.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="non-complex.dita">
+      <topicref href="reviewing_the_file_non-complex.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3309.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="new_address_confirmed_level_1.dita">
+      </topicref>
+      <topicref href="new_address_unconfirmed_or_unknown_level_1.dita">
+      </topicref>
+      <topicref href="fraud_indicators_are_present_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3310.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1520.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3311.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3312.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3313.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3314.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

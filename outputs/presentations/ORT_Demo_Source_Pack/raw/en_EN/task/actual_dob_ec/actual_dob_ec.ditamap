@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="actual_dob_ec" xml:lang="en-CA">
+  <title>Actual date of birth provided on an established claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="maternity_window.dita">
+    </topicref>
+    <topicref href="actual_date_of_birth_dob_and_maternity_window.dita">
+    </topicref>
+    <topicref href="sickness_benefits_during_the_maternity_window.dita">
+    </topicref>
+    <topicref href="external_maternity_start_week_or_end_week.dita">
+    </topicref>
+    <topicref href="parental_window_pw.dita">
+    </topicref>
+    <topicref href="actual_date_of_birth_dob_and_parental_window_pw.dita">
+    </topicref>
+    <topicref href="maternityparental_input_guide.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0128.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1627.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1628.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1629.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1630.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="assigning_the_adjudication_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_inputs_are_required_level_1.dita">
+      </topicref>
+      <topicref href="no_inputs_required_level_1.dita">
+      </topicref>
+      <topicref href="inputs_required_level_1.dita">
+      </topicref>
+      <topicref href="ipoc_intervention_not_required_level_1.dita">
+      </topicref>
+      <topicref href="ipoc_intervention_required_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1631.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1632.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1633.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

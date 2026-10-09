@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="claimants_reports_have_processed_for_th_3d4ae096">
+  <title>Claimant’s reports have processed for the effective week of the new normal weekly hours (NWH) — No cycling claimant’s reports</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if the client is exempt from reporting:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 3.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and in the Claimant’s Report section, rescind the exemption from reporting as follows:</cmd>
+        <info>
+          <ul>
+            <li>Rescind: Check the box.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Project Data — Worksharing (M171) transaction and end the first WS period as follows:</cmd>
+        <info>
+          <ul>
+            <li>End date: Select the date that corresponds to the last week processed.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>The next business day, in FTS, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to input a renewal week and, if rescinded in step 2, an exemption from reporting as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Renewal: Select the week that corresponds to the week following the last week processed.</li>
+            <li>
+              Claimant’s Report — Claim Action: Select the appropriate option:
+              <ul>
+                <li>W - work-sharing - no claimant’s reports.</li>
+                <li>H - work-sharing with claimant’s reports.</li>
+              </ul>
+            </li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Project Data — Worksharing (M171) transaction and input the second WS period information as follows:</cmd>
+        <info>
+          <ul>
+            <li>Start date: Select the week that corresponds to the renewal week.</li>
+            <li>End date: Select the original WS agreement end week.</li>
+            <li>Project SCC: Enter the original SCC of the WS agreement.</li>
+            <li>Project number: Enter the original WS agreement number.</li>
+            <li>Weekly hours: Enter the new NWH. Include a 0 or a 5 at the end to indicate the hour or half hour. Do not include the decimal (e.g. 40 NWH are entered as 400 and 37.5 NWH are entered as 375).</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 55 - Change to Worksharing/Job Creation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 16 - Work-sharing .</li>
+            <li>Remarks line 1: Type “WS — change the NWH from [XX] to [XX] as of w/c [XXXX].”</li>
+            <li>Remarks line 2: Type “Change the start date of the current WS period to w/c [XXXX].”</li>
+            <li>Remarks line 3: Type “End the previous WS period one week before the start of the current WS period.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 55 - Change to Worksharing/Job Creation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Work-Sharing — change in normal weekly hours.”</li>
+            <li>Details: Type “The program officer reports that normal weekly hours changed from [XX] to [XX] effective w/c [XXXX]. Work-Sharing employer [XXXX], Work-Sharing agreement number [XXXXXXX]. Ended current agreement period as of last week processed. New agreement period with new normal weekly hours has been input from the week following the last week processed — w/c [XXXX]. An Operational Centre Memo (MM06) transaction was sent to IPOC with the following information: Change the start date of the current Work-Sharing period to w/c [XXXX]. End the previous Work-Sharing period one week before the start of the current Work-Sharing period.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>No further action is required. Complete the WI, if necessary.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

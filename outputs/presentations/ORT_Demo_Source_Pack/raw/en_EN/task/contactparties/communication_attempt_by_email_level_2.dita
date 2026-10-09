@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="communication_attempt_by_email">
+  <title>Communication attempt by email</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Create and send an email to the client or the requester using the email template .</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_2706.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In Outlook, review the GD box:</cmd>
+        <info>
+          <ul>
+            <li>If no message is received stating that the delivery has failed, go to step 21.</li>
+            <li>If a message is received stating that the delivery has failed, consider that there is no email address for the client and delete the failed email message from the GD mailbox. Go to step 31.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>“Unable to validate the client’s identity by telephone. An email has been sent. Response due [today’s date + 5 business days].”</li>
+                <li>“No communication by telephone with the client [and why, if no attempts were made]. An email has been sent. Response due [today’s date + 5 business days].”</li>
+              </ul>
+            </li>
+            <li>Select Draft .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In the Common Document Share, save a copy of the email in the Record folder.</cmd>
+      </step>
+      <step>
+        <cmd>NWS, create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary] — email contact with the requester.”</li>
+            <li>Details: Copy and paste a copy of the email sent.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding client or Fact finding employer .</li>
+            <li>
+              Comments: Type the appropriate option:
+              <ul>
+                <li>“Awaiting response to email sent on [DD-MM-YYYY].”</li>
+                <li>“Awaiting response from the client.”</li>
+                <li>“Awaiting response from the employer.”</li>
+              </ul>
+            </li>
+            <li>Bring forward date: Enter today’s date + 5 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the party responded to the email:</cmd>
+        <info>
+          <ul>
+            <li>If the party responded, go to step 26.</li>
+            <li>If the party did not respond and there is a valid telephone number on file, go to step 32.</li>
+            <li>
+              If the party did not respond and there is no valid telephone number on file, go to Unable to complete the call .
+              <xref href="#_Unable_to_complete_l2">Unable to complete the call</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if it is a client returning the call:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Validating a client’s identity when communicating by telephone and go to step 27.
+              <xref href="/en/procedure/generic/additionalresources/validating_cict.shtml">Validating a client’s identity when communicating by telephone</xref>
+            </li>
+            <li>
+              If no, go to Completing the call .
+              <xref href="#PartyContacted2">Completing the call</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if you were able to validate the client’s identity:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 28.</li>
+            <li>If no, go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Validate the client’s address:</cmd>
+        <info>
+          <ul>
+            <li>If the client’s address is the same as the one on file, go to step 29.</li>
+            <li>
+              If the client’s address is different than the one on file, refer to Change of address , then go to step 29.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary] — [party being called].”</li>
+            <li>
+              Details: Type “The client’s identity and address have been validated.” Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Draft .</li>
+            <li>
+              Go to Completing the call.
+              <xref href="#PartyContacted2">Completing the call.</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created when attempting to contact the party or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Request for Reconsideration .</li>
+            <li>Comments: Type “RFR [ADMS record number] — [issue] — [employer name and LDW, if necessary— [party being called].”</li>
+            <li>
+              Details: Type “Unable to validate client identity over telephone.” Document any additional details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Draft .</li>
+            <li>Go to step 47.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Details: Type “No communication by telephone with the client. An attempt was made to send an email, but delivery to [email address] failed.”</li>
+            <li>Select Draft .</li>
+            <li>Go to step 51.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

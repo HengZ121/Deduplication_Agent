@@ -837,12 +837,16 @@ def load_dita_body_nodes(
 
     dita_root = find_dita_root(input_path)
     language_suffix = f"_{normalized_language.upper()}"
+    # Current OneDrive exports use short ``en`` / ``fr`` branch names, while
+    # older exports use names such as ``en_EN`` / ``fr_FR``. Accept both so
+    # body-level deduplication can run against either export layout.
     topic_paths = [
         path
         for path in sorted(dita_root.rglob("*.dita"))
         if "common_notes" not in {part.lower() for part in path.relative_to(dita_root).parts}
         and any(
-            part.upper().endswith(language_suffix)
+            part.lower() == normalized_language
+            or part.upper().endswith(language_suffix)
             for part in path.relative_to(dita_root).parts[:-1]
         )
     ]

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitled_to_parental_benefits__continuing_claim">
+  <title>Entitled to parental benefits — Continuing claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the type of parental benefits requested or the number of entitlement weeks must be changed:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>If yes, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an MA01 is imposed for the parental benefits sharing issue and if there is a related registration number:</cmd>
+        <info>
+          <ul>
+            <li>If an MA01 is imposed but there is no registration number, go to step 3.</li>
+            <li>If an MA01 is imposed and there is a revised registration number, go to step 4.</li>
+            <li>If an MA01 is not imposed but there is a revised registration number, go to step 5.</li>
+            <li>If none of the above applies, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and remove the MA01 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Manual Action: Select 1 - General suspension of benefits (stop payment) .</li>
+            <li>Rescind: Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the benefits sharing issue:</cmd>
+        <info>
+          <ul>
+            <li>If there is a registration number, go to step 7.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 7.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the type of change being made:</cmd>
+        <info>
+          <ul>
+            <li>If the type of parental benefits the client is entitled to must be changed, go to step 8.</li>
+            <li>If only the number of weeks must be changed, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the type of benefit change being made:</cmd>
+        <info>
+          <ul>
+            <li>If the change is from standard to extended parental benefits, the claim type (CT) is 3 - Sickness major attached or 4 - Maternity or parental and no parental benefits have been paid, go to step 9.</li>
+            <li>If the change is from standard to extended parental benefits and the claim type is 14 - Standard parental , the request must be completed by IPOC. Go to step 10.</li>
+            <li>If the change is from extended to standard parental benefits, the request must be completed by IPOC. Go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and do the following:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              Select the Special Benefits (M106) link and enter the following information in the Parental section:
+              <ul>
+                <li>Entitlement weeks: Enter the number of weeks of extended parental benefits the client is requesting.</li>
+                <li>Select Save .</li>
+              </ul>
+            </li>
+            <li>
+              Waiting period:
+              <ul>
+                <li>If the WP was deferred in error, select X - Rescind .</li>
+                <li>If the WP was not deferred but should be, select 5 – Waiting period deferred (parental standard or extended) .</li>
+              </ul>
+            </li>
+            <li>Supplementary claim information: Select 99 - Parental extended .</li>
+            <li>Select Update .</li>
+            <li>Go to Step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 60 - Rejected transaction / or situation not otherwise listed that must be processed via purge and recreate.</li>
+            <li>Remarks line 1: Type “Change from standard to extended parental benefits.”</li>
+            <li>Remarks line 2: Type “Change to CT 16, APW [XXXX], PSW [XXXX], ENT WKS [XX].”</li>
+            <li>Remarks line 3: Type “Natural/Adoption Code [X], NO-CR (if requested by client), WP deferral (type “yes” if required or “rescind” if it was deferred in error).”</li>
+            <li>Remarks line 4: Type “Add the extended parental benefits flag.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 60 - Rejected transaction / or situation not otherwise listed that must be processed via purge and recreate .</li>
+            <li>Remarks line 1: Type “Change from extended to standard parental benefits.”</li>
+            <li>Remarks line 2: Type “Change to CT 14, APW [XXXX], PSW [XXXX], ENT WKS [XX].”</li>
+            <li>Remarks line 3: Type “Natural/Adoption Code [X], NO-CR (if requested by client), WP deferral (type “yes” if required or “rescind” if it was deferred in error).”</li>
+            <li>Remarks line 4: Type “Rescind the extended parental benefits flag.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              Select the Special Benefits (M106) link and in the Parental section, do the following:
+              <ul>
+                <li>Entitlement weeks: Enter the number of weeks of entitlement (the total number of weeks the client is entitled to, including weeks already paid).</li>
+                <li>Select Save .</li>
+              </ul>
+            </li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Special benefits approved (3046)</li>
+            <li>Maternity and/or parental benefits (standard/extended) approved or denied with sickness options (3054)</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If the client is entitled to fewer weeks than requested, verbally communicate the decision to the client.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the benefits sharing issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

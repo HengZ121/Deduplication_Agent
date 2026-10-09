@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to obtain the information.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 4.</li>
+            <li>
+              If the client was not contacted and the additional information to complete the request was not obtained, go to Completing the WI .
+              <xref href="#level1_item_4">Completing the WI</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “Itemized statement of benefits paid request.”</li>
+            <li>
+              Details: Type “Client requested itemized statement of benefits paid request to be mailed.” Document any additional information. Refer to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a change of address is required based on fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Reviewing the statement of benefits paid (T4E) screen .
+              <xref href="#level1_item_3">Reviewing the statement of benefits paid (T4E) screen</xref>
+            </li>
+            <li>
+              If yes, complete the Change of address procedures and go to Reviewing the statement of benefits paid (T4E) screen .
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+              <xref href="#level1_item_3">Reviewing the statement of benefits paid (T4E) screen</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

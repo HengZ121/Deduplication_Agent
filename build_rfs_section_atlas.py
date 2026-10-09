@@ -176,9 +176,20 @@ def explain_row(key, items, groups, pairs, occurrences):
     return parts, sample if quote else None
 
 def main():
+    import argparse
+    global ROOT, OUT
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=ROOT,
+                        help='ORT DITA root containing the English and French branches')
+    parser.add_argument('--output-dir', type=Path, default=OUT)
+    args = parser.parse_args()
+    ROOT = args.root.resolve()
+    OUT = args.output_dir
     OUT.mkdir(parents=True, exist_ok=True)
-    audit = ReuseAudit()
-    saved_similarities=load_saved_similarities()
+    audit = ReuseAudit(root=ROOT, output=OUT)
+    # Historical scores belong to the original export. Do not attach them to a
+    # refreshed export unless its own scored pair tables are explicitly joined.
+    saved_similarities = load_saved_similarities() if ROOT == Path('unzipped/ort_new_dita/dita').resolve() else {}
     families, documents, occurrences, sections = {}, [], [], {}
     copied = set()
     def copy_source(path):
@@ -196,7 +207,8 @@ def main():
                 copy_source(target)
 
     for letter, folder in DOCS.items():
-        mp = ROOT/'en_EN/task'/folder/(folder+'.ditamap')
+        english_branch = 'en_EN' if (ROOT/'en_EN').is_dir() else 'en'
+        mp = ROOT/english_branch/'task'/folder/(folder+'.ditamap')
         tree = audit.resolver.parse_xml(mp)
         title = element_text(tree.find('title'))
         documents.append(dict(letter=letter,title=title,map=mp.relative_to(ROOT).as_posix(),business_type='task'))

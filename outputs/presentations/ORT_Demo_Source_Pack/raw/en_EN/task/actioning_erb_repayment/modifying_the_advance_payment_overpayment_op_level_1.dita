@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="modifying_the_advance_payment_overpayment_op">
+  <title>Modifying the advance payment overpayment (OP)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Establish advance payment OP] or [Modify advance payment OP].”</li>
+            <li>
+              Details: Select the appropriate option:
+              <ul>
+                <li>Option 1: Type “The client has repaid the $2 000 advance payment. The client was eligible during w/c [XXXX] to [XXXX] and [XXXX] to [XXXX] when the 65 - Lump Sum Payment ($2000) - Canadian Emergency Response code (D65) was imposed on the claim. The client is eligible for [$ XXX] of the advance payment. An Operational Centre Memo (MM06) has been sent to IPOC to have the overpayment (OP) established.”</li>
+                <li>Option 2: Type “The client has repaid the $2 000 advance payment. The client was eligible during w/c [XXXX] to [XXXX] and [XXXX] to [XXXX] when the 65 - Lump Sum Payment ($2000) - Canadian Emergency Response code (D65) was imposed on the claim. The client is eligible for $[XXX] of the advance payment. The existing advance payment overpayment (OP) is incorrect and requires modification. An Operational Centre Memo (MM06) has been sent to IPOC to establish the correct OP.</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 59 - Legislative interim measures .</li>
+            <li>Remarks line 1: Type “Client not eligible for $2 000 advance payment.”</li>
+            <li>
+              Remarks lines 2–4: Do the following:
+              <ul>
+                <li>To establish an advance payment OP, type “EI ERB Repayment of $[repayment amount] received by NAR . Establish ERB2 OP for unserved D65 for $[XXXX] as an OP. 31-F-46.”</li>
+                <li>To establish the missing portion of the advance payment OP, type “ERB2 repayment of $[repayment amount] received by NAR. Establish missing portion of ERB 2 OP for unserved D65 for $[amount of missing portion] and update lump sum modification code 31-F-46.”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the F-00-00-01 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Text: Free text (1612): Type “We are writing concerning the Canada Emergency Response Benefit (CERB) you received from Service Canada. You have indicated not being eligible for [X] week[s] of the CERB by repaying some or all of the amount received. As a result, we have created an overpayment on your claim. The amount of $[XXXX] you repaid will be used to cover this overpayment, so you will not owe anything further. If you made CERB repayments in previous years, an amended T4E slip will be issued for the year in which the repayment was made. You may have to request a reassessment of that year's income tax return because of the amended T4E slip. For information on how to change your tax return, visit canada.ca/change-tax-return. For any questions on your T4E, visit canada.ca/ei and consult Employment Insurance Tax Slips (T4Es) . If you are filing an income tax return with Revenu Québec, visit revenuquebec.ca.”</li>
+            <li>Right to Request a Reconsideration (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a credit of $500 or more will remain in PSCD after the repayment is applied to the client’s account:</cmd>
+        <info>
+          <ul/>
+          <xref href="../../common_notes/note_c_1401.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul/>
+          <xref href="../../common_notes/note_c_1402.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the client’s account in PSCD shows the processed transactions, and if only the credit balance remains on file:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 16.</li>
+            <li>If yes, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a new address for the client has been documented on the file:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Change of address and then go to step 19 of this procedure.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+            <li>If no, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has provided new direct deposit information:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Direct deposit and then go to step 20 of this procedure.
+              <xref href="/en/procedure/activity/direct_deposit.shtml">Direct deposit</xref>
+            </li>
+            <li>If no, go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Send a request to NAR using the iService Catalogue by completing the National Accounting Operations - Request for Refund on Accounts Receivable template as follows:</cmd>
+        <info>
+          <ul>
+            <li>Preferred Language: Select the client’s preferred language.</li>
+            <li>
+              Request type: Select the appropriate option:
+              <ul>
+                <li>
+                  Select Request from Member of Parliament if any of the following are on file:
+                  <ul>
+                    <li>an enquiry from a member of Parliament;</li>
+                    <li>a request from the Office for Client Satisfaction;</li>
+                    <li>a dire needs situation in which the delay in obtaining the T4E is leading to dire financial difficulties (e.g. obtaining food or lodging, repaying an incorrect tax amount, or because a large amount is owed to the client).</li>
+                  </ul>
+                </li>
+                <li>Select Payment received in error by our department in all other situations.</li>
+              </ul>
+            </li>
+            <li>Origin of the request: Select Citizen (call-center, in-person…) .</li>
+            <li>Program: Select EI - Employment Insurance .</li>
+            <li>ID Type: Select Social Insurance Number (SIN) .</li>
+            <li>ID Number: Enter the client’s SIN.</li>
+            <li>Address to refund: Select Other (please specify in Additional information field) .</li>
+            <li>Amount: Enter the amount that the client repaid in error, the remaining amount or the amount to send to the CRA.</li>
+            <li>
+              Additional information: Enter the appropriate information:
+              <ul>
+                <li>
+                  For a repayment made in excess or in error of $500 or more, do the following:
+                  <ul>
+                    <li>Type “Officer authorized to process benefit repayments [client’s address as shown in FTS] — the client repaid the EI ERB, but after verification, the client was eligible during this period. No other OP must be created on file. Repay $[XXX] to the client.”</li>
+                    <li>If the direct deposit information in FTS is up to date, also type “Issue the payment by direct deposit.”</li>
+                    <li>If, in addition to repaying the client, IPOC must create an OP on the file, also type “IPOC must create an OP of $[XXX].”</li>
+                  </ul>
+                </li>
+                <li>
+                  For a repayment made in error to Service Canada instead of to the CRA or when the OP is or will be created with the CRA, do the following:
+                  <ul>
+                    <li>Type “Officer authorized to process benefit repayments [client’s address as shown in FTS] — the client repaid an amount of $[amount] to Service Canada, but after verification, the repayment must be transferred to the CRA. No other OP on file. Transfer the pending amount of $[amount] to the CRA.”</li>
+                    <li>If the request type chosen is Request from Member of Parliament , also type “[Request from member of Parliament, Request from Office for Client Satisfaction or Dire needs]. Process urgently and submit SOBR to IPOC as a priority.”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Other .</li>
+            <li>Comments: Type “Request to reimburse the client sent to National Accounts Receivable.”</li>
+            <li>
+              Details: Enter the appropriate details:
+              <ul>
+                <li>For a repayment made in excess or in error, type “EI Emergency Response Benefit repayment made in excess or in error by the client. The client must be repaid. A request for refund was sent to National Accounts Receivable. iService reference number [XXXX].”</li>
+                <li>For a repayment made in error to Service Canada instead of the CRA, type “EI ERB repayment made in error to Service Canada instead of the Canada Revenue Agency. The monies must be transferred to the Canada Revenue Agency. A request for refund was sent to National Accounts Receivable. iService reference number [XXXX].”</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="adj_ooc_sbs_ex_900series" xml:lang="en-CA">
+  <title>Adjudicating out of Canada: Special benefits other than sickness — Expired 900-series SIN</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="entitlement_to_special_benefits_other_t_ddc67891.dita">
+    </topicref>
+    <topicref href="imposing_a_not_authorized_to_be_in_cana_870c842f.dita">
+    </topicref>
+    <topicref href="level_of_decision.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1679.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_the_social_insurance_registry.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="record_of_decision_rod__creation_level_2.dita">
+      </topicref>
+      <topicref href="inputs_and_communication_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_proven_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__initial_claim_not_in_mps_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__renewal_claim_not_in_mps_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__continuing_clai_2529ba02_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__mps_claim_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

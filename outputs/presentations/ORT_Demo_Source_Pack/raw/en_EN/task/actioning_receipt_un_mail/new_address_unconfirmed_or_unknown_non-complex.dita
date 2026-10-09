@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="new_address_unconfirmed_or_unknown">
+  <title>New address unconfirmed or unknown</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Undeliverable Mail .</li>
+            <li>Comments: Type “Address search.”</li>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>“[Type of undeliverable mail] initially sent on [date] was received as undeliverable on [date] — unable to reach client to obtain new address.”</li>
+                <li>“[Type of undeliverable mail] initially sent on [date] was received as undeliverable on [date] — unable to reach client to confirm address obtained from [third-party source].”</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the new address for the client is unconfirmed or unknown.</cmd>
+        <info>
+          <ul>
+            <li>If the new address is unconfirmed, go to step 3.</li>
+            <li>If the new address is unknown, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the Q-01-00-00 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Information Requested Re: ROE / RFS / Undeliverable Mail / Additional Info required (2876)</li>
+            <li>Undeliverable Mail Active/Inactive claim (2878): Select Undeliverable Mail inactive claim .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1521.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a skeleton claim:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>If yes, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an active claim is displayed on the Summary screen or a renewable claim is displayed on the Dormant tab:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a D48 or an MA48 is imposed:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>If yes, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine what type of undeliverable mail was returned:</cmd>
+        <info>
+          <ul>
+            <li>If the undeliverable mail is an A-00-00-11, A-00-00-13, A-00-00-14, P-02-00-00, P-03-00-00 or P-04-00-00, ACS letter, go to step 8.</li>
+            <li>If the undeliverable mail is another type of ACS letter, go to step 9.</li>
+            <li>If the undeliverable mail is a T4E, shred it. No further action is required.</li>
+            <li>If the undeliverable mail is a benefit statement with an access code, go to step 10.</li>
+          </ul>
+          <ul>
+            <li>If the undeliverable mail is none of the above, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Send an email to the Incident Management and Legislative Disclosures unit as follows:</cmd>
+        <info>
+          <ul>
+            <li>Subject: Type “Undeliverable privacy letter.”</li>
+            <li>Body: Enter the client’s name and the file number of the letter returned as undeliverable.</li>
+            <li>Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, set the original letter to “undeliverable.” Shred the letter and image the envelope. To image the envelope, refer to Preparing documents for imaging .</cmd>
+      </step>
+      <step>
+        <cmd>Image the unopened envelope containing the benefit statement. To image the envelope, refer to Preparing documents for imaging .</cmd>
+      </step>
+      <step>
+        <cmd>Prepare the undeliverable mail for imaging. Refer to Preparing documents for imaging .</cmd>
+      </step>
+      <step>
+        <cmd>Determine what type of undeliverable mail was returned:</cmd>
+        <info>
+          <ul>
+            <li>If the undeliverable mail is an ACS letter, go to step 13.</li>
+            <li>If the undeliverable mail is a document that can be obtained from an internal system (e.g. FTS, PSCD, NWS), go to step 14.</li>
+            <li>If the undeliverable mail is none of the above, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, indicate that the original letter is “undeliverable.” Shred the letter and image the envelope. To image the envelope, refer to Preparing documents for imaging . No further action is required.</cmd>
+      </step>
+      <step>
+        <cmd>Shred the undeliverable mail. No further action is required.</cmd>
+      </step>
+      <step>
+        <cmd>Write PA on the document and send it for imaging. Refer to Preparing documents for imaging .</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

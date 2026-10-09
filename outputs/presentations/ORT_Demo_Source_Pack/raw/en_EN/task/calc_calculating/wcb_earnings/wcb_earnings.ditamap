@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="wcb_earnings" xml:lang="en-CA">
+  <title>Inputting workers’ compensation benefit information in SSO</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="workers_compensation_benefits_wcb.dita">
+    </topicref>
+    <topicref href="determining_if_the_payments_are_earnings.dita">
+    </topicref>
+    <topicref href="determination_of_earnings_screen.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0019.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_workers_compensation_benefits_wcb_level_1.dita">
+      </topicref>
+      <topicref href="workers_compensation_benefits_wcb_are_n_87d514f0_level_1.dita">
+      </topicref>
+      <topicref href="workers_compensation_benefits_wcb_are_earnings_level_1.dita">
+      </topicref>
+      <topicref href="unable_to_reach_the_client_for_missing__d394bffe_level_1.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2238.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

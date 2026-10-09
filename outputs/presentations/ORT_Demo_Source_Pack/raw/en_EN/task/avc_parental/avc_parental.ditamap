@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="avc_parental" xml:lang="en-CA">
+  <title>Adjudicating vacation in Canada — Parental benefits</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="claim_action_status_and_processing_of_a_b9d90477.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="adjudicating_level_1.dita">
+      </topicref>
+      <topicref href="inputs_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_level_2.dita">
+      </topicref>
+      <topicref href="inputs_and_communication_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_in_order__child_accompanyin_40626cea_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_in_order__child_not_accompa_44f985c5_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__initial_claim_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__renewal_claim_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__continuing_claim_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

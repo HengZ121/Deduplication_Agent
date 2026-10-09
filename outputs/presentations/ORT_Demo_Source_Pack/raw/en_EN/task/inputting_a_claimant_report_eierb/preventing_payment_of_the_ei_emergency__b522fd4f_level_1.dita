@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="preventing_payment_of_the_ei_emergency__b522fd4f">
+  <title>Preventing payment of the EI Emergency Response Benefit (EI ERB)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine which of the following situations applies and create the appropriate RODs in NWS as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              A D47 must be imposed. No previously imposed D47 must be modified or rescinded:
+              <ul>
+                <li>Comments: Type “Not eligible — D47 disentitlement from [XXXX-X] to [XXXX-X].”</li>
+                <li>Details: Type “Monies are considered earnings. Earnings exceed $1 000 in the 4-week period of the EI Emergency Response Benefit paid from week code [XXXX-X] to week code [XXXX-X]. A 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement has been imposed for this period.”</li>
+                <li>Click Save .</li>
+              </ul>
+            </li>
+            <li>
+              There are 4-week periods for which a D47 does not apply:
+              <ul>
+                <li>Comments: Type “Earnings reviewed [XXXX-X] to [XXXX-X].”</li>
+                <li>Details: Type “Monies are considered earnings. Earnings do not exceed $1 000 in the 4-week period of the EI Emergency Response Benefit paid from week code [XXXX-X] to week code [XXXX-X]. No disentitlement is imposed.”</li>
+                <li>Click Save .</li>
+              </ul>
+            </li>
+            <li>
+              The start and end date of a 4-week period for which a D47 was previously imposed must be modified:
+              <ul>
+                <li>Comments: Type “Not entitled — D47 disentitlement modified to [XXXX-X] to [XXXX-X].”</li>
+                <li>Details: Type “Monies are considered earnings. Earnings exceed $1 000 in the 4-week period of the EI Emergency Response Benefit paid from week code [XXXX-X] to week code [XXXX-X] and a 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement has been imposed for this period. The previous 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement imposed from week code [XXXX-X] to week code [XXXX-X] has been rescinded.”</li>
+                <li>Click Save .</li>
+              </ul>
+            </li>
+            <li>
+              The end date of a 4-week period for which a D47 was previously imposed must be modified:
+              <ul>
+                <li>Comments: Type “Not entitled — D47 disentitlement modified to [XXXX-X] to [XXXX-X].”</li>
+                <li>Details: Type “Monies are considered earnings. Earnings exceed $1 000 in the 4-week period of the EI Emergency Response Benefit paid from week code [XXXX-X] to week code [XXXX-X]. The previous 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement imposed from week code [XXXX-X] to week code [XXXX-X] has been modified.”</li>
+                <li>Click Save .</li>
+              </ul>
+            </li>
+            <li>
+              A previously imposed D47 must be rescinded and a new D47 must be imposed:
+              <ul>
+                <li>Comments: Type “Not entitled — D47 disentitlement modified to [XXXX-X] to [XXXX-X].”</li>
+                <li>Details: Type “Monies are considered earnings. Earnings exceed $1 000 in the 4-week period of the EI Emergency Response Benefit paid from week code [XXXX-X] to week code [XXXX-X] and a 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement has been imposed for this period. The previous 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement imposed from week code [XXXX-X] to week code [XXXX-X] has been rescinded.”</li>
+                <li>Click Save .</li>
+              </ul>
+            </li>
+            <li>
+              A previously imposed D47 must be rescinded:
+              <ul>
+                <li>Comments: Type “Earnings reviewed [XXXX-X] to [XXXX-X].”</li>
+                <li>Details: Type “Monies are considered earnings. Earnings do not exceed $1 000 in the 4-week period of the EI Emergency Response Benefit paid from week code [XXXX-X] to week code [XXXX-X]. No disentitlement imposed. The previous 47 - EI ERB - Earnings limit exceeded for the 4-week period disentitlement imposed from week code [XXXX-X] to week code [XXXX-X] has been rescinded.”</li>
+                <li>Click Save .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>
+              If no , select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+                <li>Go to step 13.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the CS:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 15.</li>
+            <li>If the claim is terminated and cannot be reactivated, go to step 23.</li>
+            <li>
+              If the claim is terminated but can be reactivated:
+              <ul>
+                <li>On the Dormant tab, select the appropriate BPC.</li>
+                <li>Click Reactivate .</li>
+                <li>Go to step 14.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for the task:</cmd>
+        <info>
+          <ul>
+            <li>If no, hold the task for 24 hours.</li>
+            <li>
+              If yes, move the WI to Pending as follows:
+              <ul>
+                <li>Pending reason: Select Other .</li>
+                <li>Comments: Type “Input the disentitlement.”</li>
+                <li>Bring forward date: Enter the next business day.</li>
+                <li>When the WI moves to the current workload, go to step 15.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If an existing D47 must be modified, go to step 16.</li>
+            <li>If an existing D47 must be rescinded and a new D47 input, go to step 17.</li>
+            <li>If an existing D47 must be rescinded and no new D47 must be input, go to step 19.</li>
+            <li>If a new D47 must be input, go to step 21.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3532.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the start and end dates of the disentitlements must be modified:</cmd>
+        <info>
+          <ul>
+            <li>If the start and end dates must be modified, go to step 17.</li>
+            <li>If only the end dates must be modified, go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day one, in FTS, select the Disqualifications/Disentitlements (M161) transaction to impose the D47 with the correct dates as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3533.dita">Note</xref>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select the D47 that must be amended.</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: To leave the registration number open for subsequent transactions select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for the task:</cmd>
+        <info>
+          <ul>
+            <li>If no, hold the task for 24 hours.</li>
+            <li>
+              If yes, move the WI to Pending as follows:
+              <ul>
+                <li>Pending reason: Select Other .</li>
+                <li>Comments: Type “Correct disentitlement input — original disentitlement will be rescinded on day 2.”</li>
+                <li>Bring forward date: Enter the next business day.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day 2, in FTS, click the Disqualifications/Disentitlements link to remove the original D47 as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3534.dita">Note</xref>
+          <ul>
+            <li>Click the original disentitlement.</li>
+            <li>Click Modify .</li>
+            <li>
+              When the Disqualification/Disentitlements (M161) transaction opens, complete the following fields:
+              <ul>
+                <li>Registration number: Select the appropriate registration number.</li>
+                <li>Action: Select Rescind .</li>
+                <li>Detection: Select 31 - Other new facts-entitlement review .</li>
+                <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+                <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+                <li>Contentious: Select 1 - No .</li>
+                <li>
+                  Complete: Select the appropriate option:
+                  <ul>
+                    <li>To complete the registration number, select C - Yes .</li>
+                    <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+                  </ul>
+                </li>
+                <li>Click Update .</li>
+                <li>Go to step 22.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Disqualifications/Disentitlements (M161) transaction and modify the end date of the D47 as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3535.dita">Note</xref>
+          <ul>
+            <li>Click the original disentitlement.</li>
+            <li>Click Modify .</li>
+            <li>
+              When the Disqualification/Disentitlements (M161) transaction opens, complete the following fields:
+              <ul>
+                <li>Registration number: Select the appropriate registration number.</li>
+                <li>Action: Select T - Terminate/Modify .</li>
+                <li>End date: Enter the correct disentitlement end date.</li>
+                <li>Detection: Select 31 - Other new facts-entitlement review .</li>
+                <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+                <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+                <li>Contentious: Select 1 - No .</li>
+                <li>
+                  Complete: Select the appropriate option:
+                  <ul>
+                    <li>To complete the registration number, select C - Yes.</li>
+                    <li>To leave the registration number open for subsequent transactions, select D - No.</li>
+                  </ul>
+                </li>
+                <li>Click Update .</li>
+                <li>Go to step 22.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Disqualifications/Disentitlements (M161) transaction and impose a D47 for the appropriate period as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3536.dita">Note</xref>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 47 - EI ERB - Earnings limit exceeded for the four week period .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+                <li>To clear the registration number, C - Yes .</li>
+              </ul>
+            </li>
+            <li>Click Update .</li>
+            <li>Go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a disentitlement for another 4-week period must be input or modified:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 15.</li>
+            <li>If no, go to step 49.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s CS by reviewing the Blocked Status column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 2 - Not blocked is displayed, return to step 13.</li>
+            <li>If 1 - Updateable is displayed , go to step 24.</li>
+            <li>If any other CS is displayed, go to step 46.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 25.</li>
+            <li>If all rows are blank, go to step 27.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3537.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for the task:</cmd>
+        <info>
+          <ul>
+            <li>If no, hold the task for 24 hours.</li>
+            <li>
+              If yes, move the WI to Pending as follows:
+              <ul>
+                <li>Pending reason: Select Other .</li>
+                <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+                <li>Bring forward date: Enter the next business day.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, repeat step 25.</li>
+            <li>If all rows are blank, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If an existing D47 must be modified, go to step 28.</li>
+            <li>If an existing D47 must be rescinded and a new D47 input, go to step 29.</li>
+            <li>If an existing D47 must be rescinded and no new D47 must be input, go to step 34.</li>
+            <li>If a new D47 must be input, go to step 42.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3538.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the start and end dates of the disentitlements must be modified:</cmd>
+        <info>
+          <ul>
+            <li>If the start and end dates must be modified, go to step 29.</li>
+            <li>If only the end dates must be modified, go to step 38.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 -Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day one, on the Disentitlements tab, input up to 4 47 - EI ERB - Earnings limit exceeded for the four week period disentitlements (D47) on the Disentitlements section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period .</li>
+            <li>Start date: Enter the disentitlement start date, if necessary.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 32.</li>
+            <li>If the transaction shown is correct, click Close and go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Click Update .</li>
+            <li>Click Close .</li>
+            <li>Return to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for the task:</cmd>
+        <info>
+          <ul>
+            <li>If no, hold the task for 24 hours.</li>
+            <li>
+              If yes, move the WI to Pending as follows:
+              <ul>
+                <li>Pending reason: Select Other .</li>
+                <li>Comments: Type “Correct disentitlement input — original disentitlement will be rescinded on day 2.”</li>
+                <li>Bring forward date: Enter the next business day.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day 2, on the Disentitlements tab, rescind up to 4 D47s on the Disentitlements section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select X - Rescind .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 37.</li>
+            <li>If the transaction shown is correct, click Close and go to step 49.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Click Update .</li>
+            <li>Click Close .</li>
+            <li>Return to step 34.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disentitlements tab, rescind up to 4 D47s on the Disentitlements section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select T - Terminate .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 41.</li>
+            <li>If the transaction shown is correct, click Close and go to step 49.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Click Update .</li>
+            <li>Click Close .</li>
+            <li>Return to step 38.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disentitlements tab, rescind up to 4 D47s on the Disentitlements section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 45.</li>
+            <li>If the transaction shown is correct, click Close and go to step 49.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Click Update .</li>
+            <li>Click Close .</li>
+            <li>Return to step 42.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earning and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim requiring the disentitlement to be input.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Earnings to be allocated: Leave this field blank.</li>
+            <li>Remarks line 1: Type “[Add, modify, or rescind, as appropriate] D47 from w/c [XXXX-X] to [XXXX-X].”</li>
+            <li>Remarks line 2–4: If there are additional disentitlement periods that require input or modification, type “D47 from w/c [XXXX-X] to w/c [XXXX-X].”</li>
+            <li>Remarks line 5: Enter your name and telephone number.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+            <li>Go to step 49.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

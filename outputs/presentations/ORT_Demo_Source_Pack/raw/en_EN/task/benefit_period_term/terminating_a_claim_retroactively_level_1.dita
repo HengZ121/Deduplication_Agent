@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="terminating_a_claim_retroactively">
+  <title>Terminating a claim retroactively</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if IPOC created a Reminder (REM) WI indicating a new BP can now be established:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>If yes, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the File Control Data (M101) - Claim Action transaction and do the following:</cmd>
+        <info>
+          <ul>
+            <li>Select Cancel benefit period (M101-7) .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if weeks of benefits have been paid after the renewal week or after the disentitlement was terminated:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: 1826</li>
+                <li>Quebec: 2642</li>
+                <li>Ontario: 3056</li>
+                <li>Western Canada and Territories: 5903</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Pay history summary adjustment .</li>
+            <li>BPC: Enter the BPC of claim to be cancelled.</li>
+            <li>Comments: Type “Retroactive termination of a BP.”</li>
+            <li>Details: Type “Weeks processed on BPC [BPC of the BP to terminate] to be processed on a new BP. Remove from the PHS w/c [w/c the BP was renewed or payable due to the termination of a disentitlement] to w/c [w/c of last week processed]. Advise the Level 1 officer with REM WI when complete.”</li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+            <li>Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a revised registration number exists:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the BP to be terminated.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 35 - Claim Cancellation .</li>
+            <li>Remarks line 1 to 4: Type “Benefits paid on BPC [BPC of the BP to terminate] to be paid on a new BP. Remove from the PHS w/c [w/c the BP was renewed or payable due to the termination of a disentitlement] to w/c [w/c of last week processed] and establish an OP for those weeks. Advise adjudicator with REM WI when complete.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts- entitlement review .</li>
+            <li>Infraction: Select F - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and change the registration flag as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for BP termination by IPOC.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI related to the retroactive request moves to the current workload, determine if IPOC created a REM WI:</cmd>
+        <info>
+          <ul>
+            <li>If no, return to step 9.</li>
+            <li>If yes, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if IPOC established an OP for the weeks removed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Input an agreed deduction equal to the benefit rate amount. For more information, refer to Applying an agreed deduction in PSCD .</cmd>
+      </step>
+      <step>
+        <cmd>In SSO, verify if the correct mainframe is selected and register a new initial claim as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              On the Claim Selection screen, do the following:
+              <ul>
+                <li>Social Insurance Number: Enter the client’s SIN.</li>
+                <li>Registration type: Select Initial .</li>
+                <li>Select Search .</li>
+              </ul>
+            </li>
+            <li>
+              Review the Name and Address screen:
+              <xref href="../../common_notes/note_c_2168.dita">Note</xref>
+              <xref href="../../common_notes/note_c_2182.dita">Note</xref>
+              <ul>
+                <li>
+                  For a commuter claim, complete the following fields as follows:
+                  <ul>
+                    <li>Ordinary place of residence different: Select Yes .</li>
+                    <li>Residence postal code: Enter the workplace postal code.</li>
+                    <li>
+                      Mailing address: Do the following:
+                      <ul>
+                        <li>First line of address: Enter the delivery address. If necessary, enter the apartment number on the first line after the delivery address.</li>
+                        <li>Second line of address: Enter the city name, 2-letter state abbreviation and ZIP code. Separate the state abbreviation from the ZIP code with 2 spaces. The ZIP code may be either 5 or 9 digits. If the 9-digit format is used, use a hyphen to separate the fifth and sixth digits.</li>
+                        <li>Last line of address: Type “United States.”</li>
+                      </ul>
+                    </li>
+                    <li>Postal code: Type “XXXXXX.”</li>
+                    <li>Economic region-new and Economic region-old : The information is prefilled based on the client’s mailing address information. For a commuter claim, enter the economic region associated with the workplace postal code (if not prefilled when the residence postal code was entered).</li>
+                    <li>Tax province: This field is prefilled based on the client’s mailing address information. For a commuter claim, select Commuters .</li>
+                    <li>
+                      Responsible SCC: Select the appropriate option:
+                      <ul>
+                        <li>If the field is blank, enter the SCC based on the client’s address on the application.</li>
+                        <li>For a commuter claim, enter the SCC associated with the workplace postal code.</li>
+                      </ul>
+                    </li>
+                    <li>Tax credit: This field is prefilled based on the client’s information.</li>
+                    <li>Select Next .</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>On the Application Form screen, select Next .</li>
+            <li>
+              On the Registration screen, do the following:
+              <ul>
+                <li>
+                  Pay SCC: Ensure that the SCC number is the same as shown in FTS. If the field is blank, enter the appropriate SCC:
+                  <ul>
+                    <li>Atlantic: Type “1121.”</li>
+                    <li>Quebec: Type “2371.”</li>
+                    <li>Ontario: Type “3515.”</li>
+                    <li>Western Canada and Territories: Type “4812.”</li>
+                  </ul>
+                </li>
+                <li>Service unit: Type “01.”</li>
+                <li>Tentative BPC: If not prefilled, determine the BPC based on the client’s last day worked (LDW) and application date.</li>
+                <li>Claim source: Select Appli-web (virtual) .</li>
+                <li>
+                  Initial intake transaction (M149) required: Select No .
+                  <xref href="../../common_notes/note_c_2170.dita">Note</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-06-00-00 letter, completing the appropriate fields.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_2183.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is an AI WI or a CB WI:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI and go to step 16.</li>
+            <li>If no, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the REM WI is received, determine the BT requested for the calculation:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the BT is regular, refer to Calculating or recalculating a claim for regular benefits .
+              <xref href="/en/procedure/activity/calculation.shtml">Calculating or recalculating a claim for regular benefits</xref>
+            </li>
+            <li>
+              If the BT is sickness, refer to Calculating or recalculating a claim for sickness benefits .
+              <xref href="/en/procedure/activity/calc_sick.shtml">Calculating or recalculating a claim for sickness benefits</xref>
+            </li>
+            <li>
+              If the BT is sickness, maternity and parental, refer to Calculating or recalculating a claim for sickness, maternity and parental benefits.
+              <xref href="/en/procedure/activity/calc_sick_mat_par.shtml">Calculating or recalculating a claim for sickness, maternity and parental benefits.</xref>
+            </li>
+            <li>
+              If the BT is maternity and parental, refer to Calculating or recalculating a claim for maternity and parental benefits .
+              <xref href="/en/procedure/activity/calc_mat_par.shtml">Calculating or recalculating a claim for maternity and parental benefits</xref>
+            </li>
+            <li>
+              If the BT is parental, refer to Calculating or recalculating a claim for parental benefits .
+              <xref href="/en/procedure/activity/calc_par.shtml">Calculating or recalculating a claim for parental benefits</xref>
+            </li>
+            <li>
+              If the BT is compassionate care, refer to Calculating or recalculating a claim for CCB .
+              <xref href="/en/procedure/activity/calc_ccb.shtml">Calculating or recalculating a claim for CCB</xref>
+            </li>
+            <li>
+              If the BT is family caregiver benefits, refer to Calculating or recalculating a claim for family caregiver benefits .
+              <xref href="/en/procedure/activity/calc_pcic_benefit.shtml">Calculating or recalculating a claim for family caregiver benefits</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

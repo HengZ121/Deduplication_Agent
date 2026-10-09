@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reconsideration_within_36_months">
+  <title>Reconsideration within 36 months</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD for the refusal of employment issue as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Integrity case number] — [refusal of employment or failure to take advantage of a job opportunity] — [name of the employer] — good cause not shown.”</li>
+            <li>
+              Details: Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim for benefits is active, terminated, blocked or archived:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 3.</li>
+            <li>
+              If the claim is terminated, but may be reactivated:
+              <ul>
+                <li>On the Dormant tab, select the appropriate BPC.</li>
+                <li>Select Reactivate .</li>
+                <li>Go to step 3.</li>
+              </ul>
+            </li>
+            <li>If the claim is blocked or archived, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to remove the MA and input the disqualification as follows:</cmd>
+        <info>
+          <ul>
+            <li>Manual Action: Select the appropriate MA (if required).</li>
+            <li>Rescind: Check the box.</li>
+            <li>Action: Select Add .</li>
+            <li>
+              Disqualification: Select the appropriate option:
+              <ul>
+                <li>6 – Refusal of employment</li>
+                <li>7 – Neglect to avail – Just cause not proven –</li>
+              </ul>
+            </li>
+            <li>Number of weeks: Select the number of weeks between 7 and 12 weeks.</li>
+            <li>Effective: Select the w/c for the failure to take advantage of a job opportunity.</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 1 - An overpayment resulted due to a disqualification</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s status by reviewing the Blocked Status column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 1 - Updateable is displayed , go to step 5.</li>
+            <li>If 2 - Not blocked is displayed, return to step 2.</li>
+            <li>If any other CS is displayed, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 6.</li>
+            <li>If all rows are blank, go to step 8.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+            <li>Bring forward date: Enter the next working day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, return to step 6.</li>
+            <li>If all rows are blank, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number.</li>
+                <li>D - No to leave the registration number open for subsequent transactions.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disqualifications tab, input the disqualification on the Disqualifications section as follows (up to 3 disqualifications in BCS can be imposed or rescinded):</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>
+              Type: Select the appropriate option:
+              <ul>
+                <li>6 - Refusal of employment</li>
+                <li>7 - Neglect to avail – Just cause not proven</li>
+              </ul>
+            </li>
+            <li>Number of weeks: Select the number of weeks between 7 and 12 weeks.</li>
+            <li>Effective: Select the w/c for the failure to take advantage of a job opportunity.</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 1 - An overpayment resulted due to a disqualification .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 11.</li>
+            <li>If the transaction shown is correct, click Close and go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select the investigation type as displayed in NISS.</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 1 - An overpayment resulted due to a disqualification .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No to leave the registration number open for subsequent transactions.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim with the unreported voluntary leaving.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Earnings to be allocated: Leave the field blank.</li>
+            <li>Remarks line 1: Type “D6 or D7 from w/c [XXXX] to [XXXX].”</li>
+            <li>Remarks line 2: Type “ACS letter already sent.”</li>
+            <li>Remarks line 3: Leave the field blank.</li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-91-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Date claimant called or information sent (1542)</li>
+            <li>
+              Definite Disqualification Messages – D6/D7/D9 (2918)
+              <ul>
+                <li>D6 - Did not apply or accept a certain job - Post-audit (2919) or D7 - Neglected to take advantage / Failed to return (2921)</li>
+                <li>We/We have re-examined your claim/In addition, we (2916)</li>
+                <li>Number of weeks disqualified (1294)</li>
+                <li>Text: Name of employer(s) (1502)</li>
+                <li>Date of event (1292)</li>
+              </ul>
+            </li>
+            <li>No reply from claimant / reply received with an explanation / reply received with no explanation (2938)</li>
+            <li>False representation message / Number of omissions or false representations (2941): Select Blank .</li>
+            <li>Levels of misrepresentation (12292): Select Blank .</li>
+            <li>Penalty message / Warning message (2950): Select Blank .</li>
+            <li>
+              Overpayment messages (2452): Select the appropriate option:
+              <ul>
+                <li>Blank if there is no resulting overpayment</li>
+                <li>Overpayment – No misrepresentation and active claim</li>
+                <li>Overpayment – No misrepresentation and inactive claim</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, from Report of Investigation , select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select Yes .</li>
+            <li>
+              Reason: Select the appropriate option:
+              <ul>
+                <li>Refusal of employment (D06)</li>
+                <li>Neglect to avail. (D07)</li>
+              </ul>
+            </li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

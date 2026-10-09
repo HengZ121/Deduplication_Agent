@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="all_bonuses" xml:lang="en-CA">
+  <title>Allocating bonuses</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="pilot_project_no_24_separation_monies___97f46b0b.dita">
+    </topicref>
+    <topicref href="budget_2021.dita">
+    </topicref>
+    <topicref href="defining_bonus.dita">
+    </topicref>
+    <topicref href="recalculation.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="major_employer_events_mee__information__79399053.dita">
+    </topicref>
+    <topicref href="obtaining_the_missing_information.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0093.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1843.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1844.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0094.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1845.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_bonus_level_1.dita">
+      </topicref>
+      <topicref href="missing_information_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1846.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1847.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1848.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="allocating_the_bonus_level_2.dita">
+      </topicref>
+      <topicref href="missing_information_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1849.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

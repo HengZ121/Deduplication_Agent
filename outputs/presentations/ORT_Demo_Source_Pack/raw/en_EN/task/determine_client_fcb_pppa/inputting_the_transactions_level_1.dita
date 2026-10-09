@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputting_the_transactions">
+  <title>Inputting the transactions</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine the CT for each client:</cmd>
+        <info>
+          <ul>
+            <li>If it is an initial or renewal claim, return to the previous task to update the entitlement weeks.</li>
+            <li>If it is a continuing claim, go to step 2.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>For each client, determine if the claim status (CS) is 8 - Converted to Manual Pay :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding registration number related to the benefit-sharing agreement on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>
+              If no, select the Registration Number (M025,M030,M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and for each client, create an Operational Center Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “The client is entitled to [XX] weeks — change the number of weeks from [XX] to [XX].”</li>
+            <li>Remarks line 2: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Special benefits approved (3046): Select the appropriate option:
+              <ul>
+                <li>
+                  Family caregiver benefits for children approved
+                  <ul>
+                    <li>Start Date FCBC - Sunday’s date (11272): Enter the appropriate date.</li>
+                    <li>Number of FCBC week(s) to be paid (11274): Enter the appropriate number of weeks.</li>
+                  </ul>
+                </li>
+                <li>
+                  Family caregiver benefits for adults approved
+                  <ul>
+                    <li>Start date FCBA - Sunday’s date (11268): Enter the appropriate date.</li>
+                    <li>Number of FCBA week(s) to be paid (11270): Enter the appropriate number of weeks.</li>
+                    <li>Right to request a reconsideration (with Blank option) (4169): Select Right to request a reconsideration .</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the BT is 20 - Family caregiver for children or 21 - Family caregiver for adults:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select Entitlement (M112) to access the Caregiver / Compassionate care entitlement (M112) screen and do the following:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Add .</li>
+            <li>Start date: Leave this field blank.</li>
+            <li>End date: Leave this field blank.</li>
+            <li>Entitlement weeks: Leave this field blank.</li>
+            <li>Status: Select the appropriate option.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Search for Caregiver / Compassionate care patient (MCB2) screen, determine if updating is required for another client:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 2.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the CT:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the claim is an initial claim, go to step 11 of Determining if a claim is ready to be calculated — Family caregiver benefits .
+              <xref href="/en/procedure/subactivity/detcalc_pcic.shtml">Determining if a claim is ready to be calculated — Family caregiver benefits</xref>
+            </li>
+            <li>If the claim is a renewal or continuing claim, return to the previous task.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI, if necessary.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

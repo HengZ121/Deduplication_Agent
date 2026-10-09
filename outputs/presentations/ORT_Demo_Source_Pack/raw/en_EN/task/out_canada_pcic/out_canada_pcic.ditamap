@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="out_canada_pcic" xml:lang="en-CA">
+  <title>Adjudicating out of Canada — Family caregiver benefits</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="entitlement_to_family_caregiver_benefit_1816698f.dita">
+    </topicref>
+    <topicref href="imposing_a_disentitlement.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="providing_care_or_support.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_criteria_to_allow_at_level_1_level_1.dita">
+      </topicref>
+      <topicref href="entitlement_in_order_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_out_of_canada_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_in_order_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__claim_not_in_mps_level_2.dita">
+      </topicref>
+      <topicref href="entitlement_not_proven__claim_in_mps_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3895.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

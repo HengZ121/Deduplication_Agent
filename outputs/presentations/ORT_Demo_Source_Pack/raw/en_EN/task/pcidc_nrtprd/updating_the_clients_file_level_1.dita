@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="updating_the_clients_file">
+  <title>Updating the client’s file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Print a copy of the proof of death, add the SIN and write “PA” on the bottom right-hand corner of the page. Send the document identified as Protected B to the regional processing centre responsible for preparing documents for imaging.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3953.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the deceased client is exempted from reporting:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and cancel the exemption by completing the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Claimant’s Report: Select Rescind .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any returned payments. For additional information, refer to Returned payment :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 14.</li>
+            <li>If no, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 92 - Purge and Recreate .</li>
+                <li>If the claim is in MPS, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work Type: Select the appropriate option:
+              <ul>
+                <li>If the claim is not in MPS, select 24 - Cancelled payment .</li>
+                <li>If the claim is in MPS, select 43 - Cancelled payment .</li>
+              </ul>
+            </li>
+            <li>Remarks lines 1 and 2: Type “Deceased client. No representative is on file. Cancel the following payments in SPS and adjust the claim file:”</li>
+            <li>Remarks lines 3 and 4: Type “T071-2 [for the current year] or T071-8 [for the previous year]/reason F/wc [XXXX]/CT [XX]/gross amount [XXXX]/federal tax [XX]/provincial tax [XX]/net amount [XXXX]/PRN [XXXXXXXXXXXX].”</li>
+            <li>Remarks line 5: Type your first and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if benefits were paid for the period following the date of the death:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 19.</li>
+            <li>If no, go to step 24.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3947.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine what type of benefits the client was paid in the week of the date of death:</cmd>
+        <info>
+          <ul>
+            <li>If regular benefits were paid, go to step 20.</li>
+            <li>If special benefits were paid, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Payments tab, select the appropriate Report Week and modify the claimant’s report as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Select Modify .
+              <xref href="../../common_notes/note_c_3948.dita">Note</xref>
+            </li>
+            <li>Non-available day(s): Select the number of days after the date of death</li>
+            <li>Found work: Select 7 - Deceased .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select E - Non-fraud - Paid beyond termination .</li>
+            <li>Message: Select 23 - An overpayment resulted because you were paid after benefit period .</li>
+            <li>Select Update .</li>
+            <li>
+              Go to step 23.
+              <xref href="../../common_notes/note_c_3949.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements (M161) transaction and impose the D39 disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 39 - Prevent payment of part II benefits and/or incorrect Part 1 benefits .</li>
+            <li>Start date: Enter the day after the client’s date of death.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes to clear the registration number.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

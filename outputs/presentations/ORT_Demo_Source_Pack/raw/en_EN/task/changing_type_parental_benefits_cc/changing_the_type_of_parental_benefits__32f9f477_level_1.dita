@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="changing_the_type_of_parental_benefits__32f9f477">
+  <title>Changing the type of parental benefits ― Standard to extended</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if a revised registration number exists for the issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 2.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the type of change being made:</cmd>
+        <info>
+          <ul>
+            <li>If the change is from standard to extended parental benefits, the CT is 3 - Sickness major attached or 4 - Maternity or parental and no parental benefits have been paid, go to step 3.</li>
+            <li>If the change is from standard to extended parental benefits and the CT is 14 - Standard parental , the request must be completed by IPOC. Go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              Select the Special Benefits (M106) link and enter the following information in the Parental section:
+              <ul>
+                <li>Entitlement weeks: Enter the number of weeks of extended parental benefits the client is requesting.</li>
+                <li>Select Save .</li>
+              </ul>
+            </li>
+            <li>
+              Waiting period:
+              <ul>
+                <li>If the WP was deferred in error, select X - Rescind .</li>
+                <li>If the WP was not deferred but should be, select 5 - Waiting period deferred (parental standard or extended) .</li>
+              </ul>
+            </li>
+            <li>Supplementary claim information: Select 99 - Parental extended .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to Step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 60 - Rejected transaction / or situation not otherwise listed that must be processed via purge and recreate .</li>
+            <li>Remarks line 1: Type “Change from standard to extended parental benefits.”</li>
+            <li>Remarks line 2: Type “Change to CT 16, APW [XXXX], PSW [XXXX], ENT WKS [XX].”</li>
+            <li>Remarks line 3: Type “Natural/Adoption Code [X], NO-CR (if requested by client), WP deferral (type “yes” if required or “rescind” if it was deferred in error).”</li>
+            <li>Remarks line 4: Type “Add the extended parental benefits flag.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+          </ul>
+          <ul>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Special benefits approved (3046) .</li>
+            <li>Overpayment Messages (2452): Select Possibility of an overpayment .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+            <li>If an N-00-00-00 has previously been sent for this PW, select This letter replaces or Footnote (2365) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI corresponding to the change request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

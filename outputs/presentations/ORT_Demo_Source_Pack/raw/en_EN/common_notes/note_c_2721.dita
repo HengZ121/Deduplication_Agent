@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_c_2721">
+  <title>Note</title>
+  <conbody>
+    <p>Note:</p>
+    <p>When an issue cannot be adjudicated at Level 1 or an existing disentitlement cannot be rescinded or terminated at Level 1, reassign the CR WI for the contentious issue to Level 2. Do not reassign the CR Conversion WI. Complete the conversion inputs and impose an MA1 to stop payment.</p>
+  </conbody>
+</concept>

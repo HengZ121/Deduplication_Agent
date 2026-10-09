@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="arpa_warrant" xml:lang="en-CA">
+  <title>Actioning a Returned payment advice notice for a cheque</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="returned_cheques.dita">
+    </topicref>
+    <topicref href="reasons_for_a_returned_cheque.dita">
+    </topicref>
+    <topicref href="ei_emergency_response_benefit_ei_erb__2_4665a649.dita">
+    </topicref>
+    <topicref href="potential_fraud.dita">
+    </topicref>
+    <topicref href="fraud_warning_in_fts.dita">
+    </topicref>
+    <topicref href="error_code_c850.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2087.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2088.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_sps.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="ipoc.dita">
+      <topicref href="reviewing_the_file_ipoc.dita">
+      </topicref>
+      <topicref href="fact-finding_ipoc.dita">
+      </topicref>
+      <topicref href="determining_the_method_of_replacement_ipoc.dita">
+      </topicref>
+      <topicref href="replacing_a_returned_cheque_with_a_cheque_ipoc.dita">
+      </topicref>
+      <topicref href="replacing_a_returned_cheque_with_a_dire_517f6582_ipoc.dita">
+      </topicref>
+      <topicref href="cancelling_a_payment_in_sps_ipoc.dita">
+      </topicref>
+      <topicref href="referring_the_issue_to_processing_ipoc.dita">
+      </topicref>
+      <topicref href="completing_the_wi_ipoc.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2089.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2090.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2091.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2078.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2092.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2093.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2094.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2085.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2086.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

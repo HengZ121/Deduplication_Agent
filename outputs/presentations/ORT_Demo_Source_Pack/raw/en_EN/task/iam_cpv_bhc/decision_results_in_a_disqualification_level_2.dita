@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="decision_results_in_a_disqualification">
+  <title>Decision results in a disqualification</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration corresponding to the investigation.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Infraction: Select Z - Fraud - Other .</li>
+            <li>Message: Select 1 - An overpayment resulted due to a disqualification .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration corresponding to the investigation.</li>
+            <li>BPC: Select the BPC of the claim on which the misrepresentation was made.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the transaction impacts cycling claimant’s reports on a blocked claim, select 93 - Manual Pay System .</li>
+                <li>If there are no cycling claimant’s reports, select 91 - Overpayment .</li>
+              </ul>
+            </li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>If the Work item is 91 , select 1 - Misrepresentation .</li>
+                <li>If the Work item is 93 , select 33 - Blocked claim requiring payment .</li>
+              </ul>
+            </li>
+            <li>
+              Remarks line 1: Indicate all of the following that are applicable:
+              <ul>
+                <li>Whether additional information is being provided on another Operational Centre Memo (MM06) transaction. For example, Page 1 of 3, Page 2 of 3.</li>
+                <li>URGENT: If urgent, provide reason. (e.g. URGENT approaching time limitation for penalty)</li>
+                <li>DQ: Disqualification information. (e.g. DQ 75Z01-10-9999-1725)</li>
+              </ul>
+            </li>
+            <li>
+              Remarks line 2: Indicate all of the following:
+              <ul>
+                <li>P: penalty percentage including mitigating circumstances</li>
+                <li>LMR: 1st, 2nd or 3rd level of misrepresentation (for the penalty percentage)</li>
+                <li>MPA: maximum penalty amount</li>
+                <li>VLN: violation information (V-1-0)</li>
+                <li>LVA: legal validation amount</li>
+                <li>Integrity case number</li>
+              </ul>
+              <xref href="../../common_notes/note_c_3476.dita">Example</xref>
+            </li>
+            <li>
+              Remarks line 3: Type one of the following instructions for the ACS letter:
+              <ul>
+                <li>Send stored D-91-00-00 letter [correspondence ID].</li>
+                <li>Add [missing fields] to D-91-00-00 letter [correspondence ID] and send.</li>
+                <li>Amend D-91-00-00 letter [correspondence ID] if applicable (re: reconsideration limitation) and send.</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Indicate your name and telephone number.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 10.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3478.dita">Note </xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

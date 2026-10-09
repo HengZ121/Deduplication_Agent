@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine what type of WI there is for the benefits from another source issue:</cmd>
+        <info>
+          <ul>
+            <li>
+              If there is a Reminder (REM) WI, go to Follow up on the REM WI .
+              <xref href="#follow_up_on">Follow up on the REM WI</xref>
+            </li>
+            <li>If there is another type of WI, go to step 2.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if one of the following conditions is met:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1619.dita">Callout</xref>
+          <ul>
+            <li>If one of the conditions is met, go to step 3.</li>
+            <li>If none of the conditions are met, return to the previous task.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if additional information is required to clarify entitlement or receipt of benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client or the employer to obtain the following information and advise the client of any necessary information:</cmd>
+        <info>
+          <ul>
+            <li>Is there entitlement to benefits from another source?</li>
+            <li>Have benefits from another source been received?</li>
+            <li>What are the details of any benefits from another source that the client could be entitled to receive?</li>
+            <li>Is there a pending application?</li>
+            <li>
+              Have the benefits been exhausted?
+              <ul>
+                <li>If benefits from a first payer could be payable and an application to benefits from another source has not been submitted, ensure that the client is aware of the obligation to apply for those benefits and to inform Service Canada of any decision that is received.</li>
+                <li>If the client has applied or will apply for benefits from another source, does the client want to receive EI benefits while waiting for a decision?</li>
+                <li>If the RFS is illness, the employer’s status indicates a reduction in premiums, and PSL or WLI information on the ROE does not correspond to the information on the Employer Details — Premium Reduction Program screen, why did the client not receive PSL or WLI as indicated on the Employer Details screen in FTS and what are the details of the benefits that could be received?</li>
+                <li>If the client received PSL or WLI after the LDW, what are the details of the benefits received and were the benefits paid included in the calculation of the insurable hours and earnings on the ROE?</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 6.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Missing information .
+              <xref href="#missing_information">Missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Earnings .</li>
+            <li>Comments: Type “[type of benefits from another source].”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if all of the required information was obtained during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>
+              If no, go to Missing information .
+              <xref href="#missing_information">Missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client received benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>
+              If yes, determine if the client received the full entitlement to the benefits from another source:
+              <ul>
+                <li>If no, go to step 9.</li>
+                <li>
+                  If yes, refer to Determining if monies are earnings for next steps.
+                  <xref href="/en/procedure/task/deter_monies_earnings.shtml">Determining if monies are earnings</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1620.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client could be entitled to receive benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>If no, return to the previous task.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has applied or will apply for benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 11.</li>
+            <li>If yes, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the information on file indicates one of the following situations applies:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1621.dita">Callout</xref>
+          <ul>
+            <li>
+              If yes, refer to Referral to Integrity and go to step 12.
+              <xref href="/en/procedure/activity/referal_integrity.shtml">Referral to Integrity</xref>
+            </li>
+            <li>If no, go to step 13.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1622.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the information on file indicates that the client has not applied and will not be applying for preventative withdrawal or motor vehicle accident insurance benefits that the client could be entitled to receive:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 13 .</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting EI benefits while waiting for a decision on the benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 14.</li>
+            <li>If yes, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To prevent payment of benefits, allocate the benefits from another source. Consider the amount of the potential benefits from another source to be equal to the no benefits payable amount. This is the amount to allocate. Refer to the appropriate allocation task in the Earnings activity and return to the previous task.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, create a REM WI to follow up on the decision of the benefits from another source as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Comments: Type “[type of benefits from another source].”</li>
+            <li>Due date: Select the current date + 90 business days.</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “Decision pending on [type of benefits] from [source], follow up is required. Review the file for benefits paid or payable from another source and allocate if necessary.”</li>
+            <li>Destination: Enter the Service Canada Centre (SCC) as shown in FTS.</li>
+            <li>End User: Select Next available user .</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the claim is a renewal or a continuing claim:</cmd>
+        <info>
+          <ul>
+            <li>
+              If it is a continuing claim, go to Client requesting EI benefits — Continuing claim .
+              <xref href="#continuingclaim">Client requesting EI benefits — Continuing claim</xref>
+            </li>
+            <li>
+              If it is a renewal claim, go to Client requesting EI benefits — Renewal claim .
+              <xref href="#renewalclaim">Client requesting EI benefits — Renewal claim</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

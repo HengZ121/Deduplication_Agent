@@ -1,0 +1,10 @@
+﻿business_document_type,xml_type_in_document_type_column,body_nodes
+activity,concept,910
+common_tables,reference,629
+policy,concept,306
+procedure,concept,239
+site,concept,4453
+subactivity,concept,101
+subactivity,task,11
+task,concept,8210
+task,task,5379

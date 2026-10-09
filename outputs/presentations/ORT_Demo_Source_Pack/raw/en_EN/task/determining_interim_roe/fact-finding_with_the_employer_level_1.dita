@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding_with_the_employer">
+  <title>Fact-finding with the employer</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the employer to determine if an ROE has been issued.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3165.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer was reached:</cmd>
+        <info>
+          <ul>
+            <li>If the employer was reached, go to step 11.</li>
+            <li>If the employer was not reached, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select ROE .</li>
+            <li>Comments: Type “Missing ROE from [employer name].”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

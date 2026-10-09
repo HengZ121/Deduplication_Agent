@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="review_calc_bpc" xml:lang="en-CA">
+  <title>Reviewing the calculation result — BPC</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="calculated_bpc.dita">
+    </topicref>
+    <topicref href="situations_that_require_a_manual_bpc.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0019.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0887.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2367.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2368.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2369.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2370.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2371.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2372.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2373.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2374.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2375.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2376.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2377.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_sso.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_last_day_worked_ldw_and_l_062f17b7_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_client_received_qpip_benefits_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_client_is_part_of_a__ad7a1065_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_an_antedate_is_required_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_a_postdate_is_required_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_administrative_policy_applies_level_1.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_1564.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2378.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2379.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2380.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2381.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2382.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2383.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2384.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0492">
+  <title>Work type</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="3">
+        <tbody>
+          <row>
+            <entry>Work item</entry>
+            <entry>Work type</entry>
+            <entry>Reason to use this WI</entry>
+          </row>
+          <row>
+            <entry rowspan="3">92 - Purge and Recreate</entry>
+            <entry>27 - Claim transfer</entry>
+            <entry>
+              <ul>
+                <li>Transfer of claim to a new mainframe rejected because another active BPC already exists. IPOC to remove the active BPC and convert the rejected claim to CPS.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>19 - Claim conversion</entry>
+            <entry>
+              <ul>
+                <li>Establish a new BPC that is too old for input by the computer (i.e. less than current week – 52, but not less than current week – 208).</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>59 - Legislative interim measures</entry>
+            <entry>
+              <ul>
+                <li>New changes to programs or legislative requirements result in claims that cannot be processed on CPS.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry rowspan="8">93 - Manual Pay System</entry>
+            <entry>35 - Claim cancellation</entry>
+            <entry>
+              <ul>
+                <li>Claim to be antedated to renewal week of previous BPC (i.e. new initial should have been set up instead of renewal). IPOC to move prior BPC to claim status 08, establish overpayment for weeks that overlap and clear the payment history.</li>
+                <li>Cancel a claim that was previously renewed and on which claimant’s reports processed from the renewal week (error C474) in favour of a new initial claim.</li>
+                <li>Cancel an existing claim on which claimant’s reports processed to reactivate a previous claim.</li>
+                <li>Terminate an existing BPC earlier in favour of a new initial only if claimant’s reports have processed and paid beyond the week determined for the new initial.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>53 - Claim transfer</entry>
+            <entry>
+              <ul>
+                <li>Transfer of claim to a new mainframe rejected because another active BPC already exists. IPOC to establish overpayment for overlapping weeks paid on the rejected claim.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>42 - Working While on Claim - Reversion</entry>
+            <entry>
+              <ul>
+                <li>Claim to be reverted - provisions of Pilot Project 17 applied.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>36 - Special benefits on fishing claims or other complex claim condition (Reduced rate for a portion of a claim [teaching/non-teaching])</entry>
+            <entry>
+              <ul>
+                <li>More than 2 certificates on a CCB claim.</li>
+                <li>Reduced rate for a portion of a claim (teaching and non-teaching employment in the QP).</li>
+                <li>More than 3 extensions of the BP on a claim.</li>
+                <li>If there is an AOB balance and a WS project on the claim or if there is an AOB period overlapping a WS project.</li>
+                <li>Job creation overlaps maternity or training period.</li>
+                <li>Job creation and WS on one claim.</li>
+                <li>BPS discrepancies.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>37 - Benefit period commencement too old for processing by the Computer Pay System</entry>
+            <entry>
+              <ul>
+                <li>New claim or postdate/antedate claim with BPC less than current week – 208. ( Note: A BPC between current week – 151 and 208 can be converted back to CPS once finished; however a BPC less than current week – 208 must remain in MPS.)</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>50 - Legislative interim measures</entry>
+            <entry>
+              <ul>
+                <li>New changes to programs or legislative requirements result in claims that cannot be processed on CPS.</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>51 - Family caregiver for children</entry>
+            <entry>
+              <p>Family caregiver benefits for children claims require MPS processing if they are combined with:</p>
+              <ul>
+                <li>any other BT, except regular benefits and sickness benefits;</li>
+                <li>self-employment benefits;</li>
+                <li>a BP extension type H - Child’s hospitalization ;</li>
+                <li>WS benefits, job creation benefits, self-employment benefits or referred training under section 25;</li>
+                <li>more than one medical certificate or family care window (FCW).</li>
+              </ul>
+            </entry>
+          </row>
+          <row>
+            <entry>52 - Family caregiver for adult</entry>
+            <entry>
+              <p>Family caregiver benefits for adult claims require MPS processing if they are combined with:</p>
+              <ul>
+                <li>any other BT, except regular benefits and sickness benefits;</li>
+                <li>self-employment benefits;</li>
+                <li>a BP extension type H - Child’s hospitalization ;</li>
+                <li>WS benefits, job creation benefits, self-employment benefits or referred training under section 25;</li>
+                <li>more than one medical certificate or FCW.</li>
+              </ul>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

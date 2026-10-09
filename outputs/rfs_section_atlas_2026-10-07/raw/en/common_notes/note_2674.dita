@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_2674">
+  <title>Note</title>
+  <conbody>
+    <note id="reuse_note_2674">
+      <p id="note_2674_p1">
+        <strong>Note:</strong>
+      </p>
+      <p id="note_2674_p2">
+        If there are comments in block
+        <strong>12 of the last ROE</strong>
+        , the system creates an ROE Comments WI. The agent actioning the ROE Comments WI evaluates the comments in block
+        <strong>12</strong>
+        and may move the comments into the
+        <strong>Additional information</strong>
+        field in RCM.
+      </p>
+    </note>
+  </conbody>
+</concept>

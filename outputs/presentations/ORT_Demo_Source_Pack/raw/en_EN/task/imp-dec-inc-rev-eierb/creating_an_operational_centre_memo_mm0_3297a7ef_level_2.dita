@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="creating_an_operational_centre_memo_mm0_3297a7ef">
+  <title>Creating an Operational Centre Memo (MM06) transaction</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3511.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work Item: Select 91 - Overpayment .</li>
+            <li>Work Type: Select 2 - Non-Misrepresentation .</li>
+            <li>Earnings to be allocated: Leave this field blank.</li>
+            <li>Remarks line 1: Type “Adjustment to EI ERB claim required.”</li>
+            <li>
+              Remarks line 2–4: Type the appropriate details:
+              <ul>
+                <li>If there is a W allocation on file, type “Rescind W allocation $[XXXX], w/c [XXXX].”</li>
+                <li>If necessary, type “[Add, modify, or rescind] D47 from w/c [XXXX-X] to [XXXX-X].”</li>
+                <li>If necessary, type “Remove the FWW or found work code in w/c [XXXX].”</li>
+                <li>Type “Apply UP to OP,” if necessary.</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your name and telephone number.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client must be notified of a disentitlement:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the C-71-05-01 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Earnings / insurable hours of work / income while on claim (12577)</li>
+            <li>Blank / free form (3311): Select Blank .</li>
+            <li>Go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the C-74-01-13 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Choice of phrases decision letter to claimant (12610): Select the appropriate option.</li>
+            <li>Since we have not received a response from you / After reviewing your response (12612)</li>
+            <li>Choice of Period 1-14 (12583) .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3512.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Report for Investigation (IC70) screen, select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select the appropriate option.</li>
+            <li>
+              Overpayment: Select OP .
+              <ul>
+                <li>Reason: Select Other .</li>
+                <li>Amount: Enter the OP.</li>
+              </ul>
+            </li>
+            <li>
+              Reason: Select Other and type the appropriate option:
+              <ul>
+                <li>“EI ERB eligibility not proven — D47 imposed from w/c [XXXX] to w/c [XXXX].” .</li>
+                <li>“EI ERB eligibility proven — D47 not imposed.”.</li>
+              </ul>
+            </li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity - ERB Reason for separation WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

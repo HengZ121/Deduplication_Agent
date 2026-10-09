@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="updating_the_clients_file">
+  <title>Updating the client’s file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, determine if there is a 15 - Claim procedure disentitlement (D15) on file because proof of death was not provided:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 16.</li>
+            <li>If no, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements link and rescind the D15 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select the original disentitlement.</li>
+            <li>Select Modify .</li>
+            <li>
+              When the Disqualifications/Disentitlements (M161) transaction opens, complete the following fields:
+              <ul>
+                <li>Registration number: Select the appropriate registration number.</li>
+                <li>Action: Select X - Rescind .</li>
+                <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+                <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+                <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+                <li>Contentious: Select 1 - No .</li>
+                <li>Complete: Select C - Yes .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if it is an initial, a renewal or a continuing claim:</cmd>
+        <info>
+          <ul>
+            <li>
+              If it is an initial claim, calculate the claim and go to step 19.
+              <xref href="/en/procedure/index/calculate.shtml">calculate the claim</xref>
+            </li>
+            <li>
+              If it is a renewal claim, renew the claim and go to step 19.
+              <xref href="/en/procedure/activity/conversions.shtml">renew the claim</xref>
+            </li>
+            <li>If it is a continuing claim, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if claimant’s reports have been completed up to and including the date of death:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 20.</li>
+            <li>If yes, go to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the representative to obtain the claimant’s reports for the period up to and including the day of the client’s death.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3944.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the representative was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the representative was contacted, go to step 22.</li>
+            <li>If the representative was not contacted and did not reply to the letter, go to step 29.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3945.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Client’s reports .</li>
+            <li>Comments: Type “Claimant’s reports from representative from [MM-DD-YYYY] to [MM-DD-YYYY].”</li>
+            <li>
+              Details: If completed during fact-finding, copy and paste the claimant’s report checklist. To document additional fact-finding details, refer to the National Fact-Finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding, Documentation and Retention Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine what type of benefits are requested:</cmd>
+        <info>
+          <ul>
+            <li>If regular benefits are requested, go to step 24.</li>
+            <li>If special benefits are requested, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Issue Payments (M151/152) transaction, input the claimant’s reports and code the last claimant’s report for which benefits are payable as follows:</cmd>
+        <info>
+          <ul>
+            <li>Non-available day(s): Select the number of days after the date of death.</li>
+            <li>Found work: Select 7 - Deceased .</li>
+            <li>Select Update .</li>
+            <li>Go to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Issue Payments (M151/152) transaction, input the claimant’s reports and code the last claimant’s report for which benefits are payable as follows:</cmd>
+        <info>
+          <ul>
+            <li>Non-available day(s): Leave blank for sickness benefits or select 5 for other special benefits.</li>
+            <li>Sick day(s): Select 5 for sickness benefits or leave blank for other special benefits.</li>
+            <li>Found work: Select 7 - Deceased .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client’s date of death is a weekday other than Friday:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 27.</li>
+            <li>If no, go to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements (M161) transaction and impose the D39 disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 39 - Prevent payment of part II benefits and/or incorrect Part 1 benefits .</li>
+            <li>Start date: Enter the day after the client’s date of death.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a payment must be reissued:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Payment must be reissued .
+              <xref href="#cancelreissue">Payment must be reissued</xref>
+            </li>
+            <li>If no, go to step 30.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3946.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if benefits were paid for the period after the date of the death:</cmd>
+        <info>
+          <ul/>
+          <xref href="../../common_notes/note_c_3947.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine what type of benefits the client was paid in the week of the date of death:</cmd>
+        <info>
+          <ul>
+            <li>If regular benefits were paid, go to step 32.</li>
+            <li>If special benefits were paid, go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Payments tab, select the appropriate Report Week and modify the claimant’s report as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Select Modify .
+              <xref href="../../common_notes/note_c_3948.dita">Note</xref>
+            </li>
+            <li>Non-available day(s): Select the number of days after the date of death.</li>
+            <li>Found work: Select 7 - Deceased.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select E - Non-fraud - Paid beyond termination .</li>
+            <li>Message: Select 23 - An overpayment resulted because you were paid after benefit period .</li>
+            <li>Select Save .</li>
+            <li>Select Update .</li>
+            <li>Go to step 35.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3949.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements (M161) transaction and impose the D39 disentitlement as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 39 - Prevent payment of part II benefits and/or incorrect Part 1 benefits .</li>
+            <li>Start date: Enter the day after the client’s date of death.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

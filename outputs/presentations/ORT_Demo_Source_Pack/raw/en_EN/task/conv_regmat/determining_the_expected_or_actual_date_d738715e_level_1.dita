@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_the_expected_or_actual_date_d738715e">
+  <title>Determining the expected or actual date of birth (DOB)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to determine the expected or actual DOB using the INS5168 form. Mail a copy of the INS5168 form for the client to sign and return. The client can also download the form and return it by mail or upload it in MSCA. Refer to the National Fact-Finding and Documentation Policy if needed.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding or if the client responded to the N-10-00-00 ACS letter:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 24.</li>
+            <li>If the client was not contacted, go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Conversion .</li>
+            <li>C omments: Type “Conversation with the client — INS5168 form information.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was asked to provide the INS5168 form and if it was provided:</cmd>
+        <info>
+          <ul>
+            <li>If the INS5168 form was requested but is not on file, go to step 26.</li>
+            <li>If the INS5168 form was requested and is on file, go to step 28.</li>
+            <li>
+              If the client was not contacted and the INS5168 form is not on file, go to INS5168 form not provided .
+              <xref href="#annex3">INS5168 form not provided</xref>
+            </li>
+            <li>If the client was not contacted and the INS5168 form is on file, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact-Finding with client .</li>
+            <li>Comments: Type “Awaiting INS5168 form.”</li>
+            <li>Bring forward date: Enter [10 business days from the day the client was contacted].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the INS5168 form has been received:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to INS5168 form not provided .
+              <xref href="#annex3">INS5168 form not provided</xref>
+            </li>
+            <li>If yes, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

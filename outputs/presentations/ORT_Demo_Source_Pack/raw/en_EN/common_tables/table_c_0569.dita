@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0569">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="5">
+        <tbody>
+          <row>
+            <entry>Type</entry>
+            <entry>Amount</entry>
+            <entry>Start date</entry>
+            <entry>End date</entry>
+            <entry>Last week amount</entry>
+          </row>
+          <row>
+            <entry>V</entry>
+            <entry>$700</entry>
+            <entry>2389</entry>
+            <entry>2394</entry>
+            <entry>$175</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

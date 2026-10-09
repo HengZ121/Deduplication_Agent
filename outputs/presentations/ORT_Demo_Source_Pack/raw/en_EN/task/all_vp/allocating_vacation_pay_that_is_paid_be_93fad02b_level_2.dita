@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="allocating_vacation_pay_that_is_paid_be_93fad02b">
+  <title>Allocating vacation pay that is paid because of a layoff or separation</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, determine if separation monies other than vacation pay were also paid upon separation:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>
+              If yes, refer to Allocating separation monies .
+              <xref href="/en/procedure/task/all_monies_sep.shtml">Allocating separation monies</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the monies will be allocated on a claim that meets one of the following conditions:</cmd>
+        <info>
+          <ul>
+            <li>The BPC is between March 30, 2025 (w/c 2493), and October 10 , 2026 (w/c 2572 ).</li>
+            <li>
+              The vacation pay would otherwise be allocated under EIR 36(9) to 36(11) and the first week of allocation falls within the period beginning March 30, 2025 (w/c 2493) to October 10 , 2026 (w/c 2572 ).
+              <xref href="https://laws-lois.justice.gc.ca/eng/regulations/SOR-96-332/page-6.html#h-983285">EIR 36(9)</xref>
+              <xref href="https://laws-lois.justice.gc.ca/eng/regulations/SOR-96-332/page-6.html#h-983285">36(11)</xref>
+            </li>
+            <li>The vacation pay is reviewed on or after September 25, 2022 (w/c 2362) and the allocation start date is between September 26, 2021 (w/c 2310) and September 24, 2022 (w/c 2361).</li>
+            <li>The vacation pay information is reviewed between September 26, 2021 (w/c 2310) and September 24, 2022 (w/c 2361).</li>
+            <li>For an initial claim, the BPC is between September 27, 2020 (w/c 2258) and September 19, 2021 (w/c 2309).</li>
+            <li>For a renewal claim, the allocation start date is between September 27, 2020 (w/c 2258) and September 19, 2021 (w/c 2309).</li>
+            <li>
+              For a continuing claim, the allocation start date is between September 27, 2020 (w/c 2258) and September 19, 2021 (w/c 2309).
+              <ul>
+                <li>If no, go to step 3.</li>
+                <li>If yes, go to step 31.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the allocation starts from the last week worked:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ELWW are less than the NWE:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the amount to allocate as follows:</cmd>
+        <info>
+          <ul>
+            <li>Subtract the earnings of the last week worked from the NWE. The result is the amount to allocate in that week.</li>
+            <li>Subtract the result from the total vacation pay.</li>
+            <li>Divide the balance of the vacation pay by the NWE. This gives you the number of weeks for the allocation at the NWE.</li>
+            <li>Multiply the number of full weeks of allocation by the NWE.</li>
+            <li>Subtract that total from the total amount of vacation pay.</li>
+            <li>The balance is allocated on the last week.</li>
+            <li>Go to step 7.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1964.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the amount to allocate when the ELWW are equal to or greater than the NWE or when the allocation starts later in the BP using the following formula:</cmd>
+        <info>
+          <ul>
+            <li>Divide the vacation pay by the NWE. The result is the number of weeks for the allocation.</li>
+            <li>Take the number of full weeks of allocation and multiply that number by the NWE.</li>
+            <li>Subtract that total from the total amount of the vacation pay.</li>
+            <li>The balance, if any, is allocated on the last week.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1968.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim for benefits is active, terminated or blocked or archived:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 9.</li>
+            <li>
+              If the claim is terminated, but may be reactivated:
+              <ul>
+                <li>Under the Dormant tab, select the appropriate BPC.</li>
+                <li>Select Reactivate .</li>
+                <li>Go to step 9.</li>
+              </ul>
+            </li>
+            <li>If the claim is blocked or archived, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If the ELWW are less than the NWE and the allocation starts from the last week worked, go to step 10.</li>
+            <li>If the ELWW are equal to or greater than the NWE or the allocation starts later in the BP, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Allocations (M175) transaction and input the allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              On the first line, do the following:
+              <ul>
+                <li>Type: Select V - Vacation pay only .</li>
+                <li>
+                  Amount: Enter the top-up amount determined in step 5 of the section Allocating vacation pay that is paid because of a layoff or separation .
+                  <xref href="#separation2">Allocating vacation pay that is paid because of a layoff or separation</xref>
+                </li>
+                <li>Start date: Enter the last week worked.</li>
+                <li>End date: Enter the last week worked.</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>
+              On the second line, do the following:
+              <ul>
+                <li>Type: Select V - Vacation pay only .</li>
+                <li>Amount: Enter the NWE.</li>
+                <li>Start date: Enter the last week worked + 1.</li>
+                <li>End date: Enter the last week of the allocation.</li>
+                <li>
+                  Last week amount: Select the appropriate option:
+                  <ul>
+                    <li>If the allocation amount in the last week is less than the NWE, enter that amount.</li>
+                    <li>If the last week of allocation is equal to the NWE, leave this field blank.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 32 - Your vacation/holiday pay was not deducted .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>Go to step 12.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1922.dita">Example of transaction</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Allocations (M175) transaction and input the allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              On the first line, do the following
+              <ul>
+                <li>Type: Select V - Vacation pay only .</li>
+                <li>Amount: Type the NWE.</li>
+                <li>Start date: Enter the first week of the allocation.</li>
+                <li>End date: Enter the last week of the allocation.</li>
+                <li>
+                  Last week amount: Select the appropriate option:
+                  <ul>
+                    <li>If the allocation amount in the last week is less than the NWE, enter that amount.</li>
+                    <li>If the last week of the allocation is equal to the NWE, leave this field blank.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 32 - Your vacation/holiday pay was not deducted .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+              </ul>
+              <ul>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1922.dita">Example of transaction</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to Extension of the benefit period , then go to step 13.</cmd>
+      </step>
+      <step>
+        <cmd>Under the Summary tab, determine if there is a stop pay related to these earnings and do one of the following:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 14.</li>
+            <li>
+              If yes, select the Renewal/Revised (M106) transaction and remove the stop payment as follows:
+              <ul>
+                <li>Registration number: Select the appropriate registration number.</li>
+                <li>Manual Action: Select the appropriate MA.</li>
+                <li>Rescind: Check the box.</li>
+                <li>Contentious: Select 2 - Yes .</li>
+                <li>
+                  Complete: Select the appropriate option:
+                  <ul>
+                    <li>To complete the registration number, select C - Yes .</li>
+                    <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+                  </ul>
+                </li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the allocation must also be input on a blocked claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>If no, go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s CS by reviewing the Blocked Status column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 1 - Updateable is displayed, go to step 16.</li>
+            <li>If 2 - Not blocked is displayed, return to step 8.</li>
+            <li>If any other CS is displayed, go to step 26.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 17.</li>
+            <li>If all rows are blank, go to step 19.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+            <li>Bring forward date: Enter [the next business day].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, return to step 17.</li>
+            <li>If all rows are blank, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised (or 2 - Renewal , if necessary).</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If the ELWW are less than the NWE and the allocation starts from the last week worked, go to step 21.</li>
+            <li>If the ELWW are equal to or greater than the NWE or the allocation starts later in the BP, go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Allocations tab, input the allocation in the Allocations section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>
+              On the first line, do the following:
+              <ul>
+                <li>Type: Select V - Vacation pay only .</li>
+                <li>
+                  Amount: Enter the top-up amount determined in step 5 of the section Allocating vacation pay that is paid because of a layoff or separation .
+                  <xref href="#separation2">Allocating vacation pay that is paid because of a layoff or separation</xref>
+                </li>
+                <li>Start date: Enter the last week worked.</li>
+                <li>End date: Enter the last week worked.</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>
+              On the second line, do the following:
+              <ul>
+                <li>Type: Select V - Vacation pay only .</li>
+                <li>Amount: Enter the NWE.</li>
+                <li>Start date: Enter the last week worked + 1.</li>
+                <li>End date: Enter the last week of the allocation.</li>
+                <li>
+                  Last week amount: Select the appropriate option:
+                  <ul>
+                    <li>If the allocation amount in the last week is less than the NWE, enter that amount.</li>
+                    <li>If the last week of allocation is equal to the NWE, leave this field blank.</li>
+                  </ul>
+                </li>
+                <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+                <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+                <li>Message: Select 32 - Your vacation / holiday pay was not deducted .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>Go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Allocations tab, input the allocation in the Allocations section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select V (Vacation pay only).</li>
+            <li>Amount: Enter the amount allocated per week.</li>
+            <li>Start date: Enter the start date of the allocation.</li>
+            <li>End date: Enter the end date of the allocation.</li>
+            <li>
+              Last week amount: Select the appropriate option:
+              <ul>
+                <li>If the allocation amount in the last week is less than the NWE, enter that amount.</li>
+                <li>If the allocation amount in the last week is equal to the NWE, leave this field blank.</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 32 - Your vacation / holiday pay was not deducted .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 24.</li>
+            <li>If the transaction shown is correct, select Close and go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to Extension of the benefit period , then go to step 30.</cmd>
+      </step>
+      <step>
+        <cmd>Refer to Extension of the benefit period , then go to step 27.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 32 - Your vacation/holiday pay was not deducted .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the vacation pay.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks line 1: Type “Input M175 V-$XXXX (amount to allocate) from XXXX (first day of allocation) to XXXX (last day of allocation), $XXX (amount to allocate on last week if different).”</li>
+            <li>Remarks line 2 (to be used if top-up amount is to be input): Type “Input M175 V-$XXXX (amount to allocate) from XXXX (first day of allocation) to XXXX (last day of allocation), $XXX (amount to allocate on last week if different).” Example of transaction: Remarks line 1: V-$400-2388-2388 Remarks line 3: V-$700-2389-2391</li>
+            <li>Remarks line 4: Enter the information about the BP extension, if necessary.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a D-20-16-03 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Allocations of Earnings (2516) Select the appropriate option:
+              <ul>
+                <li>Allocation of earnings - Only from ROE #1 - Monies allocated beyond BPC</li>
+                <li>Allocation of earnings - Monies allocated beyond BPC are from both ROE #1 + ROE #2</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1923.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

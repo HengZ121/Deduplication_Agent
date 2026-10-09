@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="documenting_the_file">
+  <title>Documenting the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 10.</li>
+            <li>If the client was not reached or did not reply to the Q-01-00-00 letter, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Workers’ compensation benefits information — client.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a new SROC in the current application as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Workers’ compensation benefits information.”</li>
+            <li>Details: Document the WCB information and where the missing information was obtained.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the ASMT Worker’s Compensation Benefits WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

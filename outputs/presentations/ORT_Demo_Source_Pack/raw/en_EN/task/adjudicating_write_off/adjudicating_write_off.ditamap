@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="adjudicating_write_off" xml:lang="en-CA">
+  <title>Adjudicating a write-off — Level 2</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="determining_if_an_overpayment_op_can_be_0b279491.dita">
+    </topicref>
+    <topicref href="creating_an_overpayment_op_and_benefits_payable.dita">
+    </topicref>
+    <topicref href="extending_the_benefit_period_bp_when_th_a737368c.dita">
+    </topicref>
+    <topicref href="level_2_responsibilities.dita">
+    </topicref>
+    <topicref href="false_statements_error_corrections_and__4a002728.dita">
+    </topicref>
+    <topicref href="write-off_requests_with_no_specific_tim_8fd238a7.dita">
+    </topicref>
+    <topicref href="write-off_requests_relating_to_benefits_688e629e.dita">
+    </topicref>
+    <topicref href="other_write-off_situations.dita">
+    </topicref>
+    <topicref href="more_than_one_write-off_provision_applies.dita">
+    </topicref>
+    <topicref href="inputting_the_message_code_for_an_overp_586e52f5.dita">
+    </topicref>
+    <topicref href="documenting_and_communicating_the_decision.dita">
+    </topicref>
+    <topicref href="pscd_inputs_for_a_previously_establishe_672e7a07.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1756.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1757.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1758.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1759.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1760.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1761.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1762.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1763.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_acs.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_integrity_investigations_document_up_6a8da64b.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="write-off_denied_level_2.dita">
+      </topicref>
+      <topicref href="write-off_approved__previously_establis_90f17b10_level_2.dita">
+      </topicref>
+      <topicref href="partial_write-off_approved__previously__a290912a_level_2.dita">
+      </topicref>
+      <topicref href="write-off_approved_for_the_entire_overp_caaf2352_level_2.dita">
+      </topicref>
+      <topicref href="partial_overpayment_op_write-off_approv_b7f0feeb_level_2.dita">
+      </topicref>
+      <topicref href="write-off_approved_for_the_entire_overp_90fc6144_level_2.dita">
+      </topicref>
+      <topicref href="partial_overpayment_op_write-off_approv_fc141aeb_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1764.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1765.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1766.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1767.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1768.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1769.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1770.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1771.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1772.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1773.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

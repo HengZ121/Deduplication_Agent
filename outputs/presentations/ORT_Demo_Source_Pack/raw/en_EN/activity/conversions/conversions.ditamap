@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="conversions" xml:lang="en-CA">
+  <title>Conversion and renewal</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="converting_an_ei_erb_claim_to_special_b_c4e4dcd6.dita">
+    </topicref>
+    <topicref href="renewing_a_claim_for_the_same_benefit_type_bt.dita">
+    </topicref>
+    <topicref href="types_of_conversion_requests.dita">
+    </topicref>
+    <topicref href="return_to_work_rtw.dita">
+    </topicref>
+    <topicref href="combining_bts.dita">
+    </topicref>
+    <topicref href="work-sharing_benefits.dita">
+    </topicref>
+    <topicref href="client_referred_under_eia_25__special_benefits.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0001.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0073.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="what_do_you_want_to_do.dita">
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

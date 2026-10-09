@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="payment_returned_in_error">
+  <title>Payment returned in error</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Payment returned in error — cancel and reissue.”</li>
+            <li>Details: Type “Payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to [DD-MM-YYYY] was returned in error by the client. The payment will be cancelled and reissued. Request submitted to IPOC.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the SIN.</li>
+            <li>HRCC: Enter the Service Canada Centre as shown in FTS.</li>
+            <li>Requester: Enter the 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payment to be replaced.</li>
+            <li>Warrant No(s): Enter the payment reference number that appears on the Payment Summary (MN19) information screen.</li>
+            <li>Amount(s): Enter the payment amount that appears on the Payment Summary (MN19) information screen.</li>
+            <li>Name: Enter the client’s surname and given name.</li>
+            <li>
+              Address: Enter the client’s address as follows:
+              <ul>
+                <li>On the first line, enter the street address.</li>
+                <li>On the second line, enter the city, province and postal code.</li>
+              </ul>
+            </li>
+            <li>
+              Telephone number: Enter the client’s telephone number.
+              <ul>
+                <li>Action: Type “The client returned the payment in error”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 Moncton IPOC .</li>
+                <li>Ontario: Select 3056 Belleville IPOC .</li>
+                <li>Quebec: Select 2642 Montreal IPOC (3) .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Enter the BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>Details: Copy and paste the information from the INS5207 form.</li>
+            <li>Obtained by: Select the appropriate option.</li>
+            <li>Obtained from: Select the appropriate option.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the F-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Text - Free Text (1612) : Type “On [insert date], a payment replacement request was submitted for payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to [DD-MM-YYYY]. Please be advised that the replacement time is 5 business days for direct deposit and 7 to 13 business days for regular mail.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the returned payment issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

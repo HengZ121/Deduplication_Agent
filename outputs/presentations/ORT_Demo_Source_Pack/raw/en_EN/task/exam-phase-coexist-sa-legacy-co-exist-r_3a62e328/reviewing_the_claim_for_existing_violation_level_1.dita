@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_claim_for_existing_violation">
+  <title>Reviewing the claim for existing violation</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, review the violation history (ML02):</cmd>
+        <info>
+          <ul>
+            <li>If one or more violations are present, go to step 2.</li>
+            <li>
+              If there is no violation, go to Manual input of tax exemption for First Nations individual .
+              <xref href="#level1_item_3">Manual input of tax exemption for First Nations individual</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if one of the following conditions is met:</cmd>
+        <info>
+          <ul>
+            <li>The notice of violation was issued more than 260 weeks before the date of the initial application, or;</li>
+            <li>
+              2 initial claims have been established since the date the notice was issued.
+              <ul>
+                <li>If no, go to step 3</li>
+                <li>
+                  If yes, go to Manual input of tax exemption for First Nations individual .
+                  <xref href="#level1_item_3">Manual input of tax exemption for First Nations individual</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To determine the classification of the violation, refer to Self-employed: Information on calculation and entitlement to special benefits — Knowledge</cmd>
+      </step>
+      <step>
+        <cmd>In Cúram, add the violation to the claim. Open the Integrated case (IC) and go under the Evidence tab:</cmd>
+        <info>
+          <ul>
+            <li>
+              Select the (+) next to Violation:
+              <ul>
+                <li>Obtained On : Select the date of the Notification week</li>
+                <li>Case Participant: Select the client</li>
+                <li>Notification week:</li>
+                <li>BPC date:</li>
+                <li>Type:</li>
+                <li>Severity:</li>
+              </ul>
+            </li>
+            <li>Apply the changes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the current BPC from Cúram .</li>
+            <li>
+              Work item:
+              <ul>
+                <li>Select 91 - Overpayment</li>
+              </ul>
+            </li>
+            <li>
+              Work type:
+              <ul>
+                <li>Select 1- Misrepresentation</li>
+                <li>Remarks line 1: Type “BPC [XXXX] established in Cúram .”</li>
+              </ul>
+            </li>
+            <li>Remarks line 2-4: Type “An update to the violation record is required. Add BPC as a qualified BPC to the Violation - CPS/MPS (VL03) screen.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 – Other new facts – entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Go to Manual input of tax exemption for First Nations individual .</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

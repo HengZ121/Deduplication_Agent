@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="correcting_amending_mm06" xml:lang="en-CA">
+  <title>Correcting or voiding an MM06</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="missing_or_incorrect_information.dita">
+    </topicref>
+    <topicref href="invalid_operational_centre_memo_mm06.dita">
+    </topicref>
+    <topicref href="urgent_status.dita">
+    </topicref>
+    <topicref href="choosing_the_correct_task.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2904.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_operational_centre_memo_mm06_level_1.dita">
+      </topicref>
+      <topicref href="missing_or_incorrect_information_level_1.dita">
+      </topicref>
+      <topicref href="invalid_operational_centre_memo_mm06_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2905.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1553.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

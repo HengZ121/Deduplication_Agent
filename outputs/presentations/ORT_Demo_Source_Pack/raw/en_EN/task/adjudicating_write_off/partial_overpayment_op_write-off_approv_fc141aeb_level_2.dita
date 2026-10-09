@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="partial_overpayment_op_write-off_approv_fc141aeb">
+  <title>Partial overpayment (OP) write-off approved — Blocked or archived claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if there is an outstanding ASMT, CA or CR Recalculation WI pending the result of the write-off decision:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 20.</li>
+            <li>If no, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a client Note and type “partial write-off approved. When inputting the transactions, use message code [message code 65, 66, 67 or 68] for the portion of the OP that will be written off.” Go to step 26.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the write-off issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 22.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BPCs of the affected claims can be updated in BCS by referring to the appropriate procedures and the input instructions in the AI WI sent by Level 1:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 23.</li>
+            <li>If yes, complete the inputs in BCS and go to step 26.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the appropriate option.</li>
+            <li>Infraction: Select the appropriate option.</li>
+            <li>Message: Select the appropriate option.</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1769.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim on which the OP occurred.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Earnings to be allocated: Leave the field blank.</li>
+            <li>Remarks line 1: Type “Partial write-off.”</li>
+            <li>Remarks line 2: Enter the decision information for the period that will be written off using the appropriate OP codes (e.g. D1 2421-1 to 2430-5 31B 66 ).</li>
+            <li>Remarks line 3: Enter the decision information for the period that will not be written off (e.g. D1 2431-1 to 9999 31B 04 ).</li>
+            <li>Remarks line 4: Type “ACS letter(s) sent.”</li>
+            <li>Remarks line 5: Type your first name and your last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for the write-off issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

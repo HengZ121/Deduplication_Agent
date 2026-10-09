@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 6.</li>
+            <li>
+              If client was not contacted by telephone or did not reply to the N-10-00-00 letter, Reassigning the issue to Level 2.
+              <xref href="#level1_item_5">Reassigning the issue to Level 2.</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Availability .</li>
+            <li>Comments: Type “Vacation in Canada.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy [and [any additional details]].
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml#5.4">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

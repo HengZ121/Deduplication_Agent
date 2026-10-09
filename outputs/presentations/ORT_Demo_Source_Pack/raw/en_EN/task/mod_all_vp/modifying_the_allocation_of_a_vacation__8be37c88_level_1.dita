@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="modifying_the_allocation_of_a_vacation__8be37c88">
+  <title>Modifying the allocation of a vacation pay that is paid because of a layoff or separation</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, determine if monies other than vacation pay were paid on separation:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>
+              If yes, refer to Modifying the allocation of monies on separation .
+              <xref href="/en/procedure/task/mod_all_monies_sep.shtml">Modifying the allocation of monies on separation</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the allocation starts from the last week worked:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ELWW are less than the NWE:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the amount to allocate as follows:</cmd>
+        <info>
+          <ul>
+            <li>Subtract the ELWW from the NWE. The result is the amount to allocate in that week.</li>
+            <li>Subtract the result from the total vacation pay.</li>
+            <li>Divide the balance of the vacation pay by the NWE. The result is the number of weeks of allocation at the NWE.</li>
+            <li>Take the number of full weeks of allocation and multiply that number by the NWE.</li>
+            <li>Subtract that total from the total amount of vacation pay.</li>
+            <li>The balance is allocated on the last week.</li>
+            <li>Go to step 6.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3748.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the amount to allocate when the ELWW are equal to or greater than the NWE or when the allocation starts later in the BP using the following formula:</cmd>
+        <info>
+          <ul>
+            <li>Divide the vacation pay by the NWE. The result is the number of weeks of allocation.</li>
+            <li>Multiply the number of full weeks of allocation by the NWE.</li>
+            <li>Subtract that total from the total amount of vacation pay.</li>
+            <li>The balance is allocated on the last week.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3749.dita">Info</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim for benefits is active, terminated, blocked or archived:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 7.</li>
+            <li>
+              If the claim is terminated, but may be reactivated:
+              <ul>
+                <li>Under the Dormant tab, select the appropriate BPC.</li>
+                <li>Select Reactivate .</li>
+                <li>Go to step 7.</li>
+              </ul>
+            </li>
+            <li>If the claim is blocked or archived, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an original BP extension must be modified. For more information, refer to Modifying a benefit period extension due to an earnings allocation — Renewal or continuing claim and go to step 8.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Payments tab and determine if the ELWW need to be modified:</cmd>
+      </step>
+      <step>
+        <cmd>On the Allocations tab, determine if an allocation type W - Earnings week 1 is displayed for the week to be modified:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the earnings to be modified for that week are higher than the amount of earnings indicated in the Earnings Week 1 field:</cmd>
+      </step>
+      <step>
+        <cmd>Select the Allocations (M175) transaction to input the A - Amended earnings allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              On the first line, do the following:
+              <ul>
+                <li>Type: Select A - Amended earnings .</li>
+                <li>Amount: Enter the modified ELWW amount.</li>
+                <li>Start date: Enter the week of the W - Earnings week 1 allocation.</li>
+                <li>End date: Enter the week of the W - Earnings week 1 allocation.</li>
+                <li>Last week amount: Leave this field blank.</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 6 - Earnings other than declared .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>Go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Payments tab, select the appropriate Report week and modify the claimant’s report as follows: *Change only the information that requires modification.</cmd>
+        <info>
+          <ul>
+            <li>
+              Select Modify .
+              <xref href="../../common_notes/note_c_3726.dita">Note</xref>
+            </li>
+            <li>Earnings: For each week, enter the client’s earnings if necessary.</li>
+            <li>
+              Full work week: Select the appropriate option:
+              <ul>
+                <li>1 - Full work week - week 1</li>
+                <li>2 - Full work week - week 2</li>
+                <li>3 - Full work week both weeks</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>
+              Message: Select the appropriate option:
+              <ul>
+                <li>If ELWW were reported on the claimant’s report and must be modified, select 6 - Earnings other than declared .</li>
+                <li>If ELWW were not reported on the claimant’s report and must be added, select 8 - Your earnings were not deducted .</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine what corrections must be input. Modify the allocation as follows:</cmd>
+        <info>
+          <ul/>
+          <p>Example: Modifying the allocation when the ELWW are less than the NWE</p>
+          <table conref="../../common_tables/table_c_0568.dita#table_c_0568/body"/>
+          <p>Example: Modifying the allocation when the ELWW are equal to or greater than the NWE</p>
+          <table conref="../../common_tables/table_c_0569.dita#table_c_0569/body"/>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Summary tab, determine if there is a stop pay related to these earnings and do one of the following:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 15.</li>
+            <li>
+              If yes, select the Renewal/Revised (M106) transaction and remove the stop payment as follows:
+              <ul>
+                <li>Registration number: Select the appropriate registration number.</li>
+                <li>Manual Action: Select the appropriate MA .</li>
+                <li>Rescind: Check the box.</li>
+                <li>Contentious: Select 1 - No .</li>
+                <li>
+                  Complete: Select the appropriate option:
+                  <ul>
+                    <li>To complete the registration number, select C - Yes .</li>
+                    <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+                  </ul>
+                </li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a blocked claim must also be modified:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 16.</li>
+            <li>If no, go to step 32.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an original BP extension must be modified. For more information, refer to Modifying a benefit period extension due to an earnings allocation — Renewal or continuing claim and go to step 17.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3733.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the blocked claim’s CS by reviewing the Blocked Status column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If 1 - Updateable is displayed, go to step 18.</li>
+            <li>If 2 - Not blocked is displayed, return to step 6.</li>
+            <li>If any other CS is displayed, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 19.</li>
+            <li>If all rows are blank, go to step 21.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1791.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+            <li>Bring forward date: Enter [the next business day].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column under the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, return step 19.</li>
+            <li>If all rows are blank, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC you want to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised (or 2 - Renewal , if necessary).</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Under the Allocations tab, rescind the original allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Rescind .</li>
+            <li>Type: Select V - Vacation pay only .</li>
+            <li>Amount: Leave this field blank.</li>
+            <li>Start Date: Enter the start date of the allocation you are rescinding.</li>
+            <li>End Date: Leave this field blank.</li>
+            <li>Last week amount: Leave this field blank.</li>
+            <li>Detection: Select the detection code used to establish the allocation.</li>
+            <li>Infraction: Select the infraction code used to establish the allocation.</li>
+            <li>Message: Select the message code used to establish the allocation, or the appropriate message code.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine which of the following situations applies:</cmd>
+      </step>
+      <step>
+        <cmd>Input the new allocation as follows:</cmd>
+      </step>
+      <step>
+        <cmd>Input the new allocation as follows:</cmd>
+      </step>
+      <step>
+        <cmd>Under the Pending Transactions tab, review the transaction:</cmd>
+        <info>
+          <ul>
+            <li>If the transaction shown is incorrect, go to step 27.</li>
+            <li>If the transaction shown is correct, select Close and go to step 32.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Return to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an original BP extension must be modified. For more information, refer to Modifying a benefit period extension due to an earnings allocation — Renewal or continuing claim and go to step 29.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 32 - Your vacation/holiday pay was not deducted .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the vacation pay.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Remarks line 1: Type “Input modification of M175: (e.g. V-$400-2388-2388 and V-$700-2389-2391 to V-$250-2388-2388 and V-$700-2389-2391-$350).”</li>
+            <li>Remarks line 4: Enter the information about the BP extension, if necessary.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC, as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a D-20-16-03 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Amending allocation (2442): Select the appropriate option:
+              <ul>
+                <li>Amending allocation - new information received from client</li>
+                <li>Amending allocation - new information received from another source</li>
+                <li>Date previous letter sent (1064)</li>
+              </ul>
+            </li>
+            <li>
+              Allocations of Earnings (2516): Select the appropriate option:
+              <ul>
+                <li>Allocation of earnings - Only from ROE #1 - Monies allocated beyond BPC</li>
+                <li>Allocation of earnings - Monies allocated beyond BPC are from both ROE #1 + ROE #2</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1916.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="conditions_for_creating_the_wi">
+  <title>Conditions for creating the WI</title>
+  <conbody>
+    <p>When none of the periods of employment reported on the application have a contentious RFS, or when all the periods of employment with a contentious RFS are already linked to an ROE, an ADJ RFS Review WI is created.</p>
+  </conbody>
+</concept>

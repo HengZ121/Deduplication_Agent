@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client (or employer, if necessary) to clarify SUB information such as:</cmd>
+        <info>
+          <ul>
+            <li>Is which beneficiary group the client is part of?</li>
+            <li>What is the payment type?</li>
+            <li>What information the client has to say that SUB is paid?</li>
+            <li>Any other relevant facts.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Earnings .</li>
+            <li>Comments: Type “Supplementary unemployment benefit information received from the client.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client meets all criteria to be eligible to SUB plan:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 14.</li>
+            <li>In no, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “The [type of SUB payments] are not considered earnings.”</li>
+            <li>Details: Type “The [type of SUB payments] received by the client are not earnings as defined in EIR 37(1). No allocation is required.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a MA01 imposed for the SUB issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 16.</li>
+            <li>
+              If no, select the Renewal/Revised (M106) transaction and complete it as follows:
+              <ul>
+                <li>SUB: Enter the SUB code.</li>
+                <li>Select Update .</li>
+                <li>Go to step 19.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_4901.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and complete it as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Manual Action: Select 1 - General Suspension of Benefits (stop payment) .</li>
+            <li>Rescind: Check the box.</li>
+            <li>SUB: Enter the SUB code.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>Go to step 19.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4902.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an MA01 imposed for the SUB issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 18.</li>
+            <li>
+              If no, select the Renewal/Revised (M106) transaction and complete it as follows to indicate that the SUB is not registered or does not meet the conditions of EIR 37:
+              <ul>
+                <li>SUB: Select 09 .</li>
+                <li>Select Update .</li>
+                <li>
+                  If the SUB plan is payable due to incapacity, refer to step 8 of Allocating incapacity monies .
+                  <xref href="/en/procedure/task/all_inc_monies.shtml">Allocating incapacity monies</xref>
+                </li>
+                <li>
+                  If the SUB plan is payable due to shortage of work or due to training, refer to step 8 of Allocating other monies .
+                  <xref href="/en/procedure/task/all_others_monies.shtml">Allocating other monies</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal / Revised (M106) transaction and enter the code as follows to indicate that the SUB plan is not registered or does not meet the conditions of EIR 37:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Manual Action: Select 1 - General suspension of benefits (stop payment) .</li>
+            <li>Rescind: Check the box.</li>
+            <li>SUB: Select 09 .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+            <li>
+              If the SUB plan is payable due to incapacity, refer to step 8 of Allocating incapacity monies .
+              <xref href="/en/procedure/task/all_inc_monies.shtml">Allocating incapacity monies</xref>
+            </li>
+            <li>
+              If the SUB plan is payable due to shortage of work or training, refer to step 8 of Allocating other monies .
+              <xref href="/en/procedure/task/all_others_monies.shtml">Allocating other monies</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI or return to the initial task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

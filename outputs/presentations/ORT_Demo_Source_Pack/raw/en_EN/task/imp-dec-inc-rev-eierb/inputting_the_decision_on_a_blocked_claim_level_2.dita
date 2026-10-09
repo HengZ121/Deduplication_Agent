@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputting_the_decision_on_a_blocked_claim">
+  <title>Inputting the decision on a blocked claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Review the Blocked Action Pending column:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, go to step 3.</li>
+            <li>If all rows are blank, go to step 5.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1399.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for an updateable CS in BCS.”</li>
+            <li>Bring forward date: Enter the next business day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, review the Blocked Action Pending column on the Blocked tab:</cmd>
+        <info>
+          <ul>
+            <li>If Yes is displayed in one of the rows, repeat step 3.</li>
+            <li>If all rows are blank, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the Summary tab, then select the Allocations link and determine if there is a W allocation on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, do the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Allocations tab, in the Allocations section, input the allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select A - Amended earnings .</li>
+            <li>Amount: Type “0000.”</li>
+            <li>Start date: Enter the start date of the W allocation.</li>
+            <li>End date: Enter the end date of the W allocation.</li>
+            <li>Last week amount: Leave this field blank.</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction and determine if it is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>If yes, select Close and go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an FWW code must be removed for any of the claimant’s reports under review and applied to an OP that will be created:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 11.</li>
+            <li>If no, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Allocation “A” tab, in the Amended Earnings and FWW columns, modify the week of the FWW as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Select the week that requires a change. Repeat for every week that requires a change.
+              <ul>
+                <li>Amended earnings: remove the earnings.</li>
+                <li>FWW: Select the new FWW code.</li>
+                <li>Detection: Select 97 - EI ERB – Compliance .</li>
+                <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+                <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_3507.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction and determine if it is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 14.</li>
+            <li>If yes, select Close and go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine which of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>If a D47 that is already imposed must be modified, go to step 16.</li>
+            <li>If a D47 that is already imposed must be rescinded and a new disentitlement must be input, go to step 17.</li>
+            <li>If a D47 that is already imposed must be rescinded and no new disentitlement must be input, go to step 23.</li>
+            <li>If a new D47 must be input, go to step 31.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the start and end dates of the disentitlements must be modified:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>If only the end dates must be modified, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To clear the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day one, on the Disentitlements tab, in the Disentitlements section, input up to 4 disentitlements as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3508.dita">Note</xref>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period .</li>
+            <li>Start date: Enter the disentitlement start date, if necessary.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction and determine if it is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 20.</li>
+            <li>If yes, select Close and go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Correct disentitlement input — original disentitlement will be rescinded on day 2.”</li>
+            <li>Bring forward date: Enter the next business day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in BCS, determine if the Results tab shows error code B112 :</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 23.</li>
+            <li>If yes, go to step 37.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, do the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To clear the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disentitlements tab, in the Disentitlements section, rescind up to 4 disentitlements as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3509.dita">Note</xref>
+          <ul>
+            <li>Action: Select X - Rescind .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction and determine if it is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 26.</li>
+            <li>If yes, select Close and go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, do the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To clear the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disentitlements tab, in the Disentitlements section, modify up to 4 disentitlements as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3509.dita">Note</xref>
+          <ul>
+            <li>Action: Select T - Terminate .</li>
+            <li>Type: Select 31 - EI ERB entitlement conditions not met .</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction and determine if it is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 30.</li>
+            <li>If yes, select Close and go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the BPC to update from the Blocked Status column. When the Blocked Claim screen opens, do the following:</cmd>
+        <info>
+          <ul>
+            <li>Action required: Select Claim update .</li>
+            <li>Agreed deduction: Select (100%) Blocked claim system default .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To clear the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Disentitlements tab, in the Disentitlements section, add up to 4 disentitlements as follows</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3509.dita">Note</xref>
+          <ul>
+            <li>Action: Select A - Add .</li>
+            <li>Type: Select 47 - EI ERB - Earnings limit exceeded for the four week period</li>
+            <li>Start date: Enter the disentitlement start date.</li>
+            <li>End date: Enter the disentitlement end date.</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select F - Non-Fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Pending Transactions tab, review the transaction and determine if it is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 34.</li>
+            <li>If yes, select Close and go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Delete the incorrect transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the incorrect transaction.</li>
+            <li>Select Update .</li>
+            <li>Select Close .</li>
+            <li>Return to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the CR WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Transactions input in BCS.”</li>
+            <li>Bring forward date: Enter the next business day.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, in FTS, determine if the Results tab shows error code B112 :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 37.</li>
+            <li>If no, go to step 40.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In BCS, on the Results tab, select the estimated result that must be sent to IPOC and select the Forward via MM06 link.</cmd>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Detection: Select 97 - EI ERB – Compliance .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 45 - You are not entitled to EI Emergency Response Benefits, this caused an overpayment .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentative .</li>
+            <li>Earnings to be allocated: Leave this field blank.</li>
+            <li>
+              Remarks lines 2–4: Enter the appropriate details:
+              <ul>
+                <li>Add any missing information, if necessary.</li>
+                <li>Type “Error code B112. Apply UP to OP.”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client must be notified of a disentitlement:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 41.</li>
+            <li>If yes, go to step 42.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the C-71-05-01 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Earnings / insurable hours of work / income while on claim (12577)</li>
+            <li>Blank / free form (3311): Select Blank .</li>
+            <li>Go to step 42.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the C-74-01-13 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Choice of phrases decision letter to claimant (12610): Select the appropriate option.</li>
+            <li>Since we have not received a response from you / After reviewing your response (12612)</li>
+            <li>Choice of Period 1-14 (12583) .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3510.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Report for Investigation (IC70) screen, select the Decision tab and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlement: Select the appropriate option.</li>
+            <li>
+              Overpayment: Select OP .
+              <ul>
+                <li>Reason: Select Other .</li>
+                <li>Amount: Enter the OP.</li>
+              </ul>
+            </li>
+            <li>
+              Reason: Select Other and type the appropriate option:
+              <ul>
+                <li>“EI ERB eligibility not proven — D47 imposed from w/c [XXXX] to w/c [XXXX].”</li>
+                <li>“EI ERB eligibility proven — D47 not imposed.”</li>
+              </ul>
+            </li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity - ERB Reason for separation WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

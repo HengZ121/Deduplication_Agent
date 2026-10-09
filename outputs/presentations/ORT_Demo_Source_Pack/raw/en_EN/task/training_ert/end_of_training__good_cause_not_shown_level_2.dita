@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="end_of_training__good_cause_not_shown">
+  <title>End of training — Good cause not shown</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine the number of weeks of disqualification (between 1 and 6). If necessary, refer to Digest 1.6.9 — Course, or other employment related activity, of short duration or about to end .</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “End of referred training — no good cause — [X] week disqualification effective [date].”</li>
+            <li>
+              Details: Document the decision and rationale according to the Fact-Finding and Documentation Policy . Indicate the number of weeks of disqualification (between 1 and 6) and the reason. Refer to Digest 19.2.7 — Disqualification — Withdrawal from a course or an employment activity and, if necessary, Digest 1.6.9 — Course, or other employment related activity, of short duration or about to end .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+              <xref href="https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/digest/chapter-19/referred-claimants.shtml#a19_2_7">Digest 19.2.7 — Disqualification — Withdrawal from a course or an employment activity</xref>
+              <xref href="https://www.canada.ca/en/employment-social-development/programs/ei/ei-list/reports/digest/chapter-1/disqualification.html#a1_6_7">Digest 1.6.9 — Course, or other employment related activity, of short duration or about to end</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Verbally communicate the decision to the client.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the claim is in MPS:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>If yes, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the referred training issue:</cmd>
+        <info>
+          <ul>
+            <li>If there is an outstanding registration number, go to step 6.</li>
+            <li>
+              If there is no outstanding registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlements (M161) transaction and input the definite disqualification as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the related registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disqualification: Select 9 - Referral terminated .</li>
+            <li>
+              Effective week: Select the appropriate option:
+              <ul>
+                <li>If the client was paid for the week of the end of training, select the next week to be processed.</li>
+                <li>If the client was not paid for the week of the end of training, select the week of the end of training.</li>
+              </ul>
+            </li>
+            <li>Number of weeks: Select the number of disqualification weeks.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 1 - An overpayment resulted due to a disqualification .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to clear the registration number</li>
+                <li>D - No to leave the registration number open for subsequent transactions</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Project Data - Training (M171) transaction and input the correct end date as follows:</cmd>
+        <info>
+          <ul>
+            <li>End date: Select the correct end date of the training.</li>
+            <li>Select Update .</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a revised registration number for the referred training issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “EIA 25 — Change to the training end date and input of disqualification is required.”</li>
+            <li>Remarks line 2: Type “T171 — END-WK-DY [XXXX].”</li>
+            <li>Remarks line 3: Type “D9 effective [END-WK-DY +1] weeks [number of disqualification weeks] 31F01.”</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Disqualifications - Definite / Indefinite - Previous / Current / Revision (2970)</li>
+            <li>D6 / D7 / D8 / D9 / D28 (2971)</li>
+            <li>D9 - Approved training course / Employment activity (2922)</li>
+            <li>We / We have re-examined your claim / In addition, we (2916)</li>
+            <li>Number of weeks disqualified (1298)</li>
+            <li>Start date of disqualification - Sunday’s date (1294)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

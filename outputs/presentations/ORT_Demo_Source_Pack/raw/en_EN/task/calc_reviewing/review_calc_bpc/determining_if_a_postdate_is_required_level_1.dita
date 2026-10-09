@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_a_postdate_is_required">
+  <title>Determining if a postdate is required</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the recovery week is indefinite based on a medical certificate that indicates terminal or palliative:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 3.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BPC has been postdated due to earnings in week 1.</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>If yes, the BPC is the last week worked unless the client specifically requested to postdate the claim. Go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if postdating the BPC is advantageous to the client or if the client is entitled to a requested postdate:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Determining if an automatic antedate is required .
+              <xref href="#level1_item_6">Determining if an automatic antedate is required</xref>
+            </li>
+            <li>If yes, go to step 4.</li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2379.dita">Note</xref>
+          <xref href="../../../common_notes/note_c_2380.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a postdate will result in a BPC that falls after the calendar week of the application:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BPC is postdated for one of the following reasons:</cmd>
+        <info>
+          <ul>
+            <li>The BT is maternity and parental and the BP is postdated to pay full benefits.</li>
+            <li>
+              The week of filing was a full work week.
+              <ul>
+                <li>If no, go to step 6.</li>
+                <li>If yes, go to step 15.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BPC is postdated to fall within the benefit window for maternity or parental benefits:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the calculation worksheet, note that the N-00-00-00 letter is required. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Antedate Denied or Postdate Message-Initial/Renewal/Continuing claim (2481)</li>
+            <li>Postdate Message (2486)</li>
+            <li>
+              Postdate - Initial Claim (2487)
+              <ul>
+                <li>TEXT: Reason(s) why claim was postdated</li>
+              </ul>
+            </li>
+            <li>Text - Insert appropriate post-date reason (1068): Type “you do not meet the entitlement requirements for [special benefits type] until [BPC date].”</li>
+            <li>BPC date - Sunday’s date (1060)</li>
+            <li>Go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BPC is postdated by more than one week:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>If yes, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the calculation worksheet, note that the N-00-00-00 letter may be required. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Antedate Denied or Postdate Message - Initial/Renewal/Continuing claim (2481)</li>
+            <li>Postdate Message (2486)</li>
+            <li>Postdate - Initial Claim (2487)</li>
+            <li>BPC date - Sunday’s date (1060)</li>
+            <li>Go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if fact-finding has already occurred with the client to obtain information on additional insurable hours or earnings accumulated after the EI application was filed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>
+              If no, fact-find with the client. If the client has worked after the application date and before the date the BPC could be postdated to, the postdate cannot be granted. Advise the client that he or she may qualify if a new application is filed.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 12.</li>
+            <li>If the client was not contacted, the postdate cannot be granted. Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Calculation .</li>
+            <li>Comments: Type “Confirmation of last day worked or paid.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has accumulated any other insurable hours or earnings after the EI application was submitted and before the date the BPC could be postdated to:</cmd>
+        <info>
+          <ul>
+            <li>If yes, the postdate cannot be granted. Go to step 14.</li>
+            <li>If no, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the calculation worksheet, note that if the client is BPNE N6 with a BPC before July 3, 2016, you must override the automated BPNE letter and manually create one. Also note that when this occurs, in FTS, from the File Control Data (M101) transaction, you must select Claim Action — Automated Letter Bypass to prevent the creation of the automated BPNE letter and manually create one with the following details:</cmd>
+        <info>
+          <ul>
+            <li>
+              This letter replaces or Footnote (2365) :
+              <ul>
+                <li>Footnote: Once we receive your application, we will determine eligibility and establish a new claim if you now qualify for benefits.</li>
+              </ul>
+            </li>
+            <li>
+              Go to Determining if an automatic antedate is required .
+              <xref href="#level1_item_6">Determining if an automatic antedate is required</xref>
+            </li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2381.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, on the Coding Requirement s screen, enter the manual BPC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Subsequent or manual BPC: Select the Sunday date of the manual BPC.</li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2382.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any changes were made in SSO:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Determining if the Administrative Policy applies .
+              <xref href="#level1_item_6">Determining if the Administrative Policy applies</xref>
+            </li>
+            <li>
+              If yes, go to step 9 of Calculating a claim in SSO .
+              <xref href="/en/procedure/subactivity/calc_ssa_sb.shtml">Calculating a claim in SSO</xref>
+            </li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2383.dita">Note</xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

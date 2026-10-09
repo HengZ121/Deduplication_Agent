@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="roe_comments_reg" xml:lang="en-CA">
+  <title>Completing an ROE Comments WI — Regular ROE</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="comment_types.dita">
+    </topicref>
+    <topicref href="creating_a_wi.dita">
+    </topicref>
+    <topicref href="impact_on_calculation.dita">
+    </topicref>
+    <topicref href="automation.dita">
+    </topicref>
+    <topicref href="roe_errors_found_during_validation.dita">
+    </topicref>
+    <topicref href="fraud_indicators.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4664.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4665.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0070.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4666.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="non-complex.dita">
+      <topicref href="reviewing_the_file_for_fraud_indicators_non-complex.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_non-complex.dita">
+      </topicref>
+      <topicref href="reviewing_the_conditions_to_allow_at_no_73969f75_non-complex.dita">
+      </topicref>
+      <topicref href="inputs_non-complex.dita">
+      </topicref>
+      <topicref href="correcting_roe_errors_non-complex.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_1_non-complex.dita">
+      </topicref>
+      <topicref href="fraud_indicators_are_present_non-complex.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1527.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4667.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4668.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1573.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2918.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2664.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1576.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_for_fraud_indicators_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_conditions_to_allow_at_level_1_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="required_information_has_not_been_obtained_level_1.dita">
+      </topicref>
+      <topicref href="required_information_has_been_obtained_level_1.dita">
+      </topicref>
+      <topicref href="comments_impact_an_established_claim_level_1.dita">
+      </topicref>
+      <topicref href="fraud_indicators_are_present_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4669.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4670.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4671.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2290.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1571.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4672.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4673.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs__operational_centre_memo_mm06_tr_f7aac1cb">
+  <title>Inputs – Operational Centre Memo (MM06) transaction required</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, from the Caregiver/Compassionate care data entry (MCB1) screen, update the claimant record as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Modify .</li>
+            <li>Entitlement weeks: Enter the number of weeks the client is entitled to.</li>
+            <li>BPC: Enter the appropriate date.</li>
+            <li>Waiting period served: Select Yes or No .</li>
+            <li>Application date: Enter the date the client requested family caregiver benefits.</li>
+            <li>Status: Select 12 - Caregiver/Compassionate benefits approved .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is exempt from reporting:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 23.</li>
+            <li>If no, go to step 24.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and cancel the exemption by completing the following fields:</cmd>
+        <info>
+          <ul>
+            <li>
+              Claimant’s Report:
+              <ul>
+                <li>Rescind: Check the box.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Summary tab, determine if an MA01 is imposed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 25.</li>
+            <li>
+              If no, select the Renewal/Revised (M106) transaction and impose the MA01 as follows:
+              <ul>
+                <li>Registration Number: Leave the field blank. If a number is showing, remove it.</li>
+                <li>Manual action: Select 1 - General suspension of benefits (stop payment) .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>If the claim has already been converted to MPS (CS 8): Select 30 - New information on manual pay claim .</li>
+                <li>When the claim is not yet in MPS, select 51 - Family caregiver for children or 52 - Family caregiver for adults .</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Type “Conversion to claim type [20 or 21] as of w/c [XXXX]. Window from w/c [XXXX] to w/c [XXXX]. [number of weeks] weeks to be paid. Rescind the MA01.”</li>
+            <li>Remarks line 2: If a disentitlement is required, type “D[XX] [XXXX-X] to [XXXX-X] OP CODE [XX] [X] [XX].” (e.g. D14 w/c 1800-2010 OP CODE 24C09)</li>
+            <li>Remarks line 3: If an extension of the BP is required, type “Extend [type] [w/c start date] — [number of weeks]. If necessary, provide the NO-CR-CODE and the information from the WP [deferred or waived] and other [WP w/c served].”</li>
+            <li>Remarks line 4: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a client Note to send a saved ACS letter:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 29.</li>
+            <li>If no, go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, review and send the saved letter.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, determine if the conversion application was submitted using AW:</cmd>
+        <info>
+          <ul>
+            <li>If no go to step 31.</li>
+            <li>
+              If yes, go to Subsequent claims .
+              <xref href="#subsequent_claims">Subsequent claims</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

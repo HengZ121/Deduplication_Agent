@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="current_work-sharing_ws_end_week_is_not_749c5a96">
+  <title>Current Work-Sharing (WS) end week is not later than the correct WS end week</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the claimant’s reports have been processed up to and including the WS end week currently on the claim file:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 26.</li>
+            <li>If yes, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting processing of last WS claimant’s reports.”</li>
+            <li>
+              Bring forward date: Enter the appropriate date:
+              <ul>
+                <li>If the UR is on file, enter today’s date + 1 day.</li>
+                <li>If the UR is not on file, enter today’s date + 2 days.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the claimant’s reports have been processed:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 26.</li>
+            <li>If yes, go to step 28.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If a renewal must be input for the next week to be processed, determine if the correct WS end week is the same as the renewal week:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, refer to Conversion and renewal to input a renewal for the next week to be processed. Use the W or H WS coding as required.
+              <xref href="/en/procedure/activity/conversions.shtml">Conversion and renewal</xref>
+            </li>
+            <li>If yes, go to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Project Data — Worksharing (M171) transaction and change the WS end week of the agreement as follows:</cmd>
+        <info>
+          <ul>
+            <li>End date: Select the last week to be processed as WS benefits.</li>
+            <li>Click Update .</li>
+            <li>Go to step 36.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 31.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+                <li>Go to step 31.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Leave the field blank.</li>
+            <li>Infraction: Leave the field blank.</li>
+            <li>Message: Leave the field blank.</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 16 - Work-sharing .</li>
+            <li>Earnings to be allocated: Leave the field blank.</li>
+            <li>Remarks line 1: Type “WS - [agreement number].”</li>
+            <li>Remarks line 2: Type “Change the agreement end date of w/c [XXXX] for w/c [XXXX].”</li>
+            <li>Remarks line 3 : Leave the field blank.</li>
+            <li>Remarks line 4: Leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the Outstanding Registrations link to transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Click Modify .</li>
+            <li>
+              In the appropriate registration section:
+              <ul>
+                <li>Action: Select Change registration flag .</li>
+                <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+              </ul>
+            </li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting for IPOC to complete the work.”</li>
+            <li>Bring forward date: Enter today’s date + 2 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the claimant’s reports have been processed:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 34.</li>
+            <li>If yes, go to step 36.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is exempt from reporting:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 37.</li>
+            <li>If yes, go to step 43.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any details are required for claimant’s reports for the WS period. Refer to Claimant’s report for more information:</cmd>
+        <info>
+          <ul>
+            <li>
+              If fact-finding is required, fact-find with the client and go to step 38.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If fact-finding is not required, go to step 40.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 39.</li>
+            <li>If the client was not contacted and did not reply to the N-10-00-00, the week in which the separation occurs is processed as the last week of WS benefits. Go to step 40.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Separation from WS employer during WS agreement.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding, Documentation and Retention Policy</xref>
+            </li>
+            <li>Click Save.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer to Inputting a claimant’s report to input the claimant’s reports up to and including the last week of the WS agreement. Do not include STUAE coding (so the claimant’s reports can cycle). Go to step 44.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there are URs for the period up to and including the last week to be processed as WS benefits:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 42.</li>
+            <li>If yes, go to step 44.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting processing of last WS claimant’s reports.”</li>
+            <li>
+              Bring forward date: Enter the appropriate date :
+              <ul>
+                <li>If the UR is on file, e nter today’s date + 1 day.</li>
+                <li>If the UR is not on file, enter today’s date + 2 days.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the claimant’s reports have been  processed:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 42.</li>
+            <li>If yes, go to step 44.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a renewal or conversion from WS benefits is required:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 45.</li>
+            <li>
+              If yes, return to the appropriate Conversion and renewal task.
+              <xref href="/en/procedure/activity/conversions.shtml">Conversion and renewal</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

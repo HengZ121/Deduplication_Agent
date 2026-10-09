@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_roe_fishing_roe_in_nws">
+  <title>In NWS:</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/completing_roe_fishing_roe.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <ul id="completing_roe_fishing_roe_in_nws_ul1">
+      <li id="completing_roe_fishing_roe_in_nws_li1">What is the serial number and the RFS indicated in the Specific Details tab of the ROE RFS Action WI?</li>
+      <li id="completing_roe_fishing_roe_in_nws_li2">What periods of employment are indicated in the Matching POE list of the ROE RFS Action WI?</li>
+      <li id="completing_roe_fishing_roe_in_nws_li3">
+        Is there a ROD indicating that the RFS has been adjudicated?
+        <ul id="completing_roe_fishing_roe_in_nws_ul2">
+          <li id="completing_roe_fishing_roe_in_nws_li4">If yes, what are the details of the decision?</li>
+        </ul>
+      </li>
+      <li id="completing_roe_fishing_roe_in_nws_li5">Is there an SROC clarifying the employer’s name?</li>
+    </ul>
+  </conbody>
+</concept>

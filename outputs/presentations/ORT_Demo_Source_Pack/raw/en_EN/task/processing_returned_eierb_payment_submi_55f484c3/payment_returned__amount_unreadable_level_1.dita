@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="payment_returned__amount_unreadable">
+  <title>Payment returned — Amount unreadable</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Payment returned — amount unreadable.”</li>
+            <li>Details: Type “A payment replacement request was submitted to IPOC for payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to [DD-MM-YYYY]. The payment was returned because the amount was unreadable.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the SIN.</li>
+            <li>HRCC: Enter the Service Canada Centre (SCC) as shown in FTS.</li>
+            <li>Requester: Enter the 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payment to be replaced.</li>
+            <li>Payment No(s): Enter the payment reference number that appears on the Payment Summary (MN19) information screen.</li>
+            <li>Amount(s): Enter the payment amount that appears on the Payment Summary (MN19) information screen.</li>
+            <li>Name: Enter the client’s surname and given name.</li>
+            <li>
+              Address: Enter the client’s address as follows:
+              <ul>
+                <li>On the first line, enter the street address.</li>
+                <li>On the second line, enter the city, province and postal code.</li>
+              </ul>
+            </li>
+            <li>Telephone number: Enter the client’s telephone number</li>
+            <li>
+              Action: Type the appropriate information:
+              <ul>
+                <li>“The client has not received the payment issued more than 8 business days ago.”</li>
+                <li>“The client has not received the payment because it was sent to the wrong address. The address has been updated.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 .</li>
+                <li>Ontario: Select 3056 .</li>
+                <li>Quebec: Select 2642 .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Enter the BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>Details: Copy and paste the information from the INS5207 form.</li>
+            <li>Obtained by: Select the appropriate option.</li>
+            <li>Obtained from: Select the appropriate option.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the F-00-00-00 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Opening Sentence for Initial or Renewal or Continuing claim (2466) .</li>
+            <li>Text - Free Text (1612): Type “On [insert date], a request was submitted to reissue payment for payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to DD-[MM-YYYY]. Please be advised that the replacement time is 5 business days for direct deposit and 7 to 13 business days for regular mail.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the returned payment issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

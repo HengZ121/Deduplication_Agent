@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="write-off_approved__previously_establis_90f17b10">
+  <title>Write-off approved — Previously established Overpayment (OP)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In PSCD, determine if the financial and non-financial adjustments are available:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 19.</li>
+            <li>If no, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the debt was originally established in PSCD:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 20.</li>
+            <li>
+              If no, determine if an outstanding balance was converted to PSCD:
+              <ul>
+                <li>If yes, go to step 20.</li>
+                <li>If no, the debt no longer has an active balance. Go to step 25.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Input a Non-Financial Debt Adjustment transaction to write off the debt. Refer to Inputting a non-financial debt adjustment in PSCD and go to step 25.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the write-off issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 22.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the appropriate option.</li>
+            <li>Infraction: Select the appropriate option.</li>
+            <li>Message: Select the appropriate option.</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1769.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim on which the OP occurred.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 2 - Non-misrepresentation .</li>
+            <li>Earnings to be allocated: Leave the field blank.</li>
+            <li>Remarks line 1: Type “Write-off approved.”</li>
+            <li>Remarks line 2: Type “Amend [code for the decision to be amended (e.g. D1)] [XXXX-XXXX].”</li>
+            <li>Remarks line 3: Type “Change message code to [write-off code 65, 66, 67 or 68].</li>
+            <li>Remarks line 4: Enter any additional information, if necessary, or leave the field blank.</li>
+            <li>Remarks line 5: Enter your first name and your last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>C - Yes to complete the registration number.</li>
+                <li>D - No to leave the registration number open for subsequent transactions.</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is an AI WI for the write-off issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

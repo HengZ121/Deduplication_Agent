@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="roe_dismissal" xml:lang="en-CA">
+  <title>Completing an ROE Issue RFS Action WI: M - Dismissal</title>
+  <topicmeta>
+    <source
+      href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_dismissal.shtml"
+      scope="external"
+      format="html"/>
+    <critdates>
+      <revised modified="2024-10-29"/>
+    </critdates>
+    <metadata>
+      <othermeta name="source-system" content="ORT"/>
+      <othermeta name="article-public-number" content="roe_dismissal"/>
+      <othermeta name="wcms-template" content="procedure-task"/>
+      <othermeta name="archived" content="false"/>
+      <othermeta name="dcterms-title" content="Completing an ROE Issue RFS Action WI: M - Dismissal"/>
+    </metadata>
+    <resourceid appname="ORT" appid="roe_dismissal"/>
+  </topicmeta>
+  <topicref href="roe_dismissal_summary.dita">
+  </topicref>
+  <topicref href="roe_dismissal_what_you_need_to_know.dita">
+    <topicref href="roe_dismissal_linking_the_roe_and_the_matching_period_e21c3afb.dita">
+    </topicref>
+    <topicref href="roe_dismissal_completing_the_resolve_issue_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="roe_dismissal_regional_considerations.dita">
+  </topicref>
+  <topicref href="roe_dismissal_what_you_need_to_look_for.dita">
+    <topicref href="roe_dismissal_in_nws.dita">
+    </topicref>
+    <topicref href="roe_dismissal_in_rcm.dita">
+    </topicref>
+    <topicref href="roe_dismissal_in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="roe_dismissal_step_by_step.dita">
+    <topicref href="roe_dismissal_non-complex.dita">
+      <topicref href="roe_dismissal_creating_a_link_between_the_roe_and_a_m_3ea220ea.dita">
+      </topicref>
+      <topicref href="roe_dismissal_ensuring_the_reason_for_separation_rfs__eb340be4.dita">
+      </topicref>
+      <topicref href="roe_dismissal_selecting_a_special_condition_for_the_d_abfa0b7e.dita">
+      </topicref>
+      <topicref href="roe_dismissal_completing_the_wi_non-complex.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="roe_dismissal_policy_reference.dita">
+  </topicref>
+</map>

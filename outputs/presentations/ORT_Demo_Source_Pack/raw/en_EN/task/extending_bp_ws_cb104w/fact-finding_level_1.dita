@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to review the advantages and disadvantages of a new initial claim:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_3414.dita">Callout</xref>
+          <ul>
+            <li>Advise the client that if the current claim is to be cancelled and benefits have been paid, an overpayment (OP) is established and a recovery of the OP is made from the renewed claim.</li>
+            <li>Advise clients that they will not be able to change their mind if they later realize that their decision is not the most advantageous one.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 9.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Extension not allowed .
+              <xref href="#extension_not_allowed">Extension not allowed</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select ROE .</li>
+            <li>Comments: Type “Work-sharing claim extension – Client.”</li>
+            <li>
+              Details: Document the fact-finding details and client decision according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

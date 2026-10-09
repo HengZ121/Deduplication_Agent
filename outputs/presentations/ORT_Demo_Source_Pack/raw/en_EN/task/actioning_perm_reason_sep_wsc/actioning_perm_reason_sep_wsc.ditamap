@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="actioning_perm_reason_sep_wsc" xml:lang="en-CA">
+  <title>Actioning a permanent reason for separation on a Work-Sharing claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="processing_a_permanent_reason_for_separ_8f141ff4.dita">
+    </topicref>
+    <topicref href="determining_the_last_week_of_work-shari_675ef026.dita">
+    </topicref>
+    <topicref href="subsequent_claim.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1493.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1494.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1495.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_entitlement_to_work-sharing_w_b4fd84f4_level_1.dita">
+      </topicref>
+      <topicref href="work-sharing_ws_end_week_is_correct_level_1.dita">
+      </topicref>
+      <topicref href="current_work-sharing_ws_end_week_is_lat_260af063_level_1.dita">
+      </topicref>
+      <topicref href="current_work-sharing_ws_end_week_is_not_749c5a96_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1496.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1497.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

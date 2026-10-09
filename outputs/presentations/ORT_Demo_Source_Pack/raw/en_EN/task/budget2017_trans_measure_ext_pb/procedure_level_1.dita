@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="procedure">
+  <title>Procedure</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the date of birth or placement of the child is on or after December 3, 2017:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>
+              If no, go to Conversion from standard to extended parental benefits — denied .
+              <xref href="#level1_item_3">Conversion from standard to extended parental benefits — denied</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client submitted the request to convert to extended parental benefits in a timely manner:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>
+              If no, Reassign to Level 2 .
+              <xref href="#level1_item_4">Reassign to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is entitled to the requested number of extended parental benefits weeks during the BP:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>
+              If yes, go to Conversion from standard to extended parental benefits — approved .
+              <xref href="#level1_item_2">Conversion from standard to extended parental benefits — approved</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2190.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client and determine the following:</cmd>
+        <info>
+          <ul>
+            <li>How many weeks of extended parental benefits is the client requesting?</li>
+            <li>If a return to work date is on file, is there a new return to work date?</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 6.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, reassign to Level 2 ..
+              <xref href="#level1_item_4">reassign to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>New SROC: Main Issue: Select Other .</li>
+            <li>New SROC: Comments: Type “parental benefit entitlement.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is entitled to the requested number of weeks during the BP:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, reassign to Level 2 .
+              <xref href="#level1_item_4">reassign to Level 2</xref>
+            </li>
+            <li>
+              If yes, go to Conversion from standard to extended parental benefits — approved .
+              <xref href="#level1_item_2">Conversion from standard to extended parental benefits — approved</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

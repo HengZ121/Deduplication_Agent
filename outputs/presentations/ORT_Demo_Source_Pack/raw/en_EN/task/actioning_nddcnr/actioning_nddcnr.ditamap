@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="actioning_nddcnr" xml:lang="en-CA">
+  <title>Actioning a Notice of Debt declared by the client as not received</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="processing_a_notice_of_debt_declared_by_2192f853.dita">
+    </topicref>
+    <topicref href="determining_if_the_client_provided_suff_90ba3d48.dita">
+    </topicref>
+    <topicref href="violation.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1478.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_0161.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1479.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_acs.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_pscd.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="resending_the_notice_of_debt_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="reviewing_the_original_decision_level_2.dita">
+      </topicref>
+      <topicref href="no_changes_required_to_the_initial_decision_level_2.dita">
+      </topicref>
+      <topicref href="changes_required_to_the_original_decision_level_2.dita">
+      </topicref>
+      <topicref href="changes_required_to_the_ei_emergency_re_e9339dc7_level_2.dita">
+      </topicref>
+      <topicref href="bcs_inputs_required_for_the_original_decision_level_2.dita">
+      </topicref>
+      <topicref href="client_did_not_provide_sufficient_evidence_level_2.dita">
+      </topicref>
+      <topicref href="operational_centre_memo_mm06_required_f_ef0194c4_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1480.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1481.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1482.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1483.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

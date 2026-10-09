@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_the_client_qualifies_for_1d8c088f">
+  <title>Determining if the client qualifies for benefits on a new claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if all the information is on file to establish whether the client qualifies for benefits on a new claim (e.g. an application, all ROEs):</cmd>
+        <info>
+          <ul>
+            <li>If no , go to step 10.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Contact the client for fact finding :</cmd>
+        <info>
+          <ul>
+            <li>Ask if the client intends to apply for a new claim.</li>
+            <li>Obtain from the client the missing information required to determine if the client qualifies for benefits on a new claim.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2178.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If client was contacted, go to step 12.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Benefit period (BP) not terminated .
+              <xref href="#BPnotterminated">Benefit period (BP) not terminated</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Type the BPC.</li>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “BP termination.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the required information was obtained:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 14.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client indicated that the required information will be submitted:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 15.</li>
+            <li>
+              If no, go to Benefit period (BP) not terminated .
+              <xref href="#BPnotterminated">Benefit period (BP) not terminated</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for the client to submit information.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the required information has been received:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>
+              If no, go to Benefit period (BP) not terminated .
+              <xref href="#BPnotterminated">Benefit period (BP) not terminated</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client qualifies to establish a new BP (refer to the applicable Calculating or recalculating a claim activity):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 18.</li>
+            <li>
+              If no, go to Benefit period (BP) not terminated .
+              <xref href="#BPnotterminated">Benefit period (BP) not terminated</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2160.dita">Note</xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

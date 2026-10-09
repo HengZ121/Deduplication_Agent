@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="entering_cer" xml:lang="en-CA">
+  <title>Reviewing the client’s economic region in SSO</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="determining_the_economic_region.dita">
+    </topicref>
+    <topicref href="impact_of_the_economic_region.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0019.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2205.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2206.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2207.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="determining_the_economic_region_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_ordinary_place_of_re_c679333f_level_1.dita">
+      </topicref>
+      <topicref href="ordinary_place_of_residence_not_in_question_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2208.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2209.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

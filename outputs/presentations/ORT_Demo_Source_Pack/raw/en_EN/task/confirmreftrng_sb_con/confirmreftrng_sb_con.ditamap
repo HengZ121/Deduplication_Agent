@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="confirmreftrng_sb_con" xml:lang="en-CA">
+  <title>Confirming referred training: Special benefits — Continuing claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="training_reported_between_september_27__5ecd71c7.dita">
+    </topicref>
+    <topicref href="adjudication_required_on_manually_regis_d5cd9e4c.dita">
+    </topicref>
+    <topicref href="referred_training.dita">
+    </topicref>
+    <topicref href="impact_of_training_on_special_benefits.dita">
+    </topicref>
+    <topicref href="automated_decisions.dita">
+    </topicref>
+    <topicref href="referred_training_authorities.dita">
+    </topicref>
+    <topicref href="confirmation_process.dita">
+    </topicref>
+    <topicref href="adjudicating_voluntarily_leaving.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2697.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_proof_of_referred_traini_17619795_level_1.dita">
+      </topicref>
+      <topicref href="referred_training_not_confirmed_level_1.dita">
+      </topicref>
+      <topicref href="referred_training_confirmed_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

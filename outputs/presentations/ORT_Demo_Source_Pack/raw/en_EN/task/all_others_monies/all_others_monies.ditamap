@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="all_others_monies" xml:lang="en-CA">
+  <title>Allocating other monies arising out of employment</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="other_monies_arising_out_of_employment.dita">
+    </topicref>
+    <topicref href="remuneration_under_a_contract_of_employ_095d0c02.dita">
+    </topicref>
+    <topicref href="remuneration_under_a_contract_of_employ_83a21838.dita">
+    </topicref>
+    <topicref href="recalculation.dita">
+    </topicref>
+    <topicref href="claim_status_cs_definition.dita">
+    </topicref>
+    <topicref href="inputting_the_allocation.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="major_employer_events_mee__information__d87347de.dita">
+    </topicref>
+    <topicref href="obtaining_the_missing_information.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1930.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1931.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1932.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_how_to_allocate_the_monies_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__active_claim_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__bcs_level_1.dita">
+      </topicref>
+      <topicref href="allocating_the_monies__operational_cent_2650a187_level_1.dita">
+      </topicref>
+      <topicref href="missing_information_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1848.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1933.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1934.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1935.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

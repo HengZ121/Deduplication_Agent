@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="return_to_work_rtw">
+  <title>Return to Work (RTW)</title>
+  <conbody>
+    <p>
+      If there is an RTW on the claim that falls on or after the renewal or conversion date, it prevents the payment of benefits even if the officer inputs a renewal or conversion week. The Level 1 officer refers to the National Policy on Levels of Decision and Correcting a found work or return to work input in error to determine if the conditions are met to rescind or modify the RTW. The Level 1 officer rescinds the RTW when converting the claim. If the decision on the RTW is not within Level 1 authority, the Level 1 officer refers the issue to Level 2.
+      <xref href="/en/policy/nationalpolicy/levels_decision.shtml">National Policy on Levels of Decision</xref>
+      <xref href="/en/procedure/task/actioning_error_claimant_report.shtml">Correcting a found work or return to work input in error</xref>
+    </p>
+  </conbody>
+</concept>

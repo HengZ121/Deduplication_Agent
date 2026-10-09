@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="ebp_incarceration" xml:lang="en-CA">
+  <title>Extending the benefit period — Incarceration</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="extending_the_benefit_period_bp_due_to__ab9ca723.dita">
+    </topicref>
+    <topicref href="acceptable_proof.dita">
+    </topicref>
+    <topicref href="partial_week_of_incarceration.dita">
+    </topicref>
+    <topicref href="weeks_paid_or_considered_paid.dita">
+    </topicref>
+    <topicref href="maximum_benefit_period_bp_extension.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_3304.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_3305.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_imaging.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_ed3bd832_level_1.dita">
+      </topicref>
+      <topicref href="extension_allowed__incarceration_before_887d35b6_level_1.dita">
+      </topicref>
+      <topicref href="extension_allowed__incarceration_after__0f892ca0_level_1.dita">
+      </topicref>
+      <topicref href="extension_not_allowed_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3306.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3307.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

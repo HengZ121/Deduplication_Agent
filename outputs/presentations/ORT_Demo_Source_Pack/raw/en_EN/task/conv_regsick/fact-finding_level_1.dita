@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client. Refer to the National Fact-Finding and Documentation and Retention Policy if needed.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding or if the client responded to the N-10-00-00 letter:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 29.</li>
+            <li>If the client was not contacted or did not respond to the N-10-00-00 letter, go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Conversion .</li>
+            <li>Comments: Type “Conversation with the client — medical certificate needed.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding, Documentation and Retention Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding, Documentation and Retention Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client indicated a medical certificate would be submitted:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 31.</li>
+            <li>If no, go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Medical certificate .</li>
+            <li>Comments: Type “Awaiting medical certificate.”</li>
+            <li>Bring forward date: Enter [10 business days from the day the client was asked to submit a medical certificate].</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if an acceptable medical certificate has been submitted:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 33.</li>
+            <li>If yes, go to step 34.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “D16 imposed. Medical certificate not submitted.”</li>
+            <li>
+              Details: Enter one of the following:
+              <ul>
+                <li>If a D18 has been imposed in the week of the conversion, type “An acceptable medical certificate has not been submitted. Indefinite D16 imposed from [first day in the conversion week that the client is declared sick].”</li>
+                <li>If a D18 has not been imposed in the week of the conversion, type “An acceptable medical certificate has not been submitted. Indefinite D16 imposed from [first day in the conversion week].”</li>
+              </ul>
+            </li>
+            <li>Go to step 38.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2788.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an incapacity start date is required (refer to Sickness: Incapacity start date — Table ):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 35.</li>
+            <li>If no, go to step 38.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the incapacity start date is indicated on the medical certificate:</cmd>
+        <info>
+          <ul>
+            <li>If yes, for the incapacity start date, use the Sunday of the same week as the date indicated on the medical certificate.</li>
+            <li>If no, for the incapacity start date, use the Sunday of the week the doctor or other medical professional signed the medical certificate, or the week of the medical consultation, whichever is earlier.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a gap between the first day of sickness declared by the client and the proven incapacity start date:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 37.</li>
+            <li>If no, go to step 38.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “D16 imposed. Incapacity start date not proven.”</li>
+            <li>Details: Type “Incapacity start date declared by the client does not match the medical certificate. D16 imposed from [first day of the conversion week that the client declared being sick] to [the Friday before the proven incapacity start date].”</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2789.dita">Note</xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

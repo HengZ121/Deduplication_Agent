@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="warrant_received_but_not_cashed">
+  <title>Warrant received but not cashed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Ask the client why they request a payment replacement:</cmd>
+        <info>
+          <ul>
+            <li>If the warrant was stolen or lost, go to step 6.</li>
+            <li>If the warrant was destroyed, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Ask if the client had endorsed the warrant:</cmd>
+        <info>
+          <ul>
+            <li>If the warrant had been endorsed, go to step 7.</li>
+            <li>If the warrant had not been endorsed, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Provide the client with the following information:</cmd>
+        <info>
+          <ul>
+            <li>
+              Explain to the client that the warrant that was endorsed before it was stolen or lost, it can be replaced, but the client must accept the risks:
+              <ul>
+                <li>Having endorsed the warrant, the client will be required to repay the amount of the original payment if the warrant is eventually cashed, whether it be by the thief or any other person who finds the warrant.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_4303.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Ask the client whether a payment replacement is still desired:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>If yes, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant.</li>
+            <li>Comments: Type “Warrant replacement not required.”</li>
+            <li>Details: Type “The client had received and endorsed warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD] and then [it was stolen or lost]. Since the client had endorsed the warrant and would be required to pay back the warrant if it were eventually cashed, the client no longer wishes to receive a payment replacement.”</li>
+            <li>Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Provide the client with the following information:</cmd>
+        <info>
+          <ul>
+            <li>The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days for a warrant.</li>
+            <li>If the original warrant is found or recovered, only one payment can be cashed and the other must be returned.</li>
+            <li>If both payments are cashed, an investigation will be conducted, reimbursement of the original payment could be required and a penalty may be imposed.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4302.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the SIN.</li>
+            <li>HRCC: Enter the SCC as shown in FTS.</li>
+            <li>Requester: Enter the 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payment to be replaced.</li>
+            <li>Warrant No(s).: Enter the payment reference number that appears in the Payment Summary (MN19) information screen.</li>
+            <li>Amount(s): Enter the payment amount that appears in the Payment Summary (MN19) information screen.</li>
+            <li>Name: Enter the client’s surname and given name.</li>
+            <li>
+              Address: Enter the client’s address as follows:
+              <ul>
+                <li>On the first line, enter the street address.</li>
+                <li>On the second line, enter the city, province and postal code.</li>
+              </ul>
+            </li>
+            <li>Telephone number: Enter the client’s telephone number.</li>
+            <li>
+              Action:
+              <ul>
+                <li>Type “The client had received the warrant and the warrant was [stolen, lost or destroyed].”</li>
+                <li>Specify whether the client had endorsed the warrant and, if applicable, that the client was informed of the obligation to reimburse the payment if it is cashed.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 Moncton IPOC .</li>
+                <li>Ontario: Select 3056 Belleville IPOC .</li>
+                <li>Quebec: Select 2642 Montreal IPOC (3) .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Type BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>
+              Details: Copy and paste the information from the INS5207 form .
+              <xref href="https://esdc.prv/en/service-canada/ei/reference-material/forms/documents/checklists/form_5207.doc">INS5207 form</xref>
+            </li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant .</li>
+            <li>Comments : Type “Payment replacement request submitted to IPOC.”</li>
+            <li>Details: Type “A payment replacement request was submitted to IPOC for warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD]. The client had received the warrant and the warrant was [stolen, lost or destroyed]. The client has been informed and understands that: The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days for a warrant. If the original warrant is found or recovered, only one payment can be cashed and the other must be returned to Service Canada. If both payments are cashed, an investigation will be conducted, reimbursement of the original payment could be required and a penalty may be imposed.”</li>
+            <li>If the original warrant was endorsed, type “The client has been informed and understands that, having endorsed the warrant, the client will be required to repay the amount of the original payment if the warrant is eventually cashed, whether it be by the thief or any other person who finds the warrant.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If there is a WI, complete it.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

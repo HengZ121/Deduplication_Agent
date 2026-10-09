@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="replacing_a_returned_cheque_with_a_dire_517f6582">
+  <title>Replacing a returned cheque with a direct deposit payment</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              In SPS, select Returns &amp; Duplicates in the Main Menu and Advice Notice Instructions in the Screen menu to issue a replacement payment as follows:
+              <ul>
+                <li>Payment Reference Number: Enter the 12-digit payment reference number.</li>
+                <li>Click Go .</li>
+                <li>Address: Enter the client’s new address in capital letters.</li>
+                <li>Postal Code: Enter the client’s new postal code in capital letters.</li>
+                <li>Country: Select the appropriate option.</li>
+                <li>Financial Institution: Enter the financial institution number.</li>
+                <li>Branch: Enter the branch number.</li>
+                <li>FI Account Number: Enter the account number.</li>
+                <li>Verify that the client’s name is correct. Click Submit .</li>
+                <li>Verify that the information entered is correct. Click Confirm .</li>
+                <li>No further action is required.</li>
+              </ul>
+              <xref href="../../common_notes/note_c_2950.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

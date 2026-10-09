@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to obtain the required information.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4938.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding, or if the client responded to the N-10-00-00 ACS letter:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached , go to step 8.</li>
+            <li>
+              If the client was not reached or did not reply to the N-10-00-00 letter, go to Reassigning the issue to Level 2 .
+              <xref href="#reassigntol2">Reassigning the issue to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Reason for separation .</li>
+            <li>Comments: Type “Voluntary leaving — [employer’s name] — [last day worked] — client.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reminded during fact-finding to submit the missing document that provides the authorization to quit employment:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI related to the missing document that provides the authorization to quit employment to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Fact finding client .</li>
+            <li>Bring forward date: Enter the date of the most recent contact + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the document that provides the authorization to quit employment is on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>
+              If no, go to Reassigning the issue to Level 2 .
+              <xref href="#reassigntol2">Reassigning the issue to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the information on file shows that a designated authority authorized the client to quit the employment to participate in an employment activity:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>
+              If no, go to Reassigning the issue to Level 2
+              <xref href="#reassigntol2">Reassigning the issue to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

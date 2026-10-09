@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="combined_weeks_paid_exceed_allowed_shar_8ef5455f">
+  <title>Combined weeks paid exceed allowed shareable benefits</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the number of weeks paid is equal to the number of weeks of entitlement shown in FTS:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the WP status is 5 - Waiting period deferred (parental standard or extended):</cmd>
+        <info>
+          <ul>
+            <li>If yes, error code 312 is generated and an IPOC officer must make the change. Go to step 3.</li>
+            <li>If no, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 22 - Change to special benefits counter .</li>
+            <li>Remarks line 1: Type “312 error code. Parental entitlement paid in full and WP deferred.”</li>
+            <li>Remarks line 2: Type “Change entitlement parental weeks to [XX], DE35, start [XXXX], end 9999 OP Code 31F04.”</li>
+            <li>Remarks line 3: Type “ WP deferral rescind” if it was deferred in error.</li>
+            <li>Remarks line 5: Enter [officer’s name and telephone number].</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction, impose a D35 and input the conversion as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Revival: Select the appropriate Sunday.</li>
+            <li>Claim type: Select 2 - Regular .</li>
+            <li>
+              Select the Special Benefits (M106) link and in the Parental section, do the following:
+              <ul>
+                <li>Entitlement weeks: Enter the number of weeks of entitlement (the total number of weeks the client is entitled to).</li>
+                <li>Select Save .</li>
+              </ul>
+            </li>
+            <li>Action: Select Add.</li>
+            <li>Disentitlement: Select 35 - Parental benefits, qualifying conditions not met .</li>
+            <li>Start date: Select the first week the parent was overpaid parental benefit weeks.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>
+              Waiting period: Take the appropriate action:
+              <ul>
+                <li>If the WP was deferred in error, select X - Rescind.</li>
+                <li>If the WP was not deferred but should be, select 5 - Waiting period deferred (parental standard or extended) .</li>
+              </ul>
+            </li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day 1, in FTS, select the Renewal/Revised (M106) transaction and impose a D35 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 35 - Parental benefits, qualifying conditions not met .</li>
+            <li>Start date: Select the first week the parent was overpaid parental benefit weeks.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On day 2, select the Renewal/Revised (M106) transaction and complete the following fields:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>
+              Select the Special Benefits (M106) link and in the Parental section, do the following:
+              <ul>
+                <li>Entitlement weeks: Enter the number of weeks of entitlement (the total number of weeks the client is entitled to).</li>
+                <li>Select Save .</li>
+              </ul>
+            </li>
+            <li>Waiting period: If the WP should be deferred, select 5 - Waiting period deferred (parental standard or extended) .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, send the N-00-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>If the client is entitled to some weeks, select Special benefits approved (3046) .</li>
+            <li>If the client is not entitled to any weeks, select Special benefits denied (3065) .</li>
+            <li>
+              If a D35 is imposed, select Parental benefits denied or suspended - D34/D35/D56/D57/Free text (3074) .
+              <ul>
+                <li>Select D35 - Not qualified or entitled (various reasons) (3077) .</li>
+                <li>Select D35 - Parental weeks already paid to one or more other people .</li>
+                <li>Indefinite/Definite/Multiple Disentitlement dates (2485): Select Indefinite disentitlement start date (1270) and enter the date.</li>
+              </ul>
+            </li>
+            <li>Overpayment message (2452) .</li>
+            <li>If the parent is not entitled to a deferral of the WP because the WP has not yet been served, select Waiting period message (2445) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration.</li>
+            <li>If an N-00-00-00 letter was previously sent for this PW, select This letter replaces or footnote (2365) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, for each parent, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Parental benefit entitlement review.”</li>
+            <li>
+              Details: Document the decision and rationale according to the Fact-Finding and Documentation Policy . Type “Entitlement review for shared parental benefits complete.”
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the benefits sharing issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

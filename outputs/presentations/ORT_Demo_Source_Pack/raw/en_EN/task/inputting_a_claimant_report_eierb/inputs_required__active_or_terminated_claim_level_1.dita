@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs_required__active_or_terminated_claim">
+  <title>Inputs required — Active or terminated claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine the CS:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is active, go to step 3.</li>
+            <li>
+              If the claim is terminated but can be reactivated:
+              <ul>
+                <li>On the Dormant tab, select the appropriate BPC.</li>
+                <li>Click Reactivate .</li>
+                <li>Go to step 2.</li>
+              </ul>
+            </li>
+            <li>
+              If the claim is terminated and cannot be reactivated, go to Inputs required — Blocked claim .
+              <xref href="#InputRequiredBlockedClaim">Inputs required — Blocked claim</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a WI for inputting the claimant’s report:</cmd>
+        <info>
+          <ul>
+            <li>If no, hold the task for 24 hours.</li>
+            <li>
+              If yes, move the WI to Pending as follows:
+              <ul>
+                <li>Pending reason: Select Other .</li>
+                <li>Comments: Type “Input the claimant’s report.”</li>
+                <li>Bring forward date: Enter the next business day.</li>
+                <li>When the WI moves to the current workload, go to step 3.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any of the claimant’s reports requiring input are before a renewal week for which claimant’s reports have already been processed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a revised registration number exists for the claimant’s report issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+                <li>Go to step 5.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the registration number for the claimant’s report issue.</li>
+            <li>Memo (MPS): Check the box .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim requiring the claimant’s report to be input.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 26 - Processing of a report blocked by a renewal week .</li>
+            <li>Remarks line 1: Type “P/R claimant’s report before a processed renewal week.”</li>
+            <li>
+              Remarks line 2: Type the appropriate option:
+              <ul>
+                <li>“Process [XXXX] nil and available.”</li>
+                <li>“Process [XXXX] as [FWW or FW] M152, [weeks and amounts for FWW or FW if necessary].”</li>
+              </ul>
+            </li>
+            <li>Remarks line 4: Enter your name and telephone number.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3539.dita">Note</xref>
+          <xref href="../../common_notes/note_c_3540.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+            <li>Go to step 14.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3541.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client declared a condition on the Claimant’s report: Original with pay coding — Checklist that requires paycoding:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>If yes, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Issue Payments (M151/M152) transaction and input the claimant’s reports as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select: Check one or more boxes based on the claimant’s reports being input.</li>
+            <li>Report Period: Select the Sunday of the start week of the claimant’s report to be processed.</li>
+            <li>Weeks: Select 1 for a 1-week claimant’s report or 2 for a 2-week claimant’s report.</li>
+            <li>Click Update .</li>
+            <li>Go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Issue Payments (M151/M152) transaction and input the claimant’s reports as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select: Check one or more boxes based on the number of claimant’s reports being input.</li>
+            <li>Report Period: Select the Sunday of the start week of the claimant’s report to be processed.</li>
+            <li>Weeks: Select 1 for a 1-week claimant’s report or 2 for a 2-week claimant’s report.</li>
+            <li>Coding: Click No. When the Detailed Claimant’s Report (M152) transaction opens, select the appropriate option in the Found work or Full work week field, if necessary.</li>
+            <li>
+              Full work week: Select the appropriate option:
+              <ul>
+                <li>1 - Full work week in week 1</li>
+                <li>2 - Full work week in week 2</li>
+                <li>3 - Full work week both weeks</li>
+              </ul>
+            </li>
+            <li>
+              Found work: Select the appropriate option:
+              <ul>
+                <li>1 - Found work on Sunday or Monday of week 1 (or Tuesday following a statutory holiday) — No other earnings coding is required.</li>
+                <li>2 - Found work on Sunday or Monday of week 2 (or Tuesday following a statutory holiday) — Code any earnings for week 1. No other coding is required for week 2.</li>
+                <li>3 - Found work on Monday of the week following week 2 (or Tuesday following a statutory holiday).</li>
+                <li>4 - Found work after Monday in the first week — Code the earnings for week 1.</li>
+                <li>5 - Found work after Monday in the second week — Code the earnings for week 2.</li>
+                <li>6 - No further reports to be issued - client indicated they no longer wish to receive benefits .</li>
+              </ul>
+              <xref href="../../common_notes/note_c_3542.dita">Note</xref>
+              <xref href="../../common_notes/note_c_3543.dita">Note</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+          <ul>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if additional claimant’s reports must be input:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 8.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a revised registration number for this issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and complete the registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if a WI exists for the claimant’s report issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, return to the initial task.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

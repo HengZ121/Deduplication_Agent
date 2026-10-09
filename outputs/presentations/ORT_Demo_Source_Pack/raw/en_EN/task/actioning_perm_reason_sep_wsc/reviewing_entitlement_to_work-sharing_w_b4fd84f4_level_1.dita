@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_entitlement_to_work-sharing_w_b4fd84f4">
+  <title>Reviewing entitlement to Work-Sharing (WS) for the last week</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if one of the following conditions is met:</cmd>
+        <info>
+          <ul>
+            <li>The RFS is not contentious.</li>
+            <li>
+              The RFS is allowed as just cause.
+              <ul>
+                <li>If one of the conditions is met, go to step 15.</li>
+                <li>If none of the conditions are met, the week before the week of the separation is processed as the last week of WS benefits. Go to step 18.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client worked at least a half hour with the WS employer:</cmd>
+        <info>
+          <ul>
+            <li>If no, the week before the week in which the separation occurs is processed as the last week of WS benefits. Go to step 18.</li>
+            <li>
+              If yes, determine if fact-finding with the client is required to obtain the following information:
+              <ul>
+                <li>What BT does the client want to receive for the week of the separation?</li>
+                <li>
+                  Any details required for claimant’s reports for the WS period that must be modified or that have not been received. Refer to Claimant’s report for more information.
+                  <ul>
+                    <li>
+                      If fact-finding is required, fact-find with the client and go to step 16.
+                      <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+                    </li>
+                    <li>If fact-finding is not required, go to step 18.</li>
+                  </ul>
+                  <xref href="/en/procedure/activity/claimant_report.shtml">Claimant’s report</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 17.</li>
+            <li>If the client was not contacted and did not reply to the N-10-00-00 letter, the week in which the separation occurs is processed as the last week of WS benefits. Go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Separation from WS employer during WS agreement.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if this is a WS claim from the Western Canada and Territories region:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 19.</li>
+            <li>If no, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if any of the following must be input or modified:</cmd>
+        <info>
+          <ul>
+            <li>The WS agreement end date (must equal the last week of WS benefits).</li>
+            <li>
+              Claimant’s reports for WS benefits.
+              <ul>
+                <li>If any inputs or modifications are required, go to step 20.</li>
+                <li>
+                  If no inputs or modifications are required, refer to Conversion and renewal .
+                  <xref href="/en/procedure/activity/conversions.shtml">Conversion and renewal</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>Destination — SCC: Select 5903 Vancouver IPOC .</li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Work-Sharing .</li>
+            <li>BPC: Type the BPC of the claim.</li>
+            <li>Comments: Type “Claimant’s report information for Work-Sharing period.”</li>
+            <li>Details: Type the agreement start and end date, and any claimant’s report information for the WS period that must be modified or that have not been input.</li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting processing of WS information and the claimant’s reports.”</li>
+            <li>Bring forward date: Enter today’s date + 2 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the Project Data — Training (M171) transaction and the claimant’s report have been processed:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 21.</li>
+            <li>If yes, go to step 23.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the WS end week indicated on the claim is correct:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 24.</li>
+            <li>
+              If yes, go to Work-Sharing (WS) end week is correct .
+              <xref href="#CorrectEndWeek">Work-Sharing (WS) end week is correct</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the current WS end week is later than the correct WS end week:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Current Work-Sharing (WS) end week is later than the correct WS end week .
+              <xref href="#Later">Current Work-Sharing (WS) end week is later than the correct WS end week</xref>
+            </li>
+            <li>
+              If no, go to Current Work-Sharing (WS) end week is not later than the correct WS end week .
+              <xref href="#NotLater">Current Work-Sharing (WS) end week is not later than the correct WS end week</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

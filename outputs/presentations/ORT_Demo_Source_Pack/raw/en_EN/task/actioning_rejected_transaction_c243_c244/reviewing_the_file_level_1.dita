@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is a premium reduction code on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the details of the premium reduction plan and determine if there has been a change:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the allocation overlaps the 2 calendar years:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the premium reduction plan status remains the same for both calendar years:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>If yes, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the premium reduction status has changed during this calendar year:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the officer inputs the code change retroactively. Refer to Determine the premium reduction code to be input :</cmd>
+        <info>
+          <ul>
+            <li>If no and the officer inputs 2 codes, go to step 7.</li>
+            <li>If yes, input the current code and go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if more than one premium reduction code must be entered:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim being sent to IPOC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on fishing claims or other complex claim conditions or if the claim is already in MPS, select 30 - New information on manual pay claim .</li>
+            <li>Remarks line 1: Type “2 PRP statuses present on claim.”</li>
+            <li>Remark line 2: Type “Process cycling CRs and send next paper CR.”</li>
+            <li>Remarks lines 3-4: Type “PR code [X] from w/c [XXXX] to w/c [XXXX] and PR code [X] from w/c [XXXX] to w/c [XXXX], allocation type [X], amount [$XXX] from w/c [XXXX] to w/c [XXXX] last week amount [$XXX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Store .</li>
+            <li>Go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, if there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and input the premium reduction code as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Supplementary claim information: Enter the appropriate code:
+              <ul>
+                <li>11 - No Premium Reduction</li>
+                <li>12 - Premium Reduction WLI</li>
+                <li>13 - Premium Reduction PSL</li>
+                <li>14 - Premium Reduction WLI and PSL</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Resubmit the rejected claimant’s report. For more information, refer to Actioning a rejected claimant’s report .</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, remove the SIN from the Rejected Transactions Retrieval (MR05) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the appropriate SIN.</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="exam-phase-coexist-sa-legacy-co-exist-r_3a62e328" xml:lang="en-CA">
+  <title>Legacy Co-existence review – additional assessment – Cúram</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="verification_in_full_text_screen_fts_th_e61fabfe.dita">
+    </topicref>
+    <topicref href="checking_for_violation_in_fts.dita">
+    </topicref>
+    <topicref href="manual_input_of_tax_exemption_for_first_c4f583d4.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_curam.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="additional_verifications_in_fts_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_claim_for_existing_violation_level_1.dita">
+      </topicref>
+      <topicref href="manual_input_of_tax_exemption_for_first_c4f583d4_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

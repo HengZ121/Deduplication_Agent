@@ -1,0 +1,13 @@
+{
+  "exact_section_groups": 1398,
+  "physical_sections_in_exact_groups": 4105,
+  "redundant_physical_copies_upper_bound": 2707,
+  "substantive_review_groups": 629,
+  "internal_exact_span_groups": 13276,
+  "already_shared_sources": 7924,
+  "already_shared_sources_in_multiple_documents": 1229,
+  "shared_reference_occurrences": 10911,
+  "map_issues": 0,
+  "sections_with_unresolved_source": 0,
+  "note": "Exact groups and internal span groups overlap. Do not add their repeated-word counts. Exact content does not certify universal applicability."
+}

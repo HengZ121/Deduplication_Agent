@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="self_employed_revised" xml:lang="en-CA">
+  <title>Adjudicating self-employment — Continuing claim</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="engaging_in_self-employment_se.dita">
+    </topicref>
+    <topicref href="determining_if_self-employment_se_is_mi_9460fe46.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4716.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_are_met_t_16907630_level_1.dita">
+      </topicref>
+      <topicref href="self-employment_se_is_minor_in_extent_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_issue_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4729.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4730.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4731.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1818.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_self-employment_se_level_2.dita">
+      </topicref>
+      <topicref href="client_is_only_an_investor_level_2.dita">
+      </topicref>
+      <topicref href="self-employment_se_is_minor_in_extent_level_2.dita">
+      </topicref>
+      <topicref href="self-employment_se_is_not_minor_in_extent_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

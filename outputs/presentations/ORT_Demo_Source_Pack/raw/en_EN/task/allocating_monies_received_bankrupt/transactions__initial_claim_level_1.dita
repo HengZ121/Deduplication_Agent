@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="transactions__initial_claim">
+  <title>Transactions — Initial claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In RCM, amend the ROE from the bankrupt employer to include the dividend payments.</cmd>
+      </step>
+      <step>
+        <cmd>In SSO, recalculate the claim, but do not transmit the transactions that are generated. Send the recalculation to IPOC using an Operational Centre Memo (MM06) transaction. After reviewing the transactions generated during the calculation of the claim, store any of the transactions created by SSO before proceeding to step 3. For more information on recalculating claims, refer to the appropriate activity to calculate or recalculate the claim.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 91 - Overpayment .</li>
+            <li>Work type: Select 04 - Employer bankruptcy .</li>
+            <li>Remarks line 1: Type “Bankruptcy-[employer name]- [dividend amount].”</li>
+            <li>
+              Remarks line 2 - 4: Use these lines to enter the input details for the Allocations (M175) , Additional Data (M107) , and Renewal/Revised (M106) transaction. Include instructions to:
+              <ul>
+                <li>rescind the stop pay if one has been imposed;</li>
+                <li>move no more than the dividend amount to the EIB1 PSCD account;</li>
+                <li>advise the adjudicating officer of the OP amount;</li>
+                <li>create additional Operational Centre Memos if necessary.</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1989.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change the registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When you receive the details of the OP amount from IPOC, advise the Regional Bankruptcy Coordinator of the amount OP according to regional procedures.</cmd>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a D-20-16-03 letter to each affected client. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Allocation of Bankruptcy payments (2573): Select the appropriate option:
+              <ul>
+                <li>Allocation of Bankruptcy payments .</li>
+                <li>Allocation of Bankruptcy payments (with balance Week 1) .</li>
+              </ul>
+              <xref href="../../common_notes/note_c_1990.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI if not already completed.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

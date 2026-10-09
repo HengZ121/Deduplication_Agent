@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_roe_fishing_roe_summary">
+  <title>Summary</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/completing_roe_fishing_roe.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <p id="completing_roe_fishing_roe_summary_p1">
+      <strong>Summary:</strong>
+      When a fishing ROE (serial number starting with
+      <strong>Z</strong>
+      or
+      <strong>Y</strong>
+      ) is received with a reason for separation (RFS)
+      <strong>B - Other</strong>
+      on an initial Web application, if the system is unable to create a link between the ROE and a matching period of employment or determine if the issue requires adjudication, an ROE Issue (ROE) RFS Action WI is created.
+    </p>
+  </conbody>
+</concept>

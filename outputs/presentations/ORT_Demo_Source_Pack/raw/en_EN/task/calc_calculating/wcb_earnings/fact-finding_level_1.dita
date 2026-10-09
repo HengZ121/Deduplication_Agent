@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find with the client to obtain the missing information. Ask the client to provide the following details, if necessary:</cmd>
+        <info>
+          <ul>
+            <li>the payment start date;</li>
+            <li>the payment end date;</li>
+            <li>the weekly or daily amount</li>
+            <li>the first week amount</li>
+            <li>the last week amount (if known), or whether the payment is continuing</li>
+            <li>the type of WCB payment (temporary support or full and final settlement)</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, and the client provided the missing information, go to step 6.</li>
+            <li>If yes, but the client cannot provide the missing information, go to step 8.</li>
+            <li>
+              If the client was not reached or did not reply to the N-10-00-00 letter, go to Unable to reach the client for missing information .
+              <xref href="#unable_to_reach">Unable to reach the client for missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the WCB payments end before the tentative BPC:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>
+              If yes, go to Workers’ compensation benefits (WCB) are not earnings .
+              <xref href="#workers_compensation_benefits_not_earning">Workers’ compensation benefits (WCB) are not earnings</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “Workers’ compensation benefits information received from the client.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>
+              Go to Reviewing the workers’ compensation benefits WCB .
+              <xref href="#level1_item_3">Reviewing the workers’ compensation benefits WCB</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the Q-01-00-00 letter to the client with the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Info required-Re: Antedate/Medical or treatment outside/Mat-Par Direct Deposit/Family Caregiver/Text (2886)</li>
+            <li>Specify information required</li>
+            <li>
+              TEXT - Specify information required (1544): Enter any missing information required using the following list:
+              <ul>
+                <li>the payment start date;</li>
+                <li>the payment end date;</li>
+                <li>the weekly or daily amount;</li>
+                <li>the first week amount;</li>
+                <li>the last week amount (if known) or if the payment is ongoing;</li>
+                <li>the type of WCB received.</li>
+              </ul>
+            </li>
+            <li>This letter replaces or Footnote (2365)</li>
+            <li>Footnote</li>
+            <li>Text - Footnote (11745): Type “If you want to provide this information by telephone, contact [your first name] at [your telephone number], [your work hours (in the client’s time zone, if necessary], before [date the information is due].”</li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2238.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Details: Select the appropriate option:
+              <ul>
+                <li>Type “Unable to reach the client by telephone. Q-01-00-00 letter has been sent.”</li>
+                <li>Type “The client is reached but cannot provide the missing information. The client is waiting for the decision on their request for workers’ compensation benefits. Q-01-00-00 letter has been sent.”</li>
+              </ul>
+            </li>
+            <li>Select Draft .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Q-01-00-00 letter sent.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If the client provides the missing information within the 10 business days, do the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Validate the client’s identity .
+              <xref href="/en/procedure/generic/additionalresources/validating_cict.shtml">Validate the client’s identity</xref>
+            </li>
+            <li>Explain the reason for your call.</li>
+            <li>Conduct fact-finding.</li>
+            <li>
+              Go to Reviewing the workers’ compensation benefits (WCB) .
+              <xref href="#level1_item_3">Reviewing the workers’ compensation benefits (WCB)</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, if the client has not provided the missing information, do the following:</cmd>
+        <info>
+          <ul>
+            <li>Open the draft SROC and select Save .</li>
+            <li>
+              Go to Unable to reach the client for missing information .
+              <xref href="#unable_to_reach">Unable to reach the client for missing information</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

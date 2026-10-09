@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="adj_rfs_review" xml:lang="en-CA">
+  <title>Adjudication Issue RFS Review WI</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="conditions_for_creating_the_wi.dita">
+    </topicref>
+    <topicref href="reviewing_the_reason_for_separation_rfs.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="what_do_you_want_to_do.dita">
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

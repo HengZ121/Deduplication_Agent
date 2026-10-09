@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_last_day_worked_ldw_and_l_062f17b7">
+  <title>Reviewing the last day worked (LDW) and last day paid (LDP)</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the LDW on the application and the LDP on the last ROE are within 14 days of each other (LDW plus or minus 13 days):</cmd>
+        <info>
+          <ul>
+            <li>
+              If the LDW and LDP are within 14 days of each other, accept the result and go to Determining if the client received QPIP benefits .
+              <xref href="#level1_item_2">Determining if the client received QPIP benefits</xref>
+            </li>
+            <li>
+              If the LDW and LDP are not within 14 days of each other, determine if the LDW is before or after the LDP (e.g. LDW is May 1 and LDP is May 30):
+              <ul>
+                <li>If the LDW is after the LDP, go to step 2.</li>
+                <li>If the LDW is before the LDP, go to step 6.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client to determine why the LDW on the application is more than 14 days after the LDP on the last ROE.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 4.</li>
+            <li>If the client was not contacted or did not reply to the N-10-00-00 letter, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Last day worked versus last day paid.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has provided a new LDW which is within 14 days (plus or minus) of the LDP on the ROE:</cmd>
+        <info>
+          <ul>
+            <li>If the client has not provided a new LDW which is within 14 days (plus or minus) of the LDP on the ROE, go to step 7.</li>
+            <li>
+              If the client has provided a new LDW which is within 14 days (plus or minus) of the LDP on the ROE, refer to Modifying the last day worked in SSO .
+              <xref href="/en/procedure/task/calc_calculating/changing_fdw_ldw.shtml">Modifying the last day worked in SSO</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ROE confirms that the client has received insurable earnings (e.g. PSL, salary continuance, scheduled paid vacation days, or scheduled insurable days off) after ceasing work:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the ROE confirms that the client has received insurable earnings after the LDW, go to Determining if the client received QPIP benefits .
+              <xref href="#level1_item_2">Determining if the client received QPIP benefits</xref>
+            </li>
+            <li>If the ROE does not confirm that the client has received insurable earnings after the LDW, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the employer to determine why the LDW and the LDP dates differ by more than 14 days. If applicable, provide the information received from the client.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the employer was not contacted, go to step 9.</li>
+            <li>If the employer was contacted, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, send a registered copy of the Z-02-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul/>
+          <xref href="../../../common_notes/note_c_1564.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the calculation WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Z-02-00-00 letter sent.”</li>
+            <li>Bring forward date: Enter the date the letter is sent + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the calculation WI moves to the current workload, determine if the information is now on file:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer the file to Integrity for employer non-compliance.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there has been an attempt to contact the client:</cmd>
+        <info>
+          <ul>
+            <li>
+              If contact has not been attempted, fact-find with the client to determine why the LDW and the LDP dates differ by more than 14 days. Go to step 14.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If contact has been attempted and the client responded, go to step 16.</li>
+            <li>If contact has been attempted and the client did not respond, on the calculation worksheet, note that a 15 - Claim procedure (D15) disentitlement is required if the client qualifies and go to step 18.</li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2378.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 15.</li>
+            <li>If the client was not contacted, on the calculation worksheet, note that a (D15) disentitlement is required if the client qualifies for benefits. Go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Last day worked versus last day paid.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has confirmed the LDW provided on the application:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the client provides a new LDW which is within 14 days (plus or minus) of the LDP on the ROE, refer to Modifying the last day worked in SSO .
+              <xref href="/en/procedure/task/calc_calculating/changing_fdw_ldw.shtml">Modifying the last day worked in SSO</xref>
+            </li>
+            <li>If no information has been provided, go to step 17.</li>
+            <li>
+              If the client has confirmed the LDW on the application is correct, determine if the LDW is before or after the LDP on the ROE:
+              <ul>
+                <li>
+                  If the LDW is after the LDP, obtain the information from the client to enter an interim ROE .
+                  <xref href="/en/procedure/activity/interim_roe.shtml">enter an interim ROE</xref>
+                </li>
+                <li>If the LDW is before the LDP, accept the ROE as provided and advise the client that the claim will be reviewed when information is received from the employer.</li>
+                <li>Go to step 17.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Accept the calculation as displayed and go to Determining if the client received QPIP benefits .</cmd>
+      </step>
+      <step>
+        <cmd>In RCM, make any required changes to the ROE according to the information obtained during fact-finding.</cmd>
+        <info>
+          <ul>
+            <li>If the employer was contacted, in the Additional information field , document the information obtained.</li>
+            <li>
+              Select Validate and determine if an error is displayed:
+              <ul>
+                <li>If no error is displayed, select Submit and go to step 19.</li>
+                <li>
+                  If an error is displayed, refer to Correcting an ROE and go to step 19.
+                  <xref href="/en/procedure/activity/correct_roe.shtml">Correcting an ROE</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the new or amended information to determine if an I of E has occurred:</cmd>
+        <info>
+          <ul>
+            <li>
+              If an I of E has occurred, go to step 9 of Calculating a claim in SSO .
+              <xref href="/en/procedure/subactivity/calc_ssa_sb.shtml">Calculating a claim in SSO</xref>
+            </li>
+            <li>
+              If an I of E has not occurred, refer to Indicating in SSO that there is no interruption of earnings .
+              <xref href="/en/procedure/task/calc_calculating/no_interruption_earnings.shtml">Indicating in SSO that there is no interruption of earnings</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

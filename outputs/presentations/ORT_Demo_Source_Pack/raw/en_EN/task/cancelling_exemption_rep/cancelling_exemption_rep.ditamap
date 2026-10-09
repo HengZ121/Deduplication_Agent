@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="cancelling_exemption_rep" xml:lang="en-CA">
+  <title>Cancelling an exemption from reporting</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="receiving_a_request_to_cancel_an_exemption.dita">
+    </topicref>
+    <topicref href="automatic_cancellation_of_an_exemption.dita">
+    </topicref>
+    <topicref href="work-sharing_ws_claims.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="cancelling_an_exemption__input_level_1.dita">
+      </topicref>
+      <topicref href="cancelling_an_exemption_for_an_mps_claim__input_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_work-sharing_ws_claim_to_ipoc_level_1.dita">
+      </topicref>
+      <topicref href="reassigning_the_work-sharing_ws_claim_t_9ede9e1d_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

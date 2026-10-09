@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="in_imaging">
+  <title>In Imaging:</title>
+  <conbody>
+    <ul>
+      <li>Is there any other documentation which may impact the conversion claim?</li>
+      <li>Is there documentation with the other parent’s SIN?</li>
+    </ul>
+  </conbody>
+</concept>

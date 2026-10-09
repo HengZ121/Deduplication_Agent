@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="mod_lsppa" xml:lang="en-CA">
+  <title>Modifying the allocation of a lump-sum or periodic pension</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="modifying_an_existing_allocation.dita">
+    </topicref>
+    <topicref href="pensions.dita">
+    </topicref>
+    <topicref href="periodic_pension_annuity.dita">
+    </topicref>
+    <topicref href="lump-sum_pension_benefits.dita">
+    </topicref>
+    <topicref href="re-qualifier_exemption_for_pension_earnings.dita">
+    </topicref>
+    <topicref href="re-qualifier_exemption_for_claims_estab_81b2ec23.dita">
+    </topicref>
+    <topicref href="post-retirement_benefit.dita">
+    </topicref>
+    <topicref href="pension_allocation_codes.dita">
+    </topicref>
+    <topicref href="return_of_contributions_on_termination__545d72ca.dita">
+    </topicref>
+    <topicref href="claim_status_cs_definition.dita">
+    </topicref>
+    <topicref href="inputting_the_allocation.dita">
+    </topicref>
+    <topicref href="inputs_on_a_blocked_claim__bcs.dita">
+    </topicref>
+    <topicref href="recalculation.dita">
+    </topicref>
+    <topicref href="information_reported_after_claimants_re_82afb561.dita">
+    </topicref>
+    <topicref href="obtaining_the_missing_information.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1872.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1873.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_3752.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1875.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_3753.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_acs.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_a_recalculation_is_required_level_1.dita">
+      </topicref>
+      <topicref href="determining_how_to_allocate_the_monies_level_1.dita">
+      </topicref>
+      <topicref href="modifying_the_allocation_of_a_periodic_pension_level_1.dita">
+      </topicref>
+      <topicref href="modifying_the_allocation_of_a_pension_r_aec23bae_level_1.dita">
+      </topicref>
+      <topicref href="missing_information_level_1.dita">
+      </topicref>
+      <topicref href="pension_is_not_considered_earnings_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3754.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1878.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1899.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1891.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3755.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3756.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3757.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3758.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3759.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_1791.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3760.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3761.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="determining_if_a_recalculation_is_required_level_2.dita">
+      </topicref>
+      <topicref href="determining_how_to_allocate_the_monies_level_2.dita">
+      </topicref>
+      <topicref href="modifying_the_allocation_of_a_periodic_pension_level_2.dita">
+      </topicref>
+      <topicref href="modifying_the_allocation_of_a_pension_r_aec23bae_level_2.dita">
+      </topicref>
+      <topicref href="missing_information_level_2.dita">
+      </topicref>
+      <topicref href="pension_is_not_earnings_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3762.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3763.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3764.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3765.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_3766.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

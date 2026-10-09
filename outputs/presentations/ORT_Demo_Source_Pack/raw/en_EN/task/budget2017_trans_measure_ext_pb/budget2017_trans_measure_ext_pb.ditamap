@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="budget2017_trans_measure_ext_pb" xml:lang="en-CA">
+  <title>Budget 2017 — Transitional measures for extended parental benefits</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2188.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2189.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="procedure_level_1.dita">
+      </topicref>
+      <topicref href="conversion_from_standard_to_extended_pa_edf53926_level_1.dita">
+      </topicref>
+      <topicref href="conversion_from_standard_to_extended_pa_8a6fd6f8_level_1.dita">
+      </topicref>
+      <topicref href="reassign_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2190.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2191.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="procedure_level_2.dita">
+      </topicref>
+      <topicref href="conversion_from_standard_to_extended_pa_edf53926_level_2.dita">
+      </topicref>
+      <topicref href="conversion_from_standard_to_extended_be_284b7595_level_2.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2192.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2193.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

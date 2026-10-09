@@ -1,0 +1,14 @@
+{
+  "sections_over_1200_body_characters": {
+    "activity": 109,
+    "task": 3707
+  },
+  "task_maps_without_step_by_step": [
+    "en_EN/task/calc_determining/preliminary_calculation/preliminary_calculation.ditamap",
+    "en_EN/task/confirmreftrng_sb_rc/confirmreftrng_sb_rc.ditamap",
+    "en_EN/task/imaoc_sapco/imaoc_sapco.ditamap",
+    "en_EN/task/renew_ccb/renew_ccb.ditamap"
+  ],
+  "common_note_occurrences": 5443,
+  "distinct_common_note_targets": 3865
+}

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="client_is_not_requesting_benefits__frau_f4775c46">
+  <title>Client is not requesting benefits — Fraudulent claim in another ITC</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if payments were issued to a third party:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 3.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SPS, for each payment issued to a third party, determine if the payment status is Issued or Returned :</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1715.dita">Note</xref>
+          <ul>
+            <li>If yes, note the payment reference number, the amount (gross benefits and net amount) and the date the payment was processed as this information is required on the MM06. Go to step 3.</li>
+            <li>If no, go to step 3.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1716.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, in the ITC of the fraudulent claim, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number created in step 3.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 27 - An overpayment resulted due to an incorrect calculation .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number created in step 3.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 54 - Third party fraud .</li>
+            <li>Remarks line 1: Type “Tiger team. Fraudulent claim. Unknown third party.”</li>
+            <li>Remarks line 2: Type “Void the claim.”</li>
+            <li>
+              Remarks line 3: Type the appropriate option:
+              <ul>
+                <li>“No payment issued.”</li>
+                <li>“Remove w/cs [XXXX] to [XXXX] from client’s file.”</li>
+                <li>If payments have been returned or were never redeemed, type: “Cancel returned payments for w/cs [XXXX] to [XXXX]. T071-2 [for current year] or T071-8 [for previous year] / reason F / CT [XX].” For each payment, type “w/c [XXXX] / gross amount [XXXX] / federal tax [XX] / provincial tax (if necessary) [XX] / net amount [XXXX] / payment reference number [XXXXXXXXXXXX].”</li>
+              </ul>
+            </li>
+            <li>Remarks line 4: Type “Adjust tax file, if necessary.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1717.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number created in step 3.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1711.dita">Note</xref>
+          <ul>
+            <li>Comments: Type “[Integrity file number] — Fraudulent EI Claim.”</li>
+            <li>
+              Details: Do the following:
+              <ul>
+                <li>Type: “The investigator confirmed the client’s address on [date]. The client’s address is: [client’s address].”</li>
+                <li>
+                  Document the decision and rationale according to the Fact-Finding and Documentation Policy .
+                  <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create ROD on the fraudulent EI application as follows:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1712.dita">Note</xref>
+          <ul>
+            <li>Comments: Type “[Integrity file number] — EI application submitted by a third party.”</li>
+            <li>
+              Details: Enter the following information:
+              <ul>
+                <li>Relevant facts: Type “An EI application was filed by a third party on [date] using the client’s identity.”</li>
+                <li>Decision/Justification: Type “This application was not filed by the client and must not be included in an access to information request.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To delete the fraudulent application, create a REM WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Reason: Select Other .</li>
+            <li>Comments: Type “Delete the application.”</li>
+            <li>Due date: Enter the next working day.</li>
+            <li>Language: Select the appropriate option.</li>
+            <li>Details: Type “Fraudulent claim.”</li>
+            <li>Destination — SCC: Enter the SCC as shown in FTS.</li>
+            <li>
+              End user: Select Specific user:
+              <ul>
+                <li>Enter the name of the team leader or the designated person and select Find user .</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1713.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, on the Decision tab of the Report of Investigation (IC70) , close the case as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement: Select No .
+              <ul>
+                <li>Reason: Select Other and type “Fraudulent claim. Third-party OP amount is [XX]$.”</li>
+              </ul>
+            </li>
+            <li>Overpayment: Do not check the box.</li>
+            <li>Penalty: Select No .</li>
+            <li>Warning: Select No .</li>
+            <li>Violation: Select No .</li>
+            <li>Prosecution: Select No .</li>
+            <li>Select OK .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, in the ITC of the region where the client lives, select the Renewal/Revised (M106) transaction and complete the Integrity registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claim allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR Integrity WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

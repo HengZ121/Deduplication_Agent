@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="replacing_a_payment">
+  <title>Replacing a payment</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Provide the client with the following information:</cmd>
+        <info>
+          <ul>
+            <li>If the client receives payment by direct deposit, the replacement time is 5 business days. If the client does not receive payment by direct deposit, the replacement time is 7 to 13 business days.</li>
+            <li>If the payment was outstanding and the client receives both payments (original and replacement), the client must return one of them to Service Canada. After asking the financial institution to return the payment, the client must also notify Service Canada.</li>
+            <li>If payment was outstanding and the client receives both payments but does not return one of them, an investigation will be conducted, which could result in the reimbursement of the original payment and a penalty.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the client’s SIN.</li>
+            <li>HRCC: Enter the Service Canada Centre (SCC) as shown in FTS.</li>
+            <li>Requestor: Enter your 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/cs of the payment to be replaced.</li>
+            <li>Warrant No(s): Enter any payment reference numbers displayed on the Payment Summary (MN19) screen.</li>
+            <li>Amount(s): Enter any whole dollar amounts displayed on the Payment Summary (MN19) screen.</li>
+            <li>Name: Enter the client’s last and first name.</li>
+            <li>Address: Enter the client’s address.</li>
+            <li>Telephone number: Enter the client’s telephone number.</li>
+            <li>Action: Enter the reason for replacement (i.e. payment not received).</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 Moncton IPOC .</li>
+                <li>Ontario: Select 3056 Belleville IPOC .</li>
+                <li>Quebec: Select 2642 Montreal IPOC (3) .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Enter the BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>Details: Copy and paste the information from the INS5207 form.</li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Payment replacement request submitted to the Insurance Payment Operational Centre.”</li>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>“The direct deposit account on the client’s file has never belonged to the client. A payment replacement request was submitted to Insurance Payment Operational Centre for payment [reference number] issued on [payment issue date] for the weeks of [YYYY-MM-DD] to [YYYY-MM-DD]. The client has been informed and understands that the replacement time is 5 business days if the client receives payment by direct deposit. If the client does not receive payment by direct deposit, the replacement time is 7 to 13 business days. If both payments (original and replacement) are received, the client must return one of them to Service Canada. After asking the financial institution to return the payment, the client must also notify Service Canada. If both payments are received and the client does not return one of them, an investigation will be conducted, which could result in the reimbursement of the original payment and a penalty.”</li>
+                <li>“The client has not received the payment issued more than 5 business days ago. A payment replacement request was submitted to the Insurance Payment Operational Centre for payment [payment number] issued on [payment issue date] for the weeks of [YYYY-MM-DD] to [YYYY-MM-DD]. The client has been informed and understands that the replacement time is 5 business days if the client receives payment by direct deposit. If the client does not receive payment by direct deposit, the replacement time is 7 to 13 business days. If both payments (original and replacement) are received, the client must return one of them to Service Canada. After asking the financial institution to return the payment, the client must notify Service Canada. If both payments are received and the client does not return one of them, an investigation will be conducted, which could result in the reimbursement of the original payment and a penalty.”</li>
+              </ul>
+            </li>
+            <li>Select Save and complete the WI for the direct deposit replacement request.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

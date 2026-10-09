@@ -1,0 +1,15 @@
+﻿pair_type,bucket,count
+activity / activity,exact_resolved_section,98
+activity / activity,partial_overlap_observed,62
+activity / activity,semantic_equivalence_candidate,12
+activity / activity,template_variant_candidate,146
+activity / task,exact_resolved_section,229
+activity / task,partial_overlap_observed,71
+activity / task,related_or_unresolved,47
+activity / task,semantic_equivalence_candidate,160
+activity / task,template_variant_candidate,1852
+task / task,exact_resolved_section,2860
+task / task,partial_overlap_observed,2483
+task / task,related_or_unresolved,481
+task / task,semantic_equivalence_candidate,1874
+task / task,template_variant_candidate,2492

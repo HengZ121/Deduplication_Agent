@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="new_address_confirmed">
+  <title>New address confirmed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine what type of undeliverable mail was returned:</cmd>
+        <info>
+          <ul>
+            <li>If the undeliverable mail is a D-91-00-00 warning letter that includes an unclassified violation, go to step 2.</li>
+            <li>If the undeliverable mail is a notice of decision that set up an OP or a penalty, go to step 3.</li>
+            <li>If the undeliverable mail is a benefit statement with an access code, go to step 4.</li>
+            <li>If the undeliverable mail is a D-91-00-00 letter that does not include an unclassified violation, go to step 3.</li>
+            <li>If the undeliverable mail is a notice of decision unrelated to a Notice of Debt, go to step 5.</li>
+            <li>If the undeliverable mail is any other ACS letter, go to step 5.</li>
+            <li>If the undeliverable mail is none of the above, go to step 5.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1518.dita">Note</xref>
+          <xref href="../../common_notes/note_c_1519.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, set the original letter to “undeliverable.” Shred the letter and image the envelope. To image the envelope, refer to Preparing documents for imaging . No further action is required.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the Notice of Debt that is related to the undeliverable notice of decision was returned as undeliverable:</cmd>
+        <info>
+          <ul>
+            <li>If the Notice of Debt was not returned as undeliverable, go to step 5.</li>
+            <li>
+              If the Notice of Debt was returned as undeliverable, in ACS, indicate that the original letter is “undeliverable.” Shred the letter and image the envelope. To image the envelope, refer to Preparing documents for imaging . Go to step 6.
+              <xref href="/en/procedure/task/prep_docs_imaging.shtml">Preparing documents for imaging</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the access code has been reissued:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>If yes, shred the unopened envelope containing the benefit statement. No further action is required.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Address an envelope with the client’s new address, enclose the undeliverable mail and send it to the client. Go to step 6.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1520.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Undeliverable Mail .</li>
+            <li>Comments: Type “Insurance.”</li>
+            <li>
+              Details: Type one of the following options:
+              <ul>
+                <li>“[Type of undeliverable mail] originally sent [date] received as undeliverable on [date] — resent to the client’s new address.”</li>
+                <li>“Notice of decision not resent to the client’s new address as the Notice of Debt was also undeliverable.”</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

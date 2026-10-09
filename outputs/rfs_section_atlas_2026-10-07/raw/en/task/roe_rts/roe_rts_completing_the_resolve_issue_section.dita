@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="roe_rts_completing_the_resolve_issue_section">
+  <title>Completing the Resolve Issue section</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_rts.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <p id="roe_rts_completing_the_resolve_issue_section_p1">
+      If the ROE is
+      <strong>not</strong>
+      linked to a period of employment or if the ROE is linked to a period of employment without a corresponding electronic ROD or ADJ WI, the agent must complete the
+      <strong>Resolve Issue</strong>
+      section of the ROE RFS Action WI before completing the WI. When resolving the issue, the agent must review the ROE and the existing RODs.
+    </p>
+    <section id="roe_rts_completing_the_resolve_issue_section_sec1">
+      <title>Comments in block 18</title>
+      <p id="roe_rts_completing_the_resolve_issue_section_p2">
+        If the ROE was issued with comments in block
+        <strong>18</strong>
+        , the agent must determine if the correct RFS is indicated on the ROE. Any required changes to the RFS details must be made in the
+        <strong>Resolve Issue</strong>
+        tab of the ROE RFS Action WI.
+      </p>
+      <note conref="../../common_notes/note_4689.dita#note_4689/reuse_note_4689"/>
+    </section>
+    <section id="review_rod">
+      <title>Reviewing existing records of decision (RODs) on file</title>
+      <p id="roe_rts_completing_the_resolve_issue_section_p3">
+        If the RFS is contentious and there is an existing ROD, the agent must determine if the information on the ROE contradicts the decision on file. When a ROD is not found or when the information on the ROE contradicts the ROD, the agent indicates that no decision matches the ROE when completing the
+        <strong>Resolve Issue</strong>
+        section of the ROE RFS Action WI.
+      </p>
+      <note conref="../../common_notes/note_2675.dita#note_2675/reuse_note_2675"/>
+    </section>
+  </conbody>
+</concept>

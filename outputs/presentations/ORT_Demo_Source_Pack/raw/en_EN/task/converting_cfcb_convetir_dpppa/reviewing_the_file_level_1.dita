@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, determine if there is a SIR Validation (SIR) WI:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the CA WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting completion of SIR WI.”</li>
+            <li>Bring forward date: Enter today’s date + business 10 days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the CA WI moves to the current workload, determine if the SIR WI has been completed:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 2.</li>
+            <li>If yes, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number related to the conversion or renewal:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting a retroactive conversion to a period for which FCB has been processed:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 6.</li>
+            <li>
+              If yes, go to Reassigning the WI to the Specialized EI Processing/Family Caregiver Level .
+              <xref href="#level1_item_4">Reassigning the WI to the Specialized EI Processing/Family Caregiver Level</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client provided a change of address:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>
+              If yes, consult Change of address and go to step 7 of this task.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an outstanding AI WI for a medical certificate for FCB or indicating that the patient has died:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the conversion WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: “Waiting for FCB unit to action [a medical certificate or a notification of death] on file.”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if a decision has been rendered:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 8.</li>
+            <li>If yes, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the WP must be served:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 11.</li>
+            <li>
+              If yes, refer to Cancelling a benefit period . Go to step 11.
+              <xref href="/en/procedure/task/benefit_period_cancel.shtml">Cancelling a benefit period</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the maximum combination of regular and special benefits has been paid:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Maximum benefits already paid .
+              <xref href="#nobenefits">Maximum benefits already paid</xref>
+            </li>
+            <li>If no, go to step 12.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2713.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a pending E-report on the E-Report tab for the period before the conversion:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Actioning a pending claimant’s report and then go to step 13.
+              <xref href="/en/procedure/task/pending_cr.shtml">Actioning a pending claimant’s report</xref>
+            </li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any rejected E-reports on the Pending/Reject tab for the period before the conversion:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, re-input the reports. Refer to Actioning a rejected claimant’s report and then go to step 14.
+              <xref href="/en/procedure/task/rejected_cr.shtml">Actioning a rejected claimant’s report</xref>
+            </li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client reports having received monies and whether they have been allocated:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the client reports having received monies and the monies have not been allocated, refer to Earnings and then go to step 15.
+              <xref href="/en/procedure/activity/earnings.shtml">Earnings</xref>
+            </li>
+            <li>If the client reports having received monies and the monies have been allocated, go to step 15.</li>
+            <li>If no monies were received, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS and in FTS, determine if one of the following conditions applies:</cmd>
+        <info>
+          <ul>
+            <li>The client was incarcerated and has since been tried and not found guilty.</li>
+            <li>The client received workers’ compensation payments and allocation prevented benefits from being paid.</li>
+            <li>The client received preventive withdrawal payments and allocation prevented benefits from being paid.</li>
+            <li>
+              The client received monies on separation for a definitive job loss and allocation prevented benefits from being paid.
+              <ul>
+                <li>
+                  If one of the conditions applies, refer to Benefit period extension and then go to step 16.
+                  <xref href="/en/procedure/activity/extension_benefit_period.shtml">Benefit period extension</xref>
+                </li>
+                <li>If none of the conditions applies, go to step 16.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the LRW has been reached:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 17.</li>
+            <li>
+              If yes, go to Last renewable week (LRW) has been reached .
+              <xref href="#LRWReach">Last renewable week (LRW) has been reached</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client has met the entitlement conditions for the requested BT:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 18.</li>
+            <li>
+              If no, go to Does not meet entitlement conditions .
+              <xref href="#NoEntitlement">Does not meet entitlement conditions</xref>
+            </li>
+          </ul>
+          <table conref="../../common_tables/table_c_0512.dita#table_c_0512/body"/>
+          <xref href="../../common_notes/note_c_2855.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any outstanding disentitlements on file:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 20.</li>
+            <li>
+              If yes, and the conversion is being done on a continuing claim, create a CR WI as follows:
+              <ul>
+                <li>Type: Select Revised .</li>
+                <li>Issue(s): Select the appropriate option.</li>
+                <li>Registration number: Enter the registration number that was obtained for the conversion. Do not obtain a new registration number.</li>
+                <li>Complexity: Select Level 1 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination — SCC: Select the Service Canada Centre (SCC) as shown in FTS.</li>
+                <li>End User: Select Myself .</li>
+                <li>Select Save .</li>
+                <li>Refer to the appropriate procedure go to step 19.</li>
+              </ul>
+            </li>
+            <li>
+              If yes, and the conversion is being done on a renewal claim, create an ADJ WI as follows:
+              <ul>
+                <li>Complexity: Select Level 1 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination — SCC: Enter the SCC as shown in FTS.</li>
+                <li>End User: Select Myself .</li>
+                <li>Issue: Select the appropriate option (e.g. Availability ).</li>
+                <li>Complete the mandatory fields required for the issue.</li>
+                <li>Details: Type “Outstanding [type of disentitlement].”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the conditions are met to terminate or rescind the disentitlement at Level 1 according to the National Policy on Levels of Decision :</cmd>
+        <info>
+          <ul>
+            <li>If yes, and the conversion is being done on a continuing claim, terminate or rescind the disentitlement and go to step 20.</li>
+            <li>If no, and the conversion is being done on a continuing claim, reassign the CR WI to Level 2 and go to step 20.</li>
+            <li>If yes, and the conversion is being done on a renewal claim, terminate or rescind the disentitlement, complete the ADJ WI and go to step 20.</li>
+            <li>If no, and the conversion is being done on a renewal claim, reassign the ADJ WI to Level 2 and go to step 20.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2856.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are any outstanding issues that require adjudication and do not have a related WI:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 22.</li>
+            <li>
+              If yes, and the conversion is being done on a continuing claim, create a CR WI as follows:
+              <ul>
+                <li>Type: Select Revised .</li>
+                <li>Issue(s): Select the appropriate option.</li>
+                <li>Registration number: Enter the registration number that was obtained for the conversion. Do not obtain a new registration number.</li>
+                <li>Complexity: Select Level 1 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination — SCC: Select the SCC as shown in FTS.</li>
+                <li>End User: Select Myself .</li>
+                <li>Select Save .</li>
+                <li>Refer to the appropriate procedure and go to step 21.</li>
+              </ul>
+            </li>
+            <li>
+              If yes, and the conversion is being done on a renewal claim, create an ADJ WI as follows:
+              <ul>
+                <li>Complexity: Select Level 1 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination — SCC: Enter the SCC as shown in FTS.</li>
+                <li>End User: Select Myself .</li>
+                <li>Issue(s): Select the appropriate option.</li>
+                <li>Complete the mandatory fields required for the issue.</li>
+                <li>Details: Explain why the WI is being created.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2732.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the conditions are met to adjudicate the issue at Level 1 according to the National Policy on Levels of Decision :</cmd>
+        <info>
+          <ul>
+            <li>If yes, and the conversion is being done on a continuing claim, refer to the appropriate task to take the actions required and then go to step 22.</li>
+            <li>If no, and the conversion is being done on a continuing claim, reassign the CR WI to Level 2 and go to step 22.</li>
+            <li>If yes, and the conversion is being done on a renewal claim, refer to the appropriate procedure, complete the ADJ WI and go to step 22.</li>
+            <li>If no, and the conversion is being done on a renewal claim, reassign the ADJ to Level 2 and go to step 22.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2856.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is requesting a conversion to sickness benefits:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 23.</li>
+            <li>If no, go to step 24.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client would have been working or looking for work if not for the sickness or injury. If necessary, refer to Adjudicating otherwise available issues — Continuing claim :</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 24.</li>
+            <li>
+              If no, and the conversion is on a continuing claim, create a CR WI for Level 2 as follows:
+              <ul>
+                <li>Complexity: Select Level 2 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination — SCC: Select the SCC as shown in FTS.</li>
+                <li>End user: Select Next available user .</li>
+                <li>Issue(s): Select Availability .</li>
+                <li>Reason: Select Related work item .</li>
+                <li>Details: Type “Not within Level 1 authority.”</li>
+                <li>Select Save .</li>
+                <li>Go to step 24.</li>
+              </ul>
+            </li>
+            <li>
+              If no, and the conversion is on a renewal claim, select the appropriate claim and create an ADJ WI for Level 2 as follows:
+              <ul>
+                <li>Complexity: Select Level 2 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination: Enter the SCC as shown in FTS.</li>
+                <li>End User: Select Next available user .</li>
+                <li>Issue(s): Select Availability .</li>
+                <li>Details: Type “Not within Level 1 authority.”</li>
+                <li>Select Save .</li>
+                <li>Go to step 24.</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2857.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine the conversion week. If necessary, refer to Determining the effective date of a renewal or a conversion . Go to step 25.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim status (CS) is 8 - Converted to manual pay :</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 26.</li>
+            <li>If yes, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if the client is requesting a conversion to regular or sickness benefits:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, go to Inputs .
+              <xref href="#level1_item_3">Inputs</xref>
+            </li>
+            <li>If no, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Before sending the Operational Centre Memo ( MM06) transaction to IPOC, determine if a Level 2 officer must adjudicate any outstanding issues:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 28.</li>
+            <li>If no, go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting Level 2 decision.”</li>
+            <li>Bring forward date: Enter 10 working days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if a decision has been rendered:</cmd>
+        <info>
+          <ul>
+            <li>If no, repeat step 28.</li>
+            <li>If yes, go to step 30.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on manual pay claim .</li>
+            <li>Remarks line 1: Type Conversion from [CT20 or CT21] to CT [XX].</li>
+            <li>
+              Remarks line 2: Select the appropriate option:
+              <ul>
+                <li>If it is a conversion to regular benefits , type “Start w/c [XXXX], ENT WEEK [XXXX], WP [WP code] served in w/c [XXXX].”</li>
+                <li>If it is a conversion to parental benefits , type “Start w/c [XXXX] to w/c [XXXX], SEX [X], APW or PSW w/c [XXXX], ENT WEEK [XX], NO-CR-CODE” and any other relevant information.</li>
+                <li>If it is a conversion to maternity benefits , type “Start w/c [XXXX] to w/c [XXXX], ENT WEEK [XX] (if less than 15 weeks), ADC or EDC w/c [XXXX], NO-CR-CODE” and any other relevant information.</li>
+                <li>If it is a conversion to CCB , if necessary, type “CT [12], Certificate number [XXXXXXX], start w/c [XXXX] to w/c [XXXX], ENT WEEK [XXXX], NO-CR-CODE” and other relevant information.</li>
+              </ul>
+            </li>
+            <li>
+              Remarks lines 3–4: Select the appropriate option:
+              <ul>
+                <li>If an extension of the BP is required, type “Extend [type], start w/c [XXXX], ENT WEEK [XX]” and other relevant information.</li>
+                <li>If a disentitlement is required, type “D[XX] from w/c [XXXX-X] to [XXXX-X]” and any other relevant information.</li>
+                <li>If an allocation of earnings is required, type “M175, [type], [amount], [w/c - start date] - [w/c - end date], [amount, if different from last week]” and any other relevant information.</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select the appropriate decision type.</li>
+            <li>Contentious: Select No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a client Note to send a saved ACS letter:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 34.</li>
+            <li>If no, go to step 35.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, review and send the saved letter.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, determine if the conversion application was submitted using AW:</cmd>
+        <info>
+          <ul>
+            <li>If no go to step 36.</li>
+            <li>
+              If yes, go to Subsequent claims .
+              <xref href="#subsequent_claims">Subsequent claims</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the CR WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

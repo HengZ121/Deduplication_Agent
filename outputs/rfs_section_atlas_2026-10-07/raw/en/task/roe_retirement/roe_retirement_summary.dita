@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="roe_retirement_summary">
+  <title>Summary</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_retirement.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <p id="roe_retirement_summary_p1">
+      <strong>Summary:</strong>
+      When an ROE is received with a reason for separation (RFS)
+      <strong>G - Mandatory retirement</strong>
+      on an initial Web application, if the system is unable to create a link between the ROE and a matching period of employment or determine if the issue requires adjudication, an ROE Issue (ROE) RFS Action WI is created.
+    </p>
+  </conbody>
+</concept>

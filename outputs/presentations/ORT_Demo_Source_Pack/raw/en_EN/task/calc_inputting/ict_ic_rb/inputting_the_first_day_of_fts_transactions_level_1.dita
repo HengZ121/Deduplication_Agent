@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputting_the_first_day_of_fts_transactions">
+  <title>Inputting the first day of FTS transactions</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if a transaction must be input on the first day (the transaction should already be stored):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>From within the transaction requiring input on the first day, select Update and determine if an error code is displayed:</cmd>
+        <info>
+          <ul>
+            <li>If an error code is not displayed, return to step 4.</li>
+            <li>If an error code is displayed, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In WECS , review the error code displayed and determine if IPOC action is required:</cmd>
+        <info>
+          <ul>
+            <li>If WECS indicates IPOC action is required, go to step 7.</li>
+            <li>If WECS indicates a corrective action, correct the transaction and return to step 4.</li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2344.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Enter the BPC of the claim to be worked on by IPOC.</li>
+            <li>Work item: Select the WI as detailed in WECS according to the error code displayed during input.</li>
+            <li>Work type: Select the work type as detailed in WECS according to the error code displayed during input.</li>
+            <li>
+              Remarks lines (1–4): Enter the error code as shown in WECS. Record the details of all the required claim information to establish the benefit period (BP). Include any calculation information, information for additional transactions and claimant’s reports information. The officer must not indicate “Check stored transactions.”
+              <xref href="../../../common_notes/note_c_2345.dita">Note</xref>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>
+              Go to Determining if parental benefits validation is required .
+              <xref href="#level1_item_5">Determining if parental benefits validation is required</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are claimant’s reports to input on the first day:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 11.</li>
+            <li>
+              If yes, refer to Inputting a claimant’s report before going to step 11.
+              <xref href="/en/procedure/activity/claimant_report.shtml">Inputting a claimant’s report</xref>
+            </li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2346.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if you have noted that the Automated Letter Bypass function must be selected:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>
+              If yes, in FTS, select the File Control Data (M101)/Claim Action transaction to prevent an automated letter from being sent:
+              <ul>
+                <li>Select Automated Letter Bypass .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2347.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if multiple days are required to input all the required transactions:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>
+              If no, go to Determining if parental benefits validation is required .
+              <xref href="#level1_item_5">Determining if parental benefits validation is required</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the calculation WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Multiple-day inputs required.”</li>
+            <li>Bring forward date: Enter the next business day.</li>
+            <li>
+              Go to Inputting the second day of FTS transactions .
+              <xref href="#level1_item_3">Inputting the second day of FTS transactions</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

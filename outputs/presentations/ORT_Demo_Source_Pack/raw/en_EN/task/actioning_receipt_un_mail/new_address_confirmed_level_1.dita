@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="new_address_confirmed">
+  <title>New address confirmed</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine the type of undeliverable mail that was returned:</cmd>
+        <info>
+          <ul>
+            <li>If the undeliverable mail is a D-91-00-00 warning letter that includes an unclassified violation (in FTS, on the Violation History [ML02] screen, 1 - Violation - warning letter issued is displayed in the Warning Letter field), go to step 2.</li>
+            <li>If the undeliverable mail is a notice of decision that set up an OP or a penalty, go to step 5.</li>
+            <li>If the undeliverable mail is a D-91-00-00 letter that does not include an unclassified violation (in FTS, on the Violation History [ML02] screen, the Warning Letter field is blank), go to step 5.</li>
+            <li>If the undeliverable mail is a notice of decision unrelated to a Notice of Debt, go to step 6.</li>
+            <li>If the undeliverable mail is any other ACS letter, go to step 6.</li>
+            <li>If the undeliverable mail is a benefit statement with an access code, go to step 8.</li>
+            <li>If the undeliverable mail is none of the above, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an OP related to the D-91-00-00 warning letter that includes an unclassified violation:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>If yes, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, from the Violation (ML01) screen, add a new notification week and rescind the one that was initially entered as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              To add the new notification week:
+              <ul>
+                <li>Action: Select Add .</li>
+                <li>Notification week: Select the current w/c.</li>
+                <li>BPC: Select the same BPC as initially selected.</li>
+                <li>Imposed by: Select 1 - Officer .</li>
+                <li>Warning Letter: Select 1 - Violation - warning letter issued .</li>
+                <li>Actual OP: Enter the potential OP as initially entered, if necessary.</li>
+                <li>Potential OP: Enter the potential OP as initially entered, if necessary.</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+            <li>
+              To rescind the original notification week:
+              <ul>
+                <li>Select the original violation.</li>
+                <li>Action: Select Rescind.</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send a new D-91-00-00 decision letter with the same information as the original decision. Go to step 10.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the Notice of Debt that is related to the undeliverable notice of decision was returned as undeliverable:</cmd>
+        <info>
+          <ul>
+            <li>If the Notice of Debt was not returned as undeliverable, go to step 6.</li>
+            <li>If the Notice of Debt was returned as undeliverable, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>From the appropriate electronic system (i.e. ACS, FTS, Imaging) print a copy of the undeliverable mail.</cmd>
+      </step>
+      <step>
+        <cmd>Address an envelope with the client’s new address, enclose the undeliverable mail and send it to the client. Go to step 10.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_1520.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the access code has been reissued:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>If yes, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, reissue the access code .</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Undeliverable Mail .</li>
+            <li>Comments: Type “Insurance.”</li>
+            <li>
+              Details: Type one of the following options:
+              <ul>
+                <li>“[Type of undeliverable mail] originally sent [date] received as undeliverable on [date] — resent to the client’s new address.”</li>
+                <li>“Notice of decision not resent to the client’s new address as the Notice of Debt was also undeliverable.”</li>
+                <li>“Access code reissued.”</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the AI WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

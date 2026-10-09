@@ -1,0 +1,102 @@
+{
+  "scope": "English en_EN; saved ORT internal classifications; document types derived from path",
+  "all_map_categories": {
+    "activity": 101,
+    "policy": 140,
+    "procedure": 280,
+    "site": 1617,
+    "subactivity": 23,
+    "task": 780
+  },
+  "all_body_node_categories": {
+    "activity": 910,
+    "common_tables": 629,
+    "policy": 306,
+    "procedure": 239,
+    "site": 4453,
+    "subactivity": 112,
+    "task": 13589
+  },
+  "task_activity_maps": {
+    "activity": 101,
+    "task": 780
+  },
+  "task_activity_body_nodes": {
+    "activity": 910,
+    "task": 13589
+  },
+  "topic_occurrences_in_task_activity_maps": 24827,
+  "task_activity_map_othermeta_count": 0,
+  "top_level_headings_by_type": {
+    "activity": [
+      {
+        "heading": "Summary",
+        "maps": 101
+      },
+      {
+        "heading": "What you need to know",
+        "maps": 101
+      },
+      {
+        "heading": "Regional considerations",
+        "maps": 101
+      },
+      {
+        "heading": "What you need to look for",
+        "maps": 101
+      },
+      {
+        "heading": "What do you want to do?",
+        "maps": 101
+      },
+      {
+        "heading": "Policy reference",
+        "maps": 101
+      }
+    ],
+    "task": [
+      {
+        "heading": "Summary",
+        "maps": 780
+      },
+      {
+        "heading": "What you need to know",
+        "maps": 780
+      },
+      {
+        "heading": "Regional considerations",
+        "maps": 780
+      },
+      {
+        "heading": "What you need to look for",
+        "maps": 780
+      },
+      {
+        "heading": "Policy reference",
+        "maps": 780
+      },
+      {
+        "heading": "Step by step",
+        "maps": 776
+      }
+    ]
+  },
+  "cross_document_duplicate_edges_by_type": {
+    "task - task": 11048,
+    "activity - task": 2592,
+    "activity - activity": 358
+  },
+  "same_document_duplicate_edges_excluded": 372,
+  "activity_task_identical_nontrivial_examples": 33,
+  "section_body_word_statistics": {
+    "activity": {
+      "median": 59.0,
+      "max": 1294
+    },
+    "task": {
+      "median": 93,
+      "max": 5344
+    }
+  },
+  "body_nodes_with_no_map_membership": 0
+}

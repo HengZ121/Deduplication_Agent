@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="third_party_warning_letter">
+  <title>Third party warning letter</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine who is responsible for the net OP:</cmd>
+        <info>
+          <ul>
+            <li>If the third party is responsible for the net OP, go to step 11.</li>
+            <li>If the client is responsible for the net OP, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, using the client’s SIN, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Infraction: Select Z - Fraud - Other .</li>
+            <li>Message: Select 33 - Discrepancy in earnings due to Employment Insurance post audit .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 35 - Claim cancellation .</li>
+            <li>Remarks line 1: Type “Third party OP. Adjust client’s file.”</li>
+            <li>Remarks line 2: Type “[OP amount] OP established under third party [third party’s SIN] on [date].”</li>
+            <li>Remarks line 3: Type “Third party OP established for [w/c for which the OP was established].”</li>
+            <li>Remarks line 4: Type “Issue amended T4E if required. Issue manual T4E to third party.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the T-02-00-00 letter to advise the third party of the decision. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Third Party penalty/warning (2770): Select the appropriate option.</li>
+            <li>Following / In addition (2771): Select Following .</li>
+            <li>Claimant First Name (1044)</li>
+            <li>Claimant Last Name (1046)</li>
+            <li>Text - Indicate what the third party claim or declaration was (1696)</li>
+            <li>Text - Indicate what the third party claim or declaration should have been (1698)</li>
+            <li>Monetary penalty/warning message (2772): Select Warning message issued .</li>
+            <li>Violation Message to Third Party (2774): Select Blank .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NIIS, using the client’s SIN, on the Decision tab of the Report of Investigation (IC70) screen, clear the case as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlement: Select Yes or No .
+              <ul>
+                <li>Reason: Select the appropriate option, if applicable.</li>
+              </ul>
+            </li>
+            <li>
+              Overpayment: Select OP .
+              <ul>
+                <li>Amount: Enter the OP amount established for the client.</li>
+              </ul>
+            </li>
+            <li>
+              Penalty: Do one of the following:
+              <ul>
+                <li>If a penalty is imposed on the client, select Yes and enter the penalty amount in the Amount field.</li>
+                <li>If a penalty is not imposed on the client, select No .</li>
+              </ul>
+            </li>
+            <li>
+              Warning: Select Yes .
+              <ul>
+                <li>
+                  Reason: Select Other and do one of the following:
+                  <ul>
+                    <li>If a warning is issued to the third party only , type “Warning issued to the third party [third party’s name and SIN].”</li>
+                    <li>If a warning is issued to both the client and the third party, type “Warning issued to both client and third party [third party’s name and SIN].”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Violation: Do one of the following:
+              <ul>
+                <li>If a violation is imposed on the client, select Yes and select the appropriate Seriousness option .</li>
+                <li>If a violation is not imposed on the client, select No .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the CR WI for the Integrity case.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

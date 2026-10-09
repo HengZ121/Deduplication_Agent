@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if you have all the information needed to complete the request (e.g. which years the T4Es are requested for) and if the address needs to be validated:</cmd>
+        <info>
+          <ul>
+            <li>
+              If additional information is needed from the client, or if the address needs to be validated, fact-find to obtain the information and go to step 2.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If you have all the information needed, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 3.</li>
+            <li>If the client was not contacted and the additional information was not obtained to complete the request, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Other .</li>
+            <li>Comments: Type “T4E request.”</li>
+            <li>
+              Details: Type “Client requested T4E to be mailed.” Document any additional information. Refer to the National Fact-Finding and Documentation Policy .
+              <xref href="/ui/h/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a change of address is required based on fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>
+              If yes, refer to Change of address and go to step 5.
+              <xref href="/en/procedure/activity/change_address.shtml">Change of address</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a T4E is available on the Statement of benefits paid (T4E) screen:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>
+              If no, go to No T4E available in FTS .
+              <xref href="#not4e">No T4E available in FTS</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is on the telephone making the request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Advise the client that the T4E is available on MSCA and can be printed any time:</cmd>
+        <info>
+          <ul>
+            <li>If the client is not willing to print the T4E from MSCA, go to step 8.</li>
+            <li>If the client is willing to print the T4E from MSCA, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Statement of benefits paid (T4E) screen and print the T4E as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select the requested tax year.</li>
+            <li>Select Print .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Mail the T4E to the address on file.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4750.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an AI WI for the T4E request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_the_ordinary_place_of_re_c679333f">
+  <title>Determining if the ordinary place of residence is in question</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine from the information on file if one of the following situations applies:</cmd>
+        <info>
+          <ul>
+            <li>The client’s residential address is in the same economic region as the mailing address.</li>
+            <li>The client normally resides in one economic region, but is attending school or training or is receiving medical treatments in a different region.</li>
+            <li>The client is living temporarily in a different economic region while receiving maternity benefits, parental benefits, CCB or family caregiver benefits (FCB).</li>
+            <li>The client normally resides is in one economic region, but works in a different region (e.g. the client works in Alberta, but returns home to Nova Scotia during periods of lay-off).</li>
+            <li>
+              The client is an American who lives in the United States but regularly commutes to Canada to work:
+              <ul>
+                <li>If the situation cannot be determined from the information on file, go to step 12.</li>
+                <li>
+                  If one of the situations applies, go to Ordinary place of residence not in question .
+                  <xref href="#Ordinary_residence_not">Ordinary place of residence not in question</xref>
+                </li>
+                <li>
+                  If none of the situations apply and additional fact-finding is not required, go to Reassigning the issue to Level 2 .
+                  <xref href="#Reassigning_the_issue">Reassigning the issue to Level 2</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the client was reached:</cmd>
+        <info>
+          <ul>
+            <li>If the client was reached, go to step 14.</li>
+            <li>
+              If the client was not reached and did not reply to the N-10-00-00 letter, go to Reassigning the issue to Level 2 .
+              <xref href="#Reassigning_the_issue">Reassigning the issue to Level 2</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Issue: Select Calculation .</li>
+            <li>Comments: Type “Economic region.”</li>
+            <li>
+              Details : Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+            <li>Return to step 11.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="maximum_regular_benefits_already_paid">
+  <title>Maximum regular benefits already paid</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if there is an outstanding ADJ WI:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Awaiting Level 2 decision”</li>
+            <li>Bring forward date: Enter today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if all ADJ WIs are completed:</cmd>
+        <info>
+          <ul>
+            <li>If no, return to step 2.</li>
+            <li>If yes, go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an ADJ WI resulted in a disqualification:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client worked for another employer after the disqualification start week:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>If no, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client qualifies for a new claim:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>
+              If yes, go to step 11.
+              <xref href="../../common_notes/note_c_4477.dita">Note</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “No renewal - Work-Sharing benefits not payable.”</li>
+            <li>
+              Details: Choose the appropriate option:
+              <ul>
+                <li>If the client has not worked since the BPC , type “No renewal for Work-Sharing benefits is possible as [reason WS benefits not payable]. The client does not qualify for a new claim as no hours were accumulated after the week for which a disqualification applies.”</li>
+                <li>If the client has worked since the BPC , type “No renewal for Work-Sharing benefits is possible as [reason WS benefits not payable]. The client does not qualify for a new claim as [number of hours] was accumulated after the week for which a disqualification applies. The client needed [number of hours] to qualify.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and do the following:</cmd>
+        <info>
+          <ul>
+            <li>Claim denied: Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, add details to the draft of the D-01-00-00 letter and send it. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Renewal week - Sunday’s date (1246) .</li>
+            <li>Allocation of Earnings (2516) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the SA or CA Renewal WI. No further action is required.</cmd>
+      </step>
+      <step>
+        <cmd>Determine the renewal week.</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_4474.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 36 - Special benefits on fishing claims or other complex claim conditions .</li>
+            <li>Remarks line 1: Type “WS renewal — regular exhausted (C460).”</li>
+            <li>Remarks line 2: Type “CT 2, MA76, REN w/c [XXXX], NO-CR-CODE (if necessary).”</li>
+            <li>Remarks line 3: Type “Project start date [XXXX] end date [XXXX] SCC [XXXX].”</li>
+            <li>Remarks line 4: Type “Project Number [XXXXXXXXX] NWH [XXX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No or 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag.</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the SA or CA Renewal WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

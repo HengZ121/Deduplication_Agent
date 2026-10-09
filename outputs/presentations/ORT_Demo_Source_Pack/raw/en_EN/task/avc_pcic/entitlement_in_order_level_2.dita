@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_in_order">
+  <title>Entitlement in order</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Vacation in Canada — family caregiver benefits — in order.”</li>
+            <li>
+              Details: Type “Allowed — [YYYY-MM-DD] to [YYYY-MM-DD].” Document the decision and rationale according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a request was sent to IPOC to stopped payment for the vacation in Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>If no , go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number for the vacation in Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Click Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) to advise IPOC to reinstate payment as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “Reinstate payments as of w/c [XXXX].”</li>
+            <li>Remarks line 2: Type “The client is entitled to collect benefits for the vacation in Canada period.”</li>
+            <li>Remarks line 3: Type your name and telephone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Click Update .</li>
+            <li>Go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine the CT:</cmd>
+        <info>
+          <ul>
+            <li>If it is a continuing claim, go to step 14.</li>
+            <li>If it is an initial or renewal claim, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is an MA01 imposed for the out of Canada issue:</cmd>
+        <info>
+          <ul>
+            <li>If an MA01 is imposed but there is no registration number, go to step 15.</li>
+            <li>If an MA01 is imposed and there is a registration number, go to step 16.</li>
+            <li>If an MA01 is not imposed but there is a revised registration number, go to step 17.</li>
+            <li>If none of the above applies, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and remove the MA01 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Manual Action: Select 1 - General suspension of benefits (stop payment) .</li>
+            <li>Rescind: Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: C - Yes .</li>
+            <li>Click Update .</li>
+            <li>Go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and clear the registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Click Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the vacation in Canada issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

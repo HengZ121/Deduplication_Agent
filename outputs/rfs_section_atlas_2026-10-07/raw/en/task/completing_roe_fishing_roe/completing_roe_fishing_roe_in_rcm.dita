@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_roe_fishing_roe_in_rcm">
+  <title>In RCM:</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/completing_roe_fishing_roe.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <ul id="completing_roe_fishing_roe_in_rcm_ul1">
+      <li id="completing_roe_fishing_roe_in_rcm_li1">What ROEs are displayed on the Search / Correct - Results screen?</li>
+      <li id="completing_roe_fishing_roe_in_rcm_li2">What is the employer’s name in block 4 of the ROE?</li>
+      <li id="completing_roe_fishing_roe_in_rcm_li3">What is the final trip end date (fresh) or date of purchase (cured) in block 6B of the ROE?</li>
+      <li id="completing_roe_fishing_roe_in_rcm_li4">
+        Is there an audit trail for the ROE?
+        <ul id="completing_roe_fishing_roe_in_rcm_ul2">
+          <li id="completing_roe_fishing_roe_in_rcm_li5">Does the audit trail contain a new value for the RFS in block 11 ?</li>
+        </ul>
+      </li>
+      <li id="completing_roe_fishing_roe_in_rcm_li6">Are there comments in block 12 or the Additional information field of the ROE?</li>
+    </ul>
+  </conbody>
+</concept>

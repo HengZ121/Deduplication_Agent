@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if there is enough information to adjudicate the dismissal based on the National Policy on Levels of Decision :</cmd>
+        <info>
+          <ul>
+            <li>
+              If additional details are needed, fact-find with the client or employer and go to step 6.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+            <li>If additional details are not needed, go to step 8.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3268.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client or employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the client or employer was not contacted or did not reply to the N-10-00-00 or Z-00-00-00 letter, go to Reassigning the issue to Level 2 .
+              <xref href="#level2">Reassigning the issue to Level 2</xref>
+            </li>
+            <li>If the client or employer was contacted, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Reason for separation .</li>
+            <li>Comments: Type “Dismissal — [employer’s name] — [last day worked] — [client or employer].”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

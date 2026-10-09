@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="tache-rappel-renou-exam-dec-assur-emp-c_d85c93e5" xml:lang="en-CA">
+  <title>Call Back Task — Renewal — Reviewing a late client’s report — Failure to report — Cúram</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="late_clients_reports.dita">
+    </topicref>
+    <topicref href="levels_of_decision.dita">
+    </topicref>
+    <topicref href="inputting_clients_reports_after_adjudication.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_curam.dita">
+    </topicref>
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_imaging.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_the_conditions_to_allow__2ac9dc0f_level_1.dita">
+      </topicref>
+      <topicref href="conditions_to_allow_at_level_1_met_level_1.dita">
+      </topicref>
+      <topicref href="assigning_a_wi_to_level_2_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2926.dita">
+      </topicref>
+    </topicref>
+    <topicref href="level_2.dita">
+      <topicref href="reviewing_the_file_level_2.dita">
+      </topicref>
+      <topicref href="fact-finding_level_2.dita">
+      </topicref>
+      <topicref href="adjudicating_good_cause_level_2.dita">
+      </topicref>
+      <topicref href="unable_to_contact_the_client_for_missin_7c18738d_level_2.dita">
+      </topicref>
+      <topicref href="good_cause_shown_level_2.dita">
+      </topicref>
+      <topicref href="good_cause_not_shown_level_2.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

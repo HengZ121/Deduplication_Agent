@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="actioning_rejected_transaction_c243_c244" xml:lang="en-CA">
+  <title>Actioning a rejected transaction — Error codes C243 and C244</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="reasons_for_premium_reductions.dita">
+    </topicref>
+    <topicref href="determining_the_premium_reduction_code.dita">
+    </topicref>
+    <topicref href="determining_the_premium_reduction_code__6697f051.dita">
+    </topicref>
+    <topicref href="inputting_a_single_premium_reduction_code.dita">
+    </topicref>
+    <topicref href="inputting_multiple_premium_reduction_codes.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1534.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1535.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1536.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1537.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1538.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_1539.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

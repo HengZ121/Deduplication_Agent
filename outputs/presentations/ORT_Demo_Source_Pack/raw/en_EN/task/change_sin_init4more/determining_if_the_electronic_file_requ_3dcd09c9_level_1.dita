@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="determining_if_the_electronic_file_requ_3dcd09c9">
+  <title>Determining if the electronic file requires updating</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there are earlier BPCs established with the old SIN:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Electronic file update not required .
+              <xref href="#Electronicupdate">Electronic file update not required</xref>
+            </li>
+            <li>
+              If yes, go to Electronic file update required .
+              <xref href="#Electronicupdate1">Electronic file update required</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, using the old SIN determine if there is a WI related to the SIN change that was not deleted.</cmd>
+        <info>
+          <ul>
+            <li>If no, no further action is required.</li>
+            <li>If yes, complete the WI.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, using the old SIN select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the registration number assigned to the initial application with the old SIN.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts .</li>
+            <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim with the request for a SIN change.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 34 - Social insurance number change .</li>
+            <li>Remarks line 1: Type “SIN change to new SIN [new SIN].”</li>
+            <li>
+              Remarks line 2 to 4: Enter the appropriate options:
+              <ul>
+                <li>The list of all BPCs with the old SIN.</li>
+                <li>If a D15 is imposed from the BPC under the 900-series SIN for the same BPC that will be established with the permanent SIN and the D15 is not required for the permanent SIN, type “Do not transfer BPC [XXXX] from old SIN. BPC [XXXX] is on new SIN.”</li>
+                <li>If necessary, type “Calculation result under new SIN has been reviewed.”</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>
+              Complete: Select the appropriate option:
+              <ul>
+                <li>To complete the registration number, select C - Yes .</li>
+                <li>To leave the registration number open for subsequent transactions, select D - No .</li>
+              </ul>
+            </li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Transfer the registration number to IPOC, selecting the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the registration number assigned to the initial application with the old SIN.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, using the old SIN, determine if there is a WI related to the SIN change that was not deleted:</cmd>
+        <info>
+          <ul>
+            <li>If no, no further action is required.</li>
+            <li>If yes, complete the WI.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

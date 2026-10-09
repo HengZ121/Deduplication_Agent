@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="fact-finding">
+  <title>Fact-finding</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Fact-find as follows:</cmd>
+        <info>
+          <ul>
+            <li>For a client with a 900-series SIN expiring during the BP, determine if the client will submit proof of valid SIN or authorization to remain in Canada (i.e. valid study, visitor or work permit, proof of maintained status or copy of an interim work authorization for post-graduation permit holders email from IRCC with supporting documentation). Go to step 4.</li>
+            <li>For a client with maintained status who is waiting for an IRCC decision, determine if a decision has been made and if the client will submit a copy of the new study, visitor or work permit. Go to step 4.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>
+              If no, go to Entitlement not proven .
+              <xref href="#EntNotProven">Entitlement not proven</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Availability .</li>
+            <li>Comments: Type “Authorization to remain in Canada.”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="http://servicecanada.prv/eng/ei/reference-material/policy-legislation/national_policy_factfinding.shtml#5.4">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

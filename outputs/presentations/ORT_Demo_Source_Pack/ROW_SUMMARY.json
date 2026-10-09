@@ -1,0 +1,77 @@
+{
+  "E01": {
+    "label": "Exact section",
+    "physical_files": 2,
+    "documents": 2
+  },
+  "E02": {
+    "label": "Variant candidate",
+    "physical_files": 2,
+    "documents": 2
+  },
+  "E03": {
+    "label": "Partial overlap",
+    "physical_files": 2,
+    "documents": 2
+  },
+  "E04": {
+    "label": "Semantic candidate",
+    "physical_files": 2,
+    "documents": 2
+  },
+  "E05": {
+    "label": "Related / unresolved",
+    "physical_files": 2,
+    "documents": 2
+  },
+  "P01": {
+    "label": "Error correction",
+    "physical_files": 15,
+    "documents": 15
+  },
+  "P02": {
+    "label": "Levels of decision",
+    "physical_files": 19,
+    "documents": 19
+  },
+  "P03": {
+    "label": "Return to work",
+    "physical_files": 14,
+    "documents": 14
+  },
+  "P04": {
+    "label": "Fraud indicators",
+    "physical_files": 5,
+    "documents": 5
+  },
+  "I01": {
+    "label": "Voluntary disclosure",
+    "physical_files": 61,
+    "documents": 61
+  },
+  "I02": {
+    "label": "NWS command",
+    "physical_files": 173,
+    "documents": 113
+  },
+  "I03": {
+    "label": "MM06 command",
+    "physical_files": 277,
+    "documents": 128
+  },
+  "N01": {
+    "label": "Identical common notes",
+    "physical_files": 2,
+    "documents": 16
+  },
+  "A01": {
+    "label": "Access-code security check",
+    "physical_files": 3,
+    "documents": 3
+  },
+  "R01": {
+    "label": "RFS linking content and tables",
+    "physical_files": 4,
+    "documents": 2
+  }
+}

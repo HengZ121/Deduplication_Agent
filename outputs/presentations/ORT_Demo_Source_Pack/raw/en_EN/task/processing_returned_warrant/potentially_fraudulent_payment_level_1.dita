@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="potentially_fraudulent_payment">
+  <title>Potentially fraudulent payment</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if the potentially fraudulent payment is a direct deposit:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>
+              If yes, terminate the direct deposit by referring to Ending a direct deposit . Go to step 7.
+              <xref href="/en/procedure/task/ending_dd.shtml">Ending a direct deposit</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is an outstanding AI WI for a potential fraud referred to Integrity:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Add the information related to the potentially fraudulent application to the existing Integrity AI WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Right-click and select Add details/Further Inquiry .</li>
+            <li>Action : Select Additional information .</li>
+            <li>Details : Type “Payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to [DD-MM-YYYY] is potentially fraudulent. Request submitted to IPOC to cancel the payment.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Refer the payment information to Integrity by creating an AI WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 2.</li>
+            <li>
+              Destination — Level: At level 4 - National Integrity (ISB) and sub-level 2 - ID Validation , select the processing unit in the region where the client lives:
+              <ul>
+                <li>Atlantic: Processing - ATL</li>
+                <li>Quebec: Processing - QC</li>
+                <li>Ontario: Processing - ON</li>
+                <li>Western Canada and Territories: Processing - WT</li>
+              </ul>
+            </li>
+            <li>End user: Select Next available user .</li>
+            <li>Category: Select Not pay affected .</li>
+            <li>Issue: Select SIR validation.</li>
+            <li>Comments: Type “Potentially fraudulent payment.”</li>
+            <li>Details: Type “Payment [reference number] issued on [DD-MM-YYYY] for the weeks of [DD-MM-YYYY] to [DD-MM-YYYY] is potentially fraudulent. Request submitted to IPOC to cancel the payment.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a continuing claim has been compromised:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 11.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4276.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if an MA71 is imposed:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 12.</li>
+            <li>If yes, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction and impose an MA71 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Leave the field blank.</li>
+            <li>Manual action: Select 71 - Integrity Services case .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is a registration number for the returned payment issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 14.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 14.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If the claim is active or can be reactivated, select 92 - Purge and Recreate .</li>
+                <li>If the claim is in MPS or if it is blocked dormant , select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>If the claim is active or can be reactivated, select 24 - Cancelled payment for purge and recreate (P/R) .</li>
+                <li>If the claim is in MPS or blocked dormant, select 43 - Cancelled payment for MPS .</li>
+              </ul>
+            </li>
+            <li>Remarks line 1: Type “Returned payment — potential fraud. D39 [XXXX]-1 to [XXXX]-5.”</li>
+            <li>Remarks lines 2 – 4: Type “T071-2 (for current year decrease) or T071-8 (for earlier year decrease)] — reason F — w/c [XXXX] — CT [XX] — gross amount [XXXX] — federal tax [XX] — provincial tax [XX] — net amount [XXXX] — PRN [XXXXXXXXXXXX].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 04 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the AI WI for the returned payment issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

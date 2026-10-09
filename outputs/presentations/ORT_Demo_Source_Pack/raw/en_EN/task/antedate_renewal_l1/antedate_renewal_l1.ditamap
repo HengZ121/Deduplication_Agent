@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="antedate_renewal_l1" xml:lang="en-CA">
+  <title>Antedating the renewal week — Level 1</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="inputting_an_antedated_renewal_week.dita">
+    </topicref>
+    <topicref href="reviewing_an_allocation.dita">
+    </topicref>
+    <topicref href="claimants_reports.dita">
+    </topicref>
+    <topicref href="claimants_reports_required_for_antedate.dita">
+    </topicref>
+    <topicref href="automatic_backdate.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2046.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="unable_to_input_the_antedated_renewal_week_level_1.dita">
+      </topicref>
+      <topicref href="inputting_a_renewal_week_with_an_operat_e83c58b1_level_1.dita">
+      </topicref>
+      <topicref href="inputting_a_renewal_week_in_fts_level_1.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

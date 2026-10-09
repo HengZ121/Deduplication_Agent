@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputting_the_third_day_of_fts_transactions">
+  <title>Inputting the third day of FTS transactions</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Once the calculation WI moves out of Pending, in FTS, verify if the previous transactions posted successfully:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, refer to Rejected transactions and go to step 26.
+              <xref href="/en/procedure/activity/rt_mr05.shtml">Rejected transactions</xref>
+            </li>
+            <li>If yes, go to step 27.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the calculation WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Multiple-day inputs required.”</li>
+            <li>Bring forward date: Enter the next business day.</li>
+            <li>Return to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a transaction requiring input on the third day (the transaction should already be stored):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 28.</li>
+            <li>If no, go to step 33.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>From within the transaction requiring input on the third day, select Update and determine if an error code is displayed:</cmd>
+        <info>
+          <ul>
+            <li>If an error code is not displayed, return to step 27.</li>
+            <li>If an error code is displayed, go to step 29.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In WECS , review the error code displayed and determine if IPOC action is required:</cmd>
+        <info>
+          <ul>
+            <li>If WECS indicates a corrective action, correct the transaction and return to step 28.</li>
+            <li>If WECS indicates IPOC action is required, go to step 30.</li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2344.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to automatically generate an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Enter the BPC of the claim to be worked on by IPOC.</li>
+            <li>Work item: Select the WI as detailed in WECS according to the error code displayed during input.</li>
+            <li>Work type: Select the work type as detailed in WECS according to the error code displayed during input.</li>
+            <li>
+              Remarks lines (1–4): Record the details of all the required claim information to establish the BP. Include any calculation information, information for additional transactions and claimant’s reports information. The officer must not indicate “Check stored transactions.”
+              <xref href="../../../common_notes/note_c_2345.dita">Note</xref>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select the appropriate option.</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>
+              Go to Determining if parental benefits validation is required .
+              <xref href="#level1_item_5">Determining if parental benefits validation is required</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are claimant’s reports to be input on the third day:</cmd>
+        <info>
+          <ul>
+            <li>
+              If yes, refer to Inputting a claimant’s report before going to Determining if parental benefits validation is required .
+              <xref href="/en/procedure/activity/claimant_report.shtml">Inputting a claimant’s report</xref>
+              <xref href="#level1_item_5">Determining if parental benefits validation is required</xref>
+            </li>
+            <li>
+              If no, go to Determining if parental benefits validation is required .
+              <xref href="#level1_item_5">Determining if parental benefits validation is required</xref>
+            </li>
+          </ul>
+          <xref href="../../../common_notes/note_c_2348.dita">Note</xref>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -7,6 +7,7 @@ from pathlib import Path
 import hashlib
 import json
 import html
+import argparse
 import numpy as np
 import pandas as pd
 from scipy.stats import mannwhitneyu
@@ -14,31 +15,26 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 ROOT = Path('outputs')
-OUT = ROOT/'cluster_word_counts'
+OUT = ROOT/'cluster_word_counts_2026-10-07'
 GROUPS = ['Collapsed duplicate clusters', 'Standalone nodes']
 COLORS = ['#237f85', '#bc7443']
 
 
 def read_nodes():
     sources=[]; frames=[]
-    for subset in ['body_en','body_fr','all_notes_en','all_notes_fr']:
-        path=ROOT/f'kmt_dita_1_{subset}_kg_pipeline/kg_nodes.csv'
-        d=pd.read_csv(path,keep_default_na=False)
-        d['dataset']='KMT'; d['subset']=subset
-        frames.append(d); sources.append(path)
-    for lang in ['en','fr']:
-        path=ROOT/f'ort_kmt_cross_deduplication/{lang}/cross_nodes.csv'
-        d=pd.read_csv(path,keep_default_na=False)
-        d=d[d.node_id.str.startswith('ORT:')].copy()
-        d['dataset']='ORT'; d['subset']=lang
-        frames.append(d); sources.append(path)
+    for dataset in ['KMT','ORT']:
+        for lang in ['en','fr']:
+            path=ROOT/f'{dataset.lower()}_2026-10-07_body_{lang}_kg_pipeline/kg_nodes.csv'
+            d=pd.read_csv(path,keep_default_na=False,encoding='utf-8-sig')
+            d['dataset']=dataset; d['subset']=lang
+            frames.append(d); sources.append(path)
     nodes=pd.concat(frames,ignore_index=True)
     keys=['dataset','subset','node_id']
     assert not nodes.duplicated(keys).any(), 'Repeated node identity in inventory'
     memberships=[]
     for dataset in ['KMT','ORT']:
-        path=ROOT/f'{dataset.lower()}_all_duplicate_cluster_files.csv'
-        m=pd.read_csv(path,keep_default_na=False)
+        path=ROOT/f'internal_clusters_2026-10-07/{dataset.lower()}_all_duplicate_cluster_files.csv'
+        m=pd.read_csv(path,keep_default_na=False,encoding='utf-8-sig')
         assert (m.dataset==dataset).all()
         assert not m.duplicated(keys).any(), 'A node appears in multiple clusters'
         assert m.groupby(['subset','cluster_id']).size().ge(2).all()
@@ -54,16 +50,17 @@ def read_nodes():
     # language. Membership IDs remain useful; authoritative text/length comes
     # from the originating inventory, never from aggregate file_content.
     mismatch=member & nodes.text.ne(nodes.file_content)
-    nodes.loc[mismatch,['dataset','subset','node_id','article_path','cluster_id','word_count']].to_csv(OUT/'aggregate_text_mismatches.csv',index=False)
+    nodes.loc[mismatch,['dataset','subset','node_id','article_path','cluster_id','word_count']].to_csv(OUT/'cluster_text_mismatches.csv',index=False)
     nodes['aggregate_text_mismatch']=mismatch
     nodes['cluster_id']=nodes.cluster_id.fillna('')
     nodes['clustered']=member
     nodes['eligible']=nodes.is_comparable.astype(str).str.lower().eq('true')
     nodes['word_count']=pd.to_numeric(nodes.word_count)
     assert nodes.word_count.gt(0).all()
+    article_parts=nodes.article_path.str.replace('\\','/',regex=False).str.split('/')
     nodes['source_type']=np.where(nodes.dataset.eq('KMT'),
-                                 np.where(nodes.subset.str.startswith('all_notes'),'notes','body'),
-                                 nodes.article_path.str.split('/').str[1])
+                                 np.where(nodes.article_path.str.contains('/all_notes/',regex=False),'notes','body'),
+                                 article_parts.str[1])
     # Singleton IDs cannot collide with duplicate IDs; subset remains part of identity.
     nodes['item_id']=np.where(member,'cluster:'+nodes.cluster_id,'singleton:'+nodes.node_id)
     return nodes,sources
@@ -127,15 +124,17 @@ def box_figure(panels,title):
 
 
 def main():
+    global OUT
+    parser=argparse.ArgumentParser(description='Analyze refreshed internal duplicate-cluster word counts.')
+    parser.add_argument('--output-dir',type=Path,default=ROOT/'cluster_word_counts_2026-10-07')
+    OUT=parser.parse_args().output_dir
     OUT.mkdir(parents=True,exist_ok=True)
     nodes,sources=read_nodes(); items=collapse(nodes)
     assert len(items)==nodes.loc[~nodes.clustered].shape[0]+nodes.loc[nodes.clustered].groupby(['dataset','subset','cluster_id']).ngroups
     assert items.member_count.sum()==len(nodes)
-    labels={'body_en':'KMT bodies · English','body_fr':'KMT bodies · French',
-            'all_notes_en':'KMT notes · English','all_notes_fr':'KMT notes · French',
-            'en':'ORT · English','fr':'ORT · French'}
     overview=[(dataset,items[items.dataset.eq(dataset)]) for dataset in ['KMT','ORT']]
-    detail=[(label,items[items.subset.eq(subset)]) for subset,label in labels.items()]
+    detail=[(f'{dataset} · {lang.upper()}',items[items.dataset.eq(dataset)&items.subset.eq(lang)])
+            for dataset in ['KMT','ORT'] for lang in ['en','fr']]
     eligible=[(label,d[d.eligible]) for label,d in detail]
     typed=collapse(nodes,within_type=True)
     orttypes=[(f'ORT {kind} · EN + FR',typed[typed.dataset.eq('ORT') & typed.source_type.eq(kind)])
@@ -173,22 +172,19 @@ def main():
     for r in comparisons:
         if r['view'] in ['pooled','by_subset','eligible_only']:
             texts.append(f"| {r['view']} | {r['stratum']} | {r['clusters']:,} | {r['standalone_nodes']:,} | {r['cluster_median']:g} | {r['standalone_median']:g} | {r['median_ratio']:.2f} | {r['probability_cluster_shorter']:.1%} |")
-    methodology='''Each existing duplicate cluster contributes one observation: the median stored word_count of its members. Each standalone node contributes its own count. We do not sum member lengths, count a cluster once per member, or choose a final master copy. A fractional value can arise from an even-sized cluster.
+    methodology="""Each duplicate cluster contributes one observation: the median saved word_count of its member topics. Each standalone node contributes its own count. These are separate within-dataset clusters by language; cross-source matches do not join clusters. Membership is formed from saved “duplicate/semantic duplicate” edges as connected components. Partial-inclusion pairs are not merged. Cluster labels are model outputs and are not human- or LLM-confirmed safe-reuse groups.
 
-Membership comes from outputs/kmt_all_duplicate_cluster_files.csv and outputs/ort_all_duplicate_cluster_files.csv. These are separate within-source cluster inventories, not ORT–KMT cross-source clusters. ORT uses the internal-run membership (3,753 clusters), not the older reviewed-run summary (4,350 clusters). All members were matched by node ID to their originating inventories. KMT uses the four cleaned kmt_dita_1 body/all_notes inventories; ORT uses the ORT rows of cross_nodes.csv, the universe used by its internal clustering script. Data-quality check: 2,902 KMT English note rows have aggregate file_content that differs from inventory text (the inspected example contains French text). We use inventory word_count, not aggregate file_content. Mismatch IDs are listed in aggregate_text_mismatches.csv; other subsets have no text mismatches.
+The refreshed deduplication runs used direct DITA topic-body text. Broken conref targets prevented full expansion, so word counts do not reconstruct the complete conref-expanded source. KMT note topics are included and separated from other KMT topics in source-type views. ORT source-type panels collapse a mixed-type cluster separately within each represented type, so these counts are not additive.
 
-Lengths are the saved pipeline word_count values of extracted node text, using the pipeline word-token definition rather than character count. They measure what was available to that run. They do not restore omitted conref tables/notes or measure the complete original publication. Existing cluster labels are pipeline decisions, not validated safe-reuse groups; KMT and ORT membership was produced by different runs/review policies.
-
-Boxes span the 25th–75th percentiles; the line is the median; whiskers reach the furthest observation within 1.5 IQR; points beyond them are retained as outliers. Quartiles and fences are computed on original word counts; the default log axis only changes display. Linear scale is available. All positive-length items are included initially. The eligibility sensitivity view uses saved is_comparable and retains a cluster only if all members are eligible. Eligibility does not prove a node was compared against every possible partner. Unclustered means not assigned to an existing cluster, not proven unique.
-
-Language and KMT body/note panels prevent a pooled result from hiding different populations. ORT source-type panels collapse a cluster separately within each type it contains; a mixed-type cluster can appear in several panels, so those panels must not be summed. English/French are pooled in those source-type panels only.
-
-The probability column is P(cluster length < standalone length) + 0.5 × P(tie), computed over all cross-group comparisons. It is descriptive, not a causal effect or a significance test. A median ratio below 1 indicates shorter typical collapsed-cluster length. This does not establish that the classifier prefers short text: retrieval thresholds, content type, template structure, and review policy also affect cluster membership. Collapse sensitivity reports minimum, median, mean and maximum member length, with equal cluster weighting throughout.'''
-    findings='''ORT clusters are shorter at the median: 81.5 words versus 98 for standalone nodes (16.8% lower), with the same direction in English and French. KMT is only slightly shorter when pooled: 50 versus 54 words (7.4% lower). That pooled KMT result hides opposite patterns: body clusters are longer (English 94 versus 81; French 122.25 versus 93), while note clusters are shorter (English 28 versus 32; French 33 versus 37). These directions persist in the matching-eligible sensitivity view. Therefore “clustered nodes have fewer words” is supported descriptively for ORT and KMT notes, but not for KMT bodies.
-
-The distributions overlap substantially: a randomly selected collapsed cluster is shorter than a standalone node, with ties half-counted, in 54.8% of ORT and 51.3% of pooled KMT comparisons. Word count alone is consequently a weak separator. ORT source-type results vary, and the policy panel has only one cluster: do not generalize its median. A higher prevalence of short repetitive notes can explain an overall pattern without a universal short-text bias.
-
-The collapsing rule matters most for KMT: using each cluster's longest member instead of its median reverses the pooled comparison (59 versus 54 words). ORT remains shorter under minimum, median, mean and maximum member-length choices. These are sensitivity checks, not recommendations to select the shortest or longest member as the master copy.'''
+The charts compare median cluster member length with standalone-node length. The probability column is P(cluster length < standalone length) + 0.5 × P(tie), a descriptive statistic. Eligibility views use the saved comparability flag and retain a cluster only when all its members are eligible. Unclustered means not assigned to a detected cluster, not proven unique. Sensitivity rows compare minimum, median, mean, and maximum member lengths."""
+    pooled_lookup={r['stratum']:r for r in comparisons if r['view']=='pooled'}
+    findings=' '.join(
+        f"{dataset}: cluster median {pooled_lookup[dataset]['cluster_median']:g} words vs "
+        f"{pooled_lookup[dataset]['standalone_median']:g} standalone "
+        f"({pooled_lookup[dataset]['median_ratio']:.2f}×; cluster-shorter probability "
+        f"{pooled_lookup[dataset]['probability_cluster_shorter']:.1%})."
+        for dataset in ['KMT','ORT']
+    )+' These are descriptive results from pair classifications with borderline cases not LLM reviewed.'
     report='# Word counts of collapsed duplicate clusters\n\n'+findings+'\n\n## Method and limitations\n\n'+methodology+'\n\n| View | Dataset | Clusters | Standalone | Cluster median | Standalone median | Median ratio | Probability shorter |\n|---|---|---:|---:|---:|---:|---:|---:|\n'+'\n'.join(texts)
     (OUT/'REPORT.md').write_text(report,encoding='utf-8')
     table=stats.round(3).to_html(index=False,classes='stats')

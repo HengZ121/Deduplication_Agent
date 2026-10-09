@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0512">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>BT</entry>
+            <entry>Determining if the conditions to allow at Level 1 are met</entry>
+          </row>
+          <row>
+            <entry>
+              Regular
+              <xref href="/en/procedure/generic/knowledge.shtml#Regular_Benefits">Regular</xref>
+            </entry>
+            <entry>
+              There is no D46 on file. The client was receiving regular benefits before receiving special benefits; or the reason for not returning to work can be allowed at Level 1; and The client is capable of and available for work and poses no restrictions towards accepting employment. The client is in Canada (exceptions are listed in EIR 55 ).
+              <xref href="https://laws-lois.justice.gc.ca/eng/regulations/SOR-96-332/section-55.html">EIR 55</xref>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Sickness
+              <xref href="/en/procedure/generic/knowledge.shtml#Sickness_Benefits">Sickness</xref>
+            </entry>
+            <entry>
+              If necessary, the client provides proof of illness, injury or quarantine. To determine if proof of illness, injury or quarantine is required, refer to Determining if a medical certificate must be submitted — Renewal and continuing claims . When FCB are exhausted or the sickness period extends beyond the FCW, the client provides proof of illness, injury or quarantine and proves being otherwise available for work.
+              <xref href="/en/procedure/task/determining_med_cert_req.shtml">Determining if a medical certificate must be submitted — Renewal and continuing claims</xref>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              Maternity
+              <xref href="/en/procedure/generic/knowledge.shtml#Maternity_Benefits">Maternity</xref>
+            </entry>
+            <entry>The client provides proof of the pregnancy.</entry>
+          </row>
+          <row>
+            <entry>
+              Parental
+              <xref href="/en/procedure/generic/knowledge.shtml#Parental_Benefits">Parental</xref>
+            </entry>
+            <entry>The client provides proof of the birth, adoption or placement.</entry>
+          </row>
+          <row>
+            <entry>
+              CCB
+              <xref href="/en/procedure/generic/knowledge.shtml#Compassionate_Care_Benefits">CCB</xref>
+            </entry>
+            <entry>The client submits proof confirming that a family member has a serious medical condition that poses a significant risk of death within 26 weeks and needs care or support from one or more family members. The client provides care or support to an individual identified as a family member. The client is requesting CCB during the 52-week CCW established for a patient. The client is not requesting CCB during the 52-week FCW for the same patient.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

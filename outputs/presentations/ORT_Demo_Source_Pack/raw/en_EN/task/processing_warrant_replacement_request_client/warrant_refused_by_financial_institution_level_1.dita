@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="warrant_refused_by_financial_institution">
+  <title>Warrant refused by financial institution</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if written authorization from Service Canada has been provided to the client:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 6.</li>
+            <li>
+              If yes, and the client is calling to declare that the financial institution will not redeem the stale-dated warrant, provide the client with the following information:
+              <ul>
+                <li>The replacement time is 5 working days if the client has signed up for direct deposit. If the client did not sign up for direct deposit, the replacement time is 7 to 13 working days for a warrant.</li>
+                <li>The stale-dated warrant must be returned.</li>
+                <li>Go to step 8.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>While the client is on the line:</cmd>
+        <info>
+          <ul>
+            <li>Obtain the contact information for the financial institution.</li>
+            <li>Advise the client that a letter will be sent as authorization for the financial institution to redeem the stale-dated cheque. Once the letter is received, the client must take the letter and the stale-dated cheque to the financial institution.</li>
+            <li>Advise that if the financial institution refuses to redeem the stale-dated cheque, the client is to contact the Service Canada Call Centre and request a payment replacement.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the F-00-00-00 letter. Unless specified, select the most appropriate option for each of the following attributes:</cmd>
+        <info>
+          <ul>
+            <li>Text - Free text (1612): Type “This letter has been sent as authorization for [name of financial institution] to redeem EI benefit cheque # [warrant number] issued to [client’s name], on [issue date], in the amount of [payment amount]. To confirm the above request, please contact [officer’s name] at [telephone number], Monday to Friday, between the hours of [hours of work].”</li>
+            <li>Go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the INS5207 form as follows:</cmd>
+        <info>
+          <ul>
+            <li>SIN: Enter the SIN.</li>
+            <li>HRCC: Enter the SCC as shown in FTS.</li>
+            <li>Requester: Enter the 7-digit user code.</li>
+            <li>Week Code(s): Enter the w/c of the payment to be replaced.</li>
+            <li>Warrant No(s).: Enter the payment reference number that appears in the Payment Summary (MN19) information screen.</li>
+            <li>Amount(s): Enter the payment amount that appears in the Payment Summary (MN19) information screen.</li>
+            <li>Name: Enter the client’s surname and given name.</li>
+            <li>
+              Address: Enter the client’s address as follows:
+              <ul>
+                <li>On the first line, enter the street address.</li>
+                <li>On the second line, enter the city, province and postal code.</li>
+              </ul>
+            </li>
+            <li>Telephone number: Enter the client’s telephone number.</li>
+            <li>Action: Type “The client had received the warrant issued on [date]. Original warrant is now stale-dated. The client has been advised to return the original warrant to the local Service Canada Centre.”</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create an IPOC REV WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Complexity: Select Level 1 .</li>
+            <li>Language: Select the appropriate language.</li>
+            <li>
+              Destination — SCC: Select the IPOC based on the region in which the claim is located in FTS:
+              <ul>
+                <li>Atlantic: Select 1826 Moncton IPOC .</li>
+                <li>Ontario: Select 3056 Belleville IPOC .</li>
+                <li>Quebec: Select 2642 Montreal IPOC (3) .</li>
+                <li>Western Canada and Territories: Select 5903 Vancouver IPOC .</li>
+              </ul>
+            </li>
+            <li>End User: Select Next available user .</li>
+            <li>Issue: Select Payment replacement .</li>
+            <li>BPC: Type the BPC of the claim.</li>
+            <li>Comments: Type “Payment replacement.”</li>
+            <li>
+              Details: Copy and paste the information from the INS5207 form .
+              <xref href="https://esdc.prv/en/service-canada/ei/reference-material/forms/documents/checklists/form_5207.doc">INS5207 form</xref>
+            </li>
+            <li>Obtained by: Select the appropriate method.</li>
+            <li>Obtained from: Select the appropriate source.</li>
+            <li>Source details: Enter the source details.</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Replacement warrant .</li>
+            <li>Comments: Type “Warrant stale-dated.”</li>
+            <li>
+              Details: Select the appropriate option:
+              <ul>
+                <li>Financial Institution cannot redeem the stale-dated warrant: Type “The financial institution declared that warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD] cannot be redeemed because it is stale-dated. A payment replacement request was submitted to IPOC. The client has been informed and understands that: The replacement time is 5 working days if the client has signed up for direct deposit. If they didn’t sign up for direct deposit, the replacement time is 7 to 13 working days for a warrant. The client must return the original warrant to Service Canada.”</li>
+                <li>Letter of authorization sent to the client: Type “A letter authorizing the financial institution to redeem warrant [warrant number] issued on [warrant issue date] for the weeks of [YYYY-MM-DD to YYYY-MM-DD] was sent to the client on [date]. The client was advised to take the letter and stale-dated cheque to the financial institution and it will be redeemed.”</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>If there is a WI, complete it.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_actual_hours_worked">
+  <title>Reviewing the actual hours worked</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if the client could qualify for all BTs if all the hours on the ROE were included in the QP:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 7.</li>
+            <li>If no, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if fact-finding with the employer to obtain the actual hours required has already occurred:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, fact-find with the employer to obtain the actual hours required.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the employer was contacted, go to step 9.</li>
+            <li>If the employer was not contacted, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Actual hours obtained for the calculation” and indicate who provided the information.</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the employer provided the actual hours:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 11.</li>
+            <li>If yes, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if fact-finding with the client to obtain the actual hours required has already occurred:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 12.</li>
+            <li>
+              If no, fact-find with the client to obtain the actual hours required.
+              <xref href="/en/procedure/task/fact_find.shtml">fact-find</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 13.</li>
+            <li>If the client was not contacted, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Calculation .</li>
+            <li>Comments: Type “Actual hours obtained for the calculation” and indicate who provided the information.</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Click Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Enter the hours as obtained into the EHF.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if any changes were made to the EHF:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 16.</li>
+            <li>
+              If yes, go to step 9 of Calculating a claim in SSO .
+              <xref href="/en/procedure/subactivity/calc_ssa_sb.shtml">Calculating a claim in SSO</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

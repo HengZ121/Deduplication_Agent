@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="inputs_required__benefit_period_establi_34eeef80">
+  <title>Inputs required — Benefit period established, Initial — In progress, or Renewal — In progress</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if any of the claimant’s reports to be input are before a renewal week:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>If no, go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a revised registration number exists for this issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 3.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there are cycling or processed claimant’s reports for the period after the renewal week:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 4.</li>
+            <li>If yes, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the claimant’s reports include the BPC week:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC .</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 26 - Processing of a report blocked by a renewal week .</li>
+            <li>Earnings to be allocated: If necessary, enter the weeks and amounts.</li>
+            <li>Remarks line 1: Type “P/R claimant’s report before a renewal.”</li>
+            <li>
+              Remarks line 2 to 4: Type the appropriate option for the claimant’s reports input:
+              <ul>
+                <li>If no coding, type “M151 CR from w/c [XXXX] to w/c [XXXX].”</li>
+                <li>If coding is required, type “M152 CR from w/c [XXXX] to w/c [XXXX].” If necessary, type “EARN [XXXX], NA [not available days], SICK [sick days], FWW [XX]” and other relevant information regarding the claimant’s reports input for each period (e.g. CR 2000-2010 EARN 400$ 2011 SICK 3).</li>
+              </ul>
+            </li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 31 Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 97 - Internal adjustment .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 18.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_3578.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client declared anything on the Claimant Report with Paycoding checklist that requires paycoding:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 9.</li>
+            <li>If yes, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Issue Payments (M151/M152) transaction and input the claimant’s report(s) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select: Check one or more boxes based on the number of reports being input.</li>
+            <li>Report Period: Select the arrow to display the calendar and select the Sunday of the start week of the report to be processed.</li>
+            <li>Weeks: Select 1 for a 1-week report or 2 for a 2-week report.</li>
+            <li>Select Update .</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the claimant’s report chart to determine if additional actions are required (e.g. if earnings are declared, an allocation may be required instead of coding the earnings).</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Issue Payments (M151/M152) transaction and input the claimant’s report(s) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select: Check one or more boxes based on the number of reports being input.</li>
+            <li>Report Period: Select the arrow to display the calendar and select the Sunday of the start week of the report to be processed.</li>
+            <li>Weeks: Select 1 for a one-week report or 2 for a 2-week report.</li>
+            <li>Coding: Select No to complete the paycoding as follows:</li>
+            <li>Earnings: For each week, enter the client’s earnings if applicable.</li>
+            <li>
+              Non-available day(s): For each week, select the number of days the client is not available.
+              <xref href="../../common_notes/note_c_3579.dita">Note</xref>
+            </li>
+            <li>Sick day(s): For each week, select the number of days the client is sick.</li>
+            <li>
+              STUAE Coding: Select the appropriate option:
+              <ul>
+                <li>S - Wage loss insurance</li>
+                <li>T - Training</li>
+                <li>A - Self- employed</li>
+              </ul>
+              <xref href="../../common_notes/note_c_3576.dita">Note</xref>
+            </li>
+            <li>
+              Full work week: Select the appropriate option:
+              <ul>
+                <li>1 - Full work week - week 1</li>
+                <li>2 - Full work week - week 2</li>
+                <li>3 - Full work week both weeks</li>
+              </ul>
+            </li>
+            <li>
+              Found work: Select the appropriate option:
+              <ul>
+                <li>1 - Found work on Sunday or Monday of week 1 (or Tuesday following a statutory holiday) — No other earnings coding is required.</li>
+                <li>2 - Found work on Sunday or Monday of week 2 (or Tuesday following a statutory holiday) — Code earnings for week 1 if applicable. No other coding is required for week 2.</li>
+                <li>3 - Found work on Monday of the week following week 2 (or Tuesday following a statutory holiday)</li>
+                <li>4 - Found work after Monday in the first week — Code earnings for week 1.</li>
+              </ul>
+              <xref href="../../common_notes/note_c_3542.dita">Note</xref>
+              <ul>
+                <li>5 - Found work after Monday in the second week — Code earnings for week 2.</li>
+                <li>6 - No further reports to be issued - client indicated they no longer wish to receive benefits .</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a revised registration number for this issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and complete the registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is an outstanding Level 1 Claim Review (CR) WI for an antedated renewal:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 15.</li>
+            <li>If yes, go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) , assign a registration number and create a CR WI as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Create Work Item: Check the box.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, change the CR WI Issue(s) field as follows:</cmd>
+        <info>
+          <ul>
+            <li>Open the CR WI.</li>
+            <li>Issue(s): Select Antedate .</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a client Note instructing the responsible officer to input the claimant’s reports after the antedated renewal week is input.</cmd>
+      </step>
+      <step>
+        <cmd>In NWS, determine if a WI exists for the claimant’s report issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI.</li>
+            <li>If no, return to the previous task</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="processing_dd_payment_replacement" xml:lang="en-CA">
+  <title>Processing a direct deposit payment replacement request</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="processing_payment_replacement_requests.dita">
+    </topicref>
+    <topicref href="reviewing_sps.dita">
+    </topicref>
+    <topicref href="reasons_for_replacement_request.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4175.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4176.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+    <topicref href="in_sps.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_level_1.dita">
+      </topicref>
+      <topicref href="fact-finding_level_1.dita">
+      </topicref>
+      <topicref href="determining_the_payment_status_level_1.dita">
+      </topicref>
+      <topicref href="status_paid_level_1.dita">
+      </topicref>
+      <topicref href="status_outstanding_level_1.dita">
+      </topicref>
+      <topicref href="completing_the_wi_level_1.dita">
+      </topicref>
+      <topicref href="replacing_a_payment_level_1.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4177.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4178.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

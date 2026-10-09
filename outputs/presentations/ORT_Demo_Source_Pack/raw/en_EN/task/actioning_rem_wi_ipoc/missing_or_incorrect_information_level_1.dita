@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="missing_or_incorrect_information">
+  <title>Missing or incorrect Information</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Refer to the appropriate task to determine which information is missing or is incorrect to provide all the required information to IPOC and go to step 4.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the revised registration number used to send the original Operational Centre Memo (MM06) .</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the applicable BPC.</li>
+            <li>Work item: Select the same work item noted on the original Operational Centre Memo (MM06).</li>
+            <li>Work type: Select the same work type noted on the original Operational Centre Memo (MM06) .</li>
+            <li>Remarks Line 1: Type “This MM06 replaces the MM06 created on [date] for BPC [XXXX].”</li>
+            <li>Remarks Line 2 to 4: Include all required information.</li>
+            <li>Remarks Line 5: Enter your first name and last name.</li>
+            <li>Detection: Select the same detection code as noted on the original Operational Centre Memo (MM06).</li>
+            <li>Infraction: Select the same infraction code as noted on the original Operational Centre Memo (MM06).</li>
+            <li>Message: Select the same message code as noted on the original Operational Centre Memo (MM06) .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete : Select C - Yes .</li>
+            <li>Go to step 8.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

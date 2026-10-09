@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="issuing_payments_to_the_client">
+  <title>Issuing payments to the client</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Amend the claimant’s reports processed by referring to Modifying a claimant’s report , if necessary.</cmd>
+      </step>
+      <step>
+        <cmd>Issue payments to the client by referring to Inputting a claimant’s report .</cmd>
+      </step>
+      <step>
+        <cmd>Rescind or terminate the 39 - Prevent payment of Part II benefits and/or incorrect Part I benefits (D39) input by IPOC to cancel potentially fraudulent payments, if necessary.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if there are claimant’s reports to be input for the period before the renewal week:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 36.</li>
+            <li>If no, go to step 40.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the Integrity registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the claim corresponding to the claimant’s report to be input.</li>
+            <li>Work item: Select 92 - Purge and Recreate .</li>
+            <li>Work type: Select 26 - Processing of a report blocked by a renewal week .</li>
+            <li>Earnings to be allocated: If necessary, enter the weeks and amounts.</li>
+            <li>Remarks line 1: Type “Antedate renewal from w/c [XXXX] to w/c [XXXX].”</li>
+            <li>Remarks lines 2–4: Type “Issue payment for w/c [XXXX] to w/c [XXXX].” Add the claimant’s report details and any allocation information, if necessary.</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Detection: Select 23 - Recalculation - postdating/antedating .</li>
+            <li>Infraction: Select C - Non-fraud - Insurability - new information .</li>
+            <li>Message: Select 38 - An overpayment resulted due to a change in the start of your claim .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 40.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

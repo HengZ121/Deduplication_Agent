@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="missing_information">
+  <title>Missing information</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine the CS:</cmd>
+        <info>
+          <ul>
+            <li>If the claim is terminated but can be reactivated, select the appropriate BPC on the Dormant tab and select Reactivate . Go to step 6.</li>
+            <li>If the claim is active or converted to MPS, go to step 7.</li>
+            <li>If the claim is blocked or archived, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the AI WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Reactivation of BPC [XXXX].”</li>
+            <li>Bring forward date: Enter today’s date + one business day.</li>
+            <li>When the WI moves to the current workload, go to step 7.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number related to the same issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 8.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Failure to provide entitlement information.”</li>
+            <li>Details: Type “No return call from the client. 15 - Claim Procedure disentitlement imposed for failure to provide entitlement information. Information is missing. Cannot input allocation of pension benefits.”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the CS is 8 - Converted to Manual Pay:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 10.</li>
+            <li>If yes, note that a D15 from the Monday following the week displayed in the Last claimant’s report processed field of the Manual Pay tab in FTS must be included in the Operational Centre Memo (MM06) transaction to IPOC. Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Payments tab. Under Benefit Type , determine if the message 9000 - Cycling payment is displayed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 11.</li>
+            <li>If no, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the MA has been imposed for the same issue or another issue:</cmd>
+        <info>
+          <ul>
+            <li>If the MA has been imposed for the same issue, go to step 12.</li>
+            <li>If the MA has been imposed for another issue and the allocation of the lump-sum or periodic pension has an impact on cycling claimant’s reports, go to step 12.</li>
+            <li>If the MA has been imposed for another issue and the allocation of the lump-sum or periodic pension has no impact on cycling claimant’s reports, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlement (M161) transaction and impose the D15 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 15 - Claim procedure .</li>
+            <li>Start date: Enter the Monday of the first cycling claimant’s report displayed in FTS.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlement (M161) transaction and impose the D15 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Add .</li>
+            <li>Disentitlement: Select 15 - Claim procedure .</li>
+            <li>Start date: Enter the Monday of the next claimant’s report to be received displayed in FTS.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 17.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select F - Non-fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the BPC of the allocation.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1 : Type “D15 from w/c [XXXX-X] to 9999.”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the D-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Disentitlements (2976)
+              <ul>
+                <li>D48 and D15 — Moved — Address unknown and claim procedure (3006) .</li>
+                <li>D15 - Claim procedure (3009)</li>
+                <li>D15 - Text: Insert appropriate reason for D15</li>
+                <li>We / In addition, we (2687)</li>
+                <li>Indefinite/Definite/Multiple Disentitlement dates (2485)</li>
+                <li>Indefinite disentitlement start date (1270)</li>
+                <li>
+                  Text - Insert appropriate reason(s) (1618): Type the appropriate option:
+                  <ul>
+                    <li>you have not returned our call[s] following the message[s] left on [date[s]].”</li>
+                    <li>“you have not contacted us following the letter sent to you on [date].”</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Go to step 20.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “Failure to provide entitlement information.”</li>
+            <li>Details: Type “No return call from the client. Information is missing. Cannot input allocation of pension benefits. No 15 - Claim Procedure disentitlement imposed because the claim is [blocked or archived].”</li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number related to the same issue:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 20.</li>
+            <li>If yes, select the Renewal/Revised (M106) transaction and complete the registration number as follows:</li>
+            <li>Claim Allowed: Select NCA - No changes to the claim .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>
+              Complete: Select C - Yes .
+              <ul>
+                <li>Select Update .</li>
+                <li>Go to step 20.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

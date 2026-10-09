@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if IPOC created a Reminder (REM) WI indicating a new BP can now be established:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>
+              If yes, determine what IPOC adjusted:
+              <ul>
+                <li>
+                  If IPOC adjusted only the violation history, go to Amending the violation history .
+                  <xref href="#violation">Amending the violation history</xref>
+                </li>
+                <li>
+                  If IPOC adjusted the pay history summary (PHS) either with or without an adjustment of the violation history, go to Cancelling a claim retroactively .
+                  <xref href="#Retroactive_request">Cancelling a claim retroactively</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client wants to cancel a regular BP in favour of a fishing BP:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 3.</li>
+            <li>
+              If yes, determine if there is an indefinite disqualification on the regular BP:
+              <ul>
+                <li>If yes, go to step 3.</li>
+                <li>
+                  If no, go to Benefit period (BP) not cancelled .
+                  <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2160.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if one of the following conditions is met:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_2161.dita">Callout</xref>
+          <ul>
+            <li>If one of the conditions is met, go to step 4.</li>
+            <li>
+              If none of the conditions is met, refer to Terminating a benefit period .
+              <xref href="/en/procedure/task/benefit_period_term.shtml">Terminating a benefit period</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2162.dita">Note</xref>
+          <xref href="../../common_notes/note_c_2163.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if this is a retroactive request that was filed within the 30-day period:</cmd>
+        <info>
+          <ul>
+            <li>If the request is retroactive and was not filed within the 30-day period, go to step 5.</li>
+            <li>If the request is retroactive and was filed within the 30-day period, go to step 10.</li>
+            <li>If the request is not retroactive, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a Level 2 ROD for the adjudication of good cause for the delay in submitting the retroactive request:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>
+              If no, create a CR Revised WI as follows:
+              <ul>
+                <li>Type: Select Revised .</li>
+                <li>Issue: Select Entitlement .</li>
+                <li>Registration number: Enter the revised registration number.</li>
+                <li>Complexity: Select Level 2 .</li>
+                <li>Language: Select the appropriate option.</li>
+                <li>Destination — SCC: Select the Service Canada Centre as shown in FTS.</li>
+                <li>BPC: Enter the BPC.</li>
+                <li>Date of registration: Enter the date of the revised registration.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Create a client Note and type “CR Revised WI created today. The issue requiring adjudication is claim procedure — delay in requesting claim cancellation.”</cmd>
+      </step>
+      <step>
+        <cmd>Move the Level 1 WI related to the claim cancellation to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for adjudication of good cause.”</li>
+            <li>Bring forward date: Enter the today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Level 1 WI related to the claim cancellation moves to the current workload, determine if there is a Level 2 ROD for the adjudication of good cause for the delay in submitting the retroactive request:</cmd>
+        <info>
+          <ul>
+            <li>If no, return to step 7.</li>
+            <li>If yes, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if good cause for the delay has been allowed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if all of the information is on file to establish whether the client qualifies for benefits on a new claim (e.g. an application, all ROEs):</cmd>
+        <info>
+          <ul>
+            <li>If not all of the information is on file, go to step 11.</li>
+            <li>If all the information is on file, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client:</cmd>
+        <info>
+          <ul>
+            <li>Ask if the client intends to apply for a new claim.</li>
+            <li>Obtain from the client the missing information required to determine if the client qualifies for benefits on a new claim.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_2164.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If client was contacted, go to step 13.</li>
+            <li>
+              If the client was not contacted or did not reply to the N-10-00-00 letter, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Type the BPC.</li>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “Cancellation request.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy .
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the required information was obtained:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 15.</li>
+            <li>If yes, go to step 18.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client agreed to submit the required information:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 16.</li>
+            <li>
+              If no, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, move the WI to Pending as follows:</cmd>
+        <info>
+          <ul>
+            <li>Pending reason: Select Other .</li>
+            <li>Comments: Type “Waiting for the client to submit information.”</li>
+            <li>Bring forward date: Enter the today’s date + 10 business days.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the WI moves to the current workload, determine if the required information has been received:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 18.</li>
+            <li>
+              If no, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client qualifies for a new BP (refer to the appropriate Calculating or recalculating a claim activity):</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 19.</li>
+            <li>
+              If no, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_2160.dita">Note</xref>
+          <xref href="../../common_notes/note_c_2165.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if it is clearly to the client’s advantage to cancel the BP:</cmd>
+        <info>
+          <xref href="../../common_notes/note_c_2166.dita">Callout</xref>
+          <ul>
+            <li>If any of the conditions apply, go to step 20.</li>
+            <li>If none of the conditions applies, go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Enter the BPC.</li>
+            <li>Comments: Type “Cancellation of BPC [BPC].”</li>
+            <li>Details: Type “BPC [BPC] cancelled. The client was not contacted to review advantages and disadvantages of cancelling the BP because the cancellation is clearly to the client’s advantage.”</li>
+            <li>Go to step 25.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Contact the client and review the advantages and disadvantages of cancelling the claim, including the following. Refer to Fact-finding .</cmd>
+        <info>
+          <ul>
+            <li>The decision to cancel is final and cannot be reversed.</li>
+            <li>A new WP must be served on the new BP unless it is waived or deferred.</li>
+            <li>The decision to cancel the BP cannot be appealed once it has been input.</li>
+            <li>If the client chooses to cancel the BP, a letter will be sent only if benefits have been paid.</li>
+            <li>If the client chooses not to cancel the BP, no letter will be sent.</li>
+            <li>Remind the client to submit all of their ROEs as soon as possible, if they have not yet been submitted.</li>
+            <li>If the client did not provide the VBW information and it is not evident that the benefit rate will reach its maximum, use the INS5241 form and obtain the VBW information. If the client cannot be contacted by telephone at this point, in ACS, create and send the Q-01-00-00 letter, which allows the client to complete and return the form.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If the client was contacted, go to step 23.</li>
+            <li>
+              If the client was not contacted, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Type the BPC.</li>
+            <li>Main Issue: Select Other .</li>
+            <li>Comments: Type “BP cancellation.”</li>
+            <li>
+              Details: Document the fact-finding details according to the Fact-Finding and Documentation Policy . Also type “The client was advised of the advantages and disadvantages of cancellation. The client was also told that the decision is final and cannot be reversed, and that a letter will be sent only if the client chooses to cancel the BP and benefits have been paid.”
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">Fact-Finding and Documentation Policy</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client still wants to cancel the BP in favor of a new one:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 25.</li>
+            <li>
+              If no, go to Benefit period (BP) not cancelled .
+              <xref href="#BPnotcancelled">Benefit period (BP) not cancelled</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the BP cancellation is for weeks of benefits that were processed after a renewal week or after a disentitlement was terminated:</cmd>
+        <info>
+          <ul>
+            <li>
+              If no, go to Cancelling the benefit period (BP).
+              <xref href="#Cancelling_BP">Cancelling the benefit period (BP).</xref>
+            </li>
+            <li>
+              If yes, go to Cancelling a claim retroactively .
+              <xref href="#Retroactive_request">Cancelling a claim retroactively</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

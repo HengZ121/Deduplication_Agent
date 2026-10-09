@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="allocation_input_on_a_blocked_claim">
+  <title>Allocation input on a blocked claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select A - Non-fraud - Earnings and employment .</li>
+            <li>Message: Select 8 - Your earnings were not deducted .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>If no additional weeks need to be processed or paid, select 91 - Overpayment .</li>
+                <li>If additional weeks need to be processed or paid, select 93 - Manual Pay System .</li>
+              </ul>
+            </li>
+            <li>
+              Work type: Select the appropriate option:
+              <ul>
+                <li>If the Work item is 91 , select 2 - Non-misrepresentation .</li>
+                <li>If the Work item is 93 , select 33 - Blocked claim requiring payment .</li>
+              </ul>
+            </li>
+            <li>Remarks Line 1: Type “Input M107 [action type] [w/c - start date] - [w/c - end date] [number of weeks] [type of monies (e.g. P - Preventative Withdrawal, S - Separation pay benefits, W - Workers’ compensation benefits)] [apply UP to OP, if necessary].”</li>
+            <li>Remarks Line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a subsequent claim needs to be postdated due to the BP extension:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 5.</li>
+            <li>
+              If yes and the claim is active, input the Renewal/Revised (M106) transaction with the required information for the recalculation to postdate the subsequent BPC. If it is not possible to postdate the BPC using the Renewal/Revised (M106) transaction, select the Renewal/Revised (M106) transaction to create a second Operational Centre Memo (MM06) . Refer to MM06 Benefit period: BPC change (antedate and postdate) — Transaction to send the information to IPOC, indicating to process both MM06 transactions.
+              <xref href="/en/procedure/generic/additionalresources/mm06_bpc_change_antedate_transaction.shtml">MM06 Benefit period: BPC change (antedate and postdate) — Transaction</xref>
+            </li>
+            <li>
+              If yes and the claim is blocked, select the Renewal/Revised (M106) transaction to create a second Operational Centre Memo (MM06) . Refer to MM06 Benefit period: BPC change (antedate and postdate) — Transaction to send the information to IPOC, indicating to process both MM06 transactions.
+              <xref href="/en/procedure/generic/additionalresources/mm06_bpc_change_antedate_transaction.shtml">MM06 Benefit period: BPC change (antedate and postdate) — Transaction</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI or return to the previous task.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

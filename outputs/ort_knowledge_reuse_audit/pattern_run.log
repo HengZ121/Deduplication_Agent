@@ -1,0 +1,94 @@
+{
+  "languages": {
+    "en": {
+      "sections": 14499,
+      "publications": 879,
+      "section_types": {
+        "activity": 910,
+        "task": 13589
+      },
+      "exact_groups": 758,
+      "exact_group_sections": 2217,
+      "exact_groups_min40words": 393,
+      "review_tier_groups": 312,
+      "sections_in_saved_positive_pairs": 5489,
+      "exact_surface_nonexact_structure_pairs": 2412,
+      "nonexact_pairs_with_any_shared_block": 4510,
+      "positive_components": 1566,
+      "largest_positive_component": {
+        "language": "en",
+        "sections": 121,
+        "observed_positive_edges": 2210,
+        "all_pairs_in_component": 7260,
+        "pairs_without_audited_positive_edge": 5050
+      },
+      "component_pairs_without_positive_edge": 7624,
+      "global_exact_pair_coverage": {
+        "eligible_global_exact_pairs": 5210,
+        "in_saved_candidates": 3920,
+        "in_saved_positive_pairs": 3920,
+        "absent_saved_candidates": 1290,
+        "candidate_but_not_positive": 0
+      }
+    },
+    "fr": {
+      "sections": 15228,
+      "publications": 879,
+      "section_types": {
+        "activity": 907,
+        "task": 14321
+      },
+      "exact_groups": 640,
+      "exact_group_sections": 1888,
+      "exact_groups_min40words": 345,
+      "review_tier_groups": 317,
+      "sections_in_saved_positive_pairs": 5333,
+      "exact_surface_nonexact_structure_pairs": 2207,
+      "nonexact_pairs_with_any_shared_block": 4224,
+      "positive_components": 1534,
+      "largest_positive_component": {
+        "language": "fr",
+        "sections": 118,
+        "observed_positive_edges": 1953,
+        "all_pairs_in_component": 6903,
+        "pairs_without_audited_positive_edge": 4950
+      },
+      "component_pairs_without_positive_edge": 7640,
+      "global_exact_pair_coverage": {
+        "eligible_global_exact_pairs": 4413,
+        "in_saved_candidates": 3187,
+        "in_saved_positive_pairs": 3187,
+        "absent_saved_candidates": 1226,
+        "candidate_but_not_positive": 0
+      }
+    }
+  },
+  "framenet": {
+    "sample_size": 240,
+    "eligible_unique_first_sentences": 9339,
+    "mapped_sentences": 119,
+    "unmapped_sentences": 121,
+    "mapped_with_no_extracted_roles": 21,
+    "mapped_missing_at_least_one_configured_role": 119,
+    "mapped_without_official_lexical_unit": 57,
+    "frame_counts": {
+      "Receiving": 5,
+      "Evidence": 7,
+      "Assessing": 10,
+      "Scrutiny": 18,
+      "Submitting_documents": 7,
+      "Activity_stop": 11,
+      "Request": 21,
+      "Verification": 1,
+      "Rewards_and_punishments": 21,
+      "Being_employed": 9,
+      "Have_as_requirement": 9
+    },
+    "scope": "English only, 240 SHA256-selected distinct first sentences >=8 whitespace words; coverage, NOT accuracy; BERT disabled"
+  },
+  "duplicate_common_source_groups": 35,
+  "physical_common_sources_in_duplicate_groups": 72,
+  "common_source_errors": 0,
+  "review_queue_pairs": 42,
+  "external_api_calls": 0
+}

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_proven__part-time_employmen_b2c375bd">
+  <title>Entitlement proven — Part-time employment on a continuing claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>Comments: Type “[Employer’s name] — entitlement proven during the labour dispute.”</li>
+            <li>
+              Details: Document the decision according to the information noted in Major Employer Events .
+              <xref href="https://apps.powerapps.com/play/e/649eba73-ea42-e150-946a-78d374a4caf0/a/c43c87f7-c906-48c2-8251-0c98b7cb8a68?tenantId=9ed55846-8a81-4246-acd8-b1a01abfc0d1&amp;hint=c930eca9-0fba-4aa4-9f84-c2395387ccd3&amp;sourcetime=1744045362596">Major Employer Events</xref>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a D5 or an MA74 imposed on the file:</cmd>
+        <info>
+          <ul>
+            <li>If there is a D5 but no MA74 imposed, go to step 3.</li>
+            <li>If there is no D5 but there is an MA74 imposed, go to step 9.</li>
+            <li>If there is no D5 and no MA74 imposed, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Registration Number (M025, M030, M035) transaction and assign one as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Assign .</li>
+            <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+            <li>Service Unit: Select 1 .</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to create an Operational Centre Memo (MM06) as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 94 - Manual Action .</li>
+            <li>Work type: Select 15- Manual Action code 11, 12 or 14 .</li>
+            <li>Remarks line 1: Type “Labour dispute — entitled to benefits.”</li>
+            <li>Remarks line 2: Type “D5 to be terminated as of [date].”</li>
+            <li>Remarks line 5: Enter your first name and last name.</li>
+            <li>Decision type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and save the A-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Labour Dispute Disentitlement Suspended (2592) .</li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169) .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, inform the employer of the decision by sending a Z-01-00-00 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Advising Employer that Claim Approved (2775): Select Approved claim of employee or former employee .</li>
+            <li>
+              Reason for Claim Approval (2783):
+              <ul>
+                <li>Select the appropriate option.</li>
+              </ul>
+            </li>
+            <li>
+              Messages to Yer - Monies paid to client and Benefit rate for SUB (2788):
+              <ul>
+                <li>Select Warning to ER: To inform us if pays any monies to employee .</li>
+              </ul>
+            </li>
+            <li>Right to Request a Reconsideration (with Blank option) (4169): Select Right to Request a Reconsideration .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there a registration number for the labour dispute issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Disqualifications/Disentitlements (M106) transaction and complete as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Manual Action: Select 74 - Labour dispute.</li>
+            <li>Rescind: Check the box.</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: Select B - Non-fraud - Availability, capability .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the WI for the labour dispute issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="rcdatr_ic_rb" xml:lang="en-CA">
+  <title>Reviewing the calculation to determine if additional transactions are required</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="untitled_section.dita">
+    </topicref>
+    <topicref href="determining_if_additional_transactions__b9a36a03.dita">
+    </topicref>
+    <topicref href="work-sharing_ws_claims.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_0019.dita">
+    </topicref>
+    <topicref href="../../../common_notes/note_c_2349.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="level_1.dita">
+      <topicref href="reviewing_the_file_for_a_claim_procedur_c39136c3_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_for_work-sharing_ws__68623fb9_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_for_additional_trans_c935eb19_level_1.dita">
+      </topicref>
+      <topicref href="determining_if_transactions_must_be_inp_6fab028b_level_1.dita">
+      </topicref>
+      <topicref href="reviewing_the_file_for_a_claim_with_no__0613d365_level_1.dita">
+      </topicref>
+      <topicref href="ipoc_action_required_level_1.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2350.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2351.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2352.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2353.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2354.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2355.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_0854.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2356.dita">
+      </topicref>
+      <topicref href="../../../common_notes/note_c_2357.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

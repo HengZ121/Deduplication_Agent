@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="follow_up_on_the_reminder_rem_wi">
+  <title>Follow up on the Reminder (REM) WI</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine if information on file indicates that a decision has been made on the client’s entitlement to the benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 2.</li>
+            <li>If yes, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Fact-find with the client or employer.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if client or employer was contacted during fact-finding:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 4.</li>
+            <li>If no, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, add details to the draft SROC created during fact-finding or create a new SROC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Main Issue: Select Earnings .</li>
+            <li>Comments: Type “[type of type of benefits from another source].”</li>
+            <li>
+              Details: Document the fact-finding details according to the National Fact-Finding and Documentation Policy
+              <xref href="/en/policy/nationalpolicy/national_policy_factfinding.shtml">National Fact-Finding and Documentation Policy</xref>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if a decision has been made on the entitlement to benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 6.</li>
+            <li>
+              If no, move the REM WI to Pending as follows:
+              <ul>
+                <li>Pending reason : Select Other .</li>
+                <li>Comments : Type “Waiting for a decision on entitlement to benefits from another source.”</li>
+                <li>Bring forward date : Today’s date + 90 business days.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the client is entitled to receive the benefits from another source:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 7.</li>
+            <li>
+              If yes, refer to Determining if monies are earnings for next steps.
+              <xref href="/en/procedure/task/deter_monies_earnings.shtml">Determining if monies are earnings</xref>
+            </li>
+          </ul>
+          <xref href="../../common_notes/note_c_1626.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if earnings for the benefits payable from another source, that the client is not entitled to receive, were included on an ROE used to calculate a claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no, go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, verify that the correct mainframe is selected and assign a recalculation registration number as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              On the Claim Selection screen, do the following:
+              <ul>
+                <li>Social Insurance Number: Enter the client’s SIN.</li>
+                <li>Registration type : Select Recalculation .</li>
+                <li>Select Search .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if the claim to be recalculated is a commuter claim:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 10.</li>
+            <li>If no, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In SSO, modify the following fields on the Name and address screen as follows, if necessary:</cmd>
+        <info>
+          <ul>
+            <li>Ordinary place of residence different: Select Yes .</li>
+            <li>Residence postal code: Enter the workplace postal code.</li>
+            <li>
+              Mailing address: Refer to Changing an address — Outside of Canada for more information on the required United States of America address format.
+              <xref href="/en/procedure/task/change_address_ooc.shtml">Changing an address — Outside of Canada</xref>
+            </li>
+            <li>Postal code: Type “XXXXXX.”</li>
+            <li>
+              Economic region - new and Economic region - old: In both fields, remove economic region code 99 . Enter the economic region code as follows:
+              <ul>
+                <li>If the economic region code used to calculate the initial claim is correct, enter this economic region code.</li>
+                <li>If the economic region code used to calculate the initial claim is incorrect, enter the economic region associated with the workplace postal code.</li>
+              </ul>
+            </li>
+            <li>Tax province: Select Commuters .</li>
+            <li>Responsible SCC: Enter the SCC associated with the workplace postal code.</li>
+            <li>Select Next .</li>
+            <li>On the Application Form screen, select Next .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>On the Registration screen, do the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              Pay SCC: Enter the SCC as shown in FTS. If the field is blank , enter the appropriate SCC:
+              <ul>
+                <li>Atlantic: Type “1121.”</li>
+                <li>Quebec: Type “2371.”</li>
+                <li>Ontario: Type “3515.”</li>
+                <li>Western Canada and Territories: Type “4812.”</li>
+              </ul>
+            </li>
+            <li>Service unit: Type “01.”</li>
+            <li>Tentative BPC : This field is prefilled.</li>
+            <li>Select Generate registration .</li>
+            <li>Go to step 19.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_1570.dita">Note</xref>
+          <xref href="../../common_notes/note_c_1625.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if an estimated allocation amount has been input.</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 13.</li>
+            <li>If no, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is an outstanding registration number for the benefits from another source issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 14.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Allocations link on the Summary tab and remove the allocation as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select the appropriate allocation and select Modify .</li>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select Rescind .</li>
+            <li>Detection: Select the code used on the initial input.</li>
+            <li>Infraction: Select the code used on the initial input.</li>
+            <li>Message: Select the code used on the initial input.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+            <li>Go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, create a ROD as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Comment: Type the appropriate option:
+              <ul>
+                <li>“The client did not provide information about benefits from another source.”</li>
+                <li>“Unable to obtain information about benefits from another source.”</li>
+              </ul>
+            </li>
+            <li>
+              Details: Type the appropriate option:
+              <ul>
+                <li>“The letter was sent on [date]. The client did not reply. A 15 - Claim procedure disentitlement is imposed from the Monday of the next week to be processed because the client did not provide information about benefits from another source. The allocation for earnings from the other source cannot be input.”</li>
+                <li>“The [client or employer] did not provide enough information regarding the [type of monies from another source] to determine entitlement to benefits. A 15 - Claim procedure disentitlement is imposed to prevent payment of benefits.”</li>
+              </ul>
+            </li>
+            <li>Select Save .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if there is a registration number on file:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 17.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign a registration number as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision Type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Disqualifications/Disentitlement (M161) transaction to impose the D15 as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Action: Select - Add .</li>
+            <li>Disentitlement: Select 15 - Claim procedure .</li>
+            <li>Start date: Enter the Monday of the next week to be processed.</li>
+            <li>End date: Select Indefinite .</li>
+            <li>Detection: Select 31 - Other new facts - entitlement review .</li>
+            <li>Infraction: : Select F - Non-fraud - Other .</li>
+            <li>Message: Select 4 - An overpayment resulted due to an indefinite disentitlement .</li>
+            <li>Contentious: Select 2 - Yes .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS , create and send the D-01-00-01 letter. Based on the claim information, select all of the required attributes, including the following:</cmd>
+        <info>
+          <ul>
+            <li>Disentitlements (2976)</li>
+            <li>
+              D48 and D15 — Moved — Address unknown and claim procedure (3006)
+              <ul>
+                <li>D15 - Claim procedure (3009)</li>
+                <li>D15 - Text: Insert appropriate reason for D15</li>
+                <li>We / In addition, we (2687)</li>
+                <li>Indefinite/Definite/Multiple Disentitlement dates (2485): Select Indefinite disentitlement start date (1270)</li>
+                <li>Text- Insert appropriate reason(s) (1618): Type “you did not return our call after we left you a message on [Month DD, YYYY]”, “you did not respond to the letter we sent you on [Month DD, YYYY].” or “you did not provide information about other benefits you may be receiving.” as required.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the REM WI for the incapacity monies issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

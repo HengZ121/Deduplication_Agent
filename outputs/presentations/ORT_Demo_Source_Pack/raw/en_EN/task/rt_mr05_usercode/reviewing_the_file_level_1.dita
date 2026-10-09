@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="reviewing_the_file">
+  <title>Reviewing the file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, select the Rejected Transactions Retrieval (MR05) screen and select Search .</cmd>
+      </step>
+      <step>
+        <cmd>For the first record that is not yet reviewed, determine if the error code is one of the following:</cmd>
+        <info>
+          <ul>
+            <li>
+              If the error code is 243 or 244, refer to Actioning a rejected transaction — Error codes C243 and C244 .
+              <xref href="/en/procedure/task/actioning_rejected_transaction_c243_c244.shtml">Actioning a rejected transaction — Error codes C243 and C244</xref>
+            </li>
+            <li>If the error code is 715, a specialized team corrects it. No further action is required.</li>
+            <li>If the error code is 921 due to a rejected Initial Decision (M103) transaction, IPOC corrects it. No further action is required.</li>
+            <li>For any other error code, go to step 3.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the 3-digit code to open WECS and view a detailed description of the error and go to step 4.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the error is a result of a BCS reject:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 5.</li>
+            <li>If no, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In BCS, select the appropriate BPC and select the Results tab. The requested update may have been changed to an estimate.</cmd>
+      </step>
+      <step>
+        <cmd>To view the WECS codes, select Exceptions/Errors/Warnings .</cmd>
+      </step>
+      <step>
+        <cmd>Determine if the error can be fixed, using BCS:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no, go to step 9.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the estimated result, select Re-input Transactions and correct the information. To resolve the issue, refer to the appropriate procedure if necessary. Go to step 22.</cmd>
+      </step>
+      <step>
+        <cmd>Under the Results tab, select the estimated result that must be sent to IPOC and select the Forward via MM06 link.</cmd>
+      </step>
+      <step>
+        <cmd>When the Renewal/Revised (M106) transaction opens, complete the missing information as follows:</cmd>
+        <info>
+          <ul>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Detection: Select the appropriate option.</li>
+            <li>Infraction: Select the appropriate option.</li>
+            <li>Message: Select the appropriate option.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, complete the missing information as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Work item: Select the appropriate option:
+              <ul>
+                <li>For a net overpayment, select 91 - Overpayment .</li>
+                <li>For a net underpayment, select 93 - Manual pay system .</li>
+              </ul>
+            </li>
+            <li>
+              Work type: Select the appropriate option :
+              <ul>
+                <li>For a net overpayment, select 2 - Non-misrepresentation .</li>
+                <li>For a net underpayment, select 33 - Blocked claim requiring payment .</li>
+              </ul>
+            </li>
+            <li>
+              Remarks Line 2: Indicate all of the following, where it applies:
+              <ul>
+                <li>The appropriate error code.</li>
+                <li>Whether additional information is being provided on another Operational Centre Memo (MM06) transaction (e.g. page 1 of 3, page 2 of 3, etc.).</li>
+                <li>Whether it is urgent. If so, provide the reason (e.g. URGENT approaching time limitation for penalty).</li>
+                <li>FWW: Whether changes are required to the full work week (FWW).</li>
+              </ul>
+            </li>
+            <li>Remarks Line 3: Leave this field blank.</li>
+            <li>Remarks Line 4: Leave this field blank.</li>
+            <li>Remarks Line 5: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes to complete the transaction on the last Operational Centre Memo (MM06) transaction. (If more than one Operational Centre Memo (MM06) transaction is required, D - No is pre-filled.)</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if this is an Integrity case:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 13.</li>
+            <li>If yes, go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, transfer the registration number to IPOC by selecting the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review and follow the instructions in WECS under Additional Information . Based on the WECS information, determine if the rejected information can be corrected by a Level 1 officer:</cmd>
+        <info>
+          <ul>
+            <li>If no, go to step 15.</li>
+            <li>If yes, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, determine if a registration number exists for the rejected transaction:</cmd>
+        <info>
+          <ul>
+            <li>If a registration number exists, go to step 16.</li>
+            <li>
+              If there is no registration number, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+                <li>Go to step 16.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Renewal/Revised (M106) transaction to automatically generate an Operation Centre Memo (MM06) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the appropriate registration number.</li>
+            <li>Select Memo (MPS) .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 92 - Purge and Recreate or 93 - Manual pay system .</li>
+            <li>Work type: Select 60 - Rejected transaction / or situation not otherwise listed that must be processed via purge and recreate or the work type appropriate to your situation.</li>
+            <li>Earnings to be allocated: Complete the weeks and amounts, if required.</li>
+            <li>Remarks Line 1: Indicate the exact transaction fields and data to be entered (e.g. BPC [XXXX], LRW [XXXX], COD [XXXX]).</li>
+            <li>Remarks Line 4: Enter your first name and last name.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>To transfer the registration number to the IPOC, select the appropriate registration number from the Registration Number (M025, M030, M035) transaction as follows:</cmd>
+        <info>
+          <ul>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+            <li>Go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the rejected information. Re-input the transaction with the correct information. If necessary, refer to the appropriate procedure to resolve the issue.</cmd>
+      </step>
+      <step>
+        <cmd>Determine if a letter is required for the rejected transaction:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 21.</li>
+            <li>If no, go to step 22.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In ACS, create and send the appropriate letter for the rejected transaction.</cmd>
+      </step>
+      <step>
+        <cmd>In FTS, remove the SIN from the Rejected Transactions Retrieval (MR05) list as follows:</cmd>
+        <info>
+          <ul>
+            <li>Delete: Check the box next to the appropriate SIN.</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if a WI exists for the rejected transaction:</cmd>
+        <info>
+          <ul>
+            <li>If yes, complete the WI and go to step 24.</li>
+            <li>If no, go to step 24.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if there is another record for your user code that is not yet reviewed:</cmd>
+        <info>
+          <ul>
+            <li>If yes, return to step 2.</li>
+            <li>If no, no further action is required.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="entitlement_conditions_met__mps_claim">
+  <title>Entitlement conditions met — MPS claim</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In FTS, determine if there is a registration number assigned for the training issue:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 2.</li>
+            <li>
+              If no, select the Registration Number (M025, M030, M035) transaction and assign one as follows:
+              <ul>
+                <li>Action: Select Assign .</li>
+                <li>Claim Source: Select 3 - Mail/Revised Decision .</li>
+                <li>Service Unit: Select 1 .</li>
+                <li>Decision type: Select 3 - Revised .</li>
+                <li>Select Update .</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In FTS, select the Renewal/Revised (M106) transaction and create an Operational Centre Memo (MM06) to inform IPOC of the decision as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Memo (MPS): Check the box.</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select D - No .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>When the Operational Centre Memo (MM06) transaction opens, send the information to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>BPC: Select the appropriate BPC.</li>
+            <li>Work item: Select 93 - Manual Pay System .</li>
+            <li>Work Type: Select 30 - New information on a manual pay claim .</li>
+            <li>Remarks line 1: Type “Training ID 90. Start date [XXXX]. End date [XXXX].”</li>
+            <li>Remarks line 2: Type “The client is entitled to collect benefits while attending a non-referred training course.”</li>
+            <li>Remarks line 3: Type your name and phone number.</li>
+            <li>Decision Type: Select 3 - Revised .</li>
+            <li>Contentious: Select 1 - No .</li>
+            <li>Complete: Select C - Yes .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the Registration Number (M025, M030, M035) transaction and transfer the registration number to IPOC as follows:</cmd>
+        <info>
+          <ul>
+            <li>Registration number: Select the applicable registration number.</li>
+            <li>Action: Select Change registration flag .</li>
+            <li>Registration flag: Select 4 - Insurance Payment Operational Centre .</li>
+            <li>Select Update .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ADJ WI, complete the Level 1 Training screen as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select Based on the information on file, the criteria to allow the decision to be made at Level 1 have been met (National Policy on Levels of Decision) .</li>
+            <li>Select Continue .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Complete the Training Dates screen as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Training start: Select appropriate option:
+              <ul>
+                <li>If the training starts at or before the BPC, select BPC .</li>
+                <li>If the training starts after the BPC, select Specific date and enter the start date.</li>
+              </ul>
+            </li>
+            <li>Training end date (DD/MM/YYYY): Enter the end date.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Verify the information on the Record of Decision screen presented:</cmd>
+        <info>
+          <ul>
+            <li>Check I agree .</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, complete the WI for the training issue.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>
