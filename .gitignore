@@ -54,3 +54,6 @@ outputs/kmt_dita_pipeline/*
 !outputs/kmt_dita_pipeline/validation_sample.csv
 !outputs/kmt_dita_pipeline/run_summary.json
 !outputs/kmt_dita_pipeline/kmt_deduplication_demo.pptx
+
+# Large source archives are committed split under /datasets/ (GitHub 100 MB limit).
+/OneDrive_1_10-7-2026.zip
