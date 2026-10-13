@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="ensuring_the_reason_for_separation_rfs__9dc9245b">
+  <title>Ensuring the reason for separation (RFS) details are correct</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In NWS, determine if there is a ROD on file for the period of employment:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ROD indicates that the RFS is other than labour dispute, strike or lockout:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 9.</li>
+            <li>If no, go to step 10.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Do the Reason for Separation details need to be modified?: Select Yes and the applicable RFS changes required (as indicated in the ROD).</li>
+            <li>Go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Do the Reason for Separation details need to be modified?: Select No .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

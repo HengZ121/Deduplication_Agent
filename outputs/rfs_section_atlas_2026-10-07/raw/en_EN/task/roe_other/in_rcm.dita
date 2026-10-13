@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="in_rcm">
+  <title>In RCM:</title>
+  <conbody>
+    <ul>
+      <li>What ROEs are displayed on the Search / Correct – Results screen?</li>
+      <li>What is the employer’s name in block 4 of the ROE?</li>
+      <li>What is the last day for which paid in block 11 of the ROE?</li>
+      <li>
+        Is the RFS in block 16 one of the following?
+        <ul>
+          <li>K - Other / Change of payroll frequency</li>
+          <li>K - Other / Change of ownership</li>
+          <li>K - Other / Requested by Employment Insurance</li>
+          <li>K - Other / Change of Service Provider</li>
+        </ul>
+      </li>
+      <li>
+        Is there an audit trail for the ROE?
+        <ul>
+          <li>Does the audit trail contain a new value for the RFS in block 16 ?</li>
+        </ul>
+      </li>
+      <li>Are there comments in block 18 or the Additional information field of the ROE?</li>
+    </ul>
+  </conbody>
+</concept>

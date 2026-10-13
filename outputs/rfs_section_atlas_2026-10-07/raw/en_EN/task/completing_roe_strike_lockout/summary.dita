@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="summary">
+  <title>Summary</title>
+  <conbody>
+    <p>Summary: When an ROE is received with a reason for separation (RFS) B - Strike or lockout on an initial Web application, if the system is unable to create a link between the ROE and a matching period of employment or determine if the issue requires adjudication, an ROE Issue (ROE) RFS Action WI is created.</p>
+  </conbody>
+</concept>

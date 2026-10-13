@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_c_4691">
+  <title>Note</title>
+  <conbody>
+    <p>Note:</p>
+    <p>If there are comments in block 18 of the last ROE , the system creates an ROE Comments WI. The officer actioning the ROE Comments WI evaluates the comments in block 18 and may move the comments into the Additional information field in RCM.</p>
+  </conbody>
+</concept>

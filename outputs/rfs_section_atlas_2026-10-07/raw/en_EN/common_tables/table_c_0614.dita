@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0614">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="3">
+        <tbody>
+          <row>
+            <entry rowspan="2">If the comments on the ROE indicate:</entry>
+            <entry colspan="2">The RFS options in the ROE RFS Action WI must be changed as follows:</entry>
+          </row>
+          <row>
+            <entry>RFS</entry>
+            <entry>RFS sub-option</entry>
+          </row>
+          <row>
+            <entry>medical leave of absence</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>unpaid medical leave</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>illness or surgery related comment</entry>
+            <entry>D - Illness or injury</entry>
+            <entry>not applicable</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

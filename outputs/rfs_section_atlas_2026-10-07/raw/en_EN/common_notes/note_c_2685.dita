@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_c_2685">
+  <title>Note</title>
+  <conbody>
+    <p>Note:</p>
+    <p>When comparing the employer’s name on the period of employment and the ROE, you may accept minor spelling differences to the employer’s name. You must also consider that the employer may do business under more than one name (e.g. 123456 ONT INC does business as ABC Company). In this case, you must review the documentation on file or use the Employer search (by business number) in FTS to determine if the employer’s name on the ROE is equivalent to the employer’s name on the period of employment.</p>
+  </conbody>
+</concept>

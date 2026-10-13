@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0621">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="9">
+        <tbody>
+          <row>
+            <entry>SN</entry>
+            <entry>Employer</entry>
+            <entry>FDW / TSD</entry>
+            <entry>LDP / TED</entry>
+            <entry>Modified</entry>
+            <entry>Input</entry>
+            <entry>RFS</entry>
+            <entry>Audit</entry>
+            <entry>EHF</entry>
+          </row>
+          <row>
+            <entry>W12345678</entry>
+            <entry>ABC Company</entry>
+            <entry>01/10/2015</entry>
+            <entry>04/12/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>C</entry>
+            <entry/>
+            <entry/>
+          </row>
+          <row>
+            <entry>W12341234</entry>
+            <entry>ABC Company</entry>
+            <entry>01/01/2014</entry>
+            <entry>28/08/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>C</entry>
+            <entry/>
+            <entry/>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

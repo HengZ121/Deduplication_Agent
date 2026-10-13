@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="ensuring_the_reason_for_separation_rfs__9dc9245b">
+  <title>Ensuring the reason for separation (RFS) details are correct</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>In RCM, review block 18 and the Additional information field of the ROE and determine if there are comments related to the RFS:</cmd>
+        <info>
+          <ul>
+            <li>If yes, go to step 8.</li>
+            <li>If no , go to step 11.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4684.dita">Note</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>Determine if the ROE requires any of the following changes:</cmd>
+        <info>
+          <table conref="../../common_tables/table_c_0614.dita#table_c_0614/body"/>
+          <ul>
+            <li>If the ROE requires changes, note the changes required and go to step 9.</li>
+            <li>If the ROE does not require changes, go to step 11.</li>
+          </ul>
+          <xref href="../../common_notes/note_c_4685.dita">Warning</xref>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, determine if there is a ROD on file for the period of employment indicating that the RFS is  other than illness or injury (e.g. dismissal or suspension, leave of absence, voluntary leaving):</cmd>
+        <info>
+          <ul>
+            <li>If no , go to step 10.</li>
+            <li>If yes, go to step 11.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of theROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Do the Reason for Separation details need to be modified?: Select Yes and the applicable RFS changes required (as indicated in step 8).</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROERFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Do the Reason for Separation details need to be modified?: Select No .</li>
+            <li>Go to step 12.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

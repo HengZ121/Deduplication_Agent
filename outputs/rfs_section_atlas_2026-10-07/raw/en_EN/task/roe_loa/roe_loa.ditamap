@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="roe_loa" xml:lang="en-CA">
+  <title>Completing an ROE Issue RFS Action WI: N - Leave of absence</title>
+  <topicref href="summary.dita">
+  </topicref>
+  <topicref href="what_you_need_to_know.dita">
+    <topicref href="linking_the_roe_and_the_matching_period_f71580ff.dita">
+    </topicref>
+    <topicref href="completing_the_resolve_issue_section.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4686.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4687.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4688.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_4683.dita">
+    </topicref>
+    <topicref href="../../common_notes/note_c_2675.dita">
+    </topicref>
+  </topicref>
+  <topicref href="regional_considerations.dita">
+  </topicref>
+  <topicref href="what_you_need_to_look_for.dita">
+    <topicref href="in_nws.dita">
+    </topicref>
+    <topicref href="in_rcm.dita">
+    </topicref>
+    <topicref href="in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="step_by_step.dita">
+    <topicref href="non-complex.dita">
+      <topicref href="linking_the_roe_and_the_matching_period_f71580ff_non-complex.dita">
+      </topicref>
+      <topicref href="ensuring_the_reason_for_separation_rfs__9dc9245b_non-complex.dita">
+      </topicref>
+      <topicref href="selecting_a_special_condition_for_the_d_d5caef0c_non-complex.dita">
+      </topicref>
+      <topicref href="completing_the_wi_non-complex.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_2685.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4684.dita">
+      </topicref>
+      <topicref href="../../common_notes/note_c_4685.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="policy_reference.dita">
+  </topicref>
+</map>

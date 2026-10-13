@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_c_2675">
+  <title>Note</title>
+  <conbody>
+    <p>Note:</p>
+    <p>When an option is selected in the POE Information section of the Resolve Issue tab, the system displays the actions that will be taken once the ROE RFS Action WI is completed. If adjudication of the RFS issue is required, an ADJ WI is automatically reactivated or created.</p>
+  </conbody>
+</concept>

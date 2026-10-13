@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="in_rcm">
+  <title>In RCM:</title>
+  <conbody>
+    <ul>
+      <li>What ROEs are displayed on the Search / Correct – Results screen?</li>
+      <li>What is the employer’s name in block 4 of the ROE?</li>
+      <li>What is the last day for which paid in block 11 of the ROE?</li>
+    </ul>
+  </conbody>
+</concept>

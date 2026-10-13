@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="selecting_a_special_condition_for_the_d_d5caef0c">
+  <title>Selecting a special condition for the decision on file</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Determine which special condition options are displayed:</cmd>
+        <info>
+          <ul>
+            <li>If multiple options are displayed, go to step 12.</li>
+            <li>If No Decision Matches the ROE is the only option displayed, go to step 14.</li>
+            <li>If no special condition options are displayed, go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>Review the decision indicated in the ROD:</cmd>
+        <info>
+          <ul>
+            <li>If the ROD indicates that adjudication was deferred, go to step 13.</li>
+            <li>If the ROD does not indicate that adjudication was deferred, go to step 15.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select the Special Condition for the decision on file: Select Adjudication Deferred .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>Select the Special Condition for the decision on file: Select No Decision Matches the ROE .</li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+      <step>
+        <cmd>In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul>
+            <li>
+              Select the Special Condition for the decision on file: Select the option that matches the decision in the ROD:
+              <ul>
+                <li>If the decision indicates Suspension from employment (D-42) , select Suspension .</li>
+                <li>If the decision indicates Anticipated Loss of Employment (D-44) , select Anticipated Loss of Employment and enter the disentitlement dates from the decision.</li>
+              </ul>
+            </li>
+            <li>Go to step 16.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

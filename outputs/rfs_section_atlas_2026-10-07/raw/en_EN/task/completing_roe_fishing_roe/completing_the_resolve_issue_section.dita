@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="completing_the_resolve_issue_section">
+  <title>Completing the Resolve Issue section</title>
+  <conbody>
+    <p>If the ROE is not linked to a period of employment or if the ROE is linked to a period of employment without a corresponding electronic ROD or ADJ WI, the agent must complete the Resolve Issue section of the ROE RFS Action WI before completing the WI. When resolving the issue, the agent must review the ROE and the existing RODs.</p>
+    <section>
+      <title>Comments in block 18</title>
+    </section>
+    <p>If the ROE was issued with comments in block 12 , the agent must determine if the correct RFS is indicated on the ROE. Any required changes to the RFS details must be made in the Resolve Issue section of the ROE RFS Action WI.</p>
+    <xref href="../../common_notes/note_c_2674.dita">Note</xref>
+    <section>
+      <title>Reason for separation (RFS) options on fishing ROEs</title>
+    </section>
+    <p>There are only 2 RFS options on a paper fishing ROE: A - End of fishing and B - Other . There are 3 RFS options on a Web fishing ROE: A - End of fishing, A - Requested by Fisher and B - Other . In RCM, all 3 options are available when inputting a fishing ROE. There is no Special Condition option on a fishing ROE.</p>
+    <section>
+      <title>Reviewing existing records of decision (RODs) on file</title>
+    </section>
+    <p>If there is an existing ROD indicating that the RFS is contentious, the agent must not modify the RFS details when completing the Resolve Issue section of the ROE RFS Action WI.</p>
+    <xref href="../../common_notes/note_c_2675.dita">Note</xref>
+  </conbody>
+</concept>

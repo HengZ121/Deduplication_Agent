@@ -5,6 +5,9 @@ Open index.html for the visual comparison, full sources and pair differences.
 ## Cross-row exact note matches
 Different note IDs are not aligned merely because their titles match. The following resolved bodies nevertheless match exactly:
 
+- C:note_c_4685, E:note_c_4685, G:note_c_4685, K:note_c_4685, M:note_c_4685, N:note_c_4685, F:note_c_2678
+  Warning: Do not modify the ROE in RCM. The next step explains how to modify the RFS details in the ROE RFS Action WI.
+
 ## Row-by-row analysis
 
 ### 1. Summary
@@ -17,40 +20,124 @@ Duplication: No duplicated body content — these nodes are empty headings.
 Exact matches: No full-section exact matches in this row. Partial duplication: C–E share 6 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: The explanation contains shared passages, but expanded example tables differ. For example, Quit and Dismissal show E versus M in the first sample ROE row. Duplicated text · C: Only one ROE can be matched to each period of employment listed in NWS. The agent must review the Search / Correct - Results screen in RCM to determine if the ROE in the ROE RFS Action WI is the one with the last day for which paid (LDP) closest to the last day worked (LDW) for one of the periods of employment. The…
 
 ### 4. What you need to know / Completing the Resolve Issue section
-Exact matches: G / N. Other full sections differ. Partial duplication: C–G share 4 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: Only G / N are exact full-section matches. The other sections differ in expanded wording or reference structure. Duplicated text · C: If the RFS is contentious and there is an existing ROD, the agent must determine if the information on the ROE contradicts the decision on file. When a ROD is not found or when the information on the ROE contradicts the ROD, the agent indicates that no decision matches the ROE when completing the Resolve Issue section…
+Exact matches: G / N. Other full sections differ. Partial duplication: C–G share 2 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: Only G / N are exact full-section matches. The other sections differ in expanded wording or reference structure. Duplicated text · C: If the RFS is contentious and there is an existing ROD, the agent must determine if the information on the ROE contradicts the decision on file. When a ROD is not found or when the information on the ROE contradicts the ROD, the agent indicates that no decision matches the ROE when completing the Resolve Issue section…
 
-### 5. Regional considerations
+### 5. What you need to know / note_c_2670
+Exact matches: No other document references this node in this aligned row.
+
+### 6. What you need to know / note_c_2682
+Exact matches: No other document references this node in this aligned row.
+
+### 7. What you need to know / note_c_4680
+Exact matches: G, M reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · G: Employer: ABC Company First day worked: 01/01/2015 Last day worked: 04/12/2015 Reason for separation: Dismissal
+
+### 8. What you need to know / note_c_4686
+Exact matches: No other document references this node in this aligned row.
+
+### 9. What you need to know / note_c_4689
+Exact matches: No other document references this node in this aligned row.
+
+### 10. What you need to know / note_c_4692
+Exact matches: C, E reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Employer: ABC Company First day worked: 01/01/2014 Last day worked: 04/12/2015 Reason for separation: Quit
+
+### 11. What you need to know / note_c_2671
+Exact matches: No other document references this node in this aligned row.
+
+### 12. What you need to know / note_c_2683
+Exact matches: No other document references this node in this aligned row.
+
+### 13. What you need to know / note_c_4681
+Exact matches: G, M reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · G: Employer: ABC Company First day worked: 01/08/2015 Last day worked: 30/11/2015 Reason for separation: Dismissal
+
+### 14. What you need to know / note_c_4687
+Exact matches: No other document references this node in this aligned row.
+
+### 15. What you need to know / note_c_4690
+Exact matches: No other document references this node in this aligned row.
+
+### 16. What you need to know / note_c_4693
+Exact matches: C, E reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Employer: ABC Company First day worked: 01/10/2015 Last day worked: 30/11/2015 Reason for separation: Quit
+
+### 17. What you need to know / note_c_2672
+Exact matches: No other document references this node in this aligned row.
+
+### 18. What you need to know / note_c_2684
+Exact matches: E, K, S reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Employer: ABC Company First day worked: 01/01/2015 Last day worked: 30/07/2015 Reason for separation: Quit
+
+### 19. What you need to know / note_c_4682
+Exact matches: G, M reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · G: Employer: ABC Company First day worked: 01/01/2015 Last day worked: 30/07/2015 Reason for separation: Dismissal
+
+### 20. What you need to know / note_c_4688
+Exact matches: No other document references this node in this aligned row.
+
+### 21. What you need to know / note_c_4694
+Exact matches: No other document references this node in this aligned row.
+
+### 22. What you need to know / note_c_2673
+Exact matches: No other document references this node in this aligned row.
+
+### 23. What you need to know / note_c_2675
+Exact matches: C, E, G, K, M, N, F, S reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Note: When an option is selected in the POE Information section of the Resolve Issue tab, the system displays the actions that will be taken once the ROE RFS Action WI is completed. If adjudication of the RFS issue is required, an ADJ WI is automatically reactivated or created.
+
+### 24. What you need to know / note_c_4683
+Exact matches: C, E, G, M, N reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Note: If there are comments in block 18 of the last ROE , the system creates an ROE Comments WI. The agent actioning the ROE Comments WI evaluates the comments in block 18 and may move the comments into the Additional information field in RCM.
+
+### 25. What you need to know / note_c_4691
+Exact matches: No other document references this node in this aligned row.
+
+### 26. What you need to know / note_c_2674
+Exact matches: No other document references this node in this aligned row.
+
+### 27. Regional considerations
 Duplication: No duplicated body content — these nodes are empty headings.
 
-### 6. What you need to look for
+### 28. What you need to look for
 Duplication: No duplicated body content — these nodes are empty headings.
 
-### 7. What you need to look for / In NWS
+### 29. What you need to look for / In NWS
 Exact matches: C / E / G / K / M / N / F / S have identical expanded bodies and reference targets in separate files. Duplicated text · E: What is the serial number and the RFS indicated in the Specific Details tab of the ROE RFS Action WI? What periods of employment are indicated in the Matching POE list of the ROE RFS Action WI? Is there a ROD indicating that the RFS has been adjudicated? If yes, what are the details of the decision? Is there an SROC…
 
-### 8. What you need to look for / In RCM
+### 30. What you need to look for / In RCM
 Exact matches: C / E / G / M. Other full sections differ. Partial duplication: C–K share 3 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: C / E / G / M match exactly. N differs by a hyphen versus an en dash. K adds four Other categories; F uses different ROE field numbers; S contains only the first three questions. Duplicated text · C: Does the audit trail contain a new value for the RFS in block 16 ?
 
-### 9. What you need to look for / In FTS
+### 31. What you need to look for / In FTS
 Exact matches: C / E / G / K / M / N / F / S have identical expanded bodies and reference targets in separate files. Duplicated text · E: Does the Employer search indicate that the employer operates under another name?
 
-### 10. Step by step
+### 32. Step by step
 Duplication: No duplicated body content — these nodes are empty headings.
 
-### 11. Step by step / Non-complex
+### 33. Step by step / Non-complex
 Duplication: No duplicated body content — these nodes are empty headings.
 
-### 12. Step by step / Non-complex / Linking the ROE and matching employment
-Exact matches: C / N. Other full sections differ. Partial duplication: C–E share 9 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: C / N match exactly. Other sections share passages but differ in wording or local step destinations. Duplicated text · C: When comparing the employer’s name on the period of employment and the ROE, you may accept minor spelling differences to the employer’s name. You must also consider that the employer may do business under more than one name (e.g. 123456 ONT INC does business as ABC Company). In this case, you must review the…
+### 34. Step by step / Non-complex / Linking the ROE and matching employment
+Exact matches: C / N. Other full sections differ. Partial duplication: C–G share 11 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: C / N match exactly. Other sections share passages but differ in wording or local step destinations. Duplicated text · C: In RCM, review the Search / Correct - Results screen to determine if the ROE in the ROE RFS Action WI is the one with the same employer’s name and the LDP closest to the LDW for one of the periods of employment on the Matching POE list in the ROE RFS Action WI in NWS:
 
-### 13. Step by step / Non-complex / Ensuring the reason for separation (RFS) details are correct
-Exact matches: No full-section exact matches in this row. Partial duplication: C–E share 5 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: All eight full sections differ. Their shared instructions surround different RFS condition-to-outcome tables. Duplicated text · C: When actioning an ROE Comments WI, the agent may have moved the comments in block 18 of the ROE to the Additional information field in RCM.
+### 35. Step by step / Non-complex / Ensuring the reason for separation (RFS) details are correct
+Exact matches: No full-section exact matches in this row. Partial duplication: C–E share 3 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: All eight full sections differ. Their shared instructions surround different RFS condition-to-outcome tables. Duplicated text · C: Do the Reason for Separation details need to be modified?: Select Yes and the applicable RFS changes required (as indicated in step 8).
 
-### 14. Step by step / Non-complex / Completing the WI
-Exact matches: C / E / G / K / M / N / F / S have identical expanded bodies and reference targets in separate files. Duplicated text · E: Complete the ROE RFS Action WI.
-
-### 15. Step by step / Non-complex / Selecting a special condition for the decision on file
+### 36. Step by step / Non-complex / Selecting a special condition for the decision on file
 Exact matches: No full-section exact matches in this row. Partial duplication: C–E share 5 exact internal block(s) of at least 12 tokens. The excerpt below is one observed match. Differences within the duplicated wording: None of the seven sections match in full. Shared passages occur within differing decision branches and local step references. Duplicated text · C: If the decision indicates Anticipated Loss of Employment (D-44) , select Anticipated Loss of Employment and enter the disentitlement dates from the decision.
 
-### 16. Policy reference
+### 37. Step by step / Non-complex / Completing the WI
+Exact matches: C / E / G / K / M / N / F / S have identical expanded bodies and reference targets in separate files. Duplicated text · E: Complete the ROE RFS Action WI.
+
+### 38. Step by step / Non-complex / note_c_2685
+Exact matches: C, E, G, K, M, N, S reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Note: When comparing the employer’s name on the period of employment and the ROE, you may accept minor spelling differences to the employer’s name. You must also consider that the employer may do business under more than one name (e.g. 123456 ONT INC does business as ABC Company). In this case, you must review the…
+
+### 39. Step by step / Non-complex / note_c_2676
+Exact matches: No other document references this node in this aligned row.
+
+### 40. Step by step / Non-complex / note_c_2677
+Exact matches: No other document references this node in this aligned row.
+
+### 41. Step by step / Non-complex / note_c_4684
+Exact matches: C, E, G, K, M, N reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Duplicated text · E: Note: When actioning an ROE Comments WI, the agent may have moved the comments in block 18 of the ROE to the Additional information field in RCM.
+
+### 42. Step by step / Non-complex / note_c_2678
+Exact matches: No other document references this node in this aligned row. Exact duplicate in another row: The same expanded body also appears in note_c_4685.dita. These are separate source files. Duplicated text · F: Warning: Do not modify the ROE in RCM. The next step explains how to modify the RFS details in the ROE RFS Action WI.
+
+### 43. Step by step / Non-complex / note_c_4685
+Exact matches: C, E, G, K, M, N reference the same DITA file. The repeated content comes from an existing shared source, not separate file copies. Exact duplicate in another row: The same expanded body also appears in note_c_2678.dita. These are separate source files. Duplicated text · E: Warning: Do not modify the ROE in RCM. The next step explains how to modify the RFS details in the ROE RFS Action WI.
+
+### 44. Policy reference
 Duplication: No duplicated body content — these nodes are empty headings.

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA 2.0 Reference//EN" "reference.dtd">
+<reference id="table_c_0506">
+  <title>Table</title>
+  <refbody>
+    <table id="body">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry>If the comments on the ROE indicate:</entry>
+            <entry>The RFS option in the ROE RFS Action WI must be changed to:</entry>
+          </row>
+          <row>
+            <entry>End of fishing</entry>
+            <entry>A - End of fishing</entry>
+          </row>
+          <row>
+            <entry>End of season (or an equivalent comment)</entry>
+            <entry>A - End of fishing</entry>
+          </row>
+          <row>
+            <entry>Quota reached</entry>
+            <entry>A - End of fishing</entry>
+          </row>
+          <row>
+            <entry>Requested by the fisher</entry>
+            <entry>A - End of fishing</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </refbody>
+</reference>

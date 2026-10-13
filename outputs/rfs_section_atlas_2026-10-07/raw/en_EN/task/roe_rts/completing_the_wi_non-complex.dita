@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="completing_the_wi">
+  <title>Completing the WI</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Complete the ROE RFS Action WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>
