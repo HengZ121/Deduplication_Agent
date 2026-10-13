@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_2671">
+  <title>Callout</title>
+  <conbody>
+    <note id="reuse_note_2671" type="other" othertype="Callout">
+      <ul id="note_2671_ul1">
+        <li id="note_2671_li1">Employer: ABC Fisheries</li>
+        <li id="note_2671_li2">First day worked: 29/03/2016</li>
+        <li id="note_2671_li3">Last day worked: 08/04/2016</li>
+        <li id="note_2671_li4">Reason for separation: Quit</li>
+      </ul>
+    </note>
+  </conbody>
+</concept>

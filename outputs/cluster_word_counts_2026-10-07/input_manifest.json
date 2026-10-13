@@ -1,11 +1,11 @@
 [
   {
     "path": "outputs\\kmt_2026-10-07_body_en_kg_pipeline\\kg_nodes.csv",
-    "sha256": "d68215c013fa16e89b2ff1e0b0598ec3be6202cdcf41aadaec5a8078b33cc1cf"
+    "sha256": "0fc17d90e88520d3b6bc01e20f88c275517938af8d1e46b2dcaaed910b7202bd"
   },
   {
     "path": "outputs\\kmt_2026-10-07_body_fr_kg_pipeline\\kg_nodes.csv",
-    "sha256": "1d2238b3e842a7469ef57dc1e700e2c95e46f934bf632d8e3d61ecf87ef7d890"
+    "sha256": "2a53a503067acb34f6509049f0669447d9909ae4a13ec60fda985b944fcbbcd8"
   },
   {
     "path": "outputs\\ort_2026-10-07_body_en_kg_pipeline\\kg_nodes.csv",
@@ -17,7 +17,7 @@
   },
   {
     "path": "outputs\\internal_clusters_2026-10-07\\kmt_all_duplicate_cluster_files.csv",
-    "sha256": "cf71ffa2cb30b371186cf363999fc155ff12587c52ca2a98d2a4e3946c051d1d"
+    "sha256": "651654495437771bfd8b9717f0d54258203788cedc0204e8fad9bd4b00f6a1a9"
   },
   {
     "path": "outputs\\internal_clusters_2026-10-07\\ort_all_duplicate_cluster_files.csv",

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4">
+  <title>Ensuring the reason for separation (RFS) details are correct</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_other.shtml" scope="external" format="html"/>
+  </prolog>
+  <taskbody>
+    <steps>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st1">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd1">In RCM, review block 16 of the ROE and determine if the RFS is one of the following:</cmd>
+        <info>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul1">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li1">K - Other / Change of payroll frequency</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li2">K - Other / Change of ownership</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li3">K - Other / Requested by Employment Insurance</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li4">
+              K - Other / Change of Service Provider
+              <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul2">
+                <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li5">If yes, go to step 8.</li>
+                <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li6">If no , go to step 9.</li>
+              </ul>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st2">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd2">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul3">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li7">Do the Reason for Separation details need to be modified?: Select Yes and then A - Shortage of work .</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li8">Go to step 21.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st3">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd3">In RCM, review block 18 and the Additional information field of the ROE and determine if there are comments related to the RFS:</cmd>
+        <info>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul4">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li9">If yes, go to step 10.</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li10">If no , go to step 13.</li>
+          </ul>
+          <note conref="../../common_notes/note_4690.dita#note_4690/reuse_note_4690"/>
+        </info>
+      </step>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st4">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd4">Determine if the ROE requires any of the following changes:</cmd>
+        <info>
+          <table conref="../../common_tables/table_0614.dita#table_0614/reuse_table_0614"/>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul5">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li11">If the ROE requires a change to A - Shortage of work or D - Illness or injury , go to step 11.</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li12">If the ROE requires other changes, note the changes required and go to step 12.</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li13">
+              If the ROE does not require changes, go to step 13.
+              <note conref="../../common_notes/note_4691.dita#note_4691/reuse_note_4691"/>
+            </li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st5">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd5">In NWS, determine if there is a ROD on file for the period of employment indicating that the RFS is other than shortage of work or illness or injury (e.g. dismissal or suspension, leave of absence, voluntary leaving):</cmd>
+        <info>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul6">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li14">If no, go to step 12.</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li15">If yes, go to step 13.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st6">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd6">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul7">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li16">Do the Reason for Separation details need to be modified?: Select Yes and the applicable RFS changes required (as indicated in step 10).</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li17">Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_st7">
+        <cmd id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_cmd7">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the Resolve Issue section as follows:</cmd>
+        <info>
+          <ul id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_ul8">
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li18">Do the Reason for Separation details need to be modified?: Select No .</li>
+            <li id="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4_li19">Go to step 14.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

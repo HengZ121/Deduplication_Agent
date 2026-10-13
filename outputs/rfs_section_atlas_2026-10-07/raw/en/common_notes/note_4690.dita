@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_4690">
+  <title>Note</title>
+  <conbody>
+    <note id="reuse_note_4690">
+      <p id="note_4690_p1">
+        <strong>Note:</strong>
+      </p>
+      <p id="note_4690_p2">
+        When actioning an ROE Comments WI, the agent may have moved the comments in block 18 of the ROE to the
+        <strong>Additional information</strong>
+        field in RCM.
+      </p>
+    </note>
+  </conbody>
+</concept>

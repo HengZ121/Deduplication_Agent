@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31">
+  <title>Linking the ROE and the matching period of employment</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_retirement.shtml" scope="external" format="html"/>
+  </prolog>
+  <taskbody>
+    <steps>
+      <step id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_st1">
+        <cmd id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_cmd1">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, determine if there is a matching period of employment already selected in the Matching POE list:</cmd>
+        <info>
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_ul1">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li1">If no , go to step 2.</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li2">If yes, go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_st2">
+        <cmd id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_cmd2">Determine if the Matching POE list includes one or more periods of employment with the same employer’s name as the ROE:</cmd>
+        <info>
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_ul2">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li3">If there are one or more periods of employment with the same employer’s name as the ROE, go to step 3.</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li4">If there is no period of employment with the same employer’s name as the ROE, select POE not in the list . Click Save and go to step 6.</li>
+          </ul>
+          <note conref="../../common_notes/note_2685.dita#note_2685/reuse_note_2685"/>
+        </info>
+      </step>
+      <step id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_st3">
+        <cmd id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_cmd3">In RCM, review the Search / Correct - Results screen to determine if the ROE in the ROE RFS Action WI is the one with the same employer’s name and the LDP closest to the LDW for one of the periods of employment on the Matching POE list in the ROE RFS Action WI in NWS:</cmd>
+        <info>
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_ul3">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li5">If the ROE is for the same employer and the LDP on the ROE is the best match to the LDW for one of the periods of employment, go to step 4.</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li6">If the ROE is for the same employer but the LDP on the ROE is not the best match to the LDW for one of the periods of employment, go to step 5.</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li7">If the ROE is not for the same employer or the LDP on the ROE is clearly not a good match to the LDW for one of the periods of employment, go to step 5.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_st4">
+        <cmd id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_cmd4">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the POE information section as follows:</cmd>
+        <info>
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_ul4">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li8">Matching POE : Select the period of employment with the same employer’s name and best match for LDP and LDW.</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li9">Click Save .</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li10">Go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_st5">
+        <cmd id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_cmd5">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, complete the POE information section as follows:</cmd>
+        <info>
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_ul5">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li11">Matching POE : Select POE not in the list .</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li12">Click Save .</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li13">Go to step 6.</li>
+          </ul>
+        </info>
+      </step>
+      <step id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_st6">
+        <cmd id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_cmd6">In NWS, on the Resolve Issue tab of the ROE RFS Action WI, determine if the Resolve Issue section is displayed:</cmd>
+        <info>
+          <ul id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_ul6">
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li14">If the Resolve Issue section is displayed, go step 7.</li>
+            <li id="roe_retirement_linking_the_roe_and_the_matching_period_49d03a31_li15">If the Resolve Issue section is not displayed, go to step 19.</li>
+          </ul>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,16 +1,20 @@
 {
   "documents": 8,
-  "node_occurrences": 189,
-  "unique_source_topics": 155,
-  "aligned_rows": 44,
+  "node_occurrences": 127,
+  "unique_source_topics": 127,
+  "aligned_rows": 16,
   "empty_heading_occurrences": 48,
   "pair_classifications": {
-    "template_variant_candidate": 92,
+    "template_variant_candidate": 84,
     "heading_only": 168,
-    "partial_overlap_observed": 79,
-    "exact_resolved_section": 189,
-    "related_or_unresolved": 10
+    "partial_overlap_observed": 90,
+    "exact_resolved_section": 92,
+    "related_or_unresolved": 7
   },
   "unresolved_sources": [],
-  "raw_files": 180
+  "raw_files": 180,
+  "keyref_excluded_occurrences": 0,
+  "keyref_excluded_source_topics": 0,
+  "scored_pairs": 271,
+  "source_root": "unzipped\\ORT_2026-10-07\\output\\dita"
 }

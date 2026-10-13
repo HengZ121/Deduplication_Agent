@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="note_2670">
+  <title>Note</title>
+  <conbody>
+    <note id="reuse_note_2670">
+      <p id="note_2670_p1">
+        <strong>Note:</strong>
+      </p>
+      <p id="note_2670_p2">The LDP is the final trip end date (fresh) or date of purchase (cured) on a fishing ROE.</p>
+    </note>
+  </conbody>
+</concept>

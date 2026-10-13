@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 2.0 Map//EN" "map.dtd">
+<map id="roe_other" xml:lang="en-CA">
+  <title>Completing an ROE Issue RFS Action WI: K - Other</title>
+  <topicmeta>
+    <source
+      href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_other.shtml"
+      scope="external"
+      format="html"/>
+    <critdates>
+      <revised modified="2026-02-27"/>
+    </critdates>
+    <metadata>
+      <othermeta name="source-system" content="ORT"/>
+      <othermeta name="article-public-number" content="roe_other"/>
+      <othermeta name="wcms-template" content="procedure-task"/>
+      <othermeta name="archived" content="true"/>
+      <othermeta name="dcterms-title" content="Completing an ROE Issue RFS Action WI: K - Other"/>
+    </metadata>
+    <resourceid appname="ORT" appid="roe_other"/>
+  </topicmeta>
+  <topicref href="roe_other_summary.dita">
+  </topicref>
+  <topicref href="roe_other_what_you_need_to_know.dita">
+    <topicref href="roe_other_linking_the_roe_and_the_matching_period_f71580ff.dita">
+    </topicref>
+    <topicref href="roe_other_completing_the_resolve_issue_section.dita">
+    </topicref>
+  </topicref>
+  <topicref href="roe_other_regional_considerations.dita">
+  </topicref>
+  <topicref href="roe_other_what_you_need_to_look_for.dita">
+    <topicref href="roe_other_in_nws.dita">
+    </topicref>
+    <topicref href="roe_other_in_rcm.dita">
+    </topicref>
+    <topicref href="roe_other_in_fts.dita">
+    </topicref>
+  </topicref>
+  <topicref href="roe_other_step_by_step.dita">
+    <topicref href="roe_other_non-complex.dita">
+      <topicref href="roe_other_linking_the_roe_and_the_matching_period_49d03a31.dita">
+      </topicref>
+      <topicref href="roe_other_ensuring_the_reason_for_separation_rfs__eb340be4.dita">
+      </topicref>
+      <topicref href="roe_other_selecting_a_special_condition_for_the_d_abfa0b7e.dita">
+      </topicref>
+      <topicref href="roe_other_completing_the_wi_non-complex.dita">
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="roe_other_policy_reference.dita">
+  </topicref>
+</map>

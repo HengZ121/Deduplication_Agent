@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA 2.0 General Task//EN" "generalTask.dtd">
+<task id="roe_retirement_completing_the_wi_non-complex">
+  <title>Completing the WI</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_retirement.shtml" scope="external" format="html"/>
+  </prolog>
+  <taskbody>
+    <steps>
+      <step id="roe_retirement_completing_the_wi_non-complex_st1">
+        <cmd id="roe_retirement_completing_the_wi_non-complex_cmd1">Complete the ROE RFS Action WI.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

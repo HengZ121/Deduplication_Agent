@@ -92,12 +92,16 @@ def force_graph(items, empty, pair_rows):
     svg.append('</svg><small>'+('Empty headings · no content edges' if empty else f'{scored} scored links · {len(edges)-scored} unscored links (neutral length)')+'</small>')
     return ''.join(svg)
 
-def load_saved_similarities():
+def load_saved_similarities(run_dir=None):
     """Join historical model scores to source paths; never invent missing cosine values."""
-    with Path('outputs/ort_new_dita_kg_pipeline/en/kg_nodes.csv').open(encoding='utf-8-sig',newline='') as f:
-        paths={'ORT:'+r['node_id']:r['article_path'] for r in csv.DictReader(f)}
+    nodes_path = run_dir/'kg_nodes.csv' if run_dir else Path('outputs/ort_new_dita_kg_pipeline/en/kg_nodes.csv')
+    pairs_path = run_dir/'kg_pair_classifications.csv' if run_dir else Path('outputs/ort_internal_deduplication/en/pair_classifications.csv')
+    if not nodes_path.is_file() or not pairs_path.is_file():
+        return {}
+    with nodes_path.open(encoding='utf-8-sig',newline='') as f:
+        paths={(('' if run_dir else 'ORT:')+r['node_id']):r['article_path'] for r in csv.DictReader(f)}
     scores={}
-    with Path('outputs/ort_internal_deduplication/en/pair_classifications.csv').open(encoding='utf-8-sig',newline='') as f:
+    with pairs_path.open(encoding='utf-8-sig',newline='') as f:
         for r in csv.DictReader(f):
             a,b=paths.get(r['item1_node_id']),paths.get(r['item2_node_id'])
             if a and b and r['embedding_similarity']:
@@ -151,19 +155,9 @@ def explain_row(key, items, groups, pairs, occurrences):
         sample=next(n for n in items if n['letter']==best['pair'][0])
     elif len(items)>1 and len(groups)==1:
         quote=sample['resolved_text']
-    differences={
-        'Summary':'The summary wording follows the same pattern, but the RFS category and Fishing qualifier differ. These are similar summaries, not exact full-section duplicates.',
-        'In RCM':'C / E / G / M match exactly. N differs by a hyphen versus an en dash. K adds four Other categories; F uses different ROE field numbers; S contains only the first three questions.',
-        'Completing the Resolve Issue section':'Only G / N are exact full-section matches. The other sections differ in expanded wording or reference structure.',
-        'Ensuring the reason for separation (RFS) details are correct':'All eight full sections differ. Their shared instructions surround different RFS condition-to-outcome tables.',
-        'Selecting a special condition for the decision on file':'None of the seven sections match in full. Shared passages occur within differing decision branches and local step references.'}
-    leaf=key.split(' / ')[-1]
-    if leaf in differences: parts.append(('Differences within the duplicated wording',differences[leaf]))
-    elif 'Linking the ROE' in key:
-        parts.append(('Differences within the duplicated wording',
-            'C / N match exactly. Other sections share passages but differ in wording or local step destinations.' if key.startswith('Step by step') else
-            'The explanation contains shared passages, but expanded example tables differ. For example, Quit and Dismissal show E versus M in the first sample ROE row.'))
-    elif nonexact:
+    # Derive wording from retained pairs; fixed document lists become false when
+    # keyref-bearing topics have been removed from a comparison row.
+    if nonexact:
         parts.append(('Differences within the duplicated wording','The full sections differ in text, structure or reference targets; expand the pair evidence below for the individual changes.'))
     if '/common_notes/' in sample['path']:
         twins=[n for n in occurrences if n['signature']==sample['signature'] and n['path']!=sample['path'] and '/common_notes/' in n['path']]
@@ -189,8 +183,14 @@ def main():
     audit = ReuseAudit(root=ROOT, output=OUT)
     # Historical scores belong to the original export. Do not attach them to a
     # refreshed export unless its own scored pair tables are explicitly joined.
-    saved_similarities = load_saved_similarities() if ROOT == Path('unzipped/ort_new_dita/dita').resolve() else {}
+    if ROOT == Path('unzipped/ort_new_dita/dita').resolve():
+        saved_similarities = load_saved_similarities()
+    elif ROOT == Path('unzipped/ORT_2026-10-07/output/dita').resolve():
+        saved_similarities = load_saved_similarities(Path('outputs/ort_2026-10-07_body_en_kg_pipeline'))
+    else:
+        saved_similarities = {}
     families, documents, occurrences, sections = {}, [], [], {}
+    excluded = []
     copied = set()
     def copy_source(path):
         path = path.resolve()
@@ -220,6 +220,12 @@ def main():
                 path,_ = audit.resolver.resolve_local_reference(mp,ref.get('href'))
                 path=path.resolve(); rel=path.relative_to(ROOT).as_posix()
                 topic=audit.resolver.parse_xml(path); t=element_text(topic.find('title'))
+                # Exclude the whole source topic, matching the saved-result row
+                # filter. Still visit child references: they are separate topics.
+                if any(any(xml_local_name(k)=='keyref' for k in n.attrib) for n in topic.iter()):
+                    excluded.append(dict(letter=letter,path=rel,reason='Source DITA contains a keyref attribute'))
+                    visit(ref,headings+[t.rstrip(':')])
+                    continue
                 body=next(n for n in topic if xml_local_name(n.tag).endswith('body'))
                 key=family(t,headings,rel)
                 audit.index.parents[rel]=[dict(title=title,heading_path=' > '.join(headings),map_path=mp.relative_to(ROOT).as_posix())]
@@ -292,7 +298,12 @@ def main():
     write_csv(OUT/'section_summary.csv',summary_rows)
     write_csv(OUT/'documents.csv',documents)
     write_csv(OUT/'reference_repairs.csv',audit.resolver.repairs)
+    write_csv(OUT/'keyref_excluded_nodes.csv',excluded)
     metrics=dict(documents=len(documents),node_occurrences=len(occurrences),unique_source_topics=len({n['path'] for n in occurrences}),aligned_rows=len(families),empty_heading_occurrences=sum(n['empty'] for n in occurrences),pair_classifications=dict(Counter(p['classification'] for p in pair_rows)),unresolved_sources=errors,raw_files=len(copied))
+    metrics.update(keyref_excluded_occurrences=len(excluded),
+                   keyref_excluded_source_topics=len({n['path'] for n in excluded}),
+                   scored_pairs=sum(p['embedding_similarity'] is not None for p in pair_rows),
+                   source_root=str(args.root))
     (OUT/'validation.json').write_text(json.dumps(metrics,indent=2),encoding='utf-8')
     intro=''.join('<li><b>'+d['letter']+'</b> — '+H(d['title'])+' <a href="raw/'+d['map']+'">map</a></li>' for d in documents)
     content='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Eight RFS documents — section atlas</title><style>
@@ -301,6 +312,7 @@ def main():
 .variant-edge{stroke:#b96508;stroke-width:2.2;stroke-dasharray:12 7;opacity:.8}.semantic-edge{stroke:#8545a8;stroke-width:2.2;stroke-dasharray:8 4 1 4;stroke-linecap:round;opacity:.8}.partial-edge{stroke:#2378bd;stroke-width:2;opacity:.7}.edge-legend{display:flex;flex-wrap:wrap;gap:12px 22px;margin:18px 0}.edge-legend span{display:flex;align-items:center;gap:8px}.edge-legend svg{width:70px;height:16px;flex-shrink:0}.pair-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.pair-document{background:white;padding:16px;min-width:0}.pair-document h4{margin:0 0 12px}.pair-text{margin-top:16px;line-height:1.75;white-space:pre-wrap}.pair-text mark{background:#ffe4a3;color:#193046}.pair-detail{margin:12px 0}@media(max-width:700px){.pair-columns{grid-template-columns:1fr}}
 </style></head><body>
     <h1>Eight RFS documents: what repeats, what changes</h1>
+    <p>Source topics containing a keyref attribute are excluded from the comparison and graphs. See <a href="keyref_excluded_nodes.csv">excluded nodes</a>. Remaining links reuse saved scores from the corresponding ORT dataset.</p>
     <p>Each letter is one document’s existing DITA node. Edge styles describe the relationship; target lengths use saved embedding cosine scores.</p>
     <div class="edge-legend"><span><svg viewBox="0 0 70 16"><line class="exact-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Exact duplicate</span><span><svg viewBox="0 0 70 16"><line class="variant-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Variant candidate · long dashes</span><span><svg viewBox="0 0 70 16"><line class="semantic-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Semantic duplicate candidate · dash-dot</span><span><svg viewBox="0 0 70 16"><line class="partial-edge" x1="0" y1="8" x2="70" y2="8"/></svg>Partial overlap</span></div>
     <p>Semantic candidates are historical pipeline duplicate labels for remaining nonexact pairs, not verified semantic equivalence. Audited exact, variant and partial-overlap labels take precedence. Related/unresolved pairs remain in the detailed comparison but have no graph edge.</p>
@@ -309,6 +321,7 @@ def main():
     <h2>How to read the evidence</h2><p>Rows align by heading path, with the two linking-title variants explicitly aligned. Shared notes align by source ID, not by generic “Note” titles or ordinal position. This avoids inventing correspondence between unrelated callouts; different note IDs appear on separate rows and may still repeat wording across rows.</p>
     <p>Exact groups require reference-expanded body structure and link targets to match. Nonexact pair labels reuse the earlier deterministic audit: high lexical overlap with changed fields/links is a variant candidate; an identical internal XML block of at least 12 tokens supports partial overlap; remaining pairs stay related/unresolved. No semantic equivalence is confirmed, no LLM/model inference is run, and similarity edges are never transitively merged. Pair labels apply only within aligned rows; cross-row note duplicates are listed in the companion narrative.</p>
     <p><a href="ANALYSIS.md">Narrative and cross-row note matches</a> · <a href="section_summary.csv">Row narratives</a> · <a href="node_inventory.csv">All nodes and full text</a> · <a href="pair_evidence.csv">All pair evidence</a> · <a href="validation.json">Count validation</a></p><p>'''+H(f"{len(documents)} documents · {len(occurrences)} node occurrences · {len(families)} comparison rows · {sum(n['empty'] for n in occurrences)} empty headings · {len(copied)} packaged raw files")+'''</p><table><thead><tr><th>Section / node</th><th>Embedding similarity graph</th><th>Duplication findings</th></tr></thead><tbody>'''+''.join(page_rows)+'''</tbody></table></body></html>'''
+    content = content.replace('eight English task maps from en_EN', f'eight English task maps from {english_branch}')
     (OUT/'index.html').write_text(content,encoding='utf-8')
     # Cross-row exact notes are explicitly reported instead of hiding them behind alignment.
     note_groups=defaultdict(list)

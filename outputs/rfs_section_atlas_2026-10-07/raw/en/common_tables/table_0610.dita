@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="table_0610">
+  <title>Table</title>
+  <conbody>
+    <table frame="all" rowsep="1" colsep="1" id="reuse_table_0610">
+      <tgroup cols="3" align="left">
+        <colspec colname="c1" colwidth="3*"/>
+        <colspec colname="c2" colwidth="2*"/>
+        <colspec colname="c3" colwidth="4*"/>
+        <thead>
+          <row>
+            <entry rowspan="2">If the comments on the ROE indicate:</entry>
+            <entry colspan="2">The RFS options in the ROE RFS Action WI must be changed as follows:</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>RFS</entry>
+            <entry>RFS sub-option</entry>
+          </row>
+          <row>
+            <entry>quit without notice</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>resigned</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>personal reasons</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>job abandonment</entry>
+            <entry>E - Quit</entry>
+            <entry>not applicable</entry>
+          </row>
+          <row>
+            <entry>another job</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Take another job</entry>
+          </row>
+          <row>
+            <entry>to follow spouse</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Follow spouse</entry>
+          </row>
+          <row>
+            <entry>employer relocation</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Employer relocation</entry>
+          </row>
+          <row>
+            <entry>care for a dependant</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Care for a dependant</entry>
+          </row>
+          <row>
+            <entry>to become self-employed</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - To become self-employed</entry>
+          </row>
+          <row>
+            <entry>voluntary retirement</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Voluntary retirement</entry>
+          </row>
+          <row>
+            <entry>health reasons</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Health reasons</entry>
+          </row>
+          <row>
+            <entry>return to school</entry>
+            <entry>E - Quit</entry>
+            <entry>Quit - Return to school</entry>
+          </row>
+          <row>
+            <entry>did not pass the probationary period</entry>
+            <entry>no change</entry>
+            <entry>Dismissal - Terminated within probationary period</entry>
+          </row>
+          <row>
+            <entry>terminated within probationary period</entry>
+            <entry>no change</entry>
+            <entry>Dismissal - Terminated within probationary period</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </conbody>
+</concept>

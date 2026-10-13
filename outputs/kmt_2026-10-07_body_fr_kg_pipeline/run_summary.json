@@ -2,21 +2,21 @@
   "dita_input_mode": "body",
   "chunking_applied": false,
   "chunking_strategy": "No chunking; one plain-text top-level DITA body per topic file",
-  "node_count": 21728,
+  "node_count": 14342,
   "structural_node_count": 0,
-  "comparable_content_node_count": 21565,
+  "comparable_content_node_count": 14219,
   "edge_count": 0,
-  "candidate_pair_count": 161676,
-  "borderline_pair_count": 72547,
-  "llm_reviewed_pair_count": 72547,
+  "candidate_pair_count": 78665,
+  "borderline_pair_count": 40466,
+  "llm_reviewed_pair_count": 40466,
   "llm_api_error_pair_count": 0,
   "llm_not_reviewed_pair_count": 0,
   "llm_model": "gpt-4o-mini",
   "relationship_counts": {
-    "independent": 102089,
-    "duplicate/semantic duplicate": 42556,
-    "conflicting information": 12091,
-    "one passage included in another": 4940
+    "duplicate/semantic duplicate": 27706,
+    "one passage included in another": 2399,
+    "conflicting information": 10044,
+    "independent": 38516
   },
   "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
   "embedding_threshold": 0.68,
@@ -32,5 +32,6 @@
     "kg_pair_classifications.csv",
     "kg_deduplication_matches.csv",
     "run_summary.json"
-  ]
+  ],
+  "keyref_filter": "Entire source topic excluded when its XML contains a keyref attribute; retained scores and LLM decisions reused."
 }

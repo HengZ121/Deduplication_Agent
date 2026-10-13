@@ -1,0 +1,43 @@
+{
+  "language": "fr",
+  "removed_nodes": 7386,
+  "remaining_nodes": 14342,
+  "files": {
+    "body_text_instances.csv": {
+      "before": 21728,
+      "after": 14342,
+      "removed": 7386
+    },
+    "kg_candidate_pairs.csv": {
+      "before": 161676,
+      "after": 78665,
+      "removed": 83011
+    },
+    "kg_cross_encoder_scores.csv": {
+      "before": 161676,
+      "after": 78665,
+      "removed": 83011
+    },
+    "kg_deduplication_matches.csv": {
+      "before": 59587,
+      "after": 40149,
+      "removed": 19438
+    },
+    "kg_edges.csv": {
+      "before": 0,
+      "after": 0,
+      "removed": 0
+    },
+    "kg_nodes.csv": {
+      "before": 21728,
+      "after": 14342,
+      "removed": 7386
+    },
+    "kg_pair_classifications.csv": {
+      "before": 161676,
+      "after": 78665,
+      "removed": 83011
+    }
+  },
+  "backup": "D:\\Deduplication_Agent\\.build\\before_keyref_row_filter_20261013_142732"
+}

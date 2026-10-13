@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="table_0615">
+  <title>Table</title>
+  <conbody>
+    <table frame="all" rowsep="1" colsep="1" id="reuse_table_0615">
+      <tgroup cols="9" align="left">
+        <colspec colname="c1" colwidth="3*"/>
+        <colspec colname="c2" colwidth="4*"/>
+        <colspec colname="c3" colwidth="4*"/>
+        <colspec colname="c4" colwidth="4*"/>
+        <colspec colname="c5" colwidth="4*"/>
+        <colspec colname="c6" colwidth="3*"/>
+        <colspec colname="c7" colwidth="1*"/>
+        <colspec colname="c8" colwidth="2*"/>
+        <colspec colname="c9" colwidth="1*"/>
+        <thead>
+          <row>
+            <entry>SN</entry>
+            <entry>Employer</entry>
+            <entry>FDW / TSD</entry>
+            <entry>LDP / TED</entry>
+            <entry>Modified</entry>
+            <entry>Input</entry>
+            <entry>RFS</entry>
+            <entry>Audit</entry>
+            <entry>EHF</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>W12345678</entry>
+            <entry>ABC Company</entry>
+            <entry>01/07/2015</entry>
+            <entry>04/12/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>E</entry>
+            <entry/>
+            <entry/>
+          </row>
+          <row>
+            <entry>W12341234</entry>
+            <entry>ABC Company</entry>
+            <entry>01/01/2015</entry>
+            <entry>30/06/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>22/12/2015</entry>
+            <entry>K</entry>
+            <entry/>
+            <entry/>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </conbody>
+</concept>

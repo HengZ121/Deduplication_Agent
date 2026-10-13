@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA 2.0 Concept//EN" "concept.dtd">
+<concept id="roe_dismissal_in_rcm">
+  <title>In RCM:</title>
+  <prolog>
+    <source href="https://ort-orl.esdc-edsc.canada.ca/en/procedure/task/roe_dismissal.shtml" scope="external" format="html"/>
+  </prolog>
+  <conbody>
+    <ul id="roe_dismissal_in_rcm_ul1">
+      <li id="roe_dismissal_in_rcm_li1">What ROEs are displayed on the Search / Correct – Results screen?</li>
+      <li id="roe_dismissal_in_rcm_li2">What is the employer’s name in block 4 of the ROE?</li>
+      <li id="roe_dismissal_in_rcm_li3">What is the last day for which paid in block 11 of the ROE?</li>
+      <li id="roe_dismissal_in_rcm_li4">
+        Is there an audit trail for the ROE?
+        <ul id="roe_dismissal_in_rcm_ul2">
+          <li id="roe_dismissal_in_rcm_li5">Does the audit trail contain a new value for the RFS in block 16 ?</li>
+        </ul>
+      </li>
+      <li id="roe_dismissal_in_rcm_li6">Are there comments in block 18 or the Additional information field of the ROE?</li>
+    </ul>
+  </conbody>
+</concept>
