@@ -8,23 +8,19 @@
     "sha256": "2a53a503067acb34f6509049f0669447d9909ae4a13ec60fda985b944fcbbcd8"
   },
   {
-    "path": "outputs\\ort_2026-10-07_body_en_kg_pipeline\\kg_nodes.csv",
-    "sha256": "32bf7b18c9cfed38f443cd22c1cfbfb6a04b6271257f39b0bd13f0f04c5c1c02"
-  },
-  {
-    "path": "outputs\\ort_2026-10-07_body_fr_kg_pipeline\\kg_nodes.csv",
-    "sha256": "b1dd7f23ea2b9cd437eb33c98296427845a73bf03916e05cad9220eeeafddfcf"
-  },
-  {
     "path": "outputs\\internal_clusters_2026-10-07\\kmt_all_duplicate_cluster_files.csv",
     "sha256": "651654495437771bfd8b9717f0d54258203788cedc0204e8fad9bd4b00f6a1a9"
   },
   {
-    "path": "outputs\\internal_clusters_2026-10-07\\ort_all_duplicate_cluster_files.csv",
-    "sha256": "11a40614b6ee90ee00e2176532861c57b9bd3cd775d71bdf162e31897ab1ea0d"
+    "path": "outputs\\kmt_2026-10-07_body_en_kg_pipeline\\run_summary.json",
+    "sha256": "f321c40f1c0d3d110abb8a6760345500658745b724979cfa807487855105ab71"
+  },
+  {
+    "path": "outputs\\kmt_2026-10-07_body_fr_kg_pipeline\\run_summary.json",
+    "sha256": "5b4b8c74dd9d0673723475db0f672944e4512ff18fa1a62b0c1e7d46f72897e1"
   },
   {
     "path": "D:\\Deduplication_Agent\\analyze_cluster_word_counts.py",
-    "sha256": "a8a4654266045f79bab07185ddcdce2bebf01dc6a34aef8e51df956cba3b21d3"
+    "sha256": "4a7da69ab7bd6683f5a6b2516719eafcd10fe9f3a136305df77ca221731fc124"
   }
 ]

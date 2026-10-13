@@ -16,13 +16,14 @@ from plotly.subplots import make_subplots
 
 ROOT = Path('outputs')
 OUT = ROOT/'cluster_word_counts_2026-10-07'
+DATASETS = ['KMT']
 GROUPS = ['Collapsed duplicate clusters', 'Standalone nodes']
 COLORS = ['#237f85', '#bc7443']
 
 
 def read_nodes():
     sources=[]; frames=[]
-    for dataset in ['KMT','ORT']:
+    for dataset in DATASETS:
         for lang in ['en','fr']:
             path=ROOT/f'{dataset.lower()}_2026-10-07_body_{lang}_kg_pipeline/kg_nodes.csv'
             d=pd.read_csv(path,keep_default_na=False,encoding='utf-8-sig')
@@ -32,7 +33,7 @@ def read_nodes():
     keys=['dataset','subset','node_id']
     assert not nodes.duplicated(keys).any(), 'Repeated node identity in inventory'
     memberships=[]
-    for dataset in ['KMT','ORT']:
+    for dataset in DATASETS:
         path=ROOT/f'internal_clusters_2026-10-07/{dataset.lower()}_all_duplicate_cluster_files.csv'
         m=pd.read_csv(path,keep_default_na=False,encoding='utf-8-sig')
         assert (m.dataset==dataset).all()
@@ -96,7 +97,7 @@ def compare(frame,label,view):
 
 
 def box_figure(panels,title):
-    cols=2; rows=(len(panels)+1)//2
+    cols=min(2,len(panels)); rows=(len(panels)+cols-1)//cols
     fig=make_subplots(rows=rows,cols=cols,subplot_titles=[p[0] for p in panels],vertical_spacing=min(.10,.3/rows))
     for i,(label,d) in enumerate(panels):
         row,col=i//cols+1,i%cols+1
@@ -132,15 +133,12 @@ def main():
     nodes,sources=read_nodes(); items=collapse(nodes)
     assert len(items)==nodes.loc[~nodes.clustered].shape[0]+nodes.loc[nodes.clustered].groupby(['dataset','subset','cluster_id']).ngroups
     assert items.member_count.sum()==len(nodes)
-    overview=[(dataset,items[items.dataset.eq(dataset)]) for dataset in ['KMT','ORT']]
+    overview=[(dataset,items[items.dataset.eq(dataset)]) for dataset in DATASETS]
     detail=[(f'{dataset} · {lang.upper()}',items[items.dataset.eq(dataset)&items.subset.eq(lang)])
-            for dataset in ['KMT','ORT'] for lang in ['en','fr']]
+            for dataset in DATASETS for lang in ['en','fr']]
     eligible=[(label,d[d.eligible]) for label,d in detail]
-    typed=collapse(nodes,within_type=True)
-    orttypes=[(f'ORT {kind} · EN + FR',typed[typed.dataset.eq('ORT') & typed.source_type.eq(kind)])
-              for kind in sorted(nodes.loc[nodes.dataset.eq('ORT'),'source_type'].unique())]
     comparisons=[]
-    for view,panels in [('pooled',overview),('by_subset',detail),('eligible_only',eligible),('ORT_within_type',orttypes)]:
+    for view,panels in [('pooled',overview),('by_subset',detail),('eligible_only',eligible)]:
         for label,d in panels:
             r=compare(d,label,view)
             if r:comparisons.append(r)
@@ -149,7 +147,7 @@ def main():
     sensitivity=[]
     for method in ['min_words','word_count','mean_words','max_words']:
         alternative=items.copy();alternative['word_count']=alternative[method]
-        for dataset in ['KMT','ORT']:
+        for dataset in DATASETS:
             r=compare(alternative[alternative.dataset.eq(dataset)],dataset,method)
             sensitivity.append(r)
     pd.DataFrame(sensitivity).to_csv(OUT/'collapse_sensitivity.csv',index=False)
@@ -164,17 +162,16 @@ def main():
                                   lower_whisker=d.loc[d.word_count.ge(q.loc[.25]-1.5*iqr),'word_count'].min(),
                                   upper_whisker=d.loc[d.word_count.le(q.loc[.75]+1.5*iqr),'word_count'].max()))
     pd.DataFrame(quantiles).to_csv(OUT/'boxplot_statistics.csv',index=False)
-    figures=[box_figure(overview,'Collapsed clusters versus standalone nodes'),
-             box_figure(detail,'Separate language and KMT content type'),
-             box_figure(eligible,'Sensitivity: matching-eligible items only'),
-             box_figure(orttypes,'ORT: comparison within source type')]
+    figures=[box_figure(overview,'KMT: collapsed clusters versus standalone nodes'),
+             box_figure(detail,'KMT: English and French'),
+             box_figure(eligible,'KMT sensitivity: matching-eligible items only')]
     texts=[]
     for r in comparisons:
         if r['view'] in ['pooled','by_subset','eligible_only']:
             texts.append(f"| {r['view']} | {r['stratum']} | {r['clusters']:,} | {r['standalone_nodes']:,} | {r['cluster_median']:g} | {r['standalone_median']:g} | {r['median_ratio']:.2f} | {r['probability_cluster_shorter']:.1%} |")
-    methodology="""Each duplicate cluster contributes one observation: the median saved word_count of its member topics. Each standalone node contributes its own count. These are separate within-dataset clusters by language; cross-source matches do not join clusters. Membership is formed from saved “duplicate/semantic duplicate” edges as connected components. Partial-inclusion pairs are not merged. Cluster labels are model outputs and are not human- or LLM-confirmed safe-reuse groups.
+    methodology="""This report covers KMT English and French only. Each duplicate cluster contributes one observation: the median saved word_count of its member topics. Each standalone node contributes its own count. Clusters are formed separately by language from saved “duplicate/semantic duplicate” edges as connected components. Partial-inclusion pairs are not merged. A connected component does not establish that every pair of its members is semantically equivalent.
 
-The refreshed deduplication runs used direct DITA topic-body text. Broken conref targets prevented full expansion, so word counts do not reconstruct the complete conref-expanded source. KMT note topics are included and separated from other KMT topics in source-type views. ORT source-type panels collapse a mixed-type cluster separately within each represented type, so these counts are not additive.
+Source topics containing a keyref attribute have been excluded, together with their associated pairs. Word counts cover text physically present in the DITA body, including note topics. They do not expand conref references or measure complete published documents.
 
 The charts compare median cluster member length with standalone-node length. The probability column is P(cluster length < standalone length) + 0.5 × P(tie), a descriptive statistic. Eligibility views use the saved comparability flag and retain a cluster only when all its members are eligible. Unclustered means not assigned to a detected cluster, not proven unique. Sensitivity rows compare minimum, median, mean, and maximum member lengths."""
     pooled_lookup={r['stratum']:r for r in comparisons if r['view']=='pooled'}
@@ -183,24 +180,29 @@ The charts compare median cluster member length with standalone-node length. The
         f"{pooled_lookup[dataset]['standalone_median']:g} standalone "
         f"({pooled_lookup[dataset]['median_ratio']:.2f}×; cluster-shorter probability "
         f"{pooled_lookup[dataset]['probability_cluster_shorter']:.1%})."
-        for dataset in ['KMT','ORT']
-    )+' These are descriptive results from pair classifications with borderline cases not LLM reviewed.'
-    report='# Word counts of collapsed duplicate clusters\n\n'+findings+'\n\n## Method and limitations\n\n'+methodology+'\n\n| View | Dataset | Clusters | Standalone | Cluster median | Standalone median | Median ratio | Probability shorter |\n|---|---|---:|---:|---:|---:|---:|---:|\n'+'\n'.join(texts)
+        for dataset in DATASETS
+    )
+    # Review status must come from these runs rather than a historical report's
+    # static wording. Only borderline pairs are sent for LLM review.
+    statuses=[json.loads((ROOT/f'kmt_2026-10-07_body_{lang}_kg_pipeline/run_summary.json').read_text(encoding='utf-8-sig')) for lang in ('en','fr')]
+    findings+=f" Saved borderline LLM reviews: {sum(s['llm_reviewed_pair_count'] for s in statuses):,} completed; {sum(s['llm_not_reviewed_pair_count']+s['llm_api_error_pair_count'] for s in statuses):,} pending or failed. These are descriptive statistics, not an independent validation of semantic equivalence."
+    report='# KMT word counts of collapsed duplicate clusters\n\n'+findings+'\n\n## Method and limitations\n\n'+methodology+'\n\n| View | Dataset | Clusters | Standalone | Cluster median | Standalone median | Median ratio | Probability shorter |\n|---|---|---:|---:|---:|---:|---:|---:|\n'+'\n'.join(texts)
     (OUT/'REPORT.md').write_text(report,encoding='utf-8')
     table=stats.round(3).to_html(index=False,classes='stats')
     page='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cluster word-count box plots</title><style>body{font:16px/1.6 Arial;margin:24px auto;max-width:1250px;padding:0 20px;color:#203243}p{max-width:1050px}table{border-collapse:collapse;font-size:13px}td,th{padding:6px;border-bottom:1px solid #ccd3da;text-align:right}.table{overflow-x:auto}a{color:#006a83}</style></head><body><h1>Are clustered nodes shorter?</h1><p>One observation per duplicate cluster (median member length), compared with one observation per standalone node. The charts use saved pipeline text lengths; they do not measure reconstructed full documents.</p>'
     page+=''.join('<p>'+html.escape(p)+'</p>' for p in findings.split('\n\n'))
     for i,fig in enumerate(figures):
         if i==2:page+='<p>Matching-eligible items only: removes nodes excluded by the saved comparability flag; clusters are retained only when all members are eligible.</p>'
-        if i==3:page+='<p>Within-type sensitivity: mixed-type clusters contribute once within each represented source type. These panel counts are not additive.</p>'
         page+=fig.to_html(full_html=False,include_plotlyjs=True if i==0 else False,config={'responsive':True,'displaylogo':False})
     page+='<h2>Statistics and method</h2><div class="table">'+table+'</div>'+''.join('<p>'+html.escape(p)+'</p>' for p in methodology.split('\n\n'))
     page+='<p><a href="collapsed_items.csv">Every collapsed observation</a> · <a href="node_membership_word_counts.csv">Node membership and lengths</a> · <a href="comparison_statistics.csv">Comparison statistics</a> · <a href="collapse_sensitivity.csv">Collapse sensitivity</a> · <a href="REPORT.md">Report</a></p></body></html>'
+    page=page.replace('<title>Cluster word-count box plots</title>','<title>KMT word-count box plots</title>').replace('<h1>Are clustered nodes shorter?</h1>','<h1>KMT: are clustered nodes shorter?</h1>')
     (OUT/'boxplots.html').write_text(page,encoding='utf-8')
-    manifest=[dict(path=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sources+[Path(__file__)]]
+    status_paths=[ROOT/f'kmt_2026-10-07_body_{lang}_kg_pipeline/run_summary.json' for lang in ('en','fr')]
+    manifest=[dict(path=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sources+status_paths+[Path(__file__)]]
     (OUT/'input_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
     validation=dict(nodes=len(nodes),collapsed_items=len(items),cluster_members=int(nodes.clustered.sum()),clusters=int(items.group.eq(GROUPS[0]).sum()),standalone=int((~nodes.clustered).sum()),
-                    mixed_ORT_clusters=int(items.loc[items.dataset.eq('ORT') & items.group.eq(GROUPS[0]),'source_type'].str.contains('|',regex=False).sum()),
+                    datasets=DATASETS,
                     aggregate_text_mismatches=int(nodes.aggregate_text_mismatch.sum()),
                     checks=['No repeated node IDs within dataset/subset','All cluster members resolve','Cluster sizes agree','Aggregate text mismatches recorded; authoritative inventory counts used','Collapsed counts reconcile','All word counts positive'])
     (OUT/'validation.json').write_text(json.dumps(validation,indent=2),encoding='utf-8')
