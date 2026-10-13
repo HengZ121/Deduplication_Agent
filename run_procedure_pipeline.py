@@ -175,7 +175,31 @@ def direct_child(element: ET.Element, name: str) -> ET.Element | None:
 
 
 def element_text(element: ET.Element | None) -> str:
-    return clean_text(" ".join(element.itertext())) if element is not None else ""
+    """Extract visible DITA text while excluding keyref-provided content.
+
+    Key references are identifiers resolved against a DITA map, not reliable
+    source wording. Their fallback text must not affect similarity or counts.
+    The referenced element's tail remains ordinary surrounding content.
+    """
+    if element is None:
+        return ""
+    if element.get("keyref"):
+        return ""
+
+    parts: list[str] = []
+
+    def visit(node: ET.Element) -> None:
+        if node is not element and node.get("keyref"):
+            return
+        if node.text:
+            parts.append(node.text)
+        for child in node:
+            visit(child)
+            if child.tail:
+                parts.append(child.tail)
+
+    visit(element)
+    return clean_text(" ".join(parts))
 
 
 class DitaTopicResolver:
@@ -225,6 +249,9 @@ class DitaTopicResolver:
         current_path: Path,
         active_references: frozenset[tuple[Path, str]] = frozenset(),
     ) -> str:
+        # Do not treat keyref fallback labels as authored body content.
+        if element.get("keyref"):
+            return ""
         conref = element.get("conref")
         if conref:
             target_path, fragment = self.resolve_local_reference(current_path, conref)

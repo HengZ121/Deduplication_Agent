@@ -14,7 +14,8 @@ CSV quoting preserves commas and quotation marks within content.
 - Every `.dita` file in those branches is included, even empty files, shared
   notes/tables, and files outside the previous clustering inventory.
 - Counts include titles and body text physically present in the XML. XML markup,
-  attributes and prolog/metadata are excluded. References are not expanded.
+  attributes, prolog/metadata, and the fallback text inside `keyref` elements
+  are excluded. References are not expanded.
 - Shared/duplicate files remain separate rows. `.ditamap` files are excluded.
 - Uses the existing pipeline Unicode word tokenizer: contractions and hyphenated
   words count as single tokens; numeric tokens also count.

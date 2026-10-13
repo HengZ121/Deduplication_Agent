@@ -101,7 +101,7 @@ class AuditResolver(DitaTopicResolver):
                 errors.append(str(exc))
         clone = ET.Element(xml_local_name(node.tag), dict(node.attrib))
         clone.text, clone.tail = node.text, node.tail
-        for attr in ('conkeyref', 'keyref', 'conrefend', 'conaction'):
+        for attr in ('conkeyref', 'conrefend', 'conaction'):
             if node.get(attr):
                 errors.append('Unsupported ' + attr + ': ' + node.get(attr))
         href = node.get('href')
@@ -114,6 +114,14 @@ class AuditResolver(DitaTopicResolver):
             except ValueError as exc:
                 errors.append(str(exc))
         for child in node:
+            if child.get('keyref'):
+                # Drop the keyref node and its fallback label, but preserve
+                # ordinary text immediately following it in the parent.
+                if len(clone):
+                    clone[-1].tail = (clone[-1].tail or '') + (child.tail or '')
+                else:
+                    clone.text = (clone.text or '') + (child.tail or '')
+                continue
             clone.append(self.expand(child, current_path, errors, active))
         return clone
 

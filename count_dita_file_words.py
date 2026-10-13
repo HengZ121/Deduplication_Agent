@@ -17,8 +17,8 @@ from run_passage_pipeline import word_tokens
 
 
 def content_text(element: ET.Element) -> str:
-    """Keep content in XML order; skip metadata subtrees but keep their tails."""
-    if element.tag.rsplit('}', 1)[-1] in {'prolog', 'metadata'}:
+    """Keep authored content in XML order; omit metadata and keyref subtrees."""
+    if element.tag.rsplit('}', 1)[-1] in {'prolog', 'metadata'} or element.get('keyref'):
         return ''
     parts = [element.text or '']
     for child in element:
