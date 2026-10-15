@@ -817,6 +817,20 @@ def load_dita_as_document_nodes(
     return nodes_df, edges_df
 
 
+def dita_branch_language(folders: tuple[str, ...]) -> str:
+    """Return the language of the outermost ``en``/``fr``/``en_EN`` branch folder.
+
+    Without a branch folder (flat older exports), fall back to the top-level
+    article folder suffix such as ``KA-01029_EN``.
+    """
+
+    for folder in folders:
+        if folder.lower() in {"en", "fr"} or re.fullmatch(r"(?i)(en|fr)_(en|fr)", folder):
+            return folder[:2].lower()
+    match = re.search(r"_(EN|FR)$", folders[0], re.IGNORECASE) if folders else None
+    return match.group(1).lower() if match else ""
+
+
 def load_dita_body_nodes(
     input_path: Path,
     language: str,
@@ -836,19 +850,16 @@ def load_dita_body_nodes(
         raise ValueError("DITA body extraction language must be 'en' or 'fr'.")
 
     dita_root = find_dita_root(input_path)
-    language_suffix = f"_{normalized_language.upper()}"
-    # Current OneDrive exports use short ``en`` / ``fr`` branch names, while
-    # older exports use names such as ``en_EN`` / ``fr_FR``. Accept both so
-    # body-level deduplication can run against either export layout.
+    # Current OneDrive exports use short ``en`` / ``fr`` branch names (ORT also
+    # nests them, as in ``pr-ort/en``), while older exports use ``en_EN`` /
+    # ``fr_FR`` or put article folders such as ``KA-01029_EN`` directly under
+    # the root. The outermost language branch decides: KMT exports contain
+    # ``fr/KA-01029_EN/`` article folders, which must not join the EN run.
     topic_paths = [
         path
         for path in sorted(dita_root.rglob("*.dita"))
         if "common_notes" not in {part.lower() for part in path.relative_to(dita_root).parts}
-        and any(
-            part.lower() == normalized_language
-            or part.upper().endswith(language_suffix)
-            for part in path.relative_to(dita_root).parts[:-1]
-        )
+        and dita_branch_language(path.relative_to(dita_root).parts[:-1]) == normalized_language
     ]
     if not topic_paths:
         raise ValueError(
@@ -880,9 +891,12 @@ def load_dita_body_nodes(
 
         relative_path = topic_path.relative_to(dita_root).as_posix()
         relative_parts = Path(relative_path).parts
+        # Article folders keep their source-language suffix (``KA-01029_EN``)
+        # even inside the ``fr`` branch, so match any two-letter suffix. The
+        # innermost match skips older branch folders such as ``en_EN``.
         article_id = next(
-            (part for part in relative_parts[:-1] if part.upper().endswith(language_suffix)),
-            relative_parts[0] if len(relative_parts) > 1 else "",
+            (part for part in reversed(relative_parts[:-1]) if re.search(r"_[A-Za-z]{2}$", part)),
+            relative_parts[0],
         )
         topic_type = xml_local_name(root.tag)
         topic_title = element_text(direct_child(root, "title"))

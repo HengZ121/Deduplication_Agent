@@ -1,4 +1,4 @@
-"""Export relative DITA file name, word count, and extracted text content.
+"""Export relative DITA file path, body type, word count, and extracted text content.
 
 Counts the text physically stored in each .dita file, including titles, tables,
 notes and body text. Excludes prolog/metadata and XML attributes/markup. Does not
@@ -26,8 +26,17 @@ def content_text(element: ET.Element) -> str:
     return ' '.join(parts)
 
 
+def body_type(root: ET.Element) -> str:
+    """Name the topic's direct body element (conbody, refbody, taskbody, ...)."""
+    for child in root:
+        name = child.tag.rsplit('}', 1)[-1]
+        if name.endswith('body'):
+            return name
+    return ''
+
+
 def export_counts(root: Path, branches: list[str], output: Path) -> int:
-    """Use relative paths so identical basenames in different folders stay distinct.
+    """Use paths relative to the dataset root so identical basenames stay distinct.
 
     Parse everything before writing. A bad XML file raises an error rather than
     silently omitting a file or recording an invented zero word count.
@@ -44,12 +53,13 @@ def export_counts(root: Path, branches: list[str], output: Path) -> int:
         raise ValueError(f'No .dita files found under {root}')
     def count_file(path):
         try:
-            # Remove XML indentation while retaining the original wording,
-            # punctuation, case and accents in the exported content column.
-            text = ' '.join(content_text(ET.parse(path).getroot()).split())
+            topic = ET.parse(path).getroot()
         except ET.ParseError as exc:
             raise ValueError(f'Invalid XML in {path}: {exc}') from exc
-        return path.relative_to(root).as_posix(), len(word_tokens(text)), text
+        # Remove XML indentation while retaining the original wording,
+        # punctuation, case and accents in the exported content column.
+        text = ' '.join(content_text(topic).split())
+        return path.relative_to(root).as_posix(), body_type(topic), len(word_tokens(text)), text
     # These exports contain tens of thousands of small files. Bounded parallel
     # reads reduce filesystem wait time; map preserves the sorted output order.
     with ThreadPoolExecutor(max_workers=8) as pool:
@@ -57,9 +67,9 @@ def export_counts(root: Path, branches: list[str], output: Path) -> int:
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
-        writer.writerow(['file_name', 'word_count', 'content'])
+        writer.writerow(['file_path', 'body_type', 'word_count', 'content'])
         writer.writerows(rows)
-    print(f'{output}: {len(rows):,} files; {sum(count for _, count, _ in rows):,} words')
+    print(f'{output}: {len(rows):,} files; {sum(row[2] for row in rows):,} words')
     return len(rows)
 
 

@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from audit_ort_knowledge_reuse import AuditResolver, ReuseAudit, RiskScanner, Section, digest, norm, structure
+from audit_ort_knowledge_reuse import AuditResolver, ReuseAudit, RiskScanner, Section, digest, exchanged_phrase, norm, structure
 from run_passage_pipeline import normalized_passage, word_tokens
 
 
@@ -48,6 +48,34 @@ class ReuseAuditTests(unittest.TestCase):
         bucket,e=ReuseAudit.assess_pair(a,b)
         self.assertEqual(bucket,'template_variant_candidate')
         self.assertIn('reference_targets',e['review_signals'])
+
+    def test_one_exchanged_phrase_is_a_variant_even_without_slot_changes(self):
+        prefix='Any required changes to the RFS details must be made in the Resolve Issue '
+        a=section(prefix+'tab of the ROE RFS Action WI.',signature='a')
+        b=section(prefix+'section of the ROE RFS Action WI.',signature='b')
+        bucket,e=ReuseAudit.assess_pair(a,b)
+        self.assertEqual(bucket,'template_variant_candidate')
+        self.assertEqual(e['exchanged_phrase'],'tab → section')
+
+    def test_repeated_swap_of_one_phrase_is_a_variant(self):
+        text='The {} must review the ROE. Then the {} indicates the decision : no match.'
+        a=section(text.format('agent','agent'),signature='a')
+        b=section(text.format('officer','officer').replace(' :',':'),signature='b')
+        bucket,e=ReuseAudit.assess_pair(a,b)
+        self.assertEqual(bucket,'template_variant_candidate')
+        self.assertEqual(e['exchanged_phrase'],'agent → officer')
+
+    def test_two_different_exchanged_phrases_are_not_one_swap(self):
+        block={'same':{'text':'A shared instruction','words':12,'element':'/conbody/p[1]'}}
+        a=section('The agent must review the ROE in the Resolve Issue tab.',signature='a',blocks=block)
+        b=section('The officer must review the ROE in the Resolve Issue section.',signature='b',blocks=block)
+        bucket,e=ReuseAudit.assess_pair(a,b)
+        self.assertEqual(bucket,'partial_overlap_observed')
+        self.assertEqual(e['exchanged_phrase'],'')
+
+    def test_added_text_is_not_an_exchanged_phrase(self):
+        self.assertIsNone(exchanged_phrase('Review the ROE.','Review the ROE carefully.'))
+        self.assertIsNone(exchanged_phrase('Review the ROE.','Review six entirely different long words here.'))
 
     def test_exact_internal_evidence_can_support_partial_overlap(self):
         block={'same':{'text':'A shared instruction','words':12,'element':'/conbody/p[1]'}}

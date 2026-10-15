@@ -5,9 +5,9 @@
   "aligned_rows": 16,
   "empty_heading_occurrences": 48,
   "pair_classifications": {
-    "template_variant_candidate": 84,
+    "template_variant_candidate": 91,
     "heading_only": 168,
-    "partial_overlap_observed": 90,
+    "partial_overlap_observed": 83,
     "exact_resolved_section": 92,
     "related_or_unresolved": 7
   },

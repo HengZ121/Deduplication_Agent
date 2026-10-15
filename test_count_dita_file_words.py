@@ -1,6 +1,6 @@
 import unittest
 import xml.etree.ElementTree as ET
-from count_dita_file_words import content_text, word_tokens
+from count_dita_file_words import body_type, content_text, word_tokens
 
 
 class FileWordCountTests(unittest.TestCase):
@@ -16,6 +16,11 @@ class FileWordCountTests(unittest.TestCase):
     def test_unicode_and_empty_body(self):
         self.assertEqual(self.count('<topic><body><p>L’enfant reçoit vingt-deux euros.</p></body></topic>'), 4)
         self.assertEqual(self.count('<topic><body/></topic>'), 0)
+
+    def test_body_type_names_the_topic_body_element(self):
+        self.assertEqual(body_type(ET.fromstring('<concept><title>T</title><conbody/></concept>')), 'conbody')
+        self.assertEqual(body_type(ET.fromstring('<reference><refbody><table><tbody/></table></refbody></reference>')), 'refbody')
+        self.assertEqual(body_type(ET.fromstring('<map><title>No body</title></map>')), '')
 
 
 if __name__ == '__main__': unittest.main()

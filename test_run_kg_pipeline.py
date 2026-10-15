@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from pathlib import Path
+import tempfile
 import unittest
 from unittest import mock
 
@@ -119,6 +120,42 @@ class DitaKnowledgeGraphTests(unittest.TestCase):
         self.assertNotIn("Steps", nodes_df.loc[nodes_df["article_title"] == "Steps", "text"].iloc[0])
         self.assertEqual(len(instances_df), len(nodes_df))
         self.assertTrue(edges_df.empty)
+
+    def test_body_mode_language_comes_from_top_level_branch(self) -> None:
+        # KMT exports keep ``KA-*_EN`` article folders inside the ``fr`` branch.
+        topic = (
+            '<concept id="t"><title>T</title><conbody>'
+            "<p>{}</p></conbody></concept>"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            dita_root = Path(tmp) / "dita"
+            files = {
+                "en/KA-00001_EN/summary.dita": "English summary text.",
+                "fr/KA-00001_EN/summary.dita": "Texte du sommaire.",
+                "fr/all_notes/KA-00001_note_0001.dita": "Note en français.",
+                # ORT nests a language branch below a product folder.
+                "pr-ort/en/notice/summary.dita": "Program notice summary.",
+            }
+            for relative_path, text in files.items():
+                path = dita_root / relative_path
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(topic.format(text), encoding="utf-8")
+
+            en_instances, _, _ = load_dita_body_nodes(Path(tmp), "en", min_comparable_words=1)
+            fr_instances, _, _ = load_dita_body_nodes(Path(tmp), "fr", min_comparable_words=1)
+
+        self.assertEqual(
+            {"en/KA-00001_EN/summary.dita", "pr-ort/en/notice/summary.dita"},
+            set(en_instances["source_path"]),
+        )
+        # Path sort order is case-sensitive on POSIX but not on Windows.
+        self.assertEqual(
+            {
+                "fr/KA-00001_EN/summary.dita": "KA-00001_EN",
+                "fr/all_notes/KA-00001_note_0001.dita": "fr",
+            },
+            dict(zip(fr_instances["source_path"], fr_instances["article_id"])),
+        )
 
 
 class PipelineArgumentTests(unittest.TestCase):

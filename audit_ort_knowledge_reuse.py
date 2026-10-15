@@ -20,6 +20,7 @@ import unicodedata
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
+from difflib import SequenceMatcher
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -30,7 +31,7 @@ from run_passage_pipeline import normalized_passage, word_tokens
 csv.field_size_limit(10_000_000)
 ROOT = Path('unzipped/ort_new_dita/dita').resolve()
 OUT = Path('outputs/ort_knowledge_reuse_audit')
-RULE_VERSION = 'ort-reuse-audit-v1'
+RULE_VERSION = 'ort-reuse-audit-v2'
 BUCKETS = ('exact_resolved_section', 'template_variant_candidate', 'partial_overlap_observed',
            'semantic_equivalence_candidate', 'related_or_unresolved', 'unresolved_source')
 
@@ -158,6 +159,29 @@ class RiskScanner:
         return [key for key in left if left[key] != right[key]]
 
 
+MAX_EXCHANGED_PHRASE_WORDS = 5
+
+
+def exchanged_phrase(a, b):
+    """Return (left, right) when one swapped phrase explains every difference.
+
+    Compares word tokens, so case, punctuation and spacing are ignored. The
+    swap may repeat (agent → officer throughout), but any other substitution,
+    insertion, deletion, or a phrase longer than five words returns None.
+    """
+    left, right = word_tokens(a), word_tokens(b)
+    pairs = set()
+    for op, i1, i2, j1, j2 in SequenceMatcher(None, left, right, autojunk=False).get_opcodes():
+        if op == 'equal':
+            continue
+        if op != 'replace' or max(i2 - i1, j2 - j1) > MAX_EXCHANGED_PHRASE_WORDS:
+            return None
+        pairs.add((' '.join(left[i1:i2]), ' '.join(right[j1:j2])))
+        if len(pairs) > 1:
+            return None
+    return next(iter(pairs), None)
+
+
 @dataclass
 class Section:
     node_id: str
@@ -266,9 +290,10 @@ class ReuseAudit:
     def assess_pair(a, b):
         """Mutually exclusive audit buckets; evidence flags may overlap.
 
-        The precedence is source completeness, exact, high-overlap changed
-        slots/references, exact internal overlap, model-suggested equivalence,
-        unresolved. None of the candidate buckets assert semantic truth.
+        The precedence is source completeness, exact, one exchanged phrase or
+        high-overlap changed slots/references, exact internal overlap,
+        model-suggested equivalence, unresolved. None of the candidate buckets
+        assert semantic truth.
         """
         union = a.tokens | b.tokens
         overlap = len(a.tokens & b.tokens) / len(union) if union else 0.0
@@ -293,12 +318,16 @@ class ReuseAudit:
                 'either_has_conref': a.has_conref or b.has_conref,
                 'resolved_surface_equal': norm(a.resolved) == norm(b.resolved),
                 'resolved_structure_equal': a.signature == b.signature,
-                'inherited_context_difference': context_difference}
+                'inherited_context_difference': context_difference,
+                'exchanged_phrase': ''}
         if a.errors or b.errors:
             return 'unresolved_source', base
         if a.signature == b.signature:
             return 'exact_resolved_section', base
-        if overlap >= 0.80 and changes:
+        exchanged = exchanged_phrase(a.resolved, b.resolved)
+        if exchanged:
+            base['exchanged_phrase'] = ' → '.join(exchanged)
+        if exchanged or (overlap >= 0.80 and changes):
             return 'template_variant_candidate', base
         if shared:
             return 'partial_overlap_observed', base

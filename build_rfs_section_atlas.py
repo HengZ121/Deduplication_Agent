@@ -176,6 +176,9 @@ def main():
     parser.add_argument('--root', type=Path, default=ROOT,
                         help='ORT DITA root containing the English and French branches')
     parser.add_argument('--output-dir', type=Path, default=OUT)
+    parser.add_argument('--saved-scores-csv', type=Path,
+                        help='Reuse embedding scores and pipeline decisions from an earlier pair_evidence.csv '
+                             'built from the same export, when its scored run directory is unavailable')
     args = parser.parse_args()
     ROOT = args.root.resolve()
     OUT = args.output_dir
@@ -183,7 +186,12 @@ def main():
     audit = ReuseAudit(root=ROOT, output=OUT)
     # Historical scores belong to the original export. Do not attach them to a
     # refreshed export unless its own scored pair tables are explicitly joined.
-    if ROOT == Path('unzipped/ort_new_dita/dita').resolve():
+    if args.saved_scores_csv:
+        with args.saved_scores_csv.open(encoding='utf-8-sig', newline='') as f:
+            saved_similarities = {tuple(sorted((r['source_a'], r['source_b']))):
+                                  (float(r['embedding_similarity']), r['saved_pipeline_decision'])
+                                  for r in csv.DictReader(f) if r['embedding_similarity']}
+    elif ROOT == Path('unzipped/ort_new_dita/dita').resolve():
         saved_similarities = load_saved_similarities()
     elif ROOT == Path('unzipped/ORT_2026-10-07/output/dita').resolve():
         saved_similarities = load_saved_similarities(Path('outputs/ort_2026-10-07_body_en_kg_pipeline'))
@@ -281,7 +289,7 @@ def main():
             a=next(n for n in items if n['letter']==p['pair'][0]); b=next(n for n in items if n['letter']==p['pair'][-1])
             score=p['embedding_similarity']
             score_text=f'{score:.6f}' if score is not None else 'unavailable (not a zero score)'
-            evidencehtml.append('<details class="pair-detail"><summary>'+H(p['pair']+' · '+LABELS.get(p['classification'],p['classification']))+'</summary><p>Saved embedding cosine: '+score_text+'. Relationship shown: '+H(p['edge_type'])+'. Saved pipeline decision: '+H(p['saved_pipeline_decision'] or 'unavailable')+'. Scores use the historical pipeline body; the comparison below includes expanded references.</p><p>Highlighted words differ. Both full sections are shown; identical wording can still have different XML structure or link targets.</p>'+side_by_side(a,b,documents)+'</details>')
+            evidencehtml.append('<details class="pair-detail"><summary>'+H(p['pair']+' · '+LABELS.get(p['classification'],p['classification']))+'</summary><p>Saved embedding cosine: '+score_text+'. Relationship shown: '+H(p['edge_type'])+'. Saved pipeline decision: '+H(p['saved_pipeline_decision'] or 'unavailable')+'.'+(' Only difference: one exchanged phrase, '+H(p['exchanged_phrase'])+'.' if p['exchanged_phrase'] else '')+' Scores use the historical pipeline body; the comparison below includes expanded references.</p><p>Highlighted words differ. Both full sections are shown; identical wording can still have different XML structure or link targets.</p>'+side_by_side(a,b,documents)+'</details>')
         rawhtml=[]
         for n in items:
             s=sections[(n['letter'],n['path'])]
