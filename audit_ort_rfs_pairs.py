@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 from research_ort_rfs import OUT, ROOT, SourceReconstructor, write_csv
-from run_passage_pipeline import normalized_passage
+from run_passage_pipeline import is_cluster_relationship, normalized_passage
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
     audit = []
     with (OUT / 'rfs_pair_evidence.csv').open(encoding='utf-8-sig') as f:
         for row in csv.DictReader(f):
-            if row['final_relationship_type'] != 'duplicate/semantic duplicate':
+            if not is_cluster_relationship(row['final_relationship_type']):
                 continue
             a, b = ROOT / row['item1_path'], ROOT / row['item2_path']
             def body_text(path):

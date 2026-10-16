@@ -3,8 +3,7 @@
 The 2026-10-07 EN body run selected topics by any ``*_EN`` folder, so it also
 loaded ``fr/KA-*_EN/`` article topics (byte-identical copies of the English
 files). This drops those nodes and every pair touching them, re-forms EN
-clusters as connected components of the saved "duplicate/semantic duplicate"
-pairs, and reruns the existing report. No model inference is performed; FR rows
+clusters as connected components of the saved cluster-forming pairs, and reruns the existing report. No model inference is performed; FR rows
 are unchanged.
 
 Limitation: candidate retrieval kept 20 neighbours per node, so a removed copy
@@ -19,11 +18,11 @@ import numpy as np
 import pandas as pd
 
 import analyze_cluster_word_counts as report
+from run_passage_pipeline import is_cluster_relationship
 
 ROOT = Path('outputs')
 PUBLISHED = ROOT / 'cluster_word_counts_2026-10-07' / 'node_membership_word_counts.csv'
 EN_RESULTS = ROOT / 'kmt_2026-10-07_body_en_kg_pipeline' / 'kmt_english_llm_results.zip'
-DUPLICATE = 'duplicate/semantic duplicate'
 
 
 def components(node_ids, edges):
@@ -48,7 +47,7 @@ def en_clusters(node_ids):
     with zipfile.ZipFile(EN_RESULTS) as archive, archive.open('kg_pair_classifications.csv') as stream:
         pairs = pd.read_csv(stream, encoding='utf-8-sig',
                             usecols=['item1_node_id', 'item2_node_id', 'final_relationship_type'])
-    duplicates = pairs[pairs.final_relationship_type.eq(DUPLICATE)]
+    duplicates = pairs[pairs.final_relationship_type.map(is_cluster_relationship)]
     return components(node_ids, zip(duplicates.item1_node_id, duplicates.item2_node_id))
 
 

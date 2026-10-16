@@ -29,6 +29,12 @@ from language_detection import (
 )
 from run_passage_pipeline import (
     DEFAULT_EMBEDDING_MODEL,
+    EXACT_CONTENT,
+    NON_MATCH_RELATIONSHIP_TYPES,
+    PARTIAL_OVERLAP,
+    RELATED,
+    RELATIONSHIP_SCHEME,
+    VARIANT_CANDIDATE,
     encode_passages,
     has_conflict_signal,
     normalized_passage,
@@ -58,7 +64,11 @@ def llm_review_key(row: pd.Series, model: str) -> tuple[str, str, str]:
 
 
 def load_llm_review_checkpoint(path: Path) -> dict[tuple[str, str, str], dict[str, object]]:
-    """Load the latest JSONL checkpoint record for every pair/model key."""
+    """Load the latest JSONL checkpoint record for every pair/model key.
+
+    Records from another relationship scheme (including untagged records from
+    before the RFS labels) are ignored, so those pairs are reviewed again.
+    """
 
     records: dict[tuple[str, str, str], dict[str, object]] = {}
     if not path.is_file():
@@ -75,6 +85,8 @@ def load_llm_review_checkpoint(path: Path) -> dict[tuple[str, str, str], dict[st
             except (json.JSONDecodeError, KeyError, TypeError):
                 # A final partial line can occur if a process is interrupted
                 # during a write. Earlier complete records remain reusable.
+                continue
+            if record.get("relationship_scheme") != RELATIONSHIP_SCHEME:
                 continue
             records[key] = record
     return records
@@ -249,7 +261,7 @@ def classify_compact_pairs(
         cross_score = float(row.cross_encoder_score)
         embedding_score = float(row.embedding_similarity)
         if normalized1 == normalized2:
-            relationships.append("duplicate/semantic duplicate")
+            relationships.append(EXACT_CONTENT)
             analyses.append("Normalized node text is identical.")
             borderline.append(False)
         elif (
@@ -257,11 +269,11 @@ def classify_compact_pairs(
             and normalized1 != normalized2
             and (normalized1 in normalized2 or normalized2 in normalized1)
         ):
-            relationships.append("one passage included in another")
+            relationships.append(PARTIAL_OVERLAP)
             analyses.append("One normalized node is contained in the other.")
             borderline.append(False)
         elif cross_score < independent_threshold:
-            relationships.append("independent")
+            relationships.append(RELATED)
             analyses.append("CrossEncoder score is below the independent threshold.")
             borderline.append(False)
         else:
@@ -273,11 +285,11 @@ def classify_compact_pairs(
                 and lexical_overlap >= 0.72
                 and not conflict_signal
             ):
-                relationships.append("duplicate/semantic duplicate")
+                relationships.append(VARIANT_CANDIDATE)
                 analyses.append("CrossEncoder, embedding, and lexical overlap strongly support duplication.")
                 borderline.append(False)
             else:
-                relationships.append("independent")
+                relationships.append(RELATED)
                 analyses.append("Ambiguous CrossEncoder result; conservative local fallback pending LLM review.")
                 borderline.append(True)
 
@@ -372,6 +384,7 @@ def review_borderline_pairs(
                     "item1_node_id": str(pair["item1_node_id"]),
                     "item2_node_id": str(pair["item2_node_id"]),
                     "model": model,
+                    "relationship_scheme": RELATIONSHIP_SCHEME,
                     "relationship_type": response["relationship_type"],
                     "analysis": response["analysis"],
                     "review_status": "reviewed",
@@ -392,6 +405,7 @@ def review_borderline_pairs(
             "item1_node_id": str(pair["item1_node_id"]),
             "item2_node_id": str(pair["item2_node_id"]),
             "model": model,
+            "relationship_scheme": RELATIONSHIP_SCHEME,
             "relationship_type": str(result.at[row_index, "final_relationship_type"]),
             "analysis": last_error,
             "review_status": "api_error",
@@ -432,7 +446,7 @@ def review_borderline_pairs(
 
 
 def detailed_matches(results_df: pd.DataFrame, comparable_df: pd.DataFrame) -> pd.DataFrame:
-    matches = results_df[results_df["final_relationship_type"] != "independent"].copy()
+    matches = results_df[~results_df["final_relationship_type"].isin(NON_MATCH_RELATIONSHIP_TYPES)].copy()
     if matches.empty:
         return matches
     fields = [

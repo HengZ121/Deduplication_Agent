@@ -11,6 +11,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from run_passage_pipeline import is_cluster_relationship
+
 
 def cluster_dataset(dataset: str, language: str, run_dir: Path) -> pd.DataFrame:
     """Return cluster membership rows for one saved language run."""
@@ -27,10 +29,11 @@ def cluster_dataset(dataset: str, language: str, run_dir: Path) -> pd.DataFrame:
             node_id = parent[node_id]
         return node_id
 
-    # Partial inclusion is not a duplicate cluster: it can describe different
-    # lengths or scope. Only pairs classified as semantic duplicates connect.
+    # Partial overlap is not a duplicate cluster: it can describe different
+    # lengths or scope. Only exact content and variants (or, in older saved
+    # results, semantic duplicates) connect.
     duplicate_pairs = pairs.loc[
-        pairs.final_relationship_type.eq("duplicate/semantic duplicate"),
+        pairs.final_relationship_type.map(is_cluster_relationship),
         ["item1_node_id", "item2_node_id"],
     ]
     for left, right in duplicate_pairs.itertuples(index=False, name=None):

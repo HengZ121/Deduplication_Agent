@@ -9,6 +9,7 @@ from itertools import combinations
 import csv, json, html, difflib, shutil, zipfile, math
 from audit_ort_knowledge_reuse import (ROOT, ReuseAudit, element_text, xml_local_name,
     digest, structure, norm, word_tokens, write_csv)
+from run_passage_pipeline import is_cluster_relationship
 
 OUT = Path('outputs/rfs_section_atlas')
 DOCS = dict(zip('CEGKMNFS', ['roe_rts','roe_quit','roe_retirement','roe_other',
@@ -26,7 +27,7 @@ def edge_type(pair):
     if pair['classification']=='exact_resolved_section': return 'exact'
     if pair['classification']=='template_variant_candidate': return 'variant'
     if pair['classification']=='partial_overlap_observed': return 'partial'
-    if pair['classification']=='related_or_unresolved' and pair['saved_pipeline_decision']=='duplicate/semantic duplicate':
+    if pair['classification']=='related_or_unresolved' and is_cluster_relationship(pair['saved_pipeline_decision']):
         return 'semantic_candidate'
     return 'unresolved'
 

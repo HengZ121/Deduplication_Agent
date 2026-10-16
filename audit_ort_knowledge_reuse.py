@@ -26,7 +26,7 @@ from urllib.parse import unquote, urlsplit
 
 from profile_ort_sections import business_type, read_csv
 from run_procedure_pipeline import DitaTopicResolver, element_text, xml_local_name
-from run_passage_pipeline import normalized_passage, word_tokens
+from run_passage_pipeline import is_cluster_relationship, normalized_passage, word_tokens
 
 csv.field_size_limit(10_000_000)
 ROOT = Path('unzipped/ort_new_dita/dita').resolve()
@@ -368,7 +368,7 @@ class ReuseAudit:
                 continue
             seen.add(key)
             saved[row['final_relationship_type']] += 1
-            if row['final_relationship_type'] != 'duplicate/semantic duplicate':
+            if not is_cluster_relationship(row['final_relationship_type']):
                 continue
             bucket, evidence = self.assess_pair(a,b)
             # This bucket also requires the saved high model score. Do not imply

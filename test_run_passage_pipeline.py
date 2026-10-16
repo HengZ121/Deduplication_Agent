@@ -10,6 +10,7 @@ import pandas as pd
 
 from run_passage_pipeline import (
     initial_cross_encoder_decision,
+    is_cluster_relationship,
     normalized_passage,
     read_dita_passage_windows,
     sentence_windows,
@@ -65,7 +66,7 @@ class PassageRelationshipTests(unittest.TestCase):
             normalized_passage("Mise‑à‑jour\u200b du dossier"),
         )
 
-    def test_identical_text_is_automatic_duplicate(self) -> None:
+    def test_identical_text_is_automatic_exact_content(self) -> None:
         row = pd.Series(
             {
                 "item1_text": "Submit the request to the processing team.",
@@ -77,10 +78,33 @@ class PassageRelationshipTests(unittest.TestCase):
 
         relationship, _, borderline = initial_cross_encoder_decision(row, 0.995, 0.90)
 
-        self.assertEqual("duplicate/semantic duplicate", relationship)
+        self.assertEqual("exact content", relationship)
         self.assertFalse(borderline)
 
-    def test_low_cross_encoder_score_is_automatic_independent(self) -> None:
+    def test_strong_scores_on_different_text_are_a_variant_not_exact(self) -> None:
+        row = pd.Series(
+            {
+                "item1_text": "The agent must review the ROE and the existing records of decision on file.",
+                "item2_text": "The officer must review the ROE and the existing records of decision on file.",
+                "cross_encoder_score": 0.999,
+                "embedding_similarity": 0.98,
+            }
+        )
+
+        relationship, _, borderline = initial_cross_encoder_decision(row, 0.995, 0.90)
+
+        self.assertEqual("variant candidate", relationship)
+        self.assertFalse(borderline)
+
+    def test_new_and_legacy_labels_that_form_clusters(self) -> None:
+        self.assertTrue(is_cluster_relationship("exact content"))
+        self.assertTrue(is_cluster_relationship("variant candidate"))
+        self.assertTrue(is_cluster_relationship("duplicate/semantic duplicate"))
+        self.assertFalse(is_cluster_relationship("partial overlap"))
+        self.assertFalse(is_cluster_relationship("conflicting information"))
+        self.assertFalse(is_cluster_relationship("related"))
+
+    def test_low_cross_encoder_score_is_automatic_related(self) -> None:
         row = pd.Series(
             {
                 "item1_text": "Submit a death-benefit request to the processing team.",
@@ -92,7 +116,7 @@ class PassageRelationshipTests(unittest.TestCase):
 
         relationship, _, borderline = initial_cross_encoder_decision(row, 0.995, 0.90)
 
-        self.assertEqual("independent", relationship)
+        self.assertEqual("related", relationship)
         self.assertFalse(borderline)
 
     def test_number_difference_forces_high_score_pair_to_borderline_review(self) -> None:

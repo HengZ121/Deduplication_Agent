@@ -14,6 +14,8 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from run_passage_pipeline import is_cluster_relationship
+
 ROOT = Path('unzipped/ort_new_dita/dita')
 OUT = Path('outputs/ort_section_strategy')
 csv.field_size_limit(10_000_000)
@@ -107,7 +109,7 @@ def main():
     example_candidates = []
     same_document = 0
     for r in read_csv('outputs/ort_internal_deduplication/en/pair_classifications.csv'):
-        if r['final_relationship_type'] != 'duplicate/semantic duplicate':
+        if not is_cluster_relationship(r['final_relationship_type']):
             continue
         a, b = by_id[r['item1_node_id']], by_id[r['item2_node_id']]
         ta, tb = business_type(a['article_path']), business_type(b['article_path'])

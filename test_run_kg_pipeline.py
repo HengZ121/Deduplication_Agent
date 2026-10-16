@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -232,7 +233,7 @@ class CompactPairClassificationTests(unittest.TestCase):
 
         result = classify_compact_pairs(scored, comparable, 0.995, 0.90)
 
-        self.assertEqual("duplicate/semantic duplicate", result.iloc[0]["final_relationship_type"])
+        self.assertEqual("exact content", result.iloc[0]["final_relationship_type"])
         self.assertFalse(bool(result.iloc[0]["is_borderline"]))
 
 
@@ -242,7 +243,7 @@ class DetailedMatchExportTests(unittest.TestCase):
             {
                 "item1_index": [0],
                 "item2_index": [1],
-                "final_relationship_type": ["duplicate/semantic duplicate"],
+                "final_relationship_type": ["variant candidate"],
             }
         )
         comparable = pd.DataFrame(
@@ -265,6 +266,22 @@ class DetailedMatchExportTests(unittest.TestCase):
         self.assertEqual("First passage.", exported.iloc[0]["item1_text"])
         self.assertEqual("Second passage.", exported.iloc[0]["item2_text"])
 
+    def test_related_pairs_are_not_exported_as_matches(self) -> None:
+        results = pd.DataFrame(
+            {"item1_index": [0, 0], "item2_index": [1, 1], "final_relationship_type": ["related", "partial overlap"]}
+        )
+        comparable = pd.DataFrame(
+            {
+                field: [field + "1", field + "2"]
+                for field in ["node_type", "article_path", "article_title", "language", "topic_path",
+                              "source_element_path", "element_id", "conref_targets", "text"]
+            }
+        )
+
+        exported = detailed_matches(results, comparable)
+
+        self.assertEqual(["partial overlap"], list(exported["final_relationship_type"]))
+
 
 class LlmReviewCheckpointTests(unittest.TestCase):
     def test_completed_review_is_reused_without_a_second_api_call(self) -> None:
@@ -274,7 +291,7 @@ class LlmReviewCheckpointTests(unittest.TestCase):
                 "item2_index": [1],
                 "item1_node_id": ["n0"],
                 "item2_node_id": ["n1"],
-                "final_relationship_type": ["independent"],
+                "final_relationship_type": ["related"],
                 "final_analysis": ["pending"],
                 "is_borderline": [True],
                 "classification_source": ["cross_encoder_borderline_fallback"],
@@ -288,7 +305,7 @@ class LlmReviewCheckpointTests(unittest.TestCase):
             }
         )
         response = {
-            "relationship_type": "duplicate/semantic duplicate",
+            "relationship_type": "variant candidate",
             "analysis": "Same instruction.",
         }
 
@@ -324,7 +341,45 @@ class LlmReviewCheckpointTests(unittest.TestCase):
         request_again.assert_not_called()
         self.assertEqual("reviewed", first.iloc[0]["llm_review_status"])
         self.assertEqual("reviewed", second.iloc[0]["llm_review_status"])
-        self.assertEqual("duplicate/semantic duplicate", second.iloc[0]["final_relationship_type"])
+        self.assertEqual("variant candidate", second.iloc[0]["final_relationship_type"])
+
+    def test_review_saved_under_old_labels_is_not_reused(self) -> None:
+        results = pd.DataFrame(
+            {
+                "item1_index": [0],
+                "item2_index": [1],
+                "item1_node_id": ["n0"],
+                "item2_node_id": ["n1"],
+                "final_relationship_type": ["related"],
+                "final_analysis": ["pending"],
+                "is_borderline": [True],
+                "classification_source": ["cross_encoder_borderline_fallback"],
+                "llm_review_status": ["not_reviewed"],
+            }
+        )
+        comparable = pd.DataFrame({"article_title": ["First", "Second"], "text": ["First.", "Second."]})
+        legacy = {
+            "item1_node_id": "n0",
+            "item2_node_id": "n1",
+            "model": "test-model",
+            "relationship_type": "duplicate/semantic duplicate",
+            "analysis": "Old label scheme.",
+            "review_status": "reviewed",
+        }
+        response = {"relationship_type": "partial overlap", "analysis": "Second passage adds a step."}
+
+        checkpoint = Path(__file__).parent / "test_llm_reviews_legacy_checkpoint.jsonl"
+        checkpoint.write_text(json.dumps(legacy) + "\n", encoding="utf-8")
+        try:
+            with mock.patch("run_kg_pipeline.openai_passage_request", return_value=response) as request:
+                reviewed = review_borderline_pairs(
+                    results, comparable, "test-key", "test-model", 1, 1, 10, checkpoint_path=checkpoint
+                )
+        finally:
+            checkpoint.unlink(missing_ok=True)
+
+        request.assert_called_once()
+        self.assertEqual("partial overlap", reviewed.iloc[0]["final_relationship_type"])
 
 
 if __name__ == "__main__":

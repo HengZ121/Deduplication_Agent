@@ -46,12 +46,32 @@ from run_procedure_pipeline import (
 
 DEFAULT_EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 DEFAULT_OUTPUT_DIR = Path("outputs/kmt_passage_pipeline")
+# Relationship types match the RFS section atlas. Bump the scheme whenever the
+# labels or their LLM definitions change so cached reviews are not reused.
+RELATIONSHIP_SCHEME = "rfs-v1"
+EXACT_CONTENT = "exact content"
+VARIANT_CANDIDATE = "variant candidate"
+PARTIAL_OVERLAP = "partial overlap"
+CONFLICTING_INFORMATION = "conflicting information"
+RELATED = "related"
 FINAL_RELATIONSHIP_TYPES = {
-    "duplicate/semantic duplicate",
-    "one passage included in another",
-    "conflicting information",
-    "independent",
+    EXACT_CONTENT,
+    VARIANT_CANDIDATE,
+    PARTIAL_OVERLAP,
+    CONFLICTING_INFORMATION,
+    RELATED,
 }
+# Duplicate clusters join only these types. Results saved before the RFS scheme
+# used "duplicate/semantic duplicate" for the same purpose.
+CLUSTER_RELATIONSHIP_TYPES = {EXACT_CONTENT, VARIANT_CANDIDATE}
+LEGACY_CLUSTER_RELATIONSHIP_TYPES = {"duplicate/semantic duplicate"}
+NON_MATCH_RELATIONSHIP_TYPES = {RELATED, "independent"}
+
+
+def is_cluster_relationship(relationship_type: str) -> bool:
+    """True when a saved pair, in either label scheme, joins a duplicate cluster."""
+
+    return relationship_type in CLUSTER_RELATIONSHIP_TYPES | LEGACY_CLUSTER_RELATIONSHIP_TYPES
 
 # These elements are useful comparison units and are treated as atomic. The
 # traversal stops at a matching parent so nested <p> content is not duplicated.
@@ -630,26 +650,27 @@ def initial_cross_encoder_decision(
     jaccard = token_jaccard(text1, text2)
 
     if normalized_passage(text1) == normalized_passage(text2):
-        return "duplicate/semantic duplicate", "Normalized passage text is identical.", False
+        return EXACT_CONTENT, "Normalized passage text is identical.", False
     if contains_passage(text1, text2):
-        return "one passage included in another", "One normalized passage is contained in the other.", False
+        return PARTIAL_OVERLAP, "One normalized passage is contained in the other.", False
 
     conflict_signal = has_conflict_signal(text1, text2)
+    # The text is not identical here, so strong agreement is a variant, never exact.
     if score >= duplicate_threshold and embedding_score >= 0.90 and jaccard >= 0.72 and not conflict_signal:
         return (
-            "duplicate/semantic duplicate",
+            VARIANT_CANDIDATE,
             "CrossEncoder, embedding, and lexical-overlap scores all strongly support duplication.",
             False,
         )
     if score <= independent_threshold:
-        return "independent", "CrossEncoder score is below the independent threshold.", False
+        return RELATED, "CrossEncoder score is below the independent threshold.", False
 
     reasons = ["CrossEncoder score falls in the review band"]
     if conflict_signal:
         reasons.append("numbers or negation differ")
     if jaccard < 0.72:
         reasons.append("lexical overlap is not strong enough for automatic duplicate labeling")
-    return "independent", "; ".join(reasons) + ".", True
+    return RELATED, "; ".join(reasons) + ".", True
 
 
 def openai_passage_request(
@@ -663,12 +684,18 @@ def openai_passage_request(
         "content": (
             "Classify the relationship between the two passages. Return only JSON with keys "
             "relationship_type and analysis. relationship_type must be exactly one of:\n"
-            "- duplicate/semantic duplicate: same scoped fact or instruction, even if reworded;\n"
-            "- one passage included in another: one passage's substantive information is contained in the other;\n"
-            "- conflicting information: the same exact scoped case has mutually incompatible claims;\n"
-            "- independent: related wording, templates, or different scopes without duplication or contradiction.\n"
-            "Different systems, actions, roles, benefits, objects, years, or scenarios are independent. A missing "
-            "detail alone is not a conflict. Judge the passage relationship, using article titles only as scope context.\n\n"
+            f"- {EXACT_CONTENT}: the same content; differences are only formatting, punctuation, or spacing;\n"
+            f"- {VARIANT_CANDIDATE}: the same passage or template with small differences, such as swapped terms "
+            "or roles (agent/officer), systems, codes, numbers, dates, or minor rewording, while the structure "
+            "and purpose stay the same;\n"
+            f"- {PARTIAL_OVERLAP}: part of the content is shared or one passage is contained in the other, but "
+            "at least one passage has substantial content the other lacks;\n"
+            f"- {CONFLICTING_INFORMATION}: the same exact scoped case receives mutually incompatible instructions "
+            "or claims;\n"
+            f"- {RELATED}: the same topic or similar wording, but no substantial shared content.\n"
+            "A template filled in for a different system, role, code, or scenario is a variant candidate, not a "
+            "conflict. A missing detail alone is not a conflict. In the analysis, name the words or passages that "
+            "differ. Judge the passage relationship, using article titles only as scope context.\n\n"
             f"Passage 1 article: {row['item1_article_title']}\n"
             f"Passage 1: {row['item1_text']}\n\n"
             f"Passage 2 article: {row['item2_article_title']}\n"

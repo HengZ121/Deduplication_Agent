@@ -36,6 +36,10 @@ RELATIONSHIP_LABELS = {
     "one passage included in another": "Partial inclusion",
     "conflicting information": "Contradiction",
     "independent": "Unrelated",
+    "exact content": "Exact content",
+    "variant candidate": "Variant candidate",
+    "partial overlap": "Partial overlap",
+    "related": "Related",
 }
 
 RELATIONSHIP_COLORS = {
@@ -43,6 +47,10 @@ RELATIONSHIP_COLORS = {
     "Partial inclusion": "#d99021",
     "Contradiction": "#c73e59",
     "Unrelated": "#8b95a1",
+    "Exact content": "#1f9e89",
+    "Variant candidate": "#3b6fb6",
+    "Partial overlap": "#d99021",
+    "Related": "#8b95a1",
     "Other": "#6b7280",
 }
 
@@ -430,10 +438,14 @@ def chord_points(
 
 def relationship_rank(relationship: str) -> int:
     order = {
+        "Exact content": 0,
         "Duplicated": 0,
-        "Partial inclusion": 1,
-        "Contradiction": 2,
-        "Unrelated": 3,
+        "Variant candidate": 1,
+        "Partial overlap": 2,
+        "Partial inclusion": 2,
+        "Contradiction": 3,
+        "Related": 4,
+        "Unrelated": 4,
     }
     return order.get(relationship, 99)
 
@@ -1201,7 +1213,8 @@ def build_figure(
     arcs = make_node_arcs(node_totals, node_level)
     relationship_names = [
         name
-        for name in ["Duplicated", "Partial inclusion", "Contradiction", "Unrelated"]
+        for name in ["Exact content", "Duplicated", "Variant candidate", "Partial overlap",
+                     "Partial inclusion", "Contradiction", "Related", "Unrelated"]
         if name in set(links["relationship"])
     ]
     relationship_names += sorted(
