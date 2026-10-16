@@ -57,3 +57,4 @@ outputs/kmt_dita_pipeline/*
 
 # Large source archives are committed split under /datasets/ (GitHub 100 MB limit).
 /OneDrive_1_10-7-2026.zip
+/ort_output.zip
